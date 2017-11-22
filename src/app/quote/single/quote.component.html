@@ -15,7 +15,7 @@
           <mat-icon>account_circle</mat-icon>
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <app-quoteInfo [fetchedQuote]="fetchedQuote"></app-quoteInfo>
+      <app-quoteInfo [search]="search" [fetchedQuote]="fetchedQuote"></app-quoteInfo>
       <mat-action-row>
         <app-actionButtons
           [isDialog]="isDialog"
@@ -35,7 +35,7 @@
           <mat-icon>map</mat-icon>
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <app-quoteDetails [(fetchedQuote)]="fetchedQuote" (quoteDetailsUpdated)="quoteDetailsUpdated($event)"></app-quoteDetails>
+      <app-quoteDetails *ngIf="step === 1" [(fetchedQuote)]="fetchedQuote" (quoteDetailsUpdated)="quoteDetailsUpdated($event)"></app-quoteDetails>
       <mat-action-row>
         <app-actionButtons
           [isDialog]="isDialog"
@@ -106,7 +106,12 @@
       </mat-action-row>
     </mat-expansion-panel>
 
-    <mat-expansion-panel *ngIf="authService.showObjHTML('paiementQuote', 'read') && fetchedQuote._id" [expanded]="step === 6" (opened)="setStep(6)" hideToggle="true">
+    <mat-expansion-panel
+      *ngIf="
+      authService.showObjHTML('paiementQuote', 'read') &&
+      fetchedQuote._id &&
+      fetchedQuote.typeQuote === 'invoice'"
+      [expanded]="step === 6" (opened)="setStep(6)" hideToggle="true">
       <mat-expansion-panel-header>
         <mat-panel-title>
           {{'Paiements' | translate}}
@@ -121,6 +126,25 @@
         {{'Total Paiement' | translate}} = {{totalPaiementAmount}}
         <br> {{'To be paid' | translate}} = {{fetchedQuote.priceQuote.priceQuoteWithoutTaxes*1 - totalPaiementAmount*1| round}}
       </mat-card>
+    </mat-expansion-panel>
+
+
+    <mat-expansion-panel
+      *ngIf="
+      authService.showObjHTML('quote', 'read') &&
+      fetchedQuote._id &&
+      fetchedQuote.typeQuote === 'quote'"
+      [expanded]="step === 7" (opened)="setStep(7)" hideToggle="true">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{'Invoices' | translate}}
+        </mat-panel-title>
+        <mat-panel-description>
+          <mat-icon>date_range</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <app-quotes [search]="{typeQuote:'invoice', parentQuoteId:fetchedQuote._id, userId: search.userId}">
+      </app-quotes>
 
     </mat-expansion-panel>
 

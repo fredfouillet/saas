@@ -66,6 +66,7 @@ export class QuotesComponent implements OnInit {
       }
     })
 
+
     // let this2 = this
     // setTimeout(function(){
     //   this2.search.userId = this2.userId
@@ -75,6 +76,17 @@ export class QuotesComponent implements OnInit {
     // }, 200);
 
   }
+
+
+  // saveAsInvoice() {
+  //   this.quoteService.saveAsInvoice(this.search.parentQuoteId)
+  //     .subscribe(
+  //     res => {
+  //       // this.toastr.success('Great!', res.message)
+  //       this.saved.emit(res)
+  //       // this.goToInvoice(res.obj._id)
+  //     }, error => { console.log(error) } )
+  // }
   searchUsers() {
     this.getQuotes(this.paginationData.currentPage, this.search)
   }

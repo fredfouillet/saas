@@ -224,15 +224,20 @@ export class QuoteComponent implements OnInit {
     this.fetchedQuote.detail.dateQuote.dateInvoicePaidString = this.authService.isoDateToHtmlDate(this.fetchedQuote.detail.dateQuote.dateInvoicePaid)
 
     // this.getCurrentUser();
+    if(this.search.parentQuoteId) {
+      this.getQuote(this.search.parentQuoteId)
+    } else {
+      this.fetchedQuote.typeQuote = this.search.typeQuote
+      this.activatedRoute.params.subscribe((params: Params) => {
+        if (params['idQuote']) {
+          this.search.quoteId = params['idQuote']
+          this.getQuote(params['idQuote'])
+        } else {
+          this.getMaxQuoteNumber()
+        }
+    }
 
-    this.fetchedQuote.typeQuote = this.search.typeQuote
-    this.activatedRoute.params.subscribe((params: Params) => {
-      if (params['idQuote']) {
-        this.search.quoteId = params['idQuote']
-        this.getQuote(params['idQuote'])
-      } else {
-        this.getMaxQuoteNumber()
-      }
+
 
       // if (params['idClient'])
       //   this.getUser(params['idClient'])
@@ -807,7 +812,10 @@ export class QuoteComponent implements OnInit {
         // this.fetchedQuote.projects.forEach(project => { this.search.projectId = project._id })
         this.fetchedQuote.clients.forEach(user => { this.search.userId = user._id })
 
-
+        if(this.search.parentQuoteId) {
+          this.fetchedQuote._id = ''
+          this.fetchedQuote.quoteNumber = null
+        }
       },
       error => { console.log(error) }
       )

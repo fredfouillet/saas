@@ -59,6 +59,7 @@ export class AutocompleteComponent {
     //     this.projectService.getProject(this.search.projectId)
     //     .subscribe( res => { if(this.arrayContent.length) this.arrayContent.splice(0, 1);
     //       this.arrayContent.push(res) }, error => { console.log(error); });
+    console.log(this.search)
     if(this.typeAutocomplete ==='user' && this.search.userId)
         this.userService.getUser(this.search.userId)
         .subscribe( res => { if(this.arrayContent.length) this.arrayContent.splice(0, 1);
@@ -66,6 +67,7 @@ export class AutocompleteComponent {
     if(this.typeAutocomplete ==='quote' && this.search.quoteId)
         this.quoteService.getQuote(this.search.quoteId)
         .subscribe( res => {
+          console.log(res)
           if(this.arrayContent.length) this.arrayContent.splice(0, 1);
           this.arrayContent.push(res)
           this.autocompleteAfterNgChanges.emit()

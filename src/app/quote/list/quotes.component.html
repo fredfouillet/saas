@@ -5,11 +5,10 @@
       <h4 *ngIf="search.typeQuote ==='quote'"> {{'Quotes' | translate}}</h4>
     </div>
     <div class="p-2">
-      <!-- <app-header [showHeader]="showHeader" showBackButton="showBackButton" [nameObject]="'quote'" [idProject]="idProject" [idClient]="idClient"></app-header> -->
-
       <app-newObjDialog
         icone="fa fa-plus-square fa-2x ml" [search]="search" (saved)="saved($event)" [typeObj]="'quote'">
       </app-newObjDialog>
+      <!-- <button type="button" (click)="saveAsInvoice()">save as invoice</button> -->
 
     </div>
   </div>
@@ -58,7 +57,7 @@
       <div>
         <mat-paginator [length]="paginationData.totalItems" [pageSize]="paginationData.itemsPerPage" (page)="getPage($event.pageIndex*1+1)">
         </mat-paginator>
-        
+
       </div>
     </div>
   </div>

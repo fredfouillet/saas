@@ -7,6 +7,7 @@ export class Search {
   userId: string = '';
   assignedToId: string = '';
   projectId: string = '';
+  parentQuoteId: string = '';
   isExternalUser: boolean = true;
   isExpense: boolean = false;
   typeQuote: string = '';

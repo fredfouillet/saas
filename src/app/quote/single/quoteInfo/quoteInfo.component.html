@@ -1,16 +1,21 @@
 
   <form [formGroup]="myForm" novalidate (ngSubmit)="save()">
     <div  *ngIf="fetchedQuote._id" class="row">
-        <div class="col-md-3 col-md-6">
+        <div class="col-12 col-md-4">
           <button type="button" class="btn btn-primary" (click)="downloadPDF()">
           {{'Download PDF' | translate}}
           </button>
         </div>
-        <div class="col-md-3 col-md-6">
+        <div class="col-12 col-md-4">
           <button type="button" class="btn btn-primary" (click)="sendQuoteByEmailToClient()">
           {{'Send document to client' | translate}}
           </button>
         </div>
+        <!-- <div class="col-12 col-md-4">
+          <button type="button" class="btn btn-primary" (click)="saveAsInvoice()">
+          {{'Create Invoice' | translate}}
+          </button>
+        </div> -->
     </div>
     <div class="row">
       <div class="col-sm-12 col-md-4">
@@ -25,6 +30,14 @@
             (getResultAutocomplete)="selectUser($event[0])">
           </app-autocomplete> -->
         </div>
+        <!-- <div class="form-group">
+          <app-autocomplete
+            [displayIfContentIsNull]=true
+            [canDelete]=false
+            [enableLink]=true [typeAutocomplete]="'quote'" [title]="'Parent Quote'"
+            [search]="{typeQuote:'quote', quoteId: search.parentQuote}" [singleChoice]=true [arrayContent]="fetchedQuote.parentQuotes">
+          </app-autocomplete>
+        </div> -->
         <!-- <div class="form-group">
           <app-autocomplete [search]="search" [canDelete]=false [enableLink]=true [typeAutocomplete]="'project'" [title]="'Projet'" [singleChoice]="true" [arrayContent]="fetchedQuote.projects">
           </app-autocomplete>

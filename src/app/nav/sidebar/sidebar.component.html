@@ -63,9 +63,14 @@
                   <a class="nav-link" [routerLink]="['/quote/list/quote']" routerLinkActive="active">{{'Quotes' | translate}}</a>
                 </td>
               </tr>
+              <tr *ngIf="authService.showObjHTML('quote', 'read')">
+                <td class="nav-item subItem">
+                  <a class="nav-link" [routerLink]="['/quote/list/invoice']" routerLinkActive="active">{{'Invoices' | translate}}</a>
+                </td>
+              </tr>
               <tr *ngIf="authService.showObjHTML('paiementQuote', 'read')">
                 <td class="nav-item subItem">
-                  <a class="nav-link" [routerLink]="['/paiementQuote/list']" routerLinkActive="active">{{'Invoices' | translate}}</a>
+                  <a class="nav-link" [routerLink]="['/paiementQuote/list']" routerLinkActive="active">{{'Paiements' | translate}}</a>
                 </td>
               </tr>
             </table>

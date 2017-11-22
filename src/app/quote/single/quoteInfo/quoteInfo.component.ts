@@ -381,8 +381,9 @@ export class QuoteInfoComponent implements OnInit {
     this.quoteService.saveAsInvoice(this.fetchedQuote)
       .subscribe(
       res => {
-        this.toastr.success('Great!', res.message)
-        this.goToInvoice(res.obj._id)
+        // this.toastr.success('Great!', res.message)
+        this.saved.emit(res)
+        // this.goToInvoice(res.obj._id)
       }, error => { console.log(error) } )
   }
 

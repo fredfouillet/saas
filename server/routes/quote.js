@@ -421,9 +421,9 @@ router.post('/saveAsInvoice/', function(req, res, next) {
     req.body.quoteNumber = count * 1 + 1
     req.body.signature = {}
     let idQuote = req.body._id
+    req.body.parentQuotes = req.body._id
     delete req.body._id
     var quote = new Quote(req.body);
-
     quote.typeQuote = 'invoice'
     quote.save(function(err, result) {
       if (err) {
@@ -469,13 +469,18 @@ router.get('/page/:page', function(req, res, next) {
   // } else {
   //   searchQuery['ownerCompanies'] = req.user.ownerCompanies
   // }
+
   if (req.user.isExternalUser) {
     searchQuery['clients'] = req.user._id
   } else {
     searchQuery['ownerCompanies'] = req.user.ownerCompanies
   }
-  // if (req.query.typeQuote)
-  //   searchQuery['typeQuote'] = req.query.typeQuote
+  if (req.query.typeQuote)
+    searchQuery['typeQuote'] = req.query.typeQuote
+
+
+  if (req.query.parentQuoteId)
+    searchQuery['parentQuotes'] = mongoose.Types.ObjectId(req.query.parentQuoteId)
 
   if (req.query.search) {
     //  nameQuery['name'] = new RegExp(req.query.search, 'i')

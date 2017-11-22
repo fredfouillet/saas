@@ -8,7 +8,7 @@ var mongoose                = require('mongoose'),
 var quote = new Schema({
     ownerCompanies: [{type: Schema.Types.ObjectId, ref: 'Companie'}],
     // projects: [{type: Schema.Types.ObjectId, ref: 'Project'}],
-    invoices: [{type: Schema.Types.ObjectId, ref: 'Quote'}],
+    parentQuotes: [{type: Schema.Types.ObjectId, ref: 'Quote'}],
 
     // ownerQuotes: [{type: Schema.Types.ObjectId, ref: 'User'}],
     clients: [{type: Schema.Types.ObjectId, ref: 'User'}],
@@ -16,7 +16,7 @@ var quote = new Schema({
     // companieClients: [{type: Schema.Types.ObjectId, ref: 'Companie'}],
     // phoneNumber: {type: String, default: ['']},
     name: {type: String, default: ['']},
-    quoteNumber: {type: Number, unique: true, required: true},
+    quoteNumber: {type: Number, default: [0]},
     statusQuote: {type: Number, default: [0]},
     detail: {
       currency: {type: String, default: ['']},

@@ -21,7 +21,7 @@ export class Quote {
   // ownerQuotes: User[] = [];
   // companieClients: Companie[] = []
   forms: Form[] = [];
-  invoices: Quote[] = [];
+  parentQuotes: Quote[] = [];
   products: Product[] = [];
   // projects: Project[] = [];
   devisDetails: DevisDetail[] = []
