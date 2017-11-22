@@ -18,7 +18,7 @@ import {Router } from '@angular/router';
 import { Location } from '@angular/common';
 // import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 // import { UserService} from '../../user/user.service';
-// import { DeleteDialog } from '../../../deleteDialog/deleteDialog.component';
+import { DeleteDialogComponent } from '../../../nav/deleteDialog/deleteDialog.component';
 // import { User } from '../../user/user.model';
 // import { Product } from '../../product/product.model';
 // import { Project } from '../../project/project.model';
@@ -742,16 +742,16 @@ export class ActionButtonsComponent implements OnInit {
 
 
   openDialogDelete() {
-    // let this2 = this
-    // let dialogRefDelete = this.dialog.open(DeleteDialog)
-    // dialogRefDelete.afterClosed().subscribe(result => {
-    //   if (result) {
-    //     this.onDelete(this.fetchedQuote._id).then(function() {
-    //       this2.router.navigate(['quote/list/quote']);
-    //     })
-    //
-    //   }
-    // })
+    const this2 = this
+    const dialogRefDelete = this.dialog.open(DeleteDialogComponent)
+    dialogRefDelete.afterClosed().subscribe(result => {
+      if (result) {
+        this.onDelete(this.fetchedQuote._id).then(function() {
+          this2.router.navigate(['quote/list/quote']);
+        })
+
+      }
+    })
   }
   // newPaiementQuoteSaved() {
   //   this.paiementQuotesComponent.getPaiementQuotesInit()
