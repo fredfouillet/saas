@@ -59,7 +59,7 @@
           <mat-icon>date_range</mat-icon>
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <app-comments [search]="search"></app-comments>
+      <!-- <app-comments [search]="search"></app-comments> -->
     </mat-expansion-panel>
     <mat-expansion-panel *ngIf="authService.showObjHTML('quote', 'signature') && fetchedQuote._id" [expanded]="step === 3" (opened)="setStep(3)" hideToggle="true">
       <mat-expansion-panel-header>
