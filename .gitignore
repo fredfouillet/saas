@@ -16,10 +16,9 @@
 
 
 # media
-/server/uploads/forms
-/server/uploads/pdf
-
+/server/uploads/forms/**/*
 !/server/uploads/forms/index.html
+/server/uploads/pdf
 
 # IDEs and editors
 /.idea
