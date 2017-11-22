@@ -19,6 +19,8 @@
 /server/uploads/forms
 /server/uploads/pdf
 
+!/server/uploads/forms/index.html
+
 # IDEs and editors
 /.idea
 .project
