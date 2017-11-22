@@ -155,15 +155,12 @@ router.get('/:id', function(req, res, next) {
     // let findQuery = {}
     // findQuery['_id'] = req.params.id
     Quote.findById({_id: req.params.id})
-    // .populate({
-    //   path: 'projects',
-    //   model: 'Project',
-    //   populate: {
-    //     path: 'assignedTos',
-    //     model: 'User'
-    //   }
-    // })
-      .populate({path: 'companieClients', model: 'Companie'}).populate({path: 'signature.users', model: 'User'}).populate({path: 'clients', model: 'User'}).populate({path: 'invoices', model: 'Quote'}).populate({path: 'drawing.backgroundForms', model: 'Form'}).populate({path: 'forms', model: 'Form'})
+      .populate({path: 'companieClients', model: 'Companie'})
+      .populate({path: 'signature.users', model: 'User'})
+      .populate({path: 'clients', model: 'User'})
+      .populate({path: 'parentQuotes', model: 'Quote'})
+      .populate({path: 'drawing.backgroundForms', model: 'Form'})
+      .populate({path: 'forms', model: 'Form'})
     // .populate({path: 'devisDetails.bucketProducts.productInit', model: 'Product'})
       .populate({
       path: 'devisDetails.bucketProducts.productInit',
@@ -402,52 +399,52 @@ router.post('/', function(req, res, next) {
   })
   // })
 });
-
-router.post('/saveAsInvoice/', function(req, res, next) {
-  if (!shared.isCurentUserHasAccess(req.user, nameObject, 'write')) {
-    return res.status(404).json({
-      title: 'No rights',
-      error: {
-        message: 'No rights'
-      }
-    })
-  }
-  if (!req.user.ownerCompanies.length)
-    return res.status(404).json({message: 'You must belong to a companie', err: ''})
-
-  let searchQuery = {}
-  searchQuery['ownerCompanies'] = req.user.ownerCompanies
-  Quote.find(searchQuery).count().exec(function(err, count) {
-    req.body.quoteNumber = count * 1 + 1
-    req.body.signature = {}
-    let idQuote = req.body._id
-    req.body.parentQuotes = req.body._id
-    delete req.body._id
-    var quote = new Quote(req.body);
-    quote.typeQuote = 'invoice'
-    quote.save(function(err, result) {
-      if (err) {
-        return res.status(403).json({
-          title: 'There was an issue',
-          error: {
-            message: 'ERROR' + err
-          }
-        });
-      }
-      Quote.findById(({_id: idQuote}), function(err, item) {
-        if (err)
-          return res.status(404).json({message: '', err: err})
-        item.invoices = result
-        item.save(function(err, resultQuote) {
-          if (err) {
-            return res.status(404).json({message: 'There was an error, please try again', err: err});
-          }
-          res.status(201).json({message: '', obj: result});
-        });
-      })
-    })
-  })
-});
+//
+// router.post('/saveAsInvoice/', function(req, res, next) {
+//   if (!shared.isCurentUserHasAccess(req.user, nameObject, 'write')) {
+//     return res.status(404).json({
+//       title: 'No rights',
+//       error: {
+//         message: 'No rights'
+//       }
+//     })
+//   }
+//   if (!req.user.ownerCompanies.length)
+//     return res.status(404).json({message: 'You must belong to a companie', err: ''})
+//
+//   let searchQuery = {}
+//   searchQuery['ownerCompanies'] = req.user.ownerCompanies
+//   Quote.find(searchQuery).count().exec(function(err, count) {
+//     req.body.quoteNumber = count * 1 + 1
+//     req.body.signature = {}
+//     let idQuote = req.body._id
+//     req.body.parentQuotes = req.body._id
+//     delete req.body._id
+//     var quote = new Quote(req.body);
+//     quote.typeQuote = 'invoice'
+//     quote.save(function(err, result) {
+//       if (err) {
+//         return res.status(403).json({
+//           title: 'There was an issue',
+//           error: {
+//             message: 'ERROR' + err
+//           }
+//         });
+//       }
+//       Quote.findById(({_id: idQuote}), function(err, item) {
+//         if (err)
+//           return res.status(404).json({message: '', err: err})
+//         item.invoices = result
+//         item.save(function(err, resultQuote) {
+//           if (err) {
+//             return res.status(404).json({message: 'There was an error, please try again', err: err});
+//           }
+//           res.status(201).json({message: '', obj: result});
+//         });
+//       })
+//     })
+//   })
+// });
 
 // get all forms from database
 router.get('/page/:page', function(req, res, next) {

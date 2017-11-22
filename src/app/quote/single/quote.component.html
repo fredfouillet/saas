@@ -74,7 +74,6 @@
         [drawing]="fetchedQuote.drawingSignature"
         (cleared)="clearedDrawing()"
         (saved)="drawingSignatureUpdated($event)"></app-drawing-signature>
-      <!-- <app-signature [fetchedQuote]="fetchedQuote"></app-signature> -->
     </mat-expansion-panel>
     <mat-expansion-panel *ngIf="authService.showObjHTML('quote', 'drawing') && fetchedQuote._id" [expanded]="step === 4" (opened)="setStep(4)" hideToggle="true">
       <mat-expansion-panel-header>
@@ -143,11 +142,9 @@
           <mat-icon>date_range</mat-icon>
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <app-quotes [search]="{typeQuote:'invoice', parentQuoteId:fetchedQuote._id, userId: search.userId}">
+      <app-quotes [showSearch]=false [search]="{typeQuote:'invoice', parentQuoteId:fetchedQuote._id, userId: search.userId}">
       </app-quotes>
-
     </mat-expansion-panel>
-
   </mat-accordion>
 
 

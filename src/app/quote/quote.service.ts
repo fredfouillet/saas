@@ -194,18 +194,18 @@ export class QuoteService {
       });
   }
 
-
-  saveAsInvoice(quote: Quote) {
-    const body = JSON.stringify(quote);
-    const headers = new Headers({'Content-Type': 'application/json'});
-    headers.append('Authorization', '' + this.authService.currentUser.token);
-    return this.http.post(this.url + 'quote/saveAsInvoice/', body, {headers: headers})
-      .map(response => response.json())
-      .catch((error: Response) => {
-        this.errorService.handleError(error.json());
-        return Observable.throw(error.json());
-      });
-  }
+  // 
+  // saveAsInvoice(quote: Quote) {
+  //   const body = JSON.stringify(quote);
+  //   const headers = new Headers({'Content-Type': 'application/json'});
+  //   headers.append('Authorization', '' + this.authService.currentUser.token);
+  //   return this.http.post(this.url + 'quote/saveAsInvoice/', body, {headers: headers})
+  //     .map(response => response.json())
+  //     .catch((error: Response) => {
+  //       this.errorService.handleError(error.json());
+  //       return Observable.throw(error.json());
+  //     });
+  // }
 
   updateQuote(quote: Quote) {
     const body = JSON.stringify(quote);

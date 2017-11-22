@@ -377,19 +377,19 @@ export class QuoteInfoComponent implements OnInit {
       )
   }
 
-  saveAsInvoice() {
-    this.quoteService.saveAsInvoice(this.fetchedQuote)
-      .subscribe(
-      res => {
-        // this.toastr.success('Great!', res.message)
-        this.saved.emit(res)
-        // this.goToInvoice(res.obj._id)
-      }, error => { console.log(error) } )
-  }
+  // saveAsInvoice() {
+  //   this.quoteService.saveAsInvoice(this.fetchedQuote)
+  //     .subscribe(
+  //     res => {
+  //       // this.toastr.success('Great!', res.message)
+  //       this.saved.emit(res)
+  //       // this.goToInvoice(res.obj._id)
+  //     }, error => { console.log(error) } )
+  // }
 
-  goToInvoice(id: string){
-    this.router.navigate(['quote/' + id]);
-  }
+  // goToInvoice(id: string){
+  //   this.router.navigate(['quote/' + id]);
+  // }
   // downloadPDF2() {
   //   let this2 = this
   //   let base64image = this.getBase64Image(this.imgLogoUrl).then(function(dataImg: any) {

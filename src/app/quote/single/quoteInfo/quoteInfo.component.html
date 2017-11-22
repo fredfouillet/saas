@@ -30,14 +30,17 @@
             (getResultAutocomplete)="selectUser($event[0])">
           </app-autocomplete> -->
         </div>
-        <!-- <div class="form-group">
+        <div class="form-group">
           <app-autocomplete
+            *ngIf="fetchedQuote.typeQuote === 'invoice'"
             [displayIfContentIsNull]=true
             [canDelete]=false
             [enableLink]=true [typeAutocomplete]="'quote'" [title]="'Parent Quote'"
-            [search]="{typeQuote:'quote', quoteId: search.parentQuote}" [singleChoice]=true [arrayContent]="fetchedQuote.parentQuotes">
+            [search]="{typeQuote:'quote', quoteId: search.parentQuote}"
+            [singleChoice]=true
+            [arrayContent]="fetchedQuote.parentQuotes">
           </app-autocomplete>
-        </div> -->
+        </div>
         <!-- <div class="form-group">
           <app-autocomplete [search]="search" [canDelete]=false [enableLink]=true [typeAutocomplete]="'project'" [title]="'Projet'" [singleChoice]="true" [arrayContent]="fetchedQuote.projects">
           </app-autocomplete>

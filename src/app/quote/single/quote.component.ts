@@ -1,21 +1,21 @@
-import {Component, OnInit, ViewChild, Input, Output, EventEmitter} from '@angular/core';
-import {AuthService} from '../../auth/auth.service';
-import {QuoteService} from '../quote.service';
-import {TemplateQuoteService} from '../templateQuote.service';
+import { Component, OnInit, ViewChild, Input, Output, EventEmitter } from '@angular/core';
+import { AuthService } from '../../auth/auth.service';
+import { QuoteService } from '../quote.service';
+import { TemplateQuoteService } from '../templateQuote.service';
 
 import { DragulaService } from 'ng2-dragula';
-import {ProductService} from '../../product/product.service';
+import { ProductService } from '../../product/product.service';
 // import { ProjectService} from '../../project/project.service';
 
-import {Quote, DevisDetail, BucketProduct, StatusQuotes, StatusQuotesInvoice, PriceQuoteTaxe, ModelVATs } from '../quote.model';
-import {TemplateQuote } from '../templateQuote.model';
+import { Quote, DevisDetail, BucketProduct, StatusQuotes, StatusQuotesInvoice, PriceQuoteTaxe, ModelVATs } from '../quote.model';
+import { TemplateQuote } from '../templateQuote.model';
 
-import {ToastsManager} from 'ng2-toastr';
-import {MatDialog } from '@angular/material';
-import {Router, ActivatedRoute, Params } from '@angular/router';
+import { ToastsManager } from 'ng2-toastr';
+import { MatDialog } from '@angular/material';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
-import { FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { UserService} from '../../user/user.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UserService } from '../../user/user.service';
 // import { DeleteDialog } from '../../deleteDialog/deleteDialog.component';
 import { User } from '../../user/user.model';
 import { Product } from '../../product/product.model';
@@ -30,7 +30,7 @@ import { TranslateService } from '../../translate/translate.service';
 // import { SignaturePad } from '../../angular2-signaturepad/signature-pad';
 
 // import { PaiementQuotesComponent } from '../../paiementQuote/paiementQuotes/paiementQuotes.component';
-import {Search} from '../../shared/shared.model'
+import { Search } from '../../shared/shared.model'
 
 @Component({
   selector: 'app-quote',
@@ -133,7 +133,7 @@ export class QuoteComponent implements OnInit {
   // ngOnDestroy() {
   //   // this.dragulaService.destroy('third-bag');
   // }
-  changeStatutsQuote(statusQuoteSelect){
+  changeStatutsQuote(statusQuoteSelect) {
     console.log(statusQuoteSelect)
   }
   closeDialog() {
@@ -224,8 +224,17 @@ export class QuoteComponent implements OnInit {
     this.fetchedQuote.detail.dateQuote.dateInvoicePaidString = this.authService.isoDateToHtmlDate(this.fetchedQuote.detail.dateQuote.dateInvoicePaid)
 
     // this.getCurrentUser();
-    if(this.search.parentQuoteId) {
-      this.getQuote(this.search.parentQuoteId)
+    if (this.search.parentQuoteId) {
+      this.getQuote(this.search.parentQuoteId).then(() => {
+
+        const newQuote = new Quote()
+        newQuote._id = this.search.parentQuoteId
+        this.fetchedQuote.parentQuotes.push(newQuote)
+        this.fetchedQuote._id = ''
+        this.fetchedQuote.typeQuote = 'invoice'
+        this.fetchedQuote.quoteNumber = null
+        this.getMaxQuoteNumber()
+      })
     } else {
       this.fetchedQuote.typeQuote = this.search.typeQuote
       this.activatedRoute.params.subscribe((params: Params) => {
@@ -235,15 +244,16 @@ export class QuoteComponent implements OnInit {
         } else {
           this.getMaxQuoteNumber()
         }
+      })
     }
 
 
 
-      // if (params['idClient'])
-      //   this.getUser(params['idClient'])
-      // if (params['idProject'])
-      //   this.getProject(params['idProject'])
-    })
+    // if (params['idClient'])
+    //   this.getUser(params['idClient'])
+    // if (params['idProject'])
+    //   this.getProject(params['idProject'])
+
   }
   // onChange(event) {
   //   console.log(event)
@@ -387,12 +397,12 @@ export class QuoteComponent implements OnInit {
     // this.loading = true
     this.quoteService.downloadPDF(this.fetchedQuote._id)
       .subscribe(
-        res => {
-          console.log(res)
-           window.open( '/uploads/pdf/' + res );
-          //  this.loading = false
-        },
-        error => { console.log(error) }
+      res => {
+        console.log(res)
+        window.open('/uploads/pdf/' + res);
+        //  this.loading = false
+      },
+      error => { console.log(error) }
       )
   }
 
@@ -400,26 +410,26 @@ export class QuoteComponent implements OnInit {
     // this.loading = true
     this.quoteService.sendQuoteByEmailToClient(this.fetchedQuote._id)
       .subscribe(
-        res => {
-          // console.log(res)
-          this.toastr.success('Great!', 'Mail envoyeé!')
-          //  window.open( '/uploads/pdf/' + res );
-          //  this.loading = false
-        },
-        error => { console.log(error) }
+      res => {
+        // console.log(res)
+        this.toastr.success('Great!', 'Mail envoyeé!')
+        //  window.open( '/uploads/pdf/' + res );
+        //  this.loading = false
+      },
+      error => { console.log(error) }
       )
   }
 
-  saveAsInvoice() {
-    this.quoteService.saveAsInvoice(this.fetchedQuote)
-      .subscribe(
-      res => {
-        this.toastr.success('Great!', res.message)
-        this.goToInvoice(res.obj._id)
-      }, error => { console.log(error) } )
-  }
+  // saveAsInvoice() {
+  //   this.quoteService.saveAsInvoice(this.fetchedQuote)
+  //     .subscribe(
+  //     res => {
+  //       this.toastr.success('Great!', res.message)
+  //       this.goToInvoice(res.obj._id)
+  //     }, error => { console.log(error) } )
+  // }
 
-  goToInvoice(id: string){
+  goToInvoice(id: string) {
     this.router.navigate(['quote/' + id]);
   }
   // downloadPDF2() {
@@ -801,24 +811,26 @@ export class QuoteComponent implements OnInit {
     })
   }
   getQuote(id: string) {
-    this.quoteService.getQuote(id)
-      .subscribe(
-      res => {
-        this.fetchedQuote = res
-        this.fetchedQuote.detail.dateQuote.issueDateString = this.authService.isoDateToHtmlDate(this.fetchedQuote.detail.dateQuote.issueDate)
-        this.fetchedQuote.detail.dateQuote.expiryDateString = this.authService.isoDateToHtmlDate(this.fetchedQuote.detail.dateQuote.expiryDate)
-        this.fetchedQuote.detail.dateQuote.dateInvoicePaidString = this.authService.isoDateToHtmlDate(this.fetchedQuote.detail.dateQuote.dateInvoicePaid)
+    let this2 = this
+    return new Promise(function(resolve, reject) {
+      this2.quoteService.getQuote(id)
+        .subscribe(
+        res => {
+          this2.fetchedQuote = res
+          this2.fetchedQuote.detail.dateQuote.issueDateString = this2.authService.isoDateToHtmlDate(this2.fetchedQuote.detail.dateQuote.issueDate)
+          this2.fetchedQuote.detail.dateQuote.expiryDateString = this2.authService.isoDateToHtmlDate(this2.fetchedQuote.detail.dateQuote.expiryDate)
+          this2.fetchedQuote.detail.dateQuote.dateInvoicePaidString = this2.authService.isoDateToHtmlDate(this2.fetchedQuote.detail.dateQuote.dateInvoicePaid)
 
-        // this.fetchedQuote.projects.forEach(project => { this.search.projectId = project._id })
-        this.fetchedQuote.clients.forEach(user => { this.search.userId = user._id })
-
-        if(this.search.parentQuoteId) {
-          this.fetchedQuote._id = ''
-          this.fetchedQuote.quoteNumber = null
+          // this.fetchedQuote.projects.forEach(project => { this.search.projectId = project._id })
+          this2.fetchedQuote.clients.forEach(user => { this2.search.userId = user._id })
+          resolve()
+        },
+        error => {
+          reject(error)
+          console.log(error)
         }
-      },
-      error => { console.log(error) }
-      )
+        )
+    })
   }
 
   // isAdmin() {
