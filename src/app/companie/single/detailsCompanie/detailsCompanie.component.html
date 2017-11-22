@@ -1,0 +1,65 @@
+<form [formGroup]="myForm" novalidate (ngSubmit)="save()">
+  <div class="row">
+    <div class="col">
+      <h5>{{'Identity' | translate}}</h5>
+      <div class="form-group">
+        <input type="text" class="form-control" formControlName="nameCompanie" [(ngModel)]="fetchedCompanie.nameCompanie" required minlength="5" placeholder="Nom de la Société">
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" formControlName="email" [(ngModel)]="fetchedCompanie.email" required minlength="5" placeholder="Email">
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" formControlName="phoneNumber" [(ngModel)]="fetchedCompanie.phoneNumber" required minlength="5" placeholder="Numéro de téléphone">
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" formControlName="faxNumber" [(ngModel)]="fetchedCompanie.faxNumber" required minlength="5" placeholder="Numéro de Fax">
+      </div>
+    </div>
+    <div class="col">
+      <h5>{{'Details' | translate}}</h5>
+      <div *ngFor="let singleAddresss of fetchedCompanie.address; let i = index;" class="form-control boad">
+        <div class="alright">
+          <button class="ml btnadr" type="button" (click)="removeAddress(i)"><i class="fa fa-times" aria-hidden="true"></i></button>
+        </div>
+        <div class="form-group">
+          <select class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedCompanie.address[i].nameAddress">
+              <option value="billing">{{'Billing' | translate}}</option>
+              <option value="shipping">{{'Shipping' | translate}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedCompanie.address[i].address" placeholder="{{'Address' | translate}}">
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedCompanie.address[i].city" placeholder="{{'City' | translate}}">
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedCompanie.address[i].zip" placeholder="{{'Zip' | translate}}">
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedCompanie.address[i].country" placeholder="{{'Country' | translate}}">
+        </div>
+      </div>
+      <button type="button" class="btn btn-primary btn-sm" (click)="newAddress()">{{'New Address' | translate}}</button>
+    </div>
+    <div class="col">
+      <h5>{{'Divers' | translate}}</h5>
+      <!-- <div class="form-group">
+        <input type="checkBox" formControlName="isSupplier" [(ngModel)]="fetchedCompanie.isSupplier"> {{'Companie' | translate}}
+      </div> -->
+      <div class="form-group">
+        <input type="text" class="form-control" formControlName="VAT" [(ngModel)]="fetchedCompanie.VAT" required minlength="5" placeholder="Numéro de TVA">
+      </div>
+      <app-picture [showPagination]=false [forms]="fetchedCompanie.forms"></app-picture>
+    </div>
+  </div>
+  <div class="valid-edit row col-12">
+    <button type="submit" class="valid">
+          {{'Save' | translate}}
+        </button>
+    <button *ngIf="fetchedCompanie._id && !isMyCompanie()" type="button" class="false" (click)="onDelete(fetchedCompanie._id)">
+          {{'Delete' | translate}}
+      </button>
+  </div>
+  <div class="clearfix"></div>
+</form>

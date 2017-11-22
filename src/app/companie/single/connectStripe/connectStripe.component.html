@@ -1,0 +1,11 @@
+
+    <div *ngIf="!fetchedCompanie.banck.stripe.stripe_user_id">
+      <img (click)="goToLinkAuthorizeConnect()" src="./assets/images/stripe/light-on-dark.png" />
+    </div>
+    <div *ngIf="fetchedCompanie.banck.stripe.stripe_user_id">
+      <br>
+      <i class="fa fa-check"></i>Account linked under ID: {{fetchedCompanie.banck.stripe.stripe_user_id}}
+      <br>
+
+      <button type="button" (click)="deauthorizeConnect()">Disconnect</button>
+    </div>

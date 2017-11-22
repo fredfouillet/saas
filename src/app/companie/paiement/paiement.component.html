@@ -1,0 +1,160 @@
+<mat-card>
+  <mat-card-header>
+    <h3 style="text-align: center;">Paiement To the App</h3>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-accordion class="example-headers-align">
+      <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle="true">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{'Registration' | translate}}
+          </mat-panel-title>
+          <mat-panel-description>
+            <mat-icon>account_circle</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+
+
+        <div *ngIf="stripeCust.id">
+          <div class="form-control">
+            {{stripeCust.id}}
+          </div>
+          <div class="form-control">
+            {{stripeCust.created | timestampToDate}}
+          </div>
+          <div class="form-control">
+            {{stripeCust.email}}
+          </div>
+
+        </div>
+        <mat-action-row>
+          <div *ngIf="!stripeCust.id">
+            <button mat-button color="primary" (click)="saveCustInStripe()">I go for it!</button>
+          </div>
+          <div *ngIf="stripeCust.id">
+            <button type="button" class="done" (click)="deleteCustInStripe()">deleteCustInStripe</button>
+            <button mat-button color="primary" (click)="nextStep()">Next</button>
+          </div>
+        </mat-action-row>
+      </mat-expansion-panel>
+      <div *ngIf="stripeCust.id">
+        <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle="true">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{'Card' | translate}}
+            </mat-panel-title>
+            <mat-panel-description>
+              <mat-icon>map</mat-icon>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div *ngIf="!stripeCust.sources.data.length">
+            <h6>Create a new card</h6>
+            <mat-form-field>
+              <input matInput type="text" [(ngModel)]="newCard.address_city" placeholder="address_city">
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput type="text" [(ngModel)]="newCard.address_country" placeholder="address_country">
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput type="text" [(ngModel)]="newCard.address_line1" placeholder="address_line1">
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput type="text" [(ngModel)]="newCard.address_line2" placeholder="address_line2">
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput type="text" [(ngModel)]="newCard.address_state" placeholder="address_state">
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput type="text" [(ngModel)]="newCard.address_zip" placeholder="address_zip">
+            </mat-form-field>
+            <mat-form-field> eg: 8
+              <input matInput type="text" [(ngModel)]="newCard.exp_month" placeholder="exp_month">
+            </mat-form-field>
+            <mat-form-field> eg: 2018
+              <input matInput type="text" [(ngModel)]="newCard.exp_year" placeholder="exp_year">
+            </mat-form-field>
+            <mat-form-field> eg: 4242424242424242
+              <input matInput type="text" [(ngModel)]="newCard.number" placeholder="number">
+            </mat-form-field>
+            <mat-form-field>
+              eg 123
+              <input matInput type="text" [(ngModel)]="newCard.cvc" placeholder="number">
+            </mat-form-field>
+            <br>
+            <button type="button" class="done" (click)="saveCardInStripe()">saveCardInStripe</button>
+          </div>
+
+
+          <div *ngFor="let card of stripeCust.sources.data; let i=index;">
+            <div class="form-control">{{card.id}}</div>
+            <div class="form-control">{{card.address_city}}</div>
+            <div class="form-control">{{card.address_country}}</div>
+            <div class="form-control">{{card.address_line1}}</div>
+            <div class="form-control">{{card.address_line2}}</div>
+            <div class="form-control">{{card.address_state}}</div>
+            <div class="form-control">{{card.address_zip}}</div>
+            <div class="form-control">{{card.brand}}</div>
+            <div class="form-control">{{card.country}}</div>
+            <div class="form-control">{{card.exp_month}}</div>
+            <div class="form-control">{{card.exp_year}}</div>
+            <div class="form-control">{{card.funding}}</div>
+            <div class="form-control">{{card.last4}}</div>
+            <button type="button" class="done" (click)="deleteCardInStripe(card.id)">delete Card</button>
+          </div>
+          <mat-action-row>
+            <button mat-button color="warn" (click)="prevStep()">Previous</button>
+            <button mat-button color="primary" (click)="nextStep()">Next</button>
+          </mat-action-row>
+        </mat-expansion-panel>
+      </div>
+      <div *ngIf="stripeCust.id">
+        <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle="true">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{'Subscription' | translate}}
+            </mat-panel-title>
+            <mat-panel-description>
+              <mat-icon>date_range</mat-icon>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div *ngIf="stripeCust.sources.data.length">
+
+            <div *ngIf="!stripeCust.subscriptions.data.length">
+              <button type="button" class="done" (click)="saveSubscriptionInStripe('gold')">Gold Plan!</button>
+              <button type="button" class="done" (click)="saveSubscriptionInStripe('silver')">Silver Plan!</button>
+            </div>
+            <div *ngFor="let sub of stripeCust.subscriptions.data">
+              <div class="form-control">{{sub.id}}</div>
+              <div class="form-control">{{sub.created | timestampToDate}}</div>
+              <div class="form-control">{{sub.current_period_start | timestampToDate}}</div>
+              <div class="form-control">{{sub.current_period_end | timestampToDate}}</div>
+
+
+              <h4>Plan</h4>
+              <div class="form-control">{{sub.plan.id}}</div>
+              <div class="form-control">{{sub.plan.amount}}</div>
+              <div class="form-control">{{sub.plan.created | timestampToDate}}</div>
+              <div class="form-control">{{sub.plan.currency}}</div>
+              <div class="form-control">{{sub.plan.interval}}</div>
+              <div class="form-control">{{sub.plan.interval_count}}</div>
+              <div class="form-control">{{sub.plan.name}}</div>
+              <button type="button" class="done" (click)="deleteSubInStripe(sub.id)">deleteSubInStripe</button>
+
+            </div>
+            <div *ngIf="showReLoginInApp">
+              {{'You must loggin agin to apply changes:' | translate}}
+              <app-loginInApp></app-loginInApp>
+            </div>
+          </div>
+          <mat-action-row>
+            <button mat-button color="warn" (click)="prevStep()">Previous</button>
+            <button mat-button color="primary" (click)="nextStep()">End</button>
+          </mat-action-row>
+        </mat-expansion-panel>
+      </div>
+
+    </mat-accordion>
+  </mat-card-content>
+
+</mat-card>

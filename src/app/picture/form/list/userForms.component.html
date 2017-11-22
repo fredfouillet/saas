@@ -1,0 +1,7 @@
+<app-user-form-list
+  [fetchedForms]="fetchedForms"
+  [paginationData]="paginationData"
+  (onPassForm)="onSelectRow($event)"
+  (getUserForms)="getPage($event)"
+  (removeForm)="onDelete($event)">
+</app-user-form-list>

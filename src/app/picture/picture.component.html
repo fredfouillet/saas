@@ -1,0 +1,27 @@
+<div class="row">
+  <!-- <div class="col-3" *ngFor="let form of forms; let i=index;">
+    <img class="imgList" src="./uploads/forms/{{form.owner}}/{{form.imagePath}}" onerror="this.src ='assets/images/no-image-found.jpg'">
+    <button *ngIf="deletePicture" type="button" md-button (click)="removePic(i)">
+        <i class="fa fa-times"></i>
+      </button>
+  </div> -->
+  <app-user-form-list
+    [itemsPerPage]=6
+    [fetchedForms]="forms"
+    [showPagination]="showPagination"
+    (removeForm)="removeForm($event)"
+    (onPassForm)="onGetForm($event)"
+    >
+  </app-user-form-list>
+</div>
+<div class="row">
+  <div *ngIf="!singleForm || forms.length<1">
+  <div *ngIf="addPicture">
+    <button type="button"  mat-button (click)="openDialog('img')" class="addpic-squr btn btn-primary">
+      {{labelButtonAddPicture | translate}}
+      <br>
+      <i class="fa fa-plus"></i>
+    </button>
+  </div>
+  </div>
+</div>

@@ -1,0 +1,78 @@
+<mat-slide-toggle (change)="changeSlider()" [(ngModel)]="editMode">{{'Edit' | translate}}</mat-slide-toggle>
+
+<div *ngIf="editMode">
+  <div class="row">
+    <div class="col-3">
+      <app-picture
+        [showPagination]=false
+        [singleForm]=true
+        [forms]="drawing.backgroundForms"
+        (getPicture)="getPicture()"
+      ></app-picture>
+    </div>
+    <div class="col-7">
+      <div class="row">
+        <div class="col-2">
+          <i class="fa fa-undo fa-2x iconeDrawing" (click)="undoVersion()" aria-hidden="true"></i>
+        </div>
+        <div class="col-2">
+          <i class="fa fa-repeat fa-2x iconeDrawing" (click)="redoVersion()" aria-hidden="true"></i>
+        </div>
+        <div class="col-2">
+          <i class="fa fa-times fa-2x iconeDrawing" (click)="clearDrawing()" aria-hidden="true"></i>
+        </div>
+        <div class="col-2">
+          <i class="fa fa-eraser fa-2x iconeDrawing" (click)="changeColor('#FFFFFF')" aria-hidden="true"></i>
+        </div>
+        <div class="col-2">
+          <i class="fa fa-download fa-2x iconeDrawing" (click)="downloadDrawing()" aria-hidden="true"></i>
+        </div>
+        <div class="col-2">
+          <i class="fa fa-floppy-o fa-2x iconeDrawing" (click)="saveDrawing()" aria-hidden="true"></i>
+        </div>
+      </div>
+      <div class="row marginTop">
+        <div class="col-2">
+          <div [ngClass]="{'shadow' : color === '#E3A20B'}" class="round" (click)="changeColor('#E3A20B')" style='background-color:#E3A20B;'></div>
+        </div>
+        <div class="col-2">
+          <div [ngClass]="{'shadow' : color === '#AD819C'}" class="round" (click)="changeColor('#AD819C')" style='background-color:#AD819C;'></div>
+        </div>
+        <div class="col-2">
+          <div [ngClass]="{'shadow' : color === '#30152D'}" (click)="changeColor('#30152D')" class="round" style='background-color:#30152D;'></div>
+        </div>
+        <div class="col-2">
+          <div [ngClass]="{'shadow' : color === '#EFEEEE'}" (click)="changeColor('#EFEEEE')" class="round" style='background-color:#EFEEEE;'></div>
+        </div>
+        <div class="col-2">
+          <div [ngClass]="{'shadow' : color === '#AAAAAA'}" (click)="changeColor('#AAAAAA')" class="round" style='background-color:#AAAAAA;'></div>
+        </div>
+        <div class="col-2">
+          <div [ngClass]="{'shadow' : color === '#2E6972'}" (click)="changeColor('#2E6972')" class="round" style='background-color:#2E6972;'></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="aroundSignature">
+  <canvas-whiteboard #canvasWhiteboard
+    [drawButtonEnabled]="false"
+    [aspectRatio]="0.4"
+    [imageUrl]="drawing.base64"
+    [drawButtonClass]="'drawButtonClass'"
+    [drawButtonText]="'Draw'"
+    [clearButtonClass]="'clearButtonClass'"
+    [clearButtonText]="'Clear'"
+    [undoButtonText]="'Undo'"
+    [undoButtonEnabled]="false"
+    [saveDataButtonEnabled]="false"
+    [clearButtonEnabled]="false"
+    [redoButtonText]="'Redo'"
+    [redoButtonEnabled]="false"
+    [colorPickerEnabled]="false"
+    [saveDataButtonEnabled]="true"
+    [saveDataButtonText]="'Save'"
+    (onBatchUpdate)="sendBatchUpdate($event)"
+    [batchUpdateTimeoutDuration]="1000">
+  </canvas-whiteboard>
+</div>

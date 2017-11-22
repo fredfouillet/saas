@@ -1,0 +1,29 @@
+<div *ngIf="authService.showObjHTML('quote', 'signature')">
+  <div *ngIf="fetchedQuote.typeQuote === 'quote' && fetchedQuote._id" style="height:280px" class="col-4">
+    <div class="ac sign">
+      <div class="card ac">
+        <div class="ac" *ngIf="!fetchedQuote.signature.base64">
+          <div class="row">
+            <button type="button" class="false" (click)="resetSignature()">
+              {{'Reset' | translate}}
+          </button>
+            <button type="button" class="valid" (click)="validateSignature()">
+        {{'Validate' | translate}}
+        </button>
+            <signature-pad [options]="signaturePadOptions" (onBeginEvent)="drawStart()" (onEndEvent)="drawComplete()">
+            </signature-pad>
+          </div>
+        </div>
+        <div class="ac" *ngIf="fetchedQuote.signature.base64">
+          <img class="img ac" [src]="fetchedQuote.signature.base64" />
+          <div class="ac" *ngFor="let user of fetchedQuote.signature.users">
+            {{fetchedQuote.signature.dateSignature | date:'yMdjm'}} - {{user.profile.name }}
+          </div>
+        </div>
+      </div>
+      <button *ngIf="fetchedQuote.signature.base64" type="button" class="false" (click)="removeSignature()">
+        {{'Unsign' | translate}}
+        </button>
+    </div>
+  </div>
+</div>

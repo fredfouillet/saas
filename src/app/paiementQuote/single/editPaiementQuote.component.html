@@ -1,0 +1,240 @@
+<div class="container">
+  <div class="hdform">
+    <h3 *ngIf="!fetchedPaiementQuote.isExpense"><i class="fa fa10 fa-university" aria-hidden="true"></i> {{'Payment' | translate}}</h3>
+    <h3 *ngIf="fetchedPaiementQuote.isExpense"><i class="fa fa10 fa-university" aria-hidden="true"></i> {{'Expense' | translate}}</h3>
+  </div>
+
+
+  <mat-accordion class="example-headers-align">
+    <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle="true">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{'Invoice'}}
+        </mat-panel-title>
+        <mat-panel-description>
+
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <form [formGroup]="myForm" novalidate (ngSubmit)="save()">
+        <mat-form-field>
+          <input matInput type="text" class="form-control" formControlName="title" [(ngModel)]="fetchedPaiementQuote.title" placeholder="{{'Title' | translate}}">
+        </mat-form-field>
+        <app-autocomplete class="mb8 bn" [canDelete]=false [typeAutocomplete]="'quote'" [search]="search" [canDelete]="true" [title]="'Quote'" [singleChoice]="true" [arrayContent]="fetchedPaiementQuote.quotes" (getResultAutocomplete)="selectQuote($event[0])"
+          (autocompleteAfterNgChanges)="autocompleteAfterNgChanges($event)">
+        </app-autocomplete>
+        <div *ngFor="let quote of fetchedPaiementQuote.quotes">
+          {{'Quote Amount Without Taxes With Discount' | translate}}: {{quote.priceQuote.priceGlobalWithDiscountWithSurface | round}}
+        </div>
+
+        <app-autocomplete class="mb8 bn" [canDelete]=false [typeAutocomplete]="'user'" [search]="search" [canDelete]="true" [title]="'Customer'" [singleChoice]="true" [arrayContent]="fetchedPaiementQuote.userDebiteds" (getResultAutocomplete)="selectUserDebited($event[0])">
+        </app-autocomplete>
+
+        <mat-form-field>
+          <input matInput type="number" class="form-control" formControlName="amount" [(ngModel)]="fetchedPaiementQuote.amount" placeholder="Amount">
+        </mat-form-field>
+        <!-- <input *ngIf="fetchedPaiementQuote.type!='stripe'" type="number" class="form-control" formControlName="amount" [(ngModel)]="fetchedPaiementQuote.amount" placeholder="Amount"> -->
+        <!-- <div *ngIf="fetchedPaiementQuote.type=='stripe'" class="form-control">
+          {{fetchedPaiementQuote.amount}}
+        </div> -->
+        <input type="date" class="form-control" [ngModelOptions]="{standalone: true}" class="form-control" [(ngModel)]="fetchedPaiementQuote.datePaiementString">
+
+
+      </form>
+
+      <mat-action-row>
+
+        <button *ngIf="fetchedPaiementQuote._id" type="button" (click)="downloadPDF()">{{'Get invoice' | translate}}</button>
+
+        <button type="button" (click)="save()">{{'Save' | translate}}</button>
+        <button *ngIf="fetchedPaiementQuote._id" type="false" class="delete" md-button (click)="openDialogDelete()">
+              Delete
+            </button>
+
+
+
+      </mat-action-row>
+    </mat-expansion-panel>
+
+
+
+
+
+
+
+
+
+
+    <mat-expansion-panel *ngIf="fetchedPaiementQuote._id" [expanded]="step === 1" (opened)="setStep(1)" hideToggle="true">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{'Paiement' | translate}}
+        </mat-panel-title>
+        <mat-panel-description>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <mat-checkbox class="" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedPaiementQuote.isPaid">{{'Is Paid' | translate}}</mat-checkbox>
+      <div *ngIf="fetchedPaiementQuote.isPaid">
+        <!-- <select class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedPaiementQuote.type">
+              <option *ngFor="let n of paiementsTypes" [value]="n.value">{{n.label}}</option>
+          </select> -->
+
+        <mat-radio-group [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedPaiementQuote.type">
+          <mat-radio-button *ngFor="let n of paiementsTypes" [value]="n.value">{{n.label}}</mat-radio-button>
+        </mat-radio-group>
+
+        <div *ngIf="fetchedPaiementQuote.type=='stripe' && fetchedPaiementQuote._id">
+
+          <mat-card *ngIf="fetchedPaiementQuote.stripe.charge.status !=='succeeded'">
+            <h4>{{'Card' | translate}}</h4>
+            <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="newCard.address_city" placeholder="address_city" class="form-control">
+            <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="newCard.address_country" placeholder="address_country" class="form-control">
+            <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="newCard.address_line1" placeholder="address_line1" class="form-control">
+            <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="newCard.address_line2" placeholder="address_line2" class="form-control">
+            <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="newCard.address_state" placeholder="address_state" class="form-control">
+            <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="newCard.address_zip" placeholder="address_zip" class="form-control"> eg: 8
+            <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="newCard.exp_month" placeholder="exp_month" class="form-control"> eg: 2018
+            <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="newCard.exp_year" placeholder="exp_year" class="form-control"> eg: 4242424242424242
+            <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="newCard.number" placeholder="number" class="form-control"> eg: 123
+            <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="newCard.cvc" placeholder="cvc" class="form-control">
+
+          </mat-card>
+
+          <mat-card *ngIf="fetchedPaiementQuote.stripe.charge.status ==='succeeded'">
+            <h4>Stripe</h4>
+            <p>{{'created'| translate}}: {{fetchedPaiementQuote.stripe.charge.created * 1000 | date}}</p>
+            <p>{{'balance_transaction'| translate}}: {{fetchedPaiementQuote.stripe.charge.balance_transaction}}</p>
+            <p>{{'currency'| translate}}: {{fetchedPaiementQuote.stripe.charge.currency}}</p>
+            <p>{{'amount'| translate}}: {{fetchedPaiementQuote.stripe.charge.amount / 100}}</p>
+            <p>{{'exp_month'| translate}}: {{fetchedPaiementQuote.stripe.charge.source.exp_month}}</p>
+            <p>{{'funding'| translate}}: {{fetchedPaiementQuote.stripe.charge.source.funding}}</p>
+            <p>{{'last4'| translate}}: {{fetchedPaiementQuote.stripe.charge.source.last4}}</p>
+          </mat-card>
+        </div>
+      </div>
+
+      <mat-action-row>
+        <button type="button" class="valid" (click)="payByCardConnect()">payByCardConnect</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+
+  </mat-accordion>
+
+
+
+
+
+
+  <div class="col-12">
+
+
+
+
+
+
+
+
+
+
+    <!-- <div *ngIf="false && fetchedPaiementQuote.type=='stripe' && fetchedPaiementQuote._id">
+      <h4>{{'Stripe Paiement' | translate}}</h4>
+      <div *ngIf="!stripeCust.id">
+        <button type="button" class="valid" (click)="saveCustInStripe()">{{'Start paying in stripe'}}</button>
+      </div>
+      <div *ngIf="stripeCust.id">
+        <button type="button" class="false" (click)="deleteCustInStripe()">deleteCustInStripe</button>
+        <div class="form-control">
+          {{stripeCust.id}}
+        </div>
+        <div class="form-control">
+          {{stripeCust.created | timestampToDate}}
+        </div>
+        <div class="form-control">
+          {{stripeCust.email}}
+        </div>
+
+        <h4>Card</h4>
+        <div *ngIf="!stripeCust.sources.data.length">
+          <h6>Create a new card</h6>
+          <input type="text" [(ngModel)]="newCard.address_city" placeholder="address_city" class="form-control">
+          <input type="text" [(ngModel)]="newCard.address_country" placeholder="address_country" class="form-control">
+          <input type="text" [(ngModel)]="newCard.address_line1" placeholder="address_line1" class="form-control">
+          <input type="text" [(ngModel)]="newCard.address_line2" placeholder="address_line2" class="form-control">
+          <input type="text" [(ngModel)]="newCard.address_state" placeholder="address_state" class="form-control">
+          <input type="text" [(ngModel)]="newCard.address_zip" placeholder="address_zip" class="form-control"> eg: 8
+          <input type="text" [(ngModel)]="newCard.exp_month" placeholder="exp_month" class="form-control"> eg: 2018
+          <input type="text" [(ngModel)]="newCard.exp_year" placeholder="exp_year" class="form-control"> eg: 4242424242424242
+          <input type="text" [(ngModel)]="newCard.number" placeholder="number" class="form-control"> eg: 123
+          <input type="text" [(ngModel)]="newCard.cvc" placeholder="cvc" class="form-control">
+          <button type="button" class="valid" (click)="saveCardInStripe()">saveCardInStripe</button>
+        </div>
+
+
+        <div *ngFor="let card of stripeCust.sources.data; let i=index;">
+          <div class="form-control">{{card.id}}</div>
+          <div class="form-control">{{card.address_city}}</div>
+          <div class="form-control">{{card.address_country}}</div>
+          <div class="form-control">{{card.address_line1}}</div>
+          <div class="form-control">{{card.address_line2}}</div>
+          <div class="form-control">{{card.address_state}}</div>
+          <div class="form-control">{{card.address_zip}}</div>
+          <div class="form-control">{{card.brand}}</div>
+          <div class="form-control">{{card.country}}</div>
+          <div class="form-control">{{card.exp_month}}</div>
+          <div class="form-control">{{card.exp_year}}</div>
+          <div class="form-control">{{card.funding}}</div>
+          <div class="form-control">{{card.last4}}</div>
+
+          <button type="button" class="false" (click)="deleteCardInStripe(card.id)">delete Card</button>
+        </div>
+        <div *ngIf="fetchedPaiementQuote.amount =='0'">
+
+          <div *ngIf="stripeCust.sources.data.length">
+            <h4>{{'Paiement' | translate}}</h4>
+
+            <button type="button" class="valid" (click)="payInStripe()">Pay!</button>
+          </div>
+
+          <div *ngIf="fetchedPaiementQuote.stripe.charge.status ==='succeeded'">
+            <p>{{'paid'| translate}}: {{fetchedPaiementQuote.stripe.charge.created}}</p>
+            <p>{{'balance_transaction'| translate}}: {{fetchedPaiementQuote.stripe.charge.balance_transaction}}</p>
+            <p>{{'currency'| translate}}: {{fetchedPaiementQuote.stripe.charge.currency}}</p>
+          </div>
+          <div *ngIf="!stripeCust.subscriptions.data.length">
+            <button type="button" class="valid" (click)="saveSubscriptionInStripe('gold')">Plan Gold!</button>
+            <button type="button" class="valid" (click)="saveSubscriptionInStripe('daily')">Plan daily!</button>
+          </div>
+
+        </div>
+
+
+        <div *ngIf="stripeCust.sources.data.length">
+
+          <div *ngFor="let sub of stripeCust.subscriptions.data">
+            <div class="form-control">{{sub.id}}</div>
+            <div class="form-control">{{sub.created | timestampToDate}}</div>
+            <div class="form-control">{{sub.current_period_start | timestampToDate}}</div>
+            <div class="form-control">{{sub.current_period_end | timestampToDate}}</div>
+
+
+            <h4>Plan</h4>
+            <div class="form-control">{{sub.plan.id}}</div>
+            <div class="form-control">{{sub.plan.amount}}</div>
+            <div class="form-control">{{sub.plan.created | timestampToDate}}</div>
+            <div class="form-control">{{sub.plan.currency}}</div>
+            <div class="form-control">{{sub.plan.interval}}</div>
+            <div class="form-control">{{sub.plan.interval_count}}</div>
+            <div class="form-control">{{sub.plan.name}}</div>
+            <button type="button" class="false" (click)="deleteSubInStripe(sub.id)">deleteSubInStripe</button>
+
+          </div>
+          <div *ngIf="showReLoginInApp">
+            {{'You must loggin agin to apply changes:' | translate}}
+            <app-loginInApp></app-loginInApp>
+          </div>
+        </div>
+      </div>
+    </div> -->
+  </div>
+</div>

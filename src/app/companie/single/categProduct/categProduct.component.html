@@ -1,0 +1,98 @@
+
+
+
+      <button type="button" class="valid" (click)="addCateg('categProduct', 0, 0, 0, 0)">{{'Add Categ Products' | translate}}</button>
+      <div *ngFor="let categorie0 of fetchedCompanie.categories.categProduct; let i = index;">
+        <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedCompanie.categories.categProduct[i].categ">
+        <button type="button" class="false" (click)="removeCateg('categProduct', 1,i,0,0)">x</button>
+        <button type="button" class="valid" (click)="addCateg('categProduct', 1,i,0,0)">+</button>
+        <div *ngFor="let categorie1 of categorie0.subCateg; let j = index;">
+          <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedCompanie.categories.categProduct[i].subCateg[j].categ">
+          <button type="button" class="false" class="false" (click)="removeCateg('categProduct', 2,i,j,0)">X</button>
+          <button type="button" class="valid" (click)="addCateg('categProduct', 2,i,j,0)">+</button>
+          <div *ngFor="let categorie2 of categorie1.subCateg; let k = index;">
+            <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedCompanie.categories.categProduct[i].subCateg[j].subCateg[k].categ">
+            <button type="button" class="false" (click)="removeCateg('categProduct', 3,i,j,k)">x</button>
+          </div>
+        </div>
+      </div>
+
+
+
+
+    <!-- <div class="col-12">
+      <img (click)="goToLinkAuthorizeConnect()" src="./assets/images/stripe/light-on-dark.png"/>
+      <br>
+      Account linked under ID: {{fetchedCompanie.banck.stripe.stripe_user_id}}
+      <br>
+    </div>
+    <div class="col-12">
+      <p (click)="deauthorizeConnect()">Disconnect</p>
+    </div> -->
+
+    <!-- <div class="col-12">
+      <div *ngIf="isMyCompanie()">
+        <h6>{{'Type Users' | translate}}</h6>
+        <div class="btn btn-warning btn-sm" (click)="seeTypeUser=!seeTypeUser">{{'See Type Users' | translate}}</div>
+        <div *ngIf="seeTypeUser">
+          <button type="button" class="valid" (click)="addTypeUser()">addTypeUser</button>
+          <div *ngFor="let typeUser of fetchedCompanie.typeUsers; let i=index;">
+            <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedCompanie.typeUsers[i].value">
+            <button type="button" class="false btn-xs" (click)="removeTypeUser(i)">x</button>
+          </div>
+        </div>
+
+
+        <h6>{{'Categories' | translate}}</h6>
+        <div class="btn btn-warning btn-sm" (click)="seeCategProject=!seeCategProject">{{'See Categs Project' | translate}}</div>
+        <div *ngIf="seeCategProject">
+          <button type="button" class="valid" (click)="addCateg('categProject', 0, 0, 0, 0)">{{'Add Categ Project' | translate}}</button>
+          <div *ngFor="let categorie0 of fetchedCompanie.categories.categProject; let i = index;">
+            <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedCompanie.categories.categProject[i].categ">
+            <input type="checkbox" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedCompanie.categories.categProject[i].isFlagged">isFlagged
+            <button type="button" class="false" (click)="removeCateg('categProject', 1,i,0,0)">x</button>
+            <button type="button" class="valid" (click)="addCateg('categProject', 1,i,0,0)">+</button>
+            <div *ngFor="let categorie1 of categorie0.subCateg; let j = index;">
+              <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedCompanie.categories.categProject[i].subCateg[j].categ">
+              <button type="button" class="false" (click)="removeCateg('categProject', 2,i,j,0)">x</button>
+              <button type="button" class="valid" (click)="addCateg('categProject', 2,i,j,0)">+</button>
+              <div *ngFor="let categorie2 of categorie1.subCateg; let k = index;">
+                <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedCompanie.categories.categProject[i].subCateg[j].subCateg[k].categ">
+                <button type="button" class="false" (click)="removeCateg('categProject', 3,i,j,k)">x</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="btn btn-warning btn-sm" (click)="seeCategProduct=!seeCategProduct">{{'See Categs Products' | translate}}</div>
+        <div *ngIf="seeCategProduct">
+          <button type="button" class="valid" (click)="addCateg('categProduct', 0, 0, 0, 0)">{{'Add Categ Products' | translate}}</button>
+          <div *ngFor="let categorie0 of fetchedCompanie.categories.categProduct; let i = index;">
+            <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedCompanie.categories.categProduct[i].categ">
+            <button type="button" class="false" (click)="removeCateg('categProduct', 1,i,0,0)">x</button>
+            <button type="button" class="valid" (click)="addCateg('categProduct', 1,i,0,0)">+</button>
+            <div *ngFor="let categorie1 of categorie0.subCateg; let j = index;">
+              <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedCompanie.categories.categProduct[i].subCateg[j].categ">
+              <button type="button" class="false" class="false" (click)="removeCateg('categProduct', 2,i,j,0)">X</button>
+              <button type="button" class="valid" (click)="addCateg('categProduct', 2,i,j,0)">+</button>
+              <div *ngFor="let categorie2 of categorie1.subCateg; let k = index;">
+                <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedCompanie.categories.categProduct[i].subCateg[j].subCateg[k].categ">
+                <button type="button" class="false" (click)="removeCateg('categProduct', 3,i,j,k)">x</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="1==2">
+        <div *ngIf="isMyCompanie()">
+          <button type="button" class="valid" [routerLink]="['/user/paiement']">{{'Plan' | translate}}</button> {{'Plan' | translate}}: {{fetchedCompanie.planDetail.plan}} ({{fetchedCompanie.planDetail.current_period_end | date:'yyyy-MM-dd'}})
+        </div>
+        <button type="button" class="false" (click)="initDataToRemove()">Init Data</button>
+        <h4>{{'banck' | translate}}</h4>
+        <h4>{{'Stripe' | translate}}</h4>
+
+
+        <input type="text" class="form-control" formControlName="secretKey" [(ngModel)]="fetchedCompanie.banck.stripe.secretKey" placeholder="secretKey">
+      </div>
+    </div> -->

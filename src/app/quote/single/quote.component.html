@@ -1,0 +1,147 @@
+<div class="container-fluid">
+  <div class="hdform">
+    <h3 *ngIf="fetchedQuote.typeQuote === 'invoice'"><i class="fa fa10 fa-clipboard" aria-hidden="true"></i>{{'Invoice' | translate}}</h3>
+    <h3 *ngIf="fetchedQuote.typeQuote === 'quote'"><i class="fa fa10 fa-clipboard" aria-hidden="true"></i>{{'Quote' | translate}}</h3>
+  </div>
+
+
+  <mat-accordion class="example-headers-align">
+    <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle="true">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{'Details Quote' | translate}} : {{fetchedQuote.name}}
+        </mat-panel-title>
+        <mat-panel-description>
+          <mat-icon>account_circle</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <app-quoteInfo [fetchedQuote]="fetchedQuote"></app-quoteInfo>
+      <mat-action-row>
+        <app-actionButtons
+          [isDialog]="isDialog"
+          [fetchedQuote]="fetchedQuote"
+          (closeDialog)="closeDialog()"
+          (saved)="savedQuote($event)">
+        </app-actionButtons>
+      </mat-action-row>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle="true">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{'Quote' | translate}}
+        </mat-panel-title>
+        <mat-panel-description>
+          <mat-icon>map</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <app-quoteDetails [(fetchedQuote)]="fetchedQuote" (quoteDetailsUpdated)="quoteDetailsUpdated($event)"></app-quoteDetails>
+      <mat-action-row>
+        <app-actionButtons
+          [isDialog]="isDialog"
+          [fetchedQuote]="fetchedQuote"
+          [showDeleteButton]=false
+          (closeDialog)="closeDialog()"
+          (saved)="savedQuote($event)">
+        </app-actionButtons>
+
+
+      </mat-action-row>
+
+    </mat-expansion-panel>
+
+    <mat-expansion-panel *ngIf="authService.showObjHTML('quote', 'comment') && fetchedQuote._id" [expanded]="step === 2" (opened)="setStep(2)" hideToggle="true">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{'Comments' | translate}}
+        </mat-panel-title>
+        <mat-panel-description>
+          <mat-icon>date_range</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <app-comments [search]="search"></app-comments>
+    </mat-expansion-panel>
+    <mat-expansion-panel *ngIf="authService.showObjHTML('quote', 'signature') && fetchedQuote._id" [expanded]="step === 3" (opened)="setStep(3)" hideToggle="true">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{'Signature' | translate}}
+        </mat-panel-title>
+        <mat-panel-description>
+          <mat-icon>date_range</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <app-drawing-signature
+        [drawing]="fetchedQuote.drawingSignature"
+        (cleared)="clearedDrawing()"
+        (saved)="drawingSignatureUpdated($event)"></app-drawing-signature>
+      <!-- <app-signature [fetchedQuote]="fetchedQuote"></app-signature> -->
+    </mat-expansion-panel>
+    <mat-expansion-panel *ngIf="authService.showObjHTML('quote', 'drawing') && fetchedQuote._id" [expanded]="step === 4" (opened)="setStep(4)" hideToggle="true">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{'Drawing' | translate}}
+        </mat-panel-title>
+        <mat-panel-description>
+          <mat-icon>view_quilt</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <app-drawing [drawing]="fetchedQuote.drawing" (saved)="drawingUpdated($event)"></app-drawing>
+    </mat-expansion-panel>
+    <mat-expansion-panel *ngIf="authService.showObjHTML('quote', 'drawing') && fetchedQuote._id" [expanded]="step === 5" (opened)="setStep(5)" hideToggle="true">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{'Documents' | translate}}
+        </mat-panel-title>
+        <mat-panel-description>
+          <mat-icon>camera</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <app-picture
+        [showPagination]=false
+        [labelButtonAddPicture]="'Add'"
+        [forms]="fetchedQuote.forms">
+      </app-picture>
+      <mat-action-row>
+        <app-actionButtons [showDeleteButton]=false [fetchedQuote]="fetchedQuote"></app-actionButtons>
+      </mat-action-row>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel *ngIf="authService.showObjHTML('paiementQuote', 'read') && fetchedQuote._id" [expanded]="step === 6" (opened)="setStep(6)" hideToggle="true">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{'Paiements' | translate}}
+        </mat-panel-title>
+        <mat-panel-description>
+          <mat-icon>date_range</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <app-paiementQuotes (getPaiementQuotesCross)="getPaiementQuotes($event)" [search]="search">
+      </app-paiementQuotes>
+      <mat-card>
+        {{'Total Paiement' | translate}} = {{totalPaiementAmount}}
+        <br> {{'To be paid' | translate}} = {{fetchedQuote.priceQuote.priceQuoteWithoutTaxes*1 - totalPaiementAmount*1| round}}
+      </mat-card>
+
+    </mat-expansion-panel>
+
+  </mat-accordion>
+
+
+
+
+
+
+
+
+<!--
+  <div *ngIf="!fetchedQuote.drawingSignature.isSigned" class="valid-edit">
+    <button type="button" (click)="save()" class="btn valid">{{'Save' | translate}}</button>
+    <button *ngIf="fetchedQuote._id" type="button" class="btn false" (click)="openDialogDelete()">
+                  {{'Delete' | translate}}
+                </button>
+  </div> -->
+
+
+
+
+</div>

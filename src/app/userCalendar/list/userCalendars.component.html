@@ -1,0 +1,18 @@
+<div class="container nopad" style="width: 100%;">
+  <div class="hdform">
+      <h3> <i class="fa fa10 fa-calendar" aria-hidden="true"></i>{{'Calendar' | translate}}</h3>
+  
+    </div>
+  
+  <div class="row pad15">
+    <div class="col-12">
+      <app-userCalendarSearch (getUserCalendarBySearch)="getUserCalendarBySearch($event)"></app-userCalendarSearch>
+    </div>
+
+    <div class="col-12">
+      <angular2-fullcalendar #myCal [options]="calendarOptions" (initialized)="onCalendarInit($event)">
+      </angular2-fullcalendar>
+    </div>
+  </div>
+</div>
+

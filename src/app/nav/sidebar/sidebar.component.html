@@ -1,0 +1,120 @@
+<div *ngIf="isLoggedIn">
+
+  <!-- <md-sidenav #sidenav mode="side" opened="true"> -->
+
+
+
+  <!-- <i (click)="closeSideBar()" class="fa fal fa-bars fa-2x" aria-hidden="true"></i> -->
+  <div class="sideBar" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="card noborder">
+      <div class="" role="tab" id="headingZero">
+        <a [routerLink]="['/home']" routerLinkActive="active" data-toggle="collapse" class="nav-link" data-parent="#accordion" href="#collapseZero" aria-expanded="true" aria-controls="collapseZero">
+          <span class="fa fa10 fa-tachometer" aria-hidden="true">
+          </span>
+          {{'Home'|translate}}
+        </a>
+      </div>
+      <div id="collapseZero" class="collapse show" role="tabpanel" aria-labelledby="headingZero">
+      </div>
+    </div>
+    <div *ngIf="authService.showObjHTML('user', 'read') || authService.showObjHTML('companie', 'read')" class="card noborder">
+      <div class="" role="tab" id="headingOne">
+        <a class="nav-link" [routerLink]="['/user/list/true']" routerLinkActive="active">
+          <span class="fa fa10 fa-user" aria-hidden="true"></span>
+          {{'Customers'|translate}}
+        </a>
+      </div>
+    </div>
+
+    <!-- <div class="card noborder">
+      <div class="" role="tab" id="headingFive">
+        <a class="nav-link" [routerLink]="['/project']" routerLinkActive="active">
+          <span class="fa fa10 fa-folder-open" aria-hidden="true"></span>{{'Projects'|translate}}
+        </a>
+      </div>
+    </div> -->
+
+
+
+    <div *ngIf="authService.showObjHTML('userCalendar', 'read')" class="card noborder">
+      <div class="" role="tab" id="headingFifteen">
+        <a [routerLink]="['/userCalendar']" routerLinkActive="active" class="nav-link" data-toggle="collapse" data-parent="#accordion" href="#collapseFifteen" aria-expanded="true" aria-controls="collapseFifteen">
+              <span class="fa fa10 fa-calendar" aria-hidden="true"></span> {{'Planning'|translate}}
+            </a>
+      </div>
+      <div id="collapseFifteen" class="collapse" role="tabpanel" aria-labelledby="headingFifteen">
+      </div>
+    </div>
+
+    <div *ngIf="
+      authService.showObjHTML('quote', 'read') ||
+      authService.showObjHTML('paiementQuote', 'read')" class="card noborder">
+      <div class="" role="tab" id="headingTen">
+        <a class="nav-link" data-toggle="collapse" data-parent="#accordion" href="#collapseTen" aria-expanded="true" aria-controls="collapseTen">
+          <span class="fa fa10 fa-clipboard" aria-hidden="true"></span> {{'Accountancy'|translate}}
+        </a>
+      </div>
+      <div id="collapseTen" class="collapse" role="tabpanel" aria-labelledby="headingTen">
+        <div class="card-block">
+          <div class="panel-body">
+            <table class="table">
+              <tr *ngIf="authService.showObjHTML('quote', 'read')">
+                <td class="nav-item subItem">
+                  <a class="nav-link" [routerLink]="['/quote/list/quote']" routerLinkActive="active">{{'Quotes' | translate}}</a>
+                </td>
+              </tr>
+              <tr *ngIf="authService.showObjHTML('paiementQuote', 'read')">
+                <td class="nav-item subItem">
+                  <a class="nav-link" [routerLink]="['/paiementQuote/list']" routerLinkActive="active">{{'Invoices' | translate}}</a>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="authService.showObjHTML('product', 'read')" class="card noborder">
+      <div class="">
+        <a class="nav-link" [routerLink]="['/product']" data-toggle="collapse" data-parent="#accordion" routerLinkActive="active">
+          <span class="fa fa10 fa-cubes" aria-hidden="true"></span> {{'Products'|translate}}</a>
+      </div>
+    </div>
+
+
+    <div *ngIf="
+      authService.showObjHTML('companie', 'read') ||
+      authService.showObjHTML('right', 'read') ||
+      authService.showObjHTML('user', 'read')
+      " class="card noborder">
+      <div class="" role="tab" id="headingfour">
+        <a data-toggle="collapse" class="nav-link" data-parent="#accordion" href="#collapsefour" aria-expanded="true" aria-controls="collapsefour">
+            <span class="fa fa10 fa-cog" aria-hidden="true"></span> {{'Settings'|translate}}
+        </a>
+      </div>
+      <div id="collapsefour" class="collapse" role="tabpanel" aria-labelledby="headingfour">
+        <div class="card-block">
+          <div class="panel-body">
+            <table class="table">
+              <tr *ngIf="authService.showObjHTML('companie', 'read')">
+                <td class="nav-item subItem">
+                  <a class="nav-link" [routerLink]="['/companie/mine']" routerLinkActive="active">{{'My Companie'|translate}}</a>
+                </td>
+              </tr>
+              <tr *ngIf="authService.showObjHTML('right_TEMP_GOOPLUS', 'read')">
+                <td class="nav-item subItem">
+                  <a class="nav-link" [routerLink]="['/right']" routerLinkActive="active">{{'Rights'|translate}}</a>
+                </td>
+              </tr>
+              <tr *ngIf="authService.showObjHTML('user', 'read')">
+                <td class="nav-item subItem">
+                  <a class="nav-link" [routerLink]="['/user/list/false']" routerLinkActive="active">{{'Team'|translate}}</a>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- </md-sidenav> -->

@@ -1,0 +1,24 @@
+<h4>{{'Search' | translate}}</h4>
+<div class="row">
+  <div class="col-md-4">
+    <app-autocomplete [typeAutocomplete]="'user'" [title]="'Client'" [singleChoice]="'true'" [arrayContent]="searchData.fetchedUserSearchs" (getResultAutocomplete)="selectUserSearch()" (clearAutocomplete)="removeUserSearch()">
+    </app-autocomplete>
+  </div>
+  <!-- <div class="col-md-4">
+    <app-autocomplete [typeAutocomplete]="'project'" [title]="'Project'" [singleChoice]="'true'" [arrayContent]="searchData.fetchedProjectSearchs" (getResultAutocomplete)="selectProjectSearch()" (clearAutocomplete)="removeUserSearch()">
+    </app-autocomplete>
+  </div> -->
+  <!-- <div class="col-md-4">
+    <div *ngFor="let ownerCompanie of currentUser.ownerCompanies">
+      <div class="">
+        {{'Type' | translate}}
+        <button class="btnTransparent" type="button" (click)="searchData.typeUser = undefined;changeTypeUsers()"><i class="fa fa-times" aria-hidden="true"></i></button>
+        <select class="form-control" (change)="changeTypeUsers()" placeholder="typeUser" [(ngModel)]="searchData.typeUser" name="typeUsers">
+        <option *ngFor="let typeUser of ownerCompanie.typeUsers" [value]="typeUser.value">
+          {{typeUser.value}}
+        </option>
+      </select>
+      </div>
+    </div>
+  </div> -->
+</div>

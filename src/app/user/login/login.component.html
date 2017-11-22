@@ -1,0 +1,27 @@
+<div class="pagelogin">
+
+   <div>
+
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit()" class="login-form" novalidate>
+    <img class="displayed" src="./assets/images/logo-arte.png">
+    <h3 class="ac">Bienvenue sur l'outil de Gestion de Belmard Rénovation !</h3>
+
+    <div class="input-group login ac">
+      <input #userEmail type="text" formControlName="email" placeholder="Email" class="form-control">
+    </div>
+
+    <div [hidden]="email.valid || email.pristine" class="alert alert-danger">Merci d'entrer un email valide</div>
+    <div class="input-group login ac">
+      <input type="password" formControlName="password" placeholder="Mot de passe" class="form-control">
+    </div>
+    <div class="login ac">
+    <div [hidden]="password.valid || password.pristine" class="alert alert-danger">Votre mot de passe doit contenir au moins 6 caractères</div>
+    <button type="submit" class="valid" [disabled]="!myForm.valid" [ngClass]="{'done':myForm.valid,'pas-done':!myForm.valid}">Login</button>
+    <p class="messagelogin"><a [routerLink]="'/user/reset'">Mot de passe oublié?</a></p>
+    <p class="messagelogin"><a [routerLink]="'/user/register'">Vous n'avez pas de compte? S'enregistrer</a></p>
+  </div>
+  </form>
+
+  </div>
+
+</div>

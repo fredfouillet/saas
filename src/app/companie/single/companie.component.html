@@ -1,0 +1,72 @@
+<div class="container-fluid">
+
+  <div class="hdform">
+    <h3><i class="fa fa10 fa-cog" aria-hidden="true"></i>{{'Company' | translate}}</h3>
+  </div>
+
+
+  <mat-accordion class="example-headers-align">
+    <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle="true">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{'Details Companie' | translate}}
+        </mat-panel-title>
+        <mat-panel-description>
+          <mat-icon>account_circle</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <app-detailsCompanie [fetchedCompanie]="fetchedCompanie"></app-detailsCompanie>
+    </mat-expansion-panel>
+    <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle="true">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{'Paiement' | translate}}
+        </mat-panel-title>
+        <mat-panel-description>
+          <mat-icon>account_circle</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <h4>PLan</h4>
+      <b>{{fetchedCompanie.planDetail.plan}}</b> Ok until:{{fetchedCompanie.planDetail.current_period_end}}
+      <app-paiement></app-paiement>
+    </mat-expansion-panel>
+    <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle="true">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{'Connect with Stripe' | translate}}
+        </mat-panel-title>
+        <mat-panel-description>
+          <mat-icon>account_circle</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <app-connectStripe [fetchedCompanie]="fetchedCompanie"></app-connectStripe>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel [expanded]="step === 3" (opened)="setStep(3)" hideToggle="true">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{'Product Categories' | translate}}
+        </mat-panel-title>
+        <mat-panel-description>
+          <mat-icon>account_circle</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <app-categProduct [fetchedCompanie]="fetchedCompanie"></app-categProduct>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel [expanded]="step === 4" (opened)="setStep(4)" hideToggle="true">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{'Calendar Options' | translate}}
+        </mat-panel-title>
+        <mat-panel-description>
+          <mat-icon>account_circle</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <app-details-calendar [fetchedCompanie]="fetchedCompanie"></app-details-calendar>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+
+
+</div>

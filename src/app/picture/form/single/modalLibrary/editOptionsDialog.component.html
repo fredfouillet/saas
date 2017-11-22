@@ -1,0 +1,17 @@
+
+
+
+<mat-tab-group>
+  <mat-tab label="Load">
+    <app-form
+      (onPassForm)="dialogRef.close($event)"
+      (onUploadFinisedChildToParent)="onUploadFinisedChildToParent()"></app-form>
+  </mat-tab>
+  <mat-tab label="Medias">
+    <app-user-form
+      (onPassForm)="dialogRef.close($event)"
+      [itemsPerPage]=6
+      [isDialog]=true
+    ></app-user-form>
+  </mat-tab>
+</mat-tab-group>

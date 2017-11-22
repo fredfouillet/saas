@@ -1,0 +1,24 @@
+.gooplusInput {
+  width:40px;
+}
+.calendar{
+    height:100vh;
+}
+
+
+/*.right {
+  text-align: right;
+}*/
+
+.btnTransparent {
+  background: transparent;
+  border: 0;
+}
+
+
+.container { margin-top: 0px;
+}
+
+.pad15 { padding-right: 15px;
+  padding-left: 15px ;
+}

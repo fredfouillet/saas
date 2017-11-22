@@ -1,0 +1,7 @@
+<div *ngIf="!fetchedQuote.drawingSignature.isSigned" class="valid-edit">
+  <button *ngIf="isDialog" type="button" (click)="close()" class="btn valid">{{'Close' | translate}}</button>
+  <button type="button" (click)="save()" class="btn valid">{{'Save' | translate}}</button>
+  <button *ngIf="fetchedQuote._id && showDeleteButton" type="button" class="btn false" (click)="openDialogDelete()">
+    {{'Delete' | translate}}
+  </button>
+</div>

@@ -1,0 +1,66 @@
+.nav-tabs .nav-link.active {
+    background-color: #512d44;
+
+}
+
+.nav-tabs .nav-item {
+    margin-bottom: -2px;
+    margin-right: 80px;
+}
+
+.gooplusInput {
+  width:100%;
+  padding: .5rem 0rem!important;
+   margin-bottom: 3px;
+}
+
+.btn-outline-primary {
+    margin-top: 0px!important;
+}
+
+/*------------------------- Alan ---------------------*/
+.movingRow {
+  min-height: 100px!important;
+}
+.textNoEditMode {
+  text-align: left!important;
+}
+.rowInputs {
+  display: flex; /* 2. display flex to the rescue */
+  flex-direction: row;
+}
+.example-headers-align .mat-expansion-panel-header-title,
+.example-headers-align .mat-expansion-panel-header-description {
+  flex-basis: 0;
+}
+
+.example-headers-align .mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+}
+
+/*------------------------- Alan ---------------------*/
+
+/*------------------------- Guillaume ---------------------*/
+
+/* .row {
+    margin-right: 0px!important;
+    margin-left: 0px!important;
+}
+
+.bn {
+    border: none;
+  padding-left: 0px!important;
+    padding-right: 0px!important;
+    }
+
+.container {
+    padding-right: 0px!important;
+    padding-left: 0px!important;
+
+    margin-top: 0px!important;
+  width: 100%!important;
+}
+
+
+/*------------------------- Guillaume ---------------------*/

@@ -1,0 +1,51 @@
+.aroundSignature {
+  /*width: 600px;
+  height: 425px;*/
+  /*border-width:1px;*/
+  border-style:dotted;
+  border-color:black;
+
+  /*background-image: url('/assets/images/fond_drawing.png');*/
+  /*background-color: white;*/
+}
+
+/*#parent {
+   position: relative;
+   z-index: 100;
+}
+img.superpose {
+   position: absolute;
+   z-index: -1;
+   width: 600px;
+   height: 425px;
+
+}*/
+
+.round {
+width:20px;height:20px;
+-webkit-border-radius: 99px;
+-moz-border-radius: 99px;
+border-radius: 99px;
+-webkit-box-shadow: #B3B3B3 2px 2px 2px;
+-moz-box-shadow: #B3B3B3 2px 2px 2px;
+box-shadow: #B3B3B3 2px 2px 2px;
+}
+
+.shadow {
+  -webkit-box-shadow: #B3B3B3 5px 5px 5px;
+  -moz-box-shadow: #B3B3B3 5px 5px 5px;
+  box-shadow: #B3B3B3 5px 5px 5px;
+}
+
+.marginTop {
+  margin-top: 32px;
+}
+
+.buttonSignature {
+  /*min-height:100px;*/
+}
+
+.iconeDrawing {
+  color: #444444;
+
+}
