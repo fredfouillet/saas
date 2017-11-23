@@ -19,10 +19,14 @@
     </div>
     <div class="row">
       <div class="col-sm-12 col-md-4">
-        <div class="form-group">
-          {{'Number' | translate}}
-          <input [readonly]="fetchedQuote.drawingSignature.isSigned" class="form-control" name="EstimateCode" type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedQuote.quoteNumber"/>
-        </div>
+        <mat-form-field>
+          <!-- <input matInput type="text" name="Search" placeholder="{{ title | translate}}" [(ngModel)]="autocompleteSearch" (ngModelChange)="searchData()"> -->
+          <input matInput [readonly]="fetchedQuote.drawingSignature.isSigned" type="number" formControlName="quoteNumber" [(ngModel)]="fetchedQuote.quoteNumber" placeholder="{{'Number Id' | translate}}">
+        </mat-form-field>
+        <!-- <div class="form-group">
+
+          <input [readonly]="fetchedQuote.drawingSignature.isSigned" class="form-control" name="EstimateCode" type="number" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedQuote.quoteNumber"/>
+        </div> -->
         <div class="form-group">
           <app-autocomplete [search]="search" [displayIfContentIsNull]=true [canDelete]=false [enableLink]=true [typeAutocomplete]="'user'" [title]="'Contact'" [search]="{isExternalUser:true}" [title]="" [singleChoice]="'true'" [arrayContent]="fetchedQuote.clients">
           </app-autocomplete>
@@ -98,10 +102,9 @@
       </div>
 
       <div class="col-12">
-        <div class="form-group">
-          {{'Title' | translate}}
-          <input [readonly]="fetchedQuote.drawingSignature.isSigned" type="text" class="form-control" formControlName="name" [(ngModel)]="fetchedQuote.name" required minlength="5" placeholder="{{'Quote title' | translate}}">
-        </div>
+          <mat-form-field>
+            <input matInput [readonly]="fetchedQuote.drawingSignature.isSigned" type="text" formControlName="name" [(ngModel)]="fetchedQuote.name" placeholder="{{'Quote title' | translate}}">
+          </mat-form-field>
       </div>
 
     </div>

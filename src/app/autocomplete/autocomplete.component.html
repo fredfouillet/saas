@@ -31,25 +31,46 @@
     <app-newObjDialog *ngIf="typeAutocomplete=='user' || typeAutocomplete=='companie' || typeAutocomplete=='project'" class="btn btn-success" [search]="search" [icone]="'fa fa-plus'" [title]="'Add new one'" [typeObj]="typeAutocomplete"></app-newObjDialog>
   </div>
   <div *ngFor="let data of arrayContent; let i=index">
-
-    <div class="form-control">
-      <div class="row">
-        <div class="col-8">
-          <div *ngIf="typeAutocomplete=='user'">{{data.profile.name}} {{data.profile.lastName}}</div>
-          <div *ngIf="typeAutocomplete=='companie'">{{data.nameCompanie}}</div>
-          <div *ngIf="typeAutocomplete=='quote'">{{data.name}}</div>
-          <div *ngIf="typeAutocomplete=='project'">{{data.details.name}}</div>
-          <div *ngIf="typeAutocomplete=='product'">{{data.details.referenceName}}</div>
-          <div *ngIf="typeAutocomplete=='right'">{{data.detailRight.nameRight}}</div>
+    <div class="row">
+      <div class="col-8">
+        <div *ngIf="typeAutocomplete=='user'">
+          <mat-form-field>
+            <input readonly placeholder="{{title}}" matInput type="text" value="{{data.profile.name}} {{data.profile.lastName}}">
+          </mat-form-field>
         </div>
-        <div class="col-4">
-          <div class="row pull-right">
-            <div *ngIf="enableLink" class="col-6">
-              <button class="btn btn-ok btn-sm ferme alright" (click)="linkToObject(data)" type="button"><i class="fa fa-link"></i></button>
-            </div>
-            <div *ngIf="canDelete" class="col-6">
-              <button class="btn btn-danger btn-sm ferme alright" type="button" (click)="removeData(i)"><i class="fa fa-times"></i></button>
-            </div>
+        <div *ngIf="typeAutocomplete=='companie'">
+          <mat-form-field>
+            <input readonly placeholder="{{title}}" matInput type="text" value="{{data.nameCompanie}}">
+          </mat-form-field>
+        </div>
+        <div *ngIf="typeAutocomplete=='quote'">
+          <mat-form-field>
+            <input readonly placeholder="{{title}}" matInput type="text" value="{{data.name}}">
+          </mat-form-field>
+        </div>
+        <div *ngIf="typeAutocomplete=='project'">
+          <mat-form-field>
+            <input readonly placeholder="{{title}}" matInput type="text" value="{{data.details.name}}">
+          </mat-form-field>
+        </div>
+        <div *ngIf="typeAutocomplete=='product'">
+          <mat-form-field>
+            <input readonly placeholder="{{title}}" matInput type="text" value="{{data.details.referenceName}}">
+          </mat-form-field>
+        </div>
+        <div *ngIf="typeAutocomplete=='right'">
+          <mat-form-field>
+            <input readonly placeholder="{{title}}" matInput type="text" value="{{data.detailRight.nameRight}}">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="row pull-right">
+          <div *ngIf="enableLink" class="col-6">
+            <button class="btn btn-ok btn-sm ferme alright" (click)="linkToObject(data)" type="button"><i class="fa fa-link"></i></button>
+          </div>
+          <div *ngIf="canDelete" class="col-6">
+            <button class="btn btn-danger btn-sm ferme alright" type="button" (click)="removeData(i)"><i class="fa fa-times"></i></button>
           </div>
         </div>
       </div>

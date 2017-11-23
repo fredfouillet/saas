@@ -18,7 +18,7 @@
 
       <form [formGroup]="myForm" novalidate (ngSubmit)="save()">
         <mat-form-field>
-          <input matInput type="text" class="form-control" formControlName="title" [(ngModel)]="fetchedPaiementQuote.title" placeholder="{{'Title' | translate}}">
+          <input matInput type="text" formControlName="title" [(ngModel)]="fetchedPaiementQuote.title" placeholder="{{'Title' | translate}}">
         </mat-form-field>
         <app-autocomplete class="mb8 bn" [canDelete]=false [typeAutocomplete]="'quote'" [search]="search" [canDelete]="true" [title]="'Quote'" [singleChoice]="true" [arrayContent]="fetchedPaiementQuote.quotes" (getResultAutocomplete)="selectQuote($event[0])"
           (autocompleteAfterNgChanges)="autocompleteAfterNgChanges($event)">
@@ -31,7 +31,7 @@
         </app-autocomplete>
 
         <mat-form-field>
-          <input matInput type="number" class="form-control" formControlName="amount" [(ngModel)]="fetchedPaiementQuote.amount" placeholder="Amount">
+          <input matInput type="number" formControlName="amount" [(ngModel)]="fetchedPaiementQuote.amount" placeholder="Amount">
         </mat-form-field>
         <!-- <input *ngIf="fetchedPaiementQuote.type!='stripe'" type="number" class="form-control" formControlName="amount" [(ngModel)]="fetchedPaiementQuote.amount" placeholder="Amount"> -->
         <!-- <div *ngIf="fetchedPaiementQuote.type=='stripe'" class="form-control">
