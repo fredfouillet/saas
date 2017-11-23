@@ -71,32 +71,19 @@
           {{'Quote validity date' | translate}}
           <input [readonly]="fetchedQuote.drawingSignature.isSigned" type="date" class="form-control" [ngModelOptions]="{standalone: true}" class="form-control" [(ngModel)]="fetchedQuote.detail.dateQuote.expiryDateString">
         </div> -->
-        {{fetchedQuote.statusQuote}}
         <mat-form-field *ngIf="fetchedQuote.typeQuote === 'quote'">
           <mat-select [disabled]="fetchedQuote.drawingSignature.isSigned" placeholder="{{'Status'| translate}}" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedQuote.statusQuote">
             <mat-option *ngFor="let n of statusQuotes" [value]="n.indexStatus">{{n.label | translate}}</mat-option>
           </mat-select>
         </mat-form-field>
 
-        <div class="form-group">
-          <!-- {{'Status' | translate}}
-          <select    name="statusQuote">
-            <option *ngFor="let n of statusQuotes" [value]="n.indexStatus">{{n.label | translate}}</option>
-          </select> -->
 
+        <mat-form-field *ngIf="fetchedQuote.typeQuote === 'invoice'">
+          <mat-select [disabled]="fetchedQuote.drawingSignature.isSigned" placeholder="{{'Status'| translate}}" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedQuote.statusQuote">
+            <mat-option *ngFor="let n of statusQuotesInvoice" [value]="n.indexStatus">{{n.label | translate}}</mat-option>
+          </mat-select>
+        </mat-form-field>
 
-
-
-
-
-          <select *ngIf="fetchedQuote.typeQuote === 'invoice'" [disabled]="fetchedQuote.drawingSignature.isSigned" class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedQuote.statusQuote" name="statusQuote">
-            <option *ngFor="let n of statusQuotesInvoice" [value]="n.indexStatus">{{n.label | translate}}</option>
-          </select>
-        </div>
-        <div *ngIf="fetchedQuote.typeQuote === 'invoice' && fetchedQuote.statusQuote == 101" class="form-group">
-          {{'Date Invoice Paid' | translate}}
-          <input type="date" class="form-control" [ngModelOptions]="{standalone: true}" class="form-control" [(ngModel)]="fetchedQuote.detail.dateQuote.dateInvoicePaidString">
-        </div>
 
       </div>
       <div class="col-sm-12 col-md-4">
