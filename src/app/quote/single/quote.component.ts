@@ -218,10 +218,10 @@ export class QuoteComponent implements OnInit {
       quoteRef: [''],
 
     })
-
-    this.fetchedQuote.detail.dateQuote.issueDateString = this.authService.isoDateToHtmlDate(this.fetchedQuote.detail.dateQuote.issueDate)
-    this.fetchedQuote.detail.dateQuote.expiryDateString = this.authService.isoDateToHtmlDate(this.fetchedQuote.detail.dateQuote.expiryDate)
-    this.fetchedQuote.detail.dateQuote.dateInvoicePaidString = this.authService.isoDateToHtmlDate(this.fetchedQuote.detail.dateQuote.dateInvoicePaid)
+    //
+    // this.fetchedQuote.detail.dateQuote.issueDateString = this.authService.isoDateToHtmlDate(this.fetchedQuote.detail.dateQuote.issueDate)
+    // this.fetchedQuote.detail.dateQuote.expiryDateString = this.authService.isoDateToHtmlDate(this.fetchedQuote.detail.dateQuote.expiryDate)
+    // this.fetchedQuote.detail.dateQuote.dateInvoicePaidString = this.authService.isoDateToHtmlDate(this.fetchedQuote.detail.dateQuote.dateInvoicePaid)
 
 // console.log(this.search)
     // this.getCurrentUser();
@@ -823,9 +823,9 @@ export class QuoteComponent implements OnInit {
         .subscribe(
         res => {
           this2.fetchedQuote = res
-          this2.fetchedQuote.detail.dateQuote.issueDateString = this2.authService.isoDateToHtmlDate(this2.fetchedQuote.detail.dateQuote.issueDate)
-          this2.fetchedQuote.detail.dateQuote.expiryDateString = this2.authService.isoDateToHtmlDate(this2.fetchedQuote.detail.dateQuote.expiryDate)
-          this2.fetchedQuote.detail.dateQuote.dateInvoicePaidString = this2.authService.isoDateToHtmlDate(this2.fetchedQuote.detail.dateQuote.dateInvoicePaid)
+          // this2.fetchedQuote.detail.dateQuote.issueDateString = this2.authService.isoDateToHtmlDate(this2.fetchedQuote.detail.dateQuote.issueDate)
+          // this2.fetchedQuote.detail.dateQuote.expiryDateString = this2.authService.isoDateToHtmlDate(this2.fetchedQuote.detail.dateQuote.expiryDate)
+          // this2.fetchedQuote.detail.dateQuote.dateInvoicePaidString = this2.authService.isoDateToHtmlDate(this2.fetchedQuote.detail.dateQuote.dateInvoicePaid)
 
           // this.fetchedQuote.projects.forEach(project => { this.search.projectId = project._id })
           this2.fetchedQuote.clients.forEach(user => { this2.search.userId = user._id })

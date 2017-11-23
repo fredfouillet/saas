@@ -51,6 +51,8 @@ import {MatFormFieldModule} from '@angular/material';
 import {MatInputModule} from '@angular/material';
 import {MatExpansionModule} from '@angular/material';
 import {MatIconModule} from '@angular/material';
+import {MatSelectModule} from '@angular/material';
+
 
 @NgModule({
   imports:      [
@@ -79,6 +81,7 @@ import {MatIconModule} from '@angular/material';
     MatExpansionModule,
     MatIconModule,
     MatCardModule,
+    MatSelectModule,
     // AutocompleteComponent,
   ],
   declarations: [

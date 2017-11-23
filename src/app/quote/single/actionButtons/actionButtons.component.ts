@@ -540,9 +540,9 @@ export class ActionButtonsComponent implements OnInit {
   save() {
 
     this.fetchedQuote.historyClients = this.fetchedQuote.clients
-    this.fetchedQuote.detail.dateQuote.issueDate = this.authService.HTMLDatetoIsoDate(this.fetchedQuote.detail.dateQuote.issueDateString)
-    this.fetchedQuote.detail.dateQuote.expiryDate = this.authService.HTMLDatetoIsoDate(this.fetchedQuote.detail.dateQuote.expiryDateString)
-    this.fetchedQuote.detail.dateQuote.dateInvoicePaid = this.authService.HTMLDatetoIsoDate(this.fetchedQuote.detail.dateQuote.dateInvoicePaidString)
+    // this.fetchedQuote.detail.dateQuote.issueDate = this.authService.HTMLDatetoIsoDate(this.fetchedQuote.detail.dateQuote.issueDateString)
+    // this.fetchedQuote.detail.dateQuote.expiryDate = this.authService.HTMLDatetoIsoDate(this.fetchedQuote.detail.dateQuote.expiryDateString)
+    // this.fetchedQuote.detail.dateQuote.dateInvoicePaid = this.authService.HTMLDatetoIsoDate(this.fetchedQuote.detail.dateQuote.dateInvoicePaidString)
 
     if (this.fetchedQuote._id) {
       this.quoteService.updateQuote(this.fetchedQuote)

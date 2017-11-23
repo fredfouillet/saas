@@ -51,30 +51,44 @@
         </div> -->
       </div>
       <div class="col-sm-12 col-md-4">
-        <div>
-          {{'Quote edit date' | translate}}
-          <input [readonly]="fetchedQuote.drawingSignature.isSigned" type="date" class="form-control" [ngModelOptions]="{standalone: true}" class="form-control" [(ngModel)]="fetchedQuote.detail.dateQuote.issueDateString">
 
-          <!-- <mat-form-field>
-            <input matInput
-              formControlName="issueDate"
-              [(ngModel)]="fetchedQuote.detail.dateQuote.issueDate"
-              [matDatepicker]="picker" placeholder="{{'Quote edit date' | translate}}">
-            <mat-datepicker-toggle mdSuffix [for]="picker"></mat-datepicker-toggle>
+
+
+          <mat-form-field>
+            <input matInput [matDatepicker]="picker" placeholder="{{'Issue date' | translate}}" [readonly]="fetchedQuote.drawingSignature.isSigned" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedQuote.detail.dateQuote.issueDate">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
-          </mat-form-field> -->
+          </mat-form-field>
 
 
-        </div>
+          <mat-form-field>
+            <input matInput [matDatepicker]="picker2" placeholder="{{'Expiry date' | translate}}" [readonly]="fetchedQuote.drawingSignature.isSigned" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedQuote.detail.dateQuote.expiryDate">
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+          </mat-form-field>
+<!--
         <div class="form-group">
           {{'Quote validity date' | translate}}
           <input [readonly]="fetchedQuote.drawingSignature.isSigned" type="date" class="form-control" [ngModelOptions]="{standalone: true}" class="form-control" [(ngModel)]="fetchedQuote.detail.dateQuote.expiryDateString">
-        </div>
+        </div> -->
+        {{fetchedQuote.statusQuote}}
+        <mat-form-field *ngIf="fetchedQuote.typeQuote === 'quote'">
+          <mat-select [disabled]="fetchedQuote.drawingSignature.isSigned" placeholder="{{'Status'| translate}}" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedQuote.statusQuote">
+            <mat-option *ngFor="let n of statusQuotes" [value]="n.indexStatus">{{n.label | translate}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
         <div class="form-group">
-          {{'Status' | translate}}
-          <select *ngIf="fetchedQuote.typeQuote === 'quote'" [disabled]="fetchedQuote.drawingSignature.isSigned" class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedQuote.statusQuote" name="statusQuote">
+          <!-- {{'Status' | translate}}
+          <select    name="statusQuote">
             <option *ngFor="let n of statusQuotes" [value]="n.indexStatus">{{n.label | translate}}</option>
-          </select>
+          </select> -->
+
+
+
+
+
+
           <select *ngIf="fetchedQuote.typeQuote === 'invoice'" [disabled]="fetchedQuote.drawingSignature.isSigned" class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedQuote.statusQuote" name="statusQuote">
             <option *ngFor="let n of statusQuotesInvoice" [value]="n.indexStatus">{{n.label | translate}}</option>
           </select>
