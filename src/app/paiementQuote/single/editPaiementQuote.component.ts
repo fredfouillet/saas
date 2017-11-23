@@ -99,10 +99,10 @@ export class EditPaiementQuoteComponent implements OnInit {
       datePaiement: [ null, []],
     })
 
-    this.fetchedPaiementQuote
-    .datePaiementString =
-    this.authService
-    .isoDateToHtmlDate(this.fetchedPaiementQuote.datePaiement)
+    // this.fetchedPaiementQuote
+    // .datePaiementString =
+    // this.authService
+    // .isoDateToHtmlDate(this.fetchedPaiementQuote.datePaiement)
 
     this.fetchedPaiementQuote.isExpense = this.search.isExpense
     this.activatedRoute.params.subscribe((params: Params) => {
@@ -115,11 +115,11 @@ export class EditPaiementQuoteComponent implements OnInit {
     })
   }
 
-  autocompleteAfterNgChanges(result) {
-    this.fetchedPaiementQuote.quotes.forEach((quote: Quote) => {
-      this.fetchedPaiementQuote.amount = Math.round(quote.priceQuote.priceGlobalWithDiscountWithSurface)
-    })
-  }
+  // autocompleteAfterNgChanges(result) {
+  //   this.fetchedPaiementQuote.quotes.forEach((quote: Quote) => {
+  //     this.fetchedPaiementQuote.amount = Math.round(quote.priceQuote.priceGlobalWithDiscountWithSurface)
+  //   })
+  // }
   // getPdf() {
   //   alert('soon')
   // }
@@ -160,9 +160,9 @@ export class EditPaiementQuoteComponent implements OnInit {
   save() {
     let this2=this
     return new Promise(function(resolve, reject) {
-      this2.fetchedPaiementQuote
-      .datePaiement = this2.authService
-      .HTMLDatetoIsoDate(this2.fetchedPaiementQuote.datePaiementString)
+      // this2.fetchedPaiementQuote
+      // .datePaiement = this2.authService
+      // .HTMLDatetoIsoDate(this2.fetchedPaiementQuote.datePaiementString)
 
       if(this2.fetchedPaiementQuote._id) {
         this2.paiementQuoteService.updatePaiementQuote(this2.fetchedPaiementQuote)
@@ -218,11 +218,11 @@ export class EditPaiementQuoteComponent implements OnInit {
   }
 
 
-  openDialogDelete(){
+  openDialogDelete() {
     const this2 = this
     const dialogRefDelete = this.dialog.open(DeleteDialogComponent)
     dialogRefDelete.afterClosed().subscribe(result => {
-      if(result) {
+      if (result) {
         this.onDelete(this.fetchedPaiementQuote._id).then(function(){
           this2.router.navigate(['paiementQuote']);
         })
@@ -240,9 +240,9 @@ export class EditPaiementQuoteComponent implements OnInit {
           this.fetchedPaiementQuote = res
           // if(this.fetchedPaiementQuote.type === 'stripe')
           //   this.getStripeCust()
-          this.fetchedPaiementQuote
-          .datePaiementString = this.authService
-          .isoDateToHtmlDate(this.fetchedPaiementQuote.datePaiement)
+          // this.fetchedPaiementQuote
+          // .datePaiementString = this.authService
+          // .isoDateToHtmlDate(this.fetchedPaiementQuote.datePaiement)
         },
         error => {
           console.log(error);

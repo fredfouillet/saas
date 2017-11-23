@@ -23,9 +23,9 @@
         <app-autocomplete class="mb8 bn" [canDelete]=false [typeAutocomplete]="'quote'" [search]="search" [canDelete]="true" [title]="'Quote'" [singleChoice]="true" [arrayContent]="fetchedPaiementQuote.quotes" (getResultAutocomplete)="selectQuote($event[0])"
           (autocompleteAfterNgChanges)="autocompleteAfterNgChanges($event)">
         </app-autocomplete>
-        <div *ngFor="let quote of fetchedPaiementQuote.quotes">
+        <!-- <div *ngFor="let quote of fetchedPaiementQuote.quotes">
           {{'Quote Amount Without Taxes With Discount' | translate}}: {{quote.priceQuote.priceGlobalWithDiscountWithSurface | round}}
-        </div>
+        </div> -->
 
         <app-autocomplete class="mb8 bn" [canDelete]=false [typeAutocomplete]="'user'" [search]="search" [canDelete]="true" [title]="'Customer'" [singleChoice]="true" [arrayContent]="fetchedPaiementQuote.userDebiteds" (getResultAutocomplete)="selectUserDebited($event[0])">
         </app-autocomplete>
@@ -37,8 +37,15 @@
         <!-- <div *ngIf="fetchedPaiementQuote.type=='stripe'" class="form-control">
           {{fetchedPaiementQuote.amount}}
         </div> -->
-        <input type="date" class="form-control" [ngModelOptions]="{standalone: true}" class="form-control" [(ngModel)]="fetchedPaiementQuote.datePaiementString">
+        <!-- <input type="date" class="form-control" [ngModelOptions]="{standalone: true}" class="form-control" [(ngModel)]="fetchedPaiementQuote.datePaiementString"> -->
 
+
+
+        <mat-form-field>
+          <input matInput [matDatepicker]="picker" placeholder="{{'Paiement Date'}}" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedPaiementQuote.datePaiement">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
 
       </form>
 

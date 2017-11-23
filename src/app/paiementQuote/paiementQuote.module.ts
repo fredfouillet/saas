@@ -5,7 +5,7 @@ import { RouterModule} from '@angular/router';
 import { PaiementQuoteDialogComponent } from './single/dialog/paiementQuoteDialog.component'
 import { MatCheckboxModule} from '@angular/material';
 // import { ProjectModule} from '../project/project.module';
-
+import {MatDatepickerModule} from '@angular/material';
 import { PaiementQuotesComponent} from './paiementQuotes/paiementQuotes.component';
 import { EditPaiementQuoteComponent} from './single/editPaiementQuote.component';
 
@@ -43,6 +43,7 @@ import {MatInputModule} from '@angular/material';
     MatExpansionModule,
     MatRadioModule,
     MatInputModule,
+    MatDatepickerModule,
     // SignaturePadModule,
     // AutocompleteComponent,
   ],
