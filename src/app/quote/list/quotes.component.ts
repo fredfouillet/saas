@@ -86,7 +86,7 @@ export class QuotesComponent implements OnInit {
   //       // this.goToInvoice(res.obj._id)
   //     }, error => { console.log(error) } )
   // }
-  searchUsers() {
+  searchData() {
     this.getQuotes(this.paginationData.currentPage, this.search)
   }
   saved(result) {

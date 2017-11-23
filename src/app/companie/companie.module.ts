@@ -26,8 +26,8 @@ import { PaiementPipe } from './paiement/paiement.pipe';
 import {MatCardModule} from '@angular/material';
 import {MatExpansionModule} from '@angular/material';
 import {MatIconModule} from '@angular/material';
-import {MatInputModule} from '@angular/material';
-import {MatFormFieldModule} from '@angular/material';
+// import {MatInputModule} from '@angular/material';
+// import {MatFormFieldModule} from '@angular/material';
 
 @NgModule({
   imports: [
@@ -42,8 +42,8 @@ import {MatFormFieldModule} from '@angular/material';
     MatCardModule,
     MatExpansionModule,
     MatIconModule,
-    MatInputModule,
-    MatFormFieldModule,
+    // MatInputModule,
+    // MatFormFieldModule,
     // MatRadioModule,
 
   ],

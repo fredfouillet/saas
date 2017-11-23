@@ -59,6 +59,8 @@ import {MatIconModule} from '@angular/material';
 
 import {SharedModule } from '../shared/shared.module';
 import {MatExpansionModule} from '@angular/material';
+import {MatInputModule} from '@angular/material';
+
 
 @NgModule({
   imports:      [
@@ -76,6 +78,7 @@ import {MatExpansionModule} from '@angular/material';
     // RightModule,
     MatExpansionModule,
     MatIconModule,
+    MatInputModule,
   ],
   declarations: [
 //    UserDeleteDialog,

@@ -47,8 +47,8 @@ import { QuillEditorModule } from 'ngx-quill-editor';
 import {MatDatepickerModule} from '@angular/material';
 import {MatNativeDateModule} from '@angular/material';
 
-import {MatFormFieldModule} from '@angular/material';
-import {MatInputModule} from '@angular/material';
+// import {MatFormFieldModule} from '@angular/material';
+// import {MatInputModule} from '@angular/material';
 import {MatExpansionModule} from '@angular/material';
 import {MatIconModule} from '@angular/material';
 import {MatSelectModule} from '@angular/material';
@@ -70,8 +70,8 @@ import {MatSelectModule} from '@angular/material';
     // SignaturePadModule,
     PaiementQuoteModule,
 
-    MatFormFieldModule,
-    MatInputModule,
+    // MatFormFieldModule,
+    // MatInputModule,
     // CKEditorModule,
     DragulaModule,
     DrawingModule,
