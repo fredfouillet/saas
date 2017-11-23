@@ -180,6 +180,7 @@ export class QuoteService {
   }
 
   saveQuote(quote: Quote) {
+    console.log(quote)
   //  console.log("this.authService.currentUser.token",this.authService.currentUser.token);
     delete quote._id;
     const body = JSON.stringify(quote);
@@ -194,7 +195,7 @@ export class QuoteService {
       });
   }
 
-  // 
+  //
   // saveAsInvoice(quote: Quote) {
   //   const body = JSON.stringify(quote);
   //   const headers = new Headers({'Content-Type': 'application/json'});

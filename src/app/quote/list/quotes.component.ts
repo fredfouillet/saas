@@ -7,7 +7,7 @@ import { MatDialog} from '@angular/material';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Location} from '@angular/common';
 import { Search, PaginationData } from '../../shared/shared.model';
-import { GlobalEventsManager } from '../../globalEventsManager';
+// import { GlobalEventsManager } from '../../globalEventsManager';
 
 
 
@@ -25,7 +25,7 @@ export class QuotesComponent implements OnInit {
   @Input() idClient: string = '';
 
   fetchedQuotes: Quote[] = [];
-
+  loading: boolean = false
   paginationData = new PaginationData()
 
   statusQuotes = StatusQuotes
@@ -35,7 +35,7 @@ export class QuotesComponent implements OnInit {
   constructor(
     private quoteService: QuoteService,
     private authService: AuthService,
-    private globalEventsManager: GlobalEventsManager,
+    // private globalEventsManager: GlobalEventsManager,
   //  private modalService: NgbModal,
     private toastr: ToastsManager,
     public dialog: MatDialog,
@@ -49,7 +49,6 @@ export class QuotesComponent implements OnInit {
     this.getQuotes(this.paginationData.currentPage, this.search);
   }
   ngOnInit() {
-
     this.search.orderBy = '-createdAt'
     this.activatedRoute.params.subscribe((params: Params) => {
       // if(params['searchType'] === 'quoteAssignedToMe') {
@@ -135,7 +134,8 @@ export class QuotesComponent implements OnInit {
 
 
   getQuotes(page: number, search: any) {
-    this.globalEventsManager.isLoadding(true);
+    // this.globalEventsManager.isLoadding(true);
+    this.loading = true
     this.quoteService.getQuotes(page, search)
       .subscribe(
         res => {
@@ -154,11 +154,7 @@ export class QuotesComponent implements OnInit {
                 this.fetchedQuotes[i].statusQuoteString = status.label
             })
           })
-
-
-
-
-          this.globalEventsManager.isLoadding(false);
+          this.loading = false
         },
         error => {
           console.log(error);

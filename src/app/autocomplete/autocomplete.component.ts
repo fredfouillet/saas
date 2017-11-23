@@ -66,7 +66,6 @@ export class AutocompleteComponent {
     if(this.typeAutocomplete ==='quote' && this.search.quoteId)
         this.quoteService.getQuote(this.search.quoteId)
         .subscribe( res => {
-          console.log(res)
           if(this.arrayContent.length) this.arrayContent.splice(0, 1);
           this.arrayContent.push(res)
           this.autocompleteAfterNgChanges.emit()

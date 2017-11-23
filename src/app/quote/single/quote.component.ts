@@ -165,24 +165,24 @@ export class QuoteComponent implements OnInit {
   //   this.fetchedQuote.devisDetails[i].bucketProducts[j].isEditMode = !this.fetchedQuote.devisDetails[i].bucketProducts[j].isEditMode
   // }
 
+  //
+  // drawingUpdated(result) {
+  //   this.fetchedQuote.drawing.base64 = result
+  //   this.actionButtonsComponent.save()
+  // }
 
-  drawingUpdated(result) {
-    this.fetchedQuote.drawing.base64 = result
-    this.actionButtonsComponent.save()
-  }
-
-  clearedDrawing() {
-    this.fetchedQuote.drawingSignature.isSigned = false
-    this.actionButtonsComponent.save()
-  }
-  drawingSignatureUpdated(result) {
-
-    this.fetchedQuote.drawingSignature.isSigned = true
-
-
-    this.fetchedQuote.drawingSignature.base64 = result
-    this.actionButtonsComponent.save()
-  }
+  // clearedDrawing() {
+  //   this.fetchedQuote.drawingSignature.isSigned = false
+  //   this.actionButtonsComponent.save()
+  // }
+  // drawingSignatureUpdated(result) {
+  //
+  //   this.fetchedQuote.drawingSignature.isSigned = true
+  //
+  //
+  //   this.fetchedQuote.drawingSignature.base64 = result
+  //   this.actionButtonsComponent.save()
+  // }
 
   ngOnInit() {
     // this.statusQuotes.forEach((statusQuote,i)=>{this.statusQuotes[i].label=this.translateService.instant(statusQuote.label)})
@@ -223,17 +223,23 @@ export class QuoteComponent implements OnInit {
     this.fetchedQuote.detail.dateQuote.expiryDateString = this.authService.isoDateToHtmlDate(this.fetchedQuote.detail.dateQuote.expiryDate)
     this.fetchedQuote.detail.dateQuote.dateInvoicePaidString = this.authService.isoDateToHtmlDate(this.fetchedQuote.detail.dateQuote.dateInvoicePaid)
 
+// console.log(this.search)
     // this.getCurrentUser();
     if (this.search.parentQuoteId) {
-      this.getQuote(this.search.parentQuoteId).then(() => {
+      this.getQuote(this.search.parentQuoteId).then((parentQuote: Quote) => {
 
-        const newQuote = new Quote()
-        newQuote._id = this.search.parentQuoteId
-        this.fetchedQuote.parentQuotes.push(newQuote)
+        // const newQuote = new Quote()
+        // newQuote._id = this.search.parentQuoteId
+        // var newArray = this.fetchedQuote.slice();
+
+        // var copy = {...parentQuote};
+        // console.log(copy)
+        // this.fetchedQuote.parentQuotes.push(copy)
         this.fetchedQuote._id = ''
         this.fetchedQuote.typeQuote = 'invoice'
         this.fetchedQuote.quoteNumber = null
         this.getMaxQuoteNumber()
+        console.log(this.fetchedQuote)
       })
     } else {
       this.fetchedQuote.typeQuote = this.search.typeQuote
@@ -823,7 +829,7 @@ export class QuoteComponent implements OnInit {
 
           // this.fetchedQuote.projects.forEach(project => { this.search.projectId = project._id })
           this2.fetchedQuote.clients.forEach(user => { this2.search.userId = user._id })
-          resolve()
+          resolve(this2.fetchedQuote)
         },
         error => {
           reject(error)

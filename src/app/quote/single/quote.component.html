@@ -142,9 +142,13 @@
           <mat-icon>date_range</mat-icon>
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <app-quotes [showSearch]=false [search]="{typeQuote:'invoice', parentQuoteId:fetchedQuote._id, userId: search.userId}">
+      <app-quotes
+        *ngIf="step ===7"
+        [showSearch]=false [search]="{typeQuote:'invoice', parentQuoteId:fetchedQuote._id, userId: search.userId}">
       </app-quotes>
     </mat-expansion-panel>
+
+
   </mat-accordion>
 
 

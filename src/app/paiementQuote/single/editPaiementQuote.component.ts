@@ -241,7 +241,6 @@ export class EditPaiementQuoteComponent implements OnInit {
           this.fetchedPaiementQuote = res
           // if(this.fetchedPaiementQuote.type === 'stripe')
           //   this.getStripeCust()
-          console.log(res)
           this.fetchedPaiementQuote
           .datePaiementString = this.authService
           .isoDateToHtmlDate(this.fetchedPaiementQuote.datePaiement)
