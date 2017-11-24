@@ -68,6 +68,9 @@ export class AppComponent {
 
   }
 
+  backdropClick() {
+    this.globalEventsManager.showNavBar(false);
+  }
   // openSideBar() {
   //
   //   this.globalEventsManager.showNavBar(true);

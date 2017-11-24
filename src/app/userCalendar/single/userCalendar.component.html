@@ -49,10 +49,6 @@
           <app-autocomplete [typeAutocomplete]="'user'" [title]="'Client'" [singleChoice]="'true'" [arrayContent]="fetchedUserCalendar.clients">
           </app-autocomplete>
         </div>
-        <!-- <div *ngIf="fetchedUserCalendar.clients.length" class="col-md-12">
-            <app-autocomplete [typeAutocomplete]="'user'" [canDelete]=false [title]="'Client'" [singleChoice]="'true'" [arrayContent]="fetchedUserCalendar.clients">
-            </app-autocomplete>
-          </div> -->
         <div class="col-md-12">
           <app-autocomplete [typeAutocomplete]="'user'" [search]="{isExternalUser:false}" [title]="'Réparateur'" [singleChoice]="'true'" [arrayContent]="fetchedUserCalendar.assignedTos" (getResultAutocomplete)="selectUser($event[0])" (clearAutocomplete)="removeUser()">
           </app-autocomplete>
@@ -63,12 +59,7 @@
               </textarea>
           </mat-form-field>
         </div>
-
-
       </div>
-
-
-
     </form>
     <mat-action-row>
       <div class="valid-edit">

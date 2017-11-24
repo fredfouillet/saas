@@ -1,7 +1,7 @@
 
 <app-navbar></app-navbar>
 
-<mat-sidenav-container #container class="example-container">
+<mat-sidenav-container (backdropClick)="backdropClick()" #container class="example-container">
 
   <mat-sidenav #sidenav mode="{{modeSidenav}}" opened="false">
     <!-- <div *ngIf="sidenav.opened"> -->
@@ -15,12 +15,7 @@
     </div> -->
     <router-outlet></router-outlet>
   </div>
-
 </mat-sidenav-container>
-
 <app-error></app-error>
-
 <app-footer></app-footer>
-
-
-    <app-loadingInApp></app-loadingInApp>
+<app-loadingInApp></app-loadingInApp>
