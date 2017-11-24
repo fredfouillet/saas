@@ -21,7 +21,6 @@ import {DeleteDialogComponent} from '../nav/deleteDialog/deleteDialog.component'
 // import { LoginInAppComponent } from '../nav/loginInApp/loginInApp.component';
 
 // import {CommentModule} from '../comment/comment.module';
-
 import {SharedSmallModule} from './sharedSmall.module'
 @NgModule({
   imports:      [
