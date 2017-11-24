@@ -15,7 +15,7 @@ import { AutocompleteModule } from '../autocomplete/autocomplete.module'
 // import { TRANSLATION_PROVIDERS, TranslatePipe, TranslateService }   from '../translate';
 
 import { RoundPipe} from './round.pipe';
-import { HeaderComponent } from '../nav/header/header.component';
+// import { HeaderComponent } from '../nav/header/header.component';
 // import { newObjDialogComponent } from '../nav/newObjDialog/newObjDialog.component';
 
 // import { MaterialModule } from '@angular/material';

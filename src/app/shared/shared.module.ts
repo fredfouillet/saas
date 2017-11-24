@@ -12,7 +12,7 @@ import {PictureModule} from '../picture/picture.module';
 import { TranslateModule} from '../translate/translate.module';
 
 import { RoundPipe} from './round.pipe';
-import { HeaderComponent } from '../nav/header/header.component';
+// import { HeaderComponent } from '../nav/header/header.component';
 import { SortComponent } from './sort/sort.component';
 // import { newObjDialogComponent } from '../nav/newObjDialog/newObjDialog.component';
 import {DeleteDialogComponent} from '../nav/deleteDialog/deleteDialog.component'
@@ -41,7 +41,7 @@ import {SharedSmallModule} from './sharedSmall.module'
     // RoundPipe,
     // AutocompleteComponent,
     // TranslatePipe,
-    HeaderComponent,
+    // HeaderComponent,
     // newObjDialogComponent,
     // LoadingInAppComponent,
     // LoginInAppComponent,
@@ -55,7 +55,7 @@ import {SharedSmallModule} from './sharedSmall.module'
     CommonModule,
     FormsModule,
     // RoundPipe,
-    HeaderComponent,
+    // HeaderComponent,
     SortComponent,
     // newObjDialogComponent,
     // LoadingComponent,
