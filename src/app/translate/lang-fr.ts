@@ -77,7 +77,7 @@ export const LANG_FR_TRANS = {
     'Number': 'N°',
     'Other': 'Autre',
     'Identity': 'Détails',
-    'Details': 'Coordonnées',
+    'Details': 'Détails',
     'Calendar Color': 'Couleur du calendrier',
     'Surface': 'Surface',
     'Phone': 'Téléphone',

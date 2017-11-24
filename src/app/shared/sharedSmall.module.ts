@@ -34,6 +34,8 @@ import { MatPaginatorModule, MatPaginatorIntl} from '@angular/material';
 import { MatPaginatorIntlCro } from './matPaginatorIntlCroClass'
 import {MatInputModule} from '@angular/material';
 import {MatFormFieldModule} from '@angular/material';
+import {MatExpansionModule} from '@angular/material';
+import {MatIconModule} from '@angular/material';
 
 @NgModule({
   imports:      [
@@ -51,6 +53,8 @@ import {MatFormFieldModule} from '@angular/material';
     // MatInputModule,
     MatInputModule,
     MatFormFieldModule,
+    MatExpansionModule,
+    MatIconModule,
 
 
   ],
@@ -86,6 +90,8 @@ import {MatFormFieldModule} from '@angular/material';
     TranslateModule,
     MatInputModule,
     MatFormFieldModule,
+    MatExpansionModule,
+    MatIconModule,
     // CommentModule,
     // AutocompleteComponent,
   ],

@@ -105,7 +105,7 @@ router.put('/:id', function(req, res, next) {
 })
 
 router.post('/', function(req, res, next) {
-  console.log('aa')
+
   if (!shared.isCurentUserHasAccess(req.user, nameObject, 'write')) {
     return res.status(404).json({
       title: 'No rights',
@@ -119,10 +119,10 @@ router.post('/', function(req, res, next) {
   // }
 
 
-  req.body.projects.forEach(project => {
-    req.body.clients = project.clients
-    req.body.assignedTos = project.assignedTos
-  })
+  // req.body.projects.forEach(project => {
+  //   req.body.clients = project.clients
+  //   req.body.assignedTos = project.assignedTos
+  // })
 
   //console.log(req.body)
   //var UserCalendar = new UserCalendar(req.body)
