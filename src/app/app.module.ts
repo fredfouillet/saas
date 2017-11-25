@@ -29,7 +29,7 @@ import { CustomOption } from './toast-options';
 import { NavbarModule} from './nav/navbar/navbar.module';
 import { SidebarModule} from './nav/sidebar/sidebar.module';
 
-import { FooterComponent} from './nav/footer/footer.component';
+// import { FooterComponent} from './nav/footer/footer.component';
 
 // import { LoadingComponent} from './nav/loading/loading.component';
 
@@ -115,7 +115,7 @@ import { ErrorPageComponent} from './errorPage/errorPage.component';
 
 
 // import { AdminGuardService} from './admin/services/adminGuard';
-import { CompanieGuardService} from './companie/companieGuard.service';
+// import { CompanieGuardService} from './companie/companieGuard.service';
 import { PaiementGuardService} from './companie/paiement/paiementGuard.service';
 
 
@@ -136,7 +136,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
 @NgModule({
   declarations: [
     AppComponent,
-    FooterComponent,
+    // FooterComponent,
     // LoadingComponent,
     // NavbarComponent,
   //  CalendarComponent,
@@ -236,8 +236,8 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
 
   ],
   exports: [
-    UserModule,
-    MatSidenavModule
+    // UserModule,
+    // MatSidenavModule
    ],
   providers: [
     AuthGuardService,
@@ -254,7 +254,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   //  ProductService,
   //  PromotionService,
     // AdminGuardService,
-    CompanieGuardService,
+    // CompanieGuardService,
     PaiementGuardService,
     GlobalEventsManager,
     // TRANSLATION_PROVIDERS,
