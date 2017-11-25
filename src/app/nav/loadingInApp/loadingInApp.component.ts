@@ -1,6 +1,6 @@
 import {Component, OnInit, Input} from '@angular/core';
 
-import {Router} from '@angular/router';
+// import {Router} from '@angular/router';
 import { GlobalEventsManager } from '../../globalEventsManager';
 
 @Component({
@@ -15,7 +15,7 @@ export class LoadingInAppComponent implements OnInit {
   constructor(
     // private authService: AuthService,
     private globalEventsManager: GlobalEventsManager,
-    private router: Router,
+    // private router: Router,
   ) {
     this.globalEventsManager.isLoaddingEmitter.subscribe((mode) => {
         if (mode !== null) {

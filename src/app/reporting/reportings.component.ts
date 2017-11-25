@@ -1,13 +1,13 @@
 import { Component, OnInit, ViewChild, Input, Output, EventEmitter} from '@angular/core';
-import { AuthService} from '../auth/auth.service';
+// import { AuthService} from '../auth/auth.service';
 import { PaiementQuoteService} from '../paiementQuote/paiementQuote.service';
 import { QuoteService} from '../quote/quote.service';
 
 import { PaiementQuote} from '../paiementQuote/paiementQuote.model';
 import { ToastsManager} from 'ng2-toastr';
-import { MatDialog} from '@angular/material';
-import { Router} from '@angular/router';
-import { Location} from '@angular/common';
+// import { MatDialog} from '@angular/material';
+// import { Router} from '@angular/router';
+// import { Location} from '@angular/common';
 import { PaiementQuoteGraph, EmptyRow } from './reporting.model'
 import { BaseChartDirective } from 'ng2-charts/ng2-charts';
 import { Search } from '../shared/shared.model'
@@ -50,12 +50,12 @@ export class ReportingsComponent implements OnInit {
 
   constructor(
     private paiementQuoteService: PaiementQuoteService,
-    private authService: AuthService,
+    // private authService: AuthService,
   //  private modalService: NgbModal,
     private toastr: ToastsManager,
-    public dialog: MatDialog,
-    private router: Router,
-    private location: Location,
+    // public dialog: MatDialog,
+    // private router: Router,
+    // private location: Location,
     private quoteService: QuoteService,
   ) {}
 
@@ -145,10 +145,10 @@ export class ReportingsComponent implements OnInit {
 
 
 
-
-  goBack() {
-    this.location.back();
-  }
+  //
+  // goBack() {
+  //   this.location.back();
+  // }
 
   getQuotesGraph(search: Search, nameGraph: string, serieNumber: number, label: string, typeSum: string) {
     this.quoteService.getQuotesGraph(search)

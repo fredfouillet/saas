@@ -3,9 +3,9 @@ import { AuthService} from '../../auth/auth.service';
 import { PaiementQuoteService} from '../../paiementQuote/paiementQuote.service';
 import { PaiementQuote} from '../../paiementQuote/paiementQuote.model';
 import { ToastsManager} from 'ng2-toastr';
-import { MatDialog} from '@angular/material';
+// import { MatDialog} from '@angular/material';
 import { Router, ActivatedRoute, Params} from '@angular/router';
-import { Location} from '@angular/common';
+// import { Location} from '@angular/common';
 import { Search} from '../../shared/shared.model'
 import { GlobalEventsManager } from '../../globalEventsManager';
 
@@ -48,9 +48,9 @@ export class PaiementQuotesComponent implements OnInit {
     private authService: AuthService,
     private activatedRoute: ActivatedRoute,
     private toastr: ToastsManager,
-    public dialog: MatDialog,
+    // public dialog: MatDialog,
     private router: Router,
-    private location: Location,
+    // private location: Location,
     private globalEventsManager: GlobalEventsManager,
   ) {}
 
@@ -78,9 +78,9 @@ export class PaiementQuotesComponent implements OnInit {
   searchPaiementQuotes(){}
 
 
-  goBack() {
-    this.location.back();
-  }
+  // goBack() {
+  //   this.location.back();
+  // }
 
   searchInput() {
     this.getPaiementQuotes(this.paginationData.currentPage, this.search)
