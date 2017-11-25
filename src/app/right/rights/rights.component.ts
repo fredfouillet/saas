@@ -13,7 +13,7 @@ import { GlobalEventsManager } from '../../globalEventsManager';
 @Component({
   selector: 'app-right',
   templateUrl: './rights.component.html',
-  styleUrls: ['../../admin/admin.component.css'],
+  styleUrls: ['../right.component.css'],
 })
 export class RightsComponent implements OnInit {
   fetchedRights: Right[] = [];
