@@ -115,7 +115,6 @@ import { ErrorPageComponent} from './errorPage/errorPage.component';
 
 
 // import { AdminGuardService} from './admin/services/adminGuard';
-// import { CompanieGuardService} from './companie/companieGuard.service';
 import { PaiementGuardService} from './companie/paiement/paiementGuard.service';
 
 
@@ -254,7 +253,6 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   //  ProductService,
   //  PromotionService,
     // AdminGuardService,
-    // CompanieGuardService,
     PaiementGuardService,
     GlobalEventsManager,
     // TRANSLATION_PROVIDERS,

@@ -4,7 +4,6 @@ import {AuthService} from '../../auth/auth.service';
 import {Router} from '@angular/router';
 import { UserService} from '../../user/user.service';
 import { User} from '../../user/user.model';
-import { CompanieGuardService} from '../../companie/companieGuard.service'
 import { PaiementGuardService} from '../../companie/paiement/paiementGuard.service'
 import { ChangeDetectionStrategy} from '@angular/core';
 import {GlobalEventsManager} from '../../globalEventsManager';
@@ -31,7 +30,6 @@ export class SidebarComponent implements OnInit {
     // private adminService: AdminService,
     private userService: UserService,
     private router: Router,
-    // private companieGuardService: CompanieGuardService,
     // private paiementGuardService: PaiementGuardService,
   ) {
     this.globalEventsManager.isLoggedInEmitter.subscribe((mode) => {

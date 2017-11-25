@@ -4,9 +4,8 @@ import { AuthService } from '../../auth/auth.service';
 import { Router } from '@angular/router';
 import { UserService } from '../../user/user.service';
 import { User } from '../../user/user.model';
-import { CompanieGuardService } from '../../companie/companieGuard.service'
 import { PaiementGuardService } from '../../companie/paiement/paiementGuard.service'
-import { ChangeDetectionStrategy } from '@angular/core';
+// import { ChangeDetectionStrategy } from '@angular/core';
 import { GlobalEventsManager } from '../../globalEventsManager';
 // import { NotificationService } from '../../notification/notification.service';
 // import { Notification } from '../../notification/notification.model';
@@ -44,7 +43,6 @@ export class NavbarComponent implements OnInit {
     public mdDialog: MatDialog,
     // private userService: UserService,
     private router: Router,
-    // private companieGuardService: CompanieGuardService,
     // private paiementGuardService: PaiementGuardService,
   ) {
     this.globalEventsManager.showTopNavBarEmitter.subscribe((mode) => {

@@ -6,19 +6,19 @@ import { NgModule } from '@angular/core';
 
 import { ReportingsComponent} from './reportings.component';
 
-import { CompanieGuardService} from '../companie/companieGuard.service';
+
 import { PaiementGuardService} from '../companie/paiement/paiementGuard.service';
 import { AuthGuardService} from '../auth/authguard.service';
 
 
 
 export const routes: Routes = [
-  {path: '', component: ReportingsComponent, canActivate: [AuthGuardService, CompanieGuardService, PaiementGuardService]},
-  // {path: 'new', component: EditReportingComponent, canActivate: [AuthGuardService, CompanieGuardService, PaiementGuardService]},
-  // {path: 'new/:idQuote', component: EditReportingComponent, canActivate: [AuthGuardService, CompanieGuardService, PaiementGuardService]},
-  // // {path: 'new/:idClient/:idProject', component: EditReportingComponent, canActivate: [AuthGuardService, CompanieGuardService, PaiementGuardService]},
-  // {path: 'edit/:idReporting', component: EditReportingComponent, canActivate: [AuthGuardService, CompanieGuardService, PaiementGuardService]},
-  // // {path: ':id', component: ReportingDetailComponent, canActivate: [AuthGuardService, CompanieGuardService, PaiementGuardService]},
+  {path: '', component: ReportingsComponent, canActivate: [AuthGuardService, PaiementGuardService]},
+  // {path: 'new', component: EditReportingComponent, canActivate: [AuthGuardService, PaiementGuardService]},
+  // {path: 'new/:idQuote', component: EditReportingComponent, canActivate: [AuthGuardService, PaiementGuardService]},
+  // // {path: 'new/:idClient/:idProject', component: EditReportingComponent, canActivate: [AuthGuardService, PaiementGuardService]},
+  // {path: 'edit/:idReporting', component: EditReportingComponent, canActivate: [AuthGuardService, PaiementGuardService]},
+  // // {path: ':id', component: ReportingDetailComponent, canActivate: [AuthGuardService, PaiementGuardService]},
   // {path: 'public/:idReporting', component: EditReportingComponent},
 
 ];

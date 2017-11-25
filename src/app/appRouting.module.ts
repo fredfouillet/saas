@@ -8,7 +8,6 @@ import {ModuleWithProviders} from '@angular/core';
 // import { UserFormsUploadAndList} from './form/userFormsUploadAndList.component';
 
 
-import { CompanieGuardService} from './companie/companieGuard.service';
 import { PaiementGuardService} from './companie/paiement/paiementGuard.service';
 import { AuthGuardService} from './auth/authguard.service';
 
@@ -25,19 +24,19 @@ import { NgModule } from '@angular/core';
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   // {path: 'home', component: MainPageHomeComponent, canActivate: [AuthGuardService], pathMatch: 'full'},
-  // {path: 'comment', loadChildren: 'app/comment/comment.module#CommentModule', canActivate: [AuthGuardService, CompanieGuardService, PaiementGuardService]},
-  // {path: 'userCalendar', loadChildren: 'app/userCalendar/userCalendar.module#UserCalendarModule', canActivate: [AuthGuardService, CompanieGuardService, PaiementGuardService]},
+  // {path: 'comment', loadChildren: 'app/comment/comment.module#CommentModule', canActivate: [AuthGuardService, PaiementGuardService]},
+  // {path: 'userCalendar', loadChildren: 'app/userCalendar/userCalendar.module#UserCalendarModule', canActivate: [AuthGuardService, PaiementGuardService]},
   {path: 'companie', loadChildren: 'app/companie/companie.module#CompanieModule', canActivate: [AuthGuardService]},
-  // {path: 'right', loadChildren: 'app/right/right.module#RightModule', canActivate: [AuthGuardService, CompanieGuardService, PaiementGuardService]},
+  // {path: 'right', loadChildren: 'app/right/right.module#RightModule', canActivate: [AuthGuardService, PaiementGuardService]},
   {path: 'quote', loadChildren: 'app/quote/quote.module#QuoteModule'},
-  {path: 'paiementQuote', loadChildren: 'app/paiementQuote/paiementQuote.module#PaiementQuoteModule', canActivate: [AuthGuardService, CompanieGuardService, PaiementGuardService]},
-  {path: 'userCalendar', loadChildren: 'app/userCalendar/userCalendar.module#UserCalendarModule', canActivate: [AuthGuardService, CompanieGuardService, PaiementGuardService]},
-  {path: 'home', loadChildren: 'app/reporting/reporting.module#ReportingModule', canActivate: [AuthGuardService, CompanieGuardService, PaiementGuardService]},
-  {path: 'product', loadChildren: 'app/product/product.module#ProductModule', canActivate: [AuthGuardService, CompanieGuardService, PaiementGuardService]},
-  // {path: 'chat', loadChildren: 'app/chat/chat.module#ChatModule', canActivate: [AuthGuardService, CompanieGuardService, PaiementGuardService]},
-  // {path: 'project', loadChildren: 'app/project/project.module#ProjectModule', canActivate: [AuthGuardService, CompanieGuardService, PaiementGuardService]},
-  // {path: 'task', loadChildren: 'app/task/task.module#TaskModule', canActivate: [AuthGuardService, CompanieGuardService, PaiementGuardService]},
-  // {path: 'notification', loadChildren: 'app/notification/notification.module#NotificationModule', canActivate: [AuthGuardService, CompanieGuardService, PaiementGuardService]},
+  {path: 'paiementQuote', loadChildren: 'app/paiementQuote/paiementQuote.module#PaiementQuoteModule', canActivate: [AuthGuardService, PaiementGuardService]},
+  {path: 'userCalendar', loadChildren: 'app/userCalendar/userCalendar.module#UserCalendarModule', canActivate: [AuthGuardService, PaiementGuardService]},
+  {path: 'home', loadChildren: 'app/reporting/reporting.module#ReportingModule', canActivate: [AuthGuardService, PaiementGuardService]},
+  {path: 'product', loadChildren: 'app/product/product.module#ProductModule', canActivate: [AuthGuardService, PaiementGuardService]},
+  // {path: 'chat', loadChildren: 'app/chat/chat.module#ChatModule', canActivate: [AuthGuardService, PaiementGuardService]},
+  // {path: 'project', loadChildren: 'app/project/project.module#ProjectModule', canActivate: [AuthGuardService, PaiementGuardService]},
+  // {path: 'task', loadChildren: 'app/task/task.module#TaskModule', canActivate: [AuthGuardService, PaiementGuardService]},
+  // {path: 'notification', loadChildren: 'app/notification/notification.module#NotificationModule', canActivate: [AuthGuardService, PaiementGuardService]},
   {path: 'user', loadChildren: 'app/user/user.module#UserModule'},
 
   // {path: 'form', component: FormComponent, canActivate: [AuthGuardService]},
