@@ -14,7 +14,7 @@ import { GlobalEventsManager } from '../../globalEventsManager';
 // import { ListNewObjDialogComponent } from './newObj/dialog/listNewObjDialog.component'
 
 
-import { MatDialog } from '@angular/material';
+// import { MatDialog } from '@angular/material';
 
 
 
@@ -40,7 +40,7 @@ export class NavbarComponent implements OnInit {
     private authService: AuthService,
     // private adminService: AdminService,
     // private notificationService: NotificationService,
-    public mdDialog: MatDialog,
+    // public mdDialog: MatDialog,
     // private userService: UserService,
     private router: Router,
     // private paiementGuardService: PaiementGuardService,
