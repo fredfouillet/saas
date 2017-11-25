@@ -31,7 +31,7 @@ import { SidebarModule} from './nav/sidebar/sidebar.module';
 
 import { FooterComponent} from './nav/footer/footer.component';
 
-import { LoadingComponent} from './nav/loading/loading.component';
+// import { LoadingComponent} from './nav/loading/loading.component';
 
 // import { AutocompleteComponent } from './autocomplete/autocomplete.component'
 
@@ -107,19 +107,19 @@ import { ErrorPageComponent} from './errorPage/errorPage.component';
 
 
 //import { AdminUsersComponent} from './admin/user/adminUsers.component';
-import { AdminService} from './admin/services/admin.service';
+// import { AdminService} from './admin/services/admin.service';
 
 
 // import { EditOptionsComponentDialog} from './form/modalLibrary/modalLibrary.component';
 //
 
 
-import { AdminGuardService} from './admin/services/adminGuard';
+// import { AdminGuardService} from './admin/services/adminGuard';
 import { CompanieGuardService} from './companie/companieGuard.service';
 import { PaiementGuardService} from './companie/paiement/paiementGuard.service';
 
 
-import { AdminComponent} from './admin/admin.component';
+// import { AdminComponent} from './admin/admin.component';
 
 
 //import {CalendarComponent} from "angular2-fullcalendar/src/calendar/calendar";
@@ -137,7 +137,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   declarations: [
     AppComponent,
     FooterComponent,
-    LoadingComponent,
+    // LoadingComponent,
     // NavbarComponent,
   //  CalendarComponent,
 
@@ -201,7 +201,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   //  AdminUsersComponent,
 
     // EditOptionsComponentDialog,
-    AdminComponent,
+    // AdminComponent,
 
 
   ],
@@ -249,11 +249,11 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     // MainPageHomeService,
   //  PressService,
     // FormService,
-    AdminService,
+    // AdminService,
   //  UserService,
   //  ProductService,
   //  PromotionService,
-    AdminGuardService,
+    // AdminGuardService,
     CompanieGuardService,
     PaiementGuardService,
     GlobalEventsManager,

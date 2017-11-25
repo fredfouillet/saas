@@ -137,7 +137,7 @@ export class UserComponent implements OnInit {
         this.getUser(params['id'])
 
         this.search.userId = params['id']
-        console.log(this.search)
+        // console.log(this.search)
       } else {
         if (params['isExternalUser'] === 'false') {
           this.fetchedUser.isExternalUser = false
@@ -202,7 +202,7 @@ export class UserComponent implements OnInit {
   //   this.fetchedUser.salesMan = users
   // }
   getPicture(result) {
-    console.log(result)
+    // console.log(result)
   }
 
   // openDialog(positionImage: string) {

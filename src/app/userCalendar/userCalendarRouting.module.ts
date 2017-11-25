@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { UserCalendarComponent} from './single/userCalendar.component';
 
-import { AdminGuardService} from '../admin/services/adminGuard';
+// import { AdminGuardService} from '../admin/services/adminGuard';
 
 import { UserCalendarsComponent} from './list/userCalendars.component';
 

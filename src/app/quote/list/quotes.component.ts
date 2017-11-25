@@ -14,7 +14,7 @@ import { Search, PaginationData } from '../../shared/shared.model';
 @Component({
   selector: 'app-quotes',
   templateUrl: './quotes.component.html',
-  styleUrls: ['../../admin/admin.component.css'],
+  styleUrls: ['../quote.component.css'],
 })
 export class QuotesComponent implements OnInit {
   @Input() userId = '';

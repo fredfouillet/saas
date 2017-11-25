@@ -2,7 +2,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 
 
-import { AdminGuardService} from '../admin/services/adminGuard';
+// import { AdminGuardService} from '../admin/services/adminGuard';
 
 import { ReportingsComponent} from './reportings.component';
 

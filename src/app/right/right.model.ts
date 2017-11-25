@@ -14,7 +14,6 @@ export class Permission {
   namePermission: string = '';
   access: Access[] = []
 }
-
 export class Access {
   typeAccess: string = '';
 }

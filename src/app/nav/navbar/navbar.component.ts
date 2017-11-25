@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AuthService } from '../../auth/auth.service';
-import { AdminService } from '../../admin/services/admin.service';
+// import { AdminService } from '../../admin/services/admin.service';
 import { Router } from '@angular/router';
 import { UserService } from '../../user/user.service';
 import { User } from '../../user/user.model';
@@ -39,7 +39,7 @@ export class NavbarComponent implements OnInit {
   constructor(
     private globalEventsManager: GlobalEventsManager,
     private authService: AuthService,
-    private adminService: AdminService,
+    // private adminService: AdminService,
     // private notificationService: NotificationService,
     public mdDialog: MatDialog,
     // private userService: UserService,
@@ -223,7 +223,5 @@ export class NavbarComponent implements OnInit {
   //   //this.sidenav.open()
   //   this.sidenav.toggle()
   // }
-  isAdmin() {
-    return this.adminService.isAdmin();
-  }
+
 }

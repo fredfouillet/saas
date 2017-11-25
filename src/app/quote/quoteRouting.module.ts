@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 // import { QuoteDetailComponent} from './single/quoteDetail.component';
 import { QuoteComponent} from './single/quote.component';
 
-import { AdminGuardService} from '../admin/services/adminGuard';
+// import { AdminGuardService} from '../admin/services/adminGuard';
 
 import { QuotesComponent} from './list/quotes.component';
 

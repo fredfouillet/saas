@@ -15,7 +15,7 @@ import { GlobalEventsManager } from '../../globalEventsManager';
 @Component({
   selector: 'app-paiementQuotes',
   templateUrl: './paiementQuotes.component.html',
-  styleUrls: ['../../admin/admin.component.css'],
+  styleUrls: ['../paiementQuote.component.css'],
 })
 export class PaiementQuotesComponent implements OnInit {
   // @Input() userId = '';

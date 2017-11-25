@@ -80,7 +80,7 @@ export class UserFormsComponent implements OnInit, OnChanges {
     return false
   }
   onSelectRow(form: Form){
-    console.log(form)
+    // console.log(form)
     // if(this.isDialog) {
       this.onPassForm.emit(form);
     // } else {

@@ -13,7 +13,7 @@ import { GlobalEventsManager } from '../../globalEventsManager';
 @Component({
   selector: 'app-companie',
   templateUrl: './companies.component.html',
-  styleUrls: ['../../admin/admin.component.css'],
+  styleUrls: ['../companie.component.css'],
 })
 export class CompaniesComponent implements OnInit {
   fetchedCompanies: Companie[] = [];

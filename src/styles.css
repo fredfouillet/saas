@@ -205,6 +205,9 @@ textarea::placeholder {
   height: 95%;
   /*height: 100rem;*/
 }
+.htmlClass {
+  height: 95%;
+}
 
 .bg-goo {
 

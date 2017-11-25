@@ -2,7 +2,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {ModuleWithProviders} from '@angular/core';
 //import {USER_ROUTES} from './user/user.routes';
 
-import {ADMIN_ROUTES} from './admin/admin.routes';
+// import {ADMIN_ROUTES} from './admin/admin.routes';
 // import {FormComponent} from './form/form.component';
 // import {UserFormsComponent} from './form/userForms.component';
 // import { UserFormsUploadAndList} from './form/userFormsUploadAndList.component';
@@ -14,9 +14,9 @@ import { AuthGuardService} from './auth/authguard.service';
 
 // import { MainPageHomeComponent} from './mainPageHome/mainPageHome.component';
 
-import {AdminComponent} from './admin/admin.component';
+// import {AdminComponent} from './admin/admin.component';
 import {ErrorPageComponent} from './errorPage/errorPage.component';
-import {AdminGuardService} from './admin/services/adminGuard';
+// import {AdminGuardService} from './admin/services/adminGuard';
 
 import { NgModule } from '@angular/core';
 
@@ -43,7 +43,7 @@ export const routes: Routes = [
   // {path: 'form', component: FormComponent, canActivate: [AuthGuardService]},
   // {path: 'userForms', component: UserFormsUploadAndList, canActivate: [AuthGuardService]},
 
-  {path: 'admin', component: AdminComponent, children: ADMIN_ROUTES},
+  // {path: 'admin', component: AdminComponent, children: ADMIN_ROUTES},
   {path: '404', component: ErrorPageComponent},
   {path: '**', redirectTo: '404'}
 ];

@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 // import { CompanieDetailComponent} from './single/companieDetail.component';
 import { CompanieComponent} from './single/companie.component';
 // import { EditAddUserToCompanieComponent} from './addUser/editAddUserToCompanie.component';
-import { AdminGuardService} from '../admin/services/adminGuard';
+// import { AdminGuardService} from '../admin/services/adminGuard';
 // import { CompanieDetailUsersComponent} from './companieDetailUsers.component';
 import { CompaniesComponent} from './companies/companies.component';
 // import { AddUserByCompanieComponent} from './addUser/addUserByCompanie.component';

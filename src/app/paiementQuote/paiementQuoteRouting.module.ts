@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { EditPaiementQuoteComponent} from './single/editPaiementQuote.component';
 
-import { AdminGuardService} from '../admin/services/adminGuard';
+// import { AdminGuardService} from '../admin/services/adminGuard';
 
 import { PaiementQuotesComponent} from './paiementQuotes/paiementQuotes.component';
 

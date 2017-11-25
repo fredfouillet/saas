@@ -1,6 +1,6 @@
 import {Component, OnInit, Input, ViewChild} from '@angular/core';
 import {AuthService} from '../../auth/auth.service';
-import {AdminService} from '../../admin/services/admin.service';
+// import {AdminService} from '../../admin/services/admin.service';
 import {Router} from '@angular/router';
 import { UserService} from '../../user/user.service';
 import { User} from '../../user/user.model';
@@ -28,7 +28,7 @@ export class SidebarComponent implements OnInit {
   constructor(
     private globalEventsManager: GlobalEventsManager,
     private authService: AuthService,
-    private adminService: AdminService,
+    // private adminService: AdminService,
     private userService: UserService,
     private router: Router,
     // private companieGuardService: CompanieGuardService,

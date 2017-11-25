@@ -3,11 +3,10 @@ import { NgModule } from '@angular/core';
 import { RightComponent} from './single/right.component';
 
 // import { EditAddUserToRightComponent} from './addUser/editAddUserToRight.component';
-import { AdminGuardService} from '../admin/services/adminGuard';
+// import { AdminGuardService} from '../admin/services/adminGuard';
 // import { RightDetailUsersComponent} from './rightDetailUsers.component';
 import { RightsComponent} from './rights/rights.component';
 // import { AddUserByRightComponent} from './addUser/addUserByRight.component';
-
 
 
 export const routes: Routes = [
@@ -20,7 +19,6 @@ export const routes: Routes = [
   {path: ':id', component: RightComponent},
   // {path: ':id/users', component: RightDetailUsersComponent},
 ];
-
 
 
 @NgModule({
