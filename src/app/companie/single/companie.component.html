@@ -28,7 +28,7 @@
       </mat-expansion-panel-header>
       <h4>PLan</h4>
       <b>{{fetchedCompanie.planDetail.plan}}</b> Ok until:{{fetchedCompanie.planDetail.current_period_end}}
-      <app-paiement></app-paiement>
+      <app-paiement *ngIf="step === 1"></app-paiement>
     </mat-expansion-panel>
     <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle="true">
       <mat-expansion-panel-header>
