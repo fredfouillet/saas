@@ -20,7 +20,6 @@
         <mat-form-field>
           <input matInput type="text" formControlName="title" [(ngModel)]="fetchedPaiementQuote.title" placeholder="{{'Title' | translate}}">
         </mat-form-field>
-
         <app-autocomplete class="mb8 bn" [canDelete]=false [typeAutocomplete]="'quote'" [search]="search" [canDelete]="true" [title]="'Invoice'" [singleChoice]="true" [arrayContent]="fetchedPaiementQuote.quotes" (getResultAutocomplete)="selectQuote($event[0])">
         </app-autocomplete>
         <!-- <div *ngFor="let quote of fetchedPaiementQuote.quotes">

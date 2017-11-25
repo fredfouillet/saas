@@ -119,7 +119,7 @@
           <mat-icon>date_range</mat-icon>
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <app-paiementQuotes (getPaiementQuotesCross)="getPaiementQuotes($event)" [search]="search">
+      <app-paiementQuotes (getPaiementQuotesCross)="getPaiementQuotes($event)" [search]="{userId: search.userId, isExpense:search.isExpense, quoteId:fetchedQuote._id}">
       </app-paiementQuotes>
       <mat-card>
         {{'Total Paiement' | translate}} = {{totalPaiementAmount}}
