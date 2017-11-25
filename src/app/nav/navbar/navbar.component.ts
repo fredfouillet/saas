@@ -176,25 +176,25 @@ export class NavbarComponent implements OnInit {
   // }
 
 
-  getUser(id: string) {
+  // getUser(id: string) {
+  //
+  //   this.fetchedUser = this.authService.getCurrentUser()
+  //   console.log(this.fetchedUser)
+  //   // let this2 = this
+  //   // setTimeout(function(){
+  //   //     this2.fetchedUser = this2.authService.getCurrentUser()
+  //   // }, 2000);
+  //
+  //   // this.userService.getUser(id)
+  //   //   .subscribe(
+  //   //     res => { this.fetchedUser = res },
+  //   //     error => { console.log(error) }
+  //   //   )
+  // }
 
-    this.fetchedUser = this.authService.getCurrentUser()
-    console.log(this.fetchedUser)
-    // let this2 = this
-    // setTimeout(function(){
-    //     this2.fetchedUser = this2.authService.getCurrentUser()
-    // }, 2000);
-
-    // this.userService.getUser(id)
-    //   .subscribe(
-    //     res => { this.fetchedUser = res },
-    //     error => { console.log(error) }
-    //   )
-  }
-
-  isCurrentUserIsInSubPeriod() {
-    return this.authService.isCurrentUserIsInSubPeriod()
-  }
+  // isCurrentUserIsInSubPeriod() {
+  //   return this.authService.isCurrentUserIsInSubPeriod()
+  // }
   // showObjHTML(nameObject, typeAccess) {
   //   return this.authService.showObjHTML(nameObject, typeAccess)
   // }
@@ -210,15 +210,15 @@ export class NavbarComponent implements OnInit {
 
   // this calls the logout function from our authentication service, it's activated when user clicks logout in front end.
   // It's called by the (click)='logout()' when the user presses the button
-  logout() {
-
-    this.authService.logout();
-    let this2 = this
-    setTimeout(function() {
-      this2.router.navigate(['/user/login']);
-    }, 150);
-
-  }
+  // logout() {
+  //
+  //   this.authService.logout();
+  //   let this2 = this
+  //   setTimeout(function() {
+  //     this2.router.navigate(['/user/login']);
+  //   }, 150);
+  //
+  // }
   // sideNavOpen(){
   //   //this.sidenav.open()
   //   this.sidenav.toggle()

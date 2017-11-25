@@ -64,7 +64,7 @@ export class SidebarComponent implements OnInit {
       //let userId = localStorage.getItem('userId');
 
       this.fetchedUser = this.authService.getCurrentUser()
-      console.log(this.fetchedUser)
+      // console.log(this.fetchedUser)
     }
   }
   redirect(typeObj) {
@@ -88,26 +88,26 @@ export class SidebarComponent implements OnInit {
   // }
 
 
-  getUser(id: string) {
+  // getUser(id: string) {
+  //
+  //   this.fetchedUser = this.authService.getCurrentUser()
+  //
+  //   // console.log(this.fetchedUser)
+  //   // let this2 = this
+  //   // setTimeout(function(){
+  //   //     this2.fetchedUser = this2.authService.getCurrentUser()
+  //   // }, 2000);
+  //
+  //   // this.userService.getUser(id)
+  //   //   .subscribe(
+  //   //     res => { this.fetchedUser = res },
+  //   //     error => { console.log(error) }
+  //   //   )
+  // }
 
-    this.fetchedUser = this.authService.getCurrentUser()
-
-    // console.log(this.fetchedUser)
-    // let this2 = this
-    // setTimeout(function(){
-    //     this2.fetchedUser = this2.authService.getCurrentUser()
-    // }, 2000);
-
-    // this.userService.getUser(id)
-    //   .subscribe(
-    //     res => { this.fetchedUser = res },
-    //     error => { console.log(error) }
-    //   )
-  }
-
-  isCurrentUserIsInSubPeriod() {
-    return this.authService.isCurrentUserIsInSubPeriod()
-  }
+  // isCurrentUserIsInSubPeriod() {
+  //   return this.authService.isCurrentUserIsInSubPeriod()
+  // }
   // showObjHTML(nameObject, typeAccess) {
   //   return this.authService.showObjHTML(nameObject, typeAccess)
   // }
@@ -135,7 +135,7 @@ export class SidebarComponent implements OnInit {
   //   //this.sidenav.open()
   //   this.sidenav.toggle()
   // }
-  isAdmin() {
-    return this.adminService.isAdmin();
-  }
+  // isAdmin() {
+  //   return this.adminService.isAdmin();
+  // }
 }

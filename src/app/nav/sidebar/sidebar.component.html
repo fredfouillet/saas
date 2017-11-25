@@ -86,11 +86,7 @@
     </div>
 
 
-    <div *ngIf="
-      authService.showObjHTML('companie', 'read') ||
-      authService.showObjHTML('right', 'read') ||
-      authService.showObjHTML('user', 'read')
-      " class="card noborder">
+    <div class="card noborder">
       <div class="" role="tab" id="headingfour">
         <a data-toggle="collapse" class="nav-link" data-parent="#accordion" href="#collapsefour" aria-expanded="true" aria-controls="collapsefour">
             <span class="fa fa10 fa-cog" aria-hidden="true"></span> {{'Settings'|translate}}
@@ -113,6 +109,16 @@
               <tr *ngIf="authService.showObjHTML('user', 'read')">
                 <td class="nav-item subItem">
                   <a class="nav-link" [routerLink]="['/user/list/false']" routerLinkActive="active">{{'Team'|translate}}</a>
+                </td>
+              </tr>
+              <tr>
+                <td class="nav-item subItem">
+                  <a class="nav-link" [routerLink]="['/user/' + fetchedUser._id]" routerLinkActive="active">{{'My profile'|translate}}</a>
+                </td>
+              </tr>
+              <tr>
+                <td class="nav-item subItem">
+                  <a class="nav-link" (click)="logout()">{{'Logout'|translate}}</a>
                 </td>
               </tr>
             </table>
