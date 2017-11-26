@@ -26,8 +26,6 @@ export class QuoteDialogComponent {
     this.dialogRef.close()
   }
   saved(data) {
-    console.log(data)
-    // this.dialogRef.close(data)
   }
 
 }

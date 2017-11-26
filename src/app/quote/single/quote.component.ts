@@ -1,28 +1,28 @@
 import { Component, OnInit, ViewChild, Input, Output, EventEmitter } from '@angular/core';
 import { AuthService } from '../../auth/auth.service';
 import { QuoteService } from '../quote.service';
-import { TemplateQuoteService } from '../templateQuote.service';
+// import { TemplateQuoteService } from '../templateQuote.service';
 
-import { DragulaService } from 'ng2-dragula';
-import { ProductService } from '../../product/product.service';
+// import { DragulaService } from 'ng2-dragula';
+// import { ProductService } from '../../product/product.service';
 // import { ProjectService} from '../../project/project.service';
 
-import { Quote, DevisDetail, BucketProduct, StatusQuotes, StatusQuotesInvoice, PriceQuoteTaxe, ModelVATs } from '../quote.model';
-import { TemplateQuote } from '../templateQuote.model';
+import { Quote } from '../quote.model';
+// import { TemplateQuote } from '../templateQuote.model';
 
-import { ToastsManager } from 'ng2-toastr';
-import { MatDialog } from '@angular/material';
+// import { ToastsManager } from 'ng2-toastr';
+// import { MatDialog } from '@angular/material';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { Location } from '@angular/common';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UserService } from '../../user/user.service';
+// import { Location } from '@angular/common';
+import { FormBuilder, Validators } from '@angular/forms';
+// import { UserService } from '../../user/user.service';
 // import { DeleteDialog } from '../../deleteDialog/deleteDialog.component';
-import { User } from '../../user/user.model';
-import { Product } from '../../product/product.model';
+// import { User } from '../../user/user.model';
+// import { Product } from '../../product/product.model';
 // import { Project } from '../../project/project.model';
-import { PaiementQuote } from '../../paiementQuote/paiementQuote.model';
+// import { PaiementQuote } from '../../paiementQuote/paiementQuote.model';
 // import { PaiementQuoteDialogComponent } from '../paiementQuote/single/dialog/paiementQuoteDialog.component';
-import { ActionButtonsComponent } from './actionButtons/actionButtons.component'
+import { ActionButtonsComponent } from './actionButtons/actionButtons.component';
 
 import { TranslateService } from '../../translate/translate.service';
 // declare let jsPDF;
@@ -30,7 +30,7 @@ import { TranslateService } from '../../translate/translate.service';
 // import { SignaturePad } from '../../angular2-signaturepad/signature-pad';
 
 // import { PaiementQuotesComponent } from '../../paiementQuote/paiementQuotes/paiementQuotes.component';
-import { Search } from '../../shared/shared.model'
+import { Search } from '../../shared/shared.model';
 
 @Component({
   selector: 'app-quote',
@@ -51,15 +51,15 @@ export class QuoteComponent implements OnInit {
   fetchedQuote: Quote = new Quote()
   // autocompleteUser: string = '';
   // autocompleteProject: string = '';
-  fetchedProducts: Product[] = []
+  // fetchedProducts: Product[] = []
 
   // imgLogoUrl: string = './assets/images/profile-placeholder.jpg'
   // imgSignatureBase64Temp = ''
-  fetchedPaiementQuotes: PaiementQuote[] = []
-  statusQuotes = StatusQuotes
-  statusQuotesInvoice = StatusQuotesInvoice
-  totalPaiementAmount: number = 0
-  myForm: FormGroup;
+  // fetchedPaiementQuotes: PaiementQuote[] = []
+  // statusQuotes = StatusQuotes
+  // statusQuotesInvoice = StatusQuotesInvoice
+  // totalPaiementAmount: number = 0
+  // myForm: FormGroup;
 
 
   // private signaturePadOptions = { // passed through to szimek/signature_pad constructor
@@ -104,8 +104,8 @@ export class QuoteComponent implements OnInit {
     // private userService: UserService,
     // private productService: ProductService,
     //    private modalService: NgbModal,
-    private toastr: ToastsManager,
-    public dialog: MatDialog,
+    // private toastr: ToastsManager,
+    // public dialog: MatDialog,
     private activatedRoute: ActivatedRoute,
     private router: Router,
     // private location: Location,
@@ -133,9 +133,9 @@ export class QuoteComponent implements OnInit {
   // ngOnDestroy() {
   //   // this.dragulaService.destroy('third-bag');
   // }
-  changeStatutsQuote(statusQuoteSelect) {
-    console.log(statusQuoteSelect)
-  }
+  // changeStatutsQuote(statusQuoteSelect) {
+  //   console.log(statusQuoteSelect)
+  // }
   closeDialog() {
     this.close.emit()
   }
@@ -149,40 +149,29 @@ export class QuoteComponent implements OnInit {
       error => { console.log(error) }
       )
   }
-  // onEditorBlured(quill, i, j) {
-  //   this.changeQuillEditMode(i, j)
-  // }
+  getQuote(id: string) {
+    let this2 = this
+    return new Promise(function(resolve, reject) {
+      this2.quoteService.getQuote(id)
+        .subscribe(
+        res => {
+          this2.fetchedQuote = res
+          // this2.fetchedQuote.detail.dateQuote.issueDateString = this2.authService.isoDateToHtmlDate(this2.fetchedQuote.detail.dateQuote.issueDate)
+          // this2.fetchedQuote.detail.dateQuote.expiryDateString = this2.authService.isoDateToHtmlDate(this2.fetchedQuote.detail.dateQuote.expiryDate)
+          // this2.fetchedQuote.detail.dateQuote.dateInvoicePaidString = this2.authService.isoDateToHtmlDate(this2.fetchedQuote.detail.dateQuote.dateInvoicePaid)
 
-  // onEditorFocused(quill) {
-  // }
+          // this.fetchedQuote.projects.forEach(project => { this.search.projectId = project._id })
+          this2.fetchedQuote.clients.forEach(user => { this2.search.userId = user._id })
+          resolve(this2.fetchedQuote)
+        },
+        error => {
+          reject(error)
+          console.log(error)
+        }
+        )
+    })
+  }
 
-  // onEditorCreated(quill) {
-  // }
-
-  // onContentChanged({ quill, html, text }) {
-  // }
-  // changeQuillEditMode(i: number, j: number) {
-  //   this.fetchedQuote.devisDetails[i].bucketProducts[j].isEditMode = !this.fetchedQuote.devisDetails[i].bucketProducts[j].isEditMode
-  // }
-
-  //
-  // drawingUpdated(result) {
-  //   this.fetchedQuote.drawing.base64 = result
-  //   this.actionButtonsComponent.save()
-  // }
-
-  // clearedDrawing() {
-  //   this.fetchedQuote.drawingSignature.isSigned = false
-  //   this.actionButtonsComponent.save()
-  // }
-  // drawingSignatureUpdated(result) {
-  //
-  //   this.fetchedQuote.drawingSignature.isSigned = true
-  //
-  //
-  //   this.fetchedQuote.drawingSignature.base64 = result
-  //   this.actionButtonsComponent.save()
-  // }
 
   ngOnInit() {
     // this.statusQuotes.forEach((statusQuote,i)=>{this.statusQuotes[i].label=this.translateService.instant(statusQuote.label)})
@@ -208,16 +197,16 @@ export class QuoteComponent implements OnInit {
     //   ]
     // };
 
-
-    this.myForm = this._fb.group({
-      name: [''],
-      quoteNumber: [''],
-      statusQuote: [''],
-      issueDate: [''],
-      currency: [''],
-      quoteRef: [''],
-
-    })
+    //
+    // this.myForm = this._fb.group({
+    //   name: [''],
+    //   quoteNumber: [''],
+    //   statusQuote: [''],
+    //   issueDate: [''],
+    //   currency: [''],
+    //   quoteRef: [''],
+    //
+    // })
     //
     // this.fetchedQuote.detail.dateQuote.issueDateString = this.authService.isoDateToHtmlDate(this.fetchedQuote.detail.dateQuote.issueDate)
     // this.fetchedQuote.detail.dateQuote.expiryDateString = this.authService.isoDateToHtmlDate(this.fetchedQuote.detail.dateQuote.expiryDate)
@@ -261,6 +250,41 @@ export class QuoteComponent implements OnInit {
     //   this.getProject(params['idProject'])
 
   }
+
+  // onEditorBlured(quill, i, j) {
+  //   this.changeQuillEditMode(i, j)
+  // }
+
+  // onEditorFocused(quill) {
+  // }
+
+  // onEditorCreated(quill) {
+  // }
+
+  // onContentChanged({ quill, html, text }) {
+  // }
+  // changeQuillEditMode(i: number, j: number) {
+  //   this.fetchedQuote.devisDetails[i].bucketProducts[j].isEditMode = !this.fetchedQuote.devisDetails[i].bucketProducts[j].isEditMode
+  // }
+
+  //
+  // drawingUpdated(result) {
+  //   this.fetchedQuote.drawing.base64 = result
+  //   this.actionButtonsComponent.save()
+  // }
+
+  // clearedDrawing() {
+  //   this.fetchedQuote.drawingSignature.isSigned = false
+  //   this.actionButtonsComponent.save()
+  // }
+  // drawingSignatureUpdated(result) {
+  //
+  //   this.fetchedQuote.drawingSignature.isSigned = true
+  //
+  //
+  //   this.fetchedQuote.drawingSignature.base64 = result
+  //   this.actionButtonsComponent.save()
+  // }
   // onChange(event) {
   //   console.log(event)
   // }
@@ -276,13 +300,13 @@ export class QuoteComponent implements OnInit {
 
 
 
-  quoteDetailsUpdated(result) {
-    // console.log(result)
-    this.fetchedQuote = result
-  }
-  togglePaiements() {
-    this.showPaiements = !this.showPaiements
-  }
+  // quoteDetailsUpdated(result) {
+  //   // console.log(result)
+  //   this.fetchedQuote = result
+  // }
+  // togglePaiements() {
+  //   this.showPaiements = !this.showPaiements
+  // }
 
   // ngAfterViewInit() {
   //   if(this.fetchedQuote._id) {
@@ -301,28 +325,28 @@ export class QuoteComponent implements OnInit {
   //   this.fetchedQuote.isSigned = false
   //   this.updateSignature()
   // }
-  validateSignature() {
-    // if(this.imgSignatureBase64Temp) {
-    //   this.fetchedQuote.signature.base64 = this.imgSignatureBase64Temp
-    //   this.fetchedQuote.isSigned = true
-    //   this.fetchedQuote.signature.dateSignature = new Date()
-    //   this.fetchedQuote.signature.users = [this.authService.getCurrentUser()]
-    //   this.fetchedQuote.statusQuote = 1
-    //   this.updateSignature()
-    // }
-
-  }
-  drawComplete() {
-    // will be notified of szimek/signature_pad's onEnd event
-    // console.log(this.signaturePad.toDataURL());
-    // this.imgSignatureBase64Temp = this.signaturePad.toDataURL()
-
-  }
-
-  drawStart() {
-    // will be notified of szimek/signature_pad's onBegin event
-    // console.log('begin drawing');
-  }
+  // validateSignature() {
+  //   // if(this.imgSignatureBase64Temp) {
+  //   //   this.fetchedQuote.signature.base64 = this.imgSignatureBase64Temp
+  //   //   this.fetchedQuote.isSigned = true
+  //   //   this.fetchedQuote.signature.dateSignature = new Date()
+  //   //   this.fetchedQuote.signature.users = [this.authService.getCurrentUser()]
+  //   //   this.fetchedQuote.statusQuote = 1
+  //   //   this.updateSignature()
+  //   // }
+  //
+  // }
+  // drawComplete() {
+  //   // will be notified of szimek/signature_pad's onEnd event
+  //   // console.log(this.signaturePad.toDataURL());
+  //   // this.imgSignatureBase64Temp = this.signaturePad.toDataURL()
+  //
+  // }
+  //
+  // drawStart() {
+  //   // will be notified of szimek/signature_pad's onBegin event
+  //   // console.log('begin drawing');
+  // }
 
   // addRow(typeRow) {
   //   if (typeRow) {
@@ -398,33 +422,33 @@ export class QuoteComponent implements OnInit {
   //
   // }
 
+  //
+  // downloadPDF() {
+  //   // this.loading = true
+  //   this.quoteService.downloadPDF(this.fetchedQuote._id)
+  //     .subscribe(
+  //     res => {
+  //       console.log(res)
+  //       window.open('/uploads/pdf/' + res);
+  //       //  this.loading = false
+  //     },
+  //     error => { console.log(error) }
+  //     )
+  // }
 
-  downloadPDF() {
-    // this.loading = true
-    this.quoteService.downloadPDF(this.fetchedQuote._id)
-      .subscribe(
-      res => {
-        console.log(res)
-        window.open('/uploads/pdf/' + res);
-        //  this.loading = false
-      },
-      error => { console.log(error) }
-      )
-  }
-
-  sendQuoteByEmailToClient() {
-    // this.loading = true
-    this.quoteService.sendQuoteByEmailToClient(this.fetchedQuote._id)
-      .subscribe(
-      res => {
-        // console.log(res)
-        this.toastr.success('Great!', 'Mail envoyeé!')
-        //  window.open( '/uploads/pdf/' + res );
-        //  this.loading = false
-      },
-      error => { console.log(error) }
-      )
-  }
+  // sendQuoteByEmailToClient() {
+  //   // this.loading = true
+  //   this.quoteService.sendQuoteByEmailToClient(this.fetchedQuote._id)
+  //     .subscribe(
+  //     res => {
+  //       // console.log(res)
+  //       this.toastr.success('Great!', 'Mail envoyeé!')
+  //       //  window.open( '/uploads/pdf/' + res );
+  //       //  this.loading = false
+  //     },
+  //     error => { console.log(error) }
+  //     )
+  // }
 
   // saveAsInvoice() {
   //   this.quoteService.saveAsInvoice(this.fetchedQuote)
@@ -435,9 +459,9 @@ export class QuoteComponent implements OnInit {
   //     }, error => { console.log(error) } )
   // }
 
-  goToInvoice(id: string) {
-    this.router.navigate(['quote/' + id]);
-  }
+  // goToInvoice(id: string) {
+  //   this.router.navigate(['quote/' + id]);
+  // }
   // downloadPDF2() {
   //   let this2 = this
   //   let base64image = this.getBase64Image(this.imgLogoUrl).then(function(dataImg: any) {
@@ -544,10 +568,10 @@ export class QuoteComponent implements OnInit {
 
 
   // Autocomplete User
-  selectUser(user: User) {
-    this.fetchedQuote.historyClients = this.fetchedQuote.clients
-    // this.fetchedQuote.clients = [user]
-  }
+  // selectUser(user: User) {
+  //   this.fetchedQuote.historyClients = this.fetchedQuote.clients
+  //   // this.fetchedQuote.clients = [user]
+  // }
 
 
 
@@ -578,41 +602,41 @@ export class QuoteComponent implements OnInit {
   //     )
   // }
 
-
-  save() {
-    // console.log('s')
-    // // this.fetchedQuote.historyClients = this.fetchedQuote.clients
-    // this.fetchedQuote.detail.dateQuote.issueDate = this.authService.HTMLDatetoIsoDate(this.fetchedQuote.detail.dateQuote.issueDateString)
-    // this.fetchedQuote.detail.dateQuote.expiryDate = this.authService.HTMLDatetoIsoDate(this.fetchedQuote.detail.dateQuote.expiryDateString)
-    // this.fetchedQuote.detail.dateQuote.dateInvoicePaid = this.authService.HTMLDatetoIsoDate(this.fetchedQuote.detail.dateQuote.dateInvoicePaidString)
-    //
-    // if (this.fetchedQuote._id) {
-    //   this.quoteService.updateQuote(this.fetchedQuote)
-    //     .subscribe(
-    //     res => {
-    //       this.toastr.success('Great!', res.message)
-    //       this.getQuote(res.obj._id)
-    //       // this.saved.emit(res)
-    //       //this.router.navigate(['quote/edit/' + this.fetchedQuote._id])
-    //     },
-    //     error => {
-    //       this.toastr.error('error!', error)
-    //     }
-    //     )
-    // } else {
-    //   this.quoteService.saveQuote(this.fetchedQuote)
-    //     .subscribe(
-    //     res => {
-    //       console.log('s')
-    //       this.toastr.success('Great!', res.message)
-    //       this.getQuote(res.obj._id)
-    //       // this.saved.emit(res)
-    //     },
-    //     error => { console.log(error) }
-    //     )
-    // }
-  }
-
+  //
+  // save() {
+  //   // console.log('s')
+  //   // // this.fetchedQuote.historyClients = this.fetchedQuote.clients
+  //   // this.fetchedQuote.detail.dateQuote.issueDate = this.authService.HTMLDatetoIsoDate(this.fetchedQuote.detail.dateQuote.issueDateString)
+  //   // this.fetchedQuote.detail.dateQuote.expiryDate = this.authService.HTMLDatetoIsoDate(this.fetchedQuote.detail.dateQuote.expiryDateString)
+  //   // this.fetchedQuote.detail.dateQuote.dateInvoicePaid = this.authService.HTMLDatetoIsoDate(this.fetchedQuote.detail.dateQuote.dateInvoicePaidString)
+  //   //
+  //   // if (this.fetchedQuote._id) {
+  //   //   this.quoteService.updateQuote(this.fetchedQuote)
+  //   //     .subscribe(
+  //   //     res => {
+  //   //       this.toastr.success('Great!', res.message)
+  //   //       this.getQuote(res.obj._id)
+  //   //       // this.saved.emit(res)
+  //   //       //this.router.navigate(['quote/edit/' + this.fetchedQuote._id])
+  //   //     },
+  //   //     error => {
+  //   //       this.toastr.error('error!', error)
+  //   //     }
+  //   //     )
+  //   // } else {
+  //   //   this.quoteService.saveQuote(this.fetchedQuote)
+  //   //     .subscribe(
+  //   //     res => {
+  //   //       console.log('s')
+  //   //       this.toastr.success('Great!', res.message)
+  //   //       this.getQuote(res.obj._id)
+  //   //       // this.saved.emit(res)
+  //   //     },
+  //   //     error => { console.log(error) }
+  //   //     )
+  //   // }
+  // }
+  //
 
   //
   // removeBucketProducts(i) {
@@ -767,36 +791,36 @@ export class QuoteComponent implements OnInit {
 
 
 
-  onDelete(id: string) {
-    let this2 = this
-    return new Promise(function(resolve, reject) {
-      this2.quoteService.deleteQuote(id)
-        .subscribe(
-        res => {
-          this2.toastr.success('Great!', res.message);
-          resolve(res)
-        },
-        error => {
-          console.log(error);
-          reject(error)
-        }
-        )
-    })
-  }
+  // onDelete(id: string) {
+  //   let this2 = this
+  //   return new Promise(function(resolve, reject) {
+  //     this2.quoteService.deleteQuote(id)
+  //       .subscribe(
+  //       res => {
+  //         this2.toastr.success('Great!', res.message);
+  //         resolve(res)
+  //       },
+  //       error => {
+  //         console.log(error);
+  //         reject(error)
+  //       }
+  //       )
+  //   })
+  // }
 
-
-  openDialogDelete() {
-    // let this2 = this
-    // let dialogRefDelete = this.dialog.open(DeleteDialog)
-    // dialogRefDelete.afterClosed().subscribe(result => {
-    //   if (result) {
-    //     this.onDelete(this.fetchedQuote._id).then(function() {
-    //       this2.router.navigate(['quote/list/quote']);
-    //     })
-    //
-    //   }
-    // })
-  }
+  //
+  // openDialogDelete() {
+  //   // let this2 = this
+  //   // let dialogRefDelete = this.dialog.open(DeleteDialog)
+  //   // dialogRefDelete.afterClosed().subscribe(result => {
+  //   //   if (result) {
+  //   //     this.onDelete(this.fetchedQuote._id).then(function() {
+  //   //       this2.router.navigate(['quote/list/quote']);
+  //   //     })
+  //   //
+  //   //   }
+  //   // })
+  // }
 
   savedQuote(result) {
     // console.log(result)
@@ -808,36 +832,15 @@ export class QuoteComponent implements OnInit {
   //   // this.refreshPaiementQuotes.emit()
   //   // this.getPaiementQuotesCross.emit(this.fetchedPaiementQuotes)
   // }
-  getPaiementQuotes(event) {
-    // console.log(event)
-    this.totalPaiementAmount = 0
-    this.fetchedPaiementQuotes = event
-    this.fetchedPaiementQuotes.forEach(paiement => {
-      this.totalPaiementAmount += paiement.amount
-    })
-  }
-  getQuote(id: string) {
-    let this2 = this
-    return new Promise(function(resolve, reject) {
-      this2.quoteService.getQuote(id)
-        .subscribe(
-        res => {
-          this2.fetchedQuote = res
-          // this2.fetchedQuote.detail.dateQuote.issueDateString = this2.authService.isoDateToHtmlDate(this2.fetchedQuote.detail.dateQuote.issueDate)
-          // this2.fetchedQuote.detail.dateQuote.expiryDateString = this2.authService.isoDateToHtmlDate(this2.fetchedQuote.detail.dateQuote.expiryDate)
-          // this2.fetchedQuote.detail.dateQuote.dateInvoicePaidString = this2.authService.isoDateToHtmlDate(this2.fetchedQuote.detail.dateQuote.dateInvoicePaid)
+  // getPaiementQuotes(event) {
+  //   // console.log(event)
+  //   this.totalPaiementAmount = 0
+  //   this.fetchedPaiementQuotes = event
+  //   this.fetchedPaiementQuotes.forEach(paiement => {
+  //     this.totalPaiementAmount += paiement.amount
+  //   })
+  // }
 
-          // this.fetchedQuote.projects.forEach(project => { this.search.projectId = project._id })
-          this2.fetchedQuote.clients.forEach(user => { this2.search.userId = user._id })
-          resolve(this2.fetchedQuote)
-        },
-        error => {
-          reject(error)
-          console.log(error)
-        }
-        )
-    })
-  }
 
   // isAdmin() {
   //   return this.authService.isAdmin();
