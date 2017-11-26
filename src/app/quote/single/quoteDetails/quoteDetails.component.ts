@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, Input, Output, EventEmitter } from '@angular/core';
-// import { AuthService } from '../../../auth/auth.service';
+import { AuthService } from '../../../auth/auth.service';
 import { QuoteService } from '../../quote.service';
 import { TemplateQuoteService } from '../../templateQuote.service';
 
@@ -88,7 +88,7 @@ export class QuoteDetailsComponent implements OnInit {
     private router: Router,
     private location: Location,
     private _fb: FormBuilder,
-    // public authService: AuthService,
+    public authService: AuthService,
     private dragulaService: DragulaService,
     private translateService: TranslateService,
   ) {
