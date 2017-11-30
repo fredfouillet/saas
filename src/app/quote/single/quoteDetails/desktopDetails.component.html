@@ -1,0 +1,74 @@
+<div *ngFor="let devisDetail of fetchedQuote.devisDetails; let i=index">
+  <div *ngFor="let bucketProduct of devisDetail.bucketProducts; let j=index">
+    <div [dragulaModel]='fetchedQuote.devisDetails[i].bucketProducts' [dragula]='"third-bag"'>
+      <div class="row">
+        <div class="col-9">
+          <div class="row">
+            <div class="col-1">
+              <div class="row nopad">
+                <div class="col-6 nopad">
+                  <button *ngIf="!fetchedQuote.drawingSignature.isSigned" type="button" class="btn btn-sm handle"><i class="fa fa-arrows handle"></i></button>
+                </div>
+                <div class="col-6 nopad">
+                  <button *ngIf="!fetchedQuote.drawingSignature.isSigned" type="button" class="btn btn-danger btn-sm" (click)="removeRow(i, j)"><i class="fa fa-times"></i></button>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="bucketProduct.typeRow=='text'" class="col-11">
+              <mat-form-field>
+                <textarea matInput placeholder="{{'Title' | translate}}" [(ngModel)]="fetchedQuote.devisDetails[i].bucketProducts[j].title" matTextareaAutosize matAutosizeMinRows="1" matAutosizeMaxRows="5">
+              </textarea>
+              </mat-form-field>
+            </div>
+            <div *ngIf="bucketProduct.typeRow=='product'" class="col-6">
+              <app-autocomplete [typeAutocomplete]="'product'" [canDelete]="!fetchedQuote.drawingSignature.isSigned" [title]="'Product'" [singleChoice]=true [arrayContent]="fetchedQuote.devisDetails[i].bucketProducts[j].productInit" (getResultAutocomplete)="selectProduct($event[0], i, j)">
+              </app-autocomplete>
+            </div>
+            <div *ngIf="bucketProduct.typeRow=='product'" class="col-5">
+              <div *ngFor="let product of fetchedQuote.devisDetails[i].bucketProducts[j].productInit; let k=index;">
+                <mat-form-field>
+                  <input readonly matInput placeholder="{{'Description' | translate}}" [(ngModel)]="fetchedQuote.devisDetails[i].bucketProducts[j].productInit[k].details.description">
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="row">
+            <div class="col-4 nopad">
+              <mat-form-field>
+                <input matInput type="number" (ngModelChange)="calculateQuote()" [readonly]="fetchedQuote.drawingSignature.isSigned" placeholder="{{'Quantity' | translate}}" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedQuote.devisDetails[i].bucketProducts[j].quantity"
+                  placeholder="{{'Quantity' | translate}}">
+              </mat-form-field>
+            </div>
+            <div class="col-1 nopad hideMobile">
+              <div *ngIf="bucketProduct.typeRow=='product'">
+                <div *ngFor="let product of fetchedQuote.devisDetails[i].bucketProducts[j].productInit">
+                  {{product.details.unit}}
+                </div>
+              </div>
+            </div>
+            <div class="col-4 nopad">
+              <mat-form-field>
+                <input matInput type="number" (ngModelChange)="calculateQuote()" [readonly]="fetchedQuote.drawingSignature.isSigned" placeholder="{{'Price Without Taxes' | translate}}" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedQuote.devisDetails[i].bucketProducts[j].priceWithoutTaxes"
+                  placeholder="{{'Quantity' | translate}}">
+              </mat-form-field>
+            </div>
+            <div class="col-3 nopad">
+              <mat-form-field>
+                <input matInput disabled value="{{fetchedQuote.devisDetails[i].bucketProducts[j].priceWithQuantityWithDiscountWithSurface | round}}" placeholder="{{'Total' | translate}}">
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div *ngIf="!fetchedQuote.drawingSignature.isSigned" class="col-3">
+  <button *ngIf="false" type="button" class="btn btn-primary btn-sm" (click)="addRow('category')">+ {{'Category' | translate}}</button>
+  <button type="button" class="btn btn-primary btn-sm" (click)="addRow('text')">+ {{'Text' | translate}}</button>
+  <button type="button" class="btn btn-primary btn-sm" (click)="addRow('product')">+ {{'Product' | translate}}</button>
+</div>

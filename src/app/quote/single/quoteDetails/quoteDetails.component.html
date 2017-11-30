@@ -6,245 +6,34 @@
         <app-autocomplete [typeAutocomplete]="'templateQuote'" [title]="'Load bucket'" [singleChoice]=true [arrayContent]="arrayContentToSearch" (getResultAutocomplete)="selectTemplateQuote($event[0])">
         </app-autocomplete>
         {{'Save Template' | translate}}
-          <div>
-            <input [readonly]="fetchedQuote.drawingSignature.isSigned" type="text" class="form-control" placeholder="nameTemplate" #nameTemplate>
-          </div>
-          <div>
-            <button type="button" class="btn btn-success" (click)="saveTemplateQuote(nameTemplate.value);nameTemplate.value=''"><i class="fa fa-floppy-o"></i></button>
-          </div>
+        <div>
+          <input [readonly]="fetchedQuote.drawingSignature.isSigned" type="text" class="form-control" placeholder="nameTemplate" #nameTemplate>
+        </div>
+        <div>
+          <button type="button" class="btn btn-success" (click)="saveTemplateQuote(nameTemplate.value);nameTemplate.value=''"><i class="fa fa-floppy-o"></i></button>
+        </div>
       </div>
     </li>
   </ul>
 </div>
-<div class="row">
-  <div class="col-6">
-    <div class="row ac font-weight-bold">
-      <div class="col-6 ac">
-        {{'Item' | translate}}
-      </div>
-      <div class="col-6 ac">
-        {{'Description' | translate}}
-      </div>
-    </div>
-  </div>
-  <div class="col-6">
-    <div class="row ac font-weight-bold">
-      <div class="col-2">
-        {{'Quantity' | translate}}
-      </div>
-      <div class="col-2">
-        {{'Width' | translate}}
-      </div>
-      <div class="col-2">
-        {{'Length' | translate}}
-      </div>
-      <div class="col-2">
-        {{'Surface' | translate}}
-      </div>
-      <div class="col-2">
-        {{'Price excl tax' | translate}}
-      </div>
-      <div class="col-2">
-        {{'Total excl tax' | translate}}
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-
 
 <div *ngFor="let devisDetail of fetchedQuote.devisDetails; let i=index">
   <div *ngIf="false" class="row">
     <input [readonly]="fetchedQuote.drawingSignature.isSigned" class=" col-2" type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedQuote.devisDetails[i].nameBucketProducts" placeholder="Category">
     <button *ngIf="!fetchedQuote.drawingSignature.isSigned" type="button" class="btn btn-danger btn-sm" (click)="removeBucketProducts(i)"><i class="fa fa-times"></i></button>
   </div>
-
-  <div [dragulaModel]='fetchedQuote.devisDetails[i].bucketProducts' [dragula]='"third-bag"'>
-    <div *ngFor="let bucketProduct of devisDetail.bucketProducts; let j=index">
-      <div class="row">
-        <div class="col-6">
-          <div class="row">
-            <div class="col-1">
-              <div class="row nopad">
-                <div class="col-6 nopad">
-                  <button *ngIf="!fetchedQuote.drawingSignature.isSigned" type="button" class="btn btn-sm handle"><i class="fa fa-arrows handle"></i></button>
-                </div>
-                <div class="col-6 nopad">
-                  <button *ngIf="!fetchedQuote.drawingSignature.isSigned" type="button" class="btn btn-danger btn-sm" (click)="removeRow(i, j)"><i class="fa fa-times"></i></button>
-                </div>
-              </div>
-            </div>
-            <div *ngIf="bucketProduct.typeRow=='text'" class="col-11">
-              <!-- <div *ngIf="fetchedQuote.devisDetails[i].bucketProducts[j].isEditMode"> -->
-                <!-- <quill-editor [ngModelOptions]="{standalone: true}" [options]="editorOptions" (blur)="onEditorBlured($event, i, j)" (focus)="onEditorFocused($event)" (ready)="onEditorCreated($event)" (change)="onContentChanged($event)" [(ngModel)]="fetchedQuote.devisDetails[i].bucketProducts[j].title">
-              </quill-editor> -->
-              <mat-form-field>
-                <textarea
-                  matInput
-                  placeholder="{{'Title' | translate}}"
-                  [(ngModel)]="fetchedQuote.devisDetails[i].bucketProducts[j].title"
-                  matTextareaAutosize
-                  matAutosizeMinRows="2"
-                  matAutosizeMaxRows="5"
-                  >
-                </textarea>
-                </mat-form-field>
-
-              <!-- </div> -->
-              <!-- <div class="textNoEditMode " (click)="changeQuillEditMode(i, j)" *ngIf="!fetchedQuote.devisDetails[i].bucketProducts[j].isEditMode" [innerHtml]="fetchedQuote.devisDetails[i].bucketProducts[j].title">
-              </div> -->
-            </div>
-            <div *ngIf="bucketProduct.typeRow=='product'" class="col-5">
-              <app-autocomplete [typeAutocomplete]="'product'" [canDelete]="!fetchedQuote.drawingSignature.isSigned" [title]="'Product'" [singleChoice]=true [arrayContent]="fetchedQuote.devisDetails[i].bucketProducts[j].productInit" (getResultAutocomplete)="selectProduct($event[0], i, j)">
-              </app-autocomplete>
-            </div>
-            <div *ngIf="bucketProduct.typeRow=='product'" class="col-6">
-              <div *ngIf="bucketProduct.typeRow=='product'">
-                <mat-form-field>
-                  <input matInput placeholder="{{'Title' | translate}}" [(ngModel)]="fetchedQuote.devisDetails[i].bucketProducts[j].title">
-                </mat-form-field>
-                <!-- <input type="text" class="form-control" [(ngModel)]="fetchedQuote.devisDetails[i].bucketProducts[j].title"> -->
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-6">
-          <div class="row">
-            <div class="col-3 nopad">
-              <!-- <input [readonly]="fetchedQuote.drawingSignature.isSigned" class="form-control ac" type="number" (ngModelChange)="calculateQuote()" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedQuote.devisDetails[i].bucketProducts[j].quantity" placeholder="quantity"> -->
-              <mat-form-field>
-                <input
-                  matInput
-                  type="number"
-                  (ngModelChange)="calculateQuote()"
-                  [readonly]="fetchedQuote.drawingSignature.isSigned"
-                  placeholder="{{'Quantity' | translate}}"
-                  [ngModelOptions]="{standalone: true}"
-                  [(ngModel)]="fetchedQuote.devisDetails[i].bucketProducts[j].quantity"
-                  placeholder="{{'Quantity' | translate}}"
-                  >
-              </mat-form-field>
-            </div>
-            <div class="col-1 nopad">
-              <div *ngIf="bucketProduct.typeRow=='product'">
-                <div class="form-control" *ngFor="let product of fetchedQuote.devisDetails[i].bucketProducts[j].productInit">
-                  {{product.details.unit}}
-                </div>
-              </div>
-            </div>
-            <!-- <div class="col-2 nopad">
-              <input [readonly]="fetchedQuote.drawingSignature.isSigned" class="form-control ac" type="number" (ngModelChange)="calculateQuote()" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedQuote.devisDetails[i].bucketProducts[j].width" placeholder="Width">
-            </div>
-            <div class="col-2 nopad">
-              <input [readonly]="fetchedQuote.drawingSignature.isSigned" class="form-control ac" type="number" (ngModelChange)="calculateQuote()" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedQuote.devisDetails[i].bucketProducts[j].length" placeholder="Length">
-            </div> -->
-            <!-- <div class="col-2 nopad">
-              <input disabled class="form-control ac" value="{{fetchedQuote.devisDetails[i].bucketProducts[j].surface | round}}">
-            </div> -->
-            <div class="col-4 nopad">
-
-              <mat-form-field>
-                <input
-                  matInput
-                  type="number"
-                  (ngModelChange)="calculateQuote()"
-                  [readonly]="fetchedQuote.drawingSignature.isSigned"
-                  placeholder="{{'Price Without Taxes' | translate}}"
-                  [ngModelOptions]="{standalone: true}"
-                  [(ngModel)]="fetchedQuote.devisDetails[i].bucketProducts[j].priceWithoutTaxes"
-                  placeholder="{{'Quantity' | translate}}"
-                  >
-              </mat-form-field>
-              <!-- <input [readonly]="fetchedQuote.drawingSignature.isSigned" class="form-control ac" type="number" (ngModelChange)="calculateQuote()" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedQuote.devisDetails[i].bucketProducts[j].priceWithoutTaxes" placeholder="priceWithoutTaxes"> -->
-            </div>
-            <div class="col-4 nopad">
-              <mat-form-field>
-                <input
-                  matInput
-                  disabled
-                  value="{{fetchedQuote.devisDetails[i].bucketProducts[j].priceWithQuantityWithDiscountWithSurface | round}}"
-                  placeholder="{{'Total' | translate}}"
-                  >
-              </mat-form-field>
-              <!-- <input disabled class="form-control ac" value="{{fetchedQuote.devisDetails[i].bucketProducts[j].priceWithQuantityWithDiscountWithSurface | round}}"> -->
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+</div>
+<div class="showMobile">
+  <app-mobile-details [fetchedQuote]="fetchedQuote" (calculateQuoteEmit)="calculateQuote()"></app-mobile-details>
+</div>
+<div class="hideMobile">
+  <app-desktop-details [fetchedQuote]="fetchedQuote" (calculateQuoteEmit)="calculateQuote()"></app-desktop-details>
 </div>
 
-<!-- <div *ngFor="let priceQuoteTaxe of fetchedQuote.priceQuote.priceQuoteTaxes">
-    <div class="row font-weight-bold">
-      <div class="col-6">
-      </div>
-      <div class="col-2 ">
-        TVA: {{priceQuoteTaxe.VAT}}%
-      </div>
-      <div class="col-2 ">
-        {{priceQuoteTaxe.TotalVAT | round}} €
-      </div>
-    </div>
-  </div>  -->
-
-<div class="row font-weight-bold">
-  <div class="col-9">
+<div class="row">
+  <div class="col-8">
   </div>
-  <div class="col-1 ac">
-    {{'Painfulness' | translate}} %
-  </div>
-  <div class="col-2 ac">
-    <input [readonly]="fetchedQuote.drawingSignature.isSigned" class="form-control ac" type="number" (ngModelChange)="calculateQuote()" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedQuote.priceQuote.painfulnessGlobal" placeholder="painfulnessGlobal">
-  </div>
-</div>
-<div class="row font-weight-bold">
-  <div class="col-9">
-  </div>
-  <div class="col-1 ac">
-    {{'Discount' | translate}} %
-  </div>
-  <div class="col-2 ac">
-    <input [readonly]="fetchedQuote.drawingSignature.isSigned" class="form-control ac" type="number" (ngModelChange)="calculateQuote()" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedQuote.priceQuote.discountGlobal" placeholder="discountGlobal">
-  </div>
-</div>
-
-<div class="row font-weight-bold">
-  <div class="col-9">
-  </div>
-  <div class="col-1 ac">
-    {{'VAT' | translate}} %
-  </div>
-  <div class="col-2 ac">
-    <div class="col-md-12 nopad ac">
-      <select [disabled]="fetchedQuote.drawingSignature.isSigned" (ngModelChange)="calculateQuote()" class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedQuote.priceQuote.vatGlobal">
-          <option *ngFor="let VAT of VATs" [ngValue]="VAT">
-            {{VAT}}%
-          </option>
-        </select>
-    </div>
-  </div>
-</div>
-
-
-
-<div class="row font-weight-bold">
-  <div *ngIf="!fetchedQuote.drawingSignature.isSigned" class="col-3">
-    <button *ngIf="false" type="button" class="btn btn-primary btn-sm" (click)="addRow('category')">+ {{'Category' | translate}}</button>
-    <button type="button" class="btn btn-primary btn-sm" (click)="addRow('text')">+ {{'Text' | translate}}</button>
-    <button type="button" class="btn btn-primary btn-sm" (click)="addRow('product')">+ {{'Product' | translate}}</button>
-  </div>
-  <div class="col-6">
-  </div>
-  <div class="col-1  ac">
-    {{'Total' | translate}}
-  </div>
-  <div class="col-1 ac">
-    {{fetchedQuote.priceQuote.priceGlobalWithDiscountWithSurfaceWithPainfulness | round}} € HT
-  </div>
-  <div class="col-1 ac">
-    {{fetchedQuote.priceQuote.priceGlobalWithTaxesWithDiscountWithSurfaceWithPainfulness | round}} € TTC
+  <div class="col-4">
+    <app-total [fetchedQuote]="fetchedQuote" (calculateQuoteEmit)="calculateQuote()"></app-total>
   </div>
 </div>

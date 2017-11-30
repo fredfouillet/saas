@@ -1,0 +1,45 @@
+<!-- <div class="row">
+  <div class="col-4">
+    {{'Painfulness' | translate}} %
+  </div>
+  <div class="col-8">
+    <mat-form-field>
+      <input matInput [readonly]="fetchedQuote.drawingSignature.isSigned"  type="number" (ngModelChange)="calculateQuote()" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedQuote.priceQuote.painfulnessGlobal" placeholder="painfulnessGlobal">
+    </mat-form-field>
+  </div>
+</div> -->
+<div class="row">
+  <div class="col-4">
+    {{'Discount' | translate}} %
+  </div>
+  <div class="col-8">
+    <mat-form-field>
+      <input matInput [readonly]="fetchedQuote.drawingSignature.isSigned"  type="number" (ngModelChange)="calculateQuote()" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedQuote.priceQuote.discountGlobal" placeholder="discountGlobal">
+    </mat-form-field>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-4">
+    {{'VAT' | translate}} %
+  </div>
+  <div class="col-8">
+    <mat-select [disabled]="fetchedQuote.drawingSignature.isSigned" (ngModelChange)="calculateQuote()" class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedQuote.priceQuote.vatGlobal">
+          <mat-option *ngFor="let VAT of VATs" [value]="VAT">
+            {{VAT}}%
+          </mat-option>
+        </mat-select>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-4">
+    {{'Total' | translate}}
+  </div>
+  <div class="col-4">
+    {{fetchedQuote.priceQuote.priceGlobalWithDiscountWithSurfaceWithPainfulness | round}} € HT
+  </div>
+  <div class="col-4">
+    {{fetchedQuote.priceQuote.priceGlobalWithTaxesWithDiscountWithSurfaceWithPainfulness | round}} € TTC
+  </div>
+</div>

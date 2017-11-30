@@ -10,7 +10,20 @@
 
 .mat-expansion-panel-body {
   overflow: visible!important;
+}
 
+.mat-form-field {
+  width: 100%;
+}
+@media screen and (max-width: 992px) {
+  .hideMobile {
+    display: none;
+  }
+}
+@media screen and (min-width: 993px) {
+  .showMobile {
+    display: none;
+  }
 }
 
 .width100perc {

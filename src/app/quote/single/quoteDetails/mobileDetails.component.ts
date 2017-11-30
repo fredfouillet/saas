@@ -1,31 +1,31 @@
 import { Component, OnInit, ViewChild, Input, Output, EventEmitter } from '@angular/core';
-import { AuthService } from '../../../auth/auth.service';
-import { QuoteService } from '../../quote.service';
-import { TemplateQuoteService } from '../../templateQuote.service';
+// import { AuthService } from '../../../auth/auth.service';
+// import { QuoteService } from '../../quote.service';
+// import { TemplateQuoteService } from '../../templateQuote.service';
 
-import { DragulaService } from 'ng2-dragula';
+// import { DragulaService } from 'ng2-dragula';
 // import { ProductService } from '../../../product/product.service';
 // import { ProjectService} from '../../../project/project.service';
 
 import {
   Quote, DevisDetail, BucketProduct, StatusQuotes,
-  StatusQuotesInvoice,
-  PriceQuoteTaxe,
+  // StatusQuotesInvoice,
+  // PriceQuoteTaxe,
   // ModelVATs
 } from '../../quote.model';
-import { TemplateQuote } from '../../templateQuote.model';
+// import { TemplateQuote } from '../../templateQuote.model';
 
-import { ToastsManager } from 'ng2-toastr';
+// import { ToastsManager } from 'ng2-toastr';
 // import { MatDialog } from '@angular/material';
-import { Router, ActivatedRoute, Params } from '@angular/router';
-import { Location } from '@angular/common';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+// import { Params } from '@angular/router';
+// import { Location } from '@angular/common';
+// import { FormGroup, Validators } from '@angular/forms';
 // import { UserService } from '../../../user/user.service';
 // import { DeleteDialog } from '../../../deleteDialog/deleteDialog.component';
 // import { User } from '../../../user/user.model';
 import { Product } from '../../../product/product.model';
 // import { Project } from '../../../project/project.model';
-import { PaiementQuote } from '../../../paiementQuote/paiementQuote.model';
+// import { PaiementQuote } from '../../../paiementQuote/paiementQuote.model';
 // import { PaiementQuoteDialogComponent } from '../paiementQuote/single/dialog/paiementQuoteDialog.component';
 // import { PaiementQuoteDialogComponent } from '../../../paiementQuote/single/dialog/paiementQuoteDialog.component'
 
@@ -38,60 +38,60 @@ import { TranslateService } from '../../../translate/translate.service';
 import { Search } from '../../../shared/shared.model'
 
 @Component({
-  selector: 'app-quoteDetails',
-  templateUrl: './quoteDetails.component.html',
+  selector: 'app-mobile-details',
+  templateUrl: './mobileDetails.component.html',
   styleUrls: ['./quoteDetails.component.css'],
 })
-export class QuoteDetailsComponent implements OnInit {
+export class MobileDetailsComponent implements OnInit {
   // @ViewChild(SignaturePad) signaturePad: SignaturePad;
   // @ViewChild(PaiementQuotesComponent) paiementQuotesComponent: PaiementQuotesComponent;
 
   // loading: boolean=false;
   // @Output() saved: EventEmitter<any> = new EventEmitter();
-  @Output() quoteDetailsUpdated: EventEmitter<any> = new EventEmitter();
+  // @Output() quoteDetailsUpdated: EventEmitter<any> = new EventEmitter();
   @Output() calculateQuoteEmit: EventEmitter<any> = new EventEmitter();
 
   @Input() fetchedQuote: Quote = new Quote()
   // @Input() search: Search = new Search()
-
-  // showPaiements: boolean = false
-  // fetchedQuote: Quote = new Quote()
-  // autocompleteUser: string = '';
-  // autocompleteProject: string = '';
-  fetchedProducts: Product[] = []
+  //
+  // // showPaiements: boolean = false
+  // // fetchedQuote: Quote = new Quote()
+  // // autocompleteUser: string = '';
+  // // autocompleteProject: string = '';
+  // fetchedProducts: Product[] = []
 
   // imgLogoUrl: string = './assets/images/profile-placeholder.jpg'
   // imgSignatureBase64Temp = ''
-  fetchedPaiementQuotes: PaiementQuote[] = []
+  // fetchedPaiementQuotes: PaiementQuote[] = []
   statusQuotes = StatusQuotes
-  statusQuotesInvoice = StatusQuotesInvoice
+  // statusQuotesInvoice = StatusQuotesInvoice
 
-  public editorOptions = {
-    placeholder: "insert content...",
-    modules: {
-      // toolbar: [['bold', 'italic'], ['link', 'image']] // see https://quilljs.com/docs/formats/
-    }
-  };
+  // public editorOptions = {
+  //   placeholder: "insert content...",
+  //   modules: {
+  //     // toolbar: [['bold', 'italic'], ['link', 'image']] // see https://quilljs.com/docs/formats/
+  //   }
+  // };
 
-  arrayContentToSearch = []
+  // arrayContentToSearch = []
 
   // VATs = ModelVATs
 
   constructor(
-    private quoteService: QuoteService,
-    private templateQuoteService: TemplateQuoteService,
+    // private quoteService: QuoteService,
+    // private templateQuoteService: TemplateQuoteService,
     // private projectService: ProjectService,
     // private userService: UserService,
     // private productService: ProductService,
     //    private modalService: NgbModal,
-    private toastr: ToastsManager,
+    // private toastr: ToastsManager,
     // public dialog: MatDialog,
-    private activatedRoute: ActivatedRoute,
-    private router: Router,
-    private location: Location,
-    private _fb: FormBuilder,
-    public authService: AuthService,
-    private dragulaService: DragulaService,
+    // private activatedRoute: ActivatedRoute,
+    // private router: Router,
+    // private location: Location,
+    // private _fb: FormBuilder,
+    // public authService: AuthService,
+    // private dragulaService: DragulaService,
     private translateService: TranslateService,
   ) {
 
@@ -113,19 +113,19 @@ export class QuoteDetailsComponent implements OnInit {
     this.calculateQuote()
   }
   addBucketProducts() {
-    let newDevisDetail = new DevisDetail()
+    const newDevisDetail = new DevisDetail()
     this.fetchedQuote.devisDetails.push(newDevisDetail)
   }
 
-
-  selectTemplateQuote(templateQuote: TemplateQuote) {
-    this.arrayContentToSearch = []
-    templateQuote.devisDetails.forEach(devisDetail => {
-      this.fetchedQuote.devisDetails.push(devisDetail)
-    })
-
-    this.calculateQuote()
-  }
+  //
+  // selectTemplateQuote(templateQuote: TemplateQuote) {
+  //   this.arrayContentToSearch = []
+  //   templateQuote.devisDetails.forEach(devisDetail => {
+  //     this.fetchedQuote.devisDetails.push(devisDetail)
+  //   })
+  //
+  //   this.calculateQuote()
+  // }
   selectProduct(product: Product, i, j) {
 
     // let bucketProduct: BucketProduct = new BucketProduct()
@@ -148,19 +148,19 @@ export class QuoteDetailsComponent implements OnInit {
   }
 
 
-  onEditorBlured(quill, i, j) {
-    this.changeQuillEditMode(i, j)
-  }
+  // onEditorBlured(quill, i, j) {
+  //   this.changeQuillEditMode(i, j)
+  // }
 
-  onEditorFocused(quill) {
-  }
+  // onEditorFocused(quill) {
+  // }
 
-
-  onContentChanged({ quill, html, text }) {
-  }
-  changeQuillEditMode(i: number, j: number) {
-    this.fetchedQuote.devisDetails[i].bucketProducts[j].isEditMode = !this.fetchedQuote.devisDetails[i].bucketProducts[j].isEditMode
-  }
+  //
+  // onContentChanged({ quill, html, text }) {
+  // }
+  // changeQuillEditMode(i: number, j: number) {
+  //   this.fetchedQuote.devisDetails[i].bucketProducts[j].isEditMode = !this.fetchedQuote.devisDetails[i].bucketProducts[j].isEditMode
+  // }
 
   //
   // calculateQuote() {
@@ -273,39 +273,39 @@ export class QuoteDetailsComponent implements OnInit {
     this.calculateQuote()
   }
 
-
-  addRow(typeRow) {
-    if (typeRow) {
-      if (typeRow === 'category')
-        this.addBucketProducts()
-
-      if (!this.fetchedQuote.devisDetails.length)
-        this.addBucketProducts()
-
-      if (typeRow === 'product' || typeRow === 'text') {
-        let bucketProduct: BucketProduct = new BucketProduct()
-        bucketProduct.isEditMode = true
-        bucketProduct.typeRow = typeRow
-        this.fetchedQuote.devisDetails[this.fetchedQuote.devisDetails.length - 1].bucketProducts.push(bucketProduct)
-        this.calculateQuote()
-      }
-    }
-  }
-
-  saveTemplateQuote(nameTemplate: string) {
-    const newTemplateQuote = new TemplateQuote()
-    newTemplateQuote.nameTemplate = nameTemplate
-
-    newTemplateQuote.devisDetails = this.fetchedQuote.devisDetails
-    this.templateQuoteService.saveTemplateQuote(newTemplateQuote)
-      .subscribe(
-      res => {
-        this.toastr.success('Great!', res.message)
-      },
-      error => { console.log(error) }
-      )
-  }
-
+  //
+  // addRow(typeRow) {
+  //   if (typeRow) {
+  //     if (typeRow === 'category')
+  //       this.addBucketProducts()
+  //
+  //     if (!this.fetchedQuote.devisDetails.length)
+  //       this.addBucketProducts()
+  //
+  //     if (typeRow === 'product' || typeRow === 'text') {
+  //       let bucketProduct: BucketProduct = new BucketProduct()
+  //       bucketProduct.isEditMode = true
+  //       bucketProduct.typeRow = typeRow
+  //       this.fetchedQuote.devisDetails[this.fetchedQuote.devisDetails.length - 1].bucketProducts.push(bucketProduct)
+  //       this.calculateQuote()
+  //     }
+  //   }
+  // }
+  //
+  // saveTemplateQuote(nameTemplate: string) {
+  //   const newTemplateQuote = new TemplateQuote()
+  //   newTemplateQuote.nameTemplate = nameTemplate
+  //
+  //   newTemplateQuote.devisDetails = this.fetchedQuote.devisDetails
+  //   this.templateQuoteService.saveTemplateQuote(newTemplateQuote)
+  //     .subscribe(
+  //     res => {
+  //       this.toastr.success('Great!', res.message)
+  //     },
+  //     error => { console.log(error) }
+  //     )
+  // }
+  //
 
 
 

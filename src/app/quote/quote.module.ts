@@ -16,6 +16,9 @@ import { ActionButtonsComponent} from './single/actionButtons/actionButtons.comp
 import { QuoteInfoComponent} from './single/quoteInfo/quoteInfo.component';
 // import { SignatureComponent} from './single/signature/signature.component';
 import { QuoteDetailsComponent} from './single/quoteDetails/quoteDetails.component';
+import { MobileDetailsComponent} from './single/quoteDetails/mobileDetails.component';
+import { DesktopDetailsComponent} from './single/quoteDetails/desktopDetails.component';
+import { TotalComponent} from './single/quoteDetails/total.component';
 import { EditQuoteComponent} from './single/editQuote/editQuote.component';
 // import { QuoteDetailComponent} from './single/quoteDetail.component';
 import { QuoteService} from './quote.service';
@@ -47,7 +50,7 @@ import { QuillEditorModule } from 'ngx-quill-editor';
 
 import {MatDatepickerModule} from '@angular/material';
 import {MatNativeDateModule} from '@angular/material';
-
+import {MatSelectModule} from '@angular/material';
 // import {MatFormFieldModule} from '@angular/material';
 // import {MatInputModule} from '@angular/material';
 // import {MatExpansionModule} from '@angular/material';
@@ -80,6 +83,7 @@ import {MatTabsModule} from '@angular/material';
     MatDatepickerModule,
     MatNativeDateModule,
     MatTabsModule,
+    MatSelectModule,
     // MatExpansionModule,
     // MatIconModule,
     MatCardModule,
@@ -91,6 +95,9 @@ import {MatTabsModule} from '@angular/material';
     QuoteComponent,
     // SignatureComponent,
     QuoteDetailsComponent,
+    MobileDetailsComponent,
+    DesktopDetailsComponent,
+    TotalComponent,
     EditQuoteComponent,
     QuoteDialogComponent,
     QuoteInfoComponent,

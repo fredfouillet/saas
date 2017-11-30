@@ -101,7 +101,6 @@ export class BucketProduct {
   surface: number = 1;
   discount: number = 0;
   isEditMode: boolean = false;
-
 }
 
 

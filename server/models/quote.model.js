@@ -46,10 +46,10 @@ var quote = new Schema({
     forms: [{type: Schema.Types.ObjectId, ref: 'Form'}],
     devisDetails: [
       {
-        nameBucketProducts :{type: String},
-        bucketProducts:[
+        nameBucketProducts: {type: String},
+        bucketProducts: [
           {
-            typeRow:{type: String},
+            typeRow: {type: String},
             title: {type: String, default: ['']},
             priceWithoutTaxes: {type: Number},
             priceWithTaxes: {type: Number},
@@ -63,8 +63,7 @@ var quote = new Schema({
             width: {type: Number, default: [1]},
             surface: {type: Number, default: [1]},
             discount: {type: Number},
-            productInit: [{type: Schema.Types.ObjectId, ref: 'User'}],
-
+            productInit: [],
             priceWithoutTaxesWithDiscount: {type: Number},
             priceWithQuantityWithDiscount: {type: Number},
             priceWithTaxesWithQuantityWithDiscount: {type: Number},

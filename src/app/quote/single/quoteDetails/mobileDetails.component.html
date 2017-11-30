@@ -1,0 +1,30 @@
+<div *ngFor="let devisDetail of fetchedQuote.devisDetails; let i=index">
+  <div *ngFor="let bucketProduct of devisDetail.bucketProducts; let j=index">
+
+    <div class="row">
+      <div class="col-1">
+        <button *ngIf="!fetchedQuote.drawingSignature.isSigned" type="button" class="btn btn-danger btn-sm" (click)="removeRow(i, j)"><i class="fa fa-times"></i></button>
+      </div>
+      <div class="col-7">
+        <div *ngIf="bucketProduct.typeRow=='text'">
+          <mat-form-field>
+            <textarea matInput placeholder="{{'Title' | translate}}" [(ngModel)]="fetchedQuote.devisDetails[i].bucketProducts[j].title" matTextareaAutosize matAutosizeMinRows="1" matAutosizeMaxRows="5">
+              </textarea>
+          </mat-form-field>
+        </div>
+        <div *ngIf="bucketProduct.typeRow=='product'">
+          <div *ngFor="let product of fetchedQuote.devisDetails[i].bucketProducts[j].productInit; let k=index;">
+            <mat-form-field>
+              <input readonly matInput placeholder="{{'referenceName' | translate}}" [(ngModel)]="fetchedQuote.devisDetails[i].bucketProducts[j].productInit[k].details.referenceName">
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <mat-form-field>
+          <input matInput disabled value="{{fetchedQuote.devisDetails[i].bucketProducts[j].priceWithQuantityWithDiscountWithSurface | round}}" placeholder="{{'Total' | translate}}">
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+</div>
