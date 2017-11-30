@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { AuthService} from '../../auth/auth.service';
 import { ProductService} from '../product.service';
 import { Product} from '../product.model';
@@ -7,37 +7,32 @@ import { ToastsManager} from 'ng2-toastr';
 import { Router} from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ViewEncapsulation} from '@angular/core';
-import { UserService} from '../../user/user.service';
+// import { UserService} from '../../user/user.service';
 import { GlobalEventsManager } from '../../globalEventsManager';
-
+import { Search, PaginationData } from '../../shared/shared.model';
 // import { TranslateService } from '../../translate/translate.service';
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['../product.component.css'],
-  encapsulation: ViewEncapsulation.None
+  // encapsulation: ViewEncapsulation.None
 
 })
 export class ProductsComponent implements OnInit {
-  token: string = localStorage.getItem('id_token');
+  @Input() customButton: string = '';
+  @Output() customButtonActionEmit: EventEmitter<any> = new EventEmitter();
+  // token: string = localStorage.getItem('id_token');
   fetchedProducts: Product[] = [];
-  search: any = {
-    categories : [],
-    search: ''
-  };
+  search: Search = new Search()
   // loading: boolean= false;
 
-  paginationData = {
-    currentPage: 1,
-    itemsPerPage: 0,
-    totalItems: 0
-  };
+  paginationData: PaginationData = new PaginationData()
 
-  trackinPage : any = {
-    lastVisitPagePressCount:[],
-    lastVisitPageProductCount:[]
-  }
+  // trackinPage : any = {
+  //   lastVisitPagePressCount:[],
+  //   lastVisitPageProductCount:[]
+  // }
 
   constructor(
     private sanitizer: DomSanitizer,
@@ -47,7 +42,7 @@ export class ProductsComponent implements OnInit {
     private router: Router,
     // private location: Location,
     private authService: AuthService,
-    private userService: UserService,
+    // private userService: UserService,
     private globalEventsManager: GlobalEventsManager,
     // private translateService: TranslateService,
   ) {
@@ -55,9 +50,14 @@ export class ProductsComponent implements OnInit {
 
 
 
+  customButtonAction(product: Product) {
+    this.customButtonActionEmit.emit(product);
+  }
 
-
-
+  actionRow(productId: string) {
+    if(!this.customButton)
+      this.router.navigate(['/product/' + productId]);
+  }
   searchProducts() {
     this.getProducts(1, this.search)
   }

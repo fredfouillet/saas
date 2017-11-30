@@ -16,6 +16,7 @@ import { ActionButtonsComponent} from './single/actionButtons/actionButtons.comp
 import { QuoteInfoComponent} from './single/quoteInfo/quoteInfo.component';
 // import { SignatureComponent} from './single/signature/signature.component';
 import { QuoteDetailsComponent} from './single/quoteDetails/quoteDetails.component';
+import { EditQuoteComponent} from './single/editQuote/editQuote.component';
 // import { QuoteDetailComponent} from './single/quoteDetail.component';
 import { QuoteService} from './quote.service';
 import { TemplateQuoteService} from './templateQuote.service';
@@ -52,7 +53,7 @@ import {MatNativeDateModule} from '@angular/material';
 // import {MatExpansionModule} from '@angular/material';
 // import {MatIconModule} from '@angular/material';
 import {MatSelectModule} from '@angular/material';
-
+import {MatTabsModule} from '@angular/material';
 
 @NgModule({
   imports:      [
@@ -78,6 +79,7 @@ import {MatSelectModule} from '@angular/material';
     DrawinSignaturegModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatTabsModule,
     // MatExpansionModule,
     // MatIconModule,
     MatCardModule,
@@ -89,6 +91,7 @@ import {MatSelectModule} from '@angular/material';
     QuoteComponent,
     // SignatureComponent,
     QuoteDetailsComponent,
+    EditQuoteComponent,
     QuoteDialogComponent,
     QuoteInfoComponent,
     ActionButtonsComponent,

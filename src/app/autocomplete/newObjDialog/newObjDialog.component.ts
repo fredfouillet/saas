@@ -50,14 +50,17 @@ export class newObjDialogComponent implements OnInit {
     // } else
     if (typeObj === 'right') {
       this.router.navigate(['/right/new']);
+    } else if (typeObj === 'quote') {
+      this.router.navigate(['/quote/new'])
+
     } else {
 
       let dialogComp: any
       if (typeObj == 'user')
         dialogComp = UserDialogComponent
 
-      if (typeObj == 'quote')
-        dialogComp = QuoteDialogComponent
+      // if (typeObj == 'quote')
+      //   dialogComp = QuoteDialogComponent
 
       if (typeObj == 'companie')
         dialogComp = CompanieDialogComponent

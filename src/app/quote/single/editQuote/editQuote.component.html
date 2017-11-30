@@ -1,0 +1,107 @@
+
+
+
+<mat-tab-group>
+  <mat-tab label="Catalogue">
+    <app-products [customButton]="'Select'" (customButtonActionEmit)="addProductToQuote($event)"></app-products>
+  </mat-tab>
+  <mat-tab label="Add">Content 2</mat-tab>
+</mat-tab-group>
+
+<!--
+
+  <form [formGroup]="myForm" novalidate (ngSubmit)="save()">
+    <div  *ngIf="fetchedQuote._id" class="row">
+        <div class="col-12 col-md-4">
+          <button type="button" class="btn btn-primary" (click)="downloadPDF()">
+          {{'Download PDF' | translate}}
+          </button>
+        </div>
+        <div class="col-12 col-md-4">
+          <button type="button" class="btn btn-primary" (click)="sendQuoteByEmailToClient()">
+          {{'Send document to client' | translate}}
+          </button>
+        </div>
+
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-4">
+        <mat-form-field>
+
+          <input matInput [readonly]="fetchedQuote.drawingSignature.isSigned" type="number" formControlName="quoteNumber" [(ngModel)]="fetchedQuote.quoteNumber" placeholder="{{'Number Id' | translate}}">
+        </mat-form-field>
+
+        <div class="form-group">
+          <app-autocomplete [search]="search" [displayIfContentIsNull]=true [canDelete]=false [enableLink]=true [typeAutocomplete]="'user'" [title]="'Contact'" [search]="{isExternalUser:true}" [title]="" [singleChoice]="'true'" [arrayContent]="fetchedQuote.clients">
+          </app-autocomplete>
+
+        </div>
+        <div class="form-group">
+          <app-autocomplete
+            *ngIf="fetchedQuote.typeQuote === 'invoice'"
+            [displayIfContentIsNull]=true
+            [canDelete]=false
+            [enableLink]=true [typeAutocomplete]="'quote'" [title]="'Parent Quote'"
+            [search]="{typeQuote:'quote', quoteId: search.parentQuoteId}"
+            [singleChoice]=true
+            [arrayContent]="fetchedQuote.parentQuotes">
+          </app-autocomplete>
+        </div>
+
+      </div>
+      <div class="col-sm-12 col-md-4">
+
+
+
+          <mat-form-field>
+            <input matInput [matDatepicker]="picker" placeholder="{{'Issue date' | translate}}" [readonly]="fetchedQuote.drawingSignature.isSigned" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedQuote.detail.dateQuote.issueDate">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+
+
+          <mat-form-field>
+            <input matInput [matDatepicker]="picker2" placeholder="{{'Expiry date' | translate}}" [readonly]="fetchedQuote.drawingSignature.isSigned" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedQuote.detail.dateQuote.expiryDate">
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+          </mat-form-field>
+
+        <mat-form-field *ngIf="fetchedQuote.typeQuote === 'quote'">
+          <mat-select [disabled]="fetchedQuote.drawingSignature.isSigned" placeholder="{{'Status'| translate}}" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedQuote.statusQuote">
+            <mat-option *ngFor="let n of statusQuotes" [value]="n.indexStatus">{{n.label | translate}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+
+        <mat-form-field *ngIf="fetchedQuote.typeQuote === 'invoice'">
+          <mat-select [disabled]="fetchedQuote.drawingSignature.isSigned" placeholder="{{'Status'| translate}}" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedQuote.statusQuote">
+            <mat-option *ngFor="let n of statusQuotesInvoice" [value]="n.indexStatus">{{n.label | translate}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+
+      </div>
+      <div class="col-sm-12 col-md-4">
+        <div class="form-control" *ngFor="let client of fetchedQuote.historyClients">
+          <h4>
+            <div>{{client.profile.name}} {{client.profile.lastName}}</div>
+          </h4>
+          <div>{{client.profile.companyName}}</div>
+          <div *ngFor="let singleAddress of client.profile.address">
+            <div *ngIf="singleAddress.nameAddress ==='billing'">
+              <div>{{singleAddress.address}}</div>
+              <div>{{singleAddress.zip}} {{singleAddress.city}}</div>
+              <div>{{client.profile.phoneNumber}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12">
+          <mat-form-field>
+            <input matInput [readonly]="fetchedQuote.drawingSignature.isSigned" type="text" formControlName="name" [(ngModel)]="fetchedQuote.name" placeholder="{{'Title' | translate}}">
+          </mat-form-field>
+      </div>
+
+    </div>
+  </form> -->

@@ -19,24 +19,22 @@
       <table class="table table-hover">
         <thead>
           <tr>
-
-         <!--    <th class="centre tdunder">{{'Image' | translate}}</th>   -->
             <th class="centre tdunder">{{'Name' | translate}}
               <app-sort (orderBy)="orderBy($event)" [search]="search" [filedToOrder]="'details.referenceName'"></app-sort>
             </th>
             <th class="centre tdunder">{{'Description' | translate}}
               <app-sort (orderBy)="orderBy($event)" [search]="search" [filedToOrder]="'details.description'"></app-sort>
             </th>
-            <!-- <th class="centre tdunder">{{'Description' | translate}}</th> -->
-
-
             <th class="centre tdunder">{{'Price without taxes' | translate}}
               <app-sort (orderBy)="orderBy($event)" [search]="search" [filedToOrder]="'details.price.sellingPrice'"></app-sort>
+            </th>
+            <th *ngIf="customButton">
+
             </th>
           </tr>
         </thead>
         <tbody class="clienttbl">
-          <tr *ngFor="let product of fetchedProducts" [routerLink]="['/product/' + product._id]" routerLinkActive="active">
+          <tr *ngFor="let product of fetchedProducts" (click)="actionRow(product._id)">
            <!--    <td class="centre tdunder">
               <div *ngFor="let singleForm of product.forms; let i = index;">
                 <img *ngIf="i<=0" height="50px" class="img" src="./uploads/forms/{{singleForm.owner}}/{{singleForm.imagePath}}" onerror="this.src ='assets/images/no-image-found.jpg'">
@@ -44,9 +42,12 @@
             </td>  -->
             <td class="centre tdunder">{{product.details.referenceName}}</td>
             <td class="centre tdunder">{{product.details.description}}</td>
-          <!--   <td class="centre tdunder">{{product.details.referenceName}}</td>  -->
             <td class="centre tdunder">{{product.details.price.sellingPrice}}</td>
-          <!--  <td class="centre tdunder">{{product.details.price.costPrice}}</td>  -->
+            <td *ngIf="customButton" class="centre tdunder">
+
+                <button type="button" (click)="customButtonAction(product)">{{customButton}}</button>
+
+            </td>
 
           </tr>
         </tbody>

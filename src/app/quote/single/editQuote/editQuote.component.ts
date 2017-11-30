@@ -8,6 +8,7 @@ import {ProductService} from '../../../product/product.service';
 // import { ProjectService} from '../../../project/project.service';
 
 import {Quote, DevisDetail,
+  BucketProduct,
   StatusQuotes, StatusQuotesInvoice,
   PriceQuoteTaxe, ModelVATs } from '../../quote.model';
 import {TemplateQuote } from '../../templateQuote.model';
@@ -35,13 +36,14 @@ import { PaiementQuotesComponent } from '../../../paiementQuote/paiementQuotes/p
 import {Search} from '../../../shared/shared.model'
 
 @Component({
-  selector: 'app-quoteInfo',
-  templateUrl: './quoteInfo.component.html',
+  selector: 'app-edit-quote',
+  templateUrl: './editQuote.component.html',
   styleUrls: ['../../quote.component.css'],
 })
-export class QuoteInfoComponent implements OnInit {
+export class EditQuoteComponent implements OnInit {
   loading: boolean = false;
   @Output() saved: EventEmitter<any> = new EventEmitter();
+  @Output() calculateQuote: EventEmitter<any> = new EventEmitter();
 
   @Input() search: Search = new Search()
 
@@ -83,8 +85,25 @@ export class QuoteInfoComponent implements OnInit {
       quoteRef: ['', [Validators.required, Validators.minLength(1)]],
 
     })
+  }
 
+  addProductToQuote(product: Product) {
 
+      const bucketProduct: BucketProduct = new BucketProduct()
+      bucketProduct.typeRow = 'product'
+      bucketProduct.productInit = [product]
+      bucketProduct.vat = product.details.price.vat
+      bucketProduct.priceWithoutTaxes = product.details.price.sellingPrice
+      bucketProduct.priceWithTaxes = 0
+      bucketProduct.priceWithTaxesWithQuantity = 0
+      bucketProduct.priceWithQuantity = 0
+      bucketProduct.quantity = 1
+      bucketProduct.discount = 0
+
+      const newDevisDetail: DevisDetail = new DevisDetail();
+      newDevisDetail.bucketProducts.push(bucketProduct)
+      this.fetchedQuote.devisDetails.push(newDevisDetail)
+      this.calculateQuote.emit()
   }
 
   quoteDetailsUpdated(result) {
