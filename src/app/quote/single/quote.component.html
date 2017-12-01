@@ -35,8 +35,8 @@
           <mat-icon>map</mat-icon>
         </mat-panel-description>
       </mat-expansion-panel-header>
-      {{fetchedQuote.priceQuote.priceGlobalWithTaxesWithDiscountWithSurfaceWithPainfulness}}
-      <app-edit-quote [(fetchedQuote)]="fetchedQuote" (calculateQuote)="calculateQuote()"></app-edit-quote>
+      {{fetchedQuote.priceQuote.priceGlobalWithTaxesWithDiscountWithSurfaceWithPainfulness | round}}$
+      <app-edit-quote [fetchedQuote]="fetchedQuote" (calculateQuote)="calculateQuote()"></app-edit-quote>
       <mat-action-row>
         <app-actionButtons
           [isDialog]="isDialog"

@@ -88,7 +88,6 @@ export class EditQuoteComponent implements OnInit {
   }
 
   addProductToQuote(product: Product) {
-
       const bucketProduct: BucketProduct = new BucketProduct()
       bucketProduct.typeRow = 'product'
       bucketProduct.productInit = [product]
@@ -104,6 +103,24 @@ export class EditQuoteComponent implements OnInit {
       newDevisDetail.bucketProducts.push(bucketProduct)
       this.fetchedQuote.devisDetails.push(newDevisDetail)
       this.calculateQuote.emit()
+  }
+  addTextToQuote(textToQuote) {
+    const bucketProduct: BucketProduct = new BucketProduct()
+    bucketProduct.typeRow = 'text'
+    bucketProduct.title = textToQuote.title
+    bucketProduct.priceWithoutTaxes = textToQuote.priceWithoutTaxes
+    // textToQuote
+    // bucketProduct.priceWithTaxes = 0
+    // bucketProduct.priceWithTaxesWithQuantity = 0
+    // bucketProduct.priceWithQuantity = 0
+    // bucketProduct.quantity = 1
+    // bucketProduct.discount = 0
+
+    const newDevisDetail: DevisDetail = new DevisDetail();
+    newDevisDetail.bucketProducts.push(bucketProduct)
+    this.fetchedQuote.devisDetails.push(newDevisDetail)
+    this.calculateQuote.emit()
+
   }
 
   quoteDetailsUpdated(result) {
@@ -127,21 +144,21 @@ export class EditQuoteComponent implements OnInit {
       )
   }
 
-  sendQuoteByEmailToClient() {
-    this.loading = true
-    this.quoteService.sendQuoteByEmailToClient(this.fetchedQuote._id)
-      .subscribe(
-        res => {
-          // console.log(res)
-          this.toastr.success('Great!', 'Mail envoyeé!')
-          //  window.open( '/uploads/pdf/' + res );
-           this.loading = false
-        },
-        error => { console.log(error) }
-      )
-  }
+  // sendQuoteByEmailToClient() {
+  //   this.loading = true
+  //   this.quoteService.sendQuoteByEmailToClient(this.fetchedQuote._id)
+  //     .subscribe(
+  //       res => {
+  //         // console.log(res)
+  //         this.toastr.success('Great!', 'Mail envoyeé!')
+  //         //  window.open( '/uploads/pdf/' + res );
+  //          this.loading = false
+  //       },
+  //       error => { console.log(error) }
+  //     )
+  // }
 
-  save(){}
+  // save(){}
 
 
 }

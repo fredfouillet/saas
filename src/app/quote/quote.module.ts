@@ -21,6 +21,7 @@ import { DesktopDetailsComponent} from './single/quoteDetails/quoteDetailsElem/d
 import { TemplateQuoteComponent} from './single/quoteDetails/quoteDetailsElem/templateQuote.component';
 import { TotalComponent} from './single/quoteDetails/quoteDetailsElem/total.component';
 import { EditQuoteComponent} from './single/editQuote/editQuote.component';
+import { AddTextRowComponent} from './single/editQuote/addTextRow.component';
 // import { QuoteDetailComponent} from './single/quoteDetail.component';
 import { QuoteService} from './quote.service';
 import { TemplateQuoteService} from './templateQuote.service';
@@ -31,7 +32,7 @@ import { ProductModule } from '../product/product.module';
 // import { AutocompleteComponent } from '../autocomplete/autocomplete.component'
 
 import { SharedModule } from '../shared/shared.module';
-
+import {MatButtonModule} from '@angular/material';
 // import { SignaturePadModule } from '../angular2-signaturepad';
 // import { SignaturePad } from '../angular2-signaturepad/signature-pad';
 //
@@ -74,6 +75,7 @@ import {MatTabsModule} from '@angular/material';
     SharedModule,
     // SignaturePadModule,
     PaiementQuoteModule,
+    MatButtonModule,
 
     // MatFormFieldModule,
     // MatInputModule,
@@ -100,6 +102,7 @@ import {MatTabsModule} from '@angular/material';
     TemplateQuoteComponent,
     TotalComponent,
     EditQuoteComponent,
+    AddTextRowComponent,
     QuoteDialogComponent,
     QuoteInfoComponent,
     ActionButtonsComponent,

@@ -21,6 +21,7 @@ import { Search, PaginationData } from '../../shared/shared.model';
 })
 export class ProductsComponent implements OnInit {
   @Input() customButton: string = '';
+  @Input() showNewItem: boolean = true;
   @Output() customButtonActionEmit: EventEmitter<any> = new EventEmitter();
   // token: string = localStorage.getItem('id_token');
   fetchedProducts: Product[] = [];

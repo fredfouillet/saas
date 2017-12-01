@@ -103,6 +103,10 @@ export class BucketProduct {
   isEditMode: boolean = false;
 }
 
+export class TextToQuote {
+    title: string = '';
+    priceWithoutTaxes: number;
+  }
 
 export class DevisDetail {
   nameBucketProducts: string = '';

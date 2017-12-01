@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="col-8">
+    <mat-form-field>
+      <textarea matInput placeholder="{{'Title' | translate}}" [(ngModel)]="textToQuote.title" matTextareaAutosize matAutosizeMinRows="1" matAutosizeMaxRows="5">
+    </textarea>
+    </mat-form-field>
+  </div>
+  <div class="col-4">
+    <mat-form-field>
+      <input matInput type="number" [(ngModel)]="textToQuote.priceWithoutTaxes" placeholder="{{'Price' | translate}}">
+    </mat-form-field>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12">
+    <button mat-raised-button color="primary" (click)="addText()">+</button>
+  </div>
+</div>

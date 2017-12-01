@@ -3,9 +3,11 @@
 
 <mat-tab-group>
   <mat-tab label="Catalogue">
-    <app-products [customButton]="'Select'" (customButtonActionEmit)="addProductToQuote($event)"></app-products>
+    <app-products [showNewItem]=false [customButton]="'Select'" (customButtonActionEmit)="addProductToQuote($event)"></app-products>
   </mat-tab>
-  <mat-tab label="Add">Content 2</mat-tab>
+  <mat-tab label="Add">
+  <app-add-text-row (addTextToQuote)="addTextToQuote($event)"></app-add-text-row>
+</mat-tab>
 </mat-tab-group>
 
 <!--
