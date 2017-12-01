@@ -35,26 +35,21 @@
         </div>
         <div class="col-3">
           <div class="row">
-            <div class="col-4 nopad">
+            <div class="col-5">
               <mat-form-field>
-                <input matInput type="number" (ngModelChange)="calculateQuote()" [readonly]="fetchedQuote.drawingSignature.isSigned" placeholder="{{'Quantity' | translate}}" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedQuote.devisDetails[i].bucketProducts[j].quantity"
+                <input matInput type="number" (ngModelChange)="calculateQuote()" [readonly]="fetchedQuote.drawingSignature.isSigned" placeholder="{{'Quantity' | translate}}" [ngModelOptions]="{standalone: true}"
+                  [(ngModel)]="fetchedQuote.devisDetails[i].bucketProducts[j].quantity"
                   placeholder="{{'Quantity' | translate}}">
+                  <span matSuffix>{{fetchedQuote.devisDetails[i].bucketProducts[j].productInit[0]?.details.unit}}</span>
               </mat-form-field>
             </div>
-            <div class="col-1 nopad hideMobile">
-              <div *ngIf="bucketProduct.typeRow=='product'">
-                <div *ngFor="let product of fetchedQuote.devisDetails[i].bucketProducts[j].productInit">
-                  {{product.details.unit}}
-                </div>
-              </div>
-            </div>
-            <div class="col-4 nopad">
+            <div class="col-4">
               <mat-form-field>
                 <input matInput type="number" (ngModelChange)="calculateQuote()" [readonly]="fetchedQuote.drawingSignature.isSigned" placeholder="{{'Price Without Taxes' | translate}}" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedQuote.devisDetails[i].bucketProducts[j].priceWithoutTaxes"
                   placeholder="{{'Quantity' | translate}}">
               </mat-form-field>
             </div>
-            <div class="col-3 nopad">
+            <div class="col-3">
               <mat-form-field>
                 <input matInput disabled value="{{fetchedQuote.devisDetails[i].bucketProducts[j].priceWithQuantityWithDiscountWithSurface | round}}" placeholder="{{'Total' | translate}}">
               </mat-form-field>
