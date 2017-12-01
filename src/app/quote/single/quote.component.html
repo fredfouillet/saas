@@ -23,7 +23,7 @@
 
 
 
-        <mat-expansion-panel *ngIf="authService.showObjHTML('quote', 'drawing') && fetchedQuote._id" [expanded]="step === 3" (opened)="setStep(3)" hideToggle="true">
+    <!-- <mat-expansion-panel *ngIf="authService.showObjHTML('quote', 'drawing') && fetchedQuote._id" [expanded]="step === 3" (opened)="setStep(3)" hideToggle="true">
           <mat-expansion-panel-header>
             <mat-panel-title>
               {{'Drawing' | translate}}
@@ -37,22 +37,22 @@
             <app-actionButtons [fetchedQuote]="fetchedQuote" [showDeleteButton]=false (nextStep)="nextStep()">
             </app-actionButtons>
           </mat-action-row>
-        </mat-expansion-panel>
-        <mat-expansion-panel *ngIf="fetchedQuote._id" [expanded]="step === 4" (opened)="setStep(4)" hideToggle="true">
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              {{'Documents' | translate}}
-            </mat-panel-title>
-            <mat-panel-description>
-              <mat-icon>camera</mat-icon>
-            </mat-panel-description>
-          </mat-expansion-panel-header>
-          <app-picture [showPagination]=false [labelButtonAddPicture]="'Add'" [forms]="fetchedQuote.forms">
-          </app-picture>
-          <mat-action-row>
-            <app-actionButtons (nextStep)="nextStep()" [showDeleteButton]=false [fetchedQuote]="fetchedQuote"></app-actionButtons>
-          </mat-action-row>
-        </mat-expansion-panel>
+        </mat-expansion-panel> -->
+    <mat-expansion-panel *ngIf="fetchedQuote._id" [expanded]="step === 4" (opened)="setStep(4)" hideToggle="true">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{'Documents' | translate}}
+        </mat-panel-title>
+        <mat-panel-description>
+          <mat-icon>camera</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <app-picture [showPagination]=false [labelButtonAddPicture]="'Add'" [forms]="fetchedQuote.forms">
+      </app-picture>
+      <mat-action-row>
+        <app-actionButtons (nextStep)="nextStep()" [showDeleteButton]=false [fetchedQuote]="fetchedQuote"></app-actionButtons>
+      </mat-action-row>
+    </mat-expansion-panel>
 
 
     <mat-expansion-panel *ngIf="fetchedQuote._id" [expanded]="step === 1" (opened)="setStep(1)" hideToggle="true">
