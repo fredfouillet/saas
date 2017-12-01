@@ -68,7 +68,7 @@ export class AutocompleteComponent {
         .subscribe( res => {
           if(this.arrayContent.length) this.arrayContent.splice(0, 1);
           this.arrayContent.push(res)
-          this.autocompleteAfterNgChanges.emit()
+          this.autocompleteAfterNgChanges.emit(res)
         }, error => { console.log(error); });
 
   }

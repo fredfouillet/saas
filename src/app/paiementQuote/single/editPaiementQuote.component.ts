@@ -62,7 +62,7 @@ export class EditPaiementQuoteComponent implements OnInit {
   autocompleteProduct: String = ''
   fetchedUsers: User[] = [];
   arrayContentToSearch =[]
-
+  step = 0;
   paiementsTypes = [
     { label: 'cheque', value: 'check' },
     { label: 'Espece', value: 'cash' },
@@ -84,7 +84,7 @@ export class EditPaiementQuoteComponent implements OnInit {
     private _fb: FormBuilder,
     private authService: AuthService,
   ) {}
-  step = 0;
+
 
  setStep(index: number) {
    this.step = index;
@@ -124,9 +124,11 @@ export class EditPaiementQuoteComponent implements OnInit {
   //   alert('soon')
   // }
     selectQuote(quote: Quote) {
+
       // console.log(quote.priceQuote.priceGlobalWithDiscountWithSurface)
       this.fetchedPaiementQuote.quotes = [quote]
       this.search.quoteId = quote._id
+
     }
     // selectProject(project: Project) {
     //   this.fetchedPaiementQuote.projects = [project]
@@ -136,16 +138,20 @@ export class EditPaiementQuoteComponent implements OnInit {
       this.search.userId = user._id
     }
 
-    downloadPDF() {
-      this.paiementQuoteService.downloadPDF(this.fetchedPaiementQuote._id)
-        .subscribe(
-          res => {
-            console.log(res)
-             window.open( '/uploads/pdf/' + res );
-          },
-          error => { console.log(error) }
-        )
+    autocompleteAfterNgChanges(result) {
+      this.fetchedPaiementQuote.amount = result.priceQuote.priceQuoteWithoutTaxes
+      // console.log(this.fetchedPaiementQuote.quotes)
     }
+    // downloadPDF() {
+    //   this.paiementQuoteService.downloadPDF(this.fetchedPaiementQuote._id)
+    //     .subscribe(
+    //       res => {
+    //         console.log(res)
+    //          window.open( '/uploads/pdf/' + res );
+    //       },
+    //       error => { console.log(error) }
+    //     )
+    // }
 
     getQuote(idQuote: string) {
       this.quoteService.getQuote(idQuote)

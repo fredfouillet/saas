@@ -1,7 +1,7 @@
 <div class="container">
   <div class="hdform">
     <h3 *ngIf="!fetchedPaiementQuote.isExpense"><i class="fa fa10 fa-university" aria-hidden="true"></i> {{'Payment' | translate}}</h3>
-    <h3 *ngIf="fetchedPaiementQuote.isExpense"><i class="fa fa10 fa-university" aria-hidden="true"></i> {{'Expense' | translate}}</h3>
+    <!-- <h3 *ngIf="fetchedPaiementQuote.isExpense"><i class="fa fa10 fa-university" aria-hidden="true"></i> {{'Expense' | translate}}</h3> -->
   </div>
 
 
@@ -16,41 +16,37 @@
         </mat-panel-description>
       </mat-expansion-panel-header>
 
+
       <form [formGroup]="myForm" novalidate (ngSubmit)="save()">
-        <mat-form-field>
+        <!-- <mat-form-field>
           <input matInput type="text" formControlName="title" [(ngModel)]="fetchedPaiementQuote.title" placeholder="{{'Title' | translate}}">
-        </mat-form-field>
-        <app-autocomplete class="mb8 bn" [canDelete]=false [typeAutocomplete]="'quote'" [search]="search" [canDelete]="true" [title]="'Invoice'" [singleChoice]="true" [arrayContent]="fetchedPaiementQuote.quotes" (getResultAutocomplete)="selectQuote($event[0])">
-        </app-autocomplete>
-        <!-- <div *ngFor="let quote of fetchedPaiementQuote.quotes">
-          {{'Quote Amount Without Taxes With Discount' | translate}}: {{quote.priceQuote.priceGlobalWithDiscountWithSurface | round}}
-        </div> -->
-
-        <app-autocomplete class="mb8 bn" [canDelete]=false [typeAutocomplete]="'user'" [search]="search" [canDelete]="true" [title]="'Customer'" [singleChoice]="true" [arrayContent]="fetchedPaiementQuote.userDebiteds" (getResultAutocomplete)="selectUserDebited($event[0])">
-        </app-autocomplete>
-
-        <mat-form-field>
-          <input matInput type="number" formControlName="amount" [(ngModel)]="fetchedPaiementQuote.amount" placeholder="Amount">
-        </mat-form-field>
-        <!-- <input *ngIf="fetchedPaiementQuote.type!='stripe'" type="number" class="form-control" formControlName="amount" [(ngModel)]="fetchedPaiementQuote.amount" placeholder="Amount"> -->
-        <!-- <div *ngIf="fetchedPaiementQuote.type=='stripe'" class="form-control">
-          {{fetchedPaiementQuote.amount}}
-        </div> -->
-        <!-- <input type="date" class="form-control" [ngModelOptions]="{standalone: true}" class="form-control" [(ngModel)]="fetchedPaiementQuote.datePaiementString"> -->
-
-
-
-        <mat-form-field>
-          <input matInput [matDatepicker]="picker" placeholder="{{'Paiement Date'}}" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedPaiementQuote.datePaiement">
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
-
+        </mat-form-field> -->
+        <div class="row">
+          <div class="col-12 col-md-6">
+            <app-autocomplete class="mb8 bn" [canDelete]=false [typeAutocomplete]="'quote'" [search]="search" [canDelete]="true" [title]="'Invoice'" [singleChoice]="true" [arrayContent]="fetchedPaiementQuote.quotes" (getResultAutocomplete)="selectQuote($event[0])" (autocompleteAfterNgChanges)="autocompleteAfterNgChanges($event)">
+            </app-autocomplete>
+          </div>
+          <div class="col-12 col-md-6">
+            <app-autocomplete class="mb8 bn" [canDelete]=false [typeAutocomplete]="'user'" [search]="search" [canDelete]="true" [title]="'Customer'" [singleChoice]="true" [arrayContent]="fetchedPaiementQuote.userDebiteds" (getResultAutocomplete)="selectUserDebited($event[0])">
+            </app-autocomplete>
+          </div>
+          <div class="col-12 col-md-6">
+            <mat-form-field>
+              <input matInput type="number" formControlName="amount" [(ngModel)]="fetchedPaiementQuote.amount" placeholder="Amount">
+            </mat-form-field>
+          </div>
+          <div class="col-12 col-md-6">
+            <mat-form-field>
+              <input matInput [matDatepicker]="picker" placeholder="{{'Paiement Date'}}" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedPaiementQuote.datePaiement">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+        </div>
       </form>
 
       <mat-action-row>
 
-        <button *ngIf="fetchedPaiementQuote._id" type="button" (click)="downloadPDF()">{{'Get invoice' | translate}}</button>
 
         <button type="button" (click)="save()">{{'Save' | translate}}</button>
         <button *ngIf="fetchedPaiementQuote._id" type="false" class="delete" md-button (click)="openDialogDelete()">
@@ -121,7 +117,8 @@
       </div>
 
       <mat-action-row>
-        <button type="button" class="valid" (click)="payByCardConnect()">payByCardConnect</button>
+        <button type="button" *ngIf="fetchedPaiementQuote.type!=='stripe'" (click)="save()">{{'Save' | translate}}</button>
+        <button type="button" *ngIf="fetchedPaiementQuote.type==='stripe'" class="valid" (click)="payByCardConnect()">payByCardConnect</button>
       </mat-action-row>
     </mat-expansion-panel>
 
