@@ -16,9 +16,9 @@ import { ActionButtonsComponent} from './single/actionButtons/actionButtons.comp
 import { QuoteInfoComponent} from './single/quoteInfo/quoteInfo.component';
 // import { SignatureComponent} from './single/signature/signature.component';
 import { QuoteDetailsComponent} from './single/quoteDetails/quoteDetails.component';
-import { MobileDetailsComponent} from './single/quoteDetails/mobileDetails.component';
-import { DesktopDetailsComponent} from './single/quoteDetails/desktopDetails.component';
-import { TotalComponent} from './single/quoteDetails/total.component';
+import { MobileDetailsComponent} from './single/quoteDetails/quoteDetailsElem/mobileDetails.component';
+import { DesktopDetailsComponent} from './single/quoteDetails/quoteDetailsElem/desktopDetails.component';
+import { TotalComponent} from './single/quoteDetails/quoteDetailsElem/total.component';
 import { EditQuoteComponent} from './single/editQuote/editQuote.component';
 // import { QuoteDetailComponent} from './single/quoteDetail.component';
 import { QuoteService} from './quote.service';

@@ -1,48 +1,48 @@
 import { Component, OnInit, ViewChild, Input, Output, EventEmitter } from '@angular/core';
 // import { AuthService } from '../../../auth/auth.service';
-// import { QuoteService } from '../../quote.service';
+import { QuoteService } from '../../../quote.service';
 // import { TemplateQuoteService } from '../../templateQuote.service';
 
-// import { DragulaService } from 'ng2-dragula';
+import { DragulaService } from 'ng2-dragula';
 // import { ProductService } from '../../../product/product.service';
 // import { ProjectService} from '../../../project/project.service';
 
 import {
   Quote, DevisDetail, BucketProduct, StatusQuotes,
-  // StatusQuotesInvoice,
+  StatusQuotesInvoice,
   // PriceQuoteTaxe,
   // ModelVATs
-} from '../../quote.model';
+} from '../../../quote.model';
 // import { TemplateQuote } from '../../templateQuote.model';
 
-// import { ToastsManager } from 'ng2-toastr';
+import { ToastsManager } from 'ng2-toastr';
 // import { MatDialog } from '@angular/material';
-// import { Params } from '@angular/router';
-// import { Location } from '@angular/common';
-// import { FormGroup, Validators } from '@angular/forms';
+import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Location } from '@angular/common';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 // import { UserService } from '../../../user/user.service';
 // import { DeleteDialog } from '../../../deleteDialog/deleteDialog.component';
 // import { User } from '../../../user/user.model';
-import { Product } from '../../../product/product.model';
+import { Product } from '../../../../product/product.model';
 // import { Project } from '../../../project/project.model';
 // import { PaiementQuote } from '../../../paiementQuote/paiementQuote.model';
 // import { PaiementQuoteDialogComponent } from '../paiementQuote/single/dialog/paiementQuoteDialog.component';
 // import { PaiementQuoteDialogComponent } from '../../../paiementQuote/single/dialog/paiementQuoteDialog.component'
 
-import { TranslateService } from '../../../translate/translate.service';
+// import { TranslateService } from '../../../translate/translate.service';
 // declare let jsPDF;
 // import { SignaturePad } from 'angular2-signaturepad/signature-pad';
 // import { SignaturePad } from '../../../angular2-signaturepad/signature-pad';
 
 // import { PaiementQuotesComponent } from '../../../paiementQuote/paiementQuotes/paiementQuotes.component';
-import { Search } from '../../../shared/shared.model'
+import { Search } from '../../../../shared/shared.model'
 
 @Component({
-  selector: 'app-mobile-details',
-  templateUrl: './mobileDetails.component.html',
-  styleUrls: ['./quoteDetails.component.css'],
+  selector: 'app-desktop-details',
+  templateUrl: './desktopDetails.component.html',
+  styleUrls: ['../quoteDetails.component.css'],
 })
-export class MobileDetailsComponent implements OnInit {
+export class DesktopDetailsComponent implements OnInit {
   // @ViewChild(SignaturePad) signaturePad: SignaturePad;
   // @ViewChild(PaiementQuotesComponent) paiementQuotesComponent: PaiementQuotesComponent;
 
@@ -64,7 +64,7 @@ export class MobileDetailsComponent implements OnInit {
   // imgSignatureBase64Temp = ''
   // fetchedPaiementQuotes: PaiementQuote[] = []
   statusQuotes = StatusQuotes
-  // statusQuotesInvoice = StatusQuotesInvoice
+  statusQuotesInvoice = StatusQuotesInvoice
 
   // public editorOptions = {
   //   placeholder: "insert content...",
@@ -78,33 +78,33 @@ export class MobileDetailsComponent implements OnInit {
   // VATs = ModelVATs
 
   constructor(
-    // private quoteService: QuoteService,
+    private quoteService: QuoteService,
     // private templateQuoteService: TemplateQuoteService,
     // private projectService: ProjectService,
     // private userService: UserService,
     // private productService: ProductService,
     //    private modalService: NgbModal,
-    // private toastr: ToastsManager,
+    private toastr: ToastsManager,
     // public dialog: MatDialog,
-    // private activatedRoute: ActivatedRoute,
-    // private router: Router,
-    // private location: Location,
-    // private _fb: FormBuilder,
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
+    private location: Location,
+    private _fb: FormBuilder,
     // public authService: AuthService,
-    // private dragulaService: DragulaService,
-    private translateService: TranslateService,
+    private dragulaService: DragulaService,
+    // private translateService: TranslateService,
   ) {
 
 
-    // dragulaService.setOptions('third-bag', {
-    //   moves: function(el, container, handle) {
-    //     return (handle.className === 'fa fa-arrows handle' || handle.className === 'btn btn-sm handle');
-    //   }
-    // });
+    dragulaService.setOptions('third-bag', {
+      moves: function(el, container, handle) {
+        return (handle.className === 'fa fa-arrows handle' || handle.className === 'btn btn-sm handle');
+      }
+    });
   }
-  // ngOnDestroy() {
-  //   this.dragulaService.destroy('third-bag');
-  // }
+  ngOnDestroy() {
+    this.dragulaService.destroy('third-bag');
+  }
 
 
 
@@ -144,17 +144,17 @@ export class MobileDetailsComponent implements OnInit {
       // this.fetchedQuote.devisDetails[i].bucketProducts.push(bucketProduct)
       this.calculateQuote()
   }
-  onEditorCreated(quill) {
-  }
-
-
+  // onEditorCreated(quill) {
+  // }
+  //
+  //
   // onEditorBlured(quill, i, j) {
   //   this.changeQuillEditMode(i, j)
   // }
-
+  //
   // onEditorFocused(quill) {
   // }
-
+  //
   //
   // onContentChanged({ quill, html, text }) {
   // }
@@ -273,25 +273,25 @@ export class MobileDetailsComponent implements OnInit {
     this.calculateQuote()
   }
 
-  //
-  // addRow(typeRow) {
-  //   if (typeRow) {
-  //     if (typeRow === 'category')
-  //       this.addBucketProducts()
-  //
-  //     if (!this.fetchedQuote.devisDetails.length)
-  //       this.addBucketProducts()
-  //
-  //     if (typeRow === 'product' || typeRow === 'text') {
-  //       let bucketProduct: BucketProduct = new BucketProduct()
-  //       bucketProduct.isEditMode = true
-  //       bucketProduct.typeRow = typeRow
-  //       this.fetchedQuote.devisDetails[this.fetchedQuote.devisDetails.length - 1].bucketProducts.push(bucketProduct)
-  //       this.calculateQuote()
-  //     }
-  //   }
-  // }
-  //
+
+  addRow(typeRow) {
+    if (typeRow) {
+      if (typeRow === 'category')
+        this.addBucketProducts()
+
+      if (!this.fetchedQuote.devisDetails.length)
+        this.addBucketProducts()
+
+      if (typeRow === 'product' || typeRow === 'text') {
+        let bucketProduct: BucketProduct = new BucketProduct()
+        bucketProduct.isEditMode = true
+        bucketProduct.typeRow = typeRow
+        this.fetchedQuote.devisDetails[this.fetchedQuote.devisDetails.length - 1].bucketProducts.push(bucketProduct)
+        this.calculateQuote()
+      }
+    }
+  }
+
   // saveTemplateQuote(nameTemplate: string) {
   //   const newTemplateQuote = new TemplateQuote()
   //   newTemplateQuote.nameTemplate = nameTemplate
@@ -305,7 +305,7 @@ export class MobileDetailsComponent implements OnInit {
   //     error => { console.log(error) }
   //     )
   // }
-  //
+
 
 
 

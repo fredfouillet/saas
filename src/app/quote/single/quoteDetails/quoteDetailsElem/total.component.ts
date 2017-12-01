@@ -12,7 +12,7 @@ import {
   // StatusQuotesInvoice,
   // PriceQuoteTaxe,
   ModelVATs
-} from '../../quote.model';
+} from '../../../quote.model';
 // import { TemplateQuote } from '../../templateQuote.model';
 
 // import { ToastsManager } from 'ng2-toastr';
@@ -29,18 +29,18 @@ import {
 // import { PaiementQuoteDialogComponent } from '../paiementQuote/single/dialog/paiementQuoteDialog.component';
 // import { PaiementQuoteDialogComponent } from '../../../paiementQuote/single/dialog/paiementQuoteDialog.component'
 
-import { TranslateService } from '../../../translate/translate.service';
+// import { TranslateService } from '../../../../translate/translate.service';
 // declare let jsPDF;
 // import { SignaturePad } from 'angular2-signaturepad/signature-pad';
 // import { SignaturePad } from '../../../angular2-signaturepad/signature-pad';
 
 // import { PaiementQuotesComponent } from '../../../paiementQuote/paiementQuotes/paiementQuotes.component';
-import { Search } from '../../../shared/shared.model'
+import { Search } from '../../../../shared/shared.model'
 
 @Component({
   selector: 'app-total',
   templateUrl: './total.component.html',
-  styleUrls: ['./quoteDetails.component.css'],
+  styleUrls: ['../quoteDetails.component.css'],
 })
 export class TotalComponent implements OnInit {
   // @ViewChild(SignaturePad) signaturePad: SignaturePad;
@@ -92,7 +92,7 @@ export class TotalComponent implements OnInit {
     // private _fb: FormBuilder,
     // public authService: AuthService,
     // private dragulaService: DragulaService,
-    private translateService: TranslateService,
+    // private translateService: TranslateService,
   ) {
 
 
