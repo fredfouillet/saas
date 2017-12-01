@@ -69,6 +69,12 @@ export class QuoteComponent implements OnInit {
       error => { console.log(error) }
       )
   }
+  clearedDrawing() {
+    this.fetchedQuote.drawingSignature.base64 = ''
+    this.fetchedQuote.drawingSignature.base64Temp = ''
+    this.fetchedQuote.drawingSignature.isSigned = false
+    this.actionButtonsComponent.save()
+  }
   getQuote(id: string) {
     let this2 = this
     return new Promise(function(resolve, reject) {

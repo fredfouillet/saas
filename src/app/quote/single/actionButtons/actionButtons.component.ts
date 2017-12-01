@@ -144,6 +144,7 @@ export class ActionButtonsComponent implements OnInit {
   // }
 
   nextStepEmit() {
+    this.save()
     this.nextStep.emit()
     // this.step++;
     // console.log(this.step)
@@ -568,7 +569,9 @@ export class ActionButtonsComponent implements OnInit {
       this.quoteService.saveQuote(this.fetchedQuote)
         .subscribe(
         res => {
+          console.log(res)
           this.toastr.success('Great!', res.message)
+          // this.router.navigate(['quote/' + res.obj._id])
           this.saved.emit(res)
         },
         error => { console.log(error) }
