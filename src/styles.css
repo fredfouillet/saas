@@ -227,11 +227,11 @@ textarea::placeholder {
 
 .bg-goo {
 
-   background: #35132e; /* For browsers that do not support gradients */
-  background: -webkit-linear-gradient(left, #35132e, #b57e9e); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(right, #35132e, #b57e9e); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(right, #35132e, #b57e9e); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(to right, #35132e, #b57e9e); /* Standard syntax */
+   background: #ff4351; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(left, #ff4351, #ffcb3d); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(right, #ff4351, #ffcb3d); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(right, #ff4351, #ffcb3d); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to right, #ff4351, #ffcb3d); /* Standard syntax */
 
 
 }
