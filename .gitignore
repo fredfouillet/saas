@@ -14,6 +14,7 @@
 # backupJson DB
 /backupJson
 
+package-lock.json
 
 # media
 /server/uploads/forms/**/*
