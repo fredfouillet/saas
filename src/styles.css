@@ -436,6 +436,7 @@ table {
 
 .logo-img {
   height: 50px;
+  padding-left: 15px;
 }
 
 // Mixin itself
