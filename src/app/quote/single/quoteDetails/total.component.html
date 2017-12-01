@@ -27,18 +27,15 @@
     </mat-form-field>
   </div>
 </div>
-
 <div class="row">
   <div class="col-6">
     <mat-form-field>
       <input matInput type="text" value="{{fetchedQuote.priceQuote.priceGlobalWithDiscountWithSurfaceWithPainfulness | round}} € HT" placeholder="{{'Total' | translate}} %">
     </mat-form-field>
   </div>
-
   <div class="col-6">
     <mat-form-field>
       <input matInput type="text" value="{{fetchedQuote.priceQuote.priceGlobalWithTaxesWithDiscountWithSurfaceWithPainfulness | round}} € TTC" placeholder="{{'Total with taxes' | translate}} %">
     </mat-form-field>
-
   </div>
 </div>

@@ -55,7 +55,7 @@ import {MatSelectModule} from '@angular/material';
 // import {MatInputModule} from '@angular/material';
 // import {MatExpansionModule} from '@angular/material';
 // import {MatIconModule} from '@angular/material';
-import {MatSelectModule} from '@angular/material';
+
 import {MatTabsModule} from '@angular/material';
 
 @NgModule({
@@ -83,7 +83,6 @@ import {MatTabsModule} from '@angular/material';
     MatDatepickerModule,
     MatNativeDateModule,
     MatTabsModule,
-    MatSelectModule,
     // MatExpansionModule,
     // MatIconModule,
     MatCardModule,

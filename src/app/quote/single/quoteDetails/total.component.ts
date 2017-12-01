@@ -23,7 +23,7 @@ import {
 // import { UserService } from '../../../user/user.service';
 // import { DeleteDialog } from '../../../deleteDialog/deleteDialog.component';
 // import { User } from '../../../user/user.model';
-import { Product } from '../../../product/product.model';
+// import { Product } from '../../../product/product.model';
 // import { Project } from '../../../project/project.model';
 // import { PaiementQuote } from '../../../paiementQuote/paiementQuote.model';
 // import { PaiementQuoteDialogComponent } from '../paiementQuote/single/dialog/paiementQuoteDialog.component';
@@ -108,14 +108,14 @@ export class TotalComponent implements OnInit {
 
 
 
-  removeBucketProducts(i) {
-    this.fetchedQuote.devisDetails.splice(i, 1);
-    this.calculateQuote()
-  }
-  addBucketProducts() {
-    const newDevisDetail = new DevisDetail()
-    this.fetchedQuote.devisDetails.push(newDevisDetail)
-  }
+  // removeBucketProducts(i) {
+  //   this.fetchedQuote.devisDetails.splice(i, 1);
+  //   this.calculateQuote()
+  // }
+  // addBucketProducts() {
+  //   const newDevisDetail = new DevisDetail()
+  //   this.fetchedQuote.devisDetails.push(newDevisDetail)
+  // }
 
   //
   // selectTemplateQuote(templateQuote: TemplateQuote) {
@@ -126,26 +126,26 @@ export class TotalComponent implements OnInit {
   //
   //   this.calculateQuote()
   // }
-  selectProduct(product: Product, i, j) {
-
-    // let bucketProduct: BucketProduct = new BucketProduct()
-
-      this.fetchedQuote.devisDetails[i].bucketProducts[j].productInit = [product],
-      this.fetchedQuote.devisDetails[i].bucketProducts[j].vat = product.details.price.vat,
-      this.fetchedQuote.devisDetails[i].bucketProducts[j].priceWithoutTaxes = product.details.price.sellingPrice,
-      this.fetchedQuote.devisDetails[i].bucketProducts[j].priceWithTaxes = 0,
-      this.fetchedQuote.devisDetails[i].bucketProducts[j].priceWithTaxesWithQuantity = 0,
-      this.fetchedQuote.devisDetails[i].bucketProducts[j].priceWithQuantity = 0,
-      this.fetchedQuote.devisDetails[i].bucketProducts[j].quantity = 1,
-      this.fetchedQuote.devisDetails[i].bucketProducts[j].discount = 0,
-
-      // this.autocompleteProduct = ''
-
-      // this.fetchedQuote.devisDetails[i].bucketProducts.push(bucketProduct)
-      this.calculateQuote()
-  }
-  onEditorCreated(quill) {
-  }
+  // selectProduct(product: Product, i, j) {
+  //
+  //   // let bucketProduct: BucketProduct = new BucketProduct()
+  //
+  //     this.fetchedQuote.devisDetails[i].bucketProducts[j].productInit = [product],
+  //     this.fetchedQuote.devisDetails[i].bucketProducts[j].vat = product.details.price.vat,
+  //     this.fetchedQuote.devisDetails[i].bucketProducts[j].priceWithoutTaxes = product.details.price.sellingPrice,
+  //     this.fetchedQuote.devisDetails[i].bucketProducts[j].priceWithTaxes = 0,
+  //     this.fetchedQuote.devisDetails[i].bucketProducts[j].priceWithTaxesWithQuantity = 0,
+  //     this.fetchedQuote.devisDetails[i].bucketProducts[j].priceWithQuantity = 0,
+  //     this.fetchedQuote.devisDetails[i].bucketProducts[j].quantity = 1,
+  //     this.fetchedQuote.devisDetails[i].bucketProducts[j].discount = 0,
+  //
+  //     // this.autocompleteProduct = ''
+  //
+  //     // this.fetchedQuote.devisDetails[i].bucketProducts.push(bucketProduct)
+  //     this.calculateQuote()
+  // }
+  // onEditorCreated(quill) {
+  // }
 
 
   // onEditorBlured(quill, i, j) {
@@ -268,10 +268,10 @@ export class TotalComponent implements OnInit {
   calculateQuote() {
     this.calculateQuoteEmit.emit()
   }
-  removeRow(i: number, j: number) {
-    this.fetchedQuote.devisDetails[i].bucketProducts.splice(j, 1);
-    this.calculateQuote()
-  }
+  // removeRow(i: number, j: number) {
+  //   this.fetchedQuote.devisDetails[i].bucketProducts.splice(j, 1);
+  //   this.calculateQuote()
+  // }
 
   //
   // addRow(typeRow) {
