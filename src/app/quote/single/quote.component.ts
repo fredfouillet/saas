@@ -89,25 +89,49 @@ export class QuoteComponent implements OnInit {
 
 
   ngOnInit() {
-    if (this.search.parentQuoteId) {
-      this.getQuote(this.search.parentQuoteId).then((parentQuote: Quote) => {
-        this.fetchedQuote._id = ''
-        this.fetchedQuote.typeQuote = 'invoice'
-        this.fetchedQuote.quoteNumber = null
-        this.getMaxQuoteNumber()
 
-      })
-    } else {
-      this.fetchedQuote.typeQuote = this.search.typeQuote
-      this.activatedRoute.params.subscribe((params: Params) => {
-        if (params['idQuote']) {
-          this.search.quoteId = params['idQuote']
-          this.getQuote(params['idQuote'])
-        } else {
+
+
+    this.activatedRoute.params.subscribe((params: Params) => {
+      if (params['idQuote']) {
+        this.search.quoteId = params['idQuote']
+        this.getQuote(params['idQuote'])
+      } else if (params['parentQuoteId']) {
+        console.log('aa')
+        this.getQuote(params['parentQuoteId']).then((parentQuote: Quote) => {
+          this.search.parentQuoteId = params['parentQuoteId']
+          this.fetchedQuote._id = ''
+          this.fetchedQuote.typeQuote = 'invoice'
+          this.fetchedQuote.drawingSignature.isSigned = false
+          this.fetchedQuote.quoteNumber = null
           this.getMaxQuoteNumber()
-        }
-      })
-    }
+        })
+      } else {
+        this.getMaxQuoteNumber()
+      }
+    })
+
+
+
+    // if (this.search.parentQuoteId) {
+    //   this.getQuote(this.search.parentQuoteId).then((parentQuote: Quote) => {
+    //     this.fetchedQuote._id = ''
+    //     this.fetchedQuote.typeQuote = 'invoice'
+    //     this.fetchedQuote.quoteNumber = null
+    //     this.getMaxQuoteNumber()
+    //
+    //   })
+    // } else {
+    //   // this.fetchedQuote.typeQuote = this.search.typeQuote
+    //   this.activatedRoute.params.subscribe((params: Params) => {
+    //     if (params['idQuote']) {
+    //       this.search.quoteId = params['idQuote']
+    //       this.getQuote(params['idQuote'])
+    //     } else {
+    //       this.getMaxQuoteNumber()
+    //     }
+    //   })
+    // }
   }
 
   drawingSignatureUpdated(result) {
