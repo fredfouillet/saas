@@ -99,6 +99,7 @@
         <mat-action-row>
           <app-actionButtons
             [fetchedQuote]="fetchedQuote"
+            [showDeleteButton]=false
             (nextStep)="nextStep()"
             >
           </app-actionButtons>
@@ -117,6 +118,7 @@
       <mat-action-row>
         <app-actionButtons
           [fetchedQuote]="fetchedQuote"
+          [showDeleteButton]=false
           (nextStep)="nextStep()"
           >
         </app-actionButtons>
