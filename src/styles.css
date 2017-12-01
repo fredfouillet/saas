@@ -12,6 +12,10 @@
 
 
 
+.mat-focused { 
+ color: #000!important;
+}
+
 .mat-form-field {
   width: 100%;
 }
@@ -314,7 +318,7 @@ a {
 
 .active {
   color: #ffffff !important;
-  background-color: #512d44;
+  background-color: #ff4351;
 }
 
 .active2 {
@@ -436,6 +440,9 @@ table {
 
 .logo-img {
   height: 50px;
+  padding-left: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 // Mixin itself
