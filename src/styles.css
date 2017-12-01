@@ -11,11 +11,6 @@
 /*@import "~@ng-bootstrap/ng-bootstrap/dist/css/bootstrap.min.css";*/
 
 
-
-.mat-focused { 
- color: #000!important;
-}
-
 .mat-form-field {
   width: 100%;
 }
