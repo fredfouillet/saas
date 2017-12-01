@@ -16,11 +16,11 @@ mat-form-field
 
 ng-tns-c9-47
 
-mat-form-field-type-mat-input
-
-mat-form-field-can-float  {
+mat-form-field-type-mat-input {
    color: #fafafa;
   }
+
+mat-form-field-can-float  
 
 .mat-form-field {
   width: 100%;
