@@ -10,17 +10,17 @@
 
 /*@import "~@ng-bootstrap/ng-bootstrap/dist/css/bootstrap.min.css";*/
 
-mat-input-container
+.mat-input-container
 
-mat-form-field
+.mat-form-field
 
-ng-tns-c9-47
+.ng-tns-c9-47
 
-mat-form-field-type-mat-input {
+.mat-form-field-type-mat-input {
    color: #fafafa!important;
   }
 
-mat-form-field-can-float  
+.mat-form-field-can-float  
 
 .mat-form-field {
   width: 100%;
