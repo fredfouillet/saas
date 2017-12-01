@@ -7,6 +7,8 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActionButtonsComponent } from './actionButtons/actionButtons.component';
 import { TranslateService } from '../../translate/translate.service';
 import { Search } from '../../shared/shared.model';
+import { PaiementQuote } from '../../paiementQuote/paiementQuote.model';
+
 
 @Component({
   selector: 'app-quote',
@@ -23,8 +25,10 @@ export class QuoteComponent implements OnInit {
   @Input() search: Search = new Search()
   @Input() isDialog: boolean = false
 
+ fetchedPaiementQuotes: PaiementQuote[] = []
   showPaiements: boolean = false
   fetchedQuote: Quote = new Quote()
+   totalPaiementAmount: number = 0
 
   step = 0;
 
@@ -106,7 +110,14 @@ export class QuoteComponent implements OnInit {
   quoteDetailsUpdated(){
 
   }
-
+  getPaiementQuotes(event) {
+    // console.log(event)
+    this.totalPaiementAmount = 0
+    this.fetchedPaiementQuotes = event
+    this.fetchedPaiementQuotes.forEach(paiement => {
+      this.totalPaiementAmount += paiement.amount
+    })
+  }
 
     calculateQuote() {
       let this2 = this;
