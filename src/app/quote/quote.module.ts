@@ -18,6 +18,7 @@ import { QuoteInfoComponent} from './single/quoteInfo/quoteInfo.component';
 import { QuoteDetailsComponent} from './single/quoteDetails/quoteDetails.component';
 import { MobileDetailsComponent} from './single/quoteDetails/quoteDetailsElem/mobileDetails.component';
 import { DesktopDetailsComponent} from './single/quoteDetails/quoteDetailsElem/desktopDetails.component';
+import { TemplateQuoteComponent} from './single/quoteDetails/quoteDetailsElem/templateQuote.component';
 import { TotalComponent} from './single/quoteDetails/quoteDetailsElem/total.component';
 import { EditQuoteComponent} from './single/editQuote/editQuote.component';
 // import { QuoteDetailComponent} from './single/quoteDetail.component';
@@ -96,6 +97,7 @@ import {MatTabsModule} from '@angular/material';
     QuoteDetailsComponent,
     MobileDetailsComponent,
     DesktopDetailsComponent,
+    TemplateQuoteComponent,
     TotalComponent,
     EditQuoteComponent,
     QuoteDialogComponent,

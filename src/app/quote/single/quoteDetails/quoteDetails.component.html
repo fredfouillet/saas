@@ -1,22 +1,6 @@
-<div *ngIf="authService.showObjHTML('quote', 'template')">
-  <ul *ngIf="!fetchedQuote.drawingSignature.isSigned" class="nav nav-tabs justify-content-end">
-    <li class="nav-item dropdown">
-      <a class="nav-link active dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">{{'Template' | translate}}</a>
-      <div class="dropdown-menu">
-        <app-autocomplete [typeAutocomplete]="'templateQuote'" [title]="'Load bucket'" [singleChoice]=true [arrayContent]="arrayContentToSearch" (getResultAutocomplete)="selectTemplateQuote($event[0])">
-        </app-autocomplete>
-        {{'Save Template' | translate}}
-        <div>
-          <input [readonly]="fetchedQuote.drawingSignature.isSigned" type="text" class="form-control" placeholder="nameTemplate" #nameTemplate>
-        </div>
-        <div>
-          <button type="button" class="btn btn-success" (click)="saveTemplateQuote(nameTemplate.value);nameTemplate.value=''"><i class="fa fa-floppy-o"></i></button>
-        </div>
-      </div>
-    </li>
-  </ul>
+<div class="hideMobile" *ngIf="authService.showObjHTML('quote', 'template')">
+  <app-template-quote [fetchedQuote]="fetchedQuote"></app-template-quote>
 </div>
-
 <div *ngFor="let devisDetail of fetchedQuote.devisDetails; let i=index">
   <div *ngIf="false" class="row">
     <input [readonly]="fetchedQuote.drawingSignature.isSigned" class=" col-2" type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedQuote.devisDetails[i].nameBucketProducts" placeholder="Category">

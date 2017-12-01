@@ -1,84 +1,86 @@
 import { Component, OnInit, ViewChild, Input, Output, EventEmitter } from '@angular/core';
-import { AuthService } from '../../../auth/auth.service';
-import { QuoteService } from '../../quote.service';
+// import { AuthService } from '../../../auth/auth.service';
+// import { QuoteService } from '../../quote.service';
 // import { TemplateQuoteService } from '../../templateQuote.service';
-// import { TemplateQuote } from '../../templateQuote.model';
-import { DragulaService } from 'ng2-dragula';
+
+// import { DragulaService } from 'ng2-dragula';
 // import { ProductService } from '../../../product/product.service';
 // import { ProjectService} from '../../../project/project.service';
-
+import { TemplateQuoteService } from '../../../templateQuote.service';
+import { TemplateQuote } from '../../../templateQuote.model';
 import {
   Quote, DevisDetail, BucketProduct, StatusQuotes,
-  StatusQuotesInvoice,
-  PriceQuoteTaxe,
+  // StatusQuotesInvoice,
+  // PriceQuoteTaxe,
   // ModelVATs
-} from '../../quote.model';
+} from '../../../quote.model';
 // import { TemplateQuote } from '../../templateQuote.model';
 
 import { ToastsManager } from 'ng2-toastr';
 // import { MatDialog } from '@angular/material';
-import { Router, ActivatedRoute, Params } from '@angular/router';
-import { Location } from '@angular/common';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+// import { Params } from '@angular/router';
+// import { Location } from '@angular/common';
+// import { FormGroup, Validators } from '@angular/forms';
 // import { UserService } from '../../../user/user.service';
 // import { DeleteDialog } from '../../../deleteDialog/deleteDialog.component';
 // import { User } from '../../../user/user.model';
-import { Product } from '../../../product/product.model';
+// import { Product } from '../../../product/product.model';
 // import { Project } from '../../../project/project.model';
-import { PaiementQuote } from '../../../paiementQuote/paiementQuote.model';
+// import { PaiementQuote } from '../../../paiementQuote/paiementQuote.model';
 // import { PaiementQuoteDialogComponent } from '../paiementQuote/single/dialog/paiementQuoteDialog.component';
 // import { PaiementQuoteDialogComponent } from '../../../paiementQuote/single/dialog/paiementQuoteDialog.component'
 
-import { TranslateService } from '../../../translate/translate.service';
+// import { TranslateService } from '../../../../translate/translate.service';
 // declare let jsPDF;
 // import { SignaturePad } from 'angular2-signaturepad/signature-pad';
 // import { SignaturePad } from '../../../angular2-signaturepad/signature-pad';
 
 // import { PaiementQuotesComponent } from '../../../paiementQuote/paiementQuotes/paiementQuotes.component';
-import { Search } from '../../../shared/shared.model'
+import { Search } from '../../../../shared/shared.model'
 
 @Component({
-  selector: 'app-quoteDetails',
-  templateUrl: './quoteDetails.component.html',
-  styleUrls: ['./quoteDetails.component.css'],
+  selector: 'app-template-quote',
+  templateUrl: './templateQuote.component.html',
+  styleUrls: ['../quoteDetails.component.css'],
 })
-export class QuoteDetailsComponent implements OnInit {
+export class TemplateQuoteComponent implements OnInit {
   // @ViewChild(SignaturePad) signaturePad: SignaturePad;
   // @ViewChild(PaiementQuotesComponent) paiementQuotesComponent: PaiementQuotesComponent;
-
+  arrayContentToSearch = []
   // loading: boolean=false;
   // @Output() saved: EventEmitter<any> = new EventEmitter();
-  @Output() quoteDetailsUpdated: EventEmitter<any> = new EventEmitter();
+  // @Output() quoteDetailsUpdated: EventEmitter<any> = new EventEmitter();
   @Output() calculateQuoteEmit: EventEmitter<any> = new EventEmitter();
 
   @Input() fetchedQuote: Quote = new Quote()
   // @Input() search: Search = new Search()
-
-  // showPaiements: boolean = false
-  // fetchedQuote: Quote = new Quote()
-  // autocompleteUser: string = '';
-  // autocompleteProject: string = '';
-  fetchedProducts: Product[] = []
+  //
+  // // showPaiements: boolean = false
+  // // fetchedQuote: Quote = new Quote()
+  // // autocompleteUser: string = '';
+  // // autocompleteProject: string = '';
+  // fetchedProducts: Product[] = []
 
   // imgLogoUrl: string = './assets/images/profile-placeholder.jpg'
   // imgSignatureBase64Temp = ''
-  fetchedPaiementQuotes: PaiementQuote[] = []
+  // fetchedPaiementQuotes: PaiementQuote[] = []
   statusQuotes = StatusQuotes
-  statusQuotesInvoice = StatusQuotesInvoice
+  // statusQuotesInvoice = StatusQuotesInvoice
 
-  public editorOptions = {
-    placeholder: "insert content...",
-    modules: {
-      // toolbar: [['bold', 'italic'], ['link', 'image']] // see https://quilljs.com/docs/formats/
-    }
-  };
+  // public editorOptions = {
+  //   placeholder: "insert content...",
+  //   modules: {
+  //     // toolbar: [['bold', 'italic'], ['link', 'image']] // see https://quilljs.com/docs/formats/
+  //   }
+  // };
 
   // arrayContentToSearch = []
 
   // VATs = ModelVATs
 
   constructor(
-    private quoteService: QuoteService,
+    private templateQuoteService: TemplateQuoteService,
+    // private quoteService: QuoteService,
     // private templateQuoteService: TemplateQuoteService,
     // private projectService: ProjectService,
     // private userService: UserService,
@@ -86,13 +88,13 @@ export class QuoteDetailsComponent implements OnInit {
     //    private modalService: NgbModal,
     private toastr: ToastsManager,
     // public dialog: MatDialog,
-    private activatedRoute: ActivatedRoute,
-    private router: Router,
-    private location: Location,
-    private _fb: FormBuilder,
-    public authService: AuthService,
-    private dragulaService: DragulaService,
-    private translateService: TranslateService,
+    // private activatedRoute: ActivatedRoute,
+    // private router: Router,
+    // private location: Location,
+    // private _fb: FormBuilder,
+    // public authService: AuthService,
+    // private dragulaService: DragulaService,
+    // private translateService: TranslateService,
   ) {
 
 
@@ -106,18 +108,40 @@ export class QuoteDetailsComponent implements OnInit {
   //   this.dragulaService.destroy('third-bag');
   // }
 
+  saveTemplateQuote(nameTemplate: string) {
+    const newTemplateQuote = new TemplateQuote()
+    newTemplateQuote.nameTemplate = nameTemplate
+
+    newTemplateQuote.devisDetails = this.fetchedQuote.devisDetails
+    this.templateQuoteService.saveTemplateQuote(newTemplateQuote)
+      .subscribe(
+      res => {
+        this.toastr.success('Great!', res.message)
+      },
+      error => { console.log(error) }
+      )
+  }
 
 
-  removeBucketProducts(i) {
-    this.fetchedQuote.devisDetails.splice(i, 1);
+  selectTemplateQuote(templateQuote: TemplateQuote) {
+    this.arrayContentToSearch = []
+    templateQuote.devisDetails.forEach(devisDetail => {
+      this.fetchedQuote.devisDetails.push(devisDetail)
+    })
+
     this.calculateQuote()
   }
-  addBucketProducts() {
-    let newDevisDetail = new DevisDetail()
-    this.fetchedQuote.devisDetails.push(newDevisDetail)
-  }
 
+  // removeBucketProducts(i) {
+  //   this.fetchedQuote.devisDetails.splice(i, 1);
+  //   this.calculateQuote()
+  // }
+  // addBucketProducts() {
+  //   const newDevisDetail = new DevisDetail()
+  //   this.fetchedQuote.devisDetails.push(newDevisDetail)
+  // }
 
+  //
   // selectTemplateQuote(templateQuote: TemplateQuote) {
   //   this.arrayContentToSearch = []
   //   templateQuote.devisDetails.forEach(devisDetail => {
@@ -126,41 +150,41 @@ export class QuoteDetailsComponent implements OnInit {
   //
   //   this.calculateQuote()
   // }
-  selectProduct(product: Product, i, j) {
-
-    // let bucketProduct: BucketProduct = new BucketProduct()
-
-      this.fetchedQuote.devisDetails[i].bucketProducts[j].productInit = [product],
-      this.fetchedQuote.devisDetails[i].bucketProducts[j].vat = product.details.price.vat,
-      this.fetchedQuote.devisDetails[i].bucketProducts[j].priceWithoutTaxes = product.details.price.sellingPrice,
-      this.fetchedQuote.devisDetails[i].bucketProducts[j].priceWithTaxes = 0,
-      this.fetchedQuote.devisDetails[i].bucketProducts[j].priceWithTaxesWithQuantity = 0,
-      this.fetchedQuote.devisDetails[i].bucketProducts[j].priceWithQuantity = 0,
-      this.fetchedQuote.devisDetails[i].bucketProducts[j].quantity = 1,
-      this.fetchedQuote.devisDetails[i].bucketProducts[j].discount = 0,
-
-      // this.autocompleteProduct = ''
-
-      // this.fetchedQuote.devisDetails[i].bucketProducts.push(bucketProduct)
-      this.calculateQuote()
-  }
-  onEditorCreated(quill) {
-  }
-
-
-  onEditorBlured(quill, i, j) {
-    this.changeQuillEditMode(i, j)
-  }
-
-  onEditorFocused(quill) {
-  }
+  // selectProduct(product: Product, i, j) {
+  //
+  //   // let bucketProduct: BucketProduct = new BucketProduct()
+  //
+  //     this.fetchedQuote.devisDetails[i].bucketProducts[j].productInit = [product],
+  //     this.fetchedQuote.devisDetails[i].bucketProducts[j].vat = product.details.price.vat,
+  //     this.fetchedQuote.devisDetails[i].bucketProducts[j].priceWithoutTaxes = product.details.price.sellingPrice,
+  //     this.fetchedQuote.devisDetails[i].bucketProducts[j].priceWithTaxes = 0,
+  //     this.fetchedQuote.devisDetails[i].bucketProducts[j].priceWithTaxesWithQuantity = 0,
+  //     this.fetchedQuote.devisDetails[i].bucketProducts[j].priceWithQuantity = 0,
+  //     this.fetchedQuote.devisDetails[i].bucketProducts[j].quantity = 1,
+  //     this.fetchedQuote.devisDetails[i].bucketProducts[j].discount = 0,
+  //
+  //     // this.autocompleteProduct = ''
+  //
+  //     // this.fetchedQuote.devisDetails[i].bucketProducts.push(bucketProduct)
+  //     this.calculateQuote()
+  // }
+  // onEditorCreated(quill) {
+  // }
 
 
-  onContentChanged({ quill, html, text }) {
-  }
-  changeQuillEditMode(i: number, j: number) {
-    this.fetchedQuote.devisDetails[i].bucketProducts[j].isEditMode = !this.fetchedQuote.devisDetails[i].bucketProducts[j].isEditMode
-  }
+  // onEditorBlured(quill, i, j) {
+  //   this.changeQuillEditMode(i, j)
+  // }
+
+  // onEditorFocused(quill) {
+  // }
+
+  //
+  // onContentChanged({ quill, html, text }) {
+  // }
+  // changeQuillEditMode(i: number, j: number) {
+  //   this.fetchedQuote.devisDetails[i].bucketProducts[j].isEditMode = !this.fetchedQuote.devisDetails[i].bucketProducts[j].isEditMode
+  // }
 
   //
   // calculateQuote() {
@@ -265,33 +289,33 @@ export class QuoteDetailsComponent implements OnInit {
   //   }, 20)
   //
   // }
-  calculateQuote(){
+  calculateQuote() {
     this.calculateQuoteEmit.emit()
   }
-  removeRow(i: number, j: number) {
-    this.fetchedQuote.devisDetails[i].bucketProducts.splice(j, 1);
-    this.calculateQuote()
-  }
+  // removeRow(i: number, j: number) {
+  //   this.fetchedQuote.devisDetails[i].bucketProducts.splice(j, 1);
+  //   this.calculateQuote()
+  // }
 
-
-  addRow(typeRow) {
-    if (typeRow) {
-      if (typeRow === 'category')
-        this.addBucketProducts()
-
-      if (!this.fetchedQuote.devisDetails.length)
-        this.addBucketProducts()
-
-      if (typeRow === 'product' || typeRow === 'text') {
-        let bucketProduct: BucketProduct = new BucketProduct()
-        bucketProduct.isEditMode = true
-        bucketProduct.typeRow = typeRow
-        this.fetchedQuote.devisDetails[this.fetchedQuote.devisDetails.length - 1].bucketProducts.push(bucketProduct)
-        this.calculateQuote()
-      }
-    }
-  }
-
+  //
+  // addRow(typeRow) {
+  //   if (typeRow) {
+  //     if (typeRow === 'category')
+  //       this.addBucketProducts()
+  //
+  //     if (!this.fetchedQuote.devisDetails.length)
+  //       this.addBucketProducts()
+  //
+  //     if (typeRow === 'product' || typeRow === 'text') {
+  //       let bucketProduct: BucketProduct = new BucketProduct()
+  //       bucketProduct.isEditMode = true
+  //       bucketProduct.typeRow = typeRow
+  //       this.fetchedQuote.devisDetails[this.fetchedQuote.devisDetails.length - 1].bucketProducts.push(bucketProduct)
+  //       this.calculateQuote()
+  //     }
+  //   }
+  // }
+  //
   // saveTemplateQuote(nameTemplate: string) {
   //   const newTemplateQuote = new TemplateQuote()
   //   newTemplateQuote.nameTemplate = nameTemplate
@@ -305,7 +329,7 @@ export class QuoteDetailsComponent implements OnInit {
   //     error => { console.log(error) }
   //     )
   // }
-
+  //
 
 
 
