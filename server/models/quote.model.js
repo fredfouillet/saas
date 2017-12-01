@@ -35,6 +35,7 @@ var quote = new Schema({
     },
     drawingSignature:{
       isSigned:{type: Boolean, default: [false]},
+      dateSignature: {type: Date, default: [Date()]},
       base64:{type: String, default: ['']},
       backgroundForms: [{type: Schema.Types.ObjectId, ref: 'Form'}],
       dateDrawing:{type: Date},

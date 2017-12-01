@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <div class="hdform">
-    <h3 *ngIf="fetchedQuote.typeQuote === 'invoice'"><i class="fa fa10 fa-clipboard" aria-hidden="true"></i>{{'Invoice' | translate}}</h3>
+    <!-- <h3 *ngIf="fetchedQuote.typeQuote === 'invoice'"><i class="fa fa10 fa-clipboard" aria-hidden="true"></i>{{'Invoice' | translate}}</h3> -->
     <h3 *ngIf="fetchedQuote.typeQuote === 'quote'"><i class="fa fa10 fa-clipboard" aria-hidden="true"></i>{{'Quote' | translate}}</h3>
   </div>
 
@@ -16,12 +16,7 @@
       </mat-expansion-panel-header>
       <app-quoteInfo [search]="search" [fetchedQuote]="fetchedQuote"></app-quoteInfo>
       <mat-action-row>
-        <app-actionButtons
-          (nextStep)="nextStep()"
-          [isDialog]="isDialog"
-          [fetchedQuote]="fetchedQuote"
-          (closeDialog)="closeDialog()"
-          (saved)="savedQuote($event)">
+        <app-actionButtons (nextStep)="nextStep()" [isDialog]="isDialog" [fetchedQuote]="fetchedQuote" (closeDialog)="closeDialog()" (saved)="savedQuote($event)">
         </app-actionButtons>
       </mat-action-row>
     </mat-expansion-panel>
@@ -38,13 +33,7 @@
       {{fetchedQuote.priceQuote.priceGlobalWithTaxesWithDiscountWithSurfaceWithPainfulness | round}}$
       <app-edit-quote [fetchedQuote]="fetchedQuote" (calculateQuote)="calculateQuote()"></app-edit-quote>
       <mat-action-row>
-        <app-actionButtons
-          (nextStep)="nextStep()"
-          [isDialog]="isDialog"
-          [fetchedQuote]="fetchedQuote"
-          [showDeleteButton]=false
-          (closeDialog)="closeDialog()"
-          (saved)="savedQuote($event)">
+        <app-actionButtons (nextStep)="nextStep()" [isDialog]="isDialog" [fetchedQuote]="fetchedQuote" [showDeleteButton]=false (closeDialog)="closeDialog()" (saved)="savedQuote($event)">
         </app-actionButtons>
       </mat-action-row>
     </mat-expansion-panel>
@@ -59,53 +48,14 @@
       </mat-expansion-panel-header>
       <app-quoteDetails *ngIf="step === 2" [(fetchedQuote)]="fetchedQuote" (calculateQuoteEmit)="calculateQuote()" (quoteDetailsUpdated)="quoteDetailsUpdated($event)"></app-quoteDetails>
       <mat-action-row>
-        <app-actionButtons
-          (nextStep)="nextStep()"
-          [isDialog]="isDialog"
-          [fetchedQuote]="fetchedQuote"
-          [showDeleteButton]=false
-          (closeDialog)="closeDialog()"
-          (saved)="savedQuote($event)">
+        <app-actionButtons (nextStep)="nextStep()" [isDialog]="isDialog" [fetchedQuote]="fetchedQuote" [showDeleteButton]=false (closeDialog)="closeDialog()" (saved)="savedQuote($event)">
         </app-actionButtons>
       </mat-action-row>
     </mat-expansion-panel>
 
-    <mat-expansion-panel *ngIf="authService.showObjHTML('quote', 'comment') && fetchedQuote._id" [expanded]="step === 3" (opened)="setStep(3)" hideToggle="true">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          {{'Comments' | translate}}
-        </mat-panel-title>
-        <mat-panel-description>
-          <mat-icon>date_range</mat-icon>
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <!-- <app-comments [search]="search"></app-comments> -->
-    </mat-expansion-panel>
-    <mat-expansion-panel *ngIf="authService.showObjHTML('quote', 'signature') && fetchedQuote._id" [expanded]="step === 3" (opened)="setStep(3)" hideToggle="true">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          {{'Signature' | translate}}
-        </mat-panel-title>
-        <mat-panel-description>
-          <mat-icon>date_range</mat-icon>
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <app-drawing-signature
-        [drawing]="fetchedQuote.drawingSignature"
-        (cleared)="clearedDrawing()"
-        (updated)="drawingSignatureUpdated($event)"
-        >
-      </app-drawing-signature>
-        <mat-action-row>
-          <app-actionButtons
-            [fetchedQuote]="fetchedQuote"
-            [showDeleteButton]=false
-            (nextStep)="nextStep()"
-            >
-          </app-actionButtons>
-        </mat-action-row>
-    </mat-expansion-panel>
-    <mat-expansion-panel *ngIf="authService.showObjHTML('quote', 'drawing') && fetchedQuote._id" [expanded]="step === 4" (opened)="setStep(4)" hideToggle="true">
+
+
+    <mat-expansion-panel *ngIf="authService.showObjHTML('quote', 'drawing') && fetchedQuote._id" [expanded]="step === 3" (opened)="setStep(3)" hideToggle="true">
       <mat-expansion-panel-header>
         <mat-panel-title>
           {{'Drawing' | translate}}
@@ -116,15 +66,11 @@
       </mat-expansion-panel-header>
       <app-drawing [drawing]="fetchedQuote.drawing" (updated)="drawingUpdated($event)"></app-drawing>
       <mat-action-row>
-        <app-actionButtons
-          [fetchedQuote]="fetchedQuote"
-          [showDeleteButton]=false
-          (nextStep)="nextStep()"
-          >
+        <app-actionButtons [fetchedQuote]="fetchedQuote" [showDeleteButton]=false (nextStep)="nextStep()">
         </app-actionButtons>
       </mat-action-row>
     </mat-expansion-panel>
-    <mat-expansion-panel *ngIf="authService.showObjHTML('quote', 'drawing') && fetchedQuote._id" [expanded]="step === 5" (opened)="setStep(5)" hideToggle="true">
+    <mat-expansion-panel *ngIf="authService.showObjHTML('quote', 'drawing') && fetchedQuote._id" [expanded]="step === 4" (opened)="setStep(4)" hideToggle="true">
       <mat-expansion-panel-header>
         <mat-panel-title>
           {{'Documents' | translate}}
@@ -133,24 +79,49 @@
           <mat-icon>camera</mat-icon>
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <app-picture
-        [showPagination]=false
-        [labelButtonAddPicture]="'Add'"
-        [forms]="fetchedQuote.forms">
+      <app-picture [showPagination]=false [labelButtonAddPicture]="'Add'" [forms]="fetchedQuote.forms">
       </app-picture>
       <mat-action-row>
-        <app-actionButtons
-          (nextStep)="nextStep()"
-          [showDeleteButton]=false [fetchedQuote]="fetchedQuote"></app-actionButtons>
+        <app-actionButtons (nextStep)="nextStep()" [showDeleteButton]=false [fetchedQuote]="fetchedQuote"></app-actionButtons>
       </mat-action-row>
     </mat-expansion-panel>
 
-    <mat-expansion-panel
-      *ngIf="
-      authService.showObjHTML('paiementQuote', 'read') &&
+
+    <mat-expansion-panel *ngIf="authService.showObjHTML('quote', 'signature') && fetchedQuote._id" [expanded]="step === 5" (opened)="setStep(5)" hideToggle="true">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{'Signature' | translate}}
+        </mat-panel-title>
+        <mat-panel-description>
+          <mat-icon>date_range</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <app-drawing-signature [drawing]="fetchedQuote.drawingSignature" (cleared)="clearedDrawing()" (updated)="drawingSignatureUpdated($event)">
+      </app-drawing-signature>
+      <mat-action-row>
+        <app-actionButtons [fetchedQuote]="fetchedQuote" [showDeleteButton]=false (nextStep)="nextStep()">
+        </app-actionButtons>
+      </mat-action-row>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel *ngIf="
+      authService.showObjHTML('quote', 'read') &&
       fetchedQuote._id &&
-      fetchedQuote.typeQuote === 'invoice'"
-      [expanded]="step === 6" (opened)="setStep(6)" hideToggle="true">
+      fetchedQuote.typeQuote === 'quote'" [expanded]="step === 6" (opened)="setStep(6)" hideToggle="true">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{'Invoices' | translate}}
+        </mat-panel-title>
+        <mat-panel-description>
+          <mat-icon>date_range</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <app-invoice-action [fetchedQuote]="fetchedQuote"></app-invoice-action>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel *ngIf="
+          authService.showObjHTML('paiementQuote', 'read') &&
+          fetchedQuote._id" [expanded]="step === 7" (opened)="setStep(7)" hideToggle="true">
       <mat-expansion-panel-header>
         <mat-panel-title>
           {{'Paiements' | translate}}
@@ -167,30 +138,15 @@
       </mat-card>
     </mat-expansion-panel>
 
-
-    <mat-expansion-panel
-      *ngIf="
-      authService.showObjHTML('quote', 'read') &&
-      fetchedQuote._id &&
-      fetchedQuote.typeQuote === 'quote'"
-      [expanded]="step === 6" (opened)="setStep(6)" hideToggle="true">
+    <mat-expansion-panel *ngIf="authService.showObjHTML('quote', 'comment') && fetchedQuote._id" [expanded]="step === 8" (opened)="setStep(8)" hideToggle="true">
       <mat-expansion-panel-header>
         <mat-panel-title>
-          {{'Invoices' | translate}}
+          {{'Comments' | translate}}
         </mat-panel-title>
         <mat-panel-description>
           <mat-icon>date_range</mat-icon>
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <app-quotes
-        *ngIf="step ===6"
-        [showSearch]=false [search]="{typeQuote:'invoice', parentQuoteId:fetchedQuote._id, userId: search.userId}">
-      </app-quotes>
     </mat-expansion-panel>
-
-
   </mat-accordion>
-
-
-
 </div>

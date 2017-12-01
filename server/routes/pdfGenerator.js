@@ -428,12 +428,13 @@ module.exports = {
                     html += user.profile.title + ' ' + user.profile.name + ' ' + user.profile.lastName
                   })
                   html += `</p><p class="inf2">Lu et approuvé</p>`
-                  if (item.signature.base64)
-                    html += `<img class="imgSignature" src="${item.signature.base64}" />`
+
+                  if (item.drawingSignature.base64)
+                    html += `<img class="imgSignature" src="${item.drawingSignature.base64}" />`
 
                   html += `<p class="inf2">Le `
-                  if (item.signature.dateSignature)
-                    html += item.signature.dateSignature.toLocaleDateString("fr-FR")
+                  if (item.drawingSignature.dateSignature)
+                    html += item.drawingSignature.dateSignature.toLocaleDateString("fr-FR")
 
                   html += `</p></th>
                              </tr>
@@ -810,7 +811,7 @@ module.exports = {
                              <th class="col-6 nobo"></th>
                              <th class="col-3 desc">
                                <p>Client : `
-          
+
                   html += `</p></th>
                              </tr>
                            </thead>

@@ -22,6 +22,7 @@ import { TemplateQuoteComponent} from './single/quoteDetails/quoteDetailsElem/te
 import { TotalComponent} from './single/quoteDetails/quoteDetailsElem/total.component';
 import { EditQuoteComponent} from './single/editQuote/editQuote.component';
 import { AddTextRowComponent} from './single/editQuote/addTextRow.component';
+import { InvoiceActionComponent} from './single/invoiceAction/invoiceAction.component';
 // import { QuoteDetailComponent} from './single/quoteDetail.component';
 import { QuoteService} from './quote.service';
 import { TemplateQuoteService} from './templateQuote.service';
@@ -90,6 +91,7 @@ import {MatTabsModule} from '@angular/material';
     // MatIconModule,
     MatCardModule,
     MatSelectModule,
+
     // AutocompleteComponent,
   ],
   declarations: [
@@ -106,6 +108,7 @@ import {MatTabsModule} from '@angular/material';
     QuoteDialogComponent,
     QuoteInfoComponent,
     ActionButtonsComponent,
+    InvoiceActionComponent,
     // QuoteDetailComponent,
     // RoundPipe,
     // AutocompleteComponent

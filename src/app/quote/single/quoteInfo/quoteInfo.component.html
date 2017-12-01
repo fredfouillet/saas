@@ -1,22 +1,6 @@
 
   <form [formGroup]="myForm" novalidate (ngSubmit)="save()">
-    <div  *ngIf="fetchedQuote._id" class="row">
-        <div class="col-12 col-md-4">
-          <button type="button" class="btn btn-primary" (click)="downloadPDF()">
-          {{'Download PDF' | translate}}
-          </button>
-        </div>
-        <div class="col-12 col-md-4">
-          <button type="button" class="btn btn-primary" (click)="sendQuoteByEmailToClient()">
-          {{'Send document to client' | translate}}
-          </button>
-        </div>
-        <!-- <div class="col-12 col-md-4">
-          <button type="button" class="btn btn-primary" (click)="saveAsInvoice()">
-          {{'Create Invoice' | translate}}
-          </button>
-        </div> -->
-    </div>
+
     <div class="row">
       <div class="col-sm-12 col-md-4">
         <mat-form-field>

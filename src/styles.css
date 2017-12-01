@@ -1,5 +1,7 @@
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+/*@import '~@angular/material/prebuilt-themes/pink-bluegrey.css';*/
 /*@import "~@angular/material/prebuilt-themes/indigo-pink.css";*/
+/*@import "~@angular/material/prebuilt-themes/purple-green.css";*/
 /*@import "fullcalendar/dist/fullcalendar.min.css";*/
 
 
@@ -8,9 +10,7 @@
 
 /*@import "~@ng-bootstrap/ng-bootstrap/dist/css/bootstrap.min.css";*/
 
-.mat-expansion-panel-body {
-  overflow: visible!important;
-}
+
 
 .mat-form-field {
   width: 100%;
@@ -26,6 +26,9 @@
   }
 }
 
+.mat-expansion-panel-body {
+  overflow: visible!important;
+}
 .width100perc {
   width: 100%;
 }
