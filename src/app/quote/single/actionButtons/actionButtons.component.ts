@@ -46,6 +46,7 @@ export class ActionButtonsComponent implements OnInit {
   // loading: boolean = false;
   @Output() saved: EventEmitter<any> = new EventEmitter();
   @Output() closeDialog: EventEmitter<any> = new EventEmitter();
+  @Output() nextStep: EventEmitter<any> = new EventEmitter();
   //
   // @Input() search: Search = new Search()
   //
@@ -53,6 +54,7 @@ export class ActionButtonsComponent implements OnInit {
   @Input() fetchedQuote: Quote = new Quote()
   @Input() showDeleteButton: boolean = true
   @Input() isDialog: boolean = false
+  @Input() step: number
   // autocompleteUser: string = '';
   // autocompleteProject: string = '';
   // fetchedProducts: Product[] = []
@@ -141,7 +143,11 @@ export class ActionButtonsComponent implements OnInit {
   //   console.log(statusQuoteSelect)
   // }
 
-
+  nextStepEmit() {
+    this.nextStep.emit()
+    // this.step++;
+    // console.log(this.step)
+  }
   // onEditorBlured(quill, i, j) {
   //   this.changeQuillEditMode(i, j)
   // }

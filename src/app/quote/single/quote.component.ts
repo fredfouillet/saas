@@ -51,6 +51,12 @@ export class QuoteComponent implements OnInit {
     private translateService: TranslateService,
   ) {
   }
+
+  nextStep() {
+    this.step++;
+    console.log(this.step)
+  }
+
   closeDialog() {
     this.close.emit()
   }

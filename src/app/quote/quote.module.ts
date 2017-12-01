@@ -32,7 +32,7 @@ import { ProductModule } from '../product/product.module';
 // import { AutocompleteComponent } from '../autocomplete/autocomplete.component'
 
 import { SharedModule } from '../shared/shared.module';
-import {MatButtonModule} from '@angular/material';
+// import {MatButtonModule} from '@angular/material';
 // import { SignaturePadModule } from '../angular2-signaturepad';
 // import { SignaturePad } from '../angular2-signaturepad/signature-pad';
 //
@@ -75,7 +75,7 @@ import {MatTabsModule} from '@angular/material';
     SharedModule,
     // SignaturePadModule,
     PaiementQuoteModule,
-    MatButtonModule,
+
 
     // MatFormFieldModule,
     // MatInputModule,

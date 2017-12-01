@@ -1,7 +1,8 @@
 <div *ngIf="!fetchedQuote.drawingSignature.isSigned" class="valid-edit">
-  <button *ngIf="isDialog" type="button" (click)="close()" class="btn valid">{{'Close' | translate}}</button>
-  <button type="button" (click)="save()" class="btn valid">{{'Save' | translate}}</button>
-  <button *ngIf="fetchedQuote._id && showDeleteButton" type="button" class="btn false" (click)="openDialogDelete()">
+  <button *ngIf="isDialog" mat-raised-button color="accent" (click)="close()" class="btn valid">{{'Close' | translate}}</button>
+  <button (click)="save()" mat-raised-button color="primary">{{'Save' | translate}}</button>
+  <button *ngIf="fetchedQuote._id && showDeleteButton" mat-raised-button color="warn" (click)="openDialogDelete()">
     {{'Delete' | translate}}
   </button>
+  <button mat-button color="primary" (click)="nextStepEmit()">></button>
 </div>

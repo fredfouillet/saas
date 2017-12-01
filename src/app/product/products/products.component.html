@@ -45,7 +45,7 @@
             <td class="centre tdunder">{{product.details.price.sellingPrice}}</td>
             <td *ngIf="customButton" class="centre tdunder">
 
-                <button type="button" (click)="customButtonAction(product)">{{customButton}}</button>
+                <button mat-raised-button color="primary" (click)="customButtonAction(product)">{{customButton}}</button>
 
             </td>
 
