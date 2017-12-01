@@ -8,7 +8,7 @@
     <div *ngFor="let companie of fetchedUser.ownerCompanies">
       <a href="#">
         <div *ngFor="let form of companie.forms">
-          <img class="logo-img" src="./uploads/forms/{{form.owner}}/{{form.imagePath}}" onerror="this.src ='assets/images/logo-arte.png'">
+          <img class="logo-img" src="./uploads/forms/{{form.owner}}/{{form.imagePath}}" onerror="this.src ='assets/images/logo-mirabelle-400.png'">
         </div>
         <div *ngIf="!companie.forms.length">
           <img class="logo-img" src="./assets/images/logo-arte.png">
