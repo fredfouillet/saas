@@ -93,10 +93,12 @@
       <app-drawing-signature
         [drawing]="fetchedQuote.drawingSignature"
         (cleared)="clearedDrawing()"
-        (saved)="drawingSignatureUpdated($event)">
+        (updated)="drawingSignatureUpdated($event)"
+        >
       </app-drawing-signature>
         <mat-action-row>
           <app-actionButtons
+            [fetchedQuote]="fetchedQuote"
             (nextStep)="nextStep()"
             >
           </app-actionButtons>
@@ -111,13 +113,14 @@
           <mat-icon>view_quilt</mat-icon>
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <app-drawing [drawing]="fetchedQuote.drawing" (saved)="drawingUpdated($event)"></app-drawing>
+      <app-drawing [drawing]="fetchedQuote.drawing" (updated)="drawingUpdated($event)"></app-drawing>
       <mat-action-row>
         <app-actionButtons
+          [fetchedQuote]="fetchedQuote"
           (nextStep)="nextStep()"
           >
         </app-actionButtons>
-      </mat-action-row>      
+      </mat-action-row>
     </mat-expansion-panel>
     <mat-expansion-panel *ngIf="authService.showObjHTML('quote', 'drawing') && fetchedQuote._id" [expanded]="step === 5" (opened)="setStep(5)" hideToggle="true">
       <mat-expansion-panel-header>
@@ -168,7 +171,7 @@
       authService.showObjHTML('quote', 'read') &&
       fetchedQuote._id &&
       fetchedQuote.typeQuote === 'quote'"
-      [expanded]="step === 7" (opened)="setStep(7)" hideToggle="true">
+      [expanded]="step === 6" (opened)="setStep(6)" hideToggle="true">
       <mat-expansion-panel-header>
         <mat-panel-title>
           {{'Invoices' | translate}}
@@ -178,29 +181,13 @@
         </mat-panel-description>
       </mat-expansion-panel-header>
       <app-quotes
-        *ngIf="step ===7"
+        *ngIf="step ===6"
         [showSearch]=false [search]="{typeQuote:'invoice', parentQuoteId:fetchedQuote._id, userId: search.userId}">
       </app-quotes>
     </mat-expansion-panel>
 
 
   </mat-accordion>
-
-
-
-
-
-
-
-
-<!--
-  <div *ngIf="!fetchedQuote.drawingSignature.isSigned" class="valid-edit">
-    <button type="button" (click)="save()" class="btn valid">{{'Save' | translate}}</button>
-    <button *ngIf="fetchedQuote._id" type="button" class="btn false" (click)="openDialogDelete()">
-                  {{'Delete' | translate}}
-                </button>
-  </div> -->
-
 
 
 

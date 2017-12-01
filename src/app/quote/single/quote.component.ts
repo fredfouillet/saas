@@ -110,6 +110,17 @@ export class QuoteComponent implements OnInit {
     }
   }
 
+  drawingSignatureUpdated(result) {
+    // this.fetchedQuote.drawingSignature.isSigned = true
+    this.fetchedQuote.drawingSignature.base64 = result
+    // this.actionButtonsComponent.save()
+  }
+  drawingUpdated(result) {
+    this.fetchedQuote.drawing.base64 = result
+    // this.actionButtonsComponent.save()
+  }
+
+
   savedQuote(result) {
     this.getQuote(result.obj._id)
   }

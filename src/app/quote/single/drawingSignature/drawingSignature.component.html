@@ -11,9 +11,9 @@
         <div class="col-2">
           <i class="fa fa-times fa-2x iconeDrawing" (click)="clearDrawing()" aria-hidden="true"></i>
         </div>
-        <div class="col-2">
+        <!-- <div class="col-2">
           <i class="fa fa-floppy-o fa-2x iconeDrawing" (click)="saveDrawing()" aria-hidden="true"></i>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
@@ -36,6 +36,7 @@
     [colorPickerEnabled]="false"
     [saveDataButtonEnabled]="true"
     [saveDataButtonText]="'Save'"
-    [batchUpdateTimeoutDuration]="1000">
+    [batchUpdateTimeoutDuration]="500"
+    (onBatchUpdate)="sendBatchUpdate($event)">
   </canvas-whiteboard>
 </div>

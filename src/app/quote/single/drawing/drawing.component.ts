@@ -20,7 +20,7 @@ export class DrawingComponent implements OnInit {
   imgSignatureBase64Temp: string[] = []
   @Input() drawing: Drawing;
   // @Input() base64: string = '';
-  @Output() saved: EventEmitter<any> = new EventEmitter();
+  @Output() updated: EventEmitter<any> = new EventEmitter();
   editMode: boolean = false
   color: string = ''
   // signaturePadOptions = { // passed through to szimek/signature_pad constructor
@@ -130,10 +130,11 @@ export class DrawingComponent implements OnInit {
     // this.imgSignatureBase64Temp.push(this.canvasWhiteboard.generateCanvasDataUrl())
     // this.saved.emit(this.canvasWhiteboard.generateCanvasDataUrl())
     // console.log(result)
+    this.updated.emit(this.canvasWhiteboard.generateCanvasDataUrl())
   }
-  saveDrawing() {
-    this.saved.emit(this.canvasWhiteboard.generateCanvasDataUrl())
-  }
+  // saveDrawing() {
+  //   // this.updated.emit(this.canvasWhiteboard.generateCanvasDataUrl())
+  // }
   downloadDrawing() {
     this.canvasWhiteboard.downloadCanvasImage()
   }

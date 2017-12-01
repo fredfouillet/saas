@@ -20,7 +20,8 @@ export class DrawingSignatureComponent implements OnInit {
   imgSignatureBase64Temp: string[] = []
   @Input() drawing: DrawingSignature;
   // @Input() base64: string = '';
-  @Output() saved: EventEmitter<any> = new EventEmitter();
+  // @Output() saved: EventEmitter<any> = new EventEmitter();
+  @Output() updated: EventEmitter<any> = new EventEmitter();
   @Output() cleared: EventEmitter<any> = new EventEmitter();
   editMode: boolean = false
   color: string = ''
@@ -53,7 +54,9 @@ export class DrawingSignatureComponent implements OnInit {
 
 
 
-
+  sendBatchUpdate(result){
+      this.updated.emit(this.canvasWhiteboard.generateCanvasDataUrl())
+  }
   ngOnInit() {}
 
   getPicture() {
@@ -135,9 +138,9 @@ export class DrawingSignatureComponent implements OnInit {
   //   // this.saved.emit(this.canvasWhiteboard.generateCanvasDataUrl())
   //   // console.log(result)
   // }
-  saveDrawing() {
-    this.saved.emit(this.canvasWhiteboard.generateCanvasDataUrl())
-  }
+  // saveDrawing() {
+  //   this.saved.emit(this.canvasWhiteboard.generateCanvasDataUrl())
+  // }
   downloadDrawing() {
     this.canvasWhiteboard.downloadCanvasImage()
   }
