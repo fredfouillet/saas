@@ -10,11 +10,11 @@
 
 /*@import "~@ng-bootstrap/ng-bootstrap/dist/css/bootstrap.min.css";*/
 
-.mat-input-infix {
+.mat-input-flex {
    color: #389609!important;
   }
 
-.mat-form-field-infix {
+.mat-form-field-flex {
    color: #389609!important;
   }
 
