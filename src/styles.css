@@ -10,23 +10,15 @@
 
 /*@import "~@ng-bootstrap/ng-bootstrap/dist/css/bootstrap.min.css";*/
 
-.mat-input-container {
-   color: #fafafa!important;
+.mat-input-infix {
+   color: #389609!important;
   }
 
-.mat-form-field {
-   color: #fafafa!important;
+.mat-form-field-infix {
+   color: #389609!important;
   }
 
-.ng-tns-c9-47
 
-.mat-form-field-type-mat-input {
-   color: #fafafa!important;
-  }
-
-.mat-form-field-can-float  {
-   color: #fafafa!important;
-  }
 
 .mat-form-field {
   width: 100%;
