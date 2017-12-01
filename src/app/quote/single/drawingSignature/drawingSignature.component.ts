@@ -54,7 +54,8 @@ export class DrawingSignatureComponent implements OnInit {
 
 
 
-  sendBatchUpdate(result){
+  sendBatchUpdate(result) {
+
       this.updated.emit(this.canvasWhiteboard.generateCanvasDataUrl())
   }
   ngOnInit() {}

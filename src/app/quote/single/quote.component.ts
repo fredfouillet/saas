@@ -29,7 +29,7 @@ export class QuoteComponent implements OnInit {
   showPaiements: boolean = false
   fetchedQuote: Quote = new Quote()
    totalPaiementAmount: number = 0
-
+   signatureBase64Temp:string  = ''
   step = 0;
 
 
@@ -97,7 +97,6 @@ export class QuoteComponent implements OnInit {
         this.search.quoteId = params['idQuote']
         this.getQuote(params['idQuote'])
       } else if (params['parentQuoteId']) {
-        console.log('aa')
         this.getQuote(params['parentQuoteId']).then((parentQuote: Quote) => {
           this.search.parentQuoteId = params['parentQuoteId']
           this.fetchedQuote._id = ''
@@ -136,7 +135,8 @@ export class QuoteComponent implements OnInit {
 
   drawingSignatureUpdated(result) {
     // this.fetchedQuote.drawingSignature.isSigned = true
-    this.fetchedQuote.drawingSignature.base64 = result
+    this.fetchedQuote.drawingSignature.base64Temp = result
+
     // this.actionButtonsComponent.save()
   }
   drawingUpdated(result) {

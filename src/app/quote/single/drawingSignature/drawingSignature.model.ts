@@ -4,6 +4,7 @@ import { User } from '../../../user/user.model';
 export class DrawingSignature {
   isSigned: boolean = false;
   base64: string = '';
+  base64Temp: string = '';
   dateDrawing: Date = new Date()
   users: User[] = [];
   backgroundForms: Form[] = []
