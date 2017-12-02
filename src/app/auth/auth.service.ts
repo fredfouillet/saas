@@ -187,15 +187,15 @@ export class AuthService {
   }
   isCurrentUserIsInSubPeriod() {
     // console.log(this.user)
-    return true
+    // return true
 
-    // let itemFounded = false
-    // this.user.ownerCompanies.forEach(companie => {
-    //   if (new Date(companie.planDetail.current_period_end) > new Date())
-    //     itemFounded = true
-    // });
-    //
-    // return itemFounded
+    let itemFounded = false
+    this.user.ownerCompanies.forEach(companie => {
+      if (new Date(companie.planDetail.current_period_end) > new Date())
+        itemFounded = true
+    });
+
+    return itemFounded
   }
   isCurrentUserHasCompanie(){
     // console.log(this.user)
@@ -346,28 +346,28 @@ export class AuthService {
     return tokenNotExpired();
   }
 
-
-    HTMLDatetoIsoDate(htmlDate){
-      let year = Number(htmlDate.toString().substring(0, 4))
-      let month = Number(htmlDate.toString().substring(5, 7))
-      let day = Number(htmlDate.toString().substring(8, 10))
-      return new Date(year, month - 1, day)
-    }
-    isoDateToHtmlDate(isoDate){
-      let date = new Date(isoDate);
-      let dtString = ''
-      let monthString = ''
-      if (date.getDate() < 10) {
-        dtString = '0' + date.getDate();
-      } else {
-        dtString = String(date.getDate())
-      }
-      if (date.getMonth()+1 < 10) {
-        monthString = '0' + Number(date.getMonth()+1);
-      } else {
-        monthString = String(date.getMonth()+1);
-      }
-      return date.getFullYear()+'-' + monthString + '-'+dtString
-    }
+    //
+    // HTMLDatetoIsoDate(htmlDate){
+    //   let year = Number(htmlDate.toString().substring(0, 4))
+    //   let month = Number(htmlDate.toString().substring(5, 7))
+    //   let day = Number(htmlDate.toString().substring(8, 10))
+    //   return new Date(year, month - 1, day)
+    // }
+    // isoDateToHtmlDate(isoDate){
+    //   let date = new Date(isoDate);
+    //   let dtString = ''
+    //   let monthString = ''
+    //   if (date.getDate() < 10) {
+    //     dtString = '0' + date.getDate();
+    //   } else {
+    //     dtString = String(date.getDate())
+    //   }
+    //   if (date.getMonth()+1 < 10) {
+    //     monthString = '0' + Number(date.getMonth()+1);
+    //   } else {
+    //     monthString = String(date.getMonth()+1);
+    //   }
+    //   return date.getFullYear()+'-' + monthString + '-'+dtString
+    // }
 
 }

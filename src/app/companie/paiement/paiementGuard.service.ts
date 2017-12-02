@@ -17,10 +17,16 @@ export class PaiementGuardService implements CanActivate {
   ) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | boolean {
-    return true;
+    // return true;
     // return this.authService.isCurrentUserIsInSubPeriod()
 
-
+    if (this.authService.isCurrentUserIsInSubPeriod()) {
+      return true;
+      // user is not logged in, return the user to the login page
+    } else {
+      this.router.navigate(['/companie/mine']);
+    //  this.toastr.error('Please login first');
+    }
 
 
 

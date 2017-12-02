@@ -6,7 +6,7 @@
 
   <!-- <i (click)="closeSideBar()" class="fa fal fa-bars fa-2x" aria-hidden="true"></i> -->
   <div class="sideBar" id="accordion" role="tablist" aria-multiselectable="true">
-    <div class="card noborder">
+    <div *ngIf="authService.isCurrentUserIsInSubPeriod()" class="card noborder">
       <div class="" role="tab" id="headingZero">
         <a [routerLink]="['/home']" routerLinkActive="active" data-toggle="collapse" class="nav-link" data-parent="#accordion" href="#collapseZero" aria-expanded="true" aria-controls="collapseZero">
           <span class="fa fa10 fa-tachometer" aria-hidden="true">
@@ -93,7 +93,7 @@
         <div class="card-block">
           <div class="panel-body">
             <table class="table">
-              <tr *ngIf="authService.showObjHTML('companie', 'read')">
+              <tr>
                 <td class="nav-item subItem">
                   <a class="nav-link" [routerLink]="['/companie/mine']" routerLinkActive="active">{{'Details'|translate}}</a>
                 </td>
