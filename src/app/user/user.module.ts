@@ -54,7 +54,7 @@ import { LoginComponent} from './login/login.component';
 //import { UserFormsComponent} from '../form/userForms.component';
 
 import { AdminUsersComponent } from './users/adminUsers.component';
-import {MatIconModule} from '@angular/material';
+// import {MatIconModule} from '@angular/material';
 // import { AutocompleteComponent } from '../autocomplete/autocomplete.component'
 
 import {SharedModule } from '../shared/shared.module';
@@ -77,7 +77,7 @@ import {MatSelectModule} from '@angular/material';
     SharedModule,
     // RightModule,
     MatExpansionModule,
-    MatIconModule,
+    // MatIconModule,
     MatInputModule,
     MatSelectModule,
   ],

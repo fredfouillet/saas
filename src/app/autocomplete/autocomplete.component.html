@@ -3,9 +3,9 @@
   <div *ngIf="!arrayContent.length || !singleChoice">
     <div class="input-group mb8">
       <mat-form-field>
-        <input matInput type="text" name="Search" placeholder="🔎 {{ title | translate}}" [(ngModel)]="autocompleteSearch" (ngModelChange)="searchData()">
+        <input matInput type="text" autocomplete="off" name="Search" placeholder="🔎 {{ title | translate}}" [(ngModel)]="autocompleteSearch" (ngModelChange)="searchData()">
+        <app-newObjDialog (cliked)="newObjDialogClicked()" matSuffix *ngIf="typeAutocomplete=='user' || typeAutocomplete=='companie' || typeAutocomplete=='project' || typeAutocomplete=='product'" (saved)="saved($event)" [search]="search" [typeObj]="typeAutocomplete"></app-newObjDialog>
       </mat-form-field>
-      <app-newObjDialog *ngIf="typeAutocomplete=='user' || typeAutocomplete=='companie' || typeAutocomplete=='project' || typeAutocomplete=='product'" (saved)="saved($event)" [search]="search" class="input-group-addon" [typeObj]="typeAutocomplete"></app-newObjDialog>
     </div>
   </div>
   <div class="form-control" *ngFor="let data of fetchedData; let i=index">
@@ -32,39 +32,29 @@
   </div>
   <div *ngFor="let data of arrayContent; let i=index">
     <div class="row">
-      <div class="col-8">
-        <div *ngIf="typeAutocomplete=='user'">
+      <div class="col-12">
+        <!-- <div *ngIf="typeAutocomplete=='user'"> -->
           <mat-form-field>
-            <input readonly placeholder="{{title}}" matInput type="text" value="{{data.profile.name}} {{data.profile.lastName}}">
+            <input *ngIf="typeAutocomplete=='user'" readonly placeholder="{{title}}" matInput type="text" value="{{data.profile.name}} {{data.profile.lastName}}">
+            <input *ngIf="typeAutocomplete=='companie'" readonly placeholder="{{title}}" matInput type="text" value="{{data.nameCompanie}}">
+            <input *ngIf="typeAutocomplete=='quote'" readonly placeholder="{{title}}" matInput type="text" value="{{data.name}}">
+            <input *ngIf="typeAutocomplete=='project'" readonly placeholder="{{title}}" matInput type="text" value="{{data.details.name}}">
+            <input *ngIf="typeAutocomplete=='product'" readonly placeholder="{{title}}" matInput type="text" value="{{data.details.referenceName}}">
+            <input *ngIf="typeAutocomplete=='right'" readonly placeholder="{{title}}" matInput type="text" value="{{data.detailRight.nameRight}}">
+
+            <button matSuffix mat-icon-button *ngIf="enableLink" (click)="linkToObject(data)">
+              <mat-icon aria-label="Link">link</mat-icon>
+            </button>
+            <button matSuffix mat-icon-button *ngIf="canDelete" (click)="removeData(i)">
+              <mat-icon aria-label="delete">delete</mat-icon>
+            </button>
+
           </mat-form-field>
-        </div>
-        <div *ngIf="typeAutocomplete=='companie'">
-          <mat-form-field>
-            <input readonly placeholder="{{title}}" matInput type="text" value="{{data.nameCompanie}}">
-          </mat-form-field>
-        </div>
-        <div *ngIf="typeAutocomplete=='quote'">
-          <mat-form-field>
-            <input readonly placeholder="{{title}}" matInput type="text" value="{{data.name}}">
-          </mat-form-field>
-        </div>
-        <div *ngIf="typeAutocomplete=='project'">
-          <mat-form-field>
-            <input readonly placeholder="{{title}}" matInput type="text" value="{{data.details.name}}">
-          </mat-form-field>
-        </div>
-        <div *ngIf="typeAutocomplete=='product'">
-          <mat-form-field>
-            <input readonly placeholder="{{title}}" matInput type="text" value="{{data.details.referenceName}}">
-          </mat-form-field>
-        </div>
-        <div *ngIf="typeAutocomplete=='right'">
-          <mat-form-field>
-            <input readonly placeholder="{{title}}" matInput type="text" value="{{data.detailRight.nameRight}}">
-          </mat-form-field>
-        </div>
+        <!-- </div> -->
+
+
       </div>
-      <div class="col-4">
+      <!-- <div class="col-4">
         <div class="row pull-right">
           <div *ngIf="enableLink" class="col-6">
             <button class="btn btn-ok btn-sm ferme alright" (click)="linkToObject(data)" type="button"><i class="fa fa-link"></i></button>
@@ -73,7 +63,7 @@
             <button class="btn btn-danger btn-sm ferme alright" type="button" (click)="removeData(i)"><i class="fa fa-times"></i></button>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </div>

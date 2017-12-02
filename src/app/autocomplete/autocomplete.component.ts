@@ -73,7 +73,10 @@ export class AutocompleteComponent {
 
   }
 
-
+  newObjDialogClicked() {
+    this.fetchedData = []
+    this.autocompleteSearch = ''
+  }
 
 
   getData(page: number, search: any) {

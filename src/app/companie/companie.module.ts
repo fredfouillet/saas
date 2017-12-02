@@ -25,7 +25,7 @@ import { ConnectStripeComponent } from './single/connectStripe/connectStripe.com
 import { PaiementPipe } from './paiement/paiement.pipe';
 import {MatCardModule} from '@angular/material';
 import {MatExpansionModule} from '@angular/material';
-import {MatIconModule} from '@angular/material';
+// import {MatIconModule} from '@angular/material';
 // import {MatInputModule} from '@angular/material';
 // import {MatFormFieldModule} from '@angular/material';
 
@@ -41,7 +41,7 @@ import {MatIconModule} from '@angular/material';
     SharedModule,
     MatCardModule,
     MatExpansionModule,
-    MatIconModule,
+    // MatIconModule,
     // MatInputModule,
     // MatFormFieldModule,
     // MatRadioModule,

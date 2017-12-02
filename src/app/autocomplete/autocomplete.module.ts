@@ -8,12 +8,16 @@ import {MatInputModule} from '@angular/material';
 // import {SharedModule } from '../shared/shared.module';
 import { newObjDialogComponent } from './newObjDialog/newObjDialog.component';
 import { TranslateModule} from '../translate/translate.module';
+import {MatButtonModule} from '@angular/material';
+import {MatIconModule} from '@angular/material';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     TranslateModule,
     MatInputModule,
+    MatButtonModule,
+    MatIconModule,
     // SharedModule,
     // UserModule,
 

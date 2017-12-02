@@ -29,6 +29,7 @@ export class newObjDialogComponent implements OnInit {
   @Input() title: string = '';
   @Input() icone: string = 'fa fa-plus';
   @Output() saved: EventEmitter<any> = new EventEmitter();
+  @Output() cliked: EventEmitter<any> = new EventEmitter();
 
 
   constructor(
@@ -44,6 +45,7 @@ export class newObjDialogComponent implements OnInit {
   ngOnChanges() { }
 
   openDialog(typeObj: string) {
+    this.cliked.emit()
     // console.log(this.search)
     // if (typeObj === 'quote') {
     //   this.router.navigate(['/quote/new']);
