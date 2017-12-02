@@ -54,7 +54,6 @@ export class QuoteComponent implements OnInit {
 
   nextStep() {
     this.step++;
-    console.log(this.step)
   }
 
   closeDialog() {

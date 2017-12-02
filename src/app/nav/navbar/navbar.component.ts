@@ -59,7 +59,9 @@ export class NavbarComponent implements OnInit {
     });
   }
 
-
+  newQuote(){
+    this.router.navigate(['/quote/new']);
+  }
   toggleSideBar() {
     this.globalEventsManager.showNavBar(!this.showSideNavBar);
   }
