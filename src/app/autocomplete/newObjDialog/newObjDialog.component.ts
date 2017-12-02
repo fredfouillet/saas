@@ -53,7 +53,7 @@ export class newObjDialogComponent implements OnInit {
     if (typeObj === 'right') {
       this.router.navigate(['/right/new']);
     } else if (typeObj === 'quote') {
-      this.router.navigate(['/quote/new'])
+      this.router.navigate(['/quote/new', this.search])
 
     } else {
 

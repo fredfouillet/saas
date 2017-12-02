@@ -13,39 +13,38 @@
         </mat-form-field>
       </div>
       <div *ngIf="fetchedUser.isExternalUser">
-        <input *ngIf="fetchedUser.profile.typeClient ==='Administration'" type="text" formControlName="accessType" [(ngModel)]="fetchedUser.profile.companyName" placeholder="Nom Administration">
-        <input *ngIf="fetchedUser.profile.typeClient ==='Societe'" type="text" formControlName="accessType" [(ngModel)]="fetchedUser.profile.companyName" placeholder="Nom Societé">
+        <mat-form-field *ngIf="fetchedUser.profile.typeClient ==='Administration'">
+          <input matInput type="text" formControlName="accessType" [(ngModel)]="fetchedUser.profile.companyName" placeholder="Nom Administration">
+        </mat-form-field>
+        <mat-form-field *ngIf="fetchedUser.profile.typeClient ==='Societe'">
+          <input matInput type="text" formControlName="accessType" [(ngModel)]="fetchedUser.profile.companyName" placeholder="Nom Societé">
+        </mat-form-field>
       </div>
 
 
-      <div>
-        <mat-form-field>
-          <mat-select placeholder="{{'Title' | translate}}" [(ngModel)]="fetchedUser.profile.title" formControlName="title">
-            <mat-option [value]="" disabled selected>{{'Title' | translate}}</mat-option>
-            <mat-option *ngFor="let n of titleArray" [value]="n">{{ n | translate}}</mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-      <div>
-        <mat-form-field>
-          <input matInput type="text" formControlName="name" [(ngModel)]="fetchedUser.profile.name" placeholder="{{'Firstname' | translate}}">
-        </mat-form-field>
-      </div>
-      <div>
-        <mat-form-field>
-          <input matInput type="text" formControlName="lastName" [(ngModel)]="fetchedUser.profile.lastName" placeholder="{{'Lastname' | translate}}">
-        </mat-form-field>
-      </div>
-      <div>
-        <mat-form-field>
-          <input matInput type="text" formControlName="email" [(ngModel)]="fetchedUser.email" placeholder="{{'Email' | translate}}">
-        </mat-form-field>
-      </div>
-      <div>
-        <mat-form-field>
-          <input matInput type="text" formControlName="phoneNumber" [(ngModel)]="fetchedUser.profile.phoneNumber" placeholder="{{'Phone Number' | translate}}">
-        </mat-form-field>
-      </div>
+      <mat-form-field>
+        <mat-select placeholder="{{'Title' | translate}}" [(ngModel)]="fetchedUser.profile.title" formControlName="title">
+          <mat-option [value]="" disabled selected>{{'Title' | translate}}</mat-option>
+          <mat-option *ngFor="let n of titleArray" [value]="n">{{ n | translate}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput type="text" formControlName="name" [(ngModel)]="fetchedUser.profile.name" placeholder="{{'Firstname' | translate}}">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput type="text" formControlName="lastName" [(ngModel)]="fetchedUser.profile.lastName" placeholder="{{'Lastname' | translate}}">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput type="text" formControlName="email" [(ngModel)]="fetchedUser.email" placeholder="{{'Email' | translate}}">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput type="text" formControlName="phoneNumber" [(ngModel)]="fetchedUser.profile.phoneNumber" placeholder="{{'Phone Number' | translate}}">
+      </mat-form-field>
+
 
       <!-- <div *ngIf="fetchedUser.isExternalUser">
             <select [ngClass]="{'has-error':!myForm.controls['statusHouse'].valid && !myForm.controls['statusHouse'].pristine}" [(ngModel)]="fetchedUser.profile.statusHouse" formControlName="statusHouse">
@@ -59,14 +58,14 @@
             </app-autocomplete>
           </div> -->
 
-      <div>
-        {{'Need to login/logout'}}
-        <mat-form-field>
-          <mat-select [(ngModel)]="fetchedUser.profile.language" name="language" formControlName="language">
-            <mat-option *ngFor="let n of languageArray" [value]="n">{{n}}</mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
+
+      <mat-form-field>
+        <mat-select [(ngModel)]="fetchedUser.profile.language" name="language" formControlName="language">
+          <mat-option *ngFor="let n of languageArray" [value]="n">{{n}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-hint>{{'Need to login/logout to apply changes' | translate}}</mat-hint>
+
       <!-- <div *ngIf="!fetchedUser.isExternalUser">
         <div *ngFor="let ownerCompanie of currentUser.ownerCompanies">
           <select [(ngModel)]="fetchedUser.typeUsers" name="language" formControlName="typeUsers">
@@ -146,9 +145,9 @@
       </div>
       <div>
         <mat-form-field>
-        <textarea matInput formControlName="otherData" [(ngModel)]="fetchedUser.profile.otherData" placeholder="{{'Other' | translate}}">
+          <textarea matInput formControlName="otherData" [(ngModel)]="fetchedUser.profile.otherData" placeholder="{{'Other' | translate}}">
               </textarea>
-            </mat-form-field>
+        </mat-form-field>
       </div>
       <!-- <div *ngIf="!fetchedUser.isExternalUser">
           <app-autocomplete [typeAutocomplete]="'right'" [canDelete]="true" [title]="'Right'" [singleChoice]="true" [arrayContent]="fetchedUser.rights" (getResultAutocomplete)="selectRight($event[0])">

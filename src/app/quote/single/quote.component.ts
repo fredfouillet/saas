@@ -101,18 +101,23 @@ export class QuoteComponent implements OnInit {
       if (params['idQuote']) {
         this.search.quoteId = params['idQuote']
         this.getQuote(params['idQuote'])
-      } else if (params['parentQuoteId']) {
-        this.getQuote(params['parentQuoteId']).then((parentQuote: Quote) => {
-          this.search.parentQuoteId = params['parentQuoteId']
-          this.fetchedQuote._id = ''
-          this.fetchedQuote.typeQuote = 'invoice'
-          this.fetchedQuote.drawingSignature.isSigned = false
-          this.fetchedQuote.quoteNumber = null
-          this.getMaxQuoteNumber()
-        })
       } else {
         this.getMaxQuoteNumber()
+        if (params['userId']) {
+          this.search.userId = params['userId']
+        }
       }
+      // else if (params['parentQuoteId']) {
+      //   // this.getQuote(params['parentQuoteId']).then((parentQuote: Quote) => {
+      //   //   this.search.parentQuoteId = params['parentQuoteId']
+      //   //   this.fetchedQuote._id = ''
+      //   //   this.fetchedQuote.typeQuote = 'invoice'
+      //   //   this.fetchedQuote.drawingSignature.isSigned = false
+      //   //   this.fetchedQuote.quoteNumber = null
+      //   //   this.getMaxQuoteNumber()
+      //   // })
+      // }
+
     })
 
 
