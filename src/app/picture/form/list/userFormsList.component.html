@@ -14,7 +14,7 @@
     </tbody>
   </table>
   <div *ngIf="showPagination" class="has-text-centered">
-     <mat-paginator
+     <mat-paginator *ngIf="paginationData.totalItems>paginationData.itemsPerPage" 
       [length]="paginationData.totalItems"
       [pageSize]="paginationData.itemsPerPage"
       (page)="getPage($event.pageIndex*1+1)">
