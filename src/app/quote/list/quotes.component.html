@@ -8,8 +8,6 @@
       <app-newObjDialog
         icone="fa fa-plus-square fa-2x ml" [search]="search" (saved)="saved($event)" [typeObj]="'quote'">
       </app-newObjDialog>
-      <!-- <button type="button" (click)="saveAsInvoice()">save as invoice</button> -->
-
     </div>
   </div>
   <div *ngIf="showSearch" class="d-flex flex-row">
@@ -26,7 +24,7 @@
         <thead>
           <tr>
             <!-- <th class="centre tdunder">{{'Type' | translate}}</th> -->
-            <th class="centre tdunder">{{'Client' | translate}}</th>
+            <th class="centre tdunder hideMobile">{{'Client' | translate}}</th>
             <th class="centre tdunder">{{'Name' | translate}}
 
               <app-sort (orderBy)="orderBy($event)" [search]="search" [filedToOrder]="'name'"></app-sort>
@@ -48,7 +46,7 @@
             <!-- <td class="centre tdunder">
               {{quote.typeQuote | translate}}
             </td> -->
-            <td class="centre tdunder">
+            <td class="centre tdunder hideMobile">
               <div *ngFor="let client of quote.clients">
                 {{client.profile.name}} {{client.profile.lastName}}
               </div>
