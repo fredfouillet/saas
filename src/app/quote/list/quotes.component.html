@@ -15,7 +15,7 @@
   <div *ngIf="showSearch" class="d-flex flex-row">
     <div class="p-2">
       <mat-form-field>
-        <input matInput type="text" name="Search" placeholder="{{'Search' | translate}}" [(ngModel)]="search.search" (ngModelChange)="searchData()">
+        <input matInput type="text" autocomplete="off" name="Search" placeholder="{{'Search' | translate}}" [(ngModel)]="search.search" (ngModelChange)="searchData()">
       </mat-form-field>
     </div>
   </div>

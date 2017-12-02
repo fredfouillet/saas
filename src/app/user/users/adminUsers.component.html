@@ -12,7 +12,7 @@
     <div class="p-2">
 
       <mat-form-field>
-      <input matInput type="text" name="Search" placeholder="{{'Search' | translate}}" [(ngModel)]="search.search" (ngModelChange)="searchUsers()">
+      <input matInput type="text" autocomplete="off" name="Search" placeholder="{{'Search' | translate}}" [(ngModel)]="search.search" (ngModelChange)="searchUsers()">
     </mat-form-field>
     </div>
   </div>
