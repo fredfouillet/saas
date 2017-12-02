@@ -20,7 +20,7 @@ import { Search, PaginationData } from '../../shared/shared.model';
 
 })
 export class ProductsComponent implements OnInit {
-  @Input() customButton: string = '';
+  @Input() customButton: boolean = false;
   @Input() showNewItem: boolean = true;
   @Input() showTitle: boolean = true;
   @Output() customButtonActionEmit: EventEmitter<any> = new EventEmitter();

@@ -1,6 +1,6 @@
 <mat-tab-group>
   <mat-tab label="Catalogue">
-    <app-products [showTitle]=false [showNewItem]=false [customButton]="'Select'" (customButtonActionEmit)="addProductToQuote($event)"></app-products>
+    <app-products [showTitle]=false [showNewItem]=false [customButton]=true (customButtonActionEmit)="addProductToQuote($event)"></app-products>
   </mat-tab>
   <mat-tab label="Add">
     <app-add-text-row (addTextToQuote)="addTextToQuote($event)"></app-add-text-row>
