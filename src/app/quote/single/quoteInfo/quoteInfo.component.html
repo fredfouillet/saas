@@ -55,11 +55,14 @@
           {{'Quote validity date' | translate}}
           <input [readonly]="fetchedQuote.drawingSignature.isSigned" type="date" class="form-control" [ngModelOptions]="{standalone: true}" class="form-control" [(ngModel)]="fetchedQuote.detail.dateQuote.expiryDateString">
         </div> -->
-        <mat-form-field *ngIf="fetchedQuote.typeQuote === 'quote'">
+        <!-- <mat-form-field *ngIf="fetchedQuote.typeQuote === 'quote'">
           <mat-select [disabled]="fetchedQuote.drawingSignature.isSigned" placeholder="{{'Status'| translate}}" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedQuote.statusQuote">
             <mat-option *ngFor="let n of statusQuotes" [value]="n.indexStatus">{{n.label | translate}}</mat-option>
           </mat-select>
-        </mat-form-field>
+        </mat-form-field> -->
+
+
+        <app-quote-status [fetchedQuote]="fetchedQuote"></app-quote-status>
 
 
         <mat-form-field *ngIf="fetchedQuote.typeQuote === 'invoice'">
