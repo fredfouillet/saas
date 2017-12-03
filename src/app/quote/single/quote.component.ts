@@ -172,7 +172,7 @@ export class QuoteComponent implements OnInit {
 
     calculateQuote() {
       let this2 = this;
-      setTimeout(function() {
+      setTimeout(() => {
         this2.fetchedQuote.priceQuote.priceQuoteWithTaxes = 0
         this2.fetchedQuote.priceQuote.priceQuoteWithoutTaxes = 0
         this2.fetchedQuote.priceQuote.priceQuoteWithoutTaxes = 0
@@ -274,7 +274,7 @@ export class QuoteComponent implements OnInit {
         })
 
         // this2.quoteDetailsUpdated.emit(this2.fetchedQuote)
-      }, 20)
+      })
 
     }
 
