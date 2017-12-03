@@ -268,15 +268,9 @@ export class QuoteComponent implements OnInit {
                   .TotalVAT += (product.priceWithoutTaxesWithDiscount * product.vat / 100) * product.quantity
               }
             })
-
-
           })
         })
-
         // this2.quoteDetailsUpdated.emit(this2.fetchedQuote)
       })
-
     }
-
-
 }
