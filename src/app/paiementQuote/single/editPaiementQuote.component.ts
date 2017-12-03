@@ -36,6 +36,7 @@ import { Search} from '../../shared/shared.model'
 })
 export class EditPaiementQuoteComponent implements OnInit {
   @Output() saved: EventEmitter<any> = new EventEmitter();
+  @Output() close: EventEmitter<any> = new EventEmitter();
   @Input() fetchedQuotes: Quote[] = []
   @Input() search: Search = new Search()
 
@@ -90,6 +91,10 @@ export class EditPaiementQuoteComponent implements OnInit {
    this.step = index;
  }
 
+ closeDialog() {
+   this.save()
+   this.close.emit()
+ }
   ngOnInit() {
     this.myForm = this._fb.group({
       amount: [''],
@@ -312,6 +317,10 @@ export class EditPaiementQuoteComponent implements OnInit {
       //     },
       //     error => { console.log(error); }
       //   );
+    }
+    nextStep() {
+      this.step++
+      this.save()
     }
     payByCardConnect() {
       this.save().then(() => {

@@ -22,7 +22,9 @@ export class PaiementQuoteDialogComponent {
     this.search = data.search
   }
 
-
+  closeDialog(result) {
+    this.dialogRef.close()
+  }
   saved() {
     this.dialogRef.close()
     // this.userFormsComponent.onUploadFinisedParentToChild();

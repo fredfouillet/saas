@@ -4,7 +4,7 @@ import {ToastsManager} from 'ng2-toastr';
 import {Router} from '@angular/router';
 import {AuthService} from '../../auth/auth.service';
 import {UserAuth} from '../../auth/user.model';
-import {GlobalEventsManager} from '../../globalEventsManager';
+// import {GlobalEventsManager} from '../../globalEventsManager';
 
 
 @Component({
@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
 
   constructor(
     private _fb: FormBuilder,
-    private globalEventsManager: GlobalEventsManager,
+    // private globalEventsManager: GlobalEventsManager,
     private _authService: AuthService,
               private _router: Router, private toastr: ToastsManager, private renderer: Renderer) {
   }

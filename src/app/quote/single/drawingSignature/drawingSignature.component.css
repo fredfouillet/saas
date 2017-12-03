@@ -8,3 +8,6 @@
   /*background-image: url('/assets/images/fond_drawing.png');*/
   /*background-color: white;*/
 }
+.canvas_whiteboard_buttons{
+  display:none!important;
+}

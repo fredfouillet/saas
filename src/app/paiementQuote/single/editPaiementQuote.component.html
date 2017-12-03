@@ -48,10 +48,10 @@
 
       <mat-action-row>
         <button *ngIf="fetchedPaiementQuote._id" mat-mini-fab color="warn" (click)="openDialogDelete()">
-              <mat-icon aria-label="Next">delete</mat-icon>
+              <mat-icon aria-label="delete">delete</mat-icon>
             </button>
 
-        <button mat-mini-fab color="primary" (click)="save()">
+        <button mat-mini-fab color="primary" (click)="nextStep()">
               <mat-icon aria-label="Next">forward</mat-icon>
             </button>
       </mat-action-row>
@@ -116,7 +116,11 @@
       </div>
 
       <mat-action-row>
-        <button type="button" *ngIf="fetchedPaiementQuote.type!=='stripe'" (click)="save()">{{'Save' | translate}}</button>
+
+        <button *ngIf="fetchedPaiementQuote.type!=='stripe'" mat-mini-fab color="primary" (click)="closeDialog()">
+              <mat-icon aria-label="save">check_circle</mat-icon>
+            </button>
+
         <button type="button" *ngIf="fetchedPaiementQuote.type==='stripe'" class="valid" (click)="payByCardConnect()">payByCardConnect</button>
       </mat-action-row>
     </mat-expansion-panel>

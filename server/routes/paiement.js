@@ -443,9 +443,13 @@ router.delete('/deleteSub/:idSub', function(req, res, next) {
     if (subscription) {
 
       let planDetail = {
-        current_period_end: subscription.current_period_end * 1000,
-        plan: subscription.plan
+        current_period_end: '',
+        plan: ''
       }
+      // let planDetail = {
+      //   current_period_end: subscription.current_period_end * 1000,
+      //   plan: subscription.plan
+      // }
 
       Companie.update({
         _id: req.user.ownerCompanies[0]

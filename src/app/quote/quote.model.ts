@@ -40,13 +40,16 @@ export class Detail {
   dateQuote: DateQuote = new DateQuote()
 }
 
+const tomorrow = new Date();
+tomorrow.setDate(tomorrow.getDate() + 30);
+
 export class DateQuote {
   issueDate: Date = new Date();
-  issueDateString: string = '';
-  expiryDate: Date = new Date();
-  expiryDateString: string ='';
+  // issueDateString: string = '';
+  expiryDate: Date = tomorrow;
+  // expiryDateString: string ='';
   dateInvoicePaid: Date = new Date();
-  dateInvoicePaidString: string ='';
+  // dateInvoicePaidString: string ='';
 }
 
 
@@ -115,11 +118,11 @@ export class DevisDetail {
 
 export const StatusQuotes =
 [
-  {indexStatus: 0, label: 'Pending Approval'},
-  {indexStatus: 1, label: 'Signed'},
-  {indexStatus: 2, label: 'Rejected'},
-  {indexStatus: 3, label: 'Signed, pending paiement'},
-  {indexStatus: 4, label: 'Done'},
+  {indexStatus: 0, label: 'Pending Approval', icon: 'alarm', color: 'primary'},
+  {indexStatus: 1, label: 'Signed', icon: 'done', color: 'accent'},
+  {indexStatus: 2, label: 'Rejected', icon: 'face', color: 'warn'},
+  // {indexStatus: 3, label: 'Signed, pending paiement'},
+  // {indexStatus: 4, label: 'Done'},
 ]
 export const StatusQuotesInvoice =
 [

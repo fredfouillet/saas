@@ -14,6 +14,7 @@ import { QuotesComponent} from './list/quotes.component';
 import { QuoteComponent} from './single/quote.component';
 import { ActionButtonsComponent} from './single/actionButtons/actionButtons.component';
 import { QuoteInfoComponent} from './single/quoteInfo/quoteInfo.component';
+import { QuoteStatusComponent} from './single/quoteStatus/quoteStatus.component';
 // import { SignatureComponent} from './single/signature/signature.component';
 import { QuoteDetailsComponent} from './single/quoteDetails/quoteDetails.component';
 import { MobileDetailsComponent} from './single/quoteDetails/quoteDetailsElem/mobileDetails.component';
@@ -58,9 +59,9 @@ import {MatSelectModule} from '@angular/material';
 // import {MatInputModule} from '@angular/material';
 // import {MatExpansionModule} from '@angular/material';
 // import {MatIconModule} from '@angular/material';
-
+import {MatTooltipModule} from '@angular/material';
 import {MatTabsModule} from '@angular/material';
-
+import {MatButtonToggleModule} from '@angular/material';
 @NgModule({
   imports:      [
     QuillEditorModule,
@@ -91,6 +92,9 @@ import {MatTabsModule} from '@angular/material';
     // MatIconModule,
     MatCardModule,
     MatSelectModule,
+    MatButtonToggleModule,
+    MatTooltipModule,
+
 
     // AutocompleteComponent,
   ],
@@ -107,6 +111,7 @@ import {MatTabsModule} from '@angular/material';
     AddTextRowComponent,
     QuoteDialogComponent,
     QuoteInfoComponent,
+    QuoteStatusComponent,
     ActionButtonsComponent,
     InvoiceActionComponent,
     // QuoteDetailComponent,

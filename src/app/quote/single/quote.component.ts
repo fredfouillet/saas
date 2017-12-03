@@ -172,13 +172,17 @@ export class QuoteComponent implements OnInit {
 
     calculateQuote() {
       let this2 = this;
-      setTimeout(function() {
+      setTimeout(() => {
         this2.fetchedQuote.priceQuote.priceQuoteWithTaxes = 0
         this2.fetchedQuote.priceQuote.priceQuoteWithoutTaxes = 0
+        this2.fetchedQuote.priceQuote.priceQuoteWithoutTaxes = 0
+        this2.fetchedQuote.priceQuote.priceGlobalWithDiscountWithSurface = 0
+        this2.fetchedQuote.priceQuote.priceGlobalWithDiscountWithSurfaceWithPainfulness = 0
+        this2.fetchedQuote.priceQuote.priceGlobalWithTaxesWithDiscountWithSurfaceWithPainfulness = 0
 
         this2.fetchedQuote.priceQuote.priceQuoteTaxes = []
         this2.VATs.forEach(VAT => {
-          let newPriceQuoteTaxe = new PriceQuoteTaxe()
+          const newPriceQuoteTaxe = new PriceQuoteTaxe()
           newPriceQuoteTaxe.VAT = VAT
           this2.fetchedQuote.priceQuote.priceQuoteTaxes.push(newPriceQuoteTaxe)
         })
@@ -239,6 +243,7 @@ export class QuoteComponent implements OnInit {
               .priceQuoteWithTaxes += this2.fetchedQuote.devisDetails[i].bucketProducts[j]
                 .priceWithTaxesWithQuantityWithDiscountWithSurface * 1
 
+
             this2.fetchedQuote.priceQuote
               .priceQuoteWithoutTaxes += this2.fetchedQuote.devisDetails[i].bucketProducts[j]
                 .priceWithQuantityWithDiscountWithSurface * 1
@@ -263,15 +268,9 @@ export class QuoteComponent implements OnInit {
                   .TotalVAT += (product.priceWithoutTaxesWithDiscount * product.vat / 100) * product.quantity
               }
             })
-
-
           })
         })
-
         // this2.quoteDetailsUpdated.emit(this2.fetchedQuote)
-      }, 20)
-
+      })
     }
-
-
 }

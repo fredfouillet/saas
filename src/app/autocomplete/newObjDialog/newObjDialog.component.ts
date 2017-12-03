@@ -77,7 +77,7 @@ export class newObjDialogComponent implements OnInit {
         dialogComp = ProductDialogComponent
 
 
-      let dialogRef = this.mdDialog.open(dialogComp, {
+      const dialogRef = this.mdDialog.open(dialogComp, {
         data: {
           search: this.search
         }
@@ -87,9 +87,5 @@ export class newObjDialogComponent implements OnInit {
         this.saved.emit(result)
       })
     }
-
-
-
   }
-
 }
