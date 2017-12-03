@@ -27,7 +27,8 @@
         </mat-panel-description>
       </mat-expansion-panel-header>
       <h4>PLan</h4>
-      <b>{{fetchedCompanie.planDetail.plan}}</b> Ok until:{{fetchedCompanie.planDetail.current_period_end}}
+      <b>{{fetchedCompanie.planDetail.plan}}</b> {{'Ok until:' | translate }}
+      {{fetchedCompanie.planDetail.current_period_end | date:'dd/MM/yyyy HH:mm'}}
       <app-paiement *ngIf="step === 1"></app-paiement>
     </mat-expansion-panel>
     <mat-expansion-panel *ngIf="authService.isCurrentUserIsInSubPeriod()" [expanded]="step === 2" (opened)="setStep(2)" hideToggle="true">
