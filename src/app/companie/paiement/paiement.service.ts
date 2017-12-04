@@ -37,7 +37,7 @@ export class PaiementService {
     let headers = new Headers({'Content-Type': 'application/json'});
     headers.append('Authorization', '' + this.authService.currentUser.token)
     let options = new RequestOptions({ headers: headers, search: {}});
-    return this.http.get(this.url + 'paiement/goToLinkAuthorizeConnect/', options)
+    return this.http.get(this.url + 'stripeConnect/goToLinkAuthorizeConnect/', options)
       .map((response: Response) => {
         return response.json();
       })
@@ -51,7 +51,7 @@ export class PaiementService {
       // const body = JSON.stringify(params);
       const headers = new Headers({'Content-Type': 'application/json'});
       headers.append('Authorization', '' + this.authService.currentUser.token);
-      return this.http.post(this.url + 'paiement/deauthorizeConnect', body, {headers: headers})
+      return this.http.post(this.url + 'stripeConnect/deauthorizeConnect', body, {headers: headers})
         .map(response => response.json())
         .catch((error: Response) => {
           this.errorService.handleError(error.json());
@@ -62,7 +62,7 @@ export class PaiementService {
       const body = JSON.stringify(params);
       const headers = new Headers({'Content-Type': 'application/json'});
       headers.append('Authorization', '' + this.authService.currentUser.token);
-      return this.http.post(this.url + 'paiement/oauthConnect', body, {headers: headers})
+      return this.http.post(this.url + 'stripeConnect/oauthConnect', body, {headers: headers})
         .map(response => response.json())
         .catch((error: Response) => {
           this.errorService.handleError(error.json());
@@ -74,7 +74,7 @@ export class PaiementService {
       const body = JSON.stringify(card);
       const headers = new Headers({'Content-Type': 'application/json'});
       headers.append('Authorization', '' + this.authService.currentUser.token);
-      return this.http.post(this.url + 'paiement/payByCardConnect/' + fetchedPaiementQuoteId, body, {headers: headers})
+      return this.http.post(this.url + 'stripeConnect/payByCardConnect/' + fetchedPaiementQuoteId, body, {headers: headers})
         .map(response => response.json())
         .catch((error: Response) => {
           this.errorService.handleError(error.json());
@@ -85,7 +85,7 @@ export class PaiementService {
     getUserInfosConnect() {
       let headers = new Headers({'Content-Type': 'application/json'});
       headers.append('Authorization', '' + this.authService.currentUser.token);
-      return this.http.get(this.url + 'paiement/getUserInfosConnect', {headers: headers})
+      return this.http.get(this.url + 'stripeConnect/getUserInfosConnect', {headers: headers})
         .map((response: Response) => {
           return response.json();
         })
