@@ -10,15 +10,16 @@
 
 
       <div *ngIf="stripeCust.id">
-        <div class="form-control">
-          {{stripeCust.id}}
-        </div>
-        <div class="form-control">
+        <mat-form-field>
+          <input matInput value="{{stripeCust.id}}" placeholder="ID">
+        </mat-form-field>
+
+        <!-- <div class="form-control">
           {{stripeCust.created | timestampToDate}}
         </div>
         <div class="form-control">
           {{stripeCust.email}}
-        </div>
+        </div> -->
 
       </div>
       <mat-action-row>
@@ -58,38 +59,69 @@
           <mat-form-field>
             <input matInput type="text" [(ngModel)]="newCard.address_zip" placeholder="address_zip">
           </mat-form-field>
-          <mat-form-field> eg: 8
+          <mat-form-field>
             <input matInput type="text" [(ngModel)]="newCard.exp_month" placeholder="exp_month">
           </mat-form-field>
-          <mat-form-field> eg: 2018
+          <mat-form-field>
             <input matInput type="text" [(ngModel)]="newCard.exp_year" placeholder="exp_year">
           </mat-form-field>
-          <mat-form-field> eg: 4242424242424242
+          <mat-form-field>
             <input matInput type="text" [(ngModel)]="newCard.number" placeholder="number">
           </mat-form-field>
           <mat-form-field>
-            eg 123
-            <input matInput type="text" [(ngModel)]="newCard.cvc" placeholder="number">
+            <input matInput type="text" [(ngModel)]="newCard.cvc" placeholder="cvc">
           </mat-form-field>
           <br>
+          eg: 8<br>
+          eg: 2018<br>
+          eg: 4242424242424242<br>
+          eg 123<br>
+
           <button type="button" class="done" (click)="saveCardInStripe()">saveCardInStripe</button>
         </div>
 
 
         <div *ngFor="let card of stripeCust.sources.data; let i=index;">
-          <div class="form-control">{{card.id}}</div>
-          <div class="form-control">{{card.address_city}}</div>
-          <div class="form-control">{{card.address_country}}</div>
-          <div class="form-control">{{card.address_line1}}</div>
-          <div class="form-control">{{card.address_line2}}</div>
-          <div class="form-control">{{card.address_state}}</div>
-          <div class="form-control">{{card.address_zip}}</div>
-          <div class="form-control">{{card.brand}}</div>
-          <div class="form-control">{{card.country}}</div>
-          <div class="form-control">{{card.exp_month}}</div>
-          <div class="form-control">{{card.exp_year}}</div>
-          <div class="form-control">{{card.funding}}</div>
-          <div class="form-control">{{card.last4}}</div>
+          <mat-form-field>
+            <input matInput readonly value="{{card.id}}" placeholder="cardId">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput readonly value="{{card.address_city}}" placeholder="address_city">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput readonly value="{{card.address_country}}" placeholder="address_country">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput readonly value="{{card.address_line1}}" placeholder="address_line1">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput readonly value="{{card.address_line2}}" placeholder="address_line2">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput readonly value="{{card.address_state}}" placeholder="address_state">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput readonly value="{{card.address_zip}}" placeholder="address_zip">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput readonly value="{{card.brand}}" placeholder="brand">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput readonly value="{{card.country}}" placeholder="country">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput readonly value="{{card.exp_month}}" placeholder="exp_month">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput readonly value="{{card.exp_year}}" placeholder="exp_year">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput readonly value="{{card.funding}}" placeholder="funding">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput readonly value="{{card.last4}}" placeholder="last4">
+          </mat-form-field>
+
           <button type="button" class="done" (click)="deleteCardInStripe(card.id)">delete Card</button>
         </div>
         <mat-action-row>
@@ -112,20 +144,35 @@
             <button type="button" class="done" (click)="saveSubscriptionInStripe('silver')">Silver Plan!</button>
           </div>
           <div *ngFor="let sub of stripeCust.subscriptions.data">
-            <div class="form-control">{{sub.id}}</div>
-            <div class="form-control">{{sub.created | timestampToDate}}</div>
-            <div class="form-control">{{sub.current_period_start | timestampToDate}}</div>
-            <div class="form-control">{{sub.current_period_end | timestampToDate}}</div>
+
+            <mat-form-field>
+              <input matInput readonly value="{{sub.id}}" placeholder="id">
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput readonly value="{{sub.created | timestampToDate | date: 'dd/MM/yyyy HH:mm'}}" placeholder="created">
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput readonly value="{{sub.current_period_start | timestampToDate | date: 'dd/MM/yyyy HH:mm'}}" placeholder="current_period_start">
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput readonly value="{{sub.current_period_end | timestampToDate | date: 'dd/MM/yyyy HH:mm'}}" placeholder="current_period_end">
+            </mat-form-field>
 
 
-            <h4>Plan</h4>
-            <div class="form-control">{{sub.plan.id}}</div>
-            <div class="form-control">{{sub.plan.amount}}</div>
-            <div class="form-control">{{sub.plan.created | timestampToDate}}</div>
-            <div class="form-control">{{sub.plan.currency}}</div>
-            <div class="form-control">{{sub.plan.interval}}</div>
-            <div class="form-control">{{sub.plan.interval_count}}</div>
-            <div class="form-control">{{sub.plan.name}}</div>
+
+
+            <mat-form-field>
+              <input matInput readonly value="{{sub.plan.id}}" placeholder="Plan">
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput readonly value="{{sub.plan.amount / 100 + ' ' + sub.plan.currency + ' / ' + sub.plan.interval}} " placeholder="Amount">
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput readonly value="{{sub.plan.created | timestampToDate | date: 'dd/MM/yyyy HH:mm'}}" placeholder="Created">
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput readonly value="{{sub.plan.interval_count}}" placeholder="interval_count">
+            </mat-form-field>
             <button type="button" class="done" (click)="deleteSubInStripe(sub.id)">deleteSubInStripe</button>
 
           </div>
