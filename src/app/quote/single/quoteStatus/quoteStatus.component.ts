@@ -16,9 +16,10 @@ export class QuoteStatusComponent {
 
   ngOnChanges() {
     if(this.showSingleSelected) {
-      this.statusQuotesSingleSelected = [this.statusQuotes.find((statusQuote) => {
+      this.statusQuotesSingleSelected = []
+      this.statusQuotesSingleSelected.push(this.statusQuotes.find((statusQuote) => {
         return statusQuote.indexStatus === this.fetchedQuote.statusQuote;
-      })]
+      }))
     }
   }
 }
