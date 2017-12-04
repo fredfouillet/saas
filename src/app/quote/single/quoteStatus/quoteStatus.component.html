@@ -5,7 +5,7 @@
 </mat-button-toggle-group>
 <div *ngIf="showSingleSelected">
   <div *ngFor="let n of statusQuotesSingleSelected">
-    test
+    {{n|json}}
   <!-- <button mat-icon-button color="{{n.color}}" matTooltip="{{n.label}}" >
     <mat-icon>{{n.icon | translate}}</mat-icon>
   </button> -->
