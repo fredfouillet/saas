@@ -59,7 +59,7 @@
           </div> -->
 
 
-      <mat-form-field>
+      <mat-form-field *ngIf="isUserIsMyself()">
         <mat-select [(ngModel)]="fetchedUser.profile.language" name="language" formControlName="language">
           <mat-option *ngFor="let n of languageArray" [value]="n">{{n}}</mat-option>
         </mat-select>

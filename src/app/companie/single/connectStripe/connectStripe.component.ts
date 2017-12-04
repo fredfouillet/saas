@@ -38,7 +38,6 @@ export class ConnectStripeComponent implements OnInit, OnChanges {
     //   }, error => { console.log(error) })
   }
   ngOnChanges() {
-    console.log('a')
     // if(this.fetchedCompanie.banck.stripe.stripe_user_id) {
       this.paiementService.getUserInfosConnect()
         .subscribe(res => {
