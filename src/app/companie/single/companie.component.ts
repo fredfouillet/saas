@@ -56,7 +56,7 @@ export class CompanieComponent implements OnInit {
     private router: Router,
     private location: Location,
     private _fb: FormBuilder,
-    private authService:AuthService,
+    public authService:AuthService,
     private userService: UserService,
     private paiementService: PaiementService,
   ) {}
