@@ -6,7 +6,7 @@ var express = require('express'),
   PaiementQuote = require('../models/paiementQuote.model'),
   // fs      = require('fs'),
   jwt = require('jsonwebtoken'),
-  stripe = require("stripe")("sk_test_cg4vcpE5gV1ApywsErwoWL7u");
+  stripe = require("stripe")(config.stripe.client_secret);
 
 router.use('/', function(req, res, next) {
   var token = req.headers['authorization'];

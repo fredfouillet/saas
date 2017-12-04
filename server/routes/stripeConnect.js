@@ -6,7 +6,7 @@ var express = require('express'),
   PaiementQuote = require('../models/paiementQuote.model'),
   // fs      = require('fs'),
   jwt = require('jsonwebtoken'),
-  stripe = require("stripe")("sk_test_cg4vcpE5gV1ApywsErwoWL7u");
+  stripe = require("stripe")(config.stripe.client_secret);
 
 router.use('/', function(req, res, next) {
   var token = req.headers['authorization'];
@@ -95,7 +95,7 @@ router.use('/', function(req, res, next) {
 // })
 
 router.get('/goToLinkAuthorizeConnect', function(req, res, next) {
-  let url = 'https://connect.stripe.com/oauth/authorize?response_type=code&client_id=ca_BhWB8WgFBFUnPTvA9d0wgqcVJgGUJufg&scope=read_write&redirect_uri=http://' + req.headers.host + '/%23/companie/mine'
+  let url = 'https://connect.stripe.com/oauth/authorize?response_type=code&client_id=' + config.stripe.connect.client_id + '&scope=read_write&redirect_uri=http://' + req.headers.host + '/%23/companie/mine'
   return res.status(200).json({message: 'ok', url: url});
 })
 // router.get('/getStripeAccountDetails', function(req, res, next) {
@@ -204,30 +204,66 @@ router.post('/deauthorizeConnect/', function(req, res, next) {
       })
     }
 
-    item.banck.stripe.stripe_user_id = ''
-    item.save(function(err, result) {
-      if (err) {
-        return res.status(404).json({
-          title: 'error',
-          error: {
-            message: err
-          }
-        })
-      }
-      res.status(201).json({message: '', obj: result});
-    });
+
+    // var request = require('request');
+    // request.post({
+    //   url: 'https://connect.stripe.com/oauth/deauthorize',
+    //   formData: {
+    //     client_id: 'ca_BhWB8WgFBFUnPTvA9d0wgqcVJgGUJufg',
+    //     stripe_user_id: item.banck.stripe.stripe_user_id
+    //   },
+    //   headers: {
+    //     'Authorization': 'Bearer sk_test_cg4vcpE5gV1ApywsErwoWL7u'
+    //   }
+    // }, function (error, response, body){
+    //   // console.log(error)
+    //   // console.log(response)
+    //   // console.log(body)
+    // }
+    // );
 
     var request = require('request');
     request.post({
       url: 'https://connect.stripe.com/oauth/deauthorize',
       formData: {
-        client_id: 'ca_BhWB8WgFBFUnPTvA9d0wgqcVJgGUJufg',
+        client_id: config.stripe.connect.client_id,
         stripe_user_id: item.banck.stripe.stripe_user_id
       },
       headers: {
-        'Authorization': 'Bearer sk_test_cg4vcpE5gV1ApywsErwoWL7u'
+        'Authorization': 'Bearer ' + config.stripe.client_secret
       }
-    });
+    }, function (error, response, body){
+      if (error) {
+        return res.status(404).json({
+          title: 'error',
+          error: {
+            message: error
+          }
+        })
+      }
+
+      item.banck.stripe.stripe_user_id = ''
+      item.save(function(err, result) {
+        if (err) {
+          return res.status(404).json({
+            title: 'error',
+            error: {
+              message: err
+            }
+          })
+        }
+        res.status(201).json({message: '', obj: result});
+      })
+    }
+    );
+
+    // console.log(item.banck.stripe.stripe_user_id)
+    // stripe.accounts.del(item.banck.stripe.stripe_user_id, function(err, customer) {
+    //   console.log(err)
+    //   console.log(customer)
+    // })
+
+
   });
 })
 
@@ -238,10 +274,10 @@ router.post('/oauthConnect/', function(req, res, next) {
     url: 'https://connect.stripe.com/oauth/token',
     form: {
       grant_type: "authorization_code",
-      client_id: 'ca_BhWB8WgFBFUnPTvA9d0wgqcVJgGUJufg',
+      client_id: config.stripe.connect.client_id,
       // code: 'ac_BiqcZX1ERhGI7J0KTq9s4Lc7Iol2OTxQ',
       code: req.body.code,
-      client_secret: 'sk_test_cg4vcpE5gV1ApywsErwoWL7u'
+      client_secret: config.stripe.client_secret
     }
   }, function(err, r, body) {
     if (err) {
