@@ -252,7 +252,7 @@ router.post('/deauthorizeConnect/', function(req, res, next) {
             }
           })
         }
-        res.status(201).json({message: '', obj: result});
+        res.status(201).json({message: '', obj: response});
       })
     }
     );

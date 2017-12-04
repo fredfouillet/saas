@@ -1,5 +1,4 @@
-
-  <form [formGroup]="myForm" novalidate (ngSubmit)="save()">
+<form [formGroup]="myForm" novalidate (ngSubmit)="save()">
 
     <div class="row">
       <div class="col-sm-12 col-md-4">
@@ -8,7 +7,6 @@
           <input matInput [readonly]="fetchedQuote.drawingSignature.isSigned" type="number" formControlName="quoteNumber" [(ngModel)]="fetchedQuote.quoteNumber" placeholder="{{'Number Id' | translate}}">
         </mat-form-field>
         <!-- <div class="form-group">
-
           <input [readonly]="fetchedQuote.drawingSignature.isSigned" class="form-control" name="EstimateCode" type="number" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedQuote.quoteNumber"/>
         </div> -->
         <div class="form-group">

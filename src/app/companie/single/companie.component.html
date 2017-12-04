@@ -32,6 +32,7 @@
       </mat-card>
       <app-paiement *ngIf="step === 1"></app-paiement>
     </mat-expansion-panel>
+
     <mat-expansion-panel *ngIf="authService.isCurrentUserIsInSubPeriod()" [expanded]="step === 2" (opened)="setStep(2)" hideToggle="true">
       <mat-expansion-panel-header>
         <mat-panel-title>
@@ -41,7 +42,7 @@
           <mat-icon>account_circle</mat-icon>
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <app-connectStripe [fetchedCompanie]="fetchedCompanie"></app-connectStripe>
+      <app-connect-stripe *ngIf="step === 2" [fetchedCompanie]="fetchedCompanie"></app-connect-stripe>
     </mat-expansion-panel>
 
     <mat-expansion-panel *ngIf="authService.isCurrentUserIsInSubPeriod()"  [expanded]="step === 3" (opened)="setStep(3)" hideToggle="true">

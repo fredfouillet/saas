@@ -14,14 +14,16 @@ import { MatDialog } from '@angular/material';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AccountConnectStripe} from './connectStripe.model'
 
 @Component({
-  selector: 'app-connectStripe',
+  selector: 'app-connect-stripe',
   templateUrl: './connectStripe.component.html',
 })
 export class ConnectStripeComponent implements OnInit, OnChanges {
   // @Output() saved: EventEmitter<any> = new EventEmitter();
   @Input() fetchedCompanie: Companie = new Companie()
+  accountConnectStripe: AccountConnectStripe = new AccountConnectStripe();
 
   constructor(
     private toastr: ToastsManager,
@@ -29,13 +31,19 @@ export class ConnectStripeComponent implements OnInit, OnChanges {
     private location: Location,
   ) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    // this.paiementService.getUserInfosConnect()
+    //   .subscribe(res => {
+    //     this.accountConnectStripe = res.customer
+    //   }, error => { console.log(error) })
+  }
   ngOnChanges() {
+    console.log('a')
     // if(this.fetchedCompanie.banck.stripe.stripe_user_id) {
-    //   this.paiementService.getUserInfosConnect()
-    //     .subscribe(res => {
-    //       this.fetchedCompanie = res.obj
-    //     }, error => { console.log(error) })
+      this.paiementService.getUserInfosConnect()
+        .subscribe(res => {
+          this.accountConnectStripe = res.customer
+        }, error => { console.log(error) })
     // }
 
 
@@ -45,7 +53,7 @@ export class ConnectStripeComponent implements OnInit, OnChanges {
   deauthorizeConnect() {
     this.paiementService.deauthorizeConnect()
       .subscribe(res => {
-        this.fetchedCompanie = res.obj
+        this.accountConnectStripe = new AccountConnectStripe();
       }, error => { console.log(error) })
   }
   goToLinkAuthorizeConnect() {
