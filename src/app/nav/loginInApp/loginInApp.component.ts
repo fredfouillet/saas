@@ -35,7 +35,7 @@ export class LoginInAppComponent implements OnInit {
         console.log('loginInApp')
         localStorage.setItem('id_token', data.token);
         localStorage.setItem('token', data.token);
-        location.reload();
+        // location.reload();
       },
       error => console.log(error)
     );
