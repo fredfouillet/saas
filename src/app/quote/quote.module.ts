@@ -49,8 +49,8 @@ import { PaiementQuoteModule} from '../paiementQuote/paiementQuote.module'
 import { DragulaModule } from 'ng2-dragula';
 
 // import { QuillModule } from 'ngx-quill'
-
-import { QuillEditorModule } from 'ngx-quill-editor';
+//
+// import { QuillEditorModule } from 'ngx-quill-editor';
 
 import {MatDatepickerModule} from '@angular/material';
 import {MatNativeDateModule} from '@angular/material';
@@ -64,7 +64,7 @@ import {MatTabsModule} from '@angular/material';
 import {MatButtonToggleModule} from '@angular/material';
 @NgModule({
   imports:      [
-    QuillEditorModule,
+    // QuillEditorModule,
     // ProjectModule,
     // QuillModule,
     QuoteRouting,

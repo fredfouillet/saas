@@ -1,9 +1,9 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {AuthService} from '../../auth/auth.service';
 import { Location } from '@angular/common';
-import {Router} from '@angular/router';
+import { Router} from '@angular/router';
 import { TranslateService } from '../../translate/translate.service';
-
+import { ToastsManager} from 'ng2-toastr';
 
 @Component({
   selector: 'app-loginInApp',
@@ -17,6 +17,7 @@ export class LoginInAppComponent implements OnInit {
     private authService: AuthService,
     private router: Router,
     private location: Location,
+    private toastr: ToastsManager,
     private translateService: TranslateService,
   ) {}
 
@@ -32,7 +33,7 @@ export class LoginInAppComponent implements OnInit {
     }
     this.authService.signin(userAuth).subscribe(
       data => {
-        console.log('loginInApp')
+        this.toastr.success('Great!');
         localStorage.setItem('id_token', data.token);
         localStorage.setItem('token', data.token);
         // location.reload();

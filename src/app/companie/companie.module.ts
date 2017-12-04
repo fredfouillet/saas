@@ -28,6 +28,7 @@ import {MatExpansionModule} from '@angular/material';
 // import {MatIconModule} from '@angular/material';
 // import {MatInputModule} from '@angular/material';
 // import {MatFormFieldModule} from '@angular/material';
+import {MatSelectModule} from '@angular/material';
 
 @NgModule({
   imports: [
@@ -41,6 +42,7 @@ import {MatExpansionModule} from '@angular/material';
     SharedModule,
     MatCardModule,
     MatExpansionModule,
+    MatSelectModule,
     // MatIconModule,
     // MatInputModule,
     // MatFormFieldModule,
