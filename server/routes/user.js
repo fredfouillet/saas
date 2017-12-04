@@ -11,7 +11,8 @@ var express = require('express'),
   gm = require('gm').subClass({imageMagick: true}),
   Companie = require('../models/companie.model'),
   User = require('../models/user.model'),
-  shared = require('./shared.js');
+  shared = require('./shared.js'),
+  paiement = require('./paiement.js');
 // user register
 router.post('/register', function(req, res, next) {
 
@@ -49,6 +50,8 @@ router.post('/register', function(req, res, next) {
 
 // user login
 router.post('/login', function(req, res, next) {
+
+
   User
   .findOne({email: req.body.email.toLowerCase()})
   .populate({path: 'ownerCompanies', model: 'Companie'})
@@ -75,9 +78,8 @@ router.post('/login', function(req, res, next) {
       })
     }
 
+    paiement.getStripeCust(doc.ownerCompanies[0])
     doc.rightsInApp.push(shared.getRight(doc))
-
-
 
     var token = jwt.sign({
       user: doc

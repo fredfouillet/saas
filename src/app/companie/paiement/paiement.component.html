@@ -60,16 +60,16 @@
             <input matInput type="text" [(ngModel)]="newCard.address_zip" placeholder="address_zip">
           </mat-form-field>
           <mat-form-field>
-            <input matInput type="text" [(ngModel)]="newCard.exp_month" placeholder="exp_month">
+            <input matInput type="number" [(ngModel)]="newCard.exp_month" placeholder="exp_month">
           </mat-form-field>
           <mat-form-field>
-            <input matInput type="text" [(ngModel)]="newCard.exp_year" placeholder="exp_year">
+            <input matInput type="number" [(ngModel)]="newCard.exp_year" placeholder="exp_year">
           </mat-form-field>
           <mat-form-field>
-            <input matInput type="text" [(ngModel)]="newCard.number" placeholder="number">
+            <input matInput type="number" [(ngModel)]="newCard.number" placeholder="number">
           </mat-form-field>
           <mat-form-field>
-            <input matInput type="text" [(ngModel)]="newCard.cvc" placeholder="cvc">
+            <input matInput type="number" [(ngModel)]="newCard.cvc" placeholder="cvc">
           </mat-form-field>
           <br>
           eg: 8<br>
@@ -145,19 +145,6 @@
           </div>
           <div *ngFor="let sub of stripeCust.subscriptions.data">
 
-            <mat-form-field>
-              <input matInput readonly value="{{sub.id}}" placeholder="id">
-            </mat-form-field>
-            <mat-form-field>
-              <input matInput readonly value="{{sub.created | timestampToDate | date: 'dd/MM/yyyy HH:mm'}}" placeholder="created">
-            </mat-form-field>
-            <mat-form-field>
-              <input matInput readonly value="{{sub.current_period_start | timestampToDate | date: 'dd/MM/yyyy HH:mm'}}" placeholder="current_period_start">
-            </mat-form-field>
-            <mat-form-field>
-              <input matInput readonly value="{{sub.current_period_end | timestampToDate | date: 'dd/MM/yyyy HH:mm'}}" placeholder="current_period_end">
-            </mat-form-field>
-
 
 
 
@@ -167,14 +154,27 @@
             <mat-form-field>
               <input matInput readonly value="{{sub.plan.amount / 100 + ' ' + sub.plan.currency + ' / ' + sub.plan.interval}} " placeholder="Amount">
             </mat-form-field>
-            <mat-form-field>
+            <!-- <mat-form-field>
               <input matInput readonly value="{{sub.plan.created | timestampToDate | date: 'dd/MM/yyyy HH:mm'}}" placeholder="Created">
-            </mat-form-field>
+            </mat-form-field> -->
             <mat-form-field>
               <input matInput readonly value="{{sub.plan.interval_count}}" placeholder="interval_count">
             </mat-form-field>
-            <button type="button" class="done" (click)="deleteSubInStripe(sub.id)">deleteSubInStripe</button>
 
+            <!-- <mat-form-field>
+              <input matInput readonly value="{{sub.id}}" placeholder="id">
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput readonly value="{{sub.created | timestampToDate | date: 'dd/MM/yyyy HH:mm'}}" placeholder="created">
+            </mat-form-field> -->
+            <mat-form-field>
+              <input matInput readonly value="{{sub.current_period_start | timestampToDate | date: 'dd/MM/yyyy HH:mm'}}" placeholder="current_period_start">
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput readonly value="{{sub.current_period_end | timestampToDate | date: 'dd/MM/yyyy HH:mm'}}" placeholder="current_period_end">
+            </mat-form-field>
+                        
+            <button type="button" class="done" (click)="deleteSubInStripe(sub.id)">deleteSubInStripe</button>
           </div>
           <div *ngIf="showReLoginInApp">
             {{'You must loggin agin to apply changes:' | translate}}
