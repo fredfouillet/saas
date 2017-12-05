@@ -395,34 +395,30 @@ router.post('/', function(req, res, next) {
 
   var quote = new Quote(req.body);
   if(quote.historyClients.length) {
-    console.log(quote.historyClients[0])
-    // console.log('aaa')
-    // console.log(req.user)
-    console.log('e')
+
     userCross.getUserCross(req.user, quote.historyClients[0]._id).then(userCrossSingle => {
-      console.log('a')
+
       console.log(userCrossSingle)
       quote.historyClientsCross = userCrossSingle
-      quote.save(function(err, result) {
-        console.log('b')
-        if (err) {
-          console.log('c')
-          return res.status(403).json(err);
-        }
-        console.log('d')
-        res.status(200).json({message: 'Registration Successfull', obj: result})
-      })
+      saveQuote(quote)
     })
+    saveQuote(quote)
   } else {
-    quote.save(function(err, result) {
-      if (err) {
-        return res.status(403).json(err);
-      }
-      res.status(200).json({message: 'Registration Successfull', obj: result})
-    })
+    saveQuote(quote)
   }
 
-});
+})
+
+
+function saveQuote(quote) {
+  quote.save(function(err, result) {
+    if (err) {
+      return res.status(403).json(err);
+    }
+    res.status(200).json({message: 'Registration Successfull', obj: result})
+  })
+
+})
 //
 // router.post('/saveAsInvoice/', function(req, res, next) {
 //   if (!shared.isCurentUserHasAccess(req.user, nameObject, 'write')) {
