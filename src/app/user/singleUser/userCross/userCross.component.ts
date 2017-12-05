@@ -285,7 +285,7 @@ export class UserCrossComponent implements OnInit {
         }
       )
     } else {
-      this.fetchedUserCross.users = [this.fetchedUser._id]
+      this.fetchedUserCross.users.push(this.fetchedUser)
       this.userService.saveCrossUser(this.fetchedUserCross)
         .subscribe(
         res => {
