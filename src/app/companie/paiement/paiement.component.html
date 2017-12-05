@@ -1,20 +1,21 @@
 <mat-card-content>
   <mat-accordion class="example-headers-align">
-    <button *ngIf="!stripeCust.id" mat-raised-button color="primary" (click)="saveCustInStripe()">{{'Welcome ! I go for it'}}</button>
+    <!-- <button *ngIf="!stripeCust.id" mat-raised-button color="primary" (click)="saveCustInStripe()">{{'Welcome ! I go for it'}}</button> -->
 
-    <mat-expansion-panel *ngIf="false" [expanded]="step === 0" (opened)="setStep(0)" hideToggle="true">
+    <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle="true">
       <mat-expansion-panel-header>
         <mat-panel-title>
           {{'Registration' | translate}}
         </mat-panel-title>
       </mat-expansion-panel-header>
 
-
+      <button mat-raised-button color="primary" color="primary" (click)="saveCustInStripe()">Plan Goldd (33$)</button>
+      <button mat-raised-button color="primary" (click)="saveCustInStripe()">Plan SIlver (44$)</button>
 
       <div *ngIf="stripeCust.id">
-        <mat-form-field>
+        <!-- <mat-form-field>
           <input matInput value="{{stripeCust.id}}" placeholder="ID">
-        </mat-form-field>
+        </mat-form-field> -->
 
         <!-- <div class="form-control">
           {{stripeCust.created | timestampToDate}}
@@ -25,12 +26,12 @@
 
       </div>
       <mat-action-row>
-        <div *ngIf="!stripeCust.id">
+        <!-- <div *ngIf="!stripeCust.id">
           <button mat-button color="primary" (click)="saveCustInStripe()">I go for it!</button>
-        </div>
+        </div> -->
         <div *ngIf="stripeCust.id">
           <!-- <button type="button" class="done" (click)="deleteCustInStripe()">deleteCustInStripe</button> -->
-          <button mat-button color="primary" (click)="nextStep()">Next</button>
+          <!-- <button mat-button color="primary" (click)="nextStep()">Next</button> -->
         </div>
       </mat-action-row>
     </mat-expansion-panel>
@@ -143,8 +144,8 @@
         <div>
 
           <div *ngIf="!stripeCust.subscriptions.data.length">
-            <button mat-raised-button color="primary" (click)="saveSubscriptionInStripe('gold')">Gold Plan!</button>
-            <button mat-raised-button color="primary" (click)="saveSubscriptionInStripe('silver')">Silver Plan!</button>
+            <button mat-raised-button color="primary" (click)="saveSubscriptionInStripe('gold')">{{'See details. Gold Plan!'}}</button>
+            <button mat-raised-button color="primary" (click)="saveSubscriptionInStripe('silver')">{{'See details. Silver Plan!'}}</button>
           </div>
           <div *ngFor="let sub of stripeCust.subscriptions.data">
             <button mat-button color="warn" (click)="deleteSubInStripe(sub.id)">deleteSubInStripe</button>
