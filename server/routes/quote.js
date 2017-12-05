@@ -527,6 +527,11 @@ router.get('/page/:page', function(req, res, next) {
     if (err) {
       return res.status(404).json({message: 'No results', err: err})
     } else {
+
+      item.forEach((quote, i) => {
+        item[i].drawingSignature.base64 = ''
+      })
+      
       Quote.find(searchQuery).count().exec(function(err, count) {
         res.status(200).json({
           paginationData: {

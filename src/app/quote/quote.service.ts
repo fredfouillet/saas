@@ -29,7 +29,7 @@ export class QuoteService {
     headers.append('Authorization', '' + this.authService.currentUser.token)
     let options = new RequestOptions({ headers: headers, search: search});
     return this.http.get(this.url + 'quote/page/' + page , options)
-      .timeout(5000)
+      // .timeout(5000)
       .map((response: Response) => {
         const quotes = response.json();
         return quotes;
