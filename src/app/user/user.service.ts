@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {Response, Headers, Http, RequestOptions} from '@angular/http';
 import {ErrorService} from '../errorHandler/error.service';
-import {User} from './user.model';
+import {User, UserCross} from './user.model';
 import {Companie} from '../companie/companie.model';
 import {ToastsManager} from 'ng2-toastr';
 
@@ -173,7 +173,7 @@ export class UserService {
         return Observable.throw(error.json());
       });
   }
-  updateCrossUser(user: User) {
+  updateCrossUser(user: UserCross) {
     const body = JSON.stringify(user);
     const headers = new Headers({'Content-Type': 'application/json'});
     headers.append('Authorization', '' + this.authService.currentUser.token);
