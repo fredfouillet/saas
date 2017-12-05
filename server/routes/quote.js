@@ -418,7 +418,7 @@ function saveQuote(quote) {
     res.status(200).json({message: 'Registration Successfull', obj: result})
   })
 
-})
+}
 //
 // router.post('/saveAsInvoice/', function(req, res, next) {
 //   if (!shared.isCurentUserHasAccess(req.user, nameObject, 'write')) {
