@@ -157,6 +157,7 @@ export class QuotesComponent implements OnInit {
           this.loading = false
         },
         error => {
+          this.loading = false
           console.log(error);
         }
       );

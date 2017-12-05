@@ -28,12 +28,13 @@ export class PaiementComponent implements OnInit {
   // isUserBelongToHQ=false
   // maxPictureToShow=3;
   // instapic=1;
+  plan: string = ''
   loading: boolean = false
-  companies: Companie[] = [];
+  // companies: Companie[] = [];
   // isEditMode:boolean = false
   showReLoginInApp:boolean = false
   newCard: DataSource = new DataSource()
-  fetchedUser : User = new User()
+  // fetchedUser : User = new User()
   stripeCust: StripeCustomer = new StripeCustomer()
 
   quotes: Quote[] = []
@@ -52,6 +53,9 @@ export class PaiementComponent implements OnInit {
 
   step = 0;
 
+  changePlan() {
+    this.nextStep()
+  }
   setStep(index: number) {
     this.step = index;
   }
@@ -67,6 +71,9 @@ export class PaiementComponent implements OnInit {
   ngOnInit() {
     this.getStripeCust();
   }
+  loginInAppDone() {
+    this.showReLoginInApp = false
+  }
 
   getStripeCust() {
     this.loading = true
@@ -78,6 +85,10 @@ export class PaiementComponent implements OnInit {
           //   this.stripeCust = new StripeCustomer()
           // } else {
             this.stripeCust = res.customer
+            this.stripeCust.subscriptions.data.forEach(dataSubscription => {
+              this.plan = dataSubscription.plan.id
+
+            })
             this.loading = false
           // }
 
@@ -89,35 +100,44 @@ export class PaiementComponent implements OnInit {
         }
       )
   }
-  selectQuote(quote){
-    this.quotes = [quote]
-  }
+
+  // selectQuote(quote){
+  //   this.quotes = [quote]
+  // }
 
 
   deleteCustInStripe() {
+    this.loading = true
     this.paiementService.deleteCustInStripe()
       .subscribe(
         res => {
           // this.userService.cleanCurrentUserInSession()
           this.toastr.success('Great!')
           this.getStripeCust()
+          this.showReLoginInApp = true
+          this.setStep(4)
+          this.loading = false
         },
         error => { console.log(error); }
       );
   }
   saveCustInStripe(){
+    this.loading = true
     this.paiementService.saveCustInStripe()
       .subscribe(
         res => {
           // this.userService.cleanCurrentUserInSession()
           this.toastr.success('Great!')
           this.stripeCust = res.customer
-          console.log(res);
+          // console.log(res);
+          this.nextStep()
+          this.loading = false
         },
         error => { console.log(error); }
       );
   }
   saveCardInStripe() {
+    this.loading = true
     // console.log(this.newCard)
     this.paiementService.saveCardInStripe(this.newCard)
       .subscribe(
@@ -126,35 +146,37 @@ export class PaiementComponent implements OnInit {
           this.toastr.success('Great!')
           this.getStripeCust()
           this.nextStep()
+          this.loading = false
           // console.log(res);
         },
         error => { console.log(error); }
       );
   }
-  saveSubscriptionInStripe(planValue) {
-    let plan = {
-      plan: planValue
+  saveSubscriptionInStripe() {
+    this.loading = true
+    const planObj = {
+      plan: this.plan
     }
-    this.paiementService.saveSubscriptionInStripe(plan)
+    this.paiementService.saveSubscriptionInStripe(planObj)
       .subscribe(
         res => {
           // this.userService.cleanCurrentUserInSession()
           this.toastr.success('Great!')
           this.getStripeCust()
           this.showReLoginInApp = true
-
-
-          // this.getStripeCust()
-          // this.authService.refreshCookiesOfCurrentUser()
-          // location.reload();
-          // console.log(res);
+          this.nextStep()
+          this.loading = false
         },
-        error => { console.log(error); }
+        error => {
+          this.loading = false
+          console.log(error);
+        }
       );
   }
 
 
   deleteSubInStripe(subId){
+    this.loading = true
     this.paiementService.deleteSub(subId)
       .subscribe(
         res => {
@@ -162,6 +184,10 @@ export class PaiementComponent implements OnInit {
           // console.log(res.message)
           this.toastr.success('Great!');
           this.getStripeCust()
+          this.setStep(4)
+          this.showReLoginInApp = true
+          this.plan = ''
+          this.loading = false
           // this.getStripeCust()
           // location.reload();
         },

@@ -186,15 +186,15 @@ export class UserCrossComponent implements OnInit {
   //   this.fetchedUser.ownerCompanies = [companie]
   // }
   newAddress() {
-    let newAddress = new Address()
+    const newAddress = new Address()
     this.fetchedUserCross.profile.address.push(newAddress)
   }
   removeAddress(i) {
-    this.fetchedUser.profile.address.splice(i, 1);
+    this.fetchedUserCross.profile.address.splice(i, 1);
   }
   moveAddress(i: number, incremet: number) {
       // if(i>=0 && i<=this.fetchedUser.profile.address.length + incremet) {
-      console.log(i, incremet, this.fetchedUser.profile.address.length)
+      // console.log(i, incremet, this.fetchedUser.profile.address.length)
       if(  !(i===0 && incremet<0) && !(i===this.fetchedUser.profile.address.length-1 && incremet>0)  )    {
         var tmp = this.fetchedUser.profile.address[i];
         this.fetchedUser.profile.address[i] = this.fetchedUser.profile.address[i + incremet]

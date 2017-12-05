@@ -40,10 +40,15 @@ export class DataSubscription {
   created: string = '';
   current_period_end: string = '';
   current_period_start: string = '';
-  items:Items=new Items()
+  items :Items = new Items()
+  plan: Plan = new Plan()
 }
 
 
+export class Plan {
+  amount: number;
+  id: string = '';
+}
 export class Items {
   data:DataItem[]=[]
 }

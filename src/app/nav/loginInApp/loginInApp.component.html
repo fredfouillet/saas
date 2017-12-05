@@ -1,2 +1,4 @@
-<input type="password" placeHolder="Password" #password>
-<button type="button" (click)="loginInApp(password.value)"> Re-log</button>
+<mat-form-field>
+<input matInput type="password" placeHolder="Password" #password>
+</mat-form-field>
+<button mat-raised-button (click)="loginInApp(password.value)" color="warn">Ok</button>

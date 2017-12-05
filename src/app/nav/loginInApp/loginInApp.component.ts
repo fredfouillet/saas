@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {AuthService} from '../../auth/auth.service';
 import { Location } from '@angular/common';
 import { Router} from '@angular/router';
@@ -11,7 +11,7 @@ import { ToastsManager} from 'ng2-toastr';
   styleUrls: ['./loginInApp.component.css']
 })
 export class LoginInAppComponent implements OnInit {
-
+  @Output() loginInAppDone: EventEmitter<any> = new EventEmitter();
 
   constructor(
     private authService: AuthService,
@@ -36,6 +36,7 @@ export class LoginInAppComponent implements OnInit {
         this.toastr.success('Great!');
         localStorage.setItem('id_token', data.token);
         localStorage.setItem('token', data.token);
+        this.loginInAppDone.emit(data.token)
         // location.reload();
       },
       error => console.log(error)

@@ -192,34 +192,15 @@ router.post('/saveSubscriptionInStripe/', function(req, res, next) {
 router.delete('/deleteSub/:idSub', function(req, res, next) {
   stripe.subscriptions.del(req.params.idSub, function(err, subscription) {
     if (subscription) {
-
-      let planDetail = {
-        current_period_end: '',
-        plan: ''
-      }
-      // let planDetail = {
-      //   current_period_end: subscription.current_period_end * 1000,
-      //   plan: subscription.plan
-      // }
-
-      Companie.update({
-        _id: req.user.ownerCompanies[0]
-      }, {
-        $set: {
-          planDetail: planDetail
-        }
-      }, function(err, item) {
-        if (item) {
-          return res.status(200).json({obj: item})
-        } else {
-          return res.status(404).json({title: 'Error Not saved in stripe', error: err});
-        }
-      });
-
+      detetePlanDetailsInDB(req.user.ownerCompanies[0]).then(item => {
+        return res.status(200).json({obj: item})
+      }).catch(err => {
+        return res.status(404).json({title: 'Error', error: err});
+      })
     } else {
-      return res.status(404).json({title: 'Error', error: err});
+      return res.status(404).json({title: 'Error', error: err})
     }
-  });
+  })
 })
 
 router.delete('/deleteCard/:idCard', function(req, res, next) {
@@ -318,18 +299,23 @@ function getStripeCust (companieId) {
       }
       if (!companie.banck.stripe.stripe_user_id_gooplus) {
         reject(new Error({title: 'No data', error: 'noData'}))
+        detetePlanDetailsInDB(companie._id)
         // return res.status(404).json({title: 'No data', error: 'noData'});
       }
       stripe.customers.retrieve(companie.banck.stripe.stripe_user_id_gooplus, function (err, customer) {
         if (err) {
           reject(err)
+          detetePlanDetailsInDB(companie._id)
           // return res.status(404).json({title: 'No data in stripe', error: 'noData'});
         } else {
           if (customer.deleted) {
+            detetePlanDetailsInDB(companie._id)
             reject(new Error({title: 'Deleted', error: customer}))
             // return res.status(404).json({title: 'Deleted', error: customer});
           }
-
+          if(!customer.subscriptions.data.length) {
+            detetePlanDetailsInDB(companie._id)
+          }
           customer.subscriptions.data.forEach(subscription => {
             savePlanDetailsInDB(companieId, subscription)
           })
@@ -358,11 +344,34 @@ function createCustomerInStripe(req) {
 
 
 function savePlanDetailsInDB (companieId, subscription) {
-  console.log('savePlanDetailsInDB')
   return new Promise(function (resolve, reject) {
     let planDetail = {
       current_period_end: subscription.current_period_end * 1000,
       plan: subscription.plan.id
+    }
+
+    // req.user.ownerCompanies.forEach(companieSingle => {
+      Companie.update({
+        _id: companieId
+      }, {
+        $set: {
+          planDetail: planDetail
+        }
+      }, function (err, item) {
+        if (item) {
+          resolve(item)
+        } else {
+          reject(err)
+        }
+      })
+  })
+}
+
+function detetePlanDetailsInDB (companieId) {
+  return new Promise(function (resolve, reject) {
+    let planDetail = {
+      current_period_end: '',
+      plan: ''
     }
 
     // req.user.ownerCompanies.forEach(companieSingle => {
