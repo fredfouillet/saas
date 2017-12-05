@@ -121,15 +121,16 @@ export const StatusQuotes =
 [
   {indexStatus: 'pending', label: 'Pending Approval', icon: 'alarm', color: 'primary'},
   {indexStatus: 'signed', label: 'Signed', icon: 'done', color: 'accent'},
+  {indexStatus: 'paid', label: 'Paid', icon: 'attach_money', color: 'accent'},
   {indexStatus: 'rejected', label: 'Rejected', icon: 'face', color: 'warn'},
   // {indexStatus: 3, label: 'Signed, pending paiement'},
   // {indexStatus: 4, label: 'Done'},
 ]
-export const StatusQuotesInvoice =
-[
-  {indexStatus: 'sent', label: 'Sent'},
-  {indexStatus: 'paid', label: 'Paid'},
-]
+// export const StatusQuotesInvoice =
+// [
+//   {indexStatus: 'sent', label: 'Sent'},
+//   {indexStatus: 'paid', label: 'Paid'},
+// ]
 
 // export class Address {
 //   address: string = '';

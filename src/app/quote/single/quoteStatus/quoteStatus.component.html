@@ -1,12 +1,12 @@
 <mat-button-toggle-group *ngIf="!showSingleSelected" [(ngModel)]="fetchedQuote.statusQuote">
-  <mat-button-toggle *ngFor="let n of statusQuotes" matTooltip="{{n.label}}" [value]="n.indexStatus" >
+  <mat-button-toggle *ngFor="let n of statusQuotes" matTooltip="{{n.label}}" [value]="n.indexStatus">
     <mat-icon color="{{n.color}}">{{n.icon | translate}}</mat-icon>
   </mat-button-toggle>
 </mat-button-toggle-group>
 <div *ngIf="showSingleSelected">
   <div *ngFor="let n of statusQuotesSingleSelected">
-  <button mat-icon-button color="{{n.color}}" matTooltip="{{n.label}}" >
+    <button mat-icon-button color="{{n.color}}" matTooltip="{{n.label}}">
     <mat-icon>{{n.icon | translate}}</mat-icon>
   </button>
-</div>
+  </div>
 </div>

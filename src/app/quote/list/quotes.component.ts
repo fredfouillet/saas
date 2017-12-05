@@ -150,10 +150,10 @@ export class QuotesComponent implements OnInit {
               if(status.indexStatus === quote.statusQuote)
                 this.fetchedQuotes[i].statusQuoteString = status.label
             })
-            this.statusQuotesInvoice.forEach(status => {
-              if(status.indexStatus === quote.statusQuote)
-                this.fetchedQuotes[i].statusQuoteString = status.label
-            })
+            // this.statusQuotesInvoice.forEach(status => {
+            //   if(status.indexStatus === quote.statusQuote)
+            //     this.fetchedQuotes[i].statusQuoteString = status.label
+            // })
           })
           this.loading = false
         },
