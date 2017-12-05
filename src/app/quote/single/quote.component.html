@@ -86,9 +86,16 @@
           <mat-icon>date_range</mat-icon>
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <app-drawing-signature [drawing]="fetchedQuote.drawingSignature" (cleared)="clearedDrawing()" (updated)="drawingSignatureUpdated($event)">
+      <app-drawing-signature #DrawingSignature [drawing]="fetchedQuote.drawingSignature" (cleared)="clearedDrawing()" (updated)="drawingSignatureUpdated($event)">
       </app-drawing-signature>
       <mat-action-row>
+        <button mat-mini-fab color="warn" (click)="DrawingSignature.clearDrawing()">
+          <mat-icon aria-label="clear">clear</mat-icon>
+        </button>
+        <button mat-mini-fab color="accent" (click)="DrawingSignature.undoVersion()">
+          <mat-icon aria-label="undo">undo</mat-icon>
+        </button>
+
         <app-actionButtons [fetchedQuote]="fetchedQuote" [showDeleteButton]=false (nextStep)="nextStep()">
         </app-actionButtons>
       </mat-action-row>

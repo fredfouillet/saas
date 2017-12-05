@@ -1,5 +1,5 @@
 
-<div *ngIf="editMode">
+<!-- <div *ngIf="editMode">
   <div class="row">
     <div class="col-3">
     </div>
@@ -11,17 +11,17 @@
         <div class="col-2">
           <i class="fa fa-times fa-2x iconeDrawing" (click)="clearDrawing()" aria-hidden="true"></i>
         </div>
-        <!-- <div class="col-2">
+        <div class="col-2">
           <i class="fa fa-floppy-o fa-2x iconeDrawing" (click)="saveDrawing()" aria-hidden="true"></i>
-        </div> -->
+        </div>
       </div>
     </div>
   </div>
-</div>
+</div> -->
 <div class="aroundSignature">
   <canvas-whiteboard #canvasWhiteboard
     [drawButtonEnabled]="false"
-    [aspectRatio]="0.6"
+    [aspectRatio]="0.7"
     [imageUrl]="drawing.base64"
     [drawButtonClass]="'drawButtonClass'"
     [drawButtonText]="'Draw'"

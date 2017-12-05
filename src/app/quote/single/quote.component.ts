@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, Input, Output, EventEmitter } from '@angular/core';
 import { AuthService } from '../../auth/auth.service';
 import { QuoteService } from '../quote.service';
-import { Quote, PriceQuoteTaxe , ModelVATs} from '../quote.model';
+import { Quote, PriceQuoteTaxe, ModelVATs } from '../quote.model';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActionButtonsComponent } from './actionButtons/actionButtons.component';
@@ -25,15 +25,15 @@ export class QuoteComponent implements OnInit {
   @Input() search: Search = new Search()
   @Input() isDialog: boolean = false
 
- fetchedPaiementQuotes: PaiementQuote[] = []
+  fetchedPaiementQuotes: PaiementQuote[] = []
   showPaiements: boolean = false
   fetchedQuote: Quote = new Quote()
-   totalPaiementAmount: number = 0
-   signatureBase64Temp:string  = ''
+  totalPaiementAmount: number = 0
+  signatureBase64Temp: string = ''
   step = 0;
 
 
-    VATs = ModelVATs
+  VATs = ModelVATs
 
 
   setStep(index: number) {
@@ -158,7 +158,7 @@ export class QuoteComponent implements OnInit {
   savedQuote(result) {
     this.getQuote(result.obj._id)
   }
-  quoteDetailsUpdated(){
+  quoteDetailsUpdated() {
 
   }
   getPaiementQuotes(event) {
@@ -170,107 +170,107 @@ export class QuoteComponent implements OnInit {
     })
   }
 
-    calculateQuote() {
-      let this2 = this;
-      setTimeout(() => {
-        this2.fetchedQuote.priceQuote.priceQuoteWithTaxes = 0
-        this2.fetchedQuote.priceQuote.priceQuoteWithoutTaxes = 0
-        this2.fetchedQuote.priceQuote.priceQuoteWithoutTaxes = 0
-        this2.fetchedQuote.priceQuote.priceGlobalWithDiscountWithSurface = 0
-        this2.fetchedQuote.priceQuote.priceGlobalWithDiscountWithSurfaceWithPainfulness = 0
-        this2.fetchedQuote.priceQuote.priceGlobalWithTaxesWithDiscountWithSurfaceWithPainfulness = 0
+  calculateQuote() {
+    let this2 = this;
+    setTimeout(() => {
+      this2.fetchedQuote.priceQuote.priceQuoteWithTaxes = 0
+      this2.fetchedQuote.priceQuote.priceQuoteWithoutTaxes = 0
+      this2.fetchedQuote.priceQuote.priceQuoteWithoutTaxes = 0
+      this2.fetchedQuote.priceQuote.priceGlobalWithDiscountWithSurface = 0
+      this2.fetchedQuote.priceQuote.priceGlobalWithDiscountWithSurfaceWithPainfulness = 0
+      this2.fetchedQuote.priceQuote.priceGlobalWithTaxesWithDiscountWithSurfaceWithPainfulness = 0
 
-        this2.fetchedQuote.priceQuote.priceQuoteTaxes = []
-        this2.VATs.forEach(VAT => {
-          const newPriceQuoteTaxe = new PriceQuoteTaxe()
-          newPriceQuoteTaxe.VAT = VAT
-          this2.fetchedQuote.priceQuote.priceQuoteTaxes.push(newPriceQuoteTaxe)
-        })
+      this2.fetchedQuote.priceQuote.priceQuoteTaxes = []
+      this2.VATs.forEach(VAT => {
+        const newPriceQuoteTaxe = new PriceQuoteTaxe()
+        newPriceQuoteTaxe.VAT = VAT
+        this2.fetchedQuote.priceQuote.priceQuoteTaxes.push(newPriceQuoteTaxe)
+      })
 
-        this2.fetchedQuote.devisDetails.forEach((devisDetails, i) => {
-          this2.fetchedQuote.devisDetails[i].bucketProducts.forEach((product, j) => {
+      this2.fetchedQuote.devisDetails.forEach((devisDetails, i) => {
+        this2.fetchedQuote.devisDetails[i].bucketProducts.forEach((product, j) => {
 
-            this2.fetchedQuote.devisDetails[i].bucketProducts[j]
-              .surface = this2.fetchedQuote.devisDetails[i].bucketProducts[j]
-                .width * this2.fetchedQuote.devisDetails[i].bucketProducts[j]
-                .length
-
-
-            this2.fetchedQuote.devisDetails[i].bucketProducts[j]
-              .priceWithoutTaxesWithDiscount = product.priceWithoutTaxes
-              * (1 - this2.fetchedQuote.devisDetails[i].bucketProducts[j].discount / 100)
-
-            this2.fetchedQuote.devisDetails[i].bucketProducts[j]
-              .priceWithTaxes = this2.fetchedQuote.devisDetails[i].bucketProducts[j]
-                .priceWithoutTaxes * (1 + this2.fetchedQuote.devisDetails[i].bucketProducts[j].vat / 100)
-
-            this2.fetchedQuote.devisDetails[i].bucketProducts[j]
-              .priceWithTaxesWithDiscount = this2.fetchedQuote.devisDetails[i].bucketProducts[j]
-                .priceWithTaxes * (1 - this2.fetchedQuote.devisDetails[i].bucketProducts[j].discount / 100)
-
-            this2.fetchedQuote.devisDetails[i].bucketProducts[j]
-              .priceWithTaxesWithQuantity = this2.fetchedQuote.devisDetails[i].bucketProducts[j]
-                .priceWithTaxes * this2.fetchedQuote.devisDetails[i].bucketProducts[j].quantity
-
-            this2.fetchedQuote.devisDetails[i].bucketProducts[j]
-              .priceWithTaxesWithQuantityWithDiscount = this2.fetchedQuote.devisDetails[i].bucketProducts[j]
-                .priceWithTaxesWithQuantity
-              * (1 - this2.fetchedQuote.devisDetails[i].bucketProducts[j].discount / 100)
+          this2.fetchedQuote.devisDetails[i].bucketProducts[j]
+            .surface = this2.fetchedQuote.devisDetails[i].bucketProducts[j]
+              .width * this2.fetchedQuote.devisDetails[i].bucketProducts[j]
+              .length
 
 
+          this2.fetchedQuote.devisDetails[i].bucketProducts[j]
+            .priceWithoutTaxesWithDiscount = product.priceWithoutTaxes
+            * (1 - this2.fetchedQuote.devisDetails[i].bucketProducts[j].discount / 100)
 
-            this2.fetchedQuote.devisDetails[i].bucketProducts[j]
-              .priceWithQuantity = this2.fetchedQuote.devisDetails[i].bucketProducts[j]
-                .priceWithoutTaxes * this2.fetchedQuote.devisDetails[i].bucketProducts[j].quantity
+          this2.fetchedQuote.devisDetails[i].bucketProducts[j]
+            .priceWithTaxes = this2.fetchedQuote.devisDetails[i].bucketProducts[j]
+              .priceWithoutTaxes * (1 + this2.fetchedQuote.devisDetails[i].bucketProducts[j].vat / 100)
 
+          this2.fetchedQuote.devisDetails[i].bucketProducts[j]
+            .priceWithTaxesWithDiscount = this2.fetchedQuote.devisDetails[i].bucketProducts[j]
+              .priceWithTaxes * (1 - this2.fetchedQuote.devisDetails[i].bucketProducts[j].discount / 100)
 
-            this2.fetchedQuote.devisDetails[i].bucketProducts[j]
-              .priceWithQuantityWithDiscount = this2.fetchedQuote.devisDetails[i].bucketProducts[j]
-                .priceWithQuantity * (1 - this2.fetchedQuote.devisDetails[i].bucketProducts[j]
-                  .discount / 100)
+          this2.fetchedQuote.devisDetails[i].bucketProducts[j]
+            .priceWithTaxesWithQuantity = this2.fetchedQuote.devisDetails[i].bucketProducts[j]
+              .priceWithTaxes * this2.fetchedQuote.devisDetails[i].bucketProducts[j].quantity
 
-
-            this2.fetchedQuote.devisDetails[i].bucketProducts[j]
-              .priceWithQuantityWithDiscountWithSurface = this2.fetchedQuote.devisDetails[i].bucketProducts[j]
-                .priceWithQuantityWithDiscount * this2.fetchedQuote.devisDetails[i].bucketProducts[j].surface
-
-            this2.fetchedQuote.devisDetails[i].bucketProducts[j]
-              .priceWithTaxesWithQuantityWithDiscountWithSurface = this2.fetchedQuote.devisDetails[i].bucketProducts[j]
-                .priceWithQuantityWithDiscountWithSurface * (1 - this2.fetchedQuote.devisDetails[i].bucketProducts[j].vat / 100)
-
-
-            this2.fetchedQuote.priceQuote
-              .priceQuoteWithTaxes += this2.fetchedQuote.devisDetails[i].bucketProducts[j]
-                .priceWithTaxesWithQuantityWithDiscountWithSurface * 1
+          this2.fetchedQuote.devisDetails[i].bucketProducts[j]
+            .priceWithTaxesWithQuantityWithDiscount = this2.fetchedQuote.devisDetails[i].bucketProducts[j]
+              .priceWithTaxesWithQuantity
+            * (1 - this2.fetchedQuote.devisDetails[i].bucketProducts[j].discount / 100)
 
 
-            this2.fetchedQuote.priceQuote
-              .priceQuoteWithoutTaxes += this2.fetchedQuote.devisDetails[i].bucketProducts[j]
-                .priceWithQuantityWithDiscountWithSurface * 1
+
+          this2.fetchedQuote.devisDetails[i].bucketProducts[j]
+            .priceWithQuantity = this2.fetchedQuote.devisDetails[i].bucketProducts[j]
+              .priceWithoutTaxes * this2.fetchedQuote.devisDetails[i].bucketProducts[j].quantity
 
 
-            this2.fetchedQuote.priceQuote
-              .priceGlobalWithDiscountWithSurface = this2.fetchedQuote.priceQuote
-                .priceQuoteWithoutTaxes
-              * (1 - this2.fetchedQuote.priceQuote.discountGlobal / 100)
+          this2.fetchedQuote.devisDetails[i].bucketProducts[j]
+            .priceWithQuantityWithDiscount = this2.fetchedQuote.devisDetails[i].bucketProducts[j]
+              .priceWithQuantity * (1 - this2.fetchedQuote.devisDetails[i].bucketProducts[j]
+                .discount / 100)
 
-            this2.fetchedQuote.priceQuote
-              .priceGlobalWithDiscountWithSurfaceWithPainfulness = this2.fetchedQuote.priceQuote
-                .priceGlobalWithDiscountWithSurface * (1 + this2.fetchedQuote.priceQuote.painfulnessGlobal / 100)
 
-            this2.fetchedQuote.priceQuote
-              .priceGlobalWithTaxesWithDiscountWithSurfaceWithPainfulness = this2.fetchedQuote.priceQuote
-                .priceGlobalWithDiscountWithSurfaceWithPainfulness * (1 + this2.fetchedQuote.priceQuote.vatGlobal / 100)
+          this2.fetchedQuote.devisDetails[i].bucketProducts[j]
+            .priceWithQuantityWithDiscountWithSurface = this2.fetchedQuote.devisDetails[i].bucketProducts[j]
+              .priceWithQuantityWithDiscount * this2.fetchedQuote.devisDetails[i].bucketProducts[j].surface
 
-            this2.fetchedQuote.priceQuote.priceQuoteTaxes.forEach((priceQuoteTaxe, i) => {
-              if (priceQuoteTaxe.VAT === product.vat) {
-                this2.fetchedQuote.priceQuote.priceQuoteTaxes[i]
-                  .TotalVAT += (product.priceWithoutTaxesWithDiscount * product.vat / 100) * product.quantity
-              }
-            })
+          this2.fetchedQuote.devisDetails[i].bucketProducts[j]
+            .priceWithTaxesWithQuantityWithDiscountWithSurface = this2.fetchedQuote.devisDetails[i].bucketProducts[j]
+              .priceWithQuantityWithDiscountWithSurface * (1 - this2.fetchedQuote.devisDetails[i].bucketProducts[j].vat / 100)
+
+
+          this2.fetchedQuote.priceQuote
+            .priceQuoteWithTaxes += this2.fetchedQuote.devisDetails[i].bucketProducts[j]
+              .priceWithTaxesWithQuantityWithDiscountWithSurface * 1
+
+
+          this2.fetchedQuote.priceQuote
+            .priceQuoteWithoutTaxes += this2.fetchedQuote.devisDetails[i].bucketProducts[j]
+              .priceWithQuantityWithDiscountWithSurface * 1
+
+
+          this2.fetchedQuote.priceQuote
+            .priceGlobalWithDiscountWithSurface = this2.fetchedQuote.priceQuote
+              .priceQuoteWithoutTaxes
+            * (1 - this2.fetchedQuote.priceQuote.discountGlobal / 100)
+
+          this2.fetchedQuote.priceQuote
+            .priceGlobalWithDiscountWithSurfaceWithPainfulness = this2.fetchedQuote.priceQuote
+              .priceGlobalWithDiscountWithSurface * (1 + this2.fetchedQuote.priceQuote.painfulnessGlobal / 100)
+
+          this2.fetchedQuote.priceQuote
+            .priceGlobalWithTaxesWithDiscountWithSurfaceWithPainfulness = this2.fetchedQuote.priceQuote
+              .priceGlobalWithDiscountWithSurfaceWithPainfulness * (1 + this2.fetchedQuote.priceQuote.vatGlobal / 100)
+
+          this2.fetchedQuote.priceQuote.priceQuoteTaxes.forEach((priceQuoteTaxe, i) => {
+            if (priceQuoteTaxe.VAT === product.vat) {
+              this2.fetchedQuote.priceQuote.priceQuoteTaxes[i]
+                .TotalVAT += (product.priceWithoutTaxesWithDiscount * product.vat / 100) * product.quantity
+            }
           })
         })
-        // this2.quoteDetailsUpdated.emit(this2.fetchedQuote)
       })
-    }
+      // this2.quoteDetailsUpdated.emit(this2.fetchedQuote)
+    })
+  }
 }
