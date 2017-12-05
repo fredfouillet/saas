@@ -398,13 +398,18 @@ router.post('/', function(req, res, next) {
     console.log(quote.historyClients[0])
     // console.log('aaa')
     // console.log(req.user)
+    console.log('e')
     userCross.getUserCross(req.user, quote.historyClients[0]._id).then(userCrossSingle => {
+      console.log('a')
       console.log(userCrossSingle)
       quote.historyClientsCross = userCrossSingle
       quote.save(function(err, result) {
+        console.log('b')
         if (err) {
+          console.log('c')
           return res.status(403).json(err);
         }
+        console.log('d')
         res.status(200).json({message: 'Registration Successfull', obj: result})
       })
     })
