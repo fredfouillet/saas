@@ -127,8 +127,8 @@ export const StatusQuotes =
 ]
 export const StatusQuotesInvoice =
 [
-  {indexStatus: 100, label: 'Sent'},
-  {indexStatus: 101, label: 'Paid'},
+  {indexStatus: 'sent', label: 'Sent'},
+  {indexStatus: 'paid', label: 'Paid'},
 ]
 
 // export class Address {
