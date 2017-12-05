@@ -83,7 +83,10 @@
       </mat-action-row>
     </mat-expansion-panel>
 
-    <mat-expansion-panel *ngIf="authService.showObjHTML('quote', 'signature') && fetchedQuote._id" [expanded]="step === 4" (opened)="setStep(4)" hideToggle="true">
+    <mat-expansion-panel
+      *ngIf="authService.showObjHTML('quote', 'signature') &&
+      fetchedQuote.statusQuote !=='rejected' &&
+      fetchedQuote._id" [expanded]="step === 4" (opened)="setStep(4)" hideToggle="true">
       <mat-expansion-panel-header>
         <mat-panel-title>
           {{'Signature' | translate}}
