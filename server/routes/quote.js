@@ -399,19 +399,19 @@ router.post('/', function(req, res, next) {
     userCross.getUserCross(req.user, quote.historyClients[0]._id).then(userCrossSingle => {
   console.log('c')
       quote.historyClientsCross = userCrossSingle
-      saveQuote(quote)
+      saveQuote(res, quote)
     })
       console.log('d')
-    saveQuote(quote)
+    saveQuote(res, quote)
   } else {
       console.log('e')
-    saveQuote(quote)
+    saveQuote(res, quote)
   }
 
 })
 
 
-function saveQuote(quote) {
+function saveQuote(res, quote) {
   quote.save(function(err, result) {
     if (err) {
       return res.status(403).json(err);
