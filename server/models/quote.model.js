@@ -18,7 +18,7 @@ var quote = new Schema({
     // phoneNumber: {type: String, default: ['']},
     name: {type: String, default: ['']},
     quoteNumber: {type: Number, default: [0]},
-    statusQuote: {type: Number, default: [0]},
+    statusQuote: {type: String, default: ['']},
     detail: {
       currency: {type: String, default: ['']},
       quoteRef: {type: String, default: ['']},

@@ -13,7 +13,7 @@ export class Quote {
   historyClients: User[] = [];
   historyClientsCross: UserCross[] = [];
   name: string = '';
-  statusQuote: number = 0;
+  statusQuote: string = 'pending';
   statusQuoteString: string = '';
   typeQuote: string = 'quote';
   quoteNumber: number;
@@ -119,9 +119,9 @@ export class DevisDetail {
 
 export const StatusQuotes =
 [
-  {indexStatus: 0, label: 'Pending Approval', icon: 'alarm', color: 'primary'},
-  {indexStatus: 1, label: 'Signed', icon: 'done', color: 'accent'},
-  {indexStatus: 2, label: 'Rejected', icon: 'face', color: 'warn'},
+  {indexStatus: 'pending', label: 'Pending Approval', icon: 'alarm', color: 'primary'},
+  {indexStatus: 'signed', label: 'Signed', icon: 'done', color: 'accent'},
+  {indexStatus: 'rejected', label: 'Rejected', icon: 'face', color: 'warn'},
   // {indexStatus: 3, label: 'Signed, pending paiement'},
   // {indexStatus: 4, label: 'Done'},
 ]

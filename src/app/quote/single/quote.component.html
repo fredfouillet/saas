@@ -26,7 +26,10 @@
 
 
 
-    <mat-expansion-panel *ngIf="fetchedQuote._id" [expanded]="step === 1" (opened)="setStep(1)" hideToggle="true">
+    <mat-expansion-panel *ngIf="
+        fetchedQuote.statusQuote !=='rejected' &&
+        fetchedQuote._id"
+      [expanded]="step === 1" (opened)="setStep(1)" hideToggle="true">
       <mat-expansion-panel-header>
         <mat-panel-title>
           {{'Documents' | translate}}
@@ -43,7 +46,10 @@
     </mat-expansion-panel>
 
 
-    <mat-expansion-panel *ngIf="fetchedQuote._id" [expanded]="step === 2" (opened)="setStep(2)" hideToggle="true">
+    <mat-expansion-panel *ngIf="
+        fetchedQuote.statusQuote !=='rejected' &&
+        fetchedQuote._id"
+      [expanded]="step === 2" (opened)="setStep(2)" hideToggle="true">
       <mat-expansion-panel-header>
         <mat-panel-title>
           {{'Edit Quote' | translate}}
@@ -103,6 +109,7 @@
 
     <mat-expansion-panel *ngIf="
           authService.showObjHTML('paiementQuote', 'read') &&
+          fetchedQuote.statusQuote !=='rejected' &&
           fetchedQuote._id" [expanded]="step === 5" (opened)="setStep(5)" hideToggle="true">
       <mat-expansion-panel-header>
         <mat-panel-title>
@@ -125,7 +132,10 @@
     </mat-expansion-panel>
 
 
-    <mat-expansion-panel *ngIf="fetchedQuote._id" [expanded]="step === 6" (opened)="setStep(6)" hideToggle="true">
+    <mat-expansion-panel *ngIf="
+      fetchedQuote._id &&
+      fetchedQuote.statusQuote !=='rejected'"
+    [expanded]="step === 6" (opened)="setStep(6)" hideToggle="true">
       <mat-expansion-panel-header>
         <mat-panel-title>
           {{'Invoices' | translate}}
