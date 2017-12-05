@@ -89,29 +89,26 @@ export class UserService {
 
 
   getUser(id: string) {
-    // if(!id) {
-    //   // console.log(this.currentUser)
-    //   if(this.currentUser._id) {
-    //     // console.log(this.currentUser)
-    //     return Observable.of(this.currentUser)
-    //   }
-    // }
-
     let headers = new Headers({'Content-Type': 'application/json'});
     headers.append('Authorization', '' + this.authService.currentUser.token);
     return this.http.get(this.url + 'profile/' + id, {headers: headers})
       .map((response: Response) => {
-
-      //  if(!id) {
-      //    this.authService.refreshCookiesOfCurrentUser( response.json().user)
-      // //   console.log(this.currentUser)
-      //  }
-
         return response.json().user;
-
       })
       .catch((error: Response) => {
         this.errorService.handleError(error.json());
+        return Observable.throw(error.json());
+      });
+  }
+  getUserCross(id: string) {
+    let headers = new Headers({'Content-Type': 'application/json'});
+    headers.append('Authorization', '' + this.authService.currentUser.token);
+    return this.http.get(this.url + 'userCross/' + id, {headers: headers})
+      .map((response: Response) => {
+        return response.json().user;
+      })
+      .catch((error: Response) => {
+        // this.errorService.handleError(error.json());
         return Observable.throw(error.json());
       });
   }
@@ -147,6 +144,22 @@ export class UserService {
       });
   }
 
+  saveCrossUser(user: any) {
+    user.profile.parentUser=[]
+  //  console.log(this.authService.currentUser.userId)
+    user.profile.parentUser.push(this.authService.currentUser.userId)
+    const body = JSON.stringify(user);
+    const headers = new Headers({'Content-Type': 'application/json'});
+  //  let headers = new Headers({'Content-Type': 'application/json'});
+    headers.append('Authorization', '' + this.authService.currentUser.token);
+    return this.http.post(this.url + 'userCross/',body, {headers: headers})
+      .map(response => response.json())
+      .catch((error: Response) => {
+        this.errorService.handleError(error.json());
+        return Observable.throw(error.json());
+      });
+  }
+
 
 
   updateUser(user: User) {
@@ -154,6 +167,17 @@ export class UserService {
     const headers = new Headers({'Content-Type': 'application/json'});
     headers.append('Authorization', '' + this.authService.currentUser.token);
     return this.http.put(this.url + 'profile/' + user._id, body, {headers: headers})
+      .map(response => response.json())
+      .catch((error: Response) => {
+        this.errorService.handleError(error.json());
+        return Observable.throw(error.json());
+      });
+  }
+  updateCrossUser(user: User) {
+    const body = JSON.stringify(user);
+    const headers = new Headers({'Content-Type': 'application/json'});
+    headers.append('Authorization', '' + this.authService.currentUser.token);
+    return this.http.put(this.url + 'userCross/' + user._id, body, {headers: headers})
       .map(response => response.json())
       .catch((error: Response) => {
         this.errorService.handleError(error.json());

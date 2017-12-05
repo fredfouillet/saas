@@ -1,25 +1,27 @@
 <form [formGroup]="myForm" novalidate (ngSubmit)="save()">
   <div class="row">
 
-    <div class="col-sm-12 col-md-6 col-lg-4">
-      <h5>{{'Identity' | translate}}</h5>
 
-      <div *ngIf="fetchedUser.isExternalUser">
+      <h5>{{'Identity' | translate}}</h5>
+      <mat-form-field>
+        <input matInput type="text" formControlName="email" [(ngModel)]="fetchedUser.email" placeholder="{{'Email' | translate}}">
+      </mat-form-field>
+      <!-- <div *ngIf="fetchedUser.isExternalUser">
         <mat-form-field>
           <mat-select placeholder="{{'Type Client' | translate}}" [(ngModel)]="fetchedUser.profile.typeClient" formControlName="typeClient">
             <mat-option [value]="" disabled selected>Type</mat-option>
             <mat-option *ngFor="let n of typeClientArray" [value]="n">{{n}}</mat-option>
           </mat-select>
         </mat-form-field>
-      </div>
-      <div *ngIf="fetchedUser.isExternalUser">
+      </div> -->
+      <!-- <div *ngIf="fetchedUser.isExternalUser">
         <mat-form-field *ngIf="fetchedUser.profile.typeClient ==='Administration'">
           <input matInput type="text" formControlName="accessType" [(ngModel)]="fetchedUser.profile.companyName" placeholder="Nom Administration">
         </mat-form-field>
         <mat-form-field *ngIf="fetchedUser.profile.typeClient ==='Societe'">
           <input matInput type="text" formControlName="accessType" [(ngModel)]="fetchedUser.profile.companyName" placeholder="Nom Societé">
         </mat-form-field>
-      </div>
+      </div> -->
 
 
       <mat-form-field>
@@ -37,13 +39,11 @@
         <input matInput type="text" formControlName="lastName" [(ngModel)]="fetchedUser.profile.lastName" placeholder="{{'Lastname' | translate}}">
       </mat-form-field>
 
-      <mat-form-field>
-        <input matInput type="text" formControlName="email" [(ngModel)]="fetchedUser.email" placeholder="{{'Email' | translate}}">
-      </mat-form-field>
 
-      <mat-form-field>
+
+      <!-- <mat-form-field>
         <input matInput type="text" formControlName="phoneNumber" [(ngModel)]="fetchedUser.profile.phoneNumber" placeholder="{{'Phone Number' | translate}}">
-      </mat-form-field>
+      </mat-form-field> -->
 
 
       <!-- <div *ngIf="fetchedUser.isExternalUser">
@@ -58,13 +58,25 @@
             </app-autocomplete>
           </div> -->
 
-
-      <mat-form-field *ngIf="isUserIsMyself()">
+          <div *ngIf="isUserIsMyself()">
+      <mat-form-field>
         <mat-select [(ngModel)]="fetchedUser.profile.language" name="language" formControlName="language">
           <mat-option *ngFor="let n of languageArray" [value]="n">{{n}}</mat-option>
         </mat-select>
       </mat-form-field>
       <mat-hint>{{'Need to login/logout to apply changes' | translate}}</mat-hint>
+    </div>
+
+
+    <div *ngIf="authService.showObjHTML('userCalendar', 'read')">
+      <div *ngIf="!fetchedUser.isExternalUser">
+        <div>
+          <label>{{'Calendar Color' | translate}}</label>
+          <div class="round" [style.background-color]="fetchedUser.profile.colorCalendar"></div>
+          <input type="color" formControlName="colorCalendar" [(ngModel)]="fetchedUser.profile.colorCalendar">
+        </div>
+      </div>
+    </div>
 
       <!-- <div *ngIf="!fetchedUser.isExternalUser">
         <div *ngFor="let ownerCompanie of currentUser.ownerCompanies">
@@ -74,96 +86,9 @@
               </select>
         </div>
       </div> -->
-    </div>
-    <div class="col-sm-12 col-md-6 col-lg-4">
-      <h5>{{'Address' | translate}}</h5>
-
-      <div *ngFor="let singleAddresss of fetchedUser.profile.address; let i = index;" class="form-control boad">
-        <div class="alright">
-          <button type="button" class="ml btnadr" (click)="moveAddress(i, -1)"><i class="fa fa-arrow-up" aria-hidden="true"></i></button>
-          <button type="button" class="ml btnadr" (click)="moveAddress(i, 1)"><i class="fa fa-arrow-down" aria-hidden="true"></i></button>
-          <button type="button" class="ml btnadr" (click)="removeAddress(i)"><i class="fa fa-times" aria-hidden="true"></i></button>
-        </div>
-        <div>
-          <mat-form-field>
-            <mat-select [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedUser.profile.address[i].nameAddress">
-              <mat-option *ngFor="let n of addressTypes" [value]="n.value">{{n.label | translate}}</mat-option>
-            </mat-select>
-          </mat-form-field>
-        </div>
-        <div>
-          <mat-form-field>
-            <input matInput type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedUser.profile.address[i].address" placeholder="{{'Address' | translate}}">
-          </mat-form-field>
-        </div>
-        <div>
-          <mat-form-field>
-            <input matInput type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedUser.profile.address[i].address2" placeholder="{{'Additional address' | translate}}">
-          </mat-form-field>
-        </div>
-        <div>
-          <mat-form-field>
-            <input matInput (ngModelChange)="searchCities($event, i)" type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedUser.profile.address[i].zip" placeholder="{{'Zip' | translate}}">
-          </mat-form-field>
-        </div>
-        <div>
-          <div *ngFor="let place of fetchedUser.profile.address[i].cities; let j = index">
-            {{place['place name']}} <button type="button" class="btn" (click)="selectCity(i, place['place name'])"><i class="fa fa-check-square validadress"></i></button>
-          </div>
-        </div>
-        <div>
-          <mat-form-field>
-            <input matInput type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedUser.profile.address[i].city" placeholder="{{'City' | translate}}">
-          </mat-form-field>
-        </div>
-        <!--   <div>
-            <input type="text" formControlName="state" [(ngModel)]="fetchedUser.profile.address.state" placeholder="{{'State' | translate}}">
-          </div> -->
-        <div>
-          <mat-form-field>
-            <input matInput type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedUser.profile.address[i].country" placeholder="{{'Country' | translate}}">
-          </mat-form-field>
-        </div>
-      </div>
-      <button type="button" class="btn btn-primary btn-sm" (click)="newAddress()">{{'New Address' | translate}}</button>
-    </div>
-    <div class="col-sm-12 col-md-6 col-lg-4">
-      <h5>{{'Divers' | translate}}</h5>
-      <div *ngIf="fetchedUser.isExternalUser">
 
 
-        <div>
-          <mat-form-field>
-            <input matInput type="text" formControlName="accesCode" [(ngModel)]="fetchedUser.profile.detailHouse.accesCode" placeholder="{{'Champ libre' | translate}}">
-          </mat-form-field>
-        </div>
-        <div>
-          <mat-form-field>
-            <input matInput type="text" formControlName="floor" [(ngModel)]="fetchedUser.profile.detailHouse.floor" placeholder="{{'Champ libre' | translate}}">
-          </mat-form-field>
-        </div>
-      </div>
-      <div>
-        <mat-form-field>
-          <textarea matInput formControlName="otherData" [(ngModel)]="fetchedUser.profile.otherData" placeholder="{{'Other' | translate}}">
-              </textarea>
-        </mat-form-field>
-      </div>
-      <!-- <div *ngIf="!fetchedUser.isExternalUser">
-          <app-autocomplete [typeAutocomplete]="'right'" [canDelete]="true" [title]="'Right'" [singleChoice]="true" [arrayContent]="fetchedUser.rights" (getResultAutocomplete)="selectRight($event[0])">
-          </app-autocomplete>
-        </div> -->
-      <div *ngIf="authService.showObjHTML('userCalendar', 'read')">
-        <div *ngIf="!fetchedUser.isExternalUser">
-          <div>
-            <label>{{'Calendar Color' | translate}}</label>
-            <div class="round" [style.background-color]="fetchedUser.profile.colorCalendar"></div>
-            <input type="color" formControlName="colorCalendar" [(ngModel)]="fetchedUser.profile.colorCalendar">
-          </div>
-        </div>
-      </div>
 
-    </div>
   </div>
 
 </form>

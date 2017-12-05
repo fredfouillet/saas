@@ -1,0 +1,169 @@
+<form [formGroup]="myForm" novalidate (ngSubmit)="save()">
+  <div class="row">
+
+    <div class="col-sm-12 col-md-6 col-lg-4">
+      <h5>{{'Identity' | translate}}</h5>
+
+      <div *ngIf="fetchedUser.isExternalUser">
+        <mat-form-field>
+          <mat-select placeholder="{{'Type Client' | translate}}" [(ngModel)]="fetchedUserCross.profile.typeClient" formControlName="typeClient">
+            <mat-option [value]="" disabled selected>Type</mat-option>
+            <mat-option *ngFor="let n of typeClientArray" [value]="n">{{n}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div *ngIf="fetchedUser.isExternalUser">
+        <mat-form-field *ngIf="fetchedUserCross.profile.typeClient ==='Administration'">
+          <input matInput type="text" formControlName="accessType" [(ngModel)]="fetchedUserCross.profile.companyName" placeholder="Nom Administration">
+        </mat-form-field>
+        <mat-form-field *ngIf="fetchedUserCross.profile.typeClient ==='Societe'">
+          <input matInput type="text" formControlName="accessType" [(ngModel)]="fetchedUserCross.profile.companyName" placeholder="Nom Societé">
+        </mat-form-field>
+      </div>
+
+
+      <mat-form-field>
+        <mat-select placeholder="{{'Title' | translate}}" [(ngModel)]="fetchedUserCross.profile.title" formControlName="title">
+          <mat-option [value]="" disabled selected>{{'Title' | translate}}</mat-option>
+          <mat-option *ngFor="let n of titleArray" [value]="n">{{ n | translate}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <!-- <mat-form-field>
+        <input matInput type="text" formControlName="name" [(ngModel)]="fetchedUserCross.profile.name" placeholder="{{'Firstname' | translate}}">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput type="text" formControlName="lastName" [(ngModel)]="fetchedUserCross.profile.lastName" placeholder="{{'Lastname' | translate}}">
+      </mat-form-field> -->
+
+
+
+      <mat-form-field>
+        <input matInput type="text" formControlName="phoneNumber" [(ngModel)]="fetchedUserCross.profile.phoneNumber" placeholder="{{'Phone Number' | translate}}">
+      </mat-form-field>
+
+
+      <!-- <div *ngIf="fetchedUserCross.isExternalUser">
+            <select [ngClass]="{'has-error':!myForm.controls['statusHouse'].valid && !myForm.controls['statusHouse'].pristine}" [(ngModel)]="fetchedUserCross.profile.statusHouse" formControlName="statusHouse">
+              <option value="" disabled selected>Statut</option>
+              <option *ngFor="let n of statusHouseArray" [ngValue]="n">{{n}}</option>
+            </select>
+          </div> -->
+
+      <!-- <div *ngIf="fetchedUserCross.isExternalUser">
+            <app-autocomplete [title]="'Entreprise'" [singleChoice]="'true'" [typeAutocomplete]="'companie'" [arrayContent]="fetchedUserCross.ownerCompanies" (getResultAutocomplete)="selectCompanie($event[0])">
+            </app-autocomplete>
+          </div> -->
+
+<!--
+      <mat-form-field *ngIf="isUserIsMyself()">
+        <mat-select [(ngModel)]="fetchedUserCross.profile.language" name="language" formControlName="language">
+          <mat-option *ngFor="let n of languageArray" [value]="n">{{n}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-hint>{{'Need to login/logout to apply changes' | translate}}</mat-hint> -->
+
+      <!-- <div *ngIf="!fetchedUserCross.isExternalUser">
+        <div *ngFor="let ownerCompanie of currentUser.ownerCompanies">
+          <select [(ngModel)]="fetchedUserCross.typeUsers" name="language" formControlName="typeUsers">
+                <option value="" disabled selected>Type</option>
+                <option *ngFor="let typeUser of ownerCompanie.typeUsers" [value]="typeUser.value">{{typeUser.value}}</option>
+              </select>
+        </div>
+      </div> -->
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-4">
+      <h5>{{'Address' | translate}}</h5>
+
+      <div *ngFor="let singleAddresss of fetchedUserCross.profile.address; let i = index;" class="form-control boad">
+        <div class="alright">
+          <button type="button" class="ml btnadr" (click)="moveAddress(i, -1)"><i class="fa fa-arrow-up" aria-hidden="true"></i></button>
+          <button type="button" class="ml btnadr" (click)="moveAddress(i, 1)"><i class="fa fa-arrow-down" aria-hidden="true"></i></button>
+          <button type="button" class="ml btnadr" (click)="removeAddress(i)"><i class="fa fa-times" aria-hidden="true"></i></button>
+        </div>
+        <div>
+          <mat-form-field>
+            <mat-select [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedUserCross.profile.address[i].nameAddress">
+              <mat-option *ngFor="let n of addressTypes" [value]="n.value">{{n.label | translate}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field>
+            <input matInput type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedUserCross.profile.address[i].address" placeholder="{{'Address' | translate}}">
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field>
+            <input matInput type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedUserCross.profile.address[i].address2" placeholder="{{'Additional address' | translate}}">
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field>
+            <input matInput (ngModelChange)="searchCities($event, i)" type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedUserCross.profile.address[i].zip" placeholder="{{'Zip' | translate}}">
+          </mat-form-field>
+        </div>
+        <div>
+          <div *ngFor="let place of fetchedUserCross.profile.address[i].cities; let j = index">
+            {{place['place name']}} <button type="button" class="btn" (click)="selectCity(i, place['place name'])"><i class="fa fa-check-square validadress"></i></button>
+          </div>
+        </div>
+        <div>
+          <mat-form-field>
+            <input matInput type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedUserCross.profile.address[i].city" placeholder="{{'City' | translate}}">
+          </mat-form-field>
+        </div>
+        <!--   <div>
+            <input type="text" formControlName="state" [(ngModel)]="fetchedUserCross.profile.address.state" placeholder="{{'State' | translate}}">
+          </div> -->
+        <div>
+          <mat-form-field>
+            <input matInput type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedUserCross.profile.address[i].country" placeholder="{{'Country' | translate}}">
+          </mat-form-field>
+        </div>
+      </div>
+      <button type="button" class="btn btn-primary btn-sm" (click)="newAddress()">{{'New Address' | translate}}</button>
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-4">
+      <h5>{{'Divers' | translate}}</h5>
+      <div *ngIf="fetchedUserCross.isExternalUser">
+
+
+        <div>
+          <mat-form-field>
+            <input matInput type="text" formControlName="accesCode" [(ngModel)]="fetchedUserCross.profile.detailHouse.accesCode" placeholder="{{'Champ libre' | translate}}">
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field>
+            <input matInput type="text" formControlName="floor" [(ngModel)]="fetchedUserCross.profile.detailHouse.floor" placeholder="{{'Champ libre' | translate}}">
+          </mat-form-field>
+        </div>
+      </div>
+      <div>
+        <mat-form-field>
+          <textarea matInput formControlName="otherData" [(ngModel)]="fetchedUserCross.profile.otherData" placeholder="{{'Other' | translate}}">
+              </textarea>
+        </mat-form-field>
+      </div>
+      <!-- <div *ngIf="!fetchedUserCross.isExternalUser">
+          <app-autocomplete [typeAutocomplete]="'right'" [canDelete]="true" [title]="'Right'" [singleChoice]="true" [arrayContent]="fetchedUserCross.rights" (getResultAutocomplete)="selectRight($event[0])">
+          </app-autocomplete>
+        </div> -->
+      <!-- <div *ngIf="authService.showObjHTML('userCalendar', 'read')">
+        <div *ngIf="!fetchedUserCross.isExternalUser">
+          <div>
+            <label>{{'Calendar Color' | translate}}</label>
+            <div class="round" [style.background-color]="fetchedUserCross.profile.colorCalendar"></div>
+            <input type="color" formControlName="colorCalendar" [(ngModel)]="fetchedUserCross.profile.colorCalendar">
+          </div>
+        </div>
+      </div> -->
+
+      <app-picture [forms]="fetchedUserCross.forms" [showPagination]=false (getPicture)="getPicture($event)"></app-picture>
+
+    </div>
+  </div>
+  <button type="button" class="valid" (click)="save()">{{'Save' | translate}}</button>
+</form>

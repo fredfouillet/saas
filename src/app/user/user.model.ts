@@ -24,6 +24,25 @@ export class User {
   paiement: Paiement= new Paiement()
 }
 
+export class UserCross {
+  _id: string = '';
+  ownerCompanies: Companie[] = [];
+  users: User[] = [];
+
+  // isAdminOfHisCompanie: Boolean = false;
+  isExternalUser: Boolean = true;
+  email: string = '';
+  role: string[] = [];
+  typeUsers: string[] = [];
+  forms: Form[] = [];
+  // rights: Right[] = []
+  rightsInApp: Right[] = []
+  profile: Profile = new Profile();
+  password: string = '';
+  salesMan: User[] = [];
+  paiement: Paiement= new Paiement()
+}
+
 export class Paiement{
   stripe: Stripe = new Stripe()
 }

@@ -9,9 +9,6 @@
         <mat-panel-title>
           {{'User' | translate}} : {{fetchedUser.profile.lastName}}
         </mat-panel-title>
-        <mat-panel-description>
-          <mat-icon>account_circle</mat-icon>
-        </mat-panel-description>
       </mat-expansion-panel-header>
       <app-detailsUser [fetchedUser]="fetchedUser"></app-detailsUser>
       <mat-action-row>
@@ -21,7 +18,22 @@
         </div>
       </mat-action-row>
     </mat-expansion-panel>
-    <mat-expansion-panel *ngIf="fetchedUser._id" [expanded]="step === 2" (opened)="setStep(2)" hideToggle="true">
+    <mat-expansion-panel *ngIf="fetchedUser._id" [expanded]="step === 1" (opened)="setStep(1)" hideToggle="true">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{'Details' | translate}}
+        </mat-panel-title>
+
+      </mat-expansion-panel-header>
+      <app-user-cross [fetchedUser]="fetchedUser"></app-user-cross>
+      <!-- <mat-action-row>
+        <button type="button" class="valid" (click)="save()">{{'Save' | translate}}</button>
+        <div *ngIf="!isUserIsMyself()">
+          <button type="button" *ngIf="fetchedUser._id" class="false" (click)="openDialogDelete()">{{'Delete' | translate}}</button>
+        </div>
+      </mat-action-row> -->
+    </mat-expansion-panel>
+    <!-- <mat-expansion-panel *ngIf="fetchedUser._id" [expanded]="step === 2" (opened)="setStep(2)" hideToggle="true">
       <mat-expansion-panel-header>
         <mat-panel-title>
           {{'Pictures' | translate}}
@@ -34,8 +46,8 @@
       <mat-action-row>
         <button type="button" class="valid" (click)="save()">{{'Save' | translate}}</button>
       </mat-action-row>
-    </mat-expansion-panel>
-    <mat-expansion-panel *ngIf="fetchedUser._id" [expanded]="step === 1" (opened)="setStep(1)" hideToggle="true">
+    </mat-expansion-panel> -->
+    <mat-expansion-panel *ngIf="fetchedUser._id" [expanded]="step === 2" (opened)="setStep(2)" hideToggle="true">
       <mat-expansion-panel-header>
         <mat-panel-title>
           {{'Quotes' | translate}}

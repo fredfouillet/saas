@@ -20,6 +20,7 @@ import { CompanieModule} from '../companie/companie.module';
 
 import { UserDialogComponent } from './singleUser/dialog/userDialog.component';
 import { DetailsUserComponent } from './singleUser/detailsUser/detailsUser.component';
+import { UserCrossComponent } from './singleUser/userCross/userCross.component';
 
 import { RegisterComponent} from './register/register.component';
 
@@ -89,6 +90,7 @@ import {MatSelectModule} from '@angular/material';
     UserComponent,
     UserDialogComponent,
     DetailsUserComponent,
+    UserCrossComponent,
     // SingleUserComponent,
     // AddNoteComponent,
     // ChooseDateComponent,
