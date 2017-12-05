@@ -530,8 +530,9 @@ router.get('/page/:page', function(req, res, next) {
 
       item.forEach((quote, i) => {
         item[i].drawingSignature.base64 = ''
+        item[i].devisDetails = []
       })
-      
+
       Quote.find(searchQuery).count().exec(function(err, count) {
         res.status(200).json({
           paginationData: {
