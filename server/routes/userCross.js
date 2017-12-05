@@ -110,54 +110,41 @@ router.get('/page/:page', function(req, res, next) {
   })
 })
 
-function getUserCross(req, res, next, id) {
-  let searchQuery = {}
-  searchQuery['ownerCompanies'] = req.user.ownerCompanies
-  searchQuery['users'] = mongoose.Types.ObjectId(id)
-  UserCross
-  .findOne(searchQuery)
-  .populate({path: 'forms', model: 'Form'})
-  .populate({path: 'rights', model: 'Right'})
-  .populate({path: 'salesMan', model: 'User'})
-  .populate({path: 'ownerCompanies', model: 'Companie'})
-  .populate({path: 'profile.profilePicture', model: 'Form'})
-  // .populate({
-  //     path: 'companies',
-  //     model: 'Companie',
-  //     populate: {
-  //       path: 'forms',
-  //       model: 'Form'
-  //     }
-  //   })
-    .exec(function(err, user) {
-    if (err) {
-      return res.status(403).json({title: 'There was a problem', error: err});
-    }
-
-    if (!user) {
-      return res.status(404).json({
-        title: 'No form found',
-        error: {
-          message: 'Item not found!'
-        }
-      });
-    }
-
-
-    // user.isExternalUser = true
-    // user.ownerCompanies.forEach((companie, index) => {
-    //
-    //   console.log(req.user.ownerCompanies.toString(), companie._id.toString())
-    //   if (req.user.ownerCompanies.toString() == companie._id.toString())
-    //     user.isExternalUser = false
-    // })
-
-    return res.status(200).json({user: user})
+function getUserCross (user, userId) {
+  return new Promise(function (resolve, reject) {
+    let searchQuery = {}
+    searchQuery['ownerCompanies'] = user.ownerCompanies
+    searchQuery['users'] = mongoose.Types.ObjectId(userId)
+    UserCross
+    .findOne(searchQuery)
+    .populate({path: 'forms', model: 'Form'})
+    .populate({path: 'rights', model: 'Right'})
+    .populate({path: 'salesMan', model: 'User'})
+    .populate({path: 'ownerCompanies', model: 'Companie'})
+    .populate({path: 'profile.profilePicture', model: 'Form'})
+      .exec(function (err, user) {
+      if (err) {
+        reject(err)
+      }
+      if (!user) {
+        reject(new Error({
+          title: 'No form found',
+          error: {
+            message: 'Item not found!'
+          }
+        }))
+      }
+      resolve(user)
+    })
   })
 }
 
 router.get('/:id', function(req, res, next) {
-  getUserCross(req, res, next, req.params.id)
+  getUserCross(req.user, req.params.id).then(user => {
+    return res.status(200).json({user: user})
+  }).catch( err => {
+    return res.status(403).json({title: 'There was a problem', error: err});
+  })
 });
 
 // router.get('', function(req, res, next) {
@@ -517,4 +504,7 @@ router.post('/', function(req, res, next) {
     })
   })
 
-  module.exports = router;
+  module.exports = {
+    router: router,
+    getUserCross: getUserCross
+  }

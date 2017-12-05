@@ -13,6 +13,7 @@ var quote = new Schema({
     // ownerQuotes: [{type: Schema.Types.ObjectId, ref: 'User'}],
     clients: [{type: Schema.Types.ObjectId, ref: 'User'}],
     historyClients: [],
+    historyClientsCross: [],
     // companieClients: [{type: Schema.Types.ObjectId, ref: 'Companie'}],
     // phoneNumber: {type: String, default: ['']},
     name: {type: String, default: ['']},

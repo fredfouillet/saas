@@ -10,6 +10,7 @@ var express = require('express'),
   // mongoose = require('mongoose'),
   // Schema = mongoose.Schema,
   shared = require('./shared.js'),
+  userCross = require('./userCross.js'),
   pdfGenerator = require('./pdfGenerator.js'),
   nameObject = 'quote'
 
@@ -382,22 +383,40 @@ router.post('/', function(req, res, next) {
   // Quote.find(searchQuery).count().exec(function(err, count) {
   // req.body.quoteNumber = count * 1 + 1
   // req.body.projects.forEach(project => { req.body.clients = project.clients })
+  // console.log(req.body.clients)
+
+  // console.log('aa')
+  // console.log(quote)
+  req.body.ownerCompanies = req.user.ownerCompanies
+
+
+  req.body.historyClients = req.body.clients
+  req.body.historyClientsCross = req.body.historyClientsCross
 
   var quote = new Quote(req.body);
-  quote.ownerCompanies = req.user.ownerCompanies
-
-  quote.save(function(err, result) {
-    if (err) {
-      return res.status(403).json({
-        title: 'There was an issue',
-        error: {
-          message: 'The email you entered already exists'
+  if(quote.historyClients.length) {
+    console.log(quote.historyClients[0])
+    // console.log('aaa')
+    // console.log(req.user)
+    userCross.getUserCross(req.user, quote.historyClients[0]._id).then(userCrossSingle => {
+      console.log(userCrossSingle)
+      quote.historyClientsCross = userCrossSingle
+      quote.save(function(err, result) {
+        if (err) {
+          return res.status(403).json(err);
         }
-      });
-    }
-    res.status(200).json({message: 'Registration Successfull', obj: result})
-  })
-  // })
+        res.status(200).json({message: 'Registration Successfull', obj: result})
+      })
+    })
+  } else {
+    quote.save(function(err, result) {
+      if (err) {
+        return res.status(403).json(err);
+      }
+      res.status(200).json({message: 'Registration Successfull', obj: result})
+    })
+  }
+
 });
 //
 // router.post('/saveAsInvoice/', function(req, res, next) {

@@ -102,7 +102,7 @@ app.use(function (req, res, next) {
 app.use('/user', userRoute)
 // app.use('/promotion', promotionRoute)
 app.use('/profile', userProfile)
-app.use('/userCross', userCross)
+app.use('/userCross', userCross.router)
 app.use('/companie', companieRoute)
 app.use('/quote', quoteRoute)
 app.use('/user/forgot', forgotRoutes)

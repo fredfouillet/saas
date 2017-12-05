@@ -72,6 +72,17 @@ export class UserCrossComponent implements OnInit {
   ) {
   }
 
+  getUserCross(id: string) {
+    this.userService.getUserCross(id)
+      .subscribe(
+        res => {
+          this.fetchedUserCross = res
+        },
+        error => {
+          console.log(error);
+        }
+      )
+  }
   selectCity(i, city: string) {
     this.fetchedUserCross.profile.address[i].city = city
     this.fetchedUserCross.profile.address[i].cities = []
@@ -323,17 +334,7 @@ export class UserCrossComponent implements OnInit {
   }
 
 
-  getUserCross(id: string) {
-    this.userService.getUserCross(id)
-      .subscribe(
-      res => {
-        this.fetchedUserCross = res
-      },
-      error => {
-        console.log(error);
-      }
-      )
-  }
+
   //
   //
   // onDelete(id: string) {

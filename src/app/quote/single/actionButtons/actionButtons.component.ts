@@ -546,7 +546,7 @@ export class ActionButtonsComponent implements OnInit {
 
   save() {
 
-    this.fetchedQuote.historyClients = this.fetchedQuote.clients
+    // this.fetchedQuote.historyClients = this.fetchedQuote.clients
     if(this.fetchedQuote.drawingSignature.base64Temp)
       this.fetchedQuote.drawingSignature.base64 = this.fetchedQuote.drawingSignature.base64Temp
     // this.fetchedQuote.detail.dateQuote.issueDate = this.authService.HTMLDatetoIsoDate(this.fetchedQuote.detail.dateQuote.issueDateString)

@@ -10,13 +10,14 @@
           <input [readonly]="fetchedQuote.drawingSignature.isSigned" class="form-control" name="EstimateCode" type="number" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedQuote.quoteNumber"/>
         </div> -->
         <div class="form-group">
+
           <app-autocomplete [search]="search" [displayIfContentIsNull]=true [canDelete]=false [enableLink]=true [typeAutocomplete]="'user'" [title]="'Contact'" [search]="{isExternalUser:true}" [title]="" [singleChoice]="'true'" [arrayContent]="fetchedQuote.clients">
           </app-autocomplete>
           <!-- <app-autocomplete [search]="search" [displayIfContentIsNull]=true [canDelete]=false [enableLink]=true [typeAutocomplete]="'user'" [title]="'Contact'" [search]="{isExternalUser:true}" [title]="" [singleChoice]="'true'" [arrayContent]="fetchedQuote.clients"
             (getResultAutocomplete)="selectUser($event[0])">
           </app-autocomplete> -->
         </div>
-        <div class="form-group">
+        <!-- <div class="form-group">
           <app-autocomplete
             *ngIf="fetchedQuote.typeQuote === 'invoice'"
             [displayIfContentIsNull]=true
@@ -26,7 +27,7 @@
             [singleChoice]=true
             [arrayContent]="fetchedQuote.parentQuotes">
           </app-autocomplete>
-        </div>
+        </div> -->
         <!-- <div class="form-group">
           <app-autocomplete [search]="search" [canDelete]=false [enableLink]=true [typeAutocomplete]="'project'" [title]="'Projet'" [singleChoice]="true" [arrayContent]="fetchedQuote.projects">
           </app-autocomplete>
@@ -77,13 +78,13 @@
             <div>{{client.profile.name}} {{client.profile.lastName}}</div>
           </h4>
           <div>{{client.profile.companyName}}</div>
-          <div *ngFor="let singleAddress of client.profile.address">
+          <!-- <div *ngFor="let singleAddress of client.profile.address">
             <div *ngIf="singleAddress.nameAddress ==='billing'">
               <div>{{singleAddress.address}}</div>
               <div>{{singleAddress.zip}} {{singleAddress.city}}</div>
               <div>{{client.profile.phoneNumber}}</div>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
 
