@@ -29,7 +29,6 @@ export class QuotesComponent implements OnInit {
   paginationData = new PaginationData()
 
   statusQuotes = StatusQuotes
-  statusQuotesInvoice = StatusQuotesInvoice
   @Input() search = new Search()
 
   constructor(
