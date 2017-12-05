@@ -392,18 +392,19 @@ router.post('/', function(req, res, next) {
 
   req.body.historyClients = req.body.clients
   req.body.historyClientsCross = req.body.historyClientsCross
-
+  console.log('a')
   var quote = new Quote(req.body);
   if(quote.historyClients.length) {
-
+  console.log('b')
     userCross.getUserCross(req.user, quote.historyClients[0]._id).then(userCrossSingle => {
-
-      console.log(userCrossSingle)
+  console.log('c')
       quote.historyClientsCross = userCrossSingle
       saveQuote(quote)
     })
+      console.log('d')
     saveQuote(quote)
   } else {
+      console.log('e')
     saveQuote(quote)
   }
 
