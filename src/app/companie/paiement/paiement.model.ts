@@ -45,10 +45,6 @@ export class DataSubscription {
 }
 
 
-export class Plan {
-  amount: number;
-  id: string = '';
-}
 export class Items {
   data:DataItem[]=[]
 }
