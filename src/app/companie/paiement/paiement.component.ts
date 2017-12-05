@@ -125,6 +125,7 @@ export class PaiementComponent implements OnInit {
           // this.userService.cleanCurrentUserInSession()
           this.toastr.success('Great!')
           this.getStripeCust()
+          this.nextStep()
           // console.log(res);
         },
         error => { console.log(error); }
