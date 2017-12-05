@@ -9,7 +9,6 @@ import { DragulaService } from 'ng2-dragula';
 
 import {
   Quote, DevisDetail, BucketProduct, StatusQuotes,
-  StatusQuotesInvoice,
   // PriceQuoteTaxe,
   // ModelVATs
 } from '../../../quote.model';
@@ -64,7 +63,7 @@ export class DesktopDetailsComponent implements OnInit {
   // imgSignatureBase64Temp = ''
   // fetchedPaiementQuotes: PaiementQuote[] = []
   statusQuotes = StatusQuotes
-  statusQuotesInvoice = StatusQuotesInvoice
+
 
   // public editorOptions = {
   //   placeholder: "insert content...",

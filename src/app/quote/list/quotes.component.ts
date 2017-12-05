@@ -1,7 +1,7 @@
 import { Component, OnInit, Input} from '@angular/core';
 import { AuthService} from '../../auth/auth.service';
 import { QuoteService} from '../../quote/quote.service';
-import { Quote, StatusQuotes, StatusQuotesInvoice} from '../../quote/quote.model';
+import { Quote, StatusQuotes} from '../../quote/quote.model';
 import { ToastsManager} from 'ng2-toastr';
 import { MatDialog} from '@angular/material';
 import { Router, ActivatedRoute, Params } from '@angular/router';

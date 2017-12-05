@@ -9,7 +9,7 @@ import {ProductService} from '../../../product/product.service';
 
 import {Quote, DevisDetail,
   BucketProduct,
-  StatusQuotes, StatusQuotesInvoice,
+  StatusQuotes,
   PriceQuoteTaxe, ModelVATs } from '../../quote.model';
 import {TemplateQuote } from '../../templateQuote.model';
 
@@ -52,7 +52,6 @@ export class EditQuoteComponent implements OnInit {
   fetchedProducts: Product[] = []
   fetchedPaiementQuotes: PaiementQuote[] = []
   statusQuotes = StatusQuotes
-  statusQuotesInvoice = StatusQuotesInvoice
   totalPaiementAmount: number = 0
   myForm: FormGroup;
 

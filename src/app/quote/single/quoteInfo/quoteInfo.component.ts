@@ -8,7 +8,7 @@ import {ProductService} from '../../../product/product.service';
 // import { ProjectService} from '../../../project/project.service';
 
 import {Quote, DevisDetail,
-  StatusQuotes, StatusQuotesInvoice,
+  StatusQuotes,
   PriceQuoteTaxe, ModelVATs } from '../../quote.model';
 import {TemplateQuote } from '../../templateQuote.model';
 
@@ -50,7 +50,7 @@ export class QuoteInfoComponent implements OnInit {
   fetchedProducts: Product[] = []
   fetchedPaiementQuotes: PaiementQuote[] = []
   statusQuotes = StatusQuotes
-  statusQuotesInvoice = StatusQuotesInvoice
+
   totalPaiementAmount: number = 0
   myForm: FormGroup;
 
