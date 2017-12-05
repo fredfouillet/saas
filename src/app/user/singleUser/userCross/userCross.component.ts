@@ -272,7 +272,8 @@ export class UserCrossComponent implements OnInit {
         .subscribe(
         res => {
           this.toastr.success('Great!', res.message)
-          this.fetchedUserCross = res.obj
+          // this.fetchedUserCross = res.obj
+          this.getUserCross(res.obj._id)
           // location.reload();
           // if(redirect == 'profile')
           //   this.router.navigate(['user/profile/' + res.obj._id])
@@ -290,7 +291,8 @@ export class UserCrossComponent implements OnInit {
         .subscribe(
         res => {
           this.toastr.success('Great!', res.message)
-          this.fetchedUserCross = res.obj
+          // this.fetchedUserCross = res.obj
+          this.getUserCross(res.obj._id)
           // this.fetchedUser = res.obj
           // this.saved.emit(res.obj)
           // if(redirect == 'profile')

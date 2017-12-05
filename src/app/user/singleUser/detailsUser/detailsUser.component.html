@@ -1,8 +1,6 @@
 <form [formGroup]="myForm" novalidate (ngSubmit)="save()">
   <div class="row">
 
-
-      <h5>{{'Identity' | translate}}</h5>
       <mat-form-field>
         <input matInput type="text" formControlName="email" [(ngModel)]="fetchedUser.email" placeholder="{{'Email' | translate}}">
       </mat-form-field>
