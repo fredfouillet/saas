@@ -20,7 +20,7 @@ import { ProductModule } from '../product/product.module';
 import {SharedModule } from '../shared/shared.module';
 // import { SignaturePadModule } from 'angular2-signaturepad';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
-
+import {MatButtonToggleModule} from '@angular/material';
 
 @NgModule({
   imports:      [
@@ -36,6 +36,7 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
     SharedModule,
     // SignaturePadModule,
     ChartsModule,
+    MatButtonToggleModule,
     // AutocompleteComponent,
   ],
   declarations: [
