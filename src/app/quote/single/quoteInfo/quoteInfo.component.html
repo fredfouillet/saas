@@ -73,18 +73,20 @@
 
       </div>
       <div class="col-sm-12 col-md-4">
-        <div class="form-control" *ngFor="let client of fetchedQuote.historyClients">
+        <div *ngFor="let client of fetchedQuote.historyClients">
           <h4>
             <div>{{client.profile.name}} {{client.profile.lastName}}</div>
           </h4>
           <div>{{client.profile.companyName}}</div>
-          <!-- <div *ngFor="let singleAddress of client.profile.address">
+        </div>
+        <div *ngFor="let client of fetchedQuote.historyClientsCross">
+          <div *ngFor="let singleAddress of client.profile.address">
             <div *ngIf="singleAddress.nameAddress ==='billing'">
               <div>{{singleAddress.address}}</div>
               <div>{{singleAddress.zip}} {{singleAddress.city}}</div>
               <div>{{client.profile.phoneNumber}}</div>
             </div>
-          </div> -->
+          </div>
         </div>
       </div>
 
