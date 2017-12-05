@@ -172,7 +172,7 @@
           <button mat-raised-button color="primary" (click)="saveSubscriptionInStripe()">{{plan}} {{' Plan!' | translate}}</button>
         </div>
         <div *ngFor="let sub of stripeCust.subscriptions.data">
-
+          <!-- <mat-icon color="primary">accessibility</mat-icon> -->
           <mat-form-field>
             <input matInput readonly value="{{sub.plan.id}}" placeholder="Plan">
           </mat-form-field>

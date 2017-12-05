@@ -46,6 +46,7 @@ export class QuotesComponent implements OnInit {
 
 
   ngOnChanges() {
+    console.log(this.search)
     this.getQuotes(this.paginationData.currentPage, this.search);
   }
   ngOnInit() {

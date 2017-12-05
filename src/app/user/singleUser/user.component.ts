@@ -297,8 +297,8 @@ export class UserComponent implements OnInit {
         .subscribe(
         res => {
           this.toastr.success('Great!', res.message)
-          // this.fetchedUser = res.obj
-          this.saved.emit(res.obj)
+          this.fetchedUser = res.obj
+          // this.saved.emit(res.obj)
           // if(redirect == 'profile')
           // this.router.navigate(['user/newuser/' + res.obj._id])
           // location.reload();

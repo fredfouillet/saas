@@ -493,10 +493,12 @@ router.get('/page/:page', function(req, res, next) {
   }
   if (req.query.typeQuote)
     searchQuery['typeQuote'] = req.query.typeQuote
+  if (req.query.userId)
+    searchQuery['clients'] = mongoose.Types.ObjectId(req.query.userId)
 
 
-  if (req.query.parentQuoteId)
-    searchQuery['parentQuotes'] = mongoose.Types.ObjectId(req.query.parentQuoteId)
+  // if (req.query.parentQuoteId)
+  //   searchQuery['parentQuotes'] = mongoose.Types.ObjectId(req.query.parentQuoteId)
 
   if (req.query.search) {
     //  nameQuery['name'] = new RegExp(req.query.search, 'i')

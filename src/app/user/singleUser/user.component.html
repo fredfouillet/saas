@@ -12,10 +12,13 @@
       </mat-expansion-panel-header>
       <app-detailsUser [fetchedUser]="fetchedUser"></app-detailsUser>
       <mat-action-row>
-        <button type="button" class="valid" (click)="save()">{{'Save' | translate}}</button>
-        <div *ngIf="!isUserIsMyself()">
-          <button type="button" *ngIf="fetchedUser._id" class="false" (click)="openDialogDelete()">{{'Delete' | translate}}</button>
-        </div>
+        <button *ngIf="!isUserIsMyself() && fetchedUser._id" mat-mini-fab color="warn" (click)="openDialogDelete()">
+          <mat-icon aria-label="Clear">clear</mat-icon>
+        </button>
+        <button mat-mini-fab color="primary" (click)="save()">
+          <mat-icon aria-label="Next">forward</mat-icon>
+        </button>
+
       </mat-action-row>
     </mat-expansion-panel>
     <mat-expansion-panel *ngIf="fetchedUser._id" [expanded]="step === 1" (opened)="setStep(1)" hideToggle="true">
@@ -56,7 +59,7 @@
           <mat-icon>map</mat-icon>
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <app-quotes [search]="{userId: search.userId, typeQuote: 'quote'}"></app-quotes>
+      <app-quotes [search]="{userId: fetchedUser._id, typeQuote: 'quote'}"></app-quotes>
     </mat-expansion-panel>
   </mat-accordion>
 </div>

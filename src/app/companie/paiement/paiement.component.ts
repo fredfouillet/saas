@@ -87,9 +87,10 @@ export class PaiementComponent implements OnInit {
             this.stripeCust = res.customer
             this.stripeCust.subscriptions.data.forEach(dataSubscription => {
               this.plan = dataSubscription.plan.id
-
             })
             this.loading = false
+
+
           // }
 
         },
