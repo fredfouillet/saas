@@ -52,7 +52,7 @@
               </div>
             </td>
             <td class="centre tdunder">{{quote.name}}</td>
-            <td class="centre tdunder">{{quote.detail.dateQuote.issueDate | date:'yyyy-MM-dd' }}</td>
+            <td class="centre tdunder">{{quote.detail.dateQuote.issueDate | date:'yy-MM-dd' }}</td>
             <td class="centre tdunder">{{quote.priceQuote.priceGlobalWithDiscountWithSurfaceWithPainfulness}}</td>
             <td class="centre tdunder">
               <app-quote-status [showSingleSelected]=true [fetchedQuote]="quote"></app-quote-status>
