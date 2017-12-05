@@ -28,6 +28,7 @@ export class PaiementComponent implements OnInit {
   // isUserBelongToHQ=false
   // maxPictureToShow=3;
   // instapic=1;
+  loading: boolean = false
   companies: Companie[] = [];
   // isEditMode:boolean = false
   showReLoginInApp:boolean = false
@@ -68,6 +69,7 @@ export class PaiementComponent implements OnInit {
   }
 
   getStripeCust() {
+    this.loading = true
     this.paiementService.getStripeCust()
       .subscribe(
         res => {
@@ -76,6 +78,7 @@ export class PaiementComponent implements OnInit {
           //   this.stripeCust = new StripeCustomer()
           // } else {
             this.stripeCust = res.customer
+            this.loading = false
           // }
 
         },
