@@ -84,6 +84,7 @@ export class PaiementComponent implements OnInit {
         },
         error => {
           this.stripeCust = new StripeCustomer()
+          this.loading = false
           console.log(error)
         }
       )
