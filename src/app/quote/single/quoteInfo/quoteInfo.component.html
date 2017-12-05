@@ -61,7 +61,6 @@
         </mat-form-field> -->
 
 
-        <app-quote-status [fetchedQuote]="fetchedQuote"></app-quote-status>
 
 
         <!-- <mat-form-field *ngIf="fetchedQuote.typeQuote === 'invoice'">
@@ -94,6 +93,9 @@
           <mat-form-field>
             <input matInput [readonly]="fetchedQuote.drawingSignature.isSigned" type="text" formControlName="name" [(ngModel)]="fetchedQuote.name" placeholder="{{'Title' | translate}}">
           </mat-form-field>
+      </div>
+      <div class="col-12">
+        <app-quote-status *ngIf="fetchedQuote._id" [fetchedQuote]="fetchedQuote"></app-quote-status>
       </div>
 
     </div>

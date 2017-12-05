@@ -20,6 +20,8 @@ export class QuoteStatusComponent {
       this.statusQuotesSingleSelected.push(this.statusQuotes.find((statusQuote) => {
         return statusQuote.indexStatus === this.fetchedQuote.statusQuote;
       }))
+
+      console.log(this.statusQuotesSingleSelected)
     }
   }
 }
