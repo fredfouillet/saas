@@ -112,6 +112,7 @@
 
     <mat-expansion-panel *ngIf="
           authService.showObjHTML('paiementQuote', 'read') &&
+          fetchedQuote.statusQuote !=='pending' &&
           fetchedQuote.statusQuote !=='rejected' &&
           fetchedQuote._id" [expanded]="step === 5" (opened)="setStep(5)" hideToggle="true">
       <mat-expansion-panel-header>
@@ -137,6 +138,7 @@
 
     <mat-expansion-panel *ngIf="
       fetchedQuote._id &&
+      fetchedQuote.statusQuote !=='pending' &&
       fetchedQuote.statusQuote !=='rejected'"
     [expanded]="step === 6" (opened)="setStep(6)" hideToggle="true">
       <mat-expansion-panel-header>
