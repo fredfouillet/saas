@@ -64,11 +64,11 @@
         <app-quote-status [fetchedQuote]="fetchedQuote"></app-quote-status>
 
 
-        <mat-form-field *ngIf="fetchedQuote.typeQuote === 'invoice'">
+        <!-- <mat-form-field *ngIf="fetchedQuote.typeQuote === 'invoice'">
           <mat-select [disabled]="fetchedQuote.drawingSignature.isSigned" placeholder="{{'Status'| translate}}" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedQuote.statusQuote">
             <mat-option *ngFor="let n of statusQuotesInvoice" [value]="n.indexStatus">{{n.label | translate}}</mat-option>
           </mat-select>
-        </mat-form-field>
+        </mat-form-field> -->
 
 
       </div>
