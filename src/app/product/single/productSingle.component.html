@@ -57,9 +57,9 @@
             </mat-form-field>
 
 
-            <mat-form-field>
+            <!-- <mat-form-field>
               <input matInput type="number" formControlName="costPrice" [(ngModel)]="fetchedProduct.details.price.costPrice" placeholder="{{'Cost Price' | translate}}">
-            </mat-form-field>
+            </mat-form-field> -->
             <mat-form-field>
               <input matInput type="number" formControlName="sellingPrice" [(ngModel)]="fetchedProduct.details.price.sellingPrice" placeholder="{{'Selling Price' | translate}}">
             </mat-form-field>
@@ -113,7 +113,7 @@
 
       </form>
     </mat-expansion-panel>
-    <mat-expansion-panel>
+    <mat-expansion-panel *ngIf="fetchedProduct._id">
       <mat-expansion-panel-header>
         <mat-panel-title>
           {{'Pictures' | translate}}
