@@ -295,7 +295,6 @@ function sendQuoteByEmailToClient(req, res, next) {
 
 
 
-//update
 router.put('/:id', function(req, res, next) {
   if (!shared.isCurentUserHasAccess(req.user, nameObject, 'write')) {
     return res.status(404).json({
@@ -314,19 +313,29 @@ router.put('/:id', function(req, res, next) {
     item.historyClients = req.body.historyClients
     item.name = req.body.name
     item.typeQuote = req.body.typeQuote
-    // item.ownerQuotes = req.body.ownerQuotes
+    item.statusQuote = req.body.statusQuote
     item.forms = req.body.forms
     item.products = req.body.products
     item.projects = req.body.projects
     item.devisDetails = req.body.devisDetails
     item.priceQuote = req.body.priceQuote
-    item.signature = req.body.signature
+    // item.signature = req.body.signature
     item.detail = req.body.detail
-    item.statusQuote = req.body.statusQuote
     item.companieClients = req.body.companieClients
     item.quoteNumber = req.body.quoteNumber
     item.drawing = req.body.drawing
-    item.drawingSignature = req.body.drawingSignature
+    // item.drawingSignature = req.body.drawingSignature
+
+    // if(item.statusQuote === 'signed' && !req.body.drawingSignature.base64) {
+    //   item.drawingSignature.base64 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAALCAYAAAB24g05AAAAGklEQVQoU2NkoBAwUqifYdQAhtEwYKBCGAAAE40ADA7nRNsAAAAASUVORK5CYII='
+    // }
+    // if(item.statusQuote !== 'paid') {
+    //   if(item.drawingSignature.base64) {
+    //     item.statusQuote = 'signed'
+    //   } else {
+    //     item.statusQuote = 'pending'
+    //   }
+    // }
 
     item.save(function(err, result) {
       if (err) {
@@ -351,17 +360,20 @@ router.put('/:id/signature', function(req, res, next) {
     if (err) {
       return res.status(404).json({message: '', err: err})
     }
-    item.signature = req.body.signature
+    item.drawingSignature = req.body.drawingSignature
+
+    if(item.drawingSignature.base64) {
+      item.statusQuote = 'signed'
+    } else {
+      item.statusQuote = 'pending'
+    }
+
     item.save(function(err, result) {
       if (err) {
         return res.status(404).json({message: 'There was an error, please try again', err: err})
       }
-      shared.postNotification(req, 'quote').then(() => {
-        res.status(201).json({message: '', obj: result});
-      }).catch((error) => {
-        return res.status(404).json({message: 'There was an error, please try again', err: err})
-      })
-    });
+      res.status(201).json({message: '', obj: result})
+    })
   })
 });
 

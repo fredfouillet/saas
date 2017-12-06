@@ -55,7 +55,10 @@ export class QuoteComponent implements OnInit {
   nextStep() {
     this.step++;
   }
-
+  buttonSaved(quote: Quote) {
+    this.getQuote(quote._id)
+    this.nextStep()
+  }
   closeDialog() {
     this.close.emit()
   }
@@ -71,8 +74,8 @@ export class QuoteComponent implements OnInit {
   clearedDrawing() {
     this.fetchedQuote.drawingSignature.base64 = ''
     this.fetchedQuote.drawingSignature.base64Temp = ''
-    this.fetchedQuote.drawingSignature.isSigned = false
-    this.actionButtonsComponent.save()
+    this.fetchedQuote.statusQuote = 'pending'
+    this.actionButtonsComponent.saveSignature()
   }
   getQuote(id: string) {
     let this2 = this

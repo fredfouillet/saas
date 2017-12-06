@@ -5,7 +5,10 @@
     <mat-icon aria-label="Next">delete</mat-icon>
   </button>
 
-  <button mat-mini-fab color="primary" (click)="nextStepEmit()">
+  <button *ngIf="showSaveButton" mat-mini-fab color="primary" (click)="nextStepEmit()">
+    <mat-icon aria-label="Next">forward</mat-icon>
+  </button>
+  <button *ngIf="showSaveSignatureButton" mat-mini-fab color="primary" (click)="saveSignature()">
     <mat-icon aria-label="Next">forward</mat-icon>
   </button>
 

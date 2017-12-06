@@ -105,7 +105,7 @@
           <mat-icon aria-label="undo">undo</mat-icon>
         </button>
 
-        <app-actionButtons [fetchedQuote]="fetchedQuote" [showDeleteButton]=false (nextStep)="nextStep()">
+        <app-actionButtons [fetchedQuote]="fetchedQuote" [showSaveSignatureButton]=true [showSaveButton]=false [showDeleteButton]=false (nextStep)="buttonSaved($event)">
         </app-actionButtons>
       </mat-action-row>
     </mat-expansion-panel>
