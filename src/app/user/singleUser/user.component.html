@@ -30,7 +30,7 @@
         </mat-panel-title>
 
       </mat-expansion-panel-header>
-      <app-user-cross [fetchedUser]="fetchedUser"></app-user-cross>
+      <app-user-cross *ngIf="step === 1" [fetchedUser]="fetchedUser"></app-user-cross>
       <!-- <mat-action-row>
         <button type="button" class="valid" (click)="save()">{{'Save' | translate}}</button>
         <div *ngIf="!isUserIsMyself()">

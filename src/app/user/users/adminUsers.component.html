@@ -27,16 +27,22 @@
               <app-sort (orderBy)="orderBy($event)" [search]="search" [filedToOrder]="'profile.title'"></app-sort>
             </th> -->
             <th class="centre tdunder">
-              Nom
+              {{'Firstname' | translate}}
+              <app-sort (orderBy)="orderBy($event)" [search]="search" [filedToOrder]="'profile.name'"></app-sort>
+            </th>
+            <th class="centre tdunder">
+              {{'Name' | translate}}
               <app-sort (orderBy)="orderBy($event)" [search]="search" [filedToOrder]="'profile.lastName'"></app-sort>
             </th>
             <!-- <th class="centre tdunder">
               Société
             </th> -->
-            <th class="centre tdunder">Ville
+            <th class="centre tdunder hideMobile">
+              {{'City' | translate}}
 
             </th>
-            <th class="centre tdunder">Téléphone
+            <th class="centre tdunder hideMobile">
+              {{'Phone' | translate}}
               <app-sort (orderBy)="orderBy($event)" [search]="search" [filedToOrder]="'profile.phoneNumber'"></app-sort>
             </th>
             <!-- <th class="centre tdunder">Date
@@ -53,7 +59,8 @@
               </div>
             </td> -->
             <!-- <td class="centre tdunder">{{user.profile.title}}</td> -->
-            <td class="centre tdunder">{{user.profile.lastName}} {{user.profile.name}}</td>
+            <td class="centre tdunder">{{user.profile.name}}</td>
+            <td class="centre tdunder">{{user.profile.lastName}}</td>
 
 
             <!-- <td class="centre tdunder">
@@ -61,7 +68,7 @@
                 {{companie.nameCompanie}}
               </div>
             </td> -->
-            <td class="centre tdunder">
+            <td class="centre tdunder hideMobile">
               <div *ngFor="let singleAddress of user.profile.address; let i=index;">
                 <div *ngIf="i<1">
                   {{singleAddress.city}}
@@ -69,7 +76,7 @@
               </div>
 
             </td>
-            <td class="centre tdunder">{{user.profile.phoneNumber}}</td>
+            <td class="centre tdunder hideMobile">{{user.profile.phoneNumber}}</td>
             <!-- <td class="centre tdunder">{{user.createdAt | date:'dd-MM-yyyy' }}</td> -->
           </tr>
         </tbody>
