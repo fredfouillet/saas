@@ -22,7 +22,7 @@ module.exports = {
 
   generatePDF (req, res, next) {
     return new Promise(function(resolve, reject) {
-
+console.log('f')
       User.findOne({_id: req.user._id}).exec(function(err, user) {
         if (err) {
           return res.status(403).json({title: 'There was a problem', error: err})
@@ -80,10 +80,12 @@ module.exports = {
                   model: 'Form'
                 }
               }).exec(function(err, item) {
+                console.log('d')
                 if (err) {
                   return res.status(404).json({message: '', err: err})
                 }
                 if (!item) {
+                  console.log('e')
                   return res.status(404).json({
                     title: 'No obj found',
                     error: {
@@ -91,7 +93,7 @@ module.exports = {
                     }
                   })
                 } else {
-
+console.log('c')
                   var html = ''
                   html += `
                      <style type="text/css">
@@ -444,9 +446,10 @@ module.exports = {
                       <br>
                       <a class="cgv">Ce devis est valable 3 mois. Les prix sont établis sur la base des taux en vigeur à la date de remise de l'offre et toute variation ultérieure de ces taux sera répercutée sur ces prix en application du Code Général des Impôts</a>
                         `
-                  html = '<p>alan</p>'  
+                  console.log('a')
                   pdf.create(html, this.options).toFile('./server/uploads/pdf/' + req.params.quoteId + '.pdf', function(err, resPDF) {
                     if (err) {
+                      console.log('b')
                       reject(err)
                     } else {
                       resolve(req.params.quoteId)
