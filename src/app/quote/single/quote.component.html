@@ -27,7 +27,7 @@
 
 
     <mat-expansion-panel *ngIf="
-        fetchedQuote.statusQuote !=='rejected' &&
+        fetchedQuote.statusQuote === 'pending' &&
         fetchedQuote._id"
       [expanded]="step === 1" (opened)="setStep(1)" hideToggle="true">
       <mat-expansion-panel-header>
@@ -47,7 +47,7 @@
 
 
     <mat-expansion-panel *ngIf="
-        fetchedQuote.statusQuote !=='rejected' &&
+        fetchedQuote.statusQuote === 'pending' &&
         fetchedQuote._id"
       [expanded]="step === 2" (opened)="setStep(2)" hideToggle="true">
       <mat-expansion-panel-header>
@@ -95,8 +95,10 @@
           <mat-icon>date_range</mat-icon>
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <app-drawing-signature #DrawingSignature [drawing]="fetchedQuote.drawingSignature" (cleared)="clearedDrawing()" (updated)="drawingSignatureUpdated($event)">
+      <app-drawing-signature *ngIf="fetchedQuote.statusQuote === 'pending'" #DrawingSignature [drawing]="fetchedQuote.drawingSignature" (cleared)="clearedDrawing()" (updated)="drawingSignatureUpdated($event)">
       </app-drawing-signature>
+
+      <img *ngIf="fetchedQuote.statusQuote !== 'pending'" [src]="fetchedQuote.drawingSignature.base64">
       <mat-action-row>
         <button mat-mini-fab color="warn" (click)="DrawingSignature.clearDrawing()">
           <mat-icon aria-label="clear">clear</mat-icon>

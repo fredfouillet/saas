@@ -3,10 +3,10 @@
   <div *ngFor="let bucketProduct of devisDetail.bucketProducts; let j=index">
     <div class="row">
       <div class="col-2">
-        <button (click)="removeRow(i, j)" *ngIf="!fetchedQuote.drawingSignature.isSigned" mat-mini-fab color="warn">
+        <button (click)="removeRow(i, j)" *ngIf="fetchedQuote.statusQuote === 'pending'" mat-mini-fab color="warn">
           <mat-icon aria-label="Delete Product">clear</mat-icon>
         </button>
-        <!-- <button *ngIf="!fetchedQuote.drawingSignature.isSigned" type="button" class="btn btn-danger btn-sm" (click)="removeRow(i, j)"><i class="fa fa-times"></i></button> -->
+        <!-- <button *ngIf="fetchedQuote.statusQuote === 'pending'" type="button" class="btn btn-danger btn-sm" (click)="removeRow(i, j)"><i class="fa fa-times"></i></button> -->
       </div>
       <div class="col-6">
         <div *ngIf="bucketProduct.typeRow=='text'">

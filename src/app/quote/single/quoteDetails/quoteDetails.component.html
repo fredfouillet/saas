@@ -3,8 +3,8 @@
 </div>
 <div *ngFor="let devisDetail of fetchedQuote.devisDetails; let i=index">
   <div *ngIf="false" class="row">
-    <input [readonly]="fetchedQuote.drawingSignature.isSigned" class=" col-2" type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedQuote.devisDetails[i].nameBucketProducts" placeholder="Category">
-    <button *ngIf="!fetchedQuote.drawingSignature.isSigned" type="button" class="btn btn-danger btn-sm" (click)="removeBucketProducts(i)"><i class="fa fa-times"></i></button>
+    <input [readonly]="fetchedQuote.statusQuote !== 'pending'" class=" col-2" type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedQuote.devisDetails[i].nameBucketProducts" placeholder="Category">
+    <button *ngIf="fetchedQuote.statusQuote === 'pending'" type="button" class="btn btn-danger btn-sm" (click)="removeBucketProducts(i)"><i class="fa fa-times"></i></button>
   </div>
 </div>
 <div class="showMobile">

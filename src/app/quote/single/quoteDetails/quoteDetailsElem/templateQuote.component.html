@@ -1,5 +1,5 @@
 
-  <ul *ngIf="!fetchedQuote.drawingSignature.isSigned" class="nav nav-tabs justify-content-end">
+  <ul *ngIf="fetchedQuote.statusQuote === 'pending'" class="nav nav-tabs justify-content-end">
     <li class="nav-item dropdown">
       <a class="nav-link active dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">{{'Template' | translate}}</a>
       <div class="dropdown-menu">
@@ -7,7 +7,7 @@
         </app-autocomplete>
         {{'Save Template' | translate}}
         <div>
-          <input [readonly]="fetchedQuote.drawingSignature.isSigned" type="text" class="form-control" placeholder="nameTemplate" #nameTemplate>
+          <input [readonly]="fetchedQuote.statusQuote !== 'pending'" type="text" class="form-control" placeholder="nameTemplate" #nameTemplate>
         </div>
         <div>
           <button type="button" class="btn btn-success" (click)="saveTemplateQuote(nameTemplate.value);nameTemplate.value=''"><i class="fa fa-floppy-o"></i></button>

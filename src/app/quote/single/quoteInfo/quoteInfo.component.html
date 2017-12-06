@@ -4,10 +4,10 @@
       <div class="col-sm-12 col-md-4">
         <mat-form-field>
           <!-- <input matInput type="text" name="Search" placeholder="{{ title | translate}}" [(ngModel)]="autocompleteSearch" (ngModelChange)="searchData()"> -->
-          <input matInput [readonly]="fetchedQuote.drawingSignature.isSigned" type="number" formControlName="quoteNumber" [(ngModel)]="fetchedQuote.quoteNumber" placeholder="{{'Number Id' | translate}}">
+          <input matInput [readonly]="fetchedQuote.statusQuote !== 'pending'" type="number" formControlName="quoteNumber" [(ngModel)]="fetchedQuote.quoteNumber" placeholder="{{'Number Id' | translate}}">
         </mat-form-field>
         <!-- <div class="form-group">
-          <input [readonly]="fetchedQuote.drawingSignature.isSigned" class="form-control" name="EstimateCode" type="number" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedQuote.quoteNumber"/>
+          <input [readonly]="fetchedQuote.statusQuote !== 'pending'" class="form-control" name="EstimateCode" type="number" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedQuote.quoteNumber"/>
         </div> -->
         <div class="form-group">
 
@@ -38,24 +38,24 @@
 
 
           <mat-form-field>
-            <input matInput [matDatepicker]="picker" placeholder="{{'Issue date' | translate}}" [readonly]="fetchedQuote.drawingSignature.isSigned" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedQuote.detail.dateQuote.issueDate">
+            <input matInput [matDatepicker]="picker" placeholder="{{'Issue date' | translate}}" [readonly]="fetchedQuote.statusQuote !== 'pending'" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedQuote.detail.dateQuote.issueDate">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>
 
 
           <mat-form-field>
-            <input matInput [matDatepicker]="picker2" placeholder="{{'Expiry date' | translate}}" [readonly]="fetchedQuote.drawingSignature.isSigned" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedQuote.detail.dateQuote.expiryDate">
+            <input matInput [matDatepicker]="picker2" placeholder="{{'Expiry date' | translate}}" [readonly]="fetchedQuote.statusQuote !== 'pending'" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedQuote.detail.dateQuote.expiryDate">
             <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
             <mat-datepicker #picker2></mat-datepicker>
           </mat-form-field>
 <!--
         <div class="form-group">
           {{'Quote validity date' | translate}}
-          <input [readonly]="fetchedQuote.drawingSignature.isSigned" type="date" class="form-control" [ngModelOptions]="{standalone: true}" class="form-control" [(ngModel)]="fetchedQuote.detail.dateQuote.expiryDateString">
+          <input [readonly]="fetchedQuote.statusQuote !== 'pending'" type="date" class="form-control" [ngModelOptions]="{standalone: true}" class="form-control" [(ngModel)]="fetchedQuote.detail.dateQuote.expiryDateString">
         </div> -->
         <!-- <mat-form-field *ngIf="fetchedQuote.typeQuote === 'quote'">
-          <mat-select [disabled]="fetchedQuote.drawingSignature.isSigned" placeholder="{{'Status'| translate}}" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedQuote.statusQuote">
+          <mat-select [disabled]="fetchedQuote.statusQuote !== 'pending'" placeholder="{{'Status'| translate}}" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedQuote.statusQuote">
             <mat-option *ngFor="let n of statusQuotes" [value]="n.indexStatus">{{n.label | translate}}</mat-option>
           </mat-select>
         </mat-form-field> -->
@@ -64,7 +64,7 @@
 
 
         <!-- <mat-form-field *ngIf="fetchedQuote.typeQuote === 'invoice'">
-          <mat-select [disabled]="fetchedQuote.drawingSignature.isSigned" placeholder="{{'Status'| translate}}" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedQuote.statusQuote">
+          <mat-select [disabled]="fetchedQuote.statusQuote !== 'pending'" placeholder="{{'Status'| translate}}" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedQuote.statusQuote">
             <mat-option *ngFor="let n of statusQuotesInvoice" [value]="n.indexStatus">{{n.label | translate}}</mat-option>
           </mat-select>
         </mat-form-field> -->
@@ -91,7 +91,7 @@
 
       <div class="col-12">
           <mat-form-field>
-            <input matInput [readonly]="fetchedQuote.drawingSignature.isSigned" type="text" formControlName="name" [(ngModel)]="fetchedQuote.name" placeholder="{{'Title' | translate}}">
+            <input matInput [readonly]="fetchedQuote.statusQuote !== 'pending'" type="text" formControlName="name" [(ngModel)]="fetchedQuote.name" placeholder="{{'Title' | translate}}">
           </mat-form-field>
       </div>
       <div class="col-12">

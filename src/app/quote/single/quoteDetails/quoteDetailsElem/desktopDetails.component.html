@@ -7,10 +7,10 @@
             <div class="col-1">
               <div class="row nopad">
                 <div class="col-6 nopad">
-                  <button *ngIf="!fetchedQuote.drawingSignature.isSigned" type="button" class="btn btn-sm handle"><i class="fa fa-arrows handle"></i></button>
+                  <button *ngIf="fetchedQuote.statusQuote === 'pending'" type="button" class="btn btn-sm handle"><i class="fa fa-arrows handle"></i></button>
                 </div>
                 <div class="col-6 nopad">
-                  <button *ngIf="!fetchedQuote.drawingSignature.isSigned" type="button" class="btn btn-danger btn-sm" (click)="removeRow(i, j)"><i class="fa fa-times"></i></button>
+                  <button *ngIf="fetchedQuote.statusQuote === 'pending'" type="button" class="btn btn-danger btn-sm" (click)="removeRow(i, j)"><i class="fa fa-times"></i></button>
                 </div>
               </div>
             </div>
@@ -37,7 +37,7 @@
           <div class="row">
             <div class="col-5">
               <mat-form-field>
-                <input matInput type="number" (ngModelChange)="calculateQuote()" [readonly]="fetchedQuote.drawingSignature.isSigned" placeholder="{{'Quantity' | translate}}" [ngModelOptions]="{standalone: true}"
+                <input matInput type="number" (ngModelChange)="calculateQuote()" [readonly]="fetchedQuote.statusQuote !== 'pending'" placeholder="{{'Quantity' | translate}}" [ngModelOptions]="{standalone: true}"
                   [(ngModel)]="fetchedQuote.devisDetails[i].bucketProducts[j].quantity"
                   placeholder="{{'Quantity' | translate}}">
                   <span matSuffix>{{fetchedQuote.devisDetails[i].bucketProducts[j].productInit[0]?.details.unit}}</span>
@@ -45,7 +45,7 @@
             </div>
             <div class="col-4">
               <mat-form-field>
-                <input matInput type="number" (ngModelChange)="calculateQuote()" [readonly]="fetchedQuote.drawingSignature.isSigned" placeholder="{{'Price Without Taxes' | translate}}" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedQuote.devisDetails[i].bucketProducts[j].priceWithoutTaxes"
+                <input matInput type="number" (ngModelChange)="calculateQuote()" [readonly]="fetchedQuote.statusQuote !== 'pending'" placeholder="{{'Price Without Taxes' | translate}}" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedQuote.devisDetails[i].bucketProducts[j].priceWithoutTaxes"
                   placeholder="{{'Quantity' | translate}}">
               </mat-form-field>
             </div>
@@ -62,7 +62,7 @@
 </div>
 
 
-<div *ngIf="!fetchedQuote.drawingSignature.isSigned" class="col-3">
+<div *ngIf="fetchedQuote.statusQuote === 'pending'" class="col-3">
   <button *ngIf="false" type="button" class="btn btn-primary btn-sm" (click)="addRow('category')">+ {{'Category' | translate}}</button>
   <button type="button" class="btn btn-primary btn-sm" (click)="addRow('text')">+ {{'Text' | translate}}</button>
   <button type="button" class="btn btn-primary btn-sm" (click)="addRow('product')">+ {{'Product' | translate}}</button>
