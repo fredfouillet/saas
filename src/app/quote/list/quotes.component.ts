@@ -20,7 +20,7 @@ export class QuotesComponent implements OnInit {
   @Input() userId = '';
   @Input() projectId = '';
   @Input() showSearch = true;
-  @Input() showBackButton = true;
+  // @Input() showBackButton = true;
   @Input() idProject: string = '';
   @Input() idClient: string = '';
 
