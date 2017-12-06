@@ -5,6 +5,6 @@ export class CustomOption extends ToastOptions {
   animate = 'fade';
   newestOnTop = false;
   maxShown = 1;
-  toastLife = 50000;
+  toastLife = 700;
   showCloseButton = false;
 }
