@@ -60,8 +60,8 @@ router.post('/', function (req, res, next) {
       // see https://nodemailer.com/usage/
       var mailer = nodemailer.createTransport({
         // service: "Gmail",
-        host: 'auth.smtp.1and1.fr',
-        port: 465,
+        host: config.hostName,
+        port: config.port,
         auth: {
           user: config.userGmail,
           pass: config.passGmail
