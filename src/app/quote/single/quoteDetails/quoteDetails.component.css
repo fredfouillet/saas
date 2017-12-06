@@ -14,6 +14,8 @@
    margin-bottom: 3px;
 }*/
 
+
+
 .btn-outline-primary {
     margin-top: 0px!important;
 }
@@ -39,6 +41,10 @@
   align-items: center;
 }
 
+
+.templateQuoteContent {
+  padding: 5px;
+}
 
 /*------------------------- Alan ---------------------*/
 
