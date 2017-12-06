@@ -31,7 +31,7 @@ export class DetailsUserComponent implements OnInit {
   @Input() search: Search = new Search()
 
   // fetchedCompanies: Companie[] = []
-  autocompleteCompanie: string = '';
+  // autocompleteCompanie: string = '';
 
   fetchedTypeUsers = []
   autocompleteTypeUser: string = '';

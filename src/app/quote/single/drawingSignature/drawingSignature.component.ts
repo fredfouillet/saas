@@ -55,25 +55,26 @@ export class DrawingSignatureComponent implements OnInit {
 
 
   sendBatchUpdate(result) {
-
       this.updated.emit(this.canvasWhiteboard.generateCanvasDataUrl())
   }
-  ngOnInit() {}
-
-  getPicture() {
-
-    this.drawing.backgroundForms.forEach(form => {
-      let this2=this;
-      this.toDataURL('./uploads/forms/' + form.owner + '/' + form.imagePath, function(dataUrl) {
-        this2.drawing.base64 = dataUrl
-        // console.log(dataUrl)
-      })
-    })
+  ngOnInit() {
+    this.changeColor('#757575')
   }
-  ngOnChanges() {
 
-    // this.imgSignatureBase64Temp.push(this.base64)
-  }
+  // getPicture() {
+  //
+  //   this.drawing.backgroundForms.forEach(form => {
+  //     let this2=this;
+  //     this.toDataURL('./uploads/forms/' + form.owner + '/' + form.imagePath, function(dataUrl) {
+  //       this2.drawing.base64 = dataUrl
+  //       // console.log(dataUrl)
+  //     })
+  //   })
+  // }
+  // ngOnChanges() {
+  //
+  //   // this.imgSignatureBase64Temp.push(this.base64)
+  // }
 
   ngAfterViewInit() {
     setTimeout(_=> {

@@ -66,7 +66,7 @@ export class Profile {
   typeClient: string = '';
   statusHouse: string = '';
   sourceContact: string = '';
-  detailHouse: DetailHouse = new DetailHouse();
+  // detailHouse: DetailHouse = new DetailHouse();
   address: Address[] = [];
   language: string = 'fr';
 }
