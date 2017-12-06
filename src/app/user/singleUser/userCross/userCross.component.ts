@@ -40,7 +40,7 @@ export class UserCrossComponent implements OnInit {
   addressTypes = AddressTypes;
   // titleArray = ['Mr.', 'Mrs.']
   // languageArray = ['fr', 'en']
-  // typeClientArray = ['Societe', 'Administration']
+  typeClientArray = ['Societe', 'Administration']
   // statusHouseArray = ['Propriétaire', 'Locataire']
   // typeHouseArray = ['Pavillon', 'Immeuble']
   // accessTypeArray = ['escalier', 'ascenseur']

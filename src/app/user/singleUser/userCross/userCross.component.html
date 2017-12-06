@@ -128,7 +128,7 @@
       <h5>{{'Divers' | translate}}</h5>
       <div *ngIf="fetchedUserCross.isExternalUser">
 
-<!-- 
+<!--
         <div>
           <mat-form-field>
             <input matInput type="text" formControlName="accesCode" [(ngModel)]="fetchedUserCross.profile.detailHouse.accesCode" placeholder="{{'Champ libre' | translate}}">
@@ -164,5 +164,11 @@
 
     </div>
   </div>
-  <button type="button" class="valid" (click)="save()">{{'Save' | translate}}</button>
+
+  <mat-action-row>
+    <button mat-mini-fab color="primary" (click)="save()">
+      <mat-icon aria-label="Next">forward</mat-icon>
+    </button>
+  </mat-action-row>
+
 </form>
