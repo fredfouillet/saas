@@ -9,6 +9,7 @@ import { CompaniesComponent} from './companies/companies.component';
 import { CompanieComponent} from './single/companie.component';
 
 import { DetailsCompanieComponent} from './single/detailsCompanie/detailsCompanie.component';
+import { QuoteSettingsComponent} from './single/quoteSettings/quoteSettings.component';
 import { DetailsCalendarComponent} from './single/detailsCalendar/detailsCalendar.component';
 import { CategProductComponent} from './single/categProduct/categProduct.component';
 // import { EditAddUserToCompanieComponent} from './addUser/editAddUserToCompanie.component';
@@ -55,6 +56,7 @@ import {MatButtonToggleModule} from '@angular/material';
     CompaniesComponent,
     CompanieComponent,
     DetailsCompanieComponent,
+    QuoteSettingsComponent,
     DetailsCalendarComponent,
     // EditAddUserToCompanieComponent,
     // CompanieDetailComponent,

@@ -51,7 +51,10 @@ var companie = new Schema({
         timeEndbusinessHours: {type: String, default: ['17:00:00']},
       }
     },
-    faxNumber: {type: String, default: ['']},
+    quoteSettings: {
+      legalNotice: {type: String, default: ['']},
+    },
+    // faxNumber: {type: String, default: ['']},
     phoneNumber: {type: String, default: ['']},
     nameCompanie: {type: String, default: ['']},
     // typeCompanie: {type: String, default: ['salon']},

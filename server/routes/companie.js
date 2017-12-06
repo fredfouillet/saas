@@ -102,7 +102,7 @@ router.put('/:id', function (req, res, next) {
     item.categJson = req.body.categJson
     item.categories = req.body.categories
     item.banck = req.body.banck
-    item.contactsPerson = req.body.contactsPerson
+    item.quoteSettings = req.body.quoteSettings
 
 
 

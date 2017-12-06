@@ -17,6 +17,7 @@ export class Companie {
   users: User[] = [];
   forms: Form[] = [];
   // categJson: CategJson = new CategJson();
+  quoteSettings: QuoteSettings = new QuoteSettings
   categories = new Categorie()
   typeUsers: TypeUsers[] = []
   planDetail = new PlanDetail()
@@ -25,7 +26,9 @@ export class Companie {
   contactsPerson: ContactsPerson[] = []
 }
 
-
+export class QuoteSettings {
+  legalNotice: string = '';
+}
 export class ContactsPerson {
   contactType: string = '';
   contactName: string = '';

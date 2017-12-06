@@ -87,8 +87,23 @@
           <mat-icon aria-label="Next">forward</mat-icon>
         </button>
       </mat-action-row>
+    </mat-expansion-panel>
+    <mat-expansion-panel *ngIf="authService.isCurrentUserIsInSubPeriod()"  [expanded]="step === 5" (opened)="setStep(5)">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{'Quote Settings' | translate}}
+        </mat-panel-title>
+        <mat-panel-description>
+          <mat-icon>account_circle</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <app-quote-settings [fetchedCompanie]="fetchedCompanie"></app-quote-settings>
 
-
+      <mat-action-row>
+        <button mat-mini-fab color="primary" (click)="saveAndNextStep()">
+          <mat-icon aria-label="Next">forward</mat-icon>
+        </button>
+      </mat-action-row>
     </mat-expansion-panel>
   </mat-accordion>
 
