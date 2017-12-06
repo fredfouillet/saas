@@ -15,7 +15,7 @@
 
         </mat-panel-title>
         <mat-panel-description>
-          {{'Details Quote' | translate}} {{fetchedQuote.name}}
+          {{fetchedQuote.name}}
         </mat-panel-description>
       </mat-expansion-panel-header>
       <app-quoteInfo [search]="search" [fetchedQuote]="fetchedQuote" (quoteStatusChangedEmit)="save()"></app-quoteInfo>
@@ -33,10 +33,11 @@
       [expanded]="step === 1" (opened)="setStep(1)">
       <mat-expansion-panel-header>
         <mat-panel-title>
-          {{'Documents' | translate}}
+          <mat-icon>camera</mat-icon>
+
         </mat-panel-title>
         <mat-panel-description>
-          <mat-icon>camera</mat-icon>
+          {{'Documents' | translate}}
         </mat-panel-description>
       </mat-expansion-panel-header>
       <app-picture [showPagination]=false [labelButtonAddPicture]="'Add'" [forms]="fetchedQuote.forms">
@@ -53,10 +54,10 @@
       [expanded]="step === 2" (opened)="setStep(2)">
       <mat-expansion-panel-header>
         <mat-panel-title>
-          {{'Edit Quote' | translate}}
+          <mat-icon>map</mat-icon>
         </mat-panel-title>
         <mat-panel-description>
-          <mat-icon>map</mat-icon>
+          {{'Edit Quote' | translate}}
         </mat-panel-description>
       </mat-expansion-panel-header>
       {{fetchedQuote.priceQuote.priceGlobalWithTaxesWithDiscountWithSurfaceWithPainfulness | round}}$
@@ -71,10 +72,10 @@
     <mat-expansion-panel *ngIf="fetchedQuote._id" [expanded]="step === 3" (opened)="setStep(3)">
       <mat-expansion-panel-header>
         <mat-panel-title>
-          {{'Quote' | translate}}
+          <mat-icon>map</mat-icon>
         </mat-panel-title>
         <mat-panel-description>
-          <mat-icon>map</mat-icon>
+          {{'Quote' | translate}}
         </mat-panel-description>
       </mat-expansion-panel-header>
       <app-quoteDetails *ngIf="step === 3" [(fetchedQuote)]="fetchedQuote" (calculateQuoteEmit)="calculateQuote()" (quoteDetailsUpdated)="quoteDetailsUpdated($event)"></app-quoteDetails>
@@ -90,10 +91,10 @@
       fetchedQuote._id" [expanded]="step === 4" (opened)="setStep(4)">
       <mat-expansion-panel-header>
         <mat-panel-title>
-          {{'Signature' | translate}}
+          <mat-icon>date_range</mat-icon>
         </mat-panel-title>
         <mat-panel-description>
-          <mat-icon>date_range</mat-icon>
+          {{'Signature' | translate}}
         </mat-panel-description>
       </mat-expansion-panel-header>
       <app-drawing-signature *ngIf="fetchedQuote.statusQuote === 'pending'" #DrawingSignature [drawing]="fetchedQuote.drawingSignature" (cleared)="clearedDrawing()" (updated)="drawingSignatureUpdated($event)">
@@ -120,10 +121,10 @@
           fetchedQuote._id" [expanded]="step === 5" (opened)="setStep(5)">
       <mat-expansion-panel-header>
         <mat-panel-title>
-          {{'Paiements' | translate}}
+          <mat-icon>date_range</mat-icon>
         </mat-panel-title>
         <mat-panel-description>
-          <mat-icon>date_range</mat-icon>
+          {{'Paiements' | translate}}
         </mat-panel-description>
       </mat-expansion-panel-header>
       <app-paiementQuotes (getPaiementQuotesCross)="getPaiementQuotes($event)" [search]="{userId: search.userId, isExpense:search.isExpense, quoteId:fetchedQuote._id}">
@@ -146,10 +147,10 @@
     [expanded]="step === 6" (opened)="setStep(6)">
       <mat-expansion-panel-header>
         <mat-panel-title>
-          {{'Invoices' | translate}}
+          <mat-icon>date_range</mat-icon>
         </mat-panel-title>
         <mat-panel-description>
-          <mat-icon>date_range</mat-icon>
+          {{'Invoices' | translate}}
         </mat-panel-description>
       </mat-expansion-panel-header>
       <app-invoice-action [fetchedQuote]="fetchedQuote"></app-invoice-action>
@@ -160,10 +161,10 @@
     <mat-expansion-panel *ngIf="authService.showObjHTML('quote', 'comment') && fetchedQuote._id" [expanded]="step === 7" (opened)="setStep(7)">
       <mat-expansion-panel-header>
         <mat-panel-title>
-          {{'Comments' | translate}}
+          <mat-icon>date_range</mat-icon>
         </mat-panel-title>
         <mat-panel-description>
-          <mat-icon>date_range</mat-icon>
+          {{'Comments' | translate}}
         </mat-panel-description>
       </mat-expansion-panel-header>
     </mat-expansion-panel>
