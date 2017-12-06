@@ -144,7 +144,9 @@ export class EditPaiementQuoteComponent implements OnInit {
     }
 
     autocompleteAfterNgChanges(result) {
-      this.fetchedPaiementQuote.amount = result.priceQuote.priceQuoteWithoutTaxes
+      if(!this.fetchedPaiementQuote._id) {
+        this.fetchedPaiementQuote.amount = result.priceQuote.priceQuoteWithoutTaxes
+      }
       // console.log(this.fetchedPaiementQuote.quotes)
     }
     // downloadPDF() {

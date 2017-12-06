@@ -29,10 +29,10 @@
               <app-sort (orderBy)="orderBy($event)" [search]="search" [filedToOrder]="'type'"></app-sort>
             </th>
             <th class="centre tdunder">{{'Client'| translate}}</th>
-            <th class="centre tdunder">
+            <!-- <th class="centre tdunder">
               <app-sort (orderBy)="orderBy($event)" [search]="search" [filedToOrder]="'isPaid'"></app-sort>
               {{'Is Paid'| translate}}
-            </th>
+            </th> -->
             <th class="centre tdunder hideMobile">
               {{'Date' | translate}}
               <app-sort (orderBy)="orderBy($event)" [search]="search" [filedToOrder]="'datePaiement'"></app-sort>
@@ -54,12 +54,11 @@
                 </div>
               </div>
             </td>
-            <td class="centre tdunder">
+            <!-- <td class="centre tdunder">
               <section class="">
                 <mat-checkbox class="" [(ngModel)]="paiementQuote.isPaid"></mat-checkbox>
               </section>
-
-            </td>
+            </td> -->
             <td class="centre tdunder hideMobile">{{paiementQuote.datePaiement | date:'yyyy-MM-dd' }}</td>
             <td class="centre tdunder">{{paiementQuote.amount}}</td>
           </tr>

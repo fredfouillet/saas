@@ -75,7 +75,7 @@
         </mat-panel-description>
       </mat-expansion-panel-header>
 
-      <mat-checkbox class="" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedPaiementQuote.isPaid">{{'Is Paid' | translate}}</mat-checkbox>
+      <!-- <mat-checkbox class="" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedPaiementQuote.isPaid">{{'Is Paid' | translate}}</mat-checkbox> -->
       <div *ngIf="fetchedPaiementQuote.isPaid">
         <!-- <select class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedPaiementQuote.type">
               <option *ngFor="let n of paiementsTypes" [value]="n.value">{{n.label}}</option>
