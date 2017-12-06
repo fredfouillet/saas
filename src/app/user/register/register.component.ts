@@ -59,13 +59,31 @@ export class RegisterComponent implements OnInit, AfterViewInit {
     this._authService.signup(user)
       .subscribe(
         data => {
-
+          this.loginInApp(user.email, user.password)
           // after successfull registration, the user is redirected to the login page
-          this._router.navigate(['/user/login']);
+          // this._router.navigate(['/user/login']);
           // toastr message pops up to inform user that the registration was successfull
-          this.toastr.success('Please Login', 'Registration Successfull');
+          // this.toastr.success('Please Login', 'Registration Successfull');
         }
       );
+  }
+
+  loginInApp(login: string, password: string) {
+    const userAuth = {
+      email: login,
+      password: password
+    }
+    this._authService.signin(userAuth).subscribe(
+      data => {
+        this.toastr.success('Great!');
+        localStorage.setItem('id_token', data.token);
+        localStorage.setItem('token', data.token);
+        this._router.navigate(['/']);
+        // this.loginInAppDone.emit(data.token)
+        // location.reload();
+      },
+      error => console.log(error)
+    );
   }
 
 // input validator to check if the email entered by the user is actually text in an email form
