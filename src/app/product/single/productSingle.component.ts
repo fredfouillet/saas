@@ -11,7 +11,7 @@ import { Companie } from '../../companie/companie.model';
 // import { EditOptionsComponentDialog } from '../../form/modalLibrary/modalLibrary.component';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
-// import { DeleteDialog } from '../../deleteDialog/deleteDialog.component'
+import { DeleteDialogComponent } from '../../nav/deleteDialog/deleteDialog.component'
 import { UserService } from '../../user/user.service'
 import { User } from '../../user/user.model'
 import { ModelVATs } from '../../quote/quote.model'
@@ -38,6 +38,7 @@ export class ProductSingleComponent implements OnInit {
   // categ2: string = '';
   // categ3: string = '';
   itemSteps = ItemSteps;
+  step = 0;
 
   VATs = ModelVATs
 
@@ -105,6 +106,24 @@ export class ProductSingleComponent implements OnInit {
 
   }
 
+  setStep(index: number) {
+    this.step = index;
+  }
+  nextStep() {
+    this.step++;
+  }
+
+  saveAndNextStep(){
+    this.save()
+    this.nextStep()
+  }
+  saveAndNextStepAndClose() {
+    this.nextStep()
+    this.save().then(res => {
+      console.log(res)
+      this.saved.emit(res)
+    })
+  }
 
   getItemSteps() {
     let currentUser = this.authService.getCurrentUser()
@@ -162,18 +181,31 @@ export class ProductSingleComponent implements OnInit {
       );
   }
 
-  openDialogDelete(){
-    // let this2 = this
-    // let dialogRefDelete = this.dialog.open(DeleteDialog)
-    // dialogRefDelete.afterClosed().subscribe(result => {
-    //   if(result) {
-    //     this.onDelete(this.fetchedProduct._id).then(function(){
-    //       this2.router.navigate(['user']);
-    //     })
-    //
-    //   }
-    // })
+
+  openDialogDelete() {
+    const this2 = this
+    const dialogRefDelete = this.dialog.open(DeleteDialogComponent)
+    dialogRefDelete.afterClosed().subscribe(result => {
+      if (result) {
+        this.onDelete(this.fetchedProduct._id).then(function() {
+          this2.router.navigate(['product']);
+        })
+      }
+    })
   }
+
+  // openDialogDelete(){
+  //   const this2 = this
+  //   let dialogRefDelete = this.dialog.open(DeleteDialog)
+  //   dialogRefDelete.afterClosed().subscribe(result => {
+  //     if(result) {
+  //       this.onDelete(this.fetchedProduct._id).then(function(){
+  //         this2.router.navigate(['user']);
+  //       })
+  //
+  //     }
+  //   })
+  // }
 
 
   // goBack() {
@@ -189,56 +221,63 @@ export class ProductSingleComponent implements OnInit {
   //   // })
   // }
 
-  getPicture(result){
-
-  }
+  // getPicture(result){
+  //
+  // }
   save() {
-    console.log('save')
+
     // this.fetchedProduct.categorie.categ1 = [{name: this.categ1}]
     // this.fetchedProduct.categorie.categ2 = [{name: this.categ2}]
     // this.fetchedProduct.categorie.categ3 = [{name: this.categ3}]
+    const this2 = this
+    return new Promise(function(resolve, reject) {
+      let categName0 = ''
+      let categName1 = ''
+      let categName2 = ''
 
-    let categName0 = ''
-    let categName1 = ''
-    let categName2 = ''
-
-    if(this.selectedIndex0>=0) {categName0 = this.itemSteps[this.selectedIndex0].categ}
-    if(this.selectedIndex1>=0) {categName1 = this.itemSteps[this.selectedIndex0].subCateg[this.selectedIndex1].categ}
-    if(this.selectedIndex2>=0) {categName2 = this.itemSteps[this.selectedIndex0].subCateg[this.selectedIndex1].subCateg[this.selectedIndex2].categ}
-
-
-    this.fetchedProduct.categorie.categ0 = [{name: categName0}]
-    this.fetchedProduct.categorie.categ1 = [{name: categName1}]
-    this.fetchedProduct.categorie.categ2 = [{name: categName2}]
+      if(this2.selectedIndex0>=0) {categName0 = this2.itemSteps[this2.selectedIndex0].categ}
+      if(this2.selectedIndex1>=0) {categName1 = this2.itemSteps[this2.selectedIndex0].subCateg[this2.selectedIndex1].categ}
+      if(this2.selectedIndex2>=0) {categName2 = this2.itemSteps[this2.selectedIndex0].subCateg[this2.selectedIndex1].subCateg[this2.selectedIndex2].categ}
 
 
+      this2.fetchedProduct.categorie.categ0 = [{name: categName0}]
+      this2.fetchedProduct.categorie.categ1 = [{name: categName1}]
+      this2.fetchedProduct.categorie.categ2 = [{name: categName2}]
 
-    if(this.fetchedProduct._id) {
-      this.productService.updateProduct(this.fetchedProduct)
-        .subscribe(
-          res => {
-            this.toastr.success('Great!', res.message)
-            // this.router.navigate(['product']);
-            this.getProduct(res.obj._id)
-            this.saved.emit(res.obj)
-          },
-          error => {console.log(error)}
-        );
-    } else {
-      this.productService.saveProduct(this.fetchedProduct)
-        .subscribe(
-          res => {
-            this.toastr.success('Great!', res.message)
-            this.getProduct(res.obj._id)
-            // this.router.navigate(['product']);
-            this.saved.emit(res.obj)
-          },
-          error => {
-            this.toastr.error('Error!', error.message)
-            console.log(error)
-          }
-        );
-    }
+
+
+      if(this2.fetchedProduct._id) {
+        this2.productService.updateProduct(this2.fetchedProduct)
+          .subscribe(
+            res => {
+              resolve(res)
+              this2.toastr.success('Great!', res.message)
+              // this2.router.navigate(['product']);
+              this2.getProduct(res.obj._id)
+              // this2.saved.emit(res.obj)
+            },
+            error => {
+              reject(error)
+              console.log(error)}
+          );
+      } else {
+        this2.productService.saveProduct(this2.fetchedProduct)
+          .subscribe(
+            res => {
+              resolve(res)
+              this2.toastr.success('Great!', res.message)
+              this2.getProduct(res.obj._id)
+              // this2.router.navigate(['product']);
+
+            },
+            error => {
+              reject(error)
+              this2.toastr.error('Error!', error.message)
+              console.log(error)
+            }
+          );
+      }
+    })
   }
 
 
@@ -276,24 +315,6 @@ export class ProductSingleComponent implements OnInit {
             if(categ2.categ === categName2)
               this.selectedIndex2 = index
           })
-
-
-
-          // this.categ1 = this.fetchedProduct.categorie.categ1[0].name
-          // this.categ2 = this.fetchedProduct.categorie.categ2[0].name
-          // this.categ3 = this.fetchedProduct.categorie.categ3[0].name
-          //
-          // let categ1Index:number = 0
-          // let categ2Index:number = 0
-          // this.itemSteps.forEach((categ1,index) => {
-          //   if(categ1.categ === this.categ1)
-          //     categ1Index = index
-          // })
-          // this.itemSteps[categ1Index].subCateg.forEach((categ2,index) => {
-          //   if(categ2.categ === this.categ2)
-          //     categ2Index = index
-          // })
-          // this.changeCascade(categ1Index, categ2Index)
         },
         error => {
           console.log(error);

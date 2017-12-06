@@ -87,6 +87,7 @@ export class ProductsComponent implements OnInit {
     this.getProducts(page, this.search);
   }
   saved(result) {
+    console.log(result)
     if(result)
       this.getProducts(1, this.search)
   }

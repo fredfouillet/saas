@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { MatDialogRef} from '@angular/material';
-import { ProductSingleComponent }  from '../productSingle.component';
+import { ProductSingleComponent } from '../productSingle.component';
 
 
 

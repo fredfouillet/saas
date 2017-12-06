@@ -237,7 +237,7 @@ export class EditPaiementQuoteComponent implements OnInit {
     dialogRefDelete.afterClosed().subscribe(result => {
       if (result) {
         this.onDelete(this.fetchedPaiementQuote._id).then(function(){
-          this2.router.navigate(['paiementQuote']);
+          this2.router.navigate(['paiementQuote/list']);
         })
       }
     })
@@ -267,59 +267,59 @@ export class EditPaiementQuoteComponent implements OnInit {
   // }
 
 
+    //
+    // getStripeCust() {
+    //   // this.paiementService.getStripeCust(this.fetchedPaiementQuote._id)
+    //   //   .subscribe(
+    //   //     res => {
+    //   //       // console.log(res)
+    //   //
+    //   //       this.stripeCust = res.customer
+    //   //
+    //   //
+    //   //     },
+    //   //     error => {
+    //   //       this.stripeCust = new StripeCustomer()
+    //   //       console.log(error)
+    //   //     }
+    //   //   )
+    // }
 
-    getStripeCust() {
-      // this.paiementService.getStripeCust(this.fetchedPaiementQuote._id)
-      //   .subscribe(
-      //     res => {
-      //       // console.log(res)
-      //
-      //       this.stripeCust = res.customer
-      //
-      //
-      //     },
-      //     error => {
-      //       this.stripeCust = new StripeCustomer()
-      //       console.log(error)
-      //     }
-      //   )
-    }
+    // payInStripe() {
+    //     // // this.save().then(() => {
+    //     //
+    //     //   let dataPayInStripe = {
+    //     //     amount: this.fetchedPaiementQuote.amount
+    //     //   }
+    //     //   console.log(dataPayInStripe)
+    //     //   this.paiementService.payInStripe(this.fetchedPaiementQuote._id, dataPayInStripe)
+    //     //     .subscribe(
+    //     //       res => {
+    //     //         // this.userService.cleanCurrentUserInSession()
+    //     //         this.toastr.success('Great!')
+    //     //         // this.getStripeCust()
+    //     //         this.getPaiementQuote(this.fetchedPaiementQuote._id)
+    //     //         // console.log(res);
+    //     //       },
+    //     //       error => { console.log(error); }
+    //     //     );
+    //     // // })
+    //     // // .catch(err => {
+    //     // //   console.log(err)
+    //     // // })
+    // }
 
-    payInStripe() {
-        // // this.save().then(() => {
-        //
-        //   let dataPayInStripe = {
-        //     amount: this.fetchedPaiementQuote.amount
-        //   }
-        //   console.log(dataPayInStripe)
-        //   this.paiementService.payInStripe(this.fetchedPaiementQuote._id, dataPayInStripe)
-        //     .subscribe(
-        //       res => {
-        //         // this.userService.cleanCurrentUserInSession()
-        //         this.toastr.success('Great!')
-        //         // this.getStripeCust()
-        //         this.getPaiementQuote(this.fetchedPaiementQuote._id)
-        //         // console.log(res);
-        //       },
-        //       error => { console.log(error); }
-        //     );
-        // // })
-        // // .catch(err => {
-        // //   console.log(err)
-        // // })
-    }
-
-    deleteCustInStripe() {
-      // this.paiementService.deleteCustInStripe(this.fetchedPaiementQuote._id)
-      //   .subscribe(
-      //     res => {
-      //       // this.userService.cleanCurrentUserInSession()
-      //       this.toastr.success('Great!')
-      //       this.getStripeCust()
-      //     },
-      //     error => { console.log(error); }
-      //   );
-    }
+    // deleteCustInStripe() {
+    //   // this.paiementService.deleteCustInStripe(this.fetchedPaiementQuote._id)
+    //   //   .subscribe(
+    //   //     res => {
+    //   //       // this.userService.cleanCurrentUserInSession()
+    //   //       this.toastr.success('Great!')
+    //   //       this.getStripeCust()
+    //   //     },
+    //   //     error => { console.log(error); }
+    //   //   );
+    // }
     nextStep() {
       this.step++
       this.save()
@@ -331,7 +331,7 @@ export class EditPaiementQuoteComponent implements OnInit {
             res => {
               // this.userService.cleanCurrentUserInSession()
               this.toastr.success('Great!')
-              console.log(res)
+              // console.log(res)
               this.save()
               // this.getStripeCust()
             },
@@ -342,85 +342,85 @@ export class EditPaiementQuoteComponent implements OnInit {
           );
         })
     }
-    saveCustInStripe() {
-      // this.paiementService.saveCustInStripe(this.fetchedPaiementQuote)
-      //   .subscribe(
-      //     res => {
-      //       // this.userService.cleanCurrentUserInSession()
-      //       this.toastr.success('Great!')
-      //       this.stripeCust = res.customer
-      //       console.log(res);
-      //     },
-      //     error => { console.log(error); }
-      //   );
-    }
+    // saveCustInStripe() {
+    //   // this.paiementService.saveCustInStripe(this.fetchedPaiementQuote)
+    //   //   .subscribe(
+    //   //     res => {
+    //   //       // this.userService.cleanCurrentUserInSession()
+    //   //       this.toastr.success('Great!')
+    //   //       this.stripeCust = res.customer
+    //   //       console.log(res);
+    //   //     },
+    //   //     error => { console.log(error); }
+    //   //   );
+    // }
+    //
+    // saveCardInStripe() {
+    //   // console.log(this.newCard)
+    //   // this.paiementService.saveCardInStripe(this.newCard, this.fetchedPaiementQuote._id)
+    //   //   .subscribe(
+    //   //     res => {
+    //   //       // this.userService.cleanCurrentUserInSession()
+    //   //       this.toastr.success('Great!')
+    //   //       this.getStripeCust()
+    //   //       // console.log(res);
+    //   //     },
+    //   //     error => { console.log(error); }
+    //   //   );
+    // }
+    // saveSubscriptionInStripe(planValue) {
+    //   // let plan = {
+    //   //   plan: planValue
+    //   // }
+    //   // this.paiementService.saveSubscriptionInStripe(plan, this.fetchedPaiementQuote._id)
+    //   //   .subscribe(
+    //   //     res => {
+    //   //       // this.userService.cleanCurrentUserInSession()
+    //   //       this.toastr.success('Great!')
+    //   //       this.getStripeCust()
+    //   //       this.showReLoginInApp = true
+    //   //
+    //   //
+    //   //       // this.getStripeCust()
+    //   //       // this.authService.refreshCookiesOfCurrentUser()
+    //   //       // location.reload();
+    //   //       // console.log(res);
+    //   //     },
+    //   //     error => { console.log(error); }
+    //   //   );
+    // }
 
-    saveCardInStripe() {
-      // console.log(this.newCard)
-      // this.paiementService.saveCardInStripe(this.newCard, this.fetchedPaiementQuote._id)
-      //   .subscribe(
-      //     res => {
-      //       // this.userService.cleanCurrentUserInSession()
-      //       this.toastr.success('Great!')
-      //       this.getStripeCust()
-      //       // console.log(res);
-      //     },
-      //     error => { console.log(error); }
-      //   );
-    }
-    saveSubscriptionInStripe(planValue) {
-      // let plan = {
-      //   plan: planValue
-      // }
-      // this.paiementService.saveSubscriptionInStripe(plan, this.fetchedPaiementQuote._id)
-      //   .subscribe(
-      //     res => {
-      //       // this.userService.cleanCurrentUserInSession()
-      //       this.toastr.success('Great!')
-      //       this.getStripeCust()
-      //       this.showReLoginInApp = true
-      //
-      //
-      //       // this.getStripeCust()
-      //       // this.authService.refreshCookiesOfCurrentUser()
-      //       // location.reload();
-      //       // console.log(res);
-      //     },
-      //     error => { console.log(error); }
-      //   );
-    }
+    //
+    // deleteSubInStripe(subId){
+    //   // this.paiementService.deleteSub(subId)
+    //   //   .subscribe(
+    //   //     res => {
+    //   //       // this.userService.cleanCurrentUserInSession()
+    //   //       // console.log(res.message)
+    //   //       this.toastr.success('Great!');
+    //   //       this.getStripeCust()
+    //   //       // this.getStripeCust()
+    //   //       // location.reload();
+    //   //     },
+    //   //     error => {
+    //   //       console.log(error);
+    //   //     }
+    //   //   );
+    // }
 
-
-    deleteSubInStripe(subId){
-      // this.paiementService.deleteSub(subId)
-      //   .subscribe(
-      //     res => {
-      //       // this.userService.cleanCurrentUserInSession()
-      //       // console.log(res.message)
-      //       this.toastr.success('Great!');
-      //       this.getStripeCust()
-      //       // this.getStripeCust()
-      //       // location.reload();
-      //     },
-      //     error => {
-      //       console.log(error);
-      //     }
-      //   );
-    }
-
-    deleteCardInStripe(cardId){
-      // this.paiementService.deleteCard(cardId, this.fetchedPaiementQuote._id)
-      //   .subscribe(
-      //     res => {
-      //       // this.userService.cleanCurrentUserInSession()
-      //       this.toastr.success('Great!');
-      //       this.getStripeCust()
-      //     },
-      //     error => {
-      //       console.log(error);
-      //     }
-      //   );
-    }
+    // deleteCardInStripe(cardId){
+    //   // this.paiementService.deleteCard(cardId, this.fetchedPaiementQuote._id)
+    //   //   .subscribe(
+    //   //     res => {
+    //   //       // this.userService.cleanCurrentUserInSession()
+    //   //       this.toastr.success('Great!');
+    //   //       this.getStripeCust()
+    //   //     },
+    //   //     error => {
+    //   //       console.log(error);
+    //   //     }
+    //   //   );
+    // }
 
 
 

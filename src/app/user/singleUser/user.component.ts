@@ -15,7 +15,7 @@ import { User, TypeUser, Address, AddressTypes } from '../user.model';
 //import { Form } from '../../form/form.model';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-// import { DeleteDialog } from '../../deleteDialog/deleteDialog.component'
+import { DeleteDialogComponent } from '../../nav/deleteDialog/deleteDialog.component'
 import { Search } from '../../shared/shared.model';
 
 
@@ -74,7 +74,9 @@ export class UserComponent implements OnInit {
   setStep(index: number) {
     this.step = index;
   }
-
+  nextStep() {
+    this.step++;
+  }
   // selectCity(i, city: string) {
   //   this.fetchedUser.profile.address[i].city = city
   //   this.fetchedUser.profile.address[i].cities = []
@@ -250,26 +252,44 @@ export class UserComponent implements OnInit {
     }
   }
 
-  goBack() {
-    this.location.back();
-  }
+  // goBack() {
+  //   this.location.back();
+  // }
+
+  // openDialogDelete() {
+  //   let this2 = this
+  //   let dialogRefDelete = this.dialog.open(DeleteDialog)
+  //   dialogRefDelete.afterClosed().subscribe(result => {
+  //     if (result) {
+  //       this.onDelete(this.fetchedUser._id).then(function() {
+  //         this2.router.navigate(['user']);
+  //       })
+  //
+  //     }
+  //   })
+  // }
 
   openDialogDelete() {
-    // let this2 = this
-    // let dialogRefDelete = this.dialog.open(DeleteDialog)
-    // dialogRefDelete.afterClosed().subscribe(result => {
-    //   if (result) {
-    //     this.onDelete(this.fetchedUser._id).then(function() {
-    //       this2.router.navigate(['user']);
-    //     })
-    //
-    //   }
-    // })
+    const this2 = this
+    const dialogRefDelete = this.dialog.open(DeleteDialogComponent)
+    dialogRefDelete.afterClosed().subscribe(result => {
+      if (result) {
+        this.onDelete(this.fetchedUser._id).then(function() {
+          this2.router.navigate(['user/list/' + this2.fetchedUser.isExternalUser]);
+        })
+      }
+    })
   }
 
-  saveAndCreateProject() {
+  // saveAndCreateProject() {
+  //   this.save()
+  //   this.router.navigate(['project/new/' + this.fetchedUser._id])
+  // }
+
+
+  saveAndNextStep() {
     this.save()
-    this.router.navigate(['project/new/' + this.fetchedUser._id])
+    this.nextStep()
   }
 
   save() {
@@ -281,11 +301,6 @@ export class UserComponent implements OnInit {
         .subscribe(
         res => {
           this.toastr.success('Great!', res.message)
-          // location.reload();
-          // if(redirect == 'profile')
-          //   this.router.navigate(['user/profile/' + res.obj._id])
-          // if(redirect == 'project')
-          //   this.router.navigate(['project/new/' + res.obj._id])
         },
         error => {
           this.toastr.error('Error!')
