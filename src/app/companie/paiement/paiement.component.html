@@ -16,7 +16,7 @@
           {{'Plan' | translate}}
         </mat-panel-title>
       </mat-expansion-panel-header>
-      <mat-button-toggle-group [disabled]="stripeCust.subscriptions.data.length" [(ngModel)]="plan" (change)="changePlan()">
+      <mat-button-toggle-group disabled="{{stripeCust.subscriptions.data.length !== 0}}" [(ngModel)]="plan" (change)="changePlan()">
         <mat-button-toggle value="silver">
           Silver
           <mat-icon>format_align_left</mat-icon>
