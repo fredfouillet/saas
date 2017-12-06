@@ -308,7 +308,8 @@ router.put('/:id', function(req, res, next) {
     if (err) {
       return res.status(404).json({message: '', err: err})
     }
-
+    // console.log(item)
+    // console.log(req.body)
     item.clients = req.body.clients
     item.historyClients = req.body.historyClients
     item.name = req.body.name
@@ -323,8 +324,10 @@ router.put('/:id', function(req, res, next) {
     item.detail = req.body.detail
     item.companieClients = req.body.companieClients
     item.quoteNumber = req.body.quoteNumber
-    item.drawing = req.body.drawing
-    // item.drawingSignature = req.body.drawingSignature
+    // item.drawing = req.body.drawing
+
+    // console.log(item)
+    item.drawingSignature = req.body.drawingSignature
 
     // if(item.statusQuote === 'signed' && !req.body.drawingSignature.base64) {
     //   item.drawingSignature.base64 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAALCAYAAAB24g05AAAAGklEQVQoU2NkoBAwUqifYdQAhtEwYKBCGAAAE40ADA7nRNsAAAAASUVORK5CYII='
