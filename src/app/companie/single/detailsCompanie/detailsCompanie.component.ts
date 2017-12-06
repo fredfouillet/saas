@@ -160,14 +160,7 @@ export class DetailsCompanieComponent implements OnInit {
   removeContact(i) {
     this.fetchedCompanie.contactsPerson.splice(i, 1);
   }
-  isMyCompanie() {
-    const currentUser = this.authService.getCurrentUser()
-    // console.log(currentUser)
-    return currentUser.ownerCompanies.some(obj => {
-      return obj._id === this.fetchedCompanie._id
-    })
 
-  }
 
 
   // addCateg(typeCateg, level, index1, index2, index3) {
@@ -727,59 +720,59 @@ export class DetailsCompanieComponent implements OnInit {
   //   ]
   //   this.save()
   // }
+  //
+  // save() {
+  //
+  //   //this.fetchedCompanie.categJson.categProduct = JSON.stringify(JSON.parse(this.fetchedCompanie.categJson.categProduct))
+  //   if(this.fetchedCompanie._id) {
+  //     this.companieService.updateCompanie(this.fetchedCompanie)
+  //       .subscribe(
+  //         res => {
+  //           this.toastr.success('Great!', res.message)
+  //           this.saved.emit(res.obj)
+  //         //  this.router.navigate(['companie/' + this.fetchedCompanie._id])
+  //         },
+  //         error => {
+  //           this.toastr.error('error!', error)
+  //         }
+  //       )
+  //   } else {
+  //     this.companieService.saveCompanie(this.fetchedCompanie)
+  //       .subscribe(
+  //         res => {
+  //           this.toastr.success('Great!', res.message)
+  //           this.fetchedCompanie = res.obj
+  //           this.saved.emit(res.obj)
+  //           //  this.router.navigate(['companie/' + res.obj._id])
+  //         },
+  //         error => {console.log(error)}
+  //       )
+  //   }
+  // }
+  // saveMyCompanie(){
+  //   this.companieService.saveMyCompanie(this.fetchedCompanie)
+  //     .subscribe(
+  //       res => {
+  //         this.toastr.success('Great!', res.message)
+  //         this.fetchedCompanie = res.obj
+  //       },
+  //       error => {console.log(error)}
+  //     )
+  // }
 
-  save() {
-
-    //this.fetchedCompanie.categJson.categProduct = JSON.stringify(JSON.parse(this.fetchedCompanie.categJson.categProduct))
-    if(this.fetchedCompanie._id) {
-      this.companieService.updateCompanie(this.fetchedCompanie)
-        .subscribe(
-          res => {
-            this.toastr.success('Great!', res.message)
-            this.saved.emit(res.obj)
-          //  this.router.navigate(['companie/' + this.fetchedCompanie._id])
-          },
-          error => {
-            this.toastr.error('error!', error)
-          }
-        )
-    } else {
-      this.companieService.saveCompanie(this.fetchedCompanie)
-        .subscribe(
-          res => {
-            this.toastr.success('Great!', res.message)
-            this.fetchedCompanie = res.obj
-            this.saved.emit(res.obj)
-            //  this.router.navigate(['companie/' + res.obj._id])
-          },
-          error => {console.log(error)}
-        )
-    }
-  }
-  saveMyCompanie(){
-    this.companieService.saveMyCompanie(this.fetchedCompanie)
-      .subscribe(
-        res => {
-          this.toastr.success('Great!', res.message)
-          this.fetchedCompanie = res.obj
-        },
-        error => {console.log(error)}
-      )
-  }
-
-  onDelete(id: string) {
-    this.companieService.deleteCompanie(id)
-      .subscribe(
-        res => {
-          this.toastr.success('Great!', res.message);
-          this.router.navigate(['companie/'])
-          console.log(res);
-        },
-        error => {
-          console.log(error);
-        }
-      );
-  }
+  // onDelete(id: string) {
+  //   this.companieService.deleteCompanie(id)
+  //     .subscribe(
+  //       res => {
+  //         this.toastr.success('Great!', res.message);
+  //         this.router.navigate(['companie/'])
+  //         console.log(res);
+  //       },
+  //       error => {
+  //         console.log(error);
+  //       }
+  //     );
+  // }
 
   // goBack() {
   //   this.location.back();

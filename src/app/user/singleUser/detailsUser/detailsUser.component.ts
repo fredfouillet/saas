@@ -328,9 +328,9 @@ export class DetailsUserComponent implements OnInit {
       .subscribe(
       res => {
         this.fetchedUser = res
-        this.fetchedUser.typeUsers.forEach(type => {
-          this.typeUserDropDown = type
-        });
+        // this.fetchedUser.typeUsers.forEach(type => {
+        //   this.typeUserDropDown = type
+        // });
       },
       error => {
         console.log(error);

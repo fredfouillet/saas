@@ -16,6 +16,16 @@
         </mat-panel-description>
       </mat-expansion-panel-header>
       <app-detailsCompanie [fetchedCompanie]="fetchedCompanie"></app-detailsCompanie>
+      <mat-action-row>
+
+        <button *ngIf="fetchedCompanie._id && !isMyCompanie()" mat-mini-fab color="warn" (click)="openDialogDelete()">
+          <mat-icon aria-label="Clear">clear</mat-icon>
+        </button>
+
+        <button mat-mini-fab color="primary" (click)="saveAndNextStep()">
+          <mat-icon aria-label="Next">forward</mat-icon>
+        </button>
+      </mat-action-row>
     </mat-expansion-panel>
     <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)">
       <mat-expansion-panel-header>
@@ -26,9 +36,9 @@
           <mat-icon>account_circle</mat-icon>
         </mat-panel-description>
       </mat-expansion-panel-header>
-
-
       <app-paiement *ngIf="step === 1"></app-paiement>
+
+
     </mat-expansion-panel>
 
     <mat-expansion-panel *ngIf="authService.isCurrentUserIsInSubPeriod()" [expanded]="step === 2" (opened)="setStep(2)">
@@ -53,6 +63,12 @@
         </mat-panel-description>
       </mat-expansion-panel-header>
       <app-categProduct [fetchedCompanie]="fetchedCompanie"></app-categProduct>
+      <mat-action-row>
+
+        <button mat-mini-fab color="primary" (click)="saveAndNextStep()">
+          <mat-icon aria-label="Next">forward</mat-icon>
+        </button>
+      </mat-action-row>
     </mat-expansion-panel>
 
     <mat-expansion-panel *ngIf="authService.isCurrentUserIsInSubPeriod()"  [expanded]="step === 4" (opened)="setStep(4)">
@@ -65,6 +81,14 @@
         </mat-panel-description>
       </mat-expansion-panel-header>
       <app-details-calendar [fetchedCompanie]="fetchedCompanie"></app-details-calendar>
+
+      <mat-action-row>
+        <button mat-mini-fab color="primary" (click)="saveAndNextStep()">
+          <mat-icon aria-label="Next">forward</mat-icon>
+        </button>
+      </mat-action-row>
+
+
     </mat-expansion-panel>
   </mat-accordion>
 

@@ -781,23 +781,6 @@ export class DetailsCalendarComponent implements OnInit {
       );
   }
 
-  // goBack() {
-  //   this.location.back();
-  // }
-
-
-
-  // getCompanie(id: string) {
-  //   this.companieService.getCompanie(id, {})
-  //     .subscribe(
-  //       res => {
-  //         this.fetchedCompanie = res
-  //       },
-  //       error => {
-  //         console.log(error);
-  //       }
-  //     )
-  // }
 
 
 }

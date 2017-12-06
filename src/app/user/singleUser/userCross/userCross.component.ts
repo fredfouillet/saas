@@ -31,7 +31,7 @@ export class UserCrossComponent implements OnInit {
   @Input() search: Search = new Search()
 
   fetchedCompanies: Companie[] = []
-  autocompleteCompanie: string = '';
+  // autocompleteCompanie: string = '';
 
   fetchedTypeUsers = []
   // autocompleteTypeUser: string = '';
@@ -231,23 +231,23 @@ export class UserCrossComponent implements OnInit {
   // }
 
   // autocolplete typeUser
-  searchTypeUser() {
-    if (!this.autocompleteTypeUser) {
-      this.fetchedTypeUsers = []
-    } else {
-      this.fetchedTypeUsers = this.typeUser.filter((el) =>
-        el.toLowerCase().indexOf(this.autocompleteTypeUser.toLowerCase()) > -1
-      );
-    }
-  }
-  selectTypeUser(typeUser) {
-    this.autocompleteTypeUser = '';
-    this.fetchedTypeUsers = [];
-    this.fetchedUser.typeUsers.push(typeUser);
-  }
-  removeTypeUser(i: number) {
-    this.fetchedUser.typeUsers.splice(i, 1);
-  }
+  // searchTypeUser() {
+  //   if (!this.autocompleteTypeUser) {
+  //     this.fetchedTypeUsers = []
+  //   } else {
+  //     this.fetchedTypeUsers = this.typeUser.filter((el) =>
+  //       el.toLowerCase().indexOf(this.autocompleteTypeUser.toLowerCase()) > -1
+  //     );
+  //   }
+  // }
+  // selectTypeUser(typeUser) {
+  //   this.autocompleteTypeUser = '';
+  //   this.fetchedTypeUsers = [];
+  //   this.fetchedUser.typeUsers.push(typeUser);
+  // }
+  // removeTypeUser(i: number) {
+  //   this.fetchedUser.typeUsers.splice(i, 1);
+  // }
   // autocolplete typeUser
 
 

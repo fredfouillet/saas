@@ -27,7 +27,7 @@ import { PaiementService} from '../paiement/paiement.service';
   styleUrls: ['../companie.component.css'],
 })
 export class CompanieComponent implements OnInit {
-  @Output() saved: EventEmitter<any> = new EventEmitter();
+  // @Output() saved: EventEmitter<any> = new EventEmitter();
   // @Input() showBackButton: Boolean = true;
   fetchedCompanie: Companie = new Companie()
   step = 0;
@@ -40,7 +40,7 @@ export class CompanieComponent implements OnInit {
   // seeRights = false;
   seeCategProject = false;
   seeCategProduct = false;
-  // isMyCompanyRoute: Boolean = false
+
   // servicesBancks = ['stripe', 'paypal']
   // typesRights = [
   //   {name : 'Project', value: 'project'},
@@ -117,7 +117,7 @@ export class CompanieComponent implements OnInit {
       if(params['id']) {
         if(params['id'] === 'mine') {
           this.getCompanie('')
-          // this.isMyCompanyRoute = true
+
 
         } else {
           this.getCompanie(params['id'])
@@ -125,6 +125,42 @@ export class CompanieComponent implements OnInit {
       }
     })
   }
+  nextStep() {
+    this.step++
+  }
+  saveAndNextStep() {
+    this.nextStep()
+    this.save()
+  }
+
+    save() {
+      //this.fetchedCompanie.categJson.categProduct = JSON.stringify(JSON.parse(this.fetchedCompanie.categJson.categProduct))
+      if(this.fetchedCompanie._id) {
+        this.companieService.updateCompanie(this.fetchedCompanie)
+          .subscribe(
+            res => {
+              this.toastr.success('Great!', res.message)
+              // this.saved.emit(res.obj)
+            //  this.router.navigate(['companie/' + this.fetchedCompanie._id])
+            },
+            error => {
+              this.toastr.error('error!', error)
+            }
+          )
+      } else {
+        this.companieService.saveCompanie(this.fetchedCompanie)
+          .subscribe(
+            res => {
+              this.toastr.success('Great!', res.message)
+              this.fetchedCompanie = res.obj
+              // this.saved.emit(res.obj)
+              //  this.router.navigate(['companie/' + res.obj._id])
+            },
+            error => {console.log(error)}
+          )
+      }
+    }
+
 
   //
   // deauthorizeConnect() {
@@ -166,15 +202,6 @@ export class CompanieComponent implements OnInit {
   // removeContact(i) {
   //   this.fetchedCompanie.contactsPerson.splice(i, 1);
   // }
-  isMyCompanie() {
-    const currentUser = this.authService.getCurrentUser()
-    // console.log(currentUser)
-    return currentUser.ownerCompanies.some(obj => {
-      return obj._id === this.fetchedCompanie._id
-    })
-  }
-
-
   // addCateg(typeCateg, level, index1, index2, index3) {
   //     let newCategorie = new Categorie0()
   //     if(level === 0)
@@ -208,7 +235,12 @@ export class CompanieComponent implements OnInit {
   // }
 
 
-
+  isMyCompanie() {
+    const currentUser = this.authService.getCurrentUser()
+    return currentUser.ownerCompanies.some(obj => {
+      return obj._id === this.fetchedCompanie._id
+    })
+  }
   getCompanie(id: string) {
     this.companieService.getCompanie(id, {})
       .subscribe(
