@@ -4,7 +4,7 @@
     <div class="input-group mb8">
       <mat-form-field>
         <input matInput type="text" autocomplete="off" name="Search" placeholder="🔎 {{ title | translate}}" [(ngModel)]="autocompleteSearch" (ngModelChange)="searchData()">
-        <app-newObjDialog (cliked)="newObjDialogClicked()" matSuffix *ngIf="typeAutocomplete=='user' || typeAutocomplete=='companie' || typeAutocomplete=='project' || typeAutocomplete=='product'" (saved)="saved($event)" [search]="search" [typeObj]="typeAutocomplete"></app-newObjDialog>
+          <app-newObjDialog (cliked)="newObjDialogClicked()" matSuffix *ngIf="canCreateNewObj && (typeAutocomplete=='user' || typeAutocomplete=='companie' || typeAutocomplete=='project' || typeAutocomplete=='product')" (saved)="saved($event)" [search]="search" [typeObj]="typeAutocomplete"></app-newObjDialog>
       </mat-form-field>
     </div>
   </div>

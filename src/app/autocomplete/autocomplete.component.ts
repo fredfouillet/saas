@@ -31,6 +31,7 @@ export class AutocompleteComponent {
   @Input() title: string = '';
   @Input() search: Search = new Search()
   @Input() canDelete: boolean = true;
+  @Input() canCreateNewObj: boolean = true;
   @Input() enableLink: boolean = true;
   @Input() displayIfContentIsNull: boolean = true;
   // createNewItem: boolean = false;
