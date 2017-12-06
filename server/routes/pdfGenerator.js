@@ -6,18 +6,19 @@ var Notification = require('../models/notification.model'),
   Companie = require('../models/companie.model'),
   pdf = require('html-pdf');
 
-options = {
-  format: 'Letter',
-  "header": {
-    "height": "70px"
-  },
-  "footer": {
-    "height": "0px"
-  },
-  "border": "10px"
-};
+
 
 module.exports = {
+  options : {
+    format: 'Letter',
+    "header": {
+      "height": "70px"
+    },
+    "footer": {
+      "height": "0px"
+    },
+    "border": "10px"
+  },
 
   generatePDF (req, res, next) {
     return new Promise(function(resolve, reject) {
@@ -444,7 +445,7 @@ module.exports = {
                       <a class="cgv">Ce devis est valable 3 mois. Les prix sont établis sur la base des taux en vigeur à la date de remise de l'offre et toute variation ultérieure de ces taux sera répercutée sur ces prix en application du Code Général des Impôts</a>
                         `
 
-                  pdf.create(html, options).toFile('./server/uploads/pdf/' + req.params.quoteId + '.pdf', function(err, resPDF) {
+                  pdf.create(html, this.options).toFile('./server/uploads/pdf/' + req.params.quoteId + '.pdf', function(err, resPDF) {
                     if (err) {
                       //return res.status(404).json({message: '', err: err})
 
@@ -470,16 +471,18 @@ module.exports = {
 
       User.findOne({_id: req.user._id}).exec(function(err, user) {
         if (err) {
-          return res.status(403).json({title: 'There was a problem', error: err})
+          reject(err)
+          // return res.status(403).json({title: 'There was a problem', error: err})
         }
 
         if (!user) {
-          return res.status(404).json({
-            title: 'No form found',
-            error: {
-              message: 'Item not found!'
-            }
-          });
+          reject(err)
+          // return res.status(404).json({
+          //   title: 'No form found',
+          //   error: {
+          //     message: 'Item not found!'
+          //   }
+          // });
         }
 
         // Companie.findById(user.ownerCompanies[0]).populate({path: 'forms', model: 'Form'}).populate({path: 'rights', model: 'Right'}).exec(function(err, companie) {
@@ -820,7 +823,7 @@ module.exports = {
                       <a class="cgv">Ce devis est valable 3 mois. Les prix sont établis sur la base des taux en vigeur à la date de remise de l'offre et toute variation ultérieure de ces taux sera répercutée sur ces prix en application du Code Général des Impôts</a>
                         `
 
-                  pdf.create(html, options).toFile('./server/uploads/pdf/' + req.params.quoteId + '.pdf', function(err, resPDF) {
+                  pdf.create(html, this.options).toFile('./server/uploads/pdf/' + req.params.quoteId + '.pdf', function(err, resPDF) {
                     if (err) {
                       //return res.status(404).json({message: '', err: err})
 
