@@ -8,13 +8,14 @@
   </div>
 
   <mat-accordion class="example-headers-align">
-    <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle="true">
+    <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)">
       <mat-expansion-panel-header>
         <mat-panel-title>
-          {{'Details Quote' | translate}} : {{fetchedQuote.name}}
+          <mat-icon>account_circle</mat-icon>
+
         </mat-panel-title>
         <mat-panel-description>
-          <mat-icon>account_circle</mat-icon>
+          {{'Details Quote' | translate}} {{fetchedQuote.name}}
         </mat-panel-description>
       </mat-expansion-panel-header>
       <app-quoteInfo [search]="search" [fetchedQuote]="fetchedQuote" (quoteStatusChangedEmit)="save()"></app-quoteInfo>
@@ -29,7 +30,7 @@
     <mat-expansion-panel *ngIf="
         fetchedQuote.statusQuote === 'pending' &&
         fetchedQuote._id"
-      [expanded]="step === 1" (opened)="setStep(1)" hideToggle="true">
+      [expanded]="step === 1" (opened)="setStep(1)">
       <mat-expansion-panel-header>
         <mat-panel-title>
           {{'Documents' | translate}}
@@ -49,7 +50,7 @@
     <mat-expansion-panel *ngIf="
         fetchedQuote.statusQuote === 'pending' &&
         fetchedQuote._id"
-      [expanded]="step === 2" (opened)="setStep(2)" hideToggle="true">
+      [expanded]="step === 2" (opened)="setStep(2)">
       <mat-expansion-panel-header>
         <mat-panel-title>
           {{'Edit Quote' | translate}}
@@ -67,7 +68,7 @@
     </mat-expansion-panel>
 
 
-    <mat-expansion-panel *ngIf="fetchedQuote._id" [expanded]="step === 3" (opened)="setStep(3)" hideToggle="true">
+    <mat-expansion-panel *ngIf="fetchedQuote._id" [expanded]="step === 3" (opened)="setStep(3)">
       <mat-expansion-panel-header>
         <mat-panel-title>
           {{'Quote' | translate}}
@@ -86,7 +87,7 @@
     <mat-expansion-panel
       *ngIf="authService.showObjHTML('quote', 'signature') &&
       fetchedQuote.statusQuote !=='rejected' &&
-      fetchedQuote._id" [expanded]="step === 4" (opened)="setStep(4)" hideToggle="true">
+      fetchedQuote._id" [expanded]="step === 4" (opened)="setStep(4)">
       <mat-expansion-panel-header>
         <mat-panel-title>
           {{'Signature' | translate}}
@@ -116,7 +117,7 @@
           authService.showObjHTML('paiementQuote', 'read') &&
           fetchedQuote.statusQuote !=='pending' &&
           fetchedQuote.statusQuote !=='rejected' &&
-          fetchedQuote._id" [expanded]="step === 5" (opened)="setStep(5)" hideToggle="true">
+          fetchedQuote._id" [expanded]="step === 5" (opened)="setStep(5)">
       <mat-expansion-panel-header>
         <mat-panel-title>
           {{'Paiements' | translate}}
@@ -142,7 +143,7 @@
       fetchedQuote._id &&
       fetchedQuote.statusQuote !=='pending' &&
       fetchedQuote.statusQuote !=='rejected'"
-    [expanded]="step === 6" (opened)="setStep(6)" hideToggle="true">
+    [expanded]="step === 6" (opened)="setStep(6)">
       <mat-expansion-panel-header>
         <mat-panel-title>
           {{'Invoices' | translate}}
@@ -156,7 +157,7 @@
 
 
 
-    <mat-expansion-panel *ngIf="authService.showObjHTML('quote', 'comment') && fetchedQuote._id" [expanded]="step === 7" (opened)="setStep(7)" hideToggle="true">
+    <mat-expansion-panel *ngIf="authService.showObjHTML('quote', 'comment') && fetchedQuote._id" [expanded]="step === 7" (opened)="setStep(7)">
       <mat-expansion-panel-header>
         <mat-panel-title>
           {{'Comments' | translate}}
@@ -168,7 +169,7 @@
     </mat-expansion-panel>
   </mat-accordion>
 
-  <!-- <mat-expansion-panel *ngIf="authService.showObjHTML('quote', 'drawing') && fetchedQuote._id" [expanded]="step === 3" (opened)="setStep(3)" hideToggle="true">
+  <!-- <mat-expansion-panel *ngIf="authService.showObjHTML('quote', 'drawing') && fetchedQuote._id" [expanded]="step === 3" (opened)="setStep(3)">
         <mat-expansion-panel-header>
           <mat-panel-title>
             {{'Drawing' | translate}}

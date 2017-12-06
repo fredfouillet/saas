@@ -2,7 +2,7 @@
   <mat-accordion class="example-headers-align">
     <!-- <button *ngIf="!stripeCust.id" mat-raised-button color="primary" (click)="saveCustInStripe()">{{'Welcome ! I go for it'}}</button> -->
 
-    <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle="true">
+    <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)">
       <mat-expansion-panel-header>
         <mat-panel-title>
           {{'Registration' | translate}}
@@ -38,7 +38,7 @@
     </mat-expansion-panel>
 
 
-    <mat-expansion-panel *ngIf="stripeCust.id" [expanded]="step === 1" (opened)="setStep(1)" hideToggle="true">
+    <mat-expansion-panel *ngIf="stripeCust.id" [expanded]="step === 1" (opened)="setStep(1)">
       <mat-expansion-panel-header>
         <mat-panel-title>
           {{'Plan' | translate}}
@@ -65,7 +65,7 @@
     </mat-expansion-panel>
 
 
-    <mat-expansion-panel *ngIf="stripeCust.id && plan" [expanded]="step === 2" (opened)="setStep(2)" hideToggle="true">
+    <mat-expansion-panel *ngIf="stripeCust.id && plan" [expanded]="step === 2" (opened)="setStep(2)">
       <mat-expansion-panel-header>
         <mat-panel-title>
           {{'Card' | translate}}
@@ -160,7 +160,7 @@
     </mat-expansion-panel>
 
 
-    <mat-expansion-panel *ngIf="stripeCust.id && stripeCust.sources.data.length && plan" [expanded]="step === 3" (opened)="setStep(3)" hideToggle="true">
+    <mat-expansion-panel *ngIf="stripeCust.id && stripeCust.sources.data.length && plan" [expanded]="step === 3" (opened)="setStep(3)">
       <mat-expansion-panel-header>
         <mat-panel-title>
           {{'Subscription' | translate}}
@@ -208,7 +208,7 @@
     </mat-expansion-panel>
 
 
-    <mat-expansion-panel *ngIf="showReLoginInApp" [expanded]="step === 4" (opened)="setStep(4)" hideToggle="true">
+    <mat-expansion-panel *ngIf="showReLoginInApp" [expanded]="step === 4" (opened)="setStep(4)">
       <mat-expansion-panel-header>
         {{'Password Confirmation'}}
       </mat-expansion-panel-header>

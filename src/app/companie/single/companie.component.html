@@ -6,7 +6,7 @@
 
 
   <mat-accordion class="example-headers-align">
-    <mat-expansion-panel *ngIf="authService.isCurrentUserIsInSubPeriod()" [expanded]="step === 0" (opened)="setStep(0)" hideToggle="true">
+    <mat-expansion-panel *ngIf="authService.isCurrentUserIsInSubPeriod()" [expanded]="step === 0" (opened)="setStep(0)">
       <mat-expansion-panel-header>
         <mat-panel-title>
           {{'Details Companie' | translate}}
@@ -17,7 +17,7 @@
       </mat-expansion-panel-header>
       <app-detailsCompanie [fetchedCompanie]="fetchedCompanie"></app-detailsCompanie>
     </mat-expansion-panel>
-    <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle="true">
+    <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)">
       <mat-expansion-panel-header>
         <mat-panel-title>
           {{'Plan' | translate}}
@@ -31,7 +31,7 @@
       <app-paiement *ngIf="step === 1"></app-paiement>
     </mat-expansion-panel>
 
-    <mat-expansion-panel *ngIf="authService.isCurrentUserIsInSubPeriod()" [expanded]="step === 2" (opened)="setStep(2)" hideToggle="true">
+    <mat-expansion-panel *ngIf="authService.isCurrentUserIsInSubPeriod()" [expanded]="step === 2" (opened)="setStep(2)">
       <mat-expansion-panel-header>
         <mat-panel-title>
           {{'Connect with Stripe' | translate}}
@@ -43,7 +43,7 @@
       <app-connect-stripe *ngIf="step === 2" [fetchedCompanie]="fetchedCompanie"></app-connect-stripe>
     </mat-expansion-panel>
 
-    <mat-expansion-panel *ngIf="authService.isCurrentUserIsInSubPeriod()"  [expanded]="step === 3" (opened)="setStep(3)" hideToggle="true">
+    <mat-expansion-panel *ngIf="authService.isCurrentUserIsInSubPeriod()"  [expanded]="step === 3" (opened)="setStep(3)">
       <mat-expansion-panel-header>
         <mat-panel-title>
           {{'Product Categories' | translate}}
@@ -55,7 +55,7 @@
       <app-categProduct [fetchedCompanie]="fetchedCompanie"></app-categProduct>
     </mat-expansion-panel>
 
-    <mat-expansion-panel *ngIf="authService.isCurrentUserIsInSubPeriod()"  [expanded]="step === 4" (opened)="setStep(4)" hideToggle="true">
+    <mat-expansion-panel *ngIf="authService.isCurrentUserIsInSubPeriod()"  [expanded]="step === 4" (opened)="setStep(4)">
       <mat-expansion-panel-header>
         <mat-panel-title>
           {{'Calendar Options' | translate}}

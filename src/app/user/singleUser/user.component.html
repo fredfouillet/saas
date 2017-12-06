@@ -4,7 +4,7 @@
     <h3 *ngIf="!fetchedUser.isExternalUser"><i class="fa fa10 fa-user" aria-hidden="true"></i>{{'Team' | translate}}</h3>
   </div>
   <mat-accordion class="example-headers-align">
-    <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle="true">
+    <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)">
       <mat-expansion-panel-header>
         <mat-panel-title>
           {{'User' | translate}} : {{fetchedUser.profile.lastName}}
@@ -23,7 +23,7 @@
 
       </mat-action-row>
     </mat-expansion-panel>
-    <mat-expansion-panel *ngIf="fetchedUser._id" [expanded]="step === 1" (opened)="setStep(1)" hideToggle="true">
+    <mat-expansion-panel *ngIf="fetchedUser._id" [expanded]="step === 1" (opened)="setStep(1)">
       <mat-expansion-panel-header>
         <mat-panel-title>
           {{'Details' | translate}}
@@ -38,7 +38,7 @@
         </div>
       </mat-action-row> -->
     </mat-expansion-panel>
-    <!-- <mat-expansion-panel *ngIf="fetchedUser._id" [expanded]="step === 2" (opened)="setStep(2)" hideToggle="true">
+    <!-- <mat-expansion-panel *ngIf="fetchedUser._id" [expanded]="step === 2" (opened)="setStep(2)">
       <mat-expansion-panel-header>
         <mat-panel-title>
           {{'Pictures' | translate}}
@@ -52,7 +52,7 @@
         <button type="button" class="valid" (click)="save()">{{'Save' | translate}}</button>
       </mat-action-row>
     </mat-expansion-panel> -->
-    <mat-expansion-panel *ngIf="fetchedUser._id" [expanded]="step === 2" (opened)="setStep(2)" hideToggle="true">
+    <mat-expansion-panel *ngIf="fetchedUser._id" [expanded]="step === 2" (opened)="setStep(2)">
       <mat-expansion-panel-header>
         <mat-panel-title>
           {{'Quotes' | translate}}
