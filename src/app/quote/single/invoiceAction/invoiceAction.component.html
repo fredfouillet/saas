@@ -1,16 +1,19 @@
+<div>
+  <div>
+    {{'Download PDF' | translate}}
+  </div>
+  <button mat-raised-button color="primary" (click)="downloadPDF()">
+    <mat-icon aria-label="PDF">picture_as_pdf</mat-icon>
+  </button>
+</div>
+<br>
+<div>
+  <div *ngFor="let client of fetchedQuote.clients">
+    {{'Send document to client: ' | translate}}{{client.email}}
+  </div>
+  <button mat-raised-button color="primary" (click)="sendQuoteByEmailToClient()">
+    <mat-icon aria-label="Email">email</mat-icon>
+  </button>
 
-    <div class="col-12 col-md-4">
-      <button type="button" class="btn btn-primary" (click)="downloadPDF()">
-      {{'Download PDF' | translate}}
-      </button>
-    </div>
-    <div class="col-12 col-md-4">
-      <button type="button" class="btn btn-primary" (click)="sendQuoteByEmailToClient()">
-      {{'Send document to client' | translate}}
-      </button>
-    </div>
-    <!-- <div class="col-12 col-md-4">
-      <button type="button" class="btn btn-primary" (click)="saveAsInvoice()">
-      {{'Create Invoice' | translate}}
-      </button>
-    </div> -->
+</div>
+<app-loadingInApp [loading]="loading"></app-loadingInApp>
