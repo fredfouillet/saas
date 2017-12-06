@@ -9,11 +9,12 @@
 <br>
 <div>
   <div *ngFor="let client of fetchedQuote.clients">
-    {{'Send document to client: ' | translate}}{{client.email}}
+    {{'Send document to client:' | translate}} {{client.email}}
+    <br>
+    <button mat-raised-button color="primary" (click)="sendQuoteByEmailToClient()">
+      <mat-icon aria-label="Email">email</mat-icon>
+    </button>
   </div>
-  <button mat-raised-button color="primary" (click)="sendQuoteByEmailToClient()">
-    <mat-icon aria-label="Email">email</mat-icon>
-  </button>
 
 </div>
 <app-loadingInApp [loading]="loading"></app-loadingInApp>
