@@ -126,14 +126,20 @@ router.get('/graph', function(req, res, next) {
 })
 
 
-router.get('/maxQuoteNumber', function(req, res, next) {
-  Quote.findOne().sort('-quoteNumber').limit(1).exec(function(err, doc) {
+router.get('/maxQuoteNumber', function (req, res, next) {
+  let searchQuery = {}
+  searchQuery['ownerCompanies'] = req.user.ownerCompanies
+  Quote.findOne(searchQuery).sort('-quoteNumber').limit(1).exec(function (err, doc) {
+    let quoteNumber = 1
+    if (doc) {
+      quoteNumber = doc.quoteNumber + 1
+    }
     if (err) {
       return res.status(404).json({message: 'Error', err: err})
     }
     res.status(201).json({
       message: 'max Value Quote',
-      obj: doc.quoteNumber + 1
+      obj: quoteNumber
     });
   })
 })

@@ -1,7 +1,5 @@
 <mat-card-content>
   <mat-accordion class="example-headers-align">
-    <!-- <button *ngIf="!stripeCust.id" mat-raised-button color="primary" (click)="saveCustInStripe()">{{'Welcome ! I go for it'}}</button> -->
-
     <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)">
       <mat-expansion-panel-header>
         <mat-panel-title>
@@ -10,42 +8,14 @@
       </mat-expansion-panel-header>
 
       <button *ngIf="!stripeCust.id" mat-raised-button color="primary" color="primary" (click)="saveCustInStripe()">Welcome!</button>
-      <!-- <button mat-raised-button color="primary" (click)="saveCustInStripe()">Plan SIlver (44$)</button> -->
-
       <button *ngIf="stripeCust.id" mat-raised-button color="primary" (click)="deleteCustInStripe()">deleteCustInStripe</button>
-      <!-- <div *ngIf="stripeCust.id"> -->
-      <!-- <mat-form-field>
-          <input matInput value="{{stripeCust.id}}" placeholder="ID">
-        </mat-form-field> -->
-
-      <!-- <div class="form-control">
-          {{stripeCust.created | timestampToDate}}
-        </div>
-        <div class="form-control">
-          {{stripeCust.email}}
-        </div> -->
-
-      <!-- </div> -->
-      <!-- <mat-action-row> -->
-      <!-- <div *ngIf="!stripeCust.id">
-          <button mat-button color="primary" (click)="saveCustInStripe()">I go for it!</button>
-        </div> -->
-      <!-- <div *ngIf="stripeCust.id"> -->
-      <!-- <button type="button" class="done" (click)="deleteCustInStripe()">deleteCustInStripe</button> -->
-      <!-- <button mat-button color="primary" (click)="nextStep()">Next</button> -->
-      <!-- </div>
-      </mat-action-row> -->
     </mat-expansion-panel>
-
-
     <mat-expansion-panel *ngIf="stripeCust.id" [expanded]="step === 1" (opened)="setStep(1)">
       <mat-expansion-panel-header>
         <mat-panel-title>
           {{'Plan' | translate}}
         </mat-panel-title>
       </mat-expansion-panel-header>
-
-
       <mat-button-toggle-group [disabled]="stripeCust.subscriptions.data.length" [(ngModel)]="plan" (change)="changePlan()">
         <mat-button-toggle value="silver">
           Silver
@@ -60,8 +30,6 @@
           <mat-icon>format_align_right</mat-icon>
         </mat-button-toggle>
       </mat-button-toggle-group>
-
-
     </mat-expansion-panel>
 
 
@@ -71,86 +39,88 @@
           {{'Card' | translate}}
         </mat-panel-title>
       </mat-expansion-panel-header>
-      <div *ngIf="!stripeCust.sources.data.length">
-        <h6>Create a new card</h6>
-        <mat-form-field>
-          <input matInput type="text" [(ngModel)]="newCard.address_city" placeholder="address_city">
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput type="text" [(ngModel)]="newCard.address_country" placeholder="address_country">
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput type="text" [(ngModel)]="newCard.address_line1" placeholder="address_line1">
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput type="text" [(ngModel)]="newCard.address_line2" placeholder="address_line2">
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput type="text" [(ngModel)]="newCard.address_state" placeholder="address_state">
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput type="text" [(ngModel)]="newCard.address_zip" placeholder="address_zip">
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput type="number" [(ngModel)]="newCard.exp_month" placeholder="exp_month">
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput type="number" [(ngModel)]="newCard.exp_year" placeholder="exp_year">
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput type="number" [(ngModel)]="newCard.number" placeholder="number">
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput type="number" [(ngModel)]="newCard.cvc" placeholder="cvc">
-        </mat-form-field>
-        <br> eg: 8<br> eg: 2018<br> eg: 4242424242424242<br> eg 123<br>
+      <div *ngIf="step === 2">
+        <div *ngIf="!stripeCust.sources.data.length">
+          <h6>Create a new card</h6>
+          <mat-form-field>
+            <input matInput type="text" [(ngModel)]="newCard.address_city" placeholder="address_city">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput type="text" [(ngModel)]="newCard.address_country" placeholder="address_country">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput type="text" [(ngModel)]="newCard.address_line1" placeholder="address_line1">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput type="text" [(ngModel)]="newCard.address_line2" placeholder="address_line2">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput type="text" [(ngModel)]="newCard.address_state" placeholder="address_state">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput type="text" [(ngModel)]="newCard.address_zip" placeholder="address_zip">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput type="number" [(ngModel)]="newCard.exp_month" placeholder="exp_month">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput type="number" [(ngModel)]="newCard.exp_year" placeholder="exp_year">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput type="number" [(ngModel)]="newCard.number" placeholder="number">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput type="number" [(ngModel)]="newCard.cvc" placeholder="cvc">
+          </mat-form-field>
+          <br> eg: 8<br> eg: 2018<br> eg: 4242424242424242<br> eg 123<br>
 
 
-      </div>
+        </div>
 
 
-      <div *ngFor="let card of stripeCust.sources.data; let i=index;">
-        <mat-form-field>
-          <input matInput readonly value="{{card.id}}" placeholder="cardId">
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput readonly value="{{card.address_city}}" placeholder="address_city">
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput readonly value="{{card.address_country}}" placeholder="address_country">
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput readonly value="{{card.address_line1}}" placeholder="address_line1">
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput readonly value="{{card.address_line2}}" placeholder="address_line2">
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput readonly value="{{card.address_state}}" placeholder="address_state">
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput readonly value="{{card.address_zip}}" placeholder="address_zip">
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput readonly value="{{card.brand}}" placeholder="brand">
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput readonly value="{{card.country}}" placeholder="country">
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput readonly value="{{card.exp_month}}" placeholder="exp_month">
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput readonly value="{{card.exp_year}}" placeholder="exp_year">
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput readonly value="{{card.funding}}" placeholder="funding">
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput readonly value="{{card.last4}}" placeholder="last4">
-        </mat-form-field>
+        <div *ngFor="let card of stripeCust.sources.data; let i=index;">
+          <mat-form-field>
+            <input matInput readonly value="{{card.id}}" placeholder="cardId">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput readonly value="{{card.address_city}}" placeholder="address_city">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput readonly value="{{card.address_country}}" placeholder="address_country">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput readonly value="{{card.address_line1}}" placeholder="address_line1">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput readonly value="{{card.address_line2}}" placeholder="address_line2">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput readonly value="{{card.address_state}}" placeholder="address_state">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput readonly value="{{card.address_zip}}" placeholder="address_zip">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput readonly value="{{card.brand}}" placeholder="brand">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput readonly value="{{card.country}}" placeholder="country">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput readonly value="{{card.exp_month}}" placeholder="exp_month">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput readonly value="{{card.exp_year}}" placeholder="exp_year">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput readonly value="{{card.funding}}" placeholder="funding">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput readonly value="{{card.last4}}" placeholder="last4">
+          </mat-form-field>
 
-        <button mat-button color="warn" (click)="deleteCardInStripe(card.id)">delete Card</button>
+          <button mat-button color="warn" (click)="deleteCardInStripe(card.id)">delete Card</button>
+        </div>
       </div>
       <mat-action-row>
         <!-- <button mat-button color="warn" (click)="prevStep()">Previous</button> -->

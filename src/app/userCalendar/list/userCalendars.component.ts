@@ -24,7 +24,7 @@ import { UserCalendarDialogComponent } from '../single/dialog/userCalendarDialog
 import { SearchCalendarComponent } from './search/searchCalendar.component';
 // import { GlobalEventsManager } from '../../globalEventsManager';
 
-
+import { TranslateService } from '../../translate/translate.service';
 
 
 // import * as $ from 'jquery';
@@ -75,6 +75,7 @@ export class UserCalendarsComponent implements OnInit {
     private location: Location,
     private _fb: FormBuilder,
     private authService: AuthService,
+    private translateService: TranslateService,
     // private globalEventsManager: GlobalEventsManager,
   ) { }
   onCalendarInit(result) {
@@ -133,6 +134,13 @@ export class UserCalendarsComponent implements OnInit {
         right: 'prev,today,next month,agendaWeek,listWeek'
       },
 
+      buttonText: {
+        today:    this.translateService.instant('today'),
+        month:    this.translateService.instant('month'),
+        week:     this.translateService.instant('week'),
+        day:      this.translateService.instant('day'),
+        list:     this.translateService.instant('list'),
+      },
       defaultView: 'agendaWeek',
       editable: true,
       eventLimit: true, // allow "more" link when too many events

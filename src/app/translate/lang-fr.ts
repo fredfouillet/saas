@@ -200,6 +200,16 @@ export const LANG_FR_TRANS = {
     'right': 'droit',
     'Rights': 'Droits',
 
+
+
+    'today': 'aujourd\'hui',
+    'month': 'mois',
+    'week': 'semaine',
+    'day': 'jour',
+    'list': 'liste',
+
+
+
     'Search': 'Recherche',
     'This action is not reversible. Are you sure you want to delete?': 'Cette action est irréversible. Confirmez-vous la suppression ?',
 
