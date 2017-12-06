@@ -203,7 +203,7 @@ router.get('/sendQuoteByEmailToClient/:quoteId', function(req, res, next) {
     //   item: quoteId + '.pdf'
     // })
   }).catch((error) => {
-    return res.status(404).json({title: 'Error', error: error})
+    return res.status(404).json({title: 'Error_mail', error: error})
   })
 })
 
@@ -214,7 +214,7 @@ router.get('/pdf/:quoteId', function(req, res, next) {
       item: quoteId + '.pdf'
     })
   }).catch((error) => {
-    return res.status(404).json({title: 'Error', error: error})
+    return res.status(404).json({title: 'Error_pdf', error: error})
   })
 })
 
