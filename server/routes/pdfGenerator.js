@@ -444,11 +444,9 @@ module.exports = {
                       <br>
                       <a class="cgv">Ce devis est valable 3 mois. Les prix sont établis sur la base des taux en vigeur à la date de remise de l'offre et toute variation ultérieure de ces taux sera répercutée sur ces prix en application du Code Général des Impôts</a>
                         `
-
+                  html = '<p>alan</p>'  
                   pdf.create(html, this.options).toFile('./server/uploads/pdf/' + req.params.quoteId + '.pdf', function(err, resPDF) {
                     if (err) {
-                      //return res.status(404).json({message: '', err: err})
-
                       reject(err)
                     } else {
                       resolve(req.params.quoteId)
