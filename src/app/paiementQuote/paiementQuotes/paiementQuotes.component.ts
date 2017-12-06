@@ -22,7 +22,7 @@ export class PaiementQuotesComponent implements OnInit {
   // @Input() idQuote = '';
   // @Input() showHeader: boolean = true;
   @Output() getPaiementQuotesCross: EventEmitter<any> = new EventEmitter();
-  @Output() newPaiementSaved: EventEmitter<any> = new EventEmitter();
+  // @Output() newPaiementSaved: EventEmitter<any> = new EventEmitter();
   // @Input() showCreate: boolean = true;
   @Input() search: Search = new Search()
 
@@ -130,7 +130,8 @@ export class PaiementQuotesComponent implements OnInit {
   }
   saved(result) {
     // this.getPaiementQuotesInit()
-    this.newPaiementSaved.emit()
+    // console.log('saved')
+    // this.newPaiementSaved.emit()
     this.getPaiementQuotes(1, this.search)
   }
 
