@@ -30,8 +30,8 @@ export class UserComponent implements OnInit {
   @Output() saved: EventEmitter<any> = new EventEmitter();
   @Input() search: Search = new Search()
 
-  fetchedCompanies: Companie[] = []
-  autocompleteCompanie: string = '';
+  // fetchedCompanies: Companie[] = []
+  // autocompleteCompanie: string = '';
 
   fetchedTypeUsers = []
   autocompleteTypeUser: string = '';
@@ -40,11 +40,11 @@ export class UserComponent implements OnInit {
   addressTypes = AddressTypes;
   titleArray = ['Mr.', 'Mrs.']
   languageArray = ['fr', 'en']
-  typeClientArray = ['Societe', 'Administration']
-  statusHouseArray = ['Propriétaire', 'Locataire']
-  typeHouseArray = ['Pavillon', 'Immeuble']
-  accessTypeArray = ['escalier', 'ascenseur']
-  sourceContactArray = ['Adwords', 'Appel Entrant', 'Apporteur Affaire']
+  typeClientArray = ['Company', 'Individual']
+  // statusHouseArray = ['Propriétaire', 'Locataire']
+  // typeHouseArray = ['Pavillon', 'Immeuble']
+  // accessTypeArray = ['escalier', 'ascenseur']
+  // sourceContactArray = ['Adwords', 'Appel Entrant', 'Apporteur Affaire']
   companieIndexToSelect = ''
   typeUserDropDown = ''
   typeUser = TypeUser
@@ -112,17 +112,17 @@ export class UserComponent implements OnInit {
       name: [''],
       lastName: ['', [Validators.required, Validators.minLength(3)]],
       phoneNumber: [''],
-      fax: [''],
+      // fax: [''],
       title: ['', [Validators.required, Validators.minLength(1)]],
       typeClient: [''],
-      statusHouse: [''],
-      sourceContact: [''],
+      // statusHouse: [''],
+      // sourceContact: [''],
 
-      typeHouse: [''],
-      surface: [''],
-      accesCode: [''],
-      floor: [''],
-      accessType: [''],
+      // typeHouse: [''],
+      // surface: [''],
+      // accesCode: [''],
+      // floor: [''],
+      // accessType: [''],
 
 
       address: [''],
@@ -174,24 +174,24 @@ export class UserComponent implements OnInit {
   // selectCompanie(companie: Companie) {
   //   this.fetchedUser.ownerCompanies = [companie]
   // }
-  newAddress() {
-    let newAddress = new Address()
-    this.fetchedUser.profile.address.push(newAddress)
-  }
-  removeAddress(i) {
-    this.fetchedUser.profile.address.splice(i, 1);
-  }
-  moveAddress(i: number, incremet: number) {
-      // if(i>=0 && i<=this.fetchedUser.profile.address.length + incremet) {
-      console.log(i, incremet, this.fetchedUser.profile.address.length)
-      if(  !(i===0 && incremet<0) && !(i===this.fetchedUser.profile.address.length-1 && incremet>0)  )    {
-        var tmp = this.fetchedUser.profile.address[i];
-        this.fetchedUser.profile.address[i] = this.fetchedUser.profile.address[i + incremet]
-        this.fetchedUser.profile.address[i + incremet] = tmp
-        // this.save(false)
-        // console.log(this.fetchedUser.profile.address)
-      }
-    }
+  // newAddress() {
+  //   let newAddress = new Address()
+  //   this.fetchedUser.profile.address.push(newAddress)
+  // }
+  // removeAddress(i) {
+  //   this.fetchedUser.profile.address.splice(i, 1);
+  // }
+  // moveAddress(i: number, incremet: number) {
+  //     // if(i>=0 && i<=this.fetchedUser.profile.address.length + incremet) {
+  //     console.log(i, incremet, this.fetchedUser.profile.address.length)
+  //     if(  !(i===0 && incremet<0) && !(i===this.fetchedUser.profile.address.length-1 && incremet>0)  )    {
+  //       var tmp = this.fetchedUser.profile.address[i];
+  //       this.fetchedUser.profile.address[i] = this.fetchedUser.profile.address[i + incremet]
+  //       this.fetchedUser.profile.address[i + incremet] = tmp
+  //       // this.save(false)
+  //       // console.log(this.fetchedUser.profile.address)
+  //     }
+  //   }
   // selectRight(right: Right) {
   //   this.fetchedUser.rights = [right]
   // }
@@ -203,9 +203,9 @@ export class UserComponent implements OnInit {
   // selectSalesMan(users) {
   //   this.fetchedUser.salesMan = users
   // }
-  getPicture(result) {
-    // console.log(result)
-  }
+  // getPicture(result) {
+  //   // console.log(result)
+  // }
 
   // openDialog(positionImage: string) {
   //   // let dialogRef = this.dialog.open(EditOptionsComponentDialog);
@@ -220,23 +220,23 @@ export class UserComponent implements OnInit {
   // }
 
   // autocolplete typeUser
-  searchTypeUser() {
-    if (!this.autocompleteTypeUser) {
-      this.fetchedTypeUsers = []
-    } else {
-      this.fetchedTypeUsers = this.typeUser.filter((el) =>
-        el.toLowerCase().indexOf(this.autocompleteTypeUser.toLowerCase()) > -1
-      );
-    }
-  }
-  selectTypeUser(typeUser) {
-    this.autocompleteTypeUser = '';
-    this.fetchedTypeUsers = [];
-    this.fetchedUser.typeUsers.push(typeUser);
-  }
-  removeTypeUser(i: number) {
-    this.fetchedUser.typeUsers.splice(i, 1);
-  }
+  // searchTypeUser() {
+  //   if (!this.autocompleteTypeUser) {
+  //     this.fetchedTypeUsers = []
+  //   } else {
+  //     this.fetchedTypeUsers = this.typeUser.filter((el) =>
+  //       el.toLowerCase().indexOf(this.autocompleteTypeUser.toLowerCase()) > -1
+  //     );
+  //   }
+  // }
+  // selectTypeUser(typeUser) {
+  //   this.autocompleteTypeUser = '';
+  //   this.fetchedTypeUsers = [];
+  //   this.fetchedUser.typeUsers.push(typeUser);
+  // }
+  // removeTypeUser(i: number) {
+  //   this.fetchedUser.typeUsers.splice(i, 1);
+  // }
   // autocolplete typeUser
 
 
