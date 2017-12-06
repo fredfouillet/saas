@@ -12,9 +12,11 @@
       </mat-expansion-panel-header>
       <app-detailsUser [fetchedUser]="fetchedUser"></app-detailsUser>
       <mat-action-row>
-        <button *ngIf="!isUserIsMyself() && fetchedUser._id" mat-mini-fab color="warn" (click)="openDialogDelete()">
-          <mat-icon aria-label="Clear">clear</mat-icon>
-        </button>
+        <div *ngIf="fetchedUser._id">
+          <button *ngIf="!isUserIsMyself()" mat-mini-fab color="warn" (click)="openDialogDelete()">
+            <mat-icon aria-label="Clear">clear</mat-icon>
+          </button>
+        </div>
         <button mat-mini-fab color="primary" (click)="save()">
           <mat-icon aria-label="Next">forward</mat-icon>
         </button>
