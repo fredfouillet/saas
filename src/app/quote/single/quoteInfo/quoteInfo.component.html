@@ -95,7 +95,7 @@
           </mat-form-field>
       </div>
       <div class="col-12">
-        <app-quote-status *ngIf="fetchedQuote._id" [fetchedQuote]="fetchedQuote"></app-quote-status>
+        <app-quote-status (quoteStatusChanged)="quoteStatusChanged()" *ngIf="fetchedQuote._id" [fetchedQuote]="fetchedQuote"></app-quote-status>
       </div>
 
     </div>

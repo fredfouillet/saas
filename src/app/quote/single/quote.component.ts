@@ -173,10 +173,12 @@ export class QuoteComponent implements OnInit {
     })
     if(this.totalPaiementAmount >= this.fetchedQuote.priceQuote.priceQuoteWithoutTaxes) {
       this.fetchedQuote.statusQuote = 'paid'
-      this.actionButtonsComponent.save()
+      this.save()
     }
   }
-
+  save() {
+    this.actionButtonsComponent.save()
+  }
   calculateQuote() {
     let this2 = this;
     setTimeout(() => {

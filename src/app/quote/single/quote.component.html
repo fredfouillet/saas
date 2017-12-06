@@ -17,8 +17,8 @@
           <mat-icon>account_circle</mat-icon>
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <app-quoteInfo [search]="search" [fetchedQuote]="fetchedQuote"></app-quoteInfo>
-      <mat-action-row>
+      <app-quoteInfo [search]="search" [fetchedQuote]="fetchedQuote" (quoteStatusChangedEmit)="save()"></app-quoteInfo>
+      <mat-action-row *ngIf="fetchedQuote.statusQuote === 'pending'">
         <app-actionButtons (nextStep)="nextStep()" [isDialog]="isDialog" [fetchedQuote]="fetchedQuote" (closeDialog)="closeDialog()" (saved)="savedQuote($event)">
         </app-actionButtons>
       </mat-action-row>
@@ -99,7 +99,7 @@
       </app-drawing-signature>
 
       <img *ngIf="fetchedQuote.statusQuote !== 'pending'" [src]="fetchedQuote.drawingSignature.base64">
-      <mat-action-row>
+      <mat-action-row *ngIf="fetchedQuote.statusQuote === 'pending'">
         <button mat-mini-fab color="warn" (click)="DrawingSignature.clearDrawing()">
           <mat-icon aria-label="clear">clear</mat-icon>
         </button>
@@ -125,7 +125,7 @@
           <mat-icon>date_range</mat-icon>
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <app-paiementQuotes (getPaiementQuotesCross)="getPaiementQuotes($event)" [search]="{userId: search.userId, isExpense:search.isExpense, quoteId:fetchedQuote._id}">
+      <app-paiementQuotes *ngIf="step === 5" (getPaiementQuotesCross)="getPaiementQuotes($event)" [search]="{userId: search.userId, isExpense:search.isExpense, quoteId:fetchedQuote._id}">
       </app-paiementQuotes>
       <mat-card>
         {{'Total Paiement' | translate}} = {{totalPaiementAmount}}

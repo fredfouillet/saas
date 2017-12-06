@@ -41,7 +41,7 @@ import {Search} from '../../../shared/shared.model'
 })
 export class QuoteInfoComponent implements OnInit {
   loading: boolean = false;
-  @Output() saved: EventEmitter<any> = new EventEmitter();
+  @Output() quoteStatusChangedEmit: EventEmitter<any> = new EventEmitter();
 
   @Input() search: Search = new Search()
 
@@ -86,7 +86,9 @@ export class QuoteInfoComponent implements OnInit {
 
 
   }
-
+  quoteStatusChanged(){
+    this.quoteStatusChangedEmit.emit()
+  }
   quoteDetailsUpdated(result) {
     // console.log(result)
     this.fetchedQuote = result
