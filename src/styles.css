@@ -26,6 +26,17 @@
   display: none!important;
 }
 
+/*Green Notifif at top*/
+#toast-container>div {
+  width: 25px;
+}
+.toast-message{
+  display:none;
+}
+.toast-title{
+  display:none;
+}
+/*Green Notifif at top*/
 /*ALAN*/
 
 

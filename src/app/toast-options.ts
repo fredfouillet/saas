@@ -1,9 +1,10 @@
-// custom-option.ts
+// https://www.npmjs.com/package/ng2-toastr
 import {ToastOptions} from 'ng2-toastr';
 
 export class CustomOption extends ToastOptions {
-  animate = 'flyRight'; // you can override any options available
+  animate = 'fade';
   newestOnTop = false;
   maxShown = 1;
-  showCloseButton = true;
+  toastLife = 50000;
+  showCloseButton = false;
 }
