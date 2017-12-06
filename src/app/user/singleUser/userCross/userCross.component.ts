@@ -34,20 +34,20 @@ export class UserCrossComponent implements OnInit {
   autocompleteCompanie: string = '';
 
   fetchedTypeUsers = []
-  autocompleteTypeUser: string = '';
+  // autocompleteTypeUser: string = '';
 
   // fetchedRights: Right[] = []
   addressTypes = AddressTypes;
-  titleArray = ['Mr.', 'Mrs.']
-  languageArray = ['fr', 'en']
-  typeClientArray = ['Societe', 'Administration']
-  statusHouseArray = ['Propriétaire', 'Locataire']
-  typeHouseArray = ['Pavillon', 'Immeuble']
-  accessTypeArray = ['escalier', 'ascenseur']
-  sourceContactArray = ['Adwords', 'Appel Entrant', 'Apporteur Affaire']
-  companieIndexToSelect = ''
-  typeUserDropDown = ''
-  typeUser = TypeUser
+  // titleArray = ['Mr.', 'Mrs.']
+  // languageArray = ['fr', 'en']
+  // typeClientArray = ['Societe', 'Administration']
+  // statusHouseArray = ['Propriétaire', 'Locataire']
+  // typeHouseArray = ['Pavillon', 'Immeuble']
+  // accessTypeArray = ['escalier', 'ascenseur']
+  // sourceContactArray = ['Adwords', 'Appel Entrant', 'Apporteur Affaire']
+  // companieIndexToSelect = ''
+  // typeUserDropDown = ''
+  // typeUser = TypeUser
 
 
   @Input() fetchedUser: User = new User();

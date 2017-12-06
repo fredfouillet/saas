@@ -74,13 +74,13 @@ export class Profile {
 
 
 
-export class DetailHouse {
-  typeHouse: string = '';
-  surface: number;
-  accesCode: string = '';
-  floor: string = '';
-  accessType: string = '';
-}
+// export class DetailHouse {
+//   typeHouse: string = '';
+//   surface: number;
+//   accesCode: string = '';
+//   floor: string = '';
+//   accessType: string = '';
+// }
 
 
 
@@ -88,7 +88,6 @@ export const AddressTypes =
 [
   {value: 'shipping', label: 'Shipping'},
   {value: 'billing', label: 'Billing'},
-  {value: 'workingAddress', label: 'WorkingAddress'},
 ]
 
 
