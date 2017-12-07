@@ -1,8 +1,8 @@
-<form [formGroup]="myForm" novalidate (ngSubmit)="save()">
+<form [formGroup]="myForm">
   <div class="row">
 
     <div class="col-sm-12 col-md-6 col-lg-4">
-
+      id:{{fetchedUser._id}}
       <div *ngIf="fetchedUser.isExternalUser">
         <mat-form-field>
           <mat-select placeholder="{{'Type Client' | translate}}" [(ngModel)]="fetchedUserCross.profile.typeClient" formControlName="typeClient">

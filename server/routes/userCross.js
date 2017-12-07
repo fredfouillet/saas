@@ -124,6 +124,7 @@ function getUserCross (user, userId) {
     .populate({path: 'profile.profilePicture', model: 'Form'})
       .exec(function (err, user) {
       if (err) {
+        console.log(err)
         reject(err)
       }
       if (!user) {
@@ -139,8 +140,8 @@ function getUserCross (user, userId) {
   })
 }
 
-router.get('/:id', function(req, res, next) {
-  getUserCross(req.user, req.params.id).then(user => {
+router.get('/:idUser', function(req, res, next) {
+  getUserCross(req.user, req.params.idUser).then(user => {
     return res.status(200).json({user: user})
   }).catch( err => {
     return res.status(403).json({title: 'There was a problem', error: err});
