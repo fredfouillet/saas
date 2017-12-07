@@ -93,6 +93,17 @@ export class PaiementService {
           return Observable.throw(error.json());
         });
       }
+    getUserInfosConnectByCompanieId(companieId: string) {
+      let headers = new Headers({'Content-Type': 'application/json'});
+      headers.append('Authorization', '' + this.authService.currentUser.token);
+      return this.http.get(this.url + 'stripeConnect/getUserInfosConnect/' + companieId , {headers: headers})
+        .map((response: Response) => {
+          return response.json();
+        })
+        .catch((error: Response) => {
+          return Observable.throw(error.json());
+        });
+      }
 
 
 

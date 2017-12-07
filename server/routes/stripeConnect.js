@@ -312,25 +312,40 @@ router.post('/oauthConnect/', function(req, res, next) {
 })
 
 router.get('/getUserInfosConnect', function(req, res, next) {
-  Companie.findById((req.user.ownerCompanies[0]), function(err, companie) {
-    if (!companie.banck.stripe.stripe_user_id) {
-      return res.status(404).json({title: 'No data', error: 'noData'});
-    }
-
-    // console.log(companie.banck.stripe.stripe_user_id)
-    stripe.accounts.retrieve(companie.banck.stripe.stripe_user_id, function(err, customer) {
-      if (err) {
-        return res.status(404).json({title: 'No data in stripe', error: 'noData'});
-      } else {
-        if (customer.deleted) {
-          return res.status(404).json({title: 'Deleted', error: customer});
-        }
-        return res.status(200).json({customer: customer})
-      }
-    });
+  getInfoUserConnect(req.user.ownerCompanies[0]).then(customer => {
+    return res.status(200).json({customer: customer})
+  }).catch(err => {
+    return res.status(404).json(err);
+  })
+})
+router.get('/getUserInfosConnect/:companieId', function(req, res, next) {
+  getInfoUserConnect(req.params.companieId).then(customer => {
+    return res.status(200).json({customer: customer})
+  }).catch(err => {
+    return res.status(404).json(err);
   })
 })
 
+
+function getInfoUserConnect (companieId) {
+  return new Promise(function(resolve, reject) {
+    Companie.findById((companieId), function(err, companie) {
+      if (!companie.banck.stripe.stripe_user_id) {
+        reject(new Error({title: 'No data', error: 'noData'}))
+      }
+      stripe.accounts.retrieve(companie.banck.stripe.stripe_user_id, function(err, customer) {
+        if (err) {
+          reject(new Error({title: 'No data in stripe', error: 'noData'}));
+        } else {
+          if (customer.deleted) {
+            reject(new Error({title: 'Deleted', error: customer}))
+          }
+          resolve(customer)
+        }
+      });
+    })
+  })
+}
 
 
 

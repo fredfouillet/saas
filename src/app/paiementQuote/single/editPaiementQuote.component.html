@@ -83,6 +83,7 @@
 
         <mat-radio-group [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedPaiementQuote.type">
           <mat-radio-button *ngFor="let n of paiementsTypes" [value]="n.value">{{n.label}}</mat-radio-button>
+          <mat-radio-button *ngIf="accountConnectStripe.id" [value]="'stripe'">Stripe</mat-radio-button>
         </mat-radio-group>
 
         <div *ngIf="fetchedPaiementQuote.type=='stripe' && fetchedPaiementQuote._id">

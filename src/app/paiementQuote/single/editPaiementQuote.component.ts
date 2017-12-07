@@ -6,7 +6,7 @@ import {PaiementService} from '../../companie/paiement/paiement.service';
 
 import {ProductService} from '../../product/product.service';
 // import { ProjectService} from '../../project/project.service';
-
+import { AccountConnectStripe} from '../../companie/single/connectStripe/connectStripe.model'
 
 import {PaiementQuote, StripeCustomer, DataSource} from '../paiementQuote.model';
 
@@ -50,7 +50,7 @@ export class EditPaiementQuoteComponent implements OnInit {
   // currentUser: User = new User()
   // imgLogoUrl: string = './assets/images/profile-placeholder.jpg'
   // imgSignatureBase64Temp = ''
-
+  accountConnectStripe: AccountConnectStripe = new AccountConnectStripe();
   // showReLoginInApp:boolean = false
   newCard: DataSource = new DataSource()
   // userAdmins : User[] = []
@@ -67,7 +67,7 @@ export class EditPaiementQuoteComponent implements OnInit {
   paiementsTypes = [
     { label: 'cheque', value: 'check' },
     { label: 'Espece', value: 'cash' },
-    { label: 'Stripe', value: 'stripe' },
+    // { label: 'Stripe', value: 'stripe' },
 ]
   constructor(
     private paiementQuoteService: PaiementQuoteService,
@@ -89,6 +89,17 @@ export class EditPaiementQuoteComponent implements OnInit {
 
  setStep(index: number) {
    this.step = index;
+ }
+
+ getUserInfosConnectStripe(){
+   this.fetchedPaiementQuote.ownerCompanies.forEach(companieId => {
+    //  console.log(companieId.toString())
+     this.paiementService.getUserInfosConnectByCompanieId(companieId.toString())
+       .subscribe(res => {
+        //  this.paiementsTypes.push({label: 'Stripe', value: 'stripe' })
+         this.accountConnectStripe = res.customer
+       }, error => { console.log(error) })
+   })
  }
 
  closeDialog() {
@@ -251,6 +262,7 @@ export class EditPaiementQuoteComponent implements OnInit {
       .subscribe(
         res => {
           this.fetchedPaiementQuote = res
+          this.getUserInfosConnectStripe()
           // if(this.fetchedPaiementQuote.type === 'stripe')
           //   this.getStripeCust()
           // this.fetchedPaiementQuote
