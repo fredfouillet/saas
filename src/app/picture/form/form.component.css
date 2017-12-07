@@ -5,6 +5,11 @@
     display: none;
 }
 
+.buttonImg{
+  cursor: pointer;
+  font-size: 70px !important;
+}
+
 
 .pdf-ttl {
   position: absolute;

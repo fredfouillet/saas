@@ -10,6 +10,7 @@
   text-align: center;
   max-width: 100% !important;
 }
-.buttonDialog{
+.buttonImg{
   cursor: pointer;
+  font-size: 70px !important;
 }
