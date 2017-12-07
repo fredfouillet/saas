@@ -27,7 +27,7 @@ import { Search } from '../../../shared/shared.model';
 })
 
 export class DetailsUserComponent implements OnInit {
-  @Output() saved: EventEmitter<any> = new EventEmitter();
+  @Output() save: EventEmitter<any> = new EventEmitter();
   @Input() search: Search = new Search()
 
   // fetchedCompanies: Companie[] = []
@@ -48,7 +48,7 @@ export class DetailsUserComponent implements OnInit {
   // companieIndexToSelect = ''
   // typeUserDropDown = ''
   typeUser = TypeUser
-
+  showLoginInApp: boolean = false
 
   @Input() fetchedUser: User = new User();
   currentUser: User = new User();
@@ -70,8 +70,9 @@ export class DetailsUserComponent implements OnInit {
     private companieService: CompanieService,
   ) {
   }
-  onChangeLang(){
-    console.log('s')
+  onChangeLang() {
+    this.save.emit()
+    this.showLoginInApp = true
   }
   selectCity(i, city: string) {
     this.fetchedUser.profile.address[i].city = city

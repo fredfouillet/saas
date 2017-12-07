@@ -10,7 +10,7 @@
           {{'User' | translate}} : {{fetchedUser.profile.lastName}}
         </mat-panel-title>
       </mat-expansion-panel-header>
-      <app-detailsUser [fetchedUser]="fetchedUser"></app-detailsUser>
+      <app-detailsUser (save)="save()"[fetchedUser]="fetchedUser"></app-detailsUser>
       <mat-action-row>
         <div *ngIf="fetchedUser._id">
           <button *ngIf="!isUserIsMyself()" mat-mini-fab color="warn" (click)="openDialogDelete()">
