@@ -1,10 +1,10 @@
-<h4>Options Calendar</h4>
-<input type="text" class="form-control" [(ngModel)]="fetchedCompanie.option.calendar.timeBegin" required minlength="1" placeholder="{{'First hour of your day' | translate}}">{{'First hour of your day' | translate}} 
+<h4>Options Calendar</h4>{{'First hour of your day' | translate}} 
+<input type="text" class="form-control" [(ngModel)]="fetchedCompanie.option.calendar.timeBegin" required minlength="1" placeholder="{{'First hour of your day' | translate}}">{{'Last hour of your day' | translate}}
 
-<input type="text" class="form-control" [(ngModel)]="fetchedCompanie.option.calendar.timeEnd" required minlength="1" placeholder="{{'Last hour of your day' | translate}}"> {{'Last hour of your day' | translate}}
+<input type="text" class="form-control" [(ngModel)]="fetchedCompanie.option.calendar.timeEnd" required minlength="1" placeholder="{{'Last hour of your day' | translate}}">{{'Hour detail' | translate}} 
 
-<input type="text" class="form-control" [(ngModel)]="fetchedCompanie.option.calendar.slotDuration" placeholder="{{'Hour detail' | translate}}">{{'Hour detail' | translate}}
+<input type="text" class="form-control" [(ngModel)]="fetchedCompanie.option.calendar.slotDuration" placeholder="{{'Hour detail' | translate}}">{{'First hour of your daywork' | translate}}
 
-<input type="text" class="form-control" [(ngModel)]="fetchedCompanie.option.calendar.timeBeginbusinessHours" placeholder="{{'First hour of your daywork' | translate}}">{{'First hour of your daywork' | translate}}
+<input type="text" class="form-control" [(ngModel)]="fetchedCompanie.option.calendar.timeBeginbusinessHours" placeholder="{{'First hour of your daywork' | translate}}">{{'Last hour of your daywork' | translate}}
 
-<input type="text" class="form-control" [(ngModel)]="fetchedCompanie.option.calendar.timeEndbusinessHours" placeholder="{{'Last hour of your daywork' | translate}}">{{'Last hour of your daywork' | translate}}
+<input type="text" class="form-control" [(ngModel)]="fetchedCompanie.option.calendar.timeEndbusinessHours" placeholder="{{'Last hour of your daywork' | translate}}">
