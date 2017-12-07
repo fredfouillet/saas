@@ -6,10 +6,11 @@
         
         <mat-form-field>
           <input matInput placeholder="Category" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedCompanie.categories.categProduct[i].categ">
+            <mat-icon matSuffix (click)="removeCateg('categProduct', 1,i,0,0)">mode_edit</mat-icon>
+            <mat-icon matSuffix (click)="addCateg('categProduct', 1,i,0,0)">mode_edit</mat-icon>
         </mat-form-field>
         
-        <button type="button" class="false" (click)="removeCateg('categProduct', 1,i,0,0)">x</button>
-        <button type="button" class="valid" (click)="addCateg('categProduct', 1,i,0,0)">+</button>
+
        
         
         <div *ngFor="let categorie1 of categorie0.subCateg; let j = index;">
