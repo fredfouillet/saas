@@ -113,7 +113,7 @@ export class FormComponent implements OnInit {
           file.objectURL = this.sanitizer.bypassSecurityTrustUrl((window.URL.createObjectURL(files[i])));
           file.notSafeURL = window.URL.createObjectURL(files[i])
           this.files.push(files[i]);
-
+          this.onSubmit()
         }
       } else if (!this.isImage(file)) {
         this.toastr.error('Only images are allowed');
