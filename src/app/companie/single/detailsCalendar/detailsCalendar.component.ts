@@ -767,19 +767,7 @@ export class DetailsCalendarComponent implements OnInit {
       )
   }
 
-  onDelete(id: string) {
-    this.companieService.deleteCompanie(id)
-      .subscribe(
-        res => {
-          this.toastr.success('Great!', res.message);
-          this.router.navigate(['companie/'])
-          console.log(res);
-        },
-        error => {
-          console.log(error);
-        }
-      );
-  }
+
 
 
 
