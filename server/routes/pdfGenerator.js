@@ -289,31 +289,21 @@ module.exports = {
                          <table class="tabo">
                            <thead>
                              <tr>
-                               <th class="col-5 bgh titleGooplus1">Description</th>
-                               <th class="col-1 bgh titleGooplus1">Image</th>
-                               <th class="col-1 bgh titleGooplus1">Price_Unit</th>
-                               <th class="col-1 bgh titleGooplus1">Quantity</th>
-                               <th class="col-1 bgh titleGooplus1">Unit</th>
-                               <th class="col-1 bgh titleGooplus1">Total_tax_excl</th>
-                               <th class="col-2 bgh titleGooplus1">Tax</th>
+                               <th class="col-6 bgh titleGooplus1">Description</th>
+                               
+                               <th class="col-1 bgh titleGooplus1">Unité</th>
+                               <th class="col-1 bgh titleGooplus1">Quantité</th>
+                               <th class="col-2 bgh titleGooplus1">Prix Unitaire HT</th>
+                               <th class="col-2 bgh titleGooplus1">Total HT</th>
+                               
                              </tr>
                            </thead>
-                           <tbody>`
-                  item.devisDetails.forEach(devisDetail => {
-                    html += '<tr class="ts">'
-                    html += '<td class="desc elem">' + devisDetail.nameBucketProducts + '</td>'
-                    html += `
-                               <td class="desc"></td>
-                               <td class="desc"></td>
-                               <td class="desc"></td>
-                               <td class="desc"></td>
-                               <td class="desc"></td>
-                               <td class="desc"></td>
-                            </tr>`
+                           <tbody>
+
                     devisDetail.bucketProducts.forEach(bucketProduct => {
                       html += '<tr>'
                       let description = ''
-                      let img = ''
+
                       let unit = ''
                       if (bucketProduct.typeRow === 'text') {
                         description = bucketProduct.title
@@ -328,7 +318,7 @@ module.exports = {
                         })
                       }
                       html += '<td class="desc"><div class="avoid elem">' + description + '</div></td>'
-                      html += '<td class="elem">' + img + '</td>'
+
                       // html += '<td class="desc">' + bucketProduct.typeRow + '</td>'
                       // html += '<td class="elem">' + bucketProduct.title + '</td>'
                       html += '<td class="elem">' + unit + '</td>'
