@@ -94,7 +94,7 @@
 
     <mat-expansion-panel
       *ngIf="authService.showObjHTML('quote', 'signature') &&
-      fetchedQuote.statusQuote !=='rejected' &&
+      fetchedQuote.statusQuote === 'pending' &&
       fetchedQuote._id" [expanded]="step === 4" (opened)="setStep(4)">
       <mat-expansion-panel-header>
         <mat-panel-title>
@@ -104,7 +104,7 @@
           {{'Signature' | translate}}
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <app-drawing-signature *ngIf="fetchedQuote.statusQuote === 'pending'" #DrawingSignature [drawing]="fetchedQuote.drawingSignature" (cleared)="clearedDrawing()" (updated)="drawingSignatureUpdated($event)">
+      <app-drawing-signature #DrawingSignature [drawing]="fetchedQuote.drawingSignature" (cleared)="clearedDrawing()" (updated)="drawingSignatureUpdated($event)">
       </app-drawing-signature>
 
       <img *ngIf="fetchedQuote.statusQuote !== 'pending'" [src]="fetchedQuote.drawingSignature.base64">
