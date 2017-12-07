@@ -40,8 +40,15 @@
           {{'Documents' | translate}}
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <app-picture [showPagination]=false [labelButtonAddPicture]="'Add'" [forms]="fetchedQuote.forms">
-      </app-picture>
+      <div class="row">
+        <div class="col-5">
+          <app-picture [showPagination]=false [showPictures]=false [openLibrairy]=true [labelButtonAddPicture]="'Add'" [forms]="fetchedQuote.forms"></app-picture>
+        </div>
+        <div class="col-5">
+          <app-picture [showPagination]=false [showPictures]=false [openLibrairy]=false [openCameraStraight]=true [labelButtonAddPicture]="'Add'" [forms]="fetchedQuote.forms"></app-picture>
+        </div>
+      </div>
+      <app-picture [showPagination]=false [showPictures]=true  [addPicture]=false [labelButtonAddPicture]="'Add'" [forms]="fetchedQuote.forms"></app-picture>
       <mat-action-row>
         <app-actionButtons (nextStep)="nextStep()" [showDeleteButton]=false [fetchedQuote]="fetchedQuote"></app-actionButtons>
       </mat-action-row>

@@ -14,11 +14,12 @@ import {AuthService} from '../../../auth/auth.service';
 export class FormComponent implements OnInit {
 
 
-    @ViewChild('item') item: ElementRef;
-    @ViewChild('appendToChildEl') appendToChildEl: ElementRef;
+  @ViewChild('item') item: ElementRef;
+  @ViewChild('appendToChildEl') appendToChildEl: ElementRef;
 
 
   @Output() onPassForm = new EventEmitter<any>();
+  @Input() openCameraStraight: boolean = false;
   // setting up the form
   myForm: FormGroup;
   // textInput1: FormControl;
@@ -53,9 +54,6 @@ export class FormComponent implements OnInit {
       private authService: AuthService,
 
     ) {}
-
-
-
 
     //
     // drawRotated(degrees: number, file: any){

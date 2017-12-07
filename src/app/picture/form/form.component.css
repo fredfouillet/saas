@@ -1,3 +1,10 @@
+.label-file {
+    cursor: pointer;
+}
+.input-file {
+    display: none;
+}
+
 
 .pdf-ttl {
   position: absolute;
