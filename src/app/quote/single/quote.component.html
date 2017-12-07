@@ -3,10 +3,9 @@
     <!-- <h3 *ngIf="fetchedQuote.typeQuote === 'invoice'"><i class="fa fa10 fa-clipboard" aria-hidden="true"></i>{{'Invoice' | translate}}</h3> -->
     <h3 *ngIf="fetchedQuote.typeQuote === 'quote'">
       <i class="fa fa10 fa-clipboard" aria-hidden="true"></i>
-      {{'Action' | translate}}
+      {{'Intervention' | translate}}
     </h3>
   </div>
-
   <mat-accordion class="example-headers-align">
     <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)">
       <mat-expansion-panel-header>
