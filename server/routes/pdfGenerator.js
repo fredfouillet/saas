@@ -290,15 +290,15 @@ module.exports = {
                            <thead>
                              <tr>
                                <th class="col-6 bgh titleGooplus1">Description</th>
-                               
+
                                <th class="col-1 bgh titleGooplus1">Unité</th>
                                <th class="col-1 bgh titleGooplus1">Quantité</th>
                                <th class="col-2 bgh titleGooplus1">Prix Unitaire HT</th>
                                <th class="col-2 bgh titleGooplus1">Total HT</th>
-                               
+
                              </tr>
                            </thead>
-                           <tbody>
+                           <tbody>`
 
                     devisDetail.bucketProducts.forEach(bucketProduct => {
                       html += '<tr>'
