@@ -4,7 +4,7 @@
       <!-- <h4 *ngIf="search.typeQuote ==='invoice'"> {{'Invoice' | translate}}</h4> -->
       <h4 *ngIf="search.typeQuote ==='quote'"> {{'Quotes' | translate}}</h4>
     </div>
-    <div class="p-2">
+    <div *ngIf="createNewButton" class="p-2">
       <app-newObjDialog
         icone="fa fa-plus-square fa-2x ml" [search]="search" (saved)="saved($event)" [typeObj]="'quote'">
       </app-newObjDialog>

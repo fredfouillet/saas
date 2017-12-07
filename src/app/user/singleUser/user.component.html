@@ -32,7 +32,7 @@
       <app-user-cross *ngIf="step === 1" [fetchedUser]="fetchedUser" (saved)=savedCrossUser($event)></app-user-cross>
     </mat-expansion-panel>
 
-    <mat-expansion-panel *ngIf="fetchedUser._id" [expanded]="step === 2" (opened)="setStep(2)">
+    <mat-expansion-panel *ngIf="fetchedUser._id && fetchedUser.isExternalUser" [expanded]="step === 2" (opened)="setStep(2)">
       <mat-expansion-panel-header>
         <mat-panel-title>
           {{'Quotes' | translate}}

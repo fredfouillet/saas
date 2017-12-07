@@ -23,6 +23,7 @@ export class QuotesComponent implements OnInit {
   // @Input() showBackButton = true;
   @Input() idProject: string = '';
   @Input() idClient: string = '';
+  @Input() createNewButton: boolean = true;
 
   fetchedQuotes: Quote[] = [];
   loading: boolean = false
