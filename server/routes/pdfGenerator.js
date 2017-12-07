@@ -329,7 +329,7 @@ module.exports = {
                       html += '</tr>'
 
                     })
-                  })
+                  // })
 
                   html += `
                            </tbody>
