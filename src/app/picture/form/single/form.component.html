@@ -5,6 +5,7 @@
         <div class="cho-fil">
           <button type="button">
             <input #fileInput name="fileUp" type="file" (change)="onFileSelect($event)">
+            <input #fileInput type="file" accept="image/*" capture="camera" />
           </button>
           <div *ngIf="hasFiles()">
             <div *ngFor="let file of files" class="cho-filcnt">
@@ -29,7 +30,7 @@
           <!-- <progress-bar [value]="progress" [max]="100" *ngIf="hasFiles() && submitStarted"></progress-bar> -->
 
 
-          
+
           <mat-progress-bar
             *ngIf="hasFiles() && submitStarted"
             [color]="primary"
