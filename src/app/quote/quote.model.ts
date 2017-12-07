@@ -79,7 +79,6 @@ export class PriceQuoteTaxe {
   TotalVAT: number = 0;
 }
 
-
 export const ModelVATs: number[] = [0, 5.5, 10]
 
 
