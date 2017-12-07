@@ -54,10 +54,10 @@ export class PictureComponent {
   // removePic(i) {
   //   this.forms.splice(i, 1);
   // }
-  onFileSelect(result) {
-    console.log(result)
-    this.formComponent.toto(result)
-  }
+  // onFileSelect(result) {
+  //   console.log(result)
+  //   this.formComponent.toto(result)
+  // }
   removeForm(formId) {
     this.forms.forEach((form, i) => {
       if(form._id === formId) {
