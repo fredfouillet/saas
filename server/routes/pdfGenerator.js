@@ -94,7 +94,6 @@ module.exports = {
                   var html = ''
                   html += `
                      <style type="text/css">
-
                            .col-1 {
                              width: 8.33%;
                            }
@@ -152,7 +151,6 @@ module.exports = {
                              color: white;
                              border: 1px solid #ddd;
                            }
-
                            .bghFree {
                              background-color: #595959;
                              color: #595959;
@@ -191,11 +189,7 @@ module.exports = {
                              border-collapse: collapse;
                              width: 100%;
                            }
-
-
-
                            td {
-
                              height: 20px;
                              vertical-align: center;
                              border-left: 1px solid #ddd;
@@ -289,21 +283,27 @@ module.exports = {
                          <table class="tabo">
                            <thead>
                              <tr>
-                               <th class="col-6 bgh titleGooplus1">Description</th>
-
-                               <th class="col-1 bgh titleGooplus1">Unité</th>
-                               <th class="col-1 bgh titleGooplus1">Quantité</th>
-                               <th class="col-2 bgh titleGooplus1">Prix Unitaire HT</th>
-                               <th class="col-2 bgh titleGooplus1">Total HT</th>
-
+                             <th class="col-6 bgh titleGooplus1">Description</th>
+                             <th class="col-1 bgh titleGooplus1">Unité</th>
+                             <th class="col-1 bgh titleGooplus1">Quantité</th>
+                             <th class="col-2 bgh titleGooplus1">PU HT</th>
+                             <th class="col-2 bgh titleGooplus1">PT HT</th>
                              </tr>
                            </thead>
                            <tbody>`
-
+                  item.devisDetails.forEach(devisDetail => {
+                    // html += '<tr class="ts">'
+                    // html += '<td class="desc elem">' + devisDetail.nameBucketProducts + '</td>'
+                    // html += `
+                    //            <td class="desc"></td>
+                    //            <td class="desc"></td>
+                    //            <td class="desc"></td>
+                    //            <td class="desc"></td>
+                    //         </tr>`
                     devisDetail.bucketProducts.forEach(bucketProduct => {
-                      html += '<tr>'
+                      html += '<tr class="">' // TO DO GUULLAUME
                       let description = ''
-
+                      let img = ''
                       let unit = ''
                       if (bucketProduct.typeRow === 'text') {
                         description = bucketProduct.title
@@ -318,30 +318,30 @@ module.exports = {
                         })
                       }
                       html += '<td class="desc"><div class="avoid elem">' + description + '</div></td>'
-
+                      // html += '<td class="elem">' + img + '</td>'
                       // html += '<td class="desc">' + bucketProduct.typeRow + '</td>'
                       // html += '<td class="elem">' + bucketProduct.title + '</td>'
                       html += '<td class="elem">' + unit + '</td>'
                       html += '<td class="elem">' + bucketProduct.quantity + '</td>'
                       html += '<td class="elem">' + bucketProduct.priceWithoutTaxes + '</td>'
                       html += '<td class="elem">' + bucketProduct.priceWithQuantity + '</td>'
-                      html += '<td class="elem">' + bucketProduct.vat + '%</td>'
+                      // html += '<td class="elem">' + bucketProduct.vat + '%</td>'
                       html += '</tr>'
 
                     })
-                  // })
+                  })
 
                   html += `
                            </tbody>
                          </table>
-
                          <br>
                          <table class="cobo">
                              <tr class="cobo">
-                               <td class="col-6 alright"></td>`
+                               <td class="col-8"></td>
+                               <td class="col-2 alright"></td>`
 
                   item.priceQuote.priceQuoteTaxes.forEach(priceQuoteTaxe => {
-                    html += `<td class="col-2 ts elem">TVA: ` + priceQuoteTaxe.VAT + `%</td>`
+                    // html += `<td class="col-2 ts elem">TVA: ` + priceQuoteTaxe.VAT + `%</td>`
                     // html += `<td class="col-2 ts elem">` + priceQuoteTaxe.TotalVAT + `€</td>`
                   })
 
@@ -351,34 +351,38 @@ module.exports = {
                                 <td class="col-2 ts elem"><b>TOTAL</b></td>
                                </tr>
                                <tr class="cobo">
-                                <td class="col-6 alright ts elem">Sous-Total HT</td>`
+                               <td class="col-8"></td>
+                                <td class="col-2 alright ts elem">Sous-Total HT</td>`
 
                   item.priceQuote.priceQuoteTaxes.forEach(priceQuoteTaxe => {
                     //  html += `<td class="col-2 ts elem">TVA: ` + priceQuoteTaxe.VAT + `%</td>`
-                    html += `<td class="col-2 elem">` + Math.round(priceQuoteTaxe.TotalVAT / (priceQuoteTaxe.VAT / 100)) + `€</td>`
+                    // html += `<td class="col-2 elem">` + Math.round(priceQuoteTaxe.TotalVAT / (priceQuoteTaxe.VAT / 100)) + `€</td>`
                   })
                   html += `
                                 <td class="col-2 elem"><b>` + Math.round(item.priceQuote.priceQuoteWithoutTaxes) + `€</b></td>
                                </tr>`
 
-                  html += `<tr class="cobo">
-                                 <td class="col-6 alright ts elem">Montant de TVA</td>`
+                  html += `
+                              <tr class="cobo">
+                                <td class="col-8"></td>
+                                <td class="col-2 alright ts elem">Montant de TVA</td>`
                   let vatTotal = 0
                   item.priceQuote.priceQuoteTaxes.forEach(priceQuoteTaxe => {
                     vatTotal += priceQuoteTaxe.TotalVAT * 1
                     //  html += `<td class="col-2 ts elem">TVA: ` + priceQuoteTaxe.VAT + `%</td>`
-                    html += `<td class="col-2 elem">` + Math.round(priceQuoteTaxe.TotalVAT) + `€</td>`
+                    // html += `<td class="col-2 elem">` + Math.round(priceQuoteTaxe.TotalVAT) + `€</td>`
                     //  html += `<td class="col-2 elem">` + priceQuoteTaxe.VAT + priceQuoteTaxe.TotalVAT / (priceQuoteTaxe.VAT /100) + `€</td>`
                   })
                   html += `
                              <td class="col-2 elem"><b>` + Math.round(vatTotal) + `€</b></td>
                            </tr>
                            <tr class="cobo">
-                            <td class="col-6 alright ts elem"><b>TOTAL TTC</b></td>`
+                           <td class="col-8"></td>
+                           <td class="col-2 alright ts elem"><b>TOTAL TTC</b></td>`
 
                   item.priceQuote.priceQuoteTaxes.forEach(priceQuoteTaxe => {
                     //  html += `<td class="col-2 ts elem">TVA: ` + priceQuoteTaxe.VAT + `%</td>`
-                    html += `<td class="col-2 elem">` + Math.round(priceQuoteTaxe.TotalVAT / (priceQuoteTaxe.VAT / 100) + priceQuoteTaxe.TotalVAT * 1) + `€</td>`
+                    // html += `<td class="col-2 elem">` + Math.round(priceQuoteTaxe.TotalVAT / (priceQuoteTaxe.VAT / 100) + priceQuoteTaxe.TotalVAT * 1) + `€</td>`
                   })
                   html += `
                                <td class="col-2 elem"><b>` + Math.round(item.priceQuote.priceQuoteWithTaxes) + `€</b></td>
@@ -386,38 +390,41 @@ module.exports = {
                          </table>
                          <br>`
 
-                  html += `<table class="cobo">
-                               <tr class="cobo">
-                               <td class="col-6 alright ts elem">Acompte à la commande 40% </td>
-                               <td class="col-6 alright elem">=40% du total ttc</td>
-                               </tr>
-                               <tr class="cobo">
-                               <td class="col-6 alright ts elem">Acompte intermédiaire</td>
-                               <td class="col-6 alright elem">sur avancement</td>
-                               </tr>
-                               <tr class="cobo">
-                               <td class="col-6 alright ts elem"><b>Solde</b></td>
-                               <td class="col-6 alright elem"><b>à la livraison</b></td>
-                             </tr>
-                         </table>
-                         <br>`
+                  // html += `<table class="cobo">
+                  //              <tr class="cobo">
+                  //              <td class="col-6 alright ts elem">Acompte à la commande 40% </td>
+                  //              <td class="col-6 alright elem">=40% du total ttc</td>
+                  //              </tr>
+                  //              <tr class="cobo">
+                  //              <td class="col-6 alright ts elem">Acompte intermédiaire</td>
+                  //              <td class="col-6 alright elem">sur avancement</td>
+                  //              </tr>
+                  //              <tr class="cobo">
+                  //              <td class="col-6 alright ts elem"><b>Solde</b></td>
+                  //              <td class="col-6 alright elem"><b>à la livraison</b></td>
+                  //            </tr>
+                  //        </table>
+                  //        <br>`
 
                   html += `
                          <table>
                            <thead>
                              <tr>
+                               <th class="col-1 desc">
+                               </th>
+                               <th class="col-8 nobo">
+                                 <p class="inf2">Le client rennonce au delai de retractation</p>
+                                 <p class="inf2">Le client autorise l'entreprise a collecter les pieces a recup</p>
+                               </th>
                                <th class="col-3 desc">
-                               <p>Entreprise</p>
-                               <p class="inf2">Lu et approuvé</p>
-                               <p class="inf2">Le</p>
-                             </th>
-                             <th class="col-6 nobo"></th>
-                             <th class="col-3 desc">
                                <p>Client : `
                   item.clients.forEach(user => {
                     html += user.profile.title + ' ' + user.profile.name + ' ' + user.profile.lastName
                   })
-                  html += `</p><p class="inf2">Lu et approuvé</p>`
+                  html += `
+                    </p>
+
+                    `
 
                   if (item.drawingSignature.base64)
                     html += `<img class="imgSignature" src="${item.drawingSignature.base64}" />`
@@ -531,7 +538,6 @@ module.exports = {
                   var html = ''
                   html += `
                      <style type="text/css">
-
                            .col-1 {
                              width: 8.33%;
                            }
@@ -589,7 +595,6 @@ module.exports = {
                              color: white;
                              border: 1px solid #ddd;
                            }
-
                            .bghFree {
                              background-color: #595959;
                              color: #595959;
@@ -628,11 +633,7 @@ module.exports = {
                              border-collapse: collapse;
                              width: 100%;
                            }
-
-
-
                            td {
-
                              height: 20px;
                              vertical-align: center;
                              border-left: 1px solid #ddd;
@@ -674,7 +675,7 @@ module.exports = {
                              <tr>
                                <th class="col-4 cobo desc">
                                <p><b>Belmard Bâtiment</b></p>
-                               <p>30, rue Belgrand</p>
+                               <p>ALAN30, rue Belgrand</p>
                                <p>75020 Paris</p>
                                <p>Tel : 01.40.33.88.33</p>
                                <p>Mail : Belmard.batiment@gmail.com</p>
@@ -726,13 +727,11 @@ module.exports = {
                          <table class="tabo">
                            <thead>
                              <tr>
-                               <th class="col-5 bgh titleGooplus1">Description</th>
-                               <th class="col-1 bgh titleGooplus1">Image</th>
-                               <th class="col-1 bgh titleGooplus1">Price_Unit</th>
-                               <th class="col-1 bgh titleGooplus1">Quantity</th>
-                               <th class="col-1 bgh titleGooplus1">Unit</th>
-                               <th class="col-1 bgh titleGooplus1">Total_tax_excl</th>
-                               <th class="col-2 bgh titleGooplus1">Tax</th>
+                               <th class="col-6 bgh titleGooplus1">Description</th>
+                               <th class="col-1 bgh titleGooplus1">Unité</th>
+                               <th class="col-1 bgh titleGooplus1">Quantité</th>
+                               <th class="col-2 bgh titleGooplus1">PU HT</th>
+                               <th class="col-2 bgh titleGooplus1">PT HT</th>
                              </tr>
                            </thead>
                            <tbody>`
@@ -742,7 +741,6 @@ module.exports = {
                   html += `
                            </tbody>
                          </table>
-
                          <br>
                          <table class="cobo">
                              <tr class="cobo">
