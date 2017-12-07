@@ -2,12 +2,12 @@
   <form class="imgupl-mod" novalidate>
     <fieldset>
       <div class="">
-        <div class="cho-fil">
+        <div class="">
           <button *ngIf="!openCameraStraight" type="button">
             <input #fileInput name="fileUp" type="file" (change)="onFileSelect($event)">
           </button>
           <div *ngIf="openCameraStraight">
-            <label for="file" class="label-file">
+            <label for="file" matTooltip="Photo" class="label-file">
                 <mat-icon color="primary" aria-label="Camera">photo_camera</mat-icon>
             </label>
             <input id="file" #fileInput type="file" accept="image/*" capture="camera" (change)="onFileSelect($event)" class="input-file"/>
@@ -31,7 +31,7 @@
 
       <div class="">
         <div class="sbmt-pic">
-          <button type="submit" [disabled]="!myForm.valid || !hasFiles()" id="submitForm" name="sumbitForm" [ngClass]="{'done':hasFiles(),'pas-done':!hasFiles()}">Submit</button>
+          <!-- <button type="submit" [disabled]="!myForm.valid || !hasFiles()" id="submitForm" name="sumbitForm" [ngClass]="{'done':hasFiles(),'pas-done':!hasFiles()}">Submit</button> -->
           <!-- <progress-bar [value]="progress" [max]="100" *ngIf="hasFiles() && submitStarted"></progress-bar> -->
 
 

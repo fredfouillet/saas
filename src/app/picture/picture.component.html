@@ -20,11 +20,14 @@
   <div *ngIf="addPicture">
     <!-- <input #fileInput type="file" accept="image/*" capture="camera" (change)="onFileSelect($event)" /> -->
     <app-form *ngIf="!openLibrairy" [openCameraStraight]="openCameraStraight" (onPassForm)="onPassForm($event)"></app-form>
-    <button *ngIf="openLibrairy" type="button"  mat-button (click)="openDialog('img')" class="addpic-squr btn btn-primary">
+    <!-- <button *ngIf="openLibrairy" type="button"  mat-button (click)="openDialog('img')" class="addpic-squr btn btn-primary">
       {{labelButtonAddPicture | translate}}
       <br>
       <i class="fa fa-plus"></i>
-    </button>
+    </button> -->
+
+    <mat-icon class="buttonDialog" *ngIf="openLibrairy" (click)="openDialog('img')"  color="primary" matTooltip="Uplaod dodument" aria-label="file_upload">file_upload</mat-icon>
+
   </div>
   </div>
 </div>

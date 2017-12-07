@@ -21,7 +21,7 @@ import { FormComponent} from './form/single/form.component';
 // import { ProgressBarModule} from 'ng2-progress-bar';
 import { MatTabsModule} from '@angular/material';
 import {MatProgressBarModule} from '@angular/material';
-
+import {MatTooltipModule} from '@angular/material';
 
 
 @NgModule({
@@ -35,6 +35,7 @@ import {MatProgressBarModule} from '@angular/material';
     // ProgressBarModule,
     SharedSmallModule,
     MatProgressBarModule,
+    MatTooltipModule,
 
   ],
   declarations: [
