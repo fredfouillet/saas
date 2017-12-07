@@ -1,4 +1,7 @@
 <mat-form-field>
-<input matInput type="password" placeHolder="Password" #password>
+<input matInput type="password" placeholder="Password" #password>
+<button matSuffix mat-icon-button (click)="loginInApp(password.value)">
+  <mat-icon *ngIf="password.value">forward</mat-icon>
+</button>
+
 </mat-form-field>
-<button mat-raised-button (click)="loginInApp(password.value)" color="warn">Ok</button>

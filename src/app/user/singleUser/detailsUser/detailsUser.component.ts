@@ -70,7 +70,9 @@ export class DetailsUserComponent implements OnInit {
     private companieService: CompanieService,
   ) {
   }
-
+  onChangeLang(){
+    console.log('s')
+  }
   selectCity(i, city: string) {
     this.fetchedUser.profile.address[i].city = city
     this.fetchedUser.profile.address[i].cities = []

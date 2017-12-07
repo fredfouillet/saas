@@ -37,7 +37,7 @@ export class Categ {
 
 
 export class Price {
-  costPrice: number;
+  // costPrice: number;
   sellingPrice: number;
   vat: number;
 }

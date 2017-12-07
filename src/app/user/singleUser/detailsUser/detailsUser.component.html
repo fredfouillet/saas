@@ -56,21 +56,23 @@
             </app-autocomplete>
           </div> -->
 
-          <div *ngIf="isUserIsMyself()">
-      <mat-form-field>
-        <mat-select [(ngModel)]="fetchedUser.profile.language" name="language" formControlName="language">
+    <!-- <div > -->
+      <mat-form-field *ngIf="isUserIsMyself()">
+        <mat-select (change)="onChangeLang()" [(ngModel)]="fetchedUser.profile.language" name="language" formControlName="language">
           <mat-option *ngFor="let n of languageArray" [value]="n">{{n}}</mat-option>
         </mat-select>
       </mat-form-field>
-      <mat-hint>{{'Need to login/logout to apply changes' | translate}}</mat-hint>
-    </div>
+      <app-loginInApp></app-loginInApp>
+
+    <!-- </div> -->
+
 
 
     <div *ngIf="authService.showObjHTML('userCalendar', 'read')">
       <div *ngIf="!fetchedUser.isExternalUser">
         <div>
           <label>{{'Calendar Color' | translate}}</label>
-          <div class="round" [style.background-color]="fetchedUser.profile.colorCalendar"></div>
+          <!-- <div class="round" [style.background-color]="fetchedUser.profile.colorCalendar"></div> -->
           <input type="color" formControlName="colorCalendar" [(ngModel)]="fetchedUser.profile.colorCalendar">
         </div>
       </div>
