@@ -3,19 +3,32 @@
 
       <button mat-raised-button color="accent" (click)="addCateg('categProduct', 0, 0, 0, 0)">{{'Add Categ Products' | translate}}</button>
       <div *ngFor="let categorie0 of fetchedCompanie.categories.categProduct; let i = index;">
+        
         <mat-form-field>
-          <input matInput placeholder="Categorie" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedCompanie.categories.categProduct[i].categ">
+          <input matInput placeholder="Category" class="categprod" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedCompanie.categories.categProduct[i].categ">
+            <mat-icon color="warn" class="pointer" matSuffix (click)="removeCateg('categProduct', 1,i,0,0)">backspace</mat-icon>
+            <mat-icon color="accent" class="pointer" matSuffix (click)="addCateg('categProduct', 1,i,0,0)">queue</mat-icon>
         </mat-form-field>
         
-        <button type="button" class="false" (click)="removeCateg('categProduct', 1,i,0,0)">x</button>
-        <button type="button" class="valid" (click)="addCateg('categProduct', 1,i,0,0)">+</button>
+
+       
+        
         <div *ngFor="let categorie1 of categorie0.subCateg; let j = index;">
-          <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedCompanie.categories.categProduct[i].subCateg[j].categ">
-          <button type="button" class="false" class="false" (click)="removeCateg('categProduct', 2,i,j,0)">X</button>
-          <button type="button" class="valid" (click)="addCateg('categProduct', 2,i,j,0)">+</button>
+        <mat-form-field>
+          <input matInput placeholder="SubCategory" class="subcategprod" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedCompanie.categories.categProduct[i].subCateg[j].categ">
+        <mat-icon color="warn" class="pointer" matSuffix (click)="removeCateg('categProduct', 2,i,j,0)">backspace</mat-icon>
+            <mat-icon color="accent" class="pointer" matSuffix (click)="addCateg('categProduct', 2,i,j,0)">queue</mat-icon>
+          </mat-form-field>
+                
+   
+          
+          
           <div *ngFor="let categorie2 of categorie1.subCateg; let k = index;">
-            <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedCompanie.categories.categProduct[i].subCateg[j].subCateg[k].categ">
-            <button type="button" class="false" (click)="removeCateg('categProduct', 3,i,j,k)">x</button>
+            <mat-form-field>
+          <input matInput placeholder="Product Type" class="typecategprod" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedCompanie.categories.categProduct[i].subCateg[j].subCateg[k].categ">
+        <mat-icon color="warn" class="pointer" matSuffix (click)="removeCateg('categProduct', 3,i,j,k)">backspace</mat-icon>
+            </mat-form-field>
+            
           </div>
         </div>
       </div>
