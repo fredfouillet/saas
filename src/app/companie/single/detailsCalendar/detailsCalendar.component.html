@@ -1,6 +1,10 @@
-<h4>Options Calendar</h4> timeBegin: '06:00:00' (login => logout is required)
-<input type="text" class="form-control" [(ngModel)]="fetchedCompanie.option.calendar.timeBegin" required minlength="1" placeholder="timeBegin"> timeEnd: '19:00:00' (login => logout is required)
-<input type="text" class="form-control" [(ngModel)]="fetchedCompanie.option.calendar.timeEnd" required minlength="1" placeholder="timeEnd"> slotDuration: default: '00:30:00' (30 minutes) (login => logout is required)
-<input type="text" class="form-control" [(ngModel)]="fetchedCompanie.option.calendar.slotDuration" placeholder="slotDuration">
-<input type="text" class="form-control" [(ngModel)]="fetchedCompanie.option.calendar.timeBeginbusinessHours" placeholder="timeBeginbusinessHours">
-<input type="text" class="form-control" [(ngModel)]="fetchedCompanie.option.calendar.timeEndbusinessHours" placeholder="timeEndbusinessHours">
+<h4>Options Calendar</h4>
+<input type="text" class="form-control" [(ngModel)]="fetchedCompanie.option.calendar.timeBegin" required minlength="1" placeholder="{{'First hour of your day' | translate}}"> 
+
+<input type="text" class="form-control" [(ngModel)]="fetchedCompanie.option.calendar.timeEnd" required minlength="1" placeholder="{{'Last hour of your day' | translate}}"> 
+
+<input type="text" class="form-control" [(ngModel)]="fetchedCompanie.option.calendar.slotDuration" placeholder="{{'Hour detail' | translate}}">
+
+<input type="text" class="form-control" [(ngModel)]="fetchedCompanie.option.calendar.timeBeginbusinessHours" placeholder="{{'First hour of your daywork' | translate}}">
+
+<input type="text" class="form-control" [(ngModel)]="fetchedCompanie.option.calendar.timeEndbusinessHours" placeholder="{{'Last hour of your daywork' | translate}}">
