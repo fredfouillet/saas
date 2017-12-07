@@ -292,6 +292,10 @@ export class UserComponent implements OnInit {
     this.nextStep()
   }
 
+  savedCrossUser(result) {
+    // console.log(result)
+    this.saved.emit(this.fetchedUser)
+  }
   save() {
     // this.userService.cleanCurrentUserInSession()
     //console.log(this.typeUserDropDown)

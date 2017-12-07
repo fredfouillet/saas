@@ -22,14 +22,16 @@
         </button>
       </mat-action-row>
     </mat-expansion-panel>
+
     <mat-expansion-panel *ngIf="fetchedUser._id" [expanded]="step === 1" (opened)="setStep(1)">
       <mat-expansion-panel-header>
         <mat-panel-title>
           {{'Details' | translate}}
         </mat-panel-title>
       </mat-expansion-panel-header>
-      <app-user-cross *ngIf="step === 1" [fetchedUser]="fetchedUser"></app-user-cross>
+      <app-user-cross *ngIf="step === 1" [fetchedUser]="fetchedUser" (saved)=savedCrossUser($event)></app-user-cross>
     </mat-expansion-panel>
+
     <mat-expansion-panel *ngIf="fetchedUser._id" [expanded]="step === 2" (opened)="setStep(2)">
       <mat-expansion-panel-header>
         <mat-panel-title>

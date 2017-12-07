@@ -275,7 +275,7 @@ export class UserCrossComponent implements OnInit {
 
 
   save() {
-    console.log('save')
+
     // this.userService.cleanCurrentUserInSession()
     //console.log(this.typeUserDropDown)
     //this.fetchedUser.type = [this.typeUserDropDown]
@@ -287,7 +287,8 @@ export class UserCrossComponent implements OnInit {
           // this.fetchedUserCross = res.obj
           // this.getUserCross(res.obj._id)
           // console.log(this.fetchedUser._id)
-          this.getUserCross(this.fetchedUser._id)
+          this.saved.emit(res.obj)
+          // this.getUserCross(this.fetchedUser._id)
           // location.reload();
           // if(redirect == 'profile')
           //   this.router.navigate(['user/profile/' + res.obj._id])
@@ -300,7 +301,6 @@ export class UserCrossComponent implements OnInit {
         }
       )
     } else {
-      console.log('save2')
       this.fetchedUserCross.users.push(this.fetchedUser)
       this.userService.saveCrossUser(this.fetchedUserCross)
         .subscribe(
@@ -308,9 +308,9 @@ export class UserCrossComponent implements OnInit {
           this.toastr.success('Great!', res.message)
           // this.fetchedUserCross = res.obj
           // console.log(res.obj._id)
-          this.getUserCross(this.fetchedUser._id)
+          // this.getUserCross(this.fetchedUser._id)
           // this.fetchedUser = res.obj
-          // this.saved.emit(res.obj)
+          this.saved.emit(res.obj)
           // if(redirect == 'profile')
           // this.router.navigate(['user/newuser/' + res.obj._id])
           // location.reload();
