@@ -35,8 +35,6 @@
       </div>
       <div class="col-sm-12 col-md-4">
 
-
-
           <mat-form-field>
             <input matInput [matDatepicker]="picker" placeholder="{{'Issue date' | translate}}" [readonly]="fetchedQuote.statusQuote !== 'pending'" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedQuote.detail.dateQuote.issueDate">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>

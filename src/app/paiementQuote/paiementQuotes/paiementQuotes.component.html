@@ -1,12 +1,14 @@
 <div class="container">
   <div class="d-flex flex-row">
     <div class="p-2">
-      <h4 *ngIf="!search.isExpense"> {{'Payments' | translate}}</h4>
-      <h4 *ngIf="search.isExpense"> {{'Expenses' | translate}}</h4>
-    </div>
-
-    <div class="p-2">
-      <app-newObjDialog icone="fa fa-plus-square fa-2x ml" [search]="search" (saved)="saved($event)" [typeObj]="'paiementQuote'"></app-newObjDialog>
+      <h4 *ngIf="!search.isExpense">
+          {{'Payments' | translate}}
+          <app-newObjDialog [search]="search" (saved)="saved($event)" [typeObj]="'paiementQuote'"></app-newObjDialog>
+        </h4>
+      <h4 *ngIf="search.isExpense">
+        {{'Expenses' | translate}}
+        <app-newObjDialog [search]="search" (saved)="saved($event)" [typeObj]="'paiementQuote'"></app-newObjDialog>
+      </h4>
     </div>
     <!-- <div class="p-2">
       <app-header [search]="search" (saved)="saved($event)" [nameButton]="'Create a new Paiement'" [nameObject]="'paiementQuote'" [openInDialog]=true>

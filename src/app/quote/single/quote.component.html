@@ -10,10 +10,10 @@
     <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)">
       <mat-expansion-panel-header>
         <mat-panel-title>
-          <mat-icon>account_circle</mat-icon>
+          <mat-icon>build</mat-icon>
         </mat-panel-title>
         <mat-panel-description>
-          {{fetchedQuote.name}}
+          {{'Intervention' | translate}}
         </mat-panel-description>
       </mat-expansion-panel-header>
       <app-quoteInfo [search]="search" [fetchedQuote]="fetchedQuote" (quoteStatusChangedEmit)="save()"></app-quoteInfo>
@@ -32,7 +32,6 @@
       <mat-expansion-panel-header>
         <mat-panel-title>
           <mat-icon>camera</mat-icon>
-
         </mat-panel-title>
         <mat-panel-description>
           {{'Documents' | translate}}
@@ -59,7 +58,7 @@
       [expanded]="step === 2" (opened)="setStep(2)">
       <mat-expansion-panel-header>
         <mat-panel-title>
-          <mat-icon>map</mat-icon>
+          <mat-icon>border_color</mat-icon>
         </mat-panel-title>
         <mat-panel-description>
           {{'Edit Quote' | translate}}
@@ -96,7 +95,7 @@
       fetchedQuote._id" [expanded]="step === 4" (opened)="setStep(4)">
       <mat-expansion-panel-header>
         <mat-panel-title>
-          <mat-icon>date_range</mat-icon>
+          <mat-icon>touch_app</mat-icon>
         </mat-panel-title>
         <mat-panel-description>
           {{'Signature' | translate}}
@@ -127,7 +126,7 @@
           fetchedQuote._id" [expanded]="step === 5" (opened)="setStep(5)">
       <mat-expansion-panel-header>
         <mat-panel-title>
-          <mat-icon>date_range</mat-icon>
+          <mat-icon>attach_money</mat-icon>
         </mat-panel-title>
         <mat-panel-description>
           {{'Paiements' | translate}}
@@ -153,7 +152,7 @@
     [expanded]="step === 6" (opened)="setStep(6)">
       <mat-expansion-panel-header>
         <mat-panel-title>
-          <mat-icon>date_range</mat-icon>
+          <mat-icon>assignment_turned_in</mat-icon>
         </mat-panel-title>
         <mat-panel-description>
           {{'Invoices' | translate}}

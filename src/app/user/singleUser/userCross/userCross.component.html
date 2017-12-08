@@ -12,11 +12,9 @@
       </div>
       <div *ngIf="fetchedUser.isExternalUser">
         <mat-form-field *ngIf="fetchedUserCross.profile.typeClient ==='Administration'">
-          <input matInput type="text" formControlName="accessType" [(ngModel)]="fetchedUserCross.profile.companyName" placeholder="Nom Administration">
+          <input matInput type="text" formControlName="accessType" [(ngModel)]="fetchedUserCross.profile.companyName" placeholder="{{'Company name' | translate}}">
         </mat-form-field>
-        <mat-form-field *ngIf="fetchedUserCross.profile.typeClient ==='Societe'">
-          <input matInput type="text" formControlName="accessType" [(ngModel)]="fetchedUserCross.profile.companyName" placeholder="Nom Societé">
-        </mat-form-field>
+
       </div>
 
 
@@ -38,7 +36,8 @@
 
 
       <mat-form-field>
-        <input matInput type="text" formControlName="phoneNumber" [(ngModel)]="fetchedUserCross.profile.phoneNumber" placeholder="{{'Phone Number' | translate}}">
+        <input matInput formControlName="phoneNumber" [(ngModel)]="fetchedUserCross.profile.phoneNumber" placeholder="{{'Phone Number' | translate}}">
+        <a matSuffix href="tel:+{{fetchedUserCross.profile.phoneNumber}}"><mat-icon>phone</mat-icon></a>
       </mat-form-field>
 
 

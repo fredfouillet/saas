@@ -1,10 +1,9 @@
 <div class="container width100perc">
   <div *ngIf="showTitle" class="d-flex flex-row">
     <div class="p-2">
-      <h4> {{'Products' | translate}}</h4>
-    </div>
-    <div *ngIf="showNewItem" class="p-2">
-      <app-newObjDialog icone="fa fa-plus-square fa-2x ml" [search]="search" (saved)="saved($event)" [typeObj]="'product'"></app-newObjDialog>
+      <h4> {{'Products' | translate}}
+        <app-newObjDialog *ngIf="showNewItem" [search]="search" (saved)="saved($event)" [typeObj]="'product'"></app-newObjDialog>
+      </h4>
     </div>
   </div>
   <div class="d-flex flex-row">

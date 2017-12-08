@@ -1,13 +1,12 @@
 <div class="container width100perc">
   <div class="d-flex flex-row">
     <div class="p-2">
-      <!-- <h4 *ngIf="search.typeQuote ==='invoice'"> {{'Invoice' | translate}}</h4> -->
-      <h4 *ngIf="search.typeQuote ==='quote'"> {{'Interventions' | translate}}</h4>
-    </div>
-    <div *ngIf="createNewButton" class="p-2">
-      <app-newObjDialog
-        icone="fa fa-plus-square fa-2x ml" [search]="search" (saved)="saved($event)" [typeObj]="'quote'">
-      </app-newObjDialog>
+      <h4 *ngIf="search.typeQuote ==='quote'"> {{'Interventions' | translate}}
+        <app-newObjDialog
+          *ngIf="createNewButton"
+          [search]="search" (saved)="saved($event)" [typeObj]="'quote'">
+        </app-newObjDialog>
+      </h4>
     </div>
   </div>
   <div *ngIf="showSearch" class="d-flex flex-row">
@@ -61,7 +60,7 @@
         </tbody>
       </table>
       <div>
-        <mat-paginator *ngIf="paginationData.totalItems>paginationData.itemsPerPage"  [length]="paginationData.totalItems" [pageSize]="paginationData.itemsPerPage" (page)="getPage($event.pageIndex*1+1)">
+        <mat-paginator *ngIf="paginationData.totalItems>paginationData.itemsPerPage" [length]="paginationData.totalItems" [pageSize]="paginationData.itemsPerPage" (page)="getPage($event.pageIndex*1+1)">
         </mat-paginator>
       </div>
     </div>

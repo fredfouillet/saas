@@ -7,7 +7,8 @@ export const LANG_FR_TRANS = {
     'Back': 'Retour',
     'Add': 'Ajouter',
     'Dashboard': 'Tableau de Bord',
-    'My Planning': 'Mon Planning',
+    'My Planning': 'Mon Calendrier',
+    'Planning': 'Calendrier',
     'My profile': 'Mon profil',
     'My company': 'Mon Entreprise',
     'Logout': 'Déconnexion',
@@ -28,6 +29,7 @@ export const LANG_FR_TRANS = {
     'Painfulness': 'Pénibilité',
     'VAT': 'TVA',
     'Length': 'Longeur',
+    'Edit Quote': 'Edition du devis',
 
     'Add a product': 'Ajouter un produit',
     'Create a new': 'Créer un nouveau',
@@ -47,8 +49,12 @@ export const LANG_FR_TRANS = {
     'Save': 'Sauvegarder',
     'Delete': 'Supprimer',
     'Project': 'Rendez-vous',
+    'Enter your password to approve changes': 'Renseigner votre mot de passe pour valider les changements',
+    'Intervention Settings': 'Paramètres d\'intervention',
+    'Legal Notice': 'Notes legales',
     'Save & Create project': 'Sauvegarder et Créer Rendez-vous',
-
+    'Issue date': 'Date d\'émission',
+    'Expiry date': 'Date d\'expiration'
     'Users': 'Contacts',
     'User': 'Contact',
     'Team': 'Équipe',

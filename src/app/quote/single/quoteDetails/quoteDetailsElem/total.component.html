@@ -2,7 +2,7 @@
   <div class="col-8">
     <div class="row">
       <div *ngFor="let legalApproval of legalApprovals; let i = index;" class="col-12">
-        <mat-checkbox [(ngModel)]="approvalTempBool[i]" (change)="changeLegalApproval()">{{legalApproval}}</mat-checkbox>
+        <mat-checkbox [disabled]="fetchedQuote.statusQuote !== 'pending'" [(ngModel)]="approvalTempBool[i]" (change)="changeLegalApproval()">{{legalApproval}}</mat-checkbox>
       </div>
     </div>
   </div>
