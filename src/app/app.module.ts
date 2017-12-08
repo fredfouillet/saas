@@ -22,7 +22,7 @@ import { AuthService } from './auth/auth.service';
 import { ErrorService } from './errorHandler/error.service';
 import { ErrorComponent } from './errorHandler/error.component';
 import { ErrorPageComponent } from './errorPage/errorPage.component';
-import { PaiementGuardService } from './companie/paiement/paiementGuard.service';
+import { PaiementGuardService } from './companie/single/paiement/paiementGuard.service';
 import { LoadingInAppModule } from './nav/loadingInApp/loadingInApp.module';
 
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {

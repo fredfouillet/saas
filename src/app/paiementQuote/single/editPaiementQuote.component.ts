@@ -1,7 +1,7 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {AuthService} from '../../auth/auth.service';
 import {PaiementQuoteService} from '../paiementQuote.service';
-import {PaiementService} from '../../companie/paiement/paiement.service';
+import {PaiementService} from '../../companie/single/paiement/paiement.service';
 
 
 import {ProductService} from '../../product/product.service';

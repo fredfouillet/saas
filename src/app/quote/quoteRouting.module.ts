@@ -7,7 +7,7 @@ import { QuoteComponent} from './single/quote.component';
 
 import { QuotesComponent} from './list/quotes.component';
 
-import { PaiementGuardService} from '../companie/paiement/paiementGuard.service';
+import { PaiementGuardService} from '../companie/single/paiement/paiementGuard.service';
 import { AuthGuardService} from '../auth/authguard.service';
 
 

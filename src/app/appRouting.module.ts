@@ -8,7 +8,7 @@ import {ModuleWithProviders} from '@angular/core';
 // import { UserFormsUploadAndList} from './form/userFormsUploadAndList.component';
 
 
-import { PaiementGuardService} from './companie/paiement/paiementGuard.service';
+import { PaiementGuardService} from './companie/single/paiement/paiementGuard.service';
 import { AuthGuardService} from './auth/authguard.service';
 
 // import { MainPageHomeComponent} from './mainPageHome/mainPageHome.component';

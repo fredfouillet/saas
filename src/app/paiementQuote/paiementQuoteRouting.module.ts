@@ -8,7 +8,7 @@ import { EditPaiementQuoteComponent} from './single/editPaiementQuote.component'
 import { PaiementQuotesComponent} from './paiementQuotes/paiementQuotes.component';
 
 
-import { PaiementGuardService} from '../companie/paiement/paiementGuard.service';
+import { PaiementGuardService} from '../companie/single/paiement/paiementGuard.service';
 import { AuthGuardService} from '../auth/authguard.service';
 
 

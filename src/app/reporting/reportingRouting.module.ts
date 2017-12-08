@@ -7,7 +7,7 @@ import { NgModule } from '@angular/core';
 import { ReportingsComponent} from './reportings.component';
 
 
-import { PaiementGuardService} from '../companie/paiement/paiementGuard.service';
+import { PaiementGuardService} from '../companie/single/paiement/paiementGuard.service';
 import { AuthGuardService} from '../auth/authguard.service';
 
 

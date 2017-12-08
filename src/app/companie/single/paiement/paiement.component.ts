@@ -1,15 +1,15 @@
 import { Component, OnInit} from '@angular/core';
-import { AuthService} from '../../auth/auth.service';
-import { UserService} from '../../user/user.service';
+import { AuthService} from '../../../auth/auth.service';
+import { UserService} from '../../../user/user.service';
 import { PaiementService} from './paiement.service';
 
 import { ToastsManager} from 'ng2-toastr';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
-import { User } from '../../user//user.model';
-import { Quote } from '../../quote/quote.model';
+import { User } from '../../../user//user.model';
+import { Quote } from '../../../quote/quote.model';
 import { StripeCustomer, DataSource } from './paiement.model';
-import { Companie } from '../../companie/companie.model';
+import { Companie } from '../../../companie/companie.model';
 import { FormBuilder, FormGroup, FormArray, Validators} from '@angular/forms';
 
 

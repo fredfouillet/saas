@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter, OnChanges} from '@angul
 // import {AuthService} from '../../auth/auth.service';
 // import {CompanieService} from '../companie.service';
 // import {UserService} from '../../user/user.service';
-import { PaiementService} from '../../paiement/paiement.service';
+import { PaiementService} from '../paiement/paiement.service';
 
 
 import { Companie } from '../../companie.model';

@@ -18,7 +18,7 @@ import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { User } from '../../user/user.model';
 
 // import { EditOptionsComponentDialog } from '../../form/modalLibrary/modalLibrary.component';
-import { PaiementService} from '../paiement/paiement.service';
+import { PaiementService} from './paiement/paiement.service';
 
 
 @Component({
