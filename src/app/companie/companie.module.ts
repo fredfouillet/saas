@@ -23,6 +23,8 @@ import {SharedModule } from '../shared/shared.module';
 import { PaiementService} from './paiement/paiement.service';
 import { PaiementComponent } from './paiement/paiement.component';
 import { ConnectStripeComponent } from './single/connectStripe/connectStripe.component';
+import { VATComponent } from './single/quoteSettings/vat.component';
+import { LegalApprovalComponent } from './single/quoteSettings/legalApproval.component';
 import { PaiementPipe } from './paiement/paiement.pipe';
 import {MatCardModule} from '@angular/material';
 import {MatExpansionModule} from '@angular/material';
@@ -64,6 +66,8 @@ import {MatButtonToggleModule} from '@angular/material';
     PaiementComponent,
     PaiementPipe,
     ConnectStripeComponent,
+    VATComponent,
+    LegalApprovalComponent,
     CategProductComponent,
     // AddUserByCompanieComponent,
   ],

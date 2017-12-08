@@ -54,5 +54,4 @@ export class QuoteSettingsComponent implements OnInit {
 
 
 
-
 }

@@ -12,6 +12,7 @@ export class Companie {
   faxNumber: string= '';
   email: string= '';
   VAT: string= '';
+  modelVATs: number[] = [];
   address: Address[] = [];
   option: Option = new Option();
   users: User[] = [];

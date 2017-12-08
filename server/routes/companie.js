@@ -103,6 +103,7 @@ router.put('/:id', function (req, res, next) {
     item.categories = req.body.categories
     item.banck = req.body.banck
     item.quoteSettings = req.body.quoteSettings
+    item.modelVATs = req.body.modelVATs
 
 
 
