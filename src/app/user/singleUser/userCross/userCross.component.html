@@ -37,7 +37,7 @@
 
       <mat-form-field>
         <input matInput formControlName="phoneNumber" [(ngModel)]="fetchedUserCross.profile.phoneNumber" placeholder="{{'Phone Number' | translate}}">
-        <a matSuffix href="tel:+{{fetchedUserCross.profile.phoneNumber}}"><mat-icon>phone</mat-icon></a>
+        <a matSuffix *ngIf="fetchedUserCross.profile.phoneNumber" href="tel:{{fetchedUserCross.profile.phoneNumber}}"><mat-icon>phone</mat-icon></a>
       </mat-form-field>
 
 

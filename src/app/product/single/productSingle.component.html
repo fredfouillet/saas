@@ -1,6 +1,9 @@
 <div class="container">
   <div class="hdform">
-    <h3><i class="fa fa10 fa-cubes" aria-hidden="true"></i>{{'Product' | translate}}</h3>
+    <h3>
+      <mat-icon>dvr</mat-icon>
+      {{'Product' | translate}}
+    </h3>
   </div>
   <mat-accordion>
     <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)">

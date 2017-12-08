@@ -1,9 +1,10 @@
 <div class="container nopad" style="width: 100%;">
   <div class="hdform">
-      <h3> <i class="fa fa10 fa-calendar" aria-hidden="true"></i>{{'Calendar' | translate}}</h3>
-  
-    </div>
-  
+    <h3>
+      <mat-icon>event_available</mat-icon>
+      {{'Calendar' | translate}}
+    </h3>
+  </div>
   <div class="row pad15">
     <div class="col-12">
       <app-userCalendarSearch (getUserCalendarBySearch)="getUserCalendarBySearch($event)"></app-userCalendarSearch>
@@ -15,4 +16,3 @@
     </div>
   </div>
 </div>
-

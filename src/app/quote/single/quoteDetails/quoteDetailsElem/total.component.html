@@ -34,7 +34,7 @@
       </div>
       <div class="col-6">
         <mat-form-field>
-          <input matInput [readonly]="fetchedQuote.statusQuote !== 'pending'" value="{{fetchedQuote.priceQuote.priceGlobalWithTaxesWithDiscountWithSurfaceWithPainfulness | round}} € TTC" placeholder="{{'Total with taxes' | translate}} %">
+          <input matInput [readonly]="fetchedQuote.statusQuote !== 'pending'" value="{{fetchedQuote.priceQuote.priceGlobalWithTaxesWithDiscountWithSurfaceWithPainfulness | round}} € TTC" placeholder="{{'Total with taxes' | translate}}">
         </mat-form-field>
       </div>
     </div>

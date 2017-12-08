@@ -1,7 +1,5 @@
-<div class="container width100perc">
-  <div class="hdform nopad">
-    <h3><i class="fa fa10 fa-calendar" aria-hidden="true"></i>{{'Appointment' | translate}}</h3>
-  </div>
+<div class="">
+
 
   <mat-expansion-panel [expanded]="true">
     <mat-expansion-panel-header>
@@ -62,12 +60,19 @@
       </div>
     </form>
     <mat-action-row>
-      <div class="valid-edit">
-        <button type="button" (click)="save()" class="valid">{{'Save' | translate}}</button>
-        <button *ngIf="fetchedUserCalendar._id" type="button" class="false" md-button (click)="openDialogDelete()">
-            {{'Delete' | translate}}
-          </button>
-      </div>
+
+
+
+      <button *ngIf="fetchedUserCalendar._id" mat-mini-fab color="warn" (click)="openDialogDelete()">
+        <mat-icon aria-label="Next">delete</mat-icon>
+      </button>
+      <button mat-mini-fab color="primary" (click)="save()">
+        <mat-icon aria-label="Next">forward</mat-icon>
+      </button>
+
+
+
+
     </mat-action-row>
   </mat-expansion-panel>
 </div>

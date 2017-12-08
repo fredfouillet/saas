@@ -45,7 +45,7 @@
             </div>
             <div class="col-4">
               <mat-form-field>
-                <input matInput type="number" (ngModelChange)="calculateQuote()" [readonly]="fetchedQuote.statusQuote !== 'pending'" placeholder="{{'Price Without Taxes' | translate}}" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedQuote.devisDetails[i].bucketProducts[j].priceWithoutTaxes"
+                <input matInput type="number" (ngModelChange)="calculateQuote()" [readonly]="fetchedQuote.statusQuote !== 'pending'" placeholder="{{'Price' | translate}}" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedQuote.devisDetails[i].bucketProducts[j].priceWithoutTaxes"
                   placeholder="{{'Quantity' | translate}}">
               </mat-form-field>
             </div>

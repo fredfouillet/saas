@@ -1,7 +1,13 @@
 <div class="container-fluid">
   <div class="hdform">
-    <h3 *ngIf="fetchedUser.isExternalUser"><i class="fa fa10 fa-user" aria-hidden="true"></i>{{'Customer' | translate}}</h3>
-    <h3 *ngIf="!fetchedUser.isExternalUser"><i class="fa fa10 fa-user" aria-hidden="true"></i>{{'Team' | translate}}</h3>
+    <h3 *ngIf="fetchedUser.isExternalUser">
+      <mat-icon>supervisor_account</mat-icon>
+      {{'Customer' | translate}}
+    </h3>
+    <h3 *ngIf="!fetchedUser.isExternalUser">
+      <mat-icon>supervisor_account</mat-icon>
+      {{'Team' | translate}}
+    </h3>
   </div>
   <mat-accordion class="example-headers-align">
     <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)">

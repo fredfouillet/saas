@@ -28,8 +28,10 @@ export const LANG_FR_TRANS = {
     'WorkingAddress': 'Réference Chantier',
     'Painfulness': 'Pénibilité',
     'VAT': 'TVA',
+    'Appointment': 'Rendez-vous',
     'Length': 'Longeur',
     'Edit Quote': 'Edition du devis',
+    'Total with taxes': 'Total TTC',
 
     'Add a product': 'Ajouter un produit',
     'Create a new': 'Créer un nouveau',
@@ -37,6 +39,7 @@ export const LANG_FR_TRANS = {
     'Products': 'Produits',
     'Create an new product': 'Créer un nouveau produit',
     'List': 'Liste',
+    'Price': 'Prix',
     'Name': 'Nom',
     'Price without taxes': 'Prix HT',
     'Product Name': 'Nom du Produit',

@@ -1,26 +1,29 @@
 <div class="container" style="width: 100%">
   <div class="hdform">
-    <h3> <i class="fa fa10 fa-bar-chart" aria-hidden="true"></i>{{'Home' | translate}}</h3>
+    <h3>
+        <mat-icon>home</mat-icon>
+        {{'Home' | translate}}
+    </h3>
 
   </div>
 
-    <div layout="row">
+  <div layout="row">
 
-      <mat-button-toggle-group>
-        <mat-button-toggle (click)="previousYear()">
-          <mat-icon>keyboard_arrow_left</mat-icon>
-        </mat-button-toggle>
-        <mat-button-toggle value="center" disabled>
-          {{year}}
-        </mat-button-toggle>
-        <mat-button-toggle (click)="nextYear()">
-          <mat-icon>arrow_forward</mat-icon>
-        </mat-button-toggle>
-      </mat-button-toggle-group>
+    <mat-button-toggle-group>
+      <mat-button-toggle (click)="previousYear()">
+        <mat-icon>keyboard_arrow_left</mat-icon>
+      </mat-button-toggle>
+      <mat-button-toggle value="center" disabled>
+        {{year}}
+      </mat-button-toggle>
+      <mat-button-toggle (click)="nextYear()">
+        <mat-icon>arrow_forward</mat-icon>
+      </mat-button-toggle>
+    </mat-button-toggle-group>
 
 
 
-    </div>
+  </div>
 
 
   <!-- <button type="button" (click)="ok=!ok"></button> -->
