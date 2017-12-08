@@ -19,7 +19,7 @@ export class QuoteComponent implements OnInit {
   // @ViewChild(SignaturePad) signaturePad: SignaturePad;
   // @ViewChild(PaiementQuotesComponent) paiementQuotesComponent: PaiementQuotesComponent;
   @ViewChild(ActionButtonsComponent) actionButtonsComponent: ActionButtonsComponent
-  // loading: boolean = false;
+  loading: boolean = false;
   @Output() saved: EventEmitter<any> = new EventEmitter();
   @Output() close: EventEmitter<any> = new EventEmitter();
   @Input() search: Search = new Search()
@@ -78,17 +78,20 @@ export class QuoteComponent implements OnInit {
     this.actionButtonsComponent.saveSignature()
   }
   getQuote(id: string) {
+    this.loading = true
     let this2 = this
     return new Promise(function(resolve, reject) {
       this2.quoteService.getQuote(id)
         .subscribe(
         res => {
+          this.loading = false
           this2.fetchedQuote = res
           this2.fetchedQuote.clients.forEach(user => { this2.search.userId = user._id })
           resolve(this2.fetchedQuote)
         },
         error => {
-          console.log(error)
+          this.loading = false
+          // console.log(error)
           reject(error)
         }
         )
