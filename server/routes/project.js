@@ -296,7 +296,12 @@ router.get('/:id', function(req, res, next) {
 
   Project.findById((req.params.id), function(err, obj) {
     if (err) {
-      return res.status(500).json({message: 'An error occured', err: err})
+      return res.status(500).json({
+        title: 'No form found',
+        error: {
+          message: err
+        }
+      })
     }
     if (!obj) {
       return res.status(404).json({

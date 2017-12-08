@@ -300,14 +300,18 @@ router.get('/:id', function (req, res, next) {
   PaiementQuote.findById((req.params.id), function (err, obj) {
     if (err) {
       return res.status(500).json({
-        message: 'An error occured',
-        err: err
+        title: 'No form found',
+        error: {
+          message: err
+        }
       })
     }
     if (!obj) {
-      return res.status(404).json({
-        title: 'No obj found',
-        error: {message: 'Obj not found!'}
+      return res.status(500).json({
+        title: 'No form found',
+        error: {
+          message: 'not founded'
+        }
       })
     }
 

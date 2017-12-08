@@ -88,8 +88,8 @@ export class QuoteComponent implements OnInit {
           resolve(this2.fetchedQuote)
         },
         error => {
-          reject(error)
           console.log(error)
+          reject(error)
         }
         )
     })
@@ -103,7 +103,10 @@ export class QuoteComponent implements OnInit {
     this.activatedRoute.params.subscribe((params: Params) => {
       if (params['idQuote']) {
         this.search.quoteId = params['idQuote']
-        this.getQuote(params['idQuote'])
+        this.getQuote(params['idQuote']).then(quote => {
+        }).catch(err => {
+          console.log(err)
+        })
       } else {
         this.getMaxQuoteNumber()
         if (params['userId']) {
