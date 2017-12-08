@@ -62,7 +62,7 @@
           <mat-icon>account_circle</mat-icon>
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <app-categProduct [fetchedCompanie]="fetchedCompanie"></app-categProduct>
+      <app-categProduct (save)="save()" [fetchedCompanie]="fetchedCompanie"></app-categProduct>
       <mat-action-row>
 
         <button mat-mini-fab color="primary" (click)="saveAndNextStep()">
