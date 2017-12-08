@@ -34,6 +34,7 @@ var companie = new Schema({
     rights: [{type: Schema.Types.ObjectId, ref: 'Right'}],
     VAT : {type: String, default: ['']},
     modelVATs: [{type: Number, default: ['']}],
+    legalApprovals: [{type: String, default: ['']}],
     // number[] = [0, 5.5, 10]
 
     email : {type: String, default: ['']},

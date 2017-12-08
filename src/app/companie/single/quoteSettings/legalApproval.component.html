@@ -1,11 +1,11 @@
 <mat-form-field>
-  <input matInput type="number" [(ngModel)]="VATvalueToAdd" placeholder="{{'VAT' | translate}}">
-  <button matSuffix mat-raised-button color="primary" (click)="addVAT()">{{'Add VAT' | translate}}</button>
+  <input matInput [(ngModel)]="legalApprovalValueToAdd" placeholder="{{'legal Approval' | translate}}">
+  <button matSuffix mat-raised-button color="primary" (click)="add()">{{'Add Legal Approval' | translate}}</button>
 </mat-form-field>
 
-<div *ngFor="let modelVAT of fetchedCompanie.modelVATs; let i=index;">
-  {{modelVAT}}
-  <button mat-icon-button color="warn" (click)="removeVAT(i)">
+<div *ngFor="let legalApproval of fetchedCompanie.legalApprovals; let i=index;">
+  {{legalApproval}}
+  <button mat-icon-button color="warn" (click)="remove(i)">
     <mat-icon>clear</mat-icon>
   </button>
 </div>

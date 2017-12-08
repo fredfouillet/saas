@@ -104,6 +104,7 @@ router.put('/:id', function (req, res, next) {
     item.banck = req.body.banck
     item.quoteSettings = req.body.quoteSettings
     item.modelVATs = req.body.modelVATs
+    item.legalApprovals = req.body.legalApprovals
 
 
 

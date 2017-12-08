@@ -13,6 +13,7 @@ export class Companie {
   email: string= '';
   VAT: string= '';
   modelVATs: number[] = [];
+  legalApprovals: string[] = [];
   address: Address[] = [];
   option: Option = new Option();
   users: User[] = [];

@@ -11,20 +11,20 @@ import {Companie} from '../../companie.model';
 
 export class LegalApprovalComponent {
   @Input() fetchedCompanie: Companie = new Companie()
-  VATvalueToAdd: number;
+  legalApprovalValueToAdd: string = '';
 
   constructor(
   ) {}
 
 
-  addVAT() {
-    if(this.VATvalueToAdd) {
-      this.fetchedCompanie.modelVATs.push(this.VATvalueToAdd * 1)
-      this.VATvalueToAdd = undefined
+  add() {
+    if(this.legalApprovalValueToAdd) {
+      this.fetchedCompanie.legalApprovals.push(this.legalApprovalValueToAdd)
+      this.legalApprovalValueToAdd = ''
     }
   }
-  removeVAT(i: number) {
-    this.fetchedCompanie.modelVATs.splice(i, 1)
+  remove(i: number) {
+    this.fetchedCompanie.legalApprovals.splice(i, 1)
   }
 
 }
