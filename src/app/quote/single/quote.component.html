@@ -85,7 +85,7 @@
       </mat-expansion-panel-header>
       <app-quoteDetails *ngIf="step === 3" [(fetchedQuote)]="fetchedQuote" (calculateQuoteEmit)="calculateQuote()" (quoteDetailsUpdated)="quoteDetailsUpdated($event)"></app-quoteDetails>
       <mat-action-row>
-        <app-actionButtons (nextStep)="nextStep()" [isDialog]="isDialog" [fetchedQuote]="fetchedQuote" [showDeleteButton]=false (closeDialog)="closeDialog()" (saved)="savedQuote($event)">
+        <app-actionButtons (nextStep)="nextStep()" [isDialog]="isDialog" [fetchedQuote]="fetchedQuote" [showDeleteButton]=false [showDLQuoteButton]=true (closeDialog)="closeDialog()" (saved)="savedQuote($event)">
         </app-actionButtons>
       </mat-action-row>
     </mat-expansion-panel>

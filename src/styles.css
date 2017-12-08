@@ -6,16 +6,10 @@
 
 
 
-.categprod { padding-top: 10px;
+.categprod { padding-top: 10px; }
+.subcategprod { padding-left: 20px; }
 
-}
-.subcategprod { padding-left: 20px;
-
-}
-
-.typecategprod { padding-left: 40px;
-
-}
+.typecategprod { padding-left: 40px; }
 
 .canvas_whiteboard_buttons {
   display: none!important;
@@ -43,7 +37,7 @@
 }
 
 /*Green Notifif at top*/
-#toast-container>div {
+/*#toast-container>div {
   width: 25px;
 }
 .toast-message{
@@ -51,7 +45,7 @@
 }
 .toast-title{
   display:none;
-}
+}*/
 /*Green Notifif at top*/
 /*ALAN*/
 

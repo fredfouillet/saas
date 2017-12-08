@@ -150,7 +150,10 @@ export class PaiementComponent implements OnInit {
           this.loading = false
           // console.log(res);
         },
-        error => { console.log(error); }
+        error => {
+          this.loading = false
+          console.log(error);
+        }
       );
   }
   saveSubscriptionInStripe() {

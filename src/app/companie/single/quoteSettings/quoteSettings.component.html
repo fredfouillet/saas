@@ -4,3 +4,4 @@
   <textarea matInput type="text" [(ngModel)]="fetchedCompanie.quoteSettings.legalNotice" required minlength="5" placeholder="{{'Legal Notice' | translate}}">
     </textarea>
 </mat-form-field>
+<app-picture [showPagination]=false [forms]="fetchedCompanie.forms"></app-picture>
