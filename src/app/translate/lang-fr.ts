@@ -180,8 +180,6 @@ export const LANG_FR_TRANS = {
     'Calendar': 'Calendrier',
     'Start:': 'Débute le :',
     'End:': 'Termine le :',
-    'Appointment': 'Rendez-vous',
-
     'Invoices': 'Factures',
     'invoice': 'Facture',
 
