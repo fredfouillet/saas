@@ -62,8 +62,11 @@ import {MatSelectModule} from '@angular/material';
 import {MatTooltipModule} from '@angular/material';
 import {MatTabsModule} from '@angular/material';
 import {MatButtonToggleModule} from '@angular/material';
+import {MatCheckboxModule} from '@angular/material';
+
+
 @NgModule({
-  imports:      [
+  imports: [
     // QuillEditorModule,
     // ProjectModule,
     // QuillModule,
@@ -94,7 +97,7 @@ import {MatButtonToggleModule} from '@angular/material';
     MatSelectModule,
     MatButtonToggleModule,
     MatTooltipModule,
-
+    MatCheckboxModule,
 
     // AutocompleteComponent,
   ],

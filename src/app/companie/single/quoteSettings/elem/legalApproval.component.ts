@@ -1,12 +1,12 @@
 import {Component, Input} from '@angular/core';
 
 
-import {Companie} from '../../companie.model';
+import {Companie} from '../../../companie.model';
 
 @Component({
   selector: 'app-quote-legal-approval',
   templateUrl: './legalApproval.component.html',
-  styleUrls: ['../../companie.component.css'],
+  styleUrls: ['../../../companie.component.css'],
 })
 
 export class LegalApprovalComponent {

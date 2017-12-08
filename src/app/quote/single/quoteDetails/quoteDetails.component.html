@@ -14,10 +14,4 @@
   <app-desktop-details [fetchedQuote]="fetchedQuote" (calculateQuoteEmit)="calculateQuote()"></app-desktop-details>
 </div>
 
-<div class="row">
-  <div class="col-8">
-  </div>
-  <div class="col-12 col-lg-4">
-    <app-total [fetchedQuote]="fetchedQuote" (calculateQuoteEmit)="calculateQuote()"></app-total>
-  </div>
-</div>
+<app-total [fetchedQuote]="fetchedQuote" (calculateQuoteEmit)="calculateQuote()"></app-total>

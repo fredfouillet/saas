@@ -14,6 +14,7 @@ var quote = new Schema({
     clients: [{type: Schema.Types.ObjectId, ref: 'User'}],
     historyClients: [],
     historyClientsCross: [],
+    legalApprovals: [{type: String, default: ['']}],
     // companieClients: [{type: Schema.Types.ObjectId, ref: 'Companie'}],
     // phoneNumber: {type: String, default: ['']},
     name: {type: String, default: ['']},

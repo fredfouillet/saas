@@ -12,7 +12,7 @@ import { ToastsManager} from 'ng2-toastr';
 })
 export class LoginInAppComponent implements OnInit {
   @Output() loginInAppDone: EventEmitter<any> = new EventEmitter();
-
+  loading: boolean = false
   constructor(
     private authService: AuthService,
     private router: Router,
@@ -27,19 +27,24 @@ export class LoginInAppComponent implements OnInit {
   }
 
   loginInApp(password: string) {
-    let userAuth = {
+    this.loading = true
+    const userAuth = {
       email: this.authService.user.email,
       password: password
     }
     this.authService.signin(userAuth).subscribe(
       data => {
+        this.loading = false
         this.toastr.success('Great!');
         localStorage.setItem('id_token', data.token);
         localStorage.setItem('token', data.token);
         this.loginInAppDone.emit(data.token)
         // location.reload();
       },
-      error => console.log(error)
+      error => {
+        this.loading = false
+        console.log(error)
+      }
     );
   }
 

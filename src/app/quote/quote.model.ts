@@ -18,6 +18,7 @@ export class Quote {
   typeQuote: string = 'quote';
   quoteNumber: number;
   isSigned:boolean = false;
+  legalApprovals: string[] = []
   // _users: User[] = [];
   // ownerQuotes: User[] = [];
   // companieClients: Companie[] = []

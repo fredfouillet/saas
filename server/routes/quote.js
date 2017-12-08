@@ -330,6 +330,7 @@ router.put('/:id', function(req, res, next) {
     item.detail = req.body.detail
     item.companieClients = req.body.companieClients
     item.quoteNumber = req.body.quoteNumber
+    item.legalApprovals = req.body.legalApprovals
     // item.drawing = req.body.drawing
 
     // console.log(item)

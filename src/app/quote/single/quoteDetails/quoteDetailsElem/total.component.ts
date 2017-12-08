@@ -34,7 +34,9 @@ export class TotalComponent implements OnInit {
   statusQuotes = StatusQuotes
 
   VATs: number[] = []
+  legalApprovals: string[] = []
 
+  approvalTempBool: boolean[]= []
   constructor(
     // private quoteService: QuoteService,
     // private templateQuoteService: TemplateQuoteService,
@@ -58,15 +60,45 @@ export class TotalComponent implements OnInit {
     this.calculateQuoteEmit.emit()
   }
 
-
-
   ngOnInit() {
+    // this.fetchedQuote.legalApprovals.push('')
+    // this.fetchedQuote.legalApprovals.push('')
+    // this.fetchedQuote.legalApprovals.push('')
     this.authService.getCurrentUser().ownerCompanies.forEach(companie => {
       this.VATs = companie.modelVATs
+      this.legalApprovals = companie.legalApprovals
     })
 
-  }
 
+    for (let i = 0; i < this.legalApprovals.length; i++) {
+      this.approvalTempBool.push(false)
+    }
+
+    this.legalApprovals.forEach((legalApproval, i) => {
+      this.fetchedQuote.legalApprovals.forEach(legalApprovalInQuote => {
+        if(legalApproval === legalApprovalInQuote) {
+          this.approvalTempBool[i] = true
+        }
+      })
+    })
+
+    // this.changeLegalApproval()
+
+  }
+  changeLegalApproval() {
+    this.fetchedQuote.legalApprovals = []
+    this.approvalTempBool.forEach((approvalTempSingle, i) => {
+      if(approvalTempSingle) {
+         this.fetchedQuote.legalApprovals.push(this.legalApprovals[i])
+      }
+    })
+
+
+
+    // this.fetchedQuote.legalApprovals
+    // console.log(checked)
+    // console.log(value)
+  }
 
 
 }

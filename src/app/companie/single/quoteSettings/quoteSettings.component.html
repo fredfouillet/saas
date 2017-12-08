@@ -1,11 +1,18 @@
-
-
-<mat-form-field>
-  <textarea matInput type="text" [(ngModel)]="fetchedCompanie.quoteSettings.legalNotice" required minlength="5" placeholder="{{'Legal Notice' | translate}}">
+<mat-card>
+  <mat-form-field>
+    <textarea matInput type="text" [(ngModel)]="fetchedCompanie.quoteSettings.legalNotice" required minlength="5" placeholder="{{'Legal Notice' | translate}}">
     </textarea>
-</mat-form-field>
-<app-picture [showPagination]=false [forms]="fetchedCompanie.forms"></app-picture>
-
-
-<app-quote-vat [fetchedCompanie]="fetchedCompanie"></app-quote-vat>
-<app-quote-legal-approval [fetchedCompanie]="fetchedCompanie"></app-quote-legal-approval>
+  </mat-form-field>
+</mat-card>
+<br>
+<mat-card>
+  <app-picture [showPagination]=false [forms]="fetchedCompanie.forms"></app-picture>
+</mat-card>
+<br>
+<mat-card>
+  <app-quote-vat [fetchedCompanie]="fetchedCompanie"></app-quote-vat>
+</mat-card>
+<br>
+<mat-card>
+  <app-quote-legal-approval [fetchedCompanie]="fetchedCompanie"></app-quote-legal-approval>
+</mat-card>
