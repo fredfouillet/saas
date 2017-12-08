@@ -1,6 +1,4 @@
-import {Component, Input} from '@angular/core';
-
-
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {Companie} from '../../../companie.model';
 
 @Component({
@@ -10,6 +8,7 @@ import {Companie} from '../../../companie.model';
 })
 
 export class VATComponent {
+  @Output() save: EventEmitter<any> = new EventEmitter();
   @Input() fetchedCompanie: Companie = new Companie()
   VATvalueToAdd: number;
   showLoginInApp: boolean = false;
@@ -17,7 +16,7 @@ export class VATComponent {
   constructor(
   ) {}
 
-  loginInAppDone(){
+  loginInAppDone() {
     this.showLoginInApp = false
   }
   addVAT() {
@@ -25,11 +24,13 @@ export class VATComponent {
       this.fetchedCompanie.modelVATs.push(this.VATvalueToAdd * 1)
       this.VATvalueToAdd = undefined
       this.showLoginInApp = true
+      this.save.emit()
     }
   }
   removeVAT(i: number) {
     this.fetchedCompanie.modelVATs.splice(i, 1)
     this.showLoginInApp = true
+    this.save.emit()
   }
 
 }

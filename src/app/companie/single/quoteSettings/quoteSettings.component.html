@@ -10,9 +10,9 @@
 </mat-card>
 <br>
 <mat-card>
-  <app-quote-vat [fetchedCompanie]="fetchedCompanie"></app-quote-vat>
+  <app-quote-vat (save)="save()" [fetchedCompanie]="fetchedCompanie"></app-quote-vat>
 </mat-card>
 <br>
 <mat-card>
-  <app-quote-legal-approval [fetchedCompanie]="fetchedCompanie"></app-quote-legal-approval>
+  <app-quote-legal-approval (save)="save()" [fetchedCompanie]="fetchedCompanie"></app-quote-legal-approval>
 </mat-card>

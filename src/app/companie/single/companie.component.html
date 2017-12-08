@@ -97,7 +97,7 @@
           <mat-icon>account_circle</mat-icon>
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <app-quote-settings [fetchedCompanie]="fetchedCompanie"></app-quote-settings>
+      <app-quote-settings (saveEmit)="save()" [fetchedCompanie]="fetchedCompanie"></app-quote-settings>
 
       <mat-action-row>
         <button mat-mini-fab color="primary" (click)="saveAndNextStep()">
