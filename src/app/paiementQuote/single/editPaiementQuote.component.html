@@ -89,18 +89,7 @@
         <div *ngIf="fetchedPaiementQuote.type=='stripe' && fetchedPaiementQuote._id">
 
           <mat-card *ngIf="fetchedPaiementQuote.stripe.charge.status !=='succeeded'">
-            <h4>{{'Card' | translate}}</h4>
-            <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="newCard.address_city" placeholder="address_city" class="form-control">
-            <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="newCard.address_country" placeholder="address_country" class="form-control">
-            <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="newCard.address_line1" placeholder="address_line1" class="form-control">
-            <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="newCard.address_line2" placeholder="address_line2" class="form-control">
-            <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="newCard.address_state" placeholder="address_state" class="form-control">
-            <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="newCard.address_zip" placeholder="address_zip" class="form-control"> eg: 8
-            <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="newCard.exp_month" placeholder="exp_month" class="form-control"> eg: 2018
-            <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="newCard.exp_year" placeholder="exp_year" class="form-control"> eg: 4242424242424242
-            <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="newCard.number" placeholder="number" class="form-control"> eg: 123
-            <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="newCard.cvc" placeholder="cvc" class="form-control">
-
+            <app-paiement-card [newCard]="newCard"></app-paiement-card>
           </mat-card>
 
           <mat-card *ngIf="fetchedPaiementQuote.stripe.charge.status ==='succeeded'">

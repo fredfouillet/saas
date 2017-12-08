@@ -25,6 +25,8 @@ import { PaiementPipe } from './paiement.pipe';
 import {MatExpansionModule} from '@angular/material';
 import {MatRadioModule} from '@angular/material';
 import {MatInputModule} from '@angular/material';
+import {PaiementCardModule} from '../nav/paiementCard/paiementCard.module';
+
 
 @NgModule({
   imports:      [
@@ -44,6 +46,7 @@ import {MatInputModule} from '@angular/material';
     MatRadioModule,
     MatInputModule,
     MatDatepickerModule,
+    PaiementCardModule,
     // SignaturePadModule,
     // AutocompleteComponent,
   ],

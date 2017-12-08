@@ -1,4 +1,5 @@
 import {Component, OnInit, Input} from '@angular/core';
+import { DataSource } from '../../companie/single/paiement/paiement.model';
 
 @Component({
   selector: 'app-paiement-card',
@@ -7,8 +8,8 @@ import {Component, OnInit, Input} from '@angular/core';
 })
 export class PaiementCardComponent implements OnInit {
 
-  @Input() loading: boolean = false
-
+  @Input() newCard: DataSource = new DataSource()
+  
   constructor(
 
   ) {

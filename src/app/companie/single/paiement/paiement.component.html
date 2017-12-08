@@ -41,40 +41,7 @@
       </mat-expansion-panel-header>
       <div *ngIf="step === 2">
         <div *ngIf="!stripeCust.sources.data.length">
-          <h6>Create a new card</h6>
-          <mat-form-field>
-            <input matInput type="text" [(ngModel)]="newCard.address_city" placeholder="address_city">
-          </mat-form-field>
-          <mat-form-field>
-            <input matInput type="text" [(ngModel)]="newCard.address_country" placeholder="address_country">
-          </mat-form-field>
-          <mat-form-field>
-            <input matInput type="text" [(ngModel)]="newCard.address_line1" placeholder="address_line1">
-          </mat-form-field>
-          <mat-form-field>
-            <input matInput type="text" [(ngModel)]="newCard.address_line2" placeholder="address_line2">
-          </mat-form-field>
-          <mat-form-field>
-            <input matInput type="text" [(ngModel)]="newCard.address_state" placeholder="address_state">
-          </mat-form-field>
-          <mat-form-field>
-            <input matInput type="text" [(ngModel)]="newCard.address_zip" placeholder="address_zip">
-          </mat-form-field>
-          <mat-form-field>
-            <input matInput type="number" [(ngModel)]="newCard.exp_month" placeholder="exp_month">
-          </mat-form-field>
-          <mat-form-field>
-            <input matInput type="number" [(ngModel)]="newCard.exp_year" placeholder="exp_year">
-          </mat-form-field>
-          <mat-form-field>
-            <input matInput type="number" [(ngModel)]="newCard.number" placeholder="number">
-          </mat-form-field>
-          <mat-form-field>
-            <input matInput type="number" [(ngModel)]="newCard.cvc" placeholder="cvc">
-          </mat-form-field>
-          <br> eg: 8<br> eg: 2018<br> eg: 4242424242424242<br> eg 123<br>
-
-
+          <app-paiement-card [newCard]="newCard"></app-paiement-card>
         </div>
 
 

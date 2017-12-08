@@ -33,6 +33,8 @@ import {MatExpansionModule} from '@angular/material';
 // import {MatFormFieldModule} from '@angular/material';
 import {MatSelectModule} from '@angular/material';
 import {MatButtonToggleModule} from '@angular/material';
+import {PaiementCardModule} from '../nav/paiementCard/paiementCard.module';
+
 @NgModule({
   imports: [
 
@@ -41,6 +43,7 @@ import {MatButtonToggleModule} from '@angular/material';
     // FormsModule,
     // MaterialModule,
     ReactiveFormsModule,
+    PaiementCardModule,
     RouterModule,
     SharedModule,
     MatCardModule,
