@@ -57,7 +57,7 @@ export const LANG_FR_TRANS = {
     'Legal Notice': 'Notes legales',
     'Save & Create project': 'Sauvegarder et Créer Rendez-vous',
     'Issue date': 'Date d\'émission',
-    'Expiry date': 'Date d\'expiration'
+    'Expiry date': 'Date d\'expiration',
     'Users': 'Contacts',
     'User': 'Contact',
     'Team': 'Équipe',
