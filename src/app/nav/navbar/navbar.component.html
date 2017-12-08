@@ -1,6 +1,8 @@
 <div *ngIf="showNavBar">
   <nav class="navbar fixed-top navbar-toggleable-md2 bg-goo">
-    <i (click)="toggleSideBar()" class="fa fal fa-bars fa-2x burgerNav" aria-hidden="true"></i>
+    <mat-icon *ngIf="showSideNavBar" class="burgerNav" (click)="toggleSideBar()">menu</mat-icon>
+    <mat-icon *ngIf="!showSideNavBar" class="burgerNav" (click)="toggleSideBar()">clear_all</mat-icon>
+    <!-- <i  class="fa fal fa-bars fa-2x burgerNav" aria-hidden="true"></i> -->
      <!-- <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button> -->

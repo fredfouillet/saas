@@ -3,6 +3,10 @@
 }
 .burgerNav {
   color: #FFFFFF;
+  font-size: 40px;
+  height: 40px;
+  width: 40px;
+  cursor: pointer;
 }
 .navbar {
   z-index: 0;
