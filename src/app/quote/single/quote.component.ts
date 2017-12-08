@@ -84,7 +84,7 @@ export class QuoteComponent implements OnInit {
       this2.quoteService.getQuote(id)
         .subscribe(
         res => {
-          this.loading = false
+          this2.loading = false
           this2.fetchedQuote = res
           this2.fetchedQuote.clients.forEach(user => { this2.search.userId = user._id })
           resolve(this2.fetchedQuote)
