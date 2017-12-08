@@ -1,10 +1,9 @@
 import {Component, OnInit, Input, ViewChild} from '@angular/core';
 import {AuthService} from '../../auth/auth.service';
-// import {AdminService} from '../../admin/services/admin.service';
 import {Router} from '@angular/router';
 import { UserService} from '../../user/user.service';
 import { User} from '../../user/user.model';
-import { PaiementGuardService} from '../../companie/paiement/paiementGuard.service'
+import { PaiementGuardService} from '../../companie/single/paiement/paiementGuard.service'
 import { ChangeDetectionStrategy} from '@angular/core';
 import {GlobalEventsManager} from '../../globalEventsManager';
 import {MatSidenav} from '@angular/material';
@@ -51,7 +50,7 @@ export class SidebarComponent implements OnInit {
     //     }
     // });
   }
-  ngAfterViewInit() {}
+  // ngAfterViewInit() {}
   closeSideBar() {
     this.globalEventsManager.showNavBar(false);
   }

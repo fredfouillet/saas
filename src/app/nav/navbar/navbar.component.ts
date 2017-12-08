@@ -4,7 +4,7 @@ import { AuthService } from '../../auth/auth.service';
 import { Router } from '@angular/router';
 import { UserService } from '../../user/user.service';
 import { User } from '../../user/user.model';
-import { PaiementGuardService } from '../../companie/paiement/paiementGuard.service'
+import { PaiementGuardService } from '../../companie/single/paiement/paiementGuard.service'
 // import { ChangeDetectionStrategy } from '@angular/core';
 import { GlobalEventsManager } from '../../globalEventsManager';
 // import { NotificationService } from '../../notification/notification.service';
