@@ -79,7 +79,7 @@ export class QuoteComponent implements OnInit {
   }
   getQuote(id: string) {
     this.loading = true
-    let this2 = this
+    const this2 = this
     return new Promise(function(resolve, reject) {
       this2.quoteService.getQuote(id)
         .subscribe(

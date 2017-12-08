@@ -3,9 +3,107 @@
   <!-- <md-sidenav #sidenav mode="side" opened="true"> -->
 
 
+  <mat-accordion>
+    <mat-expansion-panel hideToggle="true" [routerLink]="['/home']" routerLinkActive="active">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <mat-icon>home</mat-icon>
+        </mat-panel-title>
+        <mat-panel-description>
+          {{'Home'|translate}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+    </mat-expansion-panel>
+    <mat-expansion-panel
+      *ngIf="authService.showObjHTML('user', 'read')"
+      [routerLink]="['/user/list/true']" routerLinkActive="active"
+      hideToggle="true">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <mat-icon>supervisor_account</mat-icon>
+        </mat-panel-title>
+        <mat-panel-description>
+          {{'Customers'|translate}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+    </mat-expansion-panel>
+    <mat-expansion-panel
+      *ngIf="authService.showObjHTML('userCalendar', 'read')"
+      [routerLink]="['/userCalendar']" routerLinkActive="active"
+      hideToggle="true">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <mat-icon>event_available</mat-icon>
+        </mat-panel-title>
+        <mat-panel-description>
+          {{'Planning'|translate}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+    </mat-expansion-panel>
+    <mat-expansion-panel
+      *ngIf="authService.showObjHTML('userCalendar', 'read')"
+      [routerLink]="['/quote/list/quote']" routerLinkActive="active"
+      hideToggle="true">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <mat-icon>build</mat-icon>
+        </mat-panel-title>
+        <mat-panel-description>
+          {{'Interventions'|translate}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+    </mat-expansion-panel>
+    <mat-expansion-panel
+      *ngIf="authService.showObjHTML('paiementQuote', 'read')"
+      [routerLink]="['/paiementQuote/list']" routerLinkActive="active"
+      hideToggle="true">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <mat-icon>attach_money</mat-icon>
+        </mat-panel-title>
+        <mat-panel-description>
+          {{'Paiements'|translate}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+    </mat-expansion-panel>
+    <mat-expansion-panel
+      *ngIf="authService.showObjHTML('paiementQuote', 'read')"
+      [routerLink]="['/product']" routerLinkActive="active"
+      hideToggle="true">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <mat-icon>dvr</mat-icon>
+        </mat-panel-title>
+        <mat-panel-description>
+          {{'Products'|translate}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <mat-icon>settings</mat-icon>
+        </mat-panel-title>
+        <mat-panel-description>
+          {{'Settings'|translate}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+        <a class="nav-link" [routerLink]="['/companie/mine']" routerLinkActive="active">{{'Details'|translate}}</a>
+        <a *ngIf="authService.showObjHTML('user', 'read')" class="nav-link" [routerLink]="['/user/list/false']" routerLinkActive="active">{{'Team'|translate}}</a>
+        <a class="nav-link" [routerLink]="['/user/' + fetchedUser._id]" routerLinkActive="active">{{'My profile'|translate}}</a>
+        <a class="nav-link" (click)="logout()">{{'Logout'|translate}}</a>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+
+
+
+
+
+
 
   <!-- <i (click)="closeSideBar()" class="fa fal fa-bars fa-2x" aria-hidden="true"></i> -->
-  <div class="sideBar" id="accordion" role="tablist" aria-multiselectable="true">
+  <div *ngIf="false" class="sideBar" id="accordion" role="tablist" aria-multiselectable="true">
     <div *ngIf="authService.isCurrentUserIsInSubPeriod()" class="card noborder">
       <div class="" role="tab" id="headingZero">
         <a [routerLink]="['/home']" routerLinkActive="active" data-toggle="collapse" class="nav-link" data-parent="#accordion" href="#collapseZero" aria-expanded="true" aria-controls="collapseZero">
@@ -58,7 +156,7 @@
         </a>
       </div>
     </div>
-    
+
 
 
     <!-- <div *ngIf="
