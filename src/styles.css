@@ -292,11 +292,13 @@ textarea::placeholder {
   border-radius: 0px!important;
 }*/
 
-/*.container {
-   height: 100%;
+.container {
+   padding-right: 0px;
+   padding-left: 0px;
+   /*height: 100%;
    margin-bottom: 60px;
-   margin-top: 30px;
- }*/
+   margin-top: 30px;*/
+ }
 
 /*.box {
   background-color: #fff;
