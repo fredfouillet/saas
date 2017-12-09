@@ -28,7 +28,7 @@
 
               <app-sort (orderBy)="orderBy($event)" [search]="search" [filedToOrder]="'name'"></app-sort>
             </th>
-            <th class="centre tdunder">{{'Date' | translate}}
+            <th class="centre tdunder hideMobile">{{'Date' | translate}}
               <app-sort (orderBy)="orderBy($event)" [search]="search" [filedToOrder]="'createdAt'"></app-sort>
             </th>
 
@@ -51,7 +51,7 @@
               </div>
             </td>
             <td class="centre tdunder">{{quote.name}}</td>
-            <td class="centre tdunder">{{quote.detail.dateQuote.issueDate | date:'yy-MM-dd' }}</td>
+            <td class="centre tdunder hideMobile">{{quote.detail.dateQuote.issueDate | date:'yy-MM-dd' }}</td>
             <td class="centre tdunder">{{quote.priceQuote.priceGlobalWithDiscountWithSurfaceWithPainfulness}}</td>
             <td class="centre tdunder">
               <app-quote-status [showSingleSelected]=true [fetchedQuote]="quote"></app-quote-status>
