@@ -1,7 +1,8 @@
 <div class="container width100perc">
   <div *ngIf="showTitle" class="d-flex flex-row">
     <div class="p-2">
-      <h4> {{'Products' | translate}}
+      <h4>
+        {{'Products' | translate}}
         <app-newObjDialog *ngIf="showNewItem" [search]="search" (saved)="saved($event)" [typeObj]="'product'"></app-newObjDialog>
       </h4>
     </div>

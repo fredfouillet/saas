@@ -5,8 +5,14 @@
       {{'Customer' | translate}}
     </h3>
     <h3 *ngIf="!fetchedUser.isExternalUser">
-      <mat-icon>supervisor_account</mat-icon>
-      {{'Team' | translate}}
+      <div *ngIf="isUserIsMyself()">
+        <mat-icon>account_circle</mat-icon>
+        {{'My profile' | translate}}
+      </div>
+      <div *ngIf="!isUserIsMyself()">
+        <mat-icon>supervisor_account</mat-icon>
+        {{'Team' | translate}}
+      </div>
     </h3>
   </div>
   <mat-accordion class="example-headers-align">
