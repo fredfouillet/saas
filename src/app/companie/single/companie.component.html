@@ -9,45 +9,42 @@
     <mat-expansion-panel *ngIf="authService.isCurrentUserIsInSubPeriod()" [expanded]="step === 0" (opened)="setStep(0)">
       <mat-expansion-panel-header>
         <mat-panel-title>
-          {{'Details Companie' | translate}}
+          <mat-icon>account_balance</mat-icon>
         </mat-panel-title>
         <mat-panel-description>
-          <mat-icon>account_circle</mat-icon>
+          {{'Details Companie' | translate}}
         </mat-panel-description>
       </mat-expansion-panel-header>
       <app-detailsCompanie [fetchedCompanie]="fetchedCompanie"></app-detailsCompanie>
       <mat-action-row>
-
         <button *ngIf="fetchedCompanie._id && !isMyCompanie()" mat-mini-fab color="warn" (click)="openDialogDelete()">
           <mat-icon aria-label="Clear">clear</mat-icon>
         </button>
-
         <button mat-mini-fab color="primary" (click)="saveAndNextStep()">
           <mat-icon aria-label="Next">forward</mat-icon>
         </button>
       </mat-action-row>
     </mat-expansion-panel>
+
     <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)">
       <mat-expansion-panel-header>
         <mat-panel-title>
-          {{'Plan' | translate}}
+          <mat-icon>explore</mat-icon>
         </mat-panel-title>
         <mat-panel-description>
-          <mat-icon>account_circle</mat-icon>
+          {{'Plan' | translate}}
         </mat-panel-description>
       </mat-expansion-panel-header>
       <app-paiement *ngIf="step === 1"></app-paiement>
-
-
     </mat-expansion-panel>
 
     <mat-expansion-panel *ngIf="authService.isCurrentUserIsInSubPeriod()" [expanded]="step === 2" (opened)="setStep(2)">
       <mat-expansion-panel-header>
         <mat-panel-title>
-          {{'Connect with Stripe' | translate}}
+          <mat-icon>credit_card</mat-icon>
         </mat-panel-title>
         <mat-panel-description>
-          <mat-icon>account_circle</mat-icon>
+          {{'Connect with Stripe' | translate}}
         </mat-panel-description>
       </mat-expansion-panel-header>
       <app-connect-stripe *ngIf="step === 2" [fetchedCompanie]="fetchedCompanie"></app-connect-stripe>
@@ -56,15 +53,14 @@
     <mat-expansion-panel *ngIf="authService.isCurrentUserIsInSubPeriod()"  [expanded]="step === 3" (opened)="setStep(3)">
       <mat-expansion-panel-header>
         <mat-panel-title>
-          {{'Product Categories' | translate}}
+          <mat-icon>dns</mat-icon>
         </mat-panel-title>
         <mat-panel-description>
-          <mat-icon>account_circle</mat-icon>
+          {{'Product Categories' | translate}}
         </mat-panel-description>
       </mat-expansion-panel-header>
       <app-categProduct (save)="save()" [fetchedCompanie]="fetchedCompanie"></app-categProduct>
       <mat-action-row>
-
         <button mat-mini-fab color="primary" (click)="saveAndNextStep()">
           <mat-icon aria-label="Next">forward</mat-icon>
         </button>
@@ -74,31 +70,30 @@
     <mat-expansion-panel *ngIf="authService.isCurrentUserIsInSubPeriod()"  [expanded]="step === 4" (opened)="setStep(4)">
       <mat-expansion-panel-header>
         <mat-panel-title>
-          {{'Calendar Options' | translate}}
+          <mat-icon>event</mat-icon>
         </mat-panel-title>
         <mat-panel-description>
-          <mat-icon>account_circle</mat-icon>
+          {{'Calendar Options' | translate}}
         </mat-panel-description>
       </mat-expansion-panel-header>
       <app-details-calendar [fetchedCompanie]="fetchedCompanie"></app-details-calendar>
-
       <mat-action-row>
         <button mat-mini-fab color="primary" (click)="saveAndNextStep()">
           <mat-icon aria-label="Next">forward</mat-icon>
         </button>
       </mat-action-row>
     </mat-expansion-panel>
+
     <mat-expansion-panel *ngIf="authService.isCurrentUserIsInSubPeriod()"  [expanded]="step === 5" (opened)="setStep(5)">
       <mat-expansion-panel-header>
         <mat-panel-title>
-          {{'Intervention Settings' | translate}}
+          <mat-icon>build</mat-icon>
         </mat-panel-title>
         <mat-panel-description>
-          <mat-icon>account_circle</mat-icon>
+          {{'Intervention Settings' | translate}}
         </mat-panel-description>
       </mat-expansion-panel-header>
       <app-quote-settings (saveEmit)="save()" [fetchedCompanie]="fetchedCompanie"></app-quote-settings>
-
       <mat-action-row>
         <button mat-mini-fab color="primary" (click)="saveAndNextStep()">
           <mat-icon aria-label="Next">forward</mat-icon>
@@ -106,7 +101,4 @@
       </mat-action-row>
     </mat-expansion-panel>
   </mat-accordion>
-
-
-
 </div>

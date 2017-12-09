@@ -62,7 +62,7 @@
           <mat-option *ngFor="let n of languageArray" [value]="n">{{n}}</mat-option>
         </mat-select>
       </mat-form-field>
-      <app-loginInApp style="width:100%;" *ngIf="showLoginInApp"></app-loginInApp>
+      <app-loginInApp style="width:100%;" *ngIf="showLoginInApp" (loginInAppDone)="showLoginInApp=false"></app-loginInApp>
 
     <!-- </div> -->
 
