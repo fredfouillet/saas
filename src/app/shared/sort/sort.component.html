@@ -1,6 +1,6 @@
-<i (click)="orderByEvent(filedToOrder)" *ngIf="search.orderBy  !== filedToOrder && search.orderBy  !== '-' + filedToOrder" class="fa fa-arrow-down grey"></i>
+<!-- <i (click)="orderByEvent(filedToOrder)" *ngIf="search.orderBy  !== filedToOrder && search.orderBy  !== '-' + filedToOrder" class="fa fa-arrow-down grey"></i>
 <i (click)="orderByEvent('-' + filedToOrder)" *ngIf="search.orderBy  === filedToOrder" class="fa fa-arrow-down"></i>
-<i (click)="orderByEvent(filedToOrder)" *ngIf="search.orderBy  === '-' + filedToOrder" class="fa fa-arrow-up"></i>
+<i (click)="orderByEvent(filedToOrder)" *ngIf="search.orderBy  === '-' + filedToOrder" class="fa fa-arrow-up"></i> -->
 
 <mat-icon (click)="orderByEvent(filedToOrder)" *ngIf="search.orderBy  !== filedToOrder && search.orderBy  !== '-' + filedToOrder" class="grey">keyboard_arrow_down</mat-icon>
 <mat-icon (click)="orderByEvent('-' + filedToOrder)" *ngIf="search.orderBy  === filedToOrder">keyboard_arrow_up</mat-icon>
