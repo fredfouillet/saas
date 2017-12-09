@@ -10,13 +10,13 @@
     <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)">
       <mat-expansion-panel-header>
         <mat-panel-title>
-          <mat-icon>build</mat-icon>
+          <app-quote-status [showSingleSelected]=true [fetchedQuote]="fetchedQuote"></app-quote-status>
+          <!-- <mat-icon>build</mat-icon> -->
         </mat-panel-title>
         <mat-panel-description>
-          <div>
-            <app-quote-status [showSingleSelected]=true [fetchedQuote]="fetchedQuote"></app-quote-status>
+
             {{'Intervention' | translate}}
-          </div>
+
         </mat-panel-description>
       </mat-expansion-panel-header>
       <app-quoteInfo [search]="search" [fetchedQuote]="fetchedQuote" (quoteStatusChangedEmit)="save()"></app-quoteInfo>

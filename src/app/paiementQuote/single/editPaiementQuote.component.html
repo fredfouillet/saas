@@ -1,6 +1,9 @@
 <div class="container">
   <div class="hdform">
-    <h3 *ngIf="!fetchedPaiementQuote.isExpense"><i class="fa fa10 fa-university" aria-hidden="true"></i> {{'Payment' | translate}}</h3>
+    <h3 *ngIf="!fetchedPaiementQuote.isExpense">
+      <mat-icon>credit_card</mat-icon>
+      {{'Payment' | translate}}
+    </h3>
     <!-- <h3 *ngIf="fetchedPaiementQuote.isExpense"><i class="fa fa10 fa-university" aria-hidden="true"></i> {{'Expense' | translate}}</h3> -->
   </div>
 
@@ -9,10 +12,10 @@
     <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)">
       <mat-expansion-panel-header>
         <mat-panel-title>
-          {{'Paiement' | translate}}
+          <mat-icon>attach_money</mat-icon>
         </mat-panel-title>
         <mat-panel-description>
-
+          {{'Paiement' | translate}}
         </mat-panel-description>
       </mat-expansion-panel-header>
 
@@ -57,21 +60,13 @@
       </mat-action-row>
     </mat-expansion-panel>
 
-
-
-
-
-
-
-
-
-
     <mat-expansion-panel *ngIf="fetchedPaiementQuote._id" [expanded]="step === 1" (opened)="setStep(1)">
       <mat-expansion-panel-header>
         <mat-panel-title>
-          {{'Paiement' | translate}}
+          <mat-icon>credit_card</mat-icon>
         </mat-panel-title>
         <mat-panel-description>
+          {{'Payment method' | translate}}
         </mat-panel-description>
       </mat-expansion-panel-header>
 

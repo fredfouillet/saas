@@ -3,7 +3,7 @@
 export const LANG_FR_NAME = 'fr';
 
 export const LANG_FR_TRANS = {
-
+    'Payment method': 'Mode de paiement',
     'Back': 'Retour',
     'Add': 'Ajouter',
     'Dashboard': 'Tableau de Bord',

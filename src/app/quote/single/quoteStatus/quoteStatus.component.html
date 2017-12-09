@@ -6,9 +6,9 @@
 
 <!-- <mat-button-toggle-group *ngIf="showSingleSelected" (change)="changeStatus()" [(ngModel)]="fetchedQuote.statusQuote"> -->
 <div *ngIf="showSingleSelected">
-  <button mat-icon-button class="selectedButWhite" [hidden]="n.indexStatus !== fetchedQuote.statusQuote" *ngFor="let n of statusQuotes" matTooltip="{{n.label}}" [value]="n.indexStatus">
-    <mat-icon color="{{n.color}}">{{n.icon | translate}}</mat-icon>
-  </button>
+  <!-- <button mat-icon-button class="selectedButWhite" > -->
+    <mat-icon [hidden]="n.indexStatus !== fetchedQuote.statusQuote" *ngFor="let n of statusQuotes" matTooltip="{{n.label}}"  color="{{n.color}}">{{n.icon | translate}}</mat-icon>
+  <!-- </button> -->
 </div>
 <!-- </mat-button-toggle-group> -->
 

@@ -145,16 +145,16 @@ export class QuotesComponent implements OnInit {
         //  console.log(res);
           this.paginationData = res.paginationData;
           this.fetchedQuotes =  res.data
-          this.fetchedQuotes.forEach((quote, i) => {
-            this.statusQuotes.forEach(status => {
-              // if(status.indexStatus === quote.statusQuote)
-                // this.fetchedQuotes[i].statusQuoteString = status.label
-            })
-            // this.statusQuotesInvoice.forEach(status => {
-            //   if(status.indexStatus === quote.statusQuote)
-            //     this.fetchedQuotes[i].statusQuoteString = status.label
-            // })
-          })
+          // this.fetchedQuotes.forEach((quote, i) => {
+          //   this.statusQuotes.forEach(status => {
+          //     // if(status.indexStatus === quote.statusQuote)
+          //       // this.fetchedQuotes[i].statusQuoteString = status.label
+          //   })
+          //   // this.statusQuotesInvoice.forEach(status => {
+          //   //   if(status.indexStatus === quote.statusQuote)
+          //   //     this.fetchedQuotes[i].statusQuoteString = status.label
+          //   // })
+          // })
           this.loading = false
         },
         error => {
