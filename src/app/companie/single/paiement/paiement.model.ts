@@ -10,7 +10,7 @@ export class StripeCustomer {
 }
 
 export class Sources {
-  data:DataSource[]=[]
+  data: DataSource[] = []
 }
 
 export class DataSource {
@@ -23,6 +23,7 @@ export class DataSource {
   address_zip: string = '';
   address_line2: string = '';
   brand: string = '';
+  number: string = '';
   country: string = '';
   exp_month: string = '';
   exp_year: string = '';
