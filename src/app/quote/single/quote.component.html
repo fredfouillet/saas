@@ -13,7 +13,10 @@
           <mat-icon>build</mat-icon>
         </mat-panel-title>
         <mat-panel-description>
-          {{'Intervention' | translate}}
+          <div>
+            <app-quote-status [showSingleSelected]=true [fetchedQuote]="fetchedQuote"></app-quote-status>
+            {{'Intervention' | translate}}
+          </div>
         </mat-panel-description>
       </mat-expansion-panel-header>
       <app-quoteInfo [search]="search" [fetchedQuote]="fetchedQuote" (quoteStatusChangedEmit)="save()"></app-quoteInfo>
@@ -26,7 +29,6 @@
 
 
     <mat-expansion-panel *ngIf="
-        fetchedQuote.statusQuote === 'pending' &&
         fetchedQuote._id"
       [expanded]="step === 1" (opened)="setStep(1)">
       <mat-expansion-panel-header>
@@ -39,13 +41,28 @@
       </mat-expansion-panel-header>
       <div class="row">
         <div class="col-5">
-          <app-picture [showPagination]=false [showPictures]=false [openLibrairy]=true [labelButtonAddPicture]="'Add'" [forms]="fetchedQuote.forms"></app-picture>
+          <app-picture
+            [addPicture]="fetchedQuote.statusQuote === 'pending'"
+            [showPagination]=false [showPictures]=false
+            [openLibrairy]=true [labelButtonAddPicture]="'Add'"
+            [forms]="fetchedQuote.forms"></app-picture>
         </div>
         <div class="col-5">
-          <app-picture [showPagination]=false [showPictures]=false [openLibrairy]=false [openCameraStraight]=true [labelButtonAddPicture]="'Add'" [forms]="fetchedQuote.forms"></app-picture>
+          <app-picture
+            [addPicture]="fetchedQuote.statusQuote === 'pending'"
+            [showPagination]=false [showPictures]=false
+            [openLibrairy]=false [openCameraStraight]=true
+            [labelButtonAddPicture]="'Add'"
+            [forms]="fetchedQuote.forms"></app-picture>
         </div>
       </div>
-      <app-picture [showPagination]=false [showPictures]=true  [addPicture]=false [labelButtonAddPicture]="'Add'" [forms]="fetchedQuote.forms"></app-picture>
+      <app-picture
+        [showPagination]=false
+        [showPictures]=true
+        [addPicture]=false
+        [deletePicture]="fetchedQuote.statusQuote === 'pending'"
+        [labelButtonAddPicture]="'Add'"
+        [forms]="fetchedQuote.forms"></app-picture>
       <mat-action-row>
         <app-actionButtons (nextStep)="nextStep()" [showDeleteButton]=false [fetchedQuote]="fetchedQuote"></app-actionButtons>
       </mat-action-row>

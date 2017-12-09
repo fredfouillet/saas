@@ -18,14 +18,14 @@ export class QuoteStatusComponent {
   changeStatus(){
     this.quoteStatusChanged.emit()
   }
-  ngOnChanges() {
-    if(this.showSingleSelected) {
-      this.statusQuotesSingleSelected = []
-      this.statusQuotesSingleSelected.push(this.statusQuotes.find((statusQuote) => {
-        return statusQuote.indexStatus === this.fetchedQuote.statusQuote;
-      }))
-
-      // console.log(this.statusQuotesSingleSelected)
-    }
-  }
+  // ngOnChanges() {
+  //   // if(this.showSingleSelected) {
+  //   //   this.statusQuotesSingleSelected = []
+  //   //   this.statusQuotesSingleSelected.push(this.statusQuotes.find((statusQuote) => {
+  //   //     return statusQuote.indexStatus === this.fetchedQuote.statusQuote;
+  //   //   }))
+  //   //
+  //   //   // console.log(this.statusQuotesSingleSelected)
+  //   // }
+  // }
 }

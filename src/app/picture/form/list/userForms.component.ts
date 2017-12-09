@@ -17,6 +17,7 @@ import { GlobalEventsManager } from '../../../globalEventsManager';
 export class UserFormsComponent implements OnInit, OnChanges {
   @Input() itemsPerPage: number;
   @Input() isDialog: boolean;
+  @Input() deletePicture: boolean = true;
 
 
   @Output() onPassForm = new EventEmitter<any>();

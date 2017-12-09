@@ -8,6 +8,7 @@
   <app-user-form-list
     *ngIf="showPictures"
     [itemsPerPage]=8
+    [deletePicture]="deletePicture"
     [fetchedForms]="forms"
     [showPagination]="showPagination"
     (removeForm)="removeForm($event)"
@@ -19,7 +20,10 @@
   <div *ngIf="!singleForm || forms.length<1">
   <div *ngIf="addPicture">
     <!-- <input #fileInput type="file" accept="image/*" capture="camera" (change)="onFileSelect($event)" /> -->
-    <app-form *ngIf="!openLibrairy" [openCameraStraight]="openCameraStraight" (onPassForm)="onPassForm($event)"></app-form>
+    <app-form
+      *ngIf="!openLibrairy"
+      [openCameraStraight]="openCameraStraight"
+      (onPassForm)="onPassForm($event)"></app-form>
     <!-- <button *ngIf="openLibrairy" type="button"  mat-button (click)="openDialog('img')" class="addpic-squr btn btn-primary">
       {{labelButtonAddPicture | translate}}
       <br>

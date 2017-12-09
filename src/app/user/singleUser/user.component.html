@@ -19,8 +19,11 @@
     <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)">
       <mat-expansion-panel-header>
         <mat-panel-title>
-          {{'User' | translate}} : {{fetchedUser.profile.lastName}}
+          <mat-icon>face</mat-icon>
         </mat-panel-title>
+        <mat-panel-description>
+          {{'User' | translate}}
+        </mat-panel-description>
       </mat-expansion-panel-header>
       <app-detailsUser (save)="save()"[fetchedUser]="fetchedUser"></app-detailsUser>
       <mat-action-row>
@@ -38,8 +41,11 @@
     <mat-expansion-panel *ngIf="fetchedUser._id" [expanded]="step === 1" (opened)="setStep(1)">
       <mat-expansion-panel-header>
         <mat-panel-title>
-          {{'Details' | translate}}
+          <mat-icon>assignment_ind</mat-icon>
         </mat-panel-title>
+        <mat-panel-description>
+          {{'Details' | translate}}
+        </mat-panel-description>
       </mat-expansion-panel-header>
       <app-user-cross *ngIf="step === 1" [fetchedUser]="fetchedUser" (saved)=savedCrossUser($event)></app-user-cross>
     </mat-expansion-panel>
@@ -47,10 +53,10 @@
     <mat-expansion-panel *ngIf="fetchedUser._id && fetchedUser.isExternalUser" [expanded]="step === 2" (opened)="setStep(2)">
       <mat-expansion-panel-header>
         <mat-panel-title>
-          {{'Quotes' | translate}}
+          <mat-icon>build</mat-icon>
         </mat-panel-title>
         <mat-panel-description>
-          <mat-icon>map</mat-icon>
+          {{'Interventions' | translate}}
         </mat-panel-description>
       </mat-expansion-panel-header>
       <app-quotes [search]="{userId: fetchedUser._id, typeQuote: 'quote'}"></app-quotes>

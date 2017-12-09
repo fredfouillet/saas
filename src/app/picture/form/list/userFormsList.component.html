@@ -7,14 +7,16 @@
             <img *ngIf="form.type === 'pdf'" (click)="onSelectRow(form)" src="./assets/images/pdf_icon.png">
             <img *ngIf="form.type !== 'pdf'" (click)="onSelectRow(form)" src="./uploads/forms/{{form.owner}}/{{form.imagePath}}" onerror="this.src ='assets/images/no-image-found.jpg'">
             <p *ngIf="form.type === 'pdf'" class="pdf-ttl">{{form.title}}</p>
-            <button class="dlt-btn" (click)="onDelete(form._id)"><i class="fa fa-trash"></i></button>
+            <button *ngIf="deletePicture" class="dlt-btn" (click)="onDelete(form._id)">
+              <mat-icon>clear</mat-icon>
+            </button>
           </div>
         </td>
       </tr>
     </tbody>
   </table>
   <div *ngIf="showPagination" class="has-text-centered">
-     <mat-paginator *ngIf="paginationData.totalItems>paginationData.itemsPerPage" 
+     <mat-paginator *ngIf="paginationData.totalItems>paginationData.itemsPerPage"
       [length]="paginationData.totalItems"
       [pageSize]="paginationData.itemsPerPage"
       (page)="getPage($event.pageIndex*1+1)">

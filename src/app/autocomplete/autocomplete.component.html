@@ -21,7 +21,10 @@
           <div *ngIf="typeAutocomplete=='templateQuote'">{{data.nameTemplate}}</div>
         </td>
         <td class="tdbtn2">
-          <button class="btn btn-success" type="button" (click)="selectData(data)"><i class="fa fa-check" aria-hidden="true"></i></button>
+
+          <button mat-button color="primary" (click)="selectData(data)">
+            <mat-icon>done</mat-icon>
+          </button>
         </td>
       </tr>
     </table>

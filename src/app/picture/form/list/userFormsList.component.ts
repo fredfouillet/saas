@@ -23,7 +23,7 @@ export class UserFormsListComponent implements OnInit {
   @Output() removeForm = new EventEmitter<any>();
   @Output() getUserForms = new EventEmitter<any>();
   @Input() fetchedForms: Form[] = [];
-
+  @Input() deletePicture: boolean = true;
 
   @Input() paginationData = {
     currentPage: 1,

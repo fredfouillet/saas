@@ -14,7 +14,7 @@ export class Quote {
   historyClientsCross: UserCross[] = [];
   name: string = '';
   statusQuote: string = 'pending';
-  statusQuoteString: string = '';
+  // statusQuoteString: string = '';
   typeQuote: string = 'quote';
   quoteNumber: number;
   isSigned:boolean = false;
