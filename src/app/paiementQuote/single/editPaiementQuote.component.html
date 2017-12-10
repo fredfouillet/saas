@@ -25,7 +25,8 @@
             </app-autocomplete>
           </div>
           <div class="col-12 col-md-6">
-            <app-autocomplete class="mb8 bn" [canDelete]=false [typeAutocomplete]="'user'" [search]="search" [canDelete]="true" [title]="'Customer'" [singleChoice]="true" [arrayContent]="fetchedPaiementQuote.userDebiteds" (getResultAutocomplete)="selectUserDebited($event[0])">
+            <app-autocomplete class="mb8 bn" [canDelete]=false [typeAutocomplete]="'user'" [search]="search" [canDelete]="true" [title]="'Customer'" [singleChoice]="true" [arrayContent]="fetchedPaiementQuote.userDebiteds" (getResultAutocomplete)="selectUserDebited($event[0])"
+            (autocompleteAfterNgChanges)="autocompleteAfterNgChangesUser($event)">
             </app-autocomplete>
           </div>
           <div class="col-12 col-md-6">

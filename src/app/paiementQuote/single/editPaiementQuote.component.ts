@@ -19,7 +19,9 @@ import { FormBuilder, FormGroup} from '@angular/forms';
 import { UserService} from '../../user/user.service';
 import { QuoteService } from '../../quote/quote.service';
 import { DeleteDialogComponent } from '../../nav/deleteDialog/deleteDialog.component';
-import { User } from '../../user/user.model';
+
+import { User, UserCross, TypeUser, Address, AddressTypes } from '../../user/user.model';
+
 import { Quote } from '../../quote/quote.model';
 import { Product } from '../../product/product.model';
 // import { Project } from '../../project/project.model';
@@ -58,10 +60,11 @@ export class EditPaiementQuoteComponent implements OnInit {
   // userClients : User[] = []
   // usersSalesRep : User[] = []
   // userStylists : User[] = []
+  fetchedUserCross: UserCross = new UserCross();
 
   myForm: FormGroup;
   autocompleteProduct: String = ''
-  fetchedUsers: User[] = [];
+  // fetchedUsers: User[] = [];
   arrayContentToSearch =[]
   step = 0;
   paiementsTypes = [
@@ -74,7 +77,7 @@ export class EditPaiementQuoteComponent implements OnInit {
     private paiementService: PaiementService,
     private quoteService: QuoteService,
     // private projectService: ProjectService,
-    // private userService: UserService,
+    private userService: UserService,
     // private productService: ProductService,
 //    private modalService: NgbModal,
     private toastr: ToastsManager,
@@ -152,11 +155,39 @@ export class EditPaiementQuoteComponent implements OnInit {
     selectUserDebited(user: User) {
       this.fetchedPaiementQuote.userDebiteds = [user]
       this.search.userId = user._id
+      // this.getUserCross(user._id)
     }
 
-    autocompleteAfterNgChanges(result) {
+    getUserCross(id: string) {
+      this.userService.getUserCross(id)
+        .subscribe(
+          res => {
+
+            this.fetchedUserCross = res
+            this.fetchedUserCross.profile.address.forEach(singleAddress => {
+              this.newCard.address_city = singleAddress.city
+              this.newCard.address_line1 = singleAddress.address
+              this.newCard.address_line2 = singleAddress.address2
+              this.newCard.address_country = singleAddress.country
+              this.newCard.address_zip = singleAddress.zip
+              this.newCard.address_state = singleAddress.state
+            })
+          },
+          error => {
+            console.log(error);
+          }
+        )
+    }
+    autocompleteAfterNgChangesUser(user: User) {
+
+      this.getUserCross(user._id)
+      // this.selectUserDebited(user)
+    }
+
+    autocompleteAfterNgChanges(quote: Quote) {
+
       if(!this.fetchedPaiementQuote._id) {
-        this.fetchedPaiementQuote.amount = result.priceQuote.priceQuoteWithoutTaxes
+        this.fetchedPaiementQuote.amount = quote.priceQuote.priceQuoteWithoutTaxes
       }
       // console.log(this.fetchedPaiementQuote.quotes)
     }

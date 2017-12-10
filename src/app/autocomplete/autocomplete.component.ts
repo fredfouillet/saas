@@ -62,12 +62,15 @@ export class AutocompleteComponent {
     //       this.arrayContent.push(res) }, error => { console.log(error); });
     if(this.typeAutocomplete ==='user' && this.search.userId)
         this.userService.getUser(this.search.userId)
-        .subscribe( res => { if(this.arrayContent.length) this.arrayContent.splice(0, 1);
-          this.arrayContent.push(res) }, error => { console.log(error); });
+        .subscribe( res => {
+          if(this.arrayContent.length) {this.arrayContent.splice(0, 1)}
+          this.arrayContent.push(res)
+          this.autocompleteAfterNgChanges.emit(res)
+        }, error => { console.log(error); });
     if(this.typeAutocomplete ==='quote' && this.search.quoteId)
         this.quoteService.getQuote(this.search.quoteId)
         .subscribe( res => {
-          if(this.arrayContent.length) this.arrayContent.splice(0, 1);
+          if(this.arrayContent.length) {this.arrayContent.splice(0, 1)}
           this.arrayContent.push(res)
           this.autocompleteAfterNgChanges.emit(res)
         }, error => { console.log(error); });
