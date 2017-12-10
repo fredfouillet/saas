@@ -6,12 +6,21 @@
           <div class="row">
             <div class="col-1">
               <div class="row nopad">
+                <!-- <div class="col-6 nopad">
+                  <button *ngIf="fetchedQuote.statusQuote === 'pending'" type="button" class="btn btn-sm handle"><i class="fa fa-arrows handle">aaa</i></button>
+                </div> -->
                 <div class="col-6 nopad">
-                  <button *ngIf="fetchedQuote.statusQuote === 'pending'" type="button" class="btn btn-sm handle"><i class="fa fa-arrows handle"></i></button>
+
+                  <button *ngIf="fetchedQuote.statusQuote === 'pending'" color="warn" (click)="removeRow(i, j)" mat-icon-button>
+                    <mat-icon>clear</mat-icon>
+                  </button>
+
                 </div>
-                <div class="col-6 nopad">
-                  <button *ngIf="fetchedQuote.statusQuote === 'pending'" type="button" class="btn btn-danger btn-sm" (click)="removeRow(i, j)"><i class="fa fa-times"></i></button>
-                </div>
+
+                <!-- <button *ngIf="fetchedQuote.statusQuote === 'pending'" color="warn" (click)="removeRow(i, j)" mat-icon-button>
+                  <mat-icon>clear</mat-icon>
+                </button>
+                 -->
               </div>
             </div>
             <div *ngIf="bucketProduct.typeRow=='text'" class="col-11">
