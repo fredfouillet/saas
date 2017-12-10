@@ -8,6 +8,7 @@ import { ActionButtonsComponent } from './actionButtons/actionButtons.component'
 import { TranslateService } from '../../translate/translate.service';
 import { Search } from '../../shared/shared.model';
 import { PaiementQuote } from '../../paiementQuote/paiementQuote.model';
+import { DrawingSignatureComponent } from './drawingSignature/drawingSignature.component';
 
 
 @Component({
@@ -19,6 +20,7 @@ export class QuoteComponent implements OnInit {
   // @ViewChild(SignaturePad) signaturePad: SignaturePad;
   // @ViewChild(PaiementQuotesComponent) paiementQuotesComponent: PaiementQuotesComponent;
   @ViewChild(ActionButtonsComponent) actionButtonsComponent: ActionButtonsComponent
+  @ViewChild(DrawingSignatureComponent) drawingSignatureComponent: DrawingSignatureComponent
   loading: boolean = false;
   @Output() saved: EventEmitter<any> = new EventEmitter();
   @Output() close: EventEmitter<any> = new EventEmitter();
@@ -55,6 +57,15 @@ export class QuoteComponent implements OnInit {
   nextStep() {
     this.step++;
   }
+  clearDrawing() {
+    this.drawingSignatureComponent.clearDrawing();
+  }
+  clearedDrawing() {
+    this.fetchedQuote.drawingSignature.base64 = ''
+    this.fetchedQuote.drawingSignature.base64Temp = ''
+    this.fetchedQuote.statusQuote = 'pending'
+    this.actionButtonsComponent.saveSignature()
+  }  
   buttonSaved(quote: Quote) {
     this.getQuote(quote._id)
     this.nextStep()
@@ -71,12 +82,7 @@ export class QuoteComponent implements OnInit {
       error => { console.log(error) }
       )
   }
-  clearedDrawing() {
-    this.fetchedQuote.drawingSignature.base64 = ''
-    this.fetchedQuote.drawingSignature.base64Temp = ''
-    this.fetchedQuote.statusQuote = 'pending'
-    this.actionButtonsComponent.saveSignature()
-  }
+
   getQuote(id: string) {
     this.loading = true
     const this2 = this

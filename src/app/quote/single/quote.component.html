@@ -81,7 +81,6 @@
           {{'Edit Quote' | translate}}
         </mat-panel-description>
       </mat-expansion-panel-header>
-      {{fetchedQuote.priceQuote.priceGlobalWithTaxesWithDiscountWithSurfaceWithPainfulness | round}}$
       <app-edit-quote [fetchedQuote]="fetchedQuote" (calculateQuote)="calculateQuote()"></app-edit-quote>
       <mat-action-row>
         <app-actionButtons (nextStep)="nextStep()" [isDialog]="isDialog" [fetchedQuote]="fetchedQuote" [showDeleteButton]=false (closeDialog)="closeDialog()" (saved)="savedQuote($event)">
@@ -117,13 +116,14 @@
           {{'Signature' | translate}}
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <app-drawing-signature *ngIf="fetchedQuote.statusQuote === 'pending'"  #DrawingSignature [drawing]="fetchedQuote.drawingSignature" (cleared)="clearedDrawing()" (updated)="drawingSignatureUpdated($event)">
+      <app-drawing-signature *ngIf="fetchedQuote.statusQuote === 'pending'" [drawing]="fetchedQuote.drawingSignature" (cleared)="clearedDrawing()" (updated)="drawingSignatureUpdated($event)">
       </app-drawing-signature>
       <img *ngIf="fetchedQuote.statusQuote !== 'pending'" [src]="fetchedQuote.drawingSignature.base64">
 
-      
+
+
       <mat-action-row *ngIf="fetchedQuote.statusQuote === 'pending'">
-        <button mat-mini-fab color="warn" (click)="DrawingSignature.clearDrawing()">
+        <button mat-mini-fab color="warn" (click)="clearDrawing()">
           <mat-icon aria-label="clear">clear</mat-icon>
         </button>
         <!-- <button mat-mini-fab color="accent" (click)="DrawingSignature.undoVersion()">

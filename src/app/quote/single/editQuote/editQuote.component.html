@@ -1,3 +1,8 @@
+
+<mat-card class="ac">
+  <b>{{fetchedQuote.priceQuote.priceGlobalWithTaxesWithDiscountWithSurfaceWithPainfulness | round}}$</b>
+</mat-card>
+
 <mat-tab-group>
   <mat-tab label="Catalogue">
     <app-products [showTitle]=false [showNewItem]=false [customButton]=true (customButtonActionEmit)="addProductToQuote($event)"></app-products>
