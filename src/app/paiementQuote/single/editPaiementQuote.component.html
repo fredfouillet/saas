@@ -1,11 +1,5 @@
 <div class="container">
-  <div class="hdform">
-    <h3 *ngIf="!fetchedPaiementQuote.isExpense">
-      <mat-icon>credit_card</mat-icon>
-      {{'Payment' | translate}}
-    </h3>
-    <!-- <h3 *ngIf="fetchedPaiementQuote.isExpense"><i class="fa fa10 fa-university" aria-hidden="true"></i> {{'Expense' | translate}}</h3> -->
-  </div>
+  <app-header-title [title]="'Payment'" [icon]="'credit_card'"></app-header-title>
 
 
   <mat-accordion class="example-headers-align">

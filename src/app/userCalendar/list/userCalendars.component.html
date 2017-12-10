@@ -1,12 +1,14 @@
 <div class="container width100perc">
-  <div class="d-flex flex-row">
+  <app-header-title [title]="'Calendar'" [icon]="'event_available'"></app-header-title>
+
+  <!-- <div class="d-flex flex-row">
     <div class="p-2">
       <h4>
       <mat-icon>event_available</mat-icon>
       {{'Calendar' | translate}}
     </h4>
     </div>
-  </div>
+  </div> -->
   <div class="row pad15">
     <div class="col-12">
       <app-userCalendarSearch (getUserCalendarBySearch)="getUserCalendarBySearch($event)"></app-userCalendarSearch>

@@ -1,11 +1,7 @@
 <div class="">
-  <div class="hdform">
-    <!-- <h3 *ngIf="fetchedQuote.typeQuote === 'invoice'"><i class="fa fa10 fa-clipboard" aria-hidden="true"></i>{{'Invoice' | translate}}</h3> -->
-    <h3 *ngIf="fetchedQuote.typeQuote === 'quote'">
-      <mat-icon>build</mat-icon>
-      {{'Intervention' | translate}}
-    </h3>
-  </div>
+
+  <app-header-title [title]="'Intervention'" [icon]="'build'"></app-header-title>
+
   <mat-accordion class="example-headers-align">
     <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)">
       <mat-expansion-panel-header>

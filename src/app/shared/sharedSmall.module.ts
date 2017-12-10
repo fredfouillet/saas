@@ -24,6 +24,7 @@ import { CurrencyPipe} from './round.pipe';
 // import { LoadingInAppComponent } from '../nav/loadingInApp/loadingInApp.component';
 import { LoadingInAppModule } from '../nav/loadingInApp/loadingInApp.module';
 import { LoginInAppComponent } from '../nav/loginInApp/loginInApp.component';
+import { HeaderTitleComponent } from '../nav/headerTitle/headerTitle.component';
 
 
 import { TranslateModule} from '../translate/translate.module';
@@ -69,6 +70,7 @@ import {MatButtonModule} from '@angular/material';
     // newObjDialogComponent,
     // LoadingInAppComponent,
     LoginInAppComponent,
+    HeaderTitleComponent,
 
 
   ],
@@ -87,6 +89,7 @@ import {MatButtonModule} from '@angular/material';
 
     // LoadingInAppComponent,
     LoginInAppComponent,
+    HeaderTitleComponent,
     LoadingInAppModule,
     // PictureModule,
     // MaterialModule,
