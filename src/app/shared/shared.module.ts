@@ -11,7 +11,8 @@ import {PictureModule} from '../picture/picture.module';
 // import { TRANSLATION_PROVIDERS, TranslatePipe, TranslateService }   from '../translate';
 import { TranslateModule} from '../translate/translate.module';
 
-import { RoundPipe} from './round.pipe';
+// import { RoundPipe} from './round.pipe';
+// import { CurrencyPipe} from './round.pipe';
 // import { HeaderComponent } from '../nav/header/header.component';
 import { SortComponent } from './sort/sort.component';
 // import { newObjDialogComponent } from '../nav/newObjDialog/newObjDialog.component';

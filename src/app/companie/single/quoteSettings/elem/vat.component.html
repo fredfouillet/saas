@@ -1,6 +1,8 @@
 <mat-form-field>
   <input matInput type="number" [(ngModel)]="VATvalueToAdd" placeholder="{{'VAT' | translate}}">
-  <button matSuffix mat-raised-button color="primary" (click)="addVAT()">{{'Add VAT' | translate}}</button>
+  <button matSuffix mat-raised-button color="primary" (click)="addVAT()">
+    <mat-icon>add</mat-icon>
+  </button>
 </mat-form-field>
 
 

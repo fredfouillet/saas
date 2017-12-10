@@ -102,6 +102,7 @@ export class Categorie2 {
 // }
 export class Option {
   calendar: Calendar = new Calendar();
+  currency: string = '€';
 }
 
 export class Calendar {

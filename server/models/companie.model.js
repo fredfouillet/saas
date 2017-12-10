@@ -23,13 +23,13 @@ var companie = new Schema({
 
 
 
-    contactsPerson:[{
-      contactType:{type: String, default: ['']},
-      contactName:{type: String, default: ['']},
-      contactFirstName:{type: String, default: ['']},
-      contactPhoneNumber:{type: String, default: ['']},
-      contactEmail:{type: String, default: ['']},
-    }],
+    // contactsPerson:[{
+    //   contactType:{type: String, default: ['']},
+    //   contactName:{type: String, default: ['']},
+    //   contactFirstName:{type: String, default: ['']},
+    //   contactPhoneNumber:{type: String, default: ['']},
+    //   contactEmail:{type: String, default: ['']},
+    // }],
 
     rights: [{type: Schema.Types.ObjectId, ref: 'Right'}],
     VAT : {type: String, default: ['']},
@@ -53,7 +53,8 @@ var companie = new Schema({
         slotDuration: {type: String, default: ['00:30:00']},
         timeBeginbusinessHours: {type: String, default: ['10:30:00']},
         timeEndbusinessHours: {type: String, default: ['17:00:00']},
-      }
+      },
+      currency: {type: String, default: ['€']},
     },
     quoteSettings: {
       legalNotice: {type: String, default: ['']},

@@ -1,6 +1,8 @@
 <mat-form-field>
   <input matInput [(ngModel)]="legalApprovalValueToAdd" placeholder="{{'legal Approval' | translate}}">
-  <button matSuffix mat-raised-button color="primary" (click)="add()">{{'Add Legal Approval' | translate}}</button>
+  <button matSuffix mat-raised-button color="primary" (click)="add()">
+    <mat-icon>add</mat-icon>
+  </button>
 </mat-form-field>
 
 <div *ngFor="let legalApproval of fetchedCompanie.legalApprovals; let i=index;">

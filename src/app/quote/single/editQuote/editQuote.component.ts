@@ -54,6 +54,7 @@ export class EditQuoteComponent implements OnInit {
   statusQuotes = StatusQuotes
   totalPaiementAmount: number = 0
   myForm: FormGroup;
+  // currency: string = ''
 
   constructor(
     private quoteService: QuoteService,
@@ -75,6 +76,9 @@ export class EditQuoteComponent implements OnInit {
 
   ngOnInit() {
 
+    // this.authService.getCurrentUser().ownerCompanies.forEach(companie => {
+    //   this.currency = companie.option.currency
+    // })
     this.myForm = this._fb.group({
       name: [''],
       quoteNumber: [''],

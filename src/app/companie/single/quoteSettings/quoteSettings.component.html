@@ -1,6 +1,9 @@
 <mat-card>
   <mat-form-field>
-    <textarea matInput type="text" [(ngModel)]="fetchedCompanie.quoteSettings.legalNotice" required minlength="5" placeholder="{{'Legal Notice' | translate}}">
+    <textarea matInput type="text" [(ngModel)]="fetchedCompanie.quoteSettings.legalNotice"
+      matTextareaAutosize matAutosizeMinRows="5" matAutosizeMaxRows="10"
+
+      placeholder="{{'Legal Notice' | translate}}">
     </textarea>
   </mat-form-field>
 </mat-card>
@@ -15,4 +18,16 @@
 <br>
 <mat-card>
   <app-quote-legal-approval (save)="save()" [fetchedCompanie]="fetchedCompanie"></app-quote-legal-approval>
+</mat-card>
+<br>
+<mat-card class="ac">
+  <mat-button-toggle-group (change)="changeCurrency()" [(ngModel)]="fetchedCompanie.option.currency">
+    <mat-button-toggle value="€">
+      <mat-icon>euro_symbol</mat-icon>
+    </mat-button-toggle>
+    <mat-button-toggle value="$">
+      <mat-icon>attach_money</mat-icon>
+    </mat-button-toggle>
+  </mat-button-toggle-group>
+  <app-loginInApp *ngIf="showLoginInApp" (loginInAppDone)="loginInAppDone()"></app-loginInApp>
 </mat-card>

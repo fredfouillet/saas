@@ -1,6 +1,9 @@
 
 <mat-card class="ac">
-  <b>{{fetchedQuote.priceQuote.priceGlobalWithTaxesWithDiscountWithSurfaceWithPainfulness | round}}$</b>
+
+  <!-- <b *ngIf="currency === '$'">$</b> -->
+  <b>{{fetchedQuote.priceQuote.priceGlobalWithDiscountWithSurfaceWithPainfulness | round | currency}}</b>
+  <!-- <b *ngIf="currency === '€'">€</b> -->
 </mat-card>
 
 <mat-tab-group>

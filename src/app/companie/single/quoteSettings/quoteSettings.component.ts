@@ -32,6 +32,8 @@ export class QuoteSettingsComponent implements OnInit {
   @Output() saveEmit: EventEmitter<any> = new EventEmitter();
   // @Input() showBackButton: Boolean = true;
   @Input() fetchedCompanie: Companie = new Companie()
+  showLoginInApp: boolean = false;
+
 
   constructor(
     private companieService: CompanieService,
@@ -46,6 +48,14 @@ export class QuoteSettingsComponent implements OnInit {
     // private userService: UserService,
     // private paiementService: PaiementService,
   ) {}
+
+  changeCurrency() {
+    this.save()
+    this.showLoginInApp = true
+  }
+  loginInAppDone(){
+    this.showLoginInApp = false
+  }
 
   ngOnInit() {
   }

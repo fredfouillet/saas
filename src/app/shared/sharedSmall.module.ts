@@ -15,6 +15,7 @@ import { AutocompleteModule } from '../autocomplete/autocomplete.module'
 // import { TRANSLATION_PROVIDERS, TranslatePipe, TranslateService }   from '../translate';
 
 import { RoundPipe} from './round.pipe';
+import { CurrencyPipe} from './round.pipe';
 // import { HeaderComponent } from '../nav/header/header.component';
 // import { newObjDialogComponent } from '../nav/newObjDialog/newObjDialog.component';
 
@@ -61,6 +62,7 @@ import {MatButtonModule} from '@angular/material';
   ],
   declarations: [
     RoundPipe,
+    CurrencyPipe,
     // AutocompleteComponent,
     // TranslatePipe,
     // HeaderComponent,
@@ -76,6 +78,7 @@ import {MatButtonModule} from '@angular/material';
     CommonModule,
     FormsModule,
     RoundPipe,
+    CurrencyPipe,
     MatDialogModule,
     // MatInputModule,
     // HeaderComponent,
