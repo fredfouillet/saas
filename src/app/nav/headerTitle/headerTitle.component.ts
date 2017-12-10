@@ -13,6 +13,7 @@ export class HeaderTitleComponent implements OnInit {
   @Input() title: string = '';
   @Input() icon: string = '';
 
+
   constructor(
     private translateService: TranslateService,
     private location: Location,
