@@ -3,6 +3,7 @@
     <div class="row">
       <div class="col-sm-12 col-md-4">
         <mat-form-field>
+          <span matPrefix>int-</span>
           <!-- <input matInput type="text" name="Search" placeholder="{{ title | translate}}" [(ngModel)]="autocompleteSearch" (ngModelChange)="searchData()"> -->
           <input matInput [readonly]="fetchedQuote.statusQuote !== 'pending'" type="number" formControlName="quoteNumber" [(ngModel)]="fetchedQuote.quoteNumber" placeholder="{{'Number Id' | translate}}">
         </mat-form-field>
@@ -11,7 +12,7 @@
         </div> -->
         <div class="form-group">
 
-          <app-autocomplete [search]="search" [displayIfContentIsNull]=true [canDelete]=false [enableLink]=true [typeAutocomplete]="'user'" [title]="'Contact'" [search]="{isExternalUser:true}" [title]="" [singleChoice]="'true'" [arrayContent]="fetchedQuote.clients">
+          <app-autocomplete [search]="search" [displayIfContentIsNull]=true [canDelete]=false [enableLink]=true [typeAutocomplete]="'user'" [title]="'Client'" [search]="{isExternalUser:true}" [title]="" [singleChoice]="'true'" [arrayContent]="fetchedQuote.clients">
           </app-autocomplete>
           <!-- <app-autocomplete [search]="search" [displayIfContentIsNull]=true [canDelete]=false [enableLink]=true [typeAutocomplete]="'user'" [title]="'Contact'" [search]="{isExternalUser:true}" [title]="" [singleChoice]="'true'" [arrayContent]="fetchedQuote.clients"
             (getResultAutocomplete)="selectUser($event[0])">
@@ -36,17 +37,17 @@
       <div class="col-sm-12 col-md-4">
 
           <mat-form-field>
-            <input matInput [matDatepicker]="picker" placeholder="{{'Issue date' | translate}}" [readonly]="fetchedQuote.statusQuote !== 'pending'" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedQuote.detail.dateQuote.issueDate">
+            <input matInput [matDatepicker]="picker" placeholder="{{'Date' | translate}}" [readonly]="fetchedQuote.statusQuote !== 'pending'" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedQuote.detail.dateQuote.issueDate">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>
 
 
-          <mat-form-field>
+          <!-- <mat-form-field>
             <input matInput [matDatepicker]="picker2" placeholder="{{'Expiry date' | translate}}" [readonly]="fetchedQuote.statusQuote !== 'pending'" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedQuote.detail.dateQuote.expiryDate">
             <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
             <mat-datepicker #picker2></mat-datepicker>
-          </mat-form-field>
+          </mat-form-field> -->
 <!--
         <div class="form-group">
           {{'Quote validity date' | translate}}
@@ -93,7 +94,9 @@
           </mat-form-field>
       </div>
       <div class="col-12">
-        <app-quote-status (quoteStatusChanged)="quoteStatusChanged()" *ngIf="fetchedQuote._id" [fetchedQuote]="fetchedQuote"></app-quote-status>
+        <mat-card class="ac">
+          <app-quote-status (quoteStatusChanged)="quoteStatusChanged()" *ngIf="fetchedQuote._id" [fetchedQuote]="fetchedQuote"></app-quote-status>
+        </mat-card>
       </div>
 
     </div>

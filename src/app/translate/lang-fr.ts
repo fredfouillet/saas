@@ -28,6 +28,7 @@ export const LANG_FR_TRANS = {
     'WorkingAddress': 'Réference Chantier',
     'Painfulness': 'Pénibilité',
     'VAT': 'TVA',
+    'Number Id': 'Numéro',
     'Appointment': 'Rendez-vous',
     'Length': 'Longeur',
     'Edit Quote': 'Edition du devis',
