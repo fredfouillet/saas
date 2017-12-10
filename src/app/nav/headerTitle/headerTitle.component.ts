@@ -12,6 +12,7 @@ import { TranslateService } from '../../translate/translate.service';
 export class HeaderTitleComponent implements OnInit {
   @Input() title: string = '';
   @Input() icon: string = '';
+  @Input() showBack: boolean = true;
 
 
   constructor(

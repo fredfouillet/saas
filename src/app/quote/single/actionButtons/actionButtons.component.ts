@@ -64,7 +64,9 @@ export class ActionButtonsComponent implements OnInit {
   }
 
   nextStepEmit() {
-    this.save()
+    if (this.fetchedQuote.statusQuote === 'pending') {
+      this.save()
+    }
     this.nextStep.emit(this.fetchedQuote)
 
   }

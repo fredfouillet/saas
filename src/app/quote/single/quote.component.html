@@ -17,7 +17,7 @@
       </mat-expansion-panel-header>
       <app-quoteInfo [search]="search" [fetchedQuote]="fetchedQuote" (quoteStatusChangedEmit)="save()"></app-quoteInfo>
       <mat-action-row *ngIf="fetchedQuote.statusQuote === 'pending'">
-        <app-actionButtons (nextStep)="nextStep()" [isDialog]="isDialog" [fetchedQuote]="fetchedQuote" (closeDialog)="closeDialog()" (saved)="savedQuote($event)">
+        <app-actionButtons *ngIf="fetchedQuote.statusQuote === 'pending'" (nextStep)="nextStep()" [isDialog]="isDialog" [fetchedQuote]="fetchedQuote" (closeDialog)="closeDialog()" (saved)="savedQuote($event)">
         </app-actionButtons>
       </mat-action-row>
     </mat-expansion-panel>
@@ -60,7 +60,7 @@
         [labelButtonAddPicture]="'Add'"
         [forms]="fetchedQuote.forms"></app-picture>
       <mat-action-row>
-        <app-actionButtons (nextStep)="nextStep()" [showDeleteButton]=false [fetchedQuote]="fetchedQuote"></app-actionButtons>
+        <app-actionButtons *ngIf="fetchedQuote.statusQuote === 'pending'" (nextStep)="nextStep()" [showDeleteButton]=false [fetchedQuote]="fetchedQuote"></app-actionButtons>
       </mat-action-row>
     </mat-expansion-panel>
 
@@ -79,7 +79,7 @@
       </mat-expansion-panel-header>
       <app-edit-quote [fetchedQuote]="fetchedQuote" (calculateQuote)="calculateQuote()"></app-edit-quote>
       <mat-action-row>
-        <app-actionButtons (nextStep)="nextStep()" [isDialog]="isDialog" [fetchedQuote]="fetchedQuote" [showDeleteButton]=false (closeDialog)="closeDialog()" (saved)="savedQuote($event)">
+        <app-actionButtons *ngIf="fetchedQuote.statusQuote === 'pending'" (nextStep)="nextStep()" [isDialog]="isDialog" [fetchedQuote]="fetchedQuote" [showDeleteButton]=false (closeDialog)="closeDialog()" (saved)="savedQuote($event)">
         </app-actionButtons>
       </mat-action-row>
     </mat-expansion-panel>
@@ -96,7 +96,7 @@
       </mat-expansion-panel-header>
       <app-quoteDetails *ngIf="step === 3" [(fetchedQuote)]="fetchedQuote" (calculateQuoteEmit)="calculateQuote()" (quoteDetailsUpdated)="quoteDetailsUpdated($event)"></app-quoteDetails>
       <mat-action-row>
-        <app-actionButtons (nextStep)="nextStep()" [isDialog]="isDialog" [fetchedQuote]="fetchedQuote" [showDeleteButton]=false [showDLQuoteButton]=true (closeDialog)="closeDialog()" (saved)="savedQuote($event)">
+        <app-actionButtons *ngIf="fetchedQuote.statusQuote === 'pending'" (nextStep)="nextStep()" [isDialog]="isDialog" [fetchedQuote]="fetchedQuote" [showDeleteButton]=false [showDLQuoteButton]=true (closeDialog)="closeDialog()" (saved)="savedQuote($event)">
         </app-actionButtons>
       </mat-action-row>
     </mat-expansion-panel>
@@ -126,7 +126,7 @@
           <mat-icon aria-label="undo">undo</mat-icon>
         </button> -->
 
-        <app-actionButtons [fetchedQuote]="fetchedQuote" [showSaveSignatureButton]=true [showSaveButton]=false [showDeleteButton]=false (nextStep)="buttonSaved($event)">
+        <app-actionButtons *ngIf="fetchedQuote.statusQuote === 'pending'" [fetchedQuote]="fetchedQuote" [showSaveSignatureButton]=true [showSaveButton]=false [showDeleteButton]=false (nextStep)="buttonSaved($event)">
         </app-actionButtons>
       </mat-action-row>
     </mat-expansion-panel>
@@ -198,7 +198,7 @@
         </mat-expansion-panel-header>
         <app-drawing [drawing]="fetchedQuote.drawing" (updated)="drawingUpdated($event)"></app-drawing>
         <mat-action-row>
-          <app-actionButtons [fetchedQuote]="fetchedQuote" [showDeleteButton]=false (nextStep)="nextStep()">
+          <app-actionButtons *ngIf="fetchedQuote.statusQuote === 'pending'" [fetchedQuote]="fetchedQuote" [showDeleteButton]=false (nextStep)="nextStep()">
           </app-actionButtons>
         </mat-action-row>
       </mat-expansion-panel> -->
