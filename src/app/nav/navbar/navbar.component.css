@@ -1,6 +1,7 @@
 .logo-header {
   width: 100px;
 }
+
 .burgerNav {
   color: #FFFFFF;
   font-size: 40px;
@@ -8,11 +9,29 @@
   width: 40px;
   cursor: pointer;
 }
+
 .navbar {
-  z-index: 0;
-  height: 50px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  padding: 0px !important;
 }
 
+.flex-spacer {
+  -webkit-box-flex: 1;
+  flex-grow: 1;
+}
+
+.docs-navbar-header {
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-box-align: center;
+  align-items: center;
+  padding: 8px 16px;
+  background: #3f51b5;
+}
 
 .navbar-toggleable-md2 {
   -webkit-box-orient: horizontal;
@@ -61,12 +80,9 @@
   justify-content: center!important;
 }
 
-
 .table-hover2 td:hover {
   background-color: #512d44;
 }
-
-
 
 .table-bordered {
   border: 1px solid rgba(255, 255, 255, .87);

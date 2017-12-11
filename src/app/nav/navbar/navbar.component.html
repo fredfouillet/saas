@@ -1,5 +1,5 @@
 <div *ngIf="showNavBar">
-  <nav class="navbar fixed-top navbar-toggleable-md2 bg-goo">
+  <nav class="docs-navbar-header">
     <mat-icon *ngIf="showSideNavBar" class="burgerNav" (click)="toggleSideBar()">menu</mat-icon>
     <mat-icon *ngIf="!showSideNavBar" class="burgerNav" (click)="toggleSideBar()">clear_all</mat-icon>
     <!-- <i  class="fa fal fa-bars fa-2x burgerNav" aria-hidden="true"></i> -->
@@ -17,45 +17,15 @@
         </div>
       </a>
     </div>
+    <div class="flex-spacer"></div>
 
-
-    <div class="navbar-collapse2">
-      <ul class="mr-auto"></ul>
-      <div>
+    <!-- <div class="navbar-collapse2"> -->
+      <!-- <ul class="mr-auto"></ul> -->
+      <!-- <div>
         <ul class="navbar-nav2 mr-auto" align="right">
-      <!--    <li>
-            <a [routerLink]="['/user/list/false']" routerLinkActive="active2">
-              <i class="fa fa-users icomarg fa-lg" aria-hidden="true">
-              </i>
-            </a>
-          </li>
-           <li>
-            <a routerLinkActive="active2" [routerLink]="['/task']">
-                <i class="fa fa-tasks icomarg fa-lg" aria-hidden="true">
-                </i>
-              </a>
-          </li> -->
-          <!-- <li>
-            <a (click)="openNotifDialog()" routerLinkActive="active2">
-                <i class="fa fa-bell icomarg fa-lg" aria-hidden="true">
-                  {{notificationsNotRead}}
-                </i>
-              </a>
-          </li>
-          <li>
-            <a (click)="openNewObejcts()">
-                <i class="fa fa-plus icomarg fa-lg" aria-hidden="true">
-                </i>
-              </a>
-          </li>
-          <li>
-            <a [routerLink]="['/user/' + fetchedUser._id]" routerLinkActive="active2">
-                  <i class="fa fa-user icomarg fa-lg" aria-hidden="true">
-                  </i>
-              </a>
-          </li> -->
+
         </ul>
-      </div>
+      </div> -->
       <button (click)="newQuote()" mat-mini-fab color="primary">
         <mat-icon aria-label="New">build</mat-icon>
       </button>
@@ -63,7 +33,7 @@
           {{'Logout' | translate}}
         </button> -->
 
-    </div>
+    <!-- </div> -->
 
   </nav>
 </div>
