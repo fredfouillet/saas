@@ -1,12 +1,5 @@
-<div class="">
-
-  <div class="hdform">
-    <h3>
-      <mat-icon>dashboard</mat-icon>
-      {{'Details' | translate}}
-    </h3>
-  </div>
-
+<div class="container">
+  <app-header-title [title]="'Details'" [icon]="'dashboard'"></app-header-title>
 
   <mat-accordion class="example-headers-align">
     <mat-expansion-panel *ngIf="authService.isCurrentUserIsInSubPeriod()" [expanded]="step === 0" (opened)="setStep(0)">

@@ -1,13 +1,13 @@
-<div class="container width100perc">
+<div class="container">
   <div class="d-flex flex-row">
     <div class="p-2">
       <h4 *ngIf="search.isExternalUser">
         {{'Customers' | translate}}
-        <app-newObjDialog icone="fa fa-plus-square fa-2x ml" [search]="search" (saved)="saved($event)" [typeObj]="'user'"></app-newObjDialog>
+        <app-newObjDialog [search]="search" (saved)="saved($event)" [typeObj]="'user'"></app-newObjDialog>
       </h4>
       <h4 *ngIf="!search.isExternalUser">
           {{'Team' | translate}}
-          <app-newObjDialog icone="fa fa-plus-square fa-2x ml" [search]="search" (saved)="saved($event)" [typeObj]="'user'"></app-newObjDialog>
+          <app-newObjDialog [search]="search" (saved)="saved($event)" [typeObj]="'user'"></app-newObjDialog>
         </h4>
     </div>
 

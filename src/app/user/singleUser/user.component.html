@@ -1,4 +1,4 @@
-<div class="">
+<div class="container">
   <div class="">
     <app-header-title *ngIf="fetchedUser.isExternalUser" [title]="'Customer'" [icon]="'supervisor_account'"></app-header-title>
     <app-header-title *ngIf="!fetchedUser.isExternalUser && isUserIsMyself()" [title]="'My profile'" [icon]="'account_circle'"></app-header-title>
