@@ -18,7 +18,7 @@
   <div class="p-2">
     <h4>
       {{title | translate}}
-      <app-newObjDialog *ngIf="createNewButton" [search]="search" (saved)="savedEmit($event)" [typeObj]="'paiementQuote'"></app-newObjDialog>
+      <app-newObjDialog *ngIf="createNewButton" [search]="search" (saved)="savedEmit($event)" [typeObj]="typeObj"></app-newObjDialog>
     </h4>
   </div>
 </div>
