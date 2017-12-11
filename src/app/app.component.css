@@ -11,15 +11,21 @@
   z-index: 1;
 }
 
-.example-container {
-  margin-top: 50px !important;
-  height: 100%;
-  background-color: #fafafa;
-}
+
 /*alan*/
 
 mat-sidenav-container {
   width: 100%;
+}
+mat-sidenav {
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,.22);
+}
+app-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
 }
 
 .docs-component-sidenav-content {
@@ -34,10 +40,9 @@ mat-sidenav-container {
 }
 
 
-app-navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 2;
+
+.example-container {
+  margin-top: 50px !important;
+  height: 100%;
+  background-color: #fafafa;
 }

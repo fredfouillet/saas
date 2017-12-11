@@ -1,12 +1,15 @@
 <div class="container">
-  <div *ngIf="showTitle" class="d-flex flex-row">
+  <div *ngIf="showTitle">
+    <app-header-title [title]="'Products'" (saved)="saved($event)" [search]="search" [typeObj]="'product'"></app-header-title>
+  </div>
+  <!-- <div *ngIf="showTitle" class="d-flex flex-row">
     <div class="p-2">
       <h4>
         {{'Products' | translate}}
         <app-newObjDialog *ngIf="showNewItem" [search]="search" (saved)="saved($event)" [typeObj]="'product'"></app-newObjDialog>
       </h4>
     </div>
-  </div>
+  </div> -->
   <div class="d-flex flex-row">
     <div class="p-2">
       <mat-form-field>

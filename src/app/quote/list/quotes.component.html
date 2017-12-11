@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="d-flex flex-row">
+  <!-- <div class="d-flex flex-row">
     <div class="p-2">
       <h4 *ngIf="search.typeQuote ==='quote'"> {{'Interventions' | translate}}
         <app-newObjDialog
@@ -8,7 +8,9 @@
         </app-newObjDialog>
       </h4>
     </div>
-  </div>
+  </div> -->
+  <app-header-title [createNewButton]="createNewButton" [title]="'Interventions'" (saved)="saved($event)" [search]="search" [typeObj]="'quote'"></app-header-title>
+
   <div *ngIf="showSearch" class="d-flex flex-row">
     <div class="p-2">
       <mat-form-field>

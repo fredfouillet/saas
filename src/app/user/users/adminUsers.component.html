@@ -1,5 +1,12 @@
 <div class="container">
-  <div class="d-flex flex-row">
+
+
+  <app-header-title *ngIf="search.isExternalUser" [title]="'Customers'" (saved)="saved($event)" [search]="search" [typeObj]="'user'"></app-header-title>
+  <app-header-title *ngIf="!search.isExternalUser" [title]="'Team'" (saved)="saved($event)" [search]="search" [typeObj]="'user'"></app-header-title>
+
+
+
+  <!-- <div class="d-flex flex-row">
     <div class="p-2">
       <h4 *ngIf="search.isExternalUser">
         {{'Customers' | translate}}
@@ -11,7 +18,7 @@
         </h4>
     </div>
 
-  </div>
+  </div> -->
   <div class="d-flex flex-row">
     <div class="p-2">
 

@@ -1,8 +1,9 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 // import {AuthService} from '../../auth/auth.service';
 import { Location } from '@angular/common';
 // import { Router} from '@angular/router';
 import { TranslateService } from '../../translate/translate.service';
+import { Search} from '../../shared/shared.model';
 
 @Component({
   selector: 'app-header-title',
@@ -12,7 +13,13 @@ import { TranslateService } from '../../translate/translate.service';
 export class HeaderTitleComponent implements OnInit {
   @Input() title: string = '';
   @Input() icon: string = '';
+  @Input() typeObj: string = '';
   @Input() showBack: boolean = true;
+  @Input() createNewButton: boolean = true;
+  @Input() search: Search = new Search();
+  @Output() saved: EventEmitter<any> = new EventEmitter();
+
+// <app-newObjDialog [search]="search" (saved)="saved($event)" [typeObj]="'paiementQuote'"></app-newObjDialog>
 
 
   constructor(
@@ -26,6 +33,9 @@ export class HeaderTitleComponent implements OnInit {
   }
   goBack() {
     this.location.back();
+  }
+  savedEmit(result) {
+    this.saved.emit(result)
   }
 
 

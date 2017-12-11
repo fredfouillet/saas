@@ -10,6 +10,8 @@ import { newObjDialogComponent } from './newObjDialog/newObjDialog.component';
 import { TranslateModule} from '../translate/translate.module';
 import {MatButtonModule} from '@angular/material';
 import {MatIconModule} from '@angular/material';
+
+
 @NgModule({
   imports: [
     CommonModule,

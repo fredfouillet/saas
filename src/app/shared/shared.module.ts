@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 // import { AutocompleteComponent } from '../autocomplete/autocomplete.component'
 import { AutocompleteModule } from '../autocomplete/autocomplete.module'
 import {PictureModule} from '../picture/picture.module';
+import { HeaderTitleComponent } from '../nav/headerTitle/headerTitle.component';
 
 
 
@@ -46,6 +47,7 @@ import {SharedSmallModule} from './sharedSmall.module'
     // LoadingInAppComponent,
     // LoginInAppComponent,
     DeleteDialogComponent,
+    HeaderTitleComponent,
 
   ],
   exports: [
@@ -63,6 +65,7 @@ import {SharedSmallModule} from './sharedSmall.module'
     // LoginInAppComponent,
     PictureModule,
     DeleteDialogComponent,
+    HeaderTitleComponent,
     // CommentModule,
     // AutocompleteComponent,
   ],

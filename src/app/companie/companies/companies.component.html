@@ -1,4 +1,4 @@
-<div class="container width100perc">
+<div class="container">
   <div class="d-flex flex-row">
     <div class="p-2">
       <h4>{{'Companies' | translate}}</h4>
@@ -46,7 +46,7 @@
       <div>
         <mat-paginator *ngIf="paginationData.totalItems>paginationData.itemsPerPage"  [length]="paginationData.totalItems" [pageSize]="paginationData.itemsPerPage" (page)="getPage($event.pageIndex*1+1)">
         </mat-paginator>
-        
+
       </div>
     </div>
   </div>

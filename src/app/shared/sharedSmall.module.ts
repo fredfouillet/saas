@@ -7,7 +7,7 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/timeout';
 import 'rxjs/add/observable/throw';
 // import { AutocompleteComponent } from '../autocomplete/autocomplete.component'
-import { AutocompleteModule } from '../autocomplete/autocomplete.module'
+// import { AutocompleteModule } from '../autocomplete/autocomplete.module'
 // import {PictureModule} from '../picture/picture.module';
 
 // import {CommentModule} from '../comment/comment.module';
@@ -24,7 +24,7 @@ import { CurrencyPipe} from './round.pipe';
 // import { LoadingInAppComponent } from '../nav/loadingInApp/loadingInApp.component';
 import { LoadingInAppModule } from '../nav/loadingInApp/loadingInApp.module';
 import { LoginInAppComponent } from '../nav/loginInApp/loginInApp.component';
-import { HeaderTitleComponent } from '../nav/headerTitle/headerTitle.component';
+// import { HeaderTitleComponent } from '../nav/headerTitle/headerTitle.component';
 
 
 import { TranslateModule} from '../translate/translate.module';
@@ -70,7 +70,7 @@ import {MatButtonModule} from '@angular/material';
     // newObjDialogComponent,
     // LoadingInAppComponent,
     LoginInAppComponent,
-    HeaderTitleComponent,
+    // HeaderTitleComponent,
 
 
   ],
@@ -89,7 +89,7 @@ import {MatButtonModule} from '@angular/material';
 
     // LoadingInAppComponent,
     LoginInAppComponent,
-    HeaderTitleComponent,
+    // HeaderTitleComponent,
     LoadingInAppModule,
     // PictureModule,
     // MaterialModule,
