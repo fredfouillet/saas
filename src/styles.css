@@ -246,12 +246,12 @@ textarea::placeholder {
 }*/
 
 app-root {
-  display: flex;
+  /*display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-  -ms-flex-direction: column;
+  -ms-flex-direction: column;*/
   position: absolute;
-  top: 56px;
+  top: 65px;
   bottom: 0;
   left: 0;
   right: 0;
@@ -333,6 +333,7 @@ app-root {
 
 body {
   background-color: #fff;
+  margin: 0;
 }
 
 H1, H2, H3, H4, H5 {}
