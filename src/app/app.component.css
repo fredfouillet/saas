@@ -18,6 +18,9 @@
 }
 /*alan*/
 
+mat-sidenav-container {
+  width: 100%;
+}
 
 .docs-component-sidenav-content {
     min-height: 100%;
