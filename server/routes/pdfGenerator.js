@@ -164,7 +164,7 @@ module.exports = {
     },
     "border": "10px"
   },
-  styleCSS: styleCSS,
+
 
   generatePDF (req, res, next) {
     return new Promise(function(resolve, reject) {
