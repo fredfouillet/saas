@@ -148,7 +148,12 @@ font-family: Lato;
   .cobo {
     border: 1px solid #ddd;
   }
-  table {
+  table {font-family: Lato;
+  
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 200;
+  line-height: 10px;
     border-collapse: collapse;
     width: 100%;
   }
