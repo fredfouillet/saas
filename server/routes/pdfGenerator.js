@@ -9,18 +9,14 @@ var Notification = require('../models/notification.model'),
 
 
   let styleCSS = `
-
 p , a {
 	font-family: 'Lato', sans-serif;
-  
+
 	font-style: normal;
 	font-variant: normal;
 	font-weight: 200;
-
 font-size: 10px;
-
 }
-
   .col-1 {
     width: 8.33%;
   }
@@ -70,52 +66,48 @@ font-size: 10px;
    margin-left: auto;
    margin-right: auto
   }
-  
+
   .bgh {
     background-color: #595959;
     color: white;
-  
+
   }
   .bghFree {
     background-color: #595959;
     color: #595959;
-  
+
   }
   .desc {
 font-family: 'Lato', sans-serif;
-  
+
 	font-style: normal;
 	font-variant: normal;
 	font-weight: 200;
-
     text-align: left;
   }
   .elem {
 font-family: 'Lato', sans-serif;
-  
+
 	font-style: normal;
 	font-variant: normal;
 	font-weight: 200;
-
     text-align: center;
     font-size: 9px;
   }
   .smallSize {
 font-family: 'Lato', sans-serif;
-  
+
 	font-style: normal;
 	font-variant: normal;
 	font-weight: 200;
-
     font-size: 9px;
   }
   .titleGooplus1 {
 font-family: 'Lato', sans-serif;
-  
+
 	font-style: normal;
 	font-variant: normal;
 	font-weight: 200;
-
     font-size: 11px;
   }
   .alright {
@@ -123,38 +115,33 @@ font-family: 'Lato', sans-serif;
   }
   .inf {
 font-family: 'Lato', sans-serif;
-  
+
 	font-style: normal;
 	font-variant: normal;
 	font-weight: 200;
-
     font-size: 10px;
   }
   .inf2 {
 font-family: 'Lato', sans-serif;
-  
+
 	font-style: normal;
 	font-variant: normal;
 	font-weight: 200;
-
     font-size: 9px;
   }
-  
-  table {
 
+  table {
 font-family: 'Lato', sans-serif;
-  
+
 	font-style: normal;
 	font-variant: normal;
 	font-weight: 200;
-
     border-collapse: collapse;
     width: 100%;
   }
   td {
     height: 20px;
     vertical-align: center;
-
   }
   th {
     /*font-size: 10px;*/
@@ -163,14 +150,12 @@ font-family: 'Lato', sans-serif;
     font-size: 6px;
    text-align: center!important;
   }
-
   .ts {
 font-family: 'Lato', sans-serif;
-  
+
 	font-style: normal;
 	font-variant: normal;
 	font-weight: 200;
-
     background-color: #aba4a4;
     font-weight: bold;
   }
@@ -184,9 +169,6 @@ font-family: 'Lato', sans-serif;
    }
   #pageBody {height: 0px;}
   .test2 {margin-bottom: -50px; }
-
-
-
 `;
 
 
@@ -277,13 +259,12 @@ module.exports = {
                   var html = ''
                   html += `
                  <head><link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato" />
-                 <style type="text/css"> 
+                 <style type="text/css">
                   ` + styleCSS +`
                  </style>
                   </head>
-
                   <div id="pageHeader" class="col-12">
-                  
+
                     <img class="imglogo" src="http://belmard-renovation.fr/wp-content/uploads/2017/10/belmard_logo_100.png">
                   </div>
                   <table class="print-friendly">
@@ -414,7 +395,7 @@ module.exports = {
                   let vatTotal = 0
                   item.priceQuote.priceQuoteTaxes.forEach(priceQuoteTaxe => {
                     vatTotal += priceQuoteTaxe.TotalVAT * 1
-  
+
                   })
                   html += `
                              <td class="cobo col-2 elem"><b>` + Math.round(vatTotal) + `€</b></td>
@@ -449,7 +430,6 @@ module.exports = {
                   })
                   html += `
                     </p>
-
                     `
 
                   if (item.drawingSignature.base64)
