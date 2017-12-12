@@ -55,9 +55,12 @@ export class QuoteComponent implements OnInit {
   ) {
   }
 
+
+
   nextStep() {
     this.step++;
     this.save()
+
   }
   clearDrawing() {
     this.drawingSignatureComponent.clearDrawing();
