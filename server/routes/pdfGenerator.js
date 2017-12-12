@@ -244,10 +244,11 @@ module.exports = {
                 } else {
                   var html = ''
                   html += `
-                 <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato" />
+                 <head><link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato" />
                  <style type="text/css"> 
                   ` + styleCSS +`
                  </style>
+                  </head>
 
                   <div id="pageHeader" class="col-12">
                   
