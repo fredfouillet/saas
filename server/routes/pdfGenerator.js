@@ -12,11 +12,11 @@ var Notification = require('../models/notification.model'),
 
 p {
 	font-family: Lato;
-	font-size: 14px;
-	font-style: normal;
-	font-variant: normal;
+	font-size: 9px;
+	font-style: light;
+	font-variant: light;
 	font-weight: 400;
-	line-height: 20px;
+	line-height: 10px;
 }
 
   .col-1 {
