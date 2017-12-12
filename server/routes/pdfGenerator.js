@@ -10,13 +10,14 @@ var Notification = require('../models/notification.model'),
 
   let styleCSS = `
 
-html {
+p {
 	font-family: Lato;
-  font-size: 10px;
+  
 	font-style: normal;
 	font-variant: normal;
 	font-weight: 200;
   line-height: 10px;
+font-size: 10px;
 
 }
 
@@ -83,25 +84,61 @@ html {
     border: 1px solid #ddd;
   }
   .desc {
+font-family: Lato;
+  
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 200;
+  line-height: 10px;
     text-align: left;
   }
   .elem {
+font-family: Lato;
+  
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 200;
+  line-height: 10px;
     text-align: center;
     font-size: 9px;
   }
   .smallSize {
+font-family: Lato;
+  
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 200;
+  line-height: 10px;
     font-size: 9px;
   }
   .titleGooplus1 {
+font-family: Lato;
+  
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 200;
+  line-height: 10px;
     font-size: 11px;
   }
   .alright {
     text-align: right;
   }
   .inf {
+font-family: Lato;
+  
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 200;
+  line-height: 10px;
     font-size: 10px;
   }
   .inf2 {
+font-family: Lato;
+  
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 200;
+  line-height: 10px;
     font-size: 9px;
   }
   .nobo {
@@ -129,6 +166,12 @@ html {
   }
 
   .ts {
+font-family: Lato;
+  
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 200;
+  line-height: 10px;
     background-color: #aba4a4;
     font-weight: bold;
   }
