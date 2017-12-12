@@ -15,9 +15,9 @@
           <div *ngIf="typeAutocomplete=='user'">{{data.profile.name}} {{data.profile.lastName}}</div>
           <div *ngIf="typeAutocomplete=='companie'">{{data.nameCompanie}}</div>
           <div *ngIf="typeAutocomplete=='quote'">{{data.name}}</div>
-          <div *ngIf="typeAutocomplete=='project'">{{data.details.name}}</div>
+          <!-- <div *ngIf="typeAutocomplete=='project'">{{data.details.name}}</div> -->
           <div *ngIf="typeAutocomplete=='product'">{{data.details.referenceName}}</div>
-          <div *ngIf="typeAutocomplete=='right'">{{data.detailRight.nameRight}}</div>
+          <!-- <div *ngIf="typeAutocomplete=='right'">{{data.detailRight.nameRight}}</div> -->
           <div *ngIf="typeAutocomplete=='templateQuote'">{{data.nameTemplate}}</div>
         </td>
         <td class="tdbtn2">
@@ -41,9 +41,9 @@
             <input *ngIf="typeAutocomplete=='user'" readonly placeholder="{{title}}" matInput type="text" value="{{data.profile.name}} {{data.profile.lastName}}">
             <input *ngIf="typeAutocomplete=='companie'" readonly placeholder="{{title}}" matInput type="text" value="{{data.nameCompanie}}">
             <input *ngIf="typeAutocomplete=='quote'" readonly placeholder="{{title}}" matInput type="text" value="{{data.name}}">
-            <input *ngIf="typeAutocomplete=='project'" readonly placeholder="{{title}}" matInput type="text" value="{{data.details.name}}">
+            <!-- <input *ngIf="typeAutocomplete=='project'" readonly placeholder="{{title}}" matInput type="text" value="{{data.details.name}}"> -->
             <input *ngIf="typeAutocomplete=='product'" readonly placeholder="{{title}}" matInput type="text" value="{{data.details.referenceName}}">
-            <input *ngIf="typeAutocomplete=='right'" readonly placeholder="{{title}}" matInput type="text" value="{{data.detailRight.nameRight}}">
+            <!-- <input *ngIf="typeAutocomplete=='right'" readonly placeholder="{{title}}" matInput type="text" value="{{data.detailRight.nameRight}}"> -->
 
             <button matSuffix mat-icon-button *ngIf="enableLink" (click)="linkToObject(data)">
               <mat-icon aria-label="Link">link</mat-icon>
@@ -70,3 +70,4 @@
     </div>
   </div>
 </div>
+<app-loadingInApp [loading]="loading"></app-loadingInApp>

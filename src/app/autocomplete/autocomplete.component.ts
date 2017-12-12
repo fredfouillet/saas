@@ -37,7 +37,7 @@ export class AutocompleteComponent {
   // createNewItem: boolean = false;
   autocompleteSearch = ''
   fetchedData: User[] = [];
-
+  loading: boolean = false;
   @Output() getResultAutocomplete: EventEmitter<any> = new EventEmitter();
   @Output() clearAutocomplete: EventEmitter<any> = new EventEmitter();
   @Output() autocompleteAfterNgChanges: EventEmitter<any> = new EventEmitter();
@@ -84,21 +84,37 @@ export class AutocompleteComponent {
 
 
   getData(page: number, search: any) {
+    this.loading = true
     if(this.typeAutocomplete ==='user')
       this.userService.getUsers(page, search)
-      .subscribe( res => { this.fetchedData = res.data }, error => { console.log(error); });
+      .subscribe( res => {
+        this.loading = false
+        this.fetchedData = res.data }, error => {
+          this.loading = false
+          console.log(error);
+        });
 
     if(this.typeAutocomplete ==='companie')
       this.companieService.getCompanies(page, search)
-      .subscribe( res => { this.fetchedData = res.data }, error => { console.log(error); });
+      .subscribe( res => {
+        this.loading = false
+        this.fetchedData = res.data }, error => {
+          this.loading = false
+          console.log(error); });
 
     if(this.typeAutocomplete ==='product')
       this.productService.getProducts(page, search)
-      .subscribe( res => { this.fetchedData = res.data }, error => { console.log(error); });
+      .subscribe( res => {
+        this.loading = false
+        this.fetchedData = res.data }, error => { console.log(error); });
 
     if(this.typeAutocomplete ==='quote')
       this.quoteService.getQuotes(page, search)
-      .subscribe( res => { this.fetchedData = res.data }, error => { console.log(error); });
+      .subscribe( res => {
+        this.loading = false
+        this.fetchedData = res.data }, error => {
+          this.loading = false
+          console.log(error); });
 
     // if(this.typeAutocomplete ==='project')
     //   this.projectService.getProjects(page, search)
@@ -107,7 +123,11 @@ export class AutocompleteComponent {
 
     if(this.typeAutocomplete ==='templateQuote')
       this.templateQuoteService.getTemplateQuotes(page, search)
-      .subscribe( res => { this.fetchedData = res.data }, error => { console.log(error); });
+      .subscribe( res => {
+        this.loading = false
+        this.fetchedData = res.data }, error => {
+          this.loading = false
+          console.log(error); });
 
     // if(this.typeAutocomplete ==='right')
     //   this.rightService.getRights(page, search)
@@ -175,7 +195,7 @@ export class AutocompleteComponent {
     if (!this.autocompleteSearch) {
       this.fetchedData = []
     } else {
-      let cloneSearch = Object.assign({}, this.search);
+      const cloneSearch = Object.assign({}, this.search);
       cloneSearch.search = this.autocompleteSearch,
 
       this.getData(1, cloneSearch)

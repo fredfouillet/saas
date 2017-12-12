@@ -10,7 +10,7 @@ import { newObjDialogComponent } from './newObjDialog/newObjDialog.component';
 import { TranslateModule} from '../translate/translate.module';
 import {MatButtonModule} from '@angular/material';
 import {MatIconModule} from '@angular/material';
-
+import {LoadingInAppModule} from '../nav/loadingInApp/loadingInApp.module';
 
 @NgModule({
   imports: [
@@ -20,6 +20,7 @@ import {MatIconModule} from '@angular/material';
     MatInputModule,
     MatButtonModule,
     MatIconModule,
+    LoadingInAppModule,
     // SharedModule,
     // UserModule,
 
