@@ -440,22 +440,6 @@ module.exports = {
                          </table>
                          <br>`
 
-                  // html += `<table class="cobo">
-                  //              <tr class="cobo">
-                  //              <td class="col-6 alright ts elem">Acompte à la commande 40% </td>
-                  //              <td class="col-6 alright elem">=40% du total ttc</td>
-                  //              </tr>
-                  //              <tr class="cobo">
-                  //              <td class="col-6 alright ts elem">Acompte intermédiaire</td>
-                  //              <td class="col-6 alright elem">sur avancement</td>
-                  //              </tr>
-                  //              <tr class="cobo">
-                  //              <td class="col-6 alright ts elem"><b>Solde</b></td>
-                  //              <td class="col-6 alright elem"><b>à la livraison</b></td>
-                  //            </tr>
-                  //        </table>
-                  //        <br>`
-
                   html += `
                          <table>
                            <thead>
