@@ -108,8 +108,7 @@ var Notification = require('../models/notification.model'),
   td {
     height: 20px;
     vertical-align: center;
-    border-left: 1px solid #ddd;
-    border-right: 1px solid #ddd;
+
   }
   th {
     /*font-size: 10px;*/
@@ -138,7 +137,7 @@ var Notification = require('../models/notification.model'),
   .test2 {margin-bottom: -50px; }
 
   .totaux {
-    color: red;
+ 
     border-right: 1px solid #ddd;
     border-left: 0px;
     border-top: 0px;
