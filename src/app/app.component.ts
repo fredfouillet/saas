@@ -73,11 +73,12 @@ export class AppComponent implements AfterViewInit {
     const this2 = this
     setTimeout(() => {
       this2.widthContainer = this2.elementView.nativeElement.offsetWidth
-      if (this2.widthContainer < 1000) {
+      if (this2.widthContainer < 700) {
         this.modeSidenav = 'over'
-
+      }
     });
   }
+
 
 
   backdropClick() {

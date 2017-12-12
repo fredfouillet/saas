@@ -15,7 +15,7 @@ import {MatSidenav} from '@angular/material';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
-  // @Input() sidenav: any;
+  @Input() sidenav: any;
   // @ViewChild('sidenav') public sidenav: MatSidenav;
   showNavBar: boolean = false;
   isLoggedIn: boolean = false;
@@ -53,6 +53,12 @@ export class SidebarComponent implements OnInit {
   // ngAfterViewInit() {}
   closeSideBar() {
     this.globalEventsManager.showNavBar(false);
+  }
+  menuClick() {
+    if (this.sidenav.mode === 'over') {
+      const this2 = this
+      setTimeout(() => this.globalEventsManager.showNavBar(false))
+    }
   }
   ngOnInit() {
     if (this.authService.isLoggedIn()) {

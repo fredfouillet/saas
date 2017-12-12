@@ -1,4 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit,
+  // Input
+ } from '@angular/core';
 import { AuthService } from '../../auth/auth.service';
 // import { AdminService } from '../../admin/services/admin.service';
 import { Router } from '@angular/router';
@@ -25,7 +27,8 @@ import { GlobalEventsManager } from '../../globalEventsManager';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  @Input() sidenav: any;
+  // @Input() sidenav: any;
+  // @Input() widthContainer: number = 0;
   showNavBar: boolean = false;
   showSideNavBar: boolean = false;
   // private userId: string = localStorage.getItem('userId');
@@ -74,11 +77,11 @@ export class NavbarComponent implements OnInit {
       // Observable.interval(1000 * 30).subscribe(x => {
       //   this.getNotifications(1, {})
       // });
-      let this2=this
+      // let this2=this
       // setTimeout(function () {
       //     this2.globalEventsManager.showNavBar(true);
       // }, 2000);
-
+      // console.log(this.sidenav.mode)
 
       this.globalEventsManager.showTopNavBar(true);
       this.showNavBar = true;

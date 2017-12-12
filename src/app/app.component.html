@@ -5,7 +5,7 @@
 
     <mat-sidenav #sidenav mode="{{modeSidenav}}" opened="false">
       <!-- <div *ngIf="sidenav.opened"> -->
-        <app-sidebar></app-sidebar>
+        <app-sidebar [sidenav]="sidenav"></app-sidebar>
       <!-- </div> -->
     </mat-sidenav>
 
