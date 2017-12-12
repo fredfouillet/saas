@@ -57,7 +57,7 @@ p, a {
     height: 20px;
   }
   .imgSignature {
-    height: 45px;
+    height: 80px;
   }
   .imglogo {
     height: 50px;
@@ -68,8 +68,9 @@ p, a {
   }
 
   .bgh {
-    background-color: #595959;
+    background-color: #ddd;
     color: white;
+    height: 30px;
 
   }
   .bghFree {
@@ -109,6 +110,11 @@ p, a {
   .alright {
     text-align: right;
   }
+
+  .alctr {
+    text-align: center;
+  }
+
   .inf {
     font-family: 'Lato', sans-serif;
     font-style: normal;
@@ -390,7 +396,7 @@ module.exports = {
                                </tr>
                                <tr>
                                  <td class="col-8"></td>
-                                 <td class="col-2 alright ts elem">Sous-Total HT</td>`
+                                 <td class="col-2 alctr ts elem">Sous-Total HT</td>`
 
                   item.priceQuote.priceQuoteTaxes.forEach(priceQuoteTaxe => {
                     //  html += `<td class="col-2 ts elem">TVA: ` + priceQuoteTaxe.VAT + `%</td>`
@@ -403,7 +409,7 @@ module.exports = {
                   html += `
                               <tr>
                                 <td class="col-8"></td>
-                                <td class="col-2 alright ts elem">Montant de TVA</td>`
+                                <td class="col-2 alctr ts elem">Montant de TVA</td>`
                   let vatTotal = 0
                   item.priceQuote.priceQuoteTaxes.forEach(priceQuoteTaxe => {
                     vatTotal += priceQuoteTaxe.TotalVAT * 1
@@ -416,7 +422,7 @@ module.exports = {
                            </tr>
                            <tr>
                            <td class="col-8"></td>
-                           <td class="col-2 alright ts elem"><b>TOTAL TTC</b></td>`
+                           <td class="col-2 alctr ts elem"><b>TOTAL TTC</b></td>`
 
                   item.priceQuote.priceQuoteTaxes.forEach(priceQuoteTaxe => {
                     //  html += `<td class="col-2 ts elem">TVA: ` + priceQuoteTaxe.VAT + `%</td>`
@@ -439,7 +445,7 @@ module.exports = {
                                  <p class="inf2">Le client autorise l'entreprise a collecter les pieces a recup</p>
                                </th>
                                <th class="col-3 desc">
-                               <p>Client : `
+                               <p>Signature</br> `
                   item.clients.forEach(user => {
                     html += user.profile.title + ' ' + user.profile.name + ' ' + user.profile.lastName
                   })
