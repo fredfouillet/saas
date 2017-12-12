@@ -344,7 +344,7 @@ module.exports = {
                     //            <td class="desc"></td>
                     //         </tr>`
                     devisDetail.bucketProducts.forEach(bucketProduct => {
-                      html += '<tr>'
+                      html += '<tr class="bghFree">'
                       let description = ''
                       let img = ''
                       let unit = ''
