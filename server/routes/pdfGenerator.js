@@ -440,8 +440,8 @@ module.exports = {
                                <th class="col-1 desc">
                                </th>
                                <th class="col-8">
-                                 <p class="inf2">Le client rennonce au delai de retractation</p>
-                                 <p class="inf2">Le client autorise l'entreprise a collecter les pieces a recup</p>
+                                 <p>Le client rennonce au delai de retractation</p>
+                                 <p>Le client autorise l'entreprise a collecter les pieces a recup</p>
                                </th>
                                <th class="col-3 desc">
                                <p class="alctr">Signature</br> `
