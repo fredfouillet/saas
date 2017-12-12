@@ -221,7 +221,7 @@ export class QuoteComponent implements OnInit {
         res => {
           this.toastr.success('Great!', res.message)
           this.getQuote(res.obj._id)
-          this.saved.emit(res)
+          // this.saved.emit(res)
         },
         error => {
           this.toastr.error('error!', error)
@@ -234,7 +234,7 @@ export class QuoteComponent implements OnInit {
           this.toastr.success('Great!', res.message)
           this.getQuote(res.obj._id)
           // this.router.navigate(['quote/' + res.obj._id])
-          this.saved.emit(res)
+          // this.saved.emit(res)
         },
         error => { console.log(error) }
         )
