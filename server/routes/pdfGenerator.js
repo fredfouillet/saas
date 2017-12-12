@@ -70,18 +70,16 @@ font-size: 10px;
    margin-left: auto;
    margin-right: auto
   }
-  .tabo {
-    border: 1px solid #ddd;
-  }
+  
   .bgh {
     background-color: #595959;
     color: white;
-    border: 1px solid #ddd;
+  
   }
   .bghFree {
     background-color: #595959;
     color: #595959;
-    border: 1px solid #ddd;
+  
   }
   .desc {
 font-family: 'Lato', sans-serif;
@@ -141,14 +139,10 @@ font-family: 'Lato', sans-serif;
   line-height: 10px;
     font-size: 9px;
   }
-  .nobo {
-    border-top: none!important;
-    border-bottom: none!important;
-  }
-  .cobo {
-    border: 1px solid #ddd;
-  }
-  table {ffont-family: 'Lato', sans-serif;
+  
+  table {
+
+font-family: 'Lato', sans-serif;
   
 	font-style: normal;
 	font-variant: normal;
@@ -191,18 +185,7 @@ font-family: 'Lato', sans-serif;
   #pageBody {height: 0px;}
   .test2 {margin-bottom: -50px; }
 
-  .totaux {
- 
-    border-right: 1px solid #ddd;
-    border-left: 0px;
-    border-top: 0px;
-    border-bottom: 0px;
-           }
-  .totauxcell {
-    border-left: 0px;
-    border-top: 0px;
 
-  }
 
 `;
 
