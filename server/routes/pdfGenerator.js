@@ -360,14 +360,14 @@ module.exports = {
                           })
                         })
                       }
-                      html += '<td class="desc"><div class="avoid"><p>' + description + '</p></div></td>'
+                      html += '<td class="desc bghFree"><div class="avoid"><p>' + description + '</p></div></td>'
                       // html += '<td class="elem">' + img + '</td>'
                       // html += '<td class="desc">' + bucketProduct.typeRow + '</td>'
                       // html += '<td class="elem">' + bucketProduct.title + '</td>'
-                      html += '<td class="elem">' + unit + '</td>'
-                      html += '<td class="elem">' + bucketProduct.quantity + '</td>'
-                      html += '<td class="elem">' + bucketProduct.priceWithoutTaxes + '</td>'
-                      html += '<td class="elem">' + bucketProduct.priceWithQuantity + '</td>'
+                      html += '<td class="elem bghFree">' + unit + '</td>'
+                      html += '<td class="elem bghFree">' + bucketProduct.quantity + '</td>'
+                      html += '<td class="elem bghFree">' + bucketProduct.priceWithoutTaxes + '</td>'
+                      html += '<td class="elem bghFree">' + bucketProduct.priceWithQuantity + '</td>'
                       // html += '<td class="elem">' + bucketProduct.vat + '%</td>'
                       html += '</tr>'
 
