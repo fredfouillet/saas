@@ -220,6 +220,7 @@ export class QuoteComponent implements OnInit {
         .subscribe(
         res => {
           this.toastr.success('Great!', res.message)
+          this.getQuote(res.obj._id)
           this.saved.emit(res)
         },
         error => {
@@ -231,6 +232,7 @@ export class QuoteComponent implements OnInit {
         .subscribe(
         res => {
           this.toastr.success('Great!', res.message)
+          this.getQuote(res.obj._id)
           // this.router.navigate(['quote/' + res.obj._id])
           this.saved.emit(res)
         },
