@@ -362,7 +362,7 @@ module.exports = {
                           })
                         })
                       }
-                      html += '<td class="desc"><div class="avoid">' + description + '</div></td>'
+                      html += '<td class="desc"><div class="avoid"><p>' + description + '</p></div></td>'
                       // html += '<td class="elem">' + img + '</td>'
                       // html += '<td class="desc">' + bucketProduct.typeRow + '</td>'
                       // html += '<td class="elem">' + bucketProduct.title + '</td>'
