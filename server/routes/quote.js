@@ -94,7 +94,7 @@ router.get('/graph', function(req, res, next) {
     }]
   }
   if (req.query.isSigned === 'true') {
-    aggregate.$and.push({ 'drawingSignature.isSigned': true })
+    aggregate.$and.push({ 'statusQuote': 'signed' })
   }
   aggregate.$and.push({ 'ownerCompanies': req.user.ownerCompanies })
 
