@@ -119,8 +119,8 @@ export class DevisDetail {
 
 export const StatusQuotes =
 [
-  {indexStatus: 'pending', label: 'Pending Approval', icon: 'alarm', color: 'primary'},
-  {indexStatus: 'signed', label: 'Signed', icon: 'done', color: 'accent'},
+  {indexStatus: 'pending', label: 'Pending Approval', icon: 'alarm', color: ''},
+  {indexStatus: 'signed', label: 'Signed', icon: 'border_color', color: 'primary'},
   {indexStatus: 'paid', label: 'Paid', icon: 'attach_money', color: 'accent'},
   {indexStatus: 'rejected', label: 'Rejected', icon: 'face', color: 'warn'},
   // {indexStatus: 3, label: 'Signed, pending paiement'},

@@ -9,7 +9,7 @@ import { TranslateService } from '../../translate/translate.service';
 import { Search } from '../../shared/shared.model';
 import { PaiementQuote } from '../../paiementQuote/paiementQuote.model';
 import { DrawingSignatureComponent } from './drawingSignature/drawingSignature.component';
-
+import {ToastsManager} from 'ng2-toastr';
 
 @Component({
   selector: 'app-quote',
@@ -46,6 +46,7 @@ export class QuoteComponent implements OnInit {
     private quoteService: QuoteService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
+    private toastr: ToastsManager,
     // private location: Location,
     private _fb: FormBuilder,
     public authService: AuthService,
@@ -56,16 +57,18 @@ export class QuoteComponent implements OnInit {
 
   nextStep() {
     this.step++;
+    this.save()
   }
   clearDrawing() {
     this.drawingSignatureComponent.clearDrawing();
+    this.saveSignature()
   }
   clearedDrawing() {
     this.fetchedQuote.drawingSignature.base64 = ''
     this.fetchedQuote.drawingSignature.base64Temp = ''
     this.fetchedQuote.statusQuote = 'pending'
     this.actionButtonsComponent.saveSignature()
-  }  
+  }
   buttonSaved(quote: Quote) {
     this.getQuote(quote._id)
     this.nextStep()
@@ -169,6 +172,23 @@ export class QuoteComponent implements OnInit {
     // this.actionButtonsComponent.save()
   }
 
+  saveSignature() {
+    if(this.fetchedQuote.drawingSignature.base64Temp) {
+      this.fetchedQuote.drawingSignature.base64 = this.fetchedQuote.drawingSignature.base64Temp
+    }
+
+      this.quoteService.updateSignature(this.fetchedQuote)
+        .subscribe(
+        res => {
+
+          this.toastr.success('Great!', res.message)
+          // this.nextStep.emit(this.fetchedQuote)
+          this.nextStep()
+        },
+        error => { console.log(error) }
+        )
+  }
+
 
   savedQuote(result) {
     this.getQuote(result.obj._id)
@@ -192,7 +212,28 @@ export class QuoteComponent implements OnInit {
   }
 
   save() {
-    this.actionButtonsComponent.save()
+    if (this.fetchedQuote._id) {
+      this.quoteService.updateQuote(this.fetchedQuote)
+        .subscribe(
+        res => {
+          this.toastr.success('Great!', res.message)
+          this.saved.emit(res)
+        },
+        error => {
+          this.toastr.error('error!', error)
+        }
+        )
+    } else {
+      this.quoteService.saveQuote(this.fetchedQuote)
+        .subscribe(
+        res => {
+          this.toastr.success('Great!', res.message)
+          // this.router.navigate(['quote/' + res.obj._id])
+          this.saved.emit(res)
+        },
+        error => { console.log(error) }
+        )
+    }
   }
   calculateQuote() {
     let this2 = this;

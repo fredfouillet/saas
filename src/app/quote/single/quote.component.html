@@ -17,7 +17,7 @@
       </mat-expansion-panel-header>
       <app-quoteInfo [search]="search" [fetchedQuote]="fetchedQuote" (quoteStatusChangedEmit)="save()"></app-quoteInfo>
       <mat-action-row *ngIf="fetchedQuote.statusQuote === 'pending'">
-        <app-actionButtons *ngIf="fetchedQuote.statusQuote === 'pending'" (nextStep)="nextStep()" [isDialog]="isDialog" [fetchedQuote]="fetchedQuote" (closeDialog)="closeDialog()" (saved)="savedQuote($event)">
+        <app-actionButtons *ngIf="fetchedQuote.statusQuote === 'pending'" (nextStep)="nextStep()" [isDialog]="isDialog" [fetchedQuote]="fetchedQuote" (closeDialog)="closeDialog()" (saveEmmit)="save()">
         </app-actionButtons>
       </mat-action-row>
     </mat-expansion-panel>
@@ -71,7 +71,7 @@
       [expanded]="step === 2" (opened)="setStep(2)">
       <mat-expansion-panel-header>
         <mat-panel-title>
-          <mat-icon>border_color</mat-icon>
+          <mat-icon>touch_app</mat-icon>
         </mat-panel-title>
         <mat-panel-description>
           {{'Edit Quote' | translate}}
@@ -106,17 +106,19 @@
       fetchedQuote._id" [expanded]="step === 4" (opened)="setStep(4)">
       <mat-expansion-panel-header>
         <mat-panel-title>
-          <mat-icon>touch_app</mat-icon>
+          <mat-icon>border_color</mat-icon>
         </mat-panel-title>
         <mat-panel-description>
           {{'Signature' | translate}}
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <app-drawing-signature *ngIf="fetchedQuote.statusQuote === 'pending'" [drawing]="fetchedQuote.drawingSignature" (cleared)="clearedDrawing()" (updated)="drawingSignatureUpdated($event)">
+      <app-drawing-signature
+        *ngIf="fetchedQuote.statusQuote === 'pending'"
+        [drawing]="fetchedQuote.drawingSignature"
+        (cleared)="clearedDrawing()"
+        (updated)="drawingSignatureUpdated($event)">
       </app-drawing-signature>
       <img *ngIf="fetchedQuote.statusQuote !== 'pending'" [src]="fetchedQuote.drawingSignature.base64">
-
-
 
       <mat-action-row *ngIf="fetchedQuote.statusQuote === 'pending'">
         <button mat-mini-fab color="warn" (click)="clearDrawing()">
@@ -126,7 +128,13 @@
           <mat-icon aria-label="undo">undo</mat-icon>
         </button> -->
 
-        <app-actionButtons *ngIf="fetchedQuote.statusQuote === 'pending'" [fetchedQuote]="fetchedQuote" [showSaveSignatureButton]=true [showSaveButton]=false [showDeleteButton]=false (nextStep)="buttonSaved($event)">
+        <app-actionButtons
+          *ngIf="fetchedQuote.statusQuote === 'pending'"
+          [fetchedQuote]="fetchedQuote"
+          [showSaveSignatureButton]=true
+          [showSaveButton]=false [showDeleteButton]=false
+          (saveSignatureEmit)="saveSignature()"
+          (nextStep)="buttonSaved($event)">
         </app-actionButtons>
       </mat-action-row>
     </mat-expansion-panel>

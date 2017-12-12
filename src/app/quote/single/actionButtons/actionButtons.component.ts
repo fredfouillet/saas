@@ -30,9 +30,10 @@ export class ActionButtonsComponent implements OnInit {
   // @ViewChild(PaiementQuotesComponent) paiementQuotesComponent: PaiementQuotesComponent;
 
   // loading: boolean = false;
-  @Output() saved: EventEmitter<any> = new EventEmitter();
+  @Output() saveEmmit: EventEmitter<any> = new EventEmitter();
   @Output() closeDialog: EventEmitter<any> = new EventEmitter();
   @Output() nextStep: EventEmitter<any> = new EventEmitter();
+  @Output() saveSignatureEmit: EventEmitter<any> = new EventEmitter();
   //
   // @Input() search: Search = new Search()
   //
@@ -64,9 +65,9 @@ export class ActionButtonsComponent implements OnInit {
   }
 
   nextStepEmit() {
-    if (this.fetchedQuote.statusQuote === 'pending') {
+    // if (this.fetchedQuote.statusQuote === 'pending') {
       this.save()
-    }
+    // }
     this.nextStep.emit(this.fetchedQuote)
 
   }
@@ -81,46 +82,46 @@ export class ActionButtonsComponent implements OnInit {
     if(this.fetchedQuote.drawingSignature.base64Temp) {
       this.fetchedQuote.drawingSignature.base64 = this.fetchedQuote.drawingSignature.base64Temp
     }
-
-      this.quoteService.updateSignature(this.fetchedQuote)
-        .subscribe(
-        res => {
-
-          this.toastr.success('Great!', res.message)
-          this.nextStep.emit(this.fetchedQuote)
-        },
-        error => { console.log(error) }
-        )
+    this.saveSignatureEmit.emit()
+    //
+    //   this.quoteService.updateSignature(this.fetchedQuote)
+    //     .subscribe(
+    //     res => {
+    //
+    //       this.toastr.success('Great!', res.message)
+    //       this.nextStep.emit(this.fetchedQuote)
+    //     },
+    //     error => { console.log(error) }
+    //     )
   }
 
   save() {
-
-
-    if (this.fetchedQuote._id) {
-      this.quoteService.updateQuote(this.fetchedQuote)
-        .subscribe(
-        res => {
-          this.toastr.success('Great!', res.message)
-          // this.getQuote(res.obj._id)
-          this.saved.emit(res)
-          //this.router.navigate(['quote/edit/' + this.fetchedQuote._id])
-        },
-        error => {
-          this.toastr.error('error!', error)
-        }
-        )
-    } else {
-      this.quoteService.saveQuote(this.fetchedQuote)
-        .subscribe(
-        res => {
-          console.log(res)
-          this.toastr.success('Great!', res.message)
-          // this.router.navigate(['quote/' + res.obj._id])
-          this.saved.emit(res)
-        },
-        error => { console.log(error) }
-        )
-    }
+    this.saveEmmit.emit();
+    // if (this.fetchedQuote._id) {
+    //   this.quoteService.updateQuote(this.fetchedQuote)
+    //     .subscribe(
+    //     res => {
+    //       this.toastr.success('Great!', res.message)
+    //       // this.getQuote(res.obj._id)
+    //       this.saved.emit(res)
+    //       //this.router.navigate(['quote/edit/' + this.fetchedQuote._id])
+    //     },
+    //     error => {
+    //       this.toastr.error('error!', error)
+    //     }
+    //     )
+    // } else {
+    //   this.quoteService.saveQuote(this.fetchedQuote)
+    //     .subscribe(
+    //     res => {
+    //       console.log(res)
+    //       this.toastr.success('Great!', res.message)
+    //       // this.router.navigate(['quote/' + res.obj._id])
+    //       this.saved.emit(res)
+    //     },
+    //     error => { console.log(error) }
+    //     )
+    // }
   }
 
 
