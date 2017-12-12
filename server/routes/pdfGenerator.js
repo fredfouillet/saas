@@ -674,6 +674,15 @@ module.exports = {
                             }
                          #pageBody {height: 0px;}
                          .test2 {margin-bottom: -50px; }
+
+                          .totaux {     border-left: 0px;
+                                        border-top: 0px;
+                                        border-bottom: 0px;
+                                    }
+                           .totauxcell {     border-left: 0px;
+                                        border-top: 0px;
+                                       
+                                    }
                      </style>
                      `
                   html += `
