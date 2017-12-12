@@ -30,8 +30,8 @@
     </table>
   </div>
   <div *ngIf="fetchedData.length == 0 && autocompleteSearch !=''">
-    No results.
-    <app-newObjDialog *ngIf="typeAutocomplete=='user' || typeAutocomplete=='companie' || typeAutocomplete=='project'" class="btn btn-success" [search]="search" [icone]="'fa fa-plus'" [title]="'Add new one'" [typeObj]="typeAutocomplete"></app-newObjDialog>
+    {{'No results.' | translate}}
+    <!-- <app-newObjDialog *ngIf="typeAutocomplete=='user' || typeAutocomplete=='companie' || typeAutocomplete=='project'" class="btn btn-success" [search]="search" [icone]="'fa fa-plus'" [title]="'Add new one'" [typeObj]="typeAutocomplete"></app-newObjDialog> -->
   </div>
   <div *ngFor="let data of arrayContent; let i=index">
     <div class="row">
