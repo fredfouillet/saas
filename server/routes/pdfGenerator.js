@@ -73,7 +73,7 @@ p, a {
 
   }
   .bghFree {
-    height: 15px!important;
+    height: 5px!important;
 
   }
   .desc {
@@ -360,7 +360,7 @@ module.exports = {
                           })
                         })
                       }
-                      html += '<td class="desc  bghFree"><div class="avoid"><p>' + description + '</p></div></td>'
+                      html += '<td class="desc"><div class="avoid"><p>' + description + '</p></div></td>'
                       // html += '<td class="elem">' + img + '</td>'
                       // html += '<td class="desc">' + bucketProduct.typeRow + '</td>'
                       // html += '<td class="elem">' + bucketProduct.title + '</td>'
