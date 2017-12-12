@@ -1,4 +1,4 @@
-import { Component, ViewContainerRef, ViewChild, ElementRef } from '@angular/core';
+import { Component, ViewContainerRef, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 import {
   Router,
@@ -22,12 +22,13 @@ import { tokenNotExpired } from 'angular2-jwt';
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
   // loading: boolean = true;
   isLoggedIn: boolean = false;
   @ViewChild('sidenav') public sidenav: MatSidenav;
-  @ViewChild('container') elementView: ElementRef;
+  @ViewChild('mainScreen') elementView;
   modeSidenav: string = 'side'
+  widthContainer: number = 0;
 
   constructor(
     private globalEventsManager: GlobalEventsManager,
@@ -37,9 +38,9 @@ export class AppComponent {
     public vcr: ViewContainerRef
   ) {
 
-    if (window.screen.width < 1000) {
-      this.modeSidenav = 'over'
-    }
+    // if (window.screen.width < 1000) {
+    //   this.modeSidenav = 'over'
+    // }
     this.globalEventsManager.showNavBarEmitter.subscribe((mode) => {
       // mode will be null the first time it is created, so you need to igonore it when null
       if (mode !== null) {
@@ -67,6 +68,17 @@ export class AppComponent {
     });
 
   }
+
+  ngAfterViewInit() {
+    const this2 = this
+    setTimeout(() => {
+      this2.widthContainer = this2.elementView.nativeElement.offsetWidth
+      if (this2.widthContainer < 1000) {
+        this.modeSidenav = 'over'
+
+    });
+  }
+
 
   backdropClick() {
     this.globalEventsManager.showNavBar(false);
