@@ -79,9 +79,9 @@ export class ActionButtonsComponent implements OnInit {
   }
 
   saveSignature() {
-    if(this.fetchedQuote.drawingSignature.base64Temp) {
-      this.fetchedQuote.drawingSignature.base64 = this.fetchedQuote.drawingSignature.base64Temp
-    }
+    // if(this.fetchedQuote.drawingSignature.base64Temp) {
+    //   this.fetchedQuote.drawingSignature.base64 = this.fetchedQuote.drawingSignature.base64Temp
+    // }
     this.saveSignatureEmit.emit()
     //
     //   this.quoteService.updateSignature(this.fetchedQuote)

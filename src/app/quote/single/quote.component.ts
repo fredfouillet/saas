@@ -176,6 +176,7 @@ export class QuoteComponent implements OnInit {
   }
 
   saveSignature() {
+    this.fetchedQuote.statusQuote = 'signed'
     if(this.fetchedQuote.drawingSignature.base64Temp) {
       this.fetchedQuote.drawingSignature.base64 = this.fetchedQuote.drawingSignature.base64Temp
     }
