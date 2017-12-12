@@ -30,6 +30,7 @@ export class UserCrossComponent implements OnInit {
   @Output() saved: EventEmitter<any> = new EventEmitter();
   @Input() search: Search = new Search()
 
+  loading: boolean = false
   fetchedCompanies: Companie[] = []
   // autocompleteCompanie: string = '';
 
@@ -73,12 +74,15 @@ export class UserCrossComponent implements OnInit {
   }
 
   getUserCross(id: string) {
+    this.loading = true
     this.userService.getUserCross(id)
       .subscribe(
         res => {
+          this.loading = false
           this.fetchedUserCross = res
         },
         error => {
+          this.loading = false
           console.log(error);
         }
       )

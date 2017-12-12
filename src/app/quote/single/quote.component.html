@@ -118,7 +118,7 @@
         (cleared)="clearedDrawing()"
         (updated)="drawingSignatureUpdated($event)">
       </app-drawing-signature>
-      <img *ngIf="fetchedQuote.statusQuote !== 'pending'" [src]="fetchedQuote.drawingSignature.base64">
+      <img style="width: 100%;" *ngIf="fetchedQuote.statusQuote !== 'pending'" [src]="fetchedQuote.drawingSignature.base64">
 
       <mat-action-row *ngIf="fetchedQuote.statusQuote === 'pending'">
         <button mat-mini-fab color="warn" (click)="clearDrawing()">
@@ -214,3 +214,4 @@
         </mat-action-row>
       </mat-expansion-panel> -->
 </div>
+<app-loadingInApp [loading]="loading"></app-loadingInApp>
