@@ -11,7 +11,7 @@ var Notification = require('../models/notification.model'),
   let styleCSS = `
 
 p {
-	font-family: Lato;
+	font-family: 'Lato', sans-serif;
   
 	font-style: normal;
 	font-variant: normal;
@@ -84,7 +84,7 @@ font-size: 10px;
     border: 1px solid #ddd;
   }
   .desc {
-font-family: Lato;
+font-family: 'Lato', sans-serif;
   
 	font-style: normal;
 	font-variant: normal;
@@ -93,7 +93,7 @@ font-family: Lato;
     text-align: left;
   }
   .elem {
-font-family: Lato;
+font-family: 'Lato', sans-serif;
   
 	font-style: normal;
 	font-variant: normal;
@@ -103,7 +103,7 @@ font-family: Lato;
     font-size: 9px;
   }
   .smallSize {
-font-family: Lato;
+font-family: 'Lato', sans-serif;
   
 	font-style: normal;
 	font-variant: normal;
@@ -112,7 +112,7 @@ font-family: Lato;
     font-size: 9px;
   }
   .titleGooplus1 {
-font-family: Lato;
+font-family: 'Lato', sans-serif;
   
 	font-style: normal;
 	font-variant: normal;
@@ -124,7 +124,7 @@ font-family: Lato;
     text-align: right;
   }
   .inf {
-font-family: Lato;
+font-family: 'Lato', sans-serif;
   
 	font-style: normal;
 	font-variant: normal;
@@ -133,7 +133,7 @@ font-family: Lato;
     font-size: 10px;
   }
   .inf2 {
-font-family: Lato;
+font-family: 'Lato', sans-serif;
   
 	font-style: normal;
 	font-variant: normal;
@@ -148,7 +148,7 @@ font-family: Lato;
   .cobo {
     border: 1px solid #ddd;
   }
-  table {font-family: Lato;
+  table {ffont-family: 'Lato', sans-serif;
   
 	font-style: normal;
 	font-variant: normal;
@@ -171,7 +171,7 @@ font-family: Lato;
   }
 
   .ts {
-font-family: Lato;
+font-family: 'Lato', sans-serif;
   
 	font-style: normal;
 	font-variant: normal;
