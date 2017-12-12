@@ -154,9 +154,9 @@ p, a {
     font-family: 'Lato', sans-serif;
     font-style: normal;
     font-variant: normal;
-    font-weight: 200;
-    background-color: #aba4a4;
-    font-weight: bold;
+    font-weight: 300;
+    background-color: #ddd;
+    
   }
   #pageHeader {
     width:100%;
@@ -392,7 +392,7 @@ module.exports = {
                   //  <td class="col-2 ts elem">TVA 5.5%</td>
                   //  <td class="col-2 ts elem">TVA 10%</td>
                   html += `
-                                  <td class="col-2 ts elem"><b>TOTAL</b></td>
+                                  <td class="col-2 ts elem">TOTAL</td>
                                </tr>
                                <tr>
                                  <td class="col-8"></td>
@@ -422,7 +422,7 @@ module.exports = {
                            </tr>
                            <tr>
                            <td class="col-8"></td>
-                           <td class="col-2 alctr ts elem"><b>TOTAL TTC</b></td>`
+                           <td class="col-2 alctr ts elem">TOTAL TTC</td>`
 
                   item.priceQuote.priceQuoteTaxes.forEach(priceQuoteTaxe => {
                     //  html += `<td class="col-2 ts elem">TVA: ` + priceQuoteTaxe.VAT + `%</td>`
