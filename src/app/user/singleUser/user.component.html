@@ -49,7 +49,7 @@
           {{'Interventions' | translate}}
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <app-quotes [search]="{userId: fetchedUser._id, typeQuote: 'quote'}"></app-quotes>
+      <app-quotes (savedEmit)="quoteCreation()" [search]="{userId: fetchedUser._id, typeQuote: 'quote'}"></app-quotes>
     </mat-expansion-panel>
   </mat-accordion>
 </div>

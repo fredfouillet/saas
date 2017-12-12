@@ -77,6 +77,9 @@ export class UserComponent implements OnInit {
   nextStep() {
     this.step++;
   }
+  previousStep() {
+    this.step--;
+  }
   // selectCity(i, city: string) {
   //   this.fetchedUser.profile.address[i].city = city
   //   this.fetchedUser.profile.address[i].cities = []
@@ -289,11 +292,15 @@ export class UserComponent implements OnInit {
 
   saveAndNextStep() {
     this.save()
-    this.nextStep()
+    // this.nextStep()
   }
 
   savedCrossUser(result) {
     // console.log(result)
+    this.nextStep()
+    // this.saved.emit(this.fetchedUser)
+  }
+  quoteCreation() {
     this.saved.emit(this.fetchedUser)
   }
   save() {
@@ -305,10 +312,11 @@ export class UserComponent implements OnInit {
         .subscribe(
         res => {
           this.toastr.success('Great!', res.message)
+          this.nextStep()
         },
         error => {
           this.toastr.error('Error!')
-          console.log(error)
+          // console.log(error)
         }
       )
     } else {
@@ -317,6 +325,7 @@ export class UserComponent implements OnInit {
         res => {
           this.toastr.success('Great!', res.message)
           this.fetchedUser = res.obj
+          this.nextStep()
           // this.saved.emit(res.obj)
           // if(redirect == 'profile')
           // this.router.navigate(['user/newuser/' + res.obj._id])
@@ -327,8 +336,9 @@ export class UserComponent implements OnInit {
           //this.router.navigate(['user'])
         },
         error => {
-          console.log(error)
-          this.toastr.error('Error!')
+          // console.log(error)
+          this.toastr.error(error.error.message)
+
         }
         );
     }

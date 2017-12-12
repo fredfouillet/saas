@@ -40,7 +40,7 @@ export class UserCrossComponent implements OnInit {
   addressTypes = AddressTypes;
   // titleArray = ['Mr.', 'Mrs.']
   // languageArray = ['fr', 'en']
-  typeClientArray = ['Societe', 'Administration']
+  typeClientArray = ['Individuel', 'Administration']
   // statusHouseArray = ['Propriétaire', 'Locataire']
   // typeHouseArray = ['Pavillon', 'Immeuble']
   // accessTypeArray = ['escalier', 'ascenseur']
@@ -195,10 +195,10 @@ export class UserCrossComponent implements OnInit {
   moveAddress(i: number, incremet: number) {
       // if(i>=0 && i<=this.fetchedUser.profile.address.length + incremet) {
       // console.log(i, incremet, this.fetchedUser.profile.address.length)
-      if(  !(i===0 && incremet<0) && !(i===this.fetchedUser.profile.address.length-1 && incremet>0)  )    {
-        var tmp = this.fetchedUser.profile.address[i];
-        this.fetchedUser.profile.address[i] = this.fetchedUser.profile.address[i + incremet]
-        this.fetchedUser.profile.address[i + incremet] = tmp
+      if(  !(i===0 && incremet<0) && !(i===this.fetchedUserCross.profile.address.length-1 && incremet>0)  )    {
+        const tmp = this.fetchedUserCross.profile.address[i];
+        this.fetchedUserCross.profile.address[i] = this.fetchedUserCross.profile.address[i + incremet]
+        this.fetchedUserCross.profile.address[i + incremet] = tmp
         // this.save(false)
         // console.log(this.fetchedUser.profile.address)
       }

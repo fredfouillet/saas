@@ -1,4 +1,4 @@
-import { Component, OnInit, Input} from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { AuthService} from '../../auth/auth.service';
 import { QuoteService} from '../../quote/quote.service';
 import { Quote, StatusQuotes} from '../../quote/quote.model';
@@ -24,6 +24,7 @@ export class QuotesComponent implements OnInit {
   @Input() idProject: string = '';
   @Input() idClient: string = '';
   @Input() createNewButton: boolean = true;
+  @Output() savedEmit: EventEmitter<any> = new EventEmitter();
 
   fetchedQuotes: Quote[] = [];
   loading: boolean = false
@@ -91,6 +92,7 @@ export class QuotesComponent implements OnInit {
     this.getQuotes(this.paginationData.currentPage, this.search)
   }
   saved(result) {
+    this.savedEmit.emit()
     this.getQuotes(this.paginationData.currentPage, this.search)
   }
   // onSelectChange = ($event: any): void => {

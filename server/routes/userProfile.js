@@ -342,13 +342,22 @@ router.post('/', function(req, res, next) {
 
   User.findOne({email:req.body.email})
     .exec(function(err, user) {
-      console.log(user)
     if (err) {
-      return res.status(500).json({title: 'An error occured', error: err})
+      return res.status(403).json({
+        title: 'An error occured',
+        error: {
+          message: err
+        }
+      })
+
     }
     if (user) {
-      // add user to compnaieseenBYuser
-      return res.status(500).json({message: 'Email already exists', err: 'Email already exists'})
+      return res.status(500).json({
+        title: 'Email',
+        error: {
+          message: 'Email already exists'
+        }
+      })
     }
     if (!user) {
         if (!req.body.isExternalUser)
