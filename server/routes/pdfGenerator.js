@@ -13,10 +13,10 @@ var Notification = require('../models/notification.model'),
 p {
 	font-family: Lato;
 
-	font-style: regular;
-	font-variant: regular;
+	font-style: normal;
+	font-variant: normal;
 	font-weight: 200;
-	line-height: 10px;
+
 }
 
   .col-1 {
@@ -244,11 +244,13 @@ module.exports = {
                 } else {
                   var html = ''
                   html += `
-                 <style type="text/css"> <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato" />
+                 <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato" />
+                 <style type="text/css"> 
                   ` + styleCSS +`
                  </style>
 
                   <div id="pageHeader" class="col-12">
+                  
                     <img class="imglogo" src="http://belmard-renovation.fr/wp-content/uploads/2017/10/belmard_logo_100.png">
                   </div>
                   <table class="print-friendly">
