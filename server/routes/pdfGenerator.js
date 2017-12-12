@@ -126,10 +126,7 @@ p {
     font-size: 6px;
    text-align: center!important;
   }
-   p  {
-    font-size: 9px;
-     font-weight: 300;
-  }
+
   .ts {
     background-color: #aba4a4;
     font-weight: bold;
