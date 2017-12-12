@@ -32,7 +32,7 @@ export class CompanieService {
     headers.append('Authorization', '' + this.authService.currentUser.token)
     let options = new RequestOptions({ headers: headers, search: search});
     return this.http.get(this.url + 'companie/page/' + page , options)
-      .timeout(5000)
+      .timeout(9000)
       .map((response: Response) => {
         const companies = response.json();
         return companies;

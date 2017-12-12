@@ -29,7 +29,7 @@ export class TemplateQuoteService {
     headers.append('Authorization', '' + this.authService.currentUser.token)
     let options = new RequestOptions({ headers: headers, search: search});
     return this.http.get(this.url + 'templateQuote/page/' + page , options)
-      .timeout(5000)
+      .timeout(9000)
       .map((response: Response) => {
         const templateQuotes = response.json();
         return templateQuotes;
@@ -46,7 +46,7 @@ export class TemplateQuoteService {
       headers.append('Authorization', '' + this.authService.currentUser.token)
       let options = new RequestOptions({ headers: headers, search: search});
       return this.http.get(this.url + 'templateQuote/graph/' + year , options)
-        .timeout(5000)
+        .timeout(9000)
         .map((response: Response) => {
           const paiementTemplateQuotes = response.json();
           return paiementTemplateQuotes;
