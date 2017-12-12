@@ -19,6 +19,15 @@
   </div>
 
   <div class="row">
+    <div *ngIf="lineChartDataGraph2[0].ready && lineChartDataGraph2[1].ready" class="col-md-6 col-12 marginTop">
+      <mat-card>
+        <h1><b>{{lineChartDataGraph2[0].data[month]| round | currency}}</b></h1>
+        {{'Quote this month'}}
+        <br>
+        <b>{{lineChartDataGraph2[1].data[month]| round | currency}}</b>
+           {{'Quote signed this month'}}
+      </mat-card>
+    </div>
     <div *ngIf="lineChartDataGraph1[0].ready && lineChartDataGraph1[1].ready" class="col-md-6 col-12 marginTop">
       <canvas baseChart style="height: 100%;" class="h50 bgw" [datasets]="lineChartDataGraph1" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="'line'"></canvas>
     </div>

@@ -20,7 +20,8 @@ import { Search } from '../shared/shared.model'
   styleUrls: ['./reporting.component.css'],
 })
 export class ReportingsComponent implements OnInit {
-    year = 2017
+    year: number = (new Date()).getFullYear()
+    month: number = (new Date()).getMonth()
   // @Input() userId = '';
   // @Input() idQuote = '';
   // @Input() showHeader: boolean = true;
