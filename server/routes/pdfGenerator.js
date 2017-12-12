@@ -10,6 +10,15 @@ var Notification = require('../models/notification.model'),
 
   let styleCSS = `
 
+p {
+	font-family: Lato;
+	font-size: 14px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	line-height: 20px;
+}
+
   .col-1 {
     width: 8.33%;
   }
@@ -238,7 +247,7 @@ module.exports = {
                 } else {
                   var html = ''
                   html += `
-                 <style type="text/css">
+                 <style type="text/css"> <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato" />
                   ` + styleCSS +`
                  </style>
 
