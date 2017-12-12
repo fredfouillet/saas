@@ -11,8 +11,7 @@ var Notification = require('../models/notification.model'),
   let styleCSS = `
 p, a {
 	font-family: 'Lato', sans-serif;
-  height: 10px;
-	font-style: normal;
+  font-style: normal;
 	font-variant: normal;
 	font-weight: 200;
   font-size: 10px;
@@ -139,7 +138,7 @@ p, a {
     width: 100%;
   }
   td {
-    height: 20px;
+    height: 10px;
     vertical-align: center;
   }
   .cgv {
