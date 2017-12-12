@@ -10,7 +10,7 @@ var Notification = require('../models/notification.model'),
 
   let styleCSS = `
 
-p, a {
+p , a {
 	font-family: 'Lato', sans-serif;
   
 	font-style: normal;
