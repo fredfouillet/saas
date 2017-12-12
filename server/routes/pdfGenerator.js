@@ -68,8 +68,8 @@ p, a {
   }
 
   .bgh {
-    background-color: #ddd;
-    color: white;
+    background-color: #ff4351;
+    color: #fff;
     height: 30px;
 
   }
@@ -155,7 +155,8 @@ p, a {
     font-style: normal;
     font-variant: normal;
     font-weight: 300;
-    background-color: #ddd;
+    background-color: #ff4351;
+    color: #fff;
     
   }
   #pageHeader {
@@ -445,7 +446,7 @@ module.exports = {
                                  <p class="inf2">Le client autorise l'entreprise a collecter les pieces a recup</p>
                                </th>
                                <th class="col-3 desc">
-                               <p>Signature</br> `
+                               <p class="alctr">Signature</br> `
                   item.clients.forEach(user => {
                     html += user.profile.title + ' ' + user.profile.name + ' ' + user.profile.lastName
                   })
