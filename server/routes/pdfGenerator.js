@@ -8,6 +8,151 @@ var Notification = require('../models/notification.model'),
 
 
 
+  let styleCSS = `
+
+  .col-1 {
+    width: 8.33%;
+  }
+  .col-2 {
+    width: 16.66%;
+  }
+  .col-3 {
+    width: 25%;
+  }
+  .col-4 {
+    width: 33.33%;
+  }
+  .col-5 {
+    width: 41.66%;
+  }
+  .col-6 {
+    width: 50%;
+  }
+  .col-7 {
+    width: 58.33%;
+  }
+  .col-8 {
+    width: 66.66%;
+  }
+  .col-9 {
+    width: 75%;
+  }
+  .col-10 {
+    width: 83.33%;
+  }
+  .col-11 {
+    width: 91.66%;
+  }
+  .col-12 {
+    width: 100%;
+  }
+  .img {
+    height: 20px;
+  }
+  .imgSignature {
+    height: 45px;
+  }
+  .imglogo {
+    height: 50px;
+    text-align: center;
+   display: block;
+   margin-left: auto;
+   margin-right: auto
+  }
+  .tabo {
+    border: 1px solid #ddd;
+  }
+  .bgh {
+    background-color: #595959;
+    color: white;
+    border: 1px solid #ddd;
+  }
+  .bghFree {
+    background-color: #595959;
+    color: #595959;
+    border: 1px solid #ddd;
+  }
+  .desc {
+    text-align: left;
+  }
+  .elem {
+    text-align: center;
+    font-size: 9px;
+  }
+  .smallSize {
+    font-size: 9px;
+  }
+  .titleGooplus1 {
+    font-size: 11px;
+  }
+  .alright {
+    text-align: right;
+  }
+  .inf {
+    font-size: 10px;
+  }
+  .inf2 {
+    font-size: 9px;
+  }
+  .nobo {
+    border-top: none!important;
+    border-bottom: none!important;
+  }
+  .cobo {
+    border: 1px solid #ddd;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  td {
+    height: 20px;
+    vertical-align: center;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+  }
+  th {
+    /*font-size: 10px;*/
+  }
+   .cgv {
+    font-size: 6px;
+   text-align: center!important;
+  }
+   p  {
+    font-size: 9px;
+     font-weight: 300;
+  }
+  .ts {
+    background-color: #aba4a4;
+    font-weight: bold;
+  }
+  #pageHeader {
+    width:100%;
+    height: 50px;
+  }
+  .avoid {
+     page-break-inside: avoid !important;
+     margin: 4px 0 4px 0;  /* to keep the page break from cutting too close to the text in the div */
+   }
+  #pageBody {height: 0px;}
+  .test2 {margin-bottom: -50px; }
+
+  .totaux {
+    color: red;
+    border-right: 1px solid #ddd;
+    border-left: 0px;
+    border-top: 0px;
+    border-bottom: 0px;
+           }
+  .totauxcell {
+    border-left: 0px;
+    border-top: 0px;
+
+  }
+
+`;
+
+
 module.exports = {
   options : {
     format: 'Letter',
@@ -19,6 +164,7 @@ module.exports = {
     },
     "border": "10px"
   },
+  styleCSS: styleCSS,
 
   generatePDF (req, res, next) {
     return new Promise(function(resolve, reject) {
@@ -33,7 +179,7 @@ module.exports = {
             error: {
               message: 'Item not found!'
             }
-          });
+          })
         }
 
         Companie.findById(user.ownerCompanies[0]).populate({path: 'forms', model: 'Form'}).populate({path: 'rights', model: 'Right'}).exec(function(err, companie) {
@@ -93,146 +239,10 @@ module.exports = {
                 } else {
                   var html = ''
                   html += `
-                     <style type="text/css">
-                           .col-1 {
-                             width: 8.33%;
-                           }
-                           .col-2 {
-                             width: 16.66%;
-                           }
-                           .col-3 {
-                             width: 25%;
-                           }
-                           .col-4 {
-                             width: 33.33%;
-                           }
-                           .col-5 {
-                             width: 41.66%;
-                           }
-                           .col-6 {
-                             width: 50%;
-                           }
-                           .col-7 {
-                             width: 58.33%;
-                           }
-                           .col-8 {
-                             width: 66.66%;
-                           }
-                           .col-9 {
-                             width: 75%;
-                           }
-                           .col-10 {
-                             width: 83.33%;
-                           }
-                           .col-11 {
-                             width: 91.66%;
-                           }
-                           .col-12 {
-                             width: 100%;
-                           }
-                           .img {
-                             height: 20px;
-                           }
-                           .imgSignature {
-                             height: 45px;
-                           }
-                           .imglogo {
-                             height: 50px;
-                             text-align: center;
-                            display: block;
-                            margin-left: auto;
-                            margin-right: auto
-                           }
-                           .tabo {
-                             border: 1px solid #ddd;
-                           }
-                           .bgh {
-                             background-color: #595959;
-                             color: white;
-                             border: 1px solid #ddd;
-                           }
-                           .bghFree {
-                             background-color: #595959;
-                             color: #595959;
-                             border: 1px solid #ddd;
-                           }
-                           .desc {
-                             text-align: left;
-                           }
-                           .elem {
-                             text-align: center;
-                             font-size: 9px;
-                           }
-                           .smallSize {
-                             font-size: 9px;
-                           }
-                           .titleGooplus1 {
-                             font-size: 11px;
-                           }
-                           .alright {
-                             text-align: right;
-                           }
-                           .inf {
-                             font-size: 10px;
-                           }
-                           .inf2 {
-                             font-size: 9px;
-                           }
-                           .nobo {
-                             border-top: none!important;
-                             border-bottom: none!important;
-                           }
-                           .cobo {
-                             border: 1px solid #ddd;
-                           }
-                           table {
-                             border-collapse: collapse;
-                             width: 100%;
-                           }
-                           td {
-                             height: 20px;
-                             vertical-align: center;
-                             border-left: 1px solid #ddd;
-                             border-right: 1px solid #ddd;
-                           }
-                           th {
-                             /*font-size: 10px;*/
-                           }
-                            .cgv {
-                             font-size: 6px;
-                            text-align: center!important;
-                           }
-                            p  {
-                             font-size: 9px;
-                              font-weight: 300;
-                           }
-                           .ts {
-                             background-color: #aba4a4;
-                             font-weight: bold;
-                           }
-                           #pageHeader {
-                             width:100%;
-                             height: 50px;
-                          }
-                          .avoid {
-                              page-break-inside: avoid !important;
-                              margin: 4px 0 4px 0;  /* to keep the page break from cutting too close to the text in the div */
-                            }
-                         #pageBody {height: 0px;}
-                         .test2 {margin-bottom: -50px; }
-                          
-                          .totaux {     border-left: 0px;
-                                        border-top: 0px;
-                                        border-bottom: 0px;
-                                    }
-                           .totauxcell {     border-left: 0px;
-                                        border-top: 0px;
-                                       
-                                    }
+                 <style type="text/css">
+                  ` + styleCSS +`
+                 </style>
 
-                     </style>
-                     `
-                  html += `
                   <div id="pageHeader" class="col-12">
                     <img class="imglogo" src="http://belmard-renovation.fr/wp-content/uploads/2017/10/belmard_logo_100.png">
                   </div>
@@ -345,8 +355,8 @@ module.exports = {
                            </tbody>
                          </table>
                          <br>
-                         <table class="cobo">
-                             <tr class="cobo">
+                         <table class="">
+                             <tr class="">
                                <td class="col-8"></td>
                                <td class="col-2 alright"></td>`
 
@@ -358,24 +368,24 @@ module.exports = {
                   //  <td class="col-2 ts elem">TVA 5.5%</td>
                   //  <td class="col-2 ts elem">TVA 10%</td>
                   html += `
-                                <td class="col-2 ts elem"><b>TOTAL</b></td>
+                                  <td class="cobo col-2 ts elem"><b>TOTAL</b></td>
                                </tr>
-                               <tr class="cobo">
-                               <td class="col-8 totaux"></td>
-                                <td class="col-2 alright ts elem">Sous-Total HT</td>`
+                               <tr class="">
+                                 <td class="col-8"></td>
+                                 <td class="cobo col-2 alright ts elem">Sous-Total HT</td>`
 
                   item.priceQuote.priceQuoteTaxes.forEach(priceQuoteTaxe => {
                     //  html += `<td class="col-2 ts elem">TVA: ` + priceQuoteTaxe.VAT + `%</td>`
                     // html += `<td class="col-2 elem">` + Math.round(priceQuoteTaxe.TotalVAT / (priceQuoteTaxe.VAT / 100)) + `€</td>`
                   })
                   html += `
-                                <td class="col-2 elem"><b>` + Math.round(item.priceQuote.priceQuoteWithoutTaxes) + `€</b></td>
+                                <td class="cobo col-2 elem"><b>` + Math.round(item.priceQuote.priceQuoteWithoutTaxes) + `€</b></td>
                                </tr>`
 
                   html += `
-                              <tr class="cobo">
+                              <tr class="">
                                 <td class="col-8"></td>
-                                <td class="col-2 alright ts elem">Montant de TVA</td>`
+                                <td class="cobo col-2 alright ts elem">Montant de TVA</td>`
                   let vatTotal = 0
                   item.priceQuote.priceQuoteTaxes.forEach(priceQuoteTaxe => {
                     vatTotal += priceQuoteTaxe.TotalVAT * 1
@@ -384,18 +394,18 @@ module.exports = {
                     //  html += `<td class="col-2 elem">` + priceQuoteTaxe.VAT + priceQuoteTaxe.TotalVAT / (priceQuoteTaxe.VAT /100) + `€</td>`
                   })
                   html += `
-                             <td class="col-2 elem"><b>` + Math.round(vatTotal) + `€</b></td>
+                             <td class="cobo col-2 elem"><b>` + Math.round(vatTotal) + `€</b></td>
                            </tr>
-                           <tr class="cobo">
+                           <tr class="">
                            <td class="col-8"></td>
-                           <td class="col-2 alright ts elem"><b>TOTAL TTC</b></td>`
+                           <td class="cobo col-2 alright ts elem"><b>TOTAL TTC</b></td>`
 
                   item.priceQuote.priceQuoteTaxes.forEach(priceQuoteTaxe => {
                     //  html += `<td class="col-2 ts elem">TVA: ` + priceQuoteTaxe.VAT + `%</td>`
                     // html += `<td class="col-2 elem">` + Math.round(priceQuoteTaxe.TotalVAT / (priceQuoteTaxe.VAT / 100) + priceQuoteTaxe.TotalVAT * 1) + `€</td>`
                   })
                   html += `
-                               <td class="col-2 elem"><b>` + Math.round(item.priceQuote.priceQuoteWithTaxes) + `€</b></td>
+                               <td class="cobo col-2 elem"><b>` + Math.round(item.priceQuote.priceQuoteWithTaxes) + `€</b></td>
                              </tr>
                          </table>
                          <br>`
@@ -457,14 +467,11 @@ module.exports = {
                       reject(err)
                     } else {
                       resolve(req.params.quoteId)
-
                     }
                   })
-
                 }
               })
             })
-
           }
         })
       })
@@ -472,381 +479,7 @@ module.exports = {
   },
 
   generatePaiementQuotePDF (req, res, next) {
-    return new Promise(function(resolve, reject) {
 
-      User.findOne({_id: req.user._id}).exec(function(err, user) {
-        if (err) {
-          reject(err)
-          // return res.status(403).json({title: 'There was a problem', error: err})
-        }
-
-        if (!user) {
-          reject(err)
-          // return res.status(404).json({
-          //   title: 'No form found',
-          //   error: {
-          //     message: 'Item not found!'
-          //   }
-          // });
-        }
-
-        // Companie.findById(user.ownerCompanies[0]).populate({path: 'forms', model: 'Form'}).populate({path: 'rights', model: 'Right'}).exec(function(err, companie) {
-        //   if (err) {
-        //     return res.status(404).json({message: '', err: err})
-        //   }
-        //   if (!companie) {
-        //     return res.status(404).json({
-        //       title: 'No obj found',
-        //       error: {
-        //         message: 'Obj not found!'
-        //       }
-        //     })
-        //   } else {
-
-            // Quote.findById((req.params.quoteId), function(err, obj) {
-            //   if (err) {
-            //     return res.status(500).json({message: 'An error occured', err: err})
-            //   }
-            //   if (!obj) {
-            //     return res.status(404).json({
-            //       title: 'No form found',
-            //       error: {
-            //         message: 'Form not found!'
-            //       }
-            //     })
-            //   }
-
-              // let findQuery = {}
-              // findQuery['_id'] = req.params.id
-              // Quote.findById({_id: req.params.quoteId}).populate({
-              //   path: 'projects',
-              //   model: 'Project',
-              //   populate: {
-              //     path: 'assignedTos',
-              //     model: 'User'
-              //   }
-              // }).populate({path: 'signature.users', model: 'User'}).populate({path: 'clients', model: 'User'}).populate({
-              //   path: 'devisDetails.bucketProducts.productInit',
-              //   model: 'Product',
-              //   populate: {
-              //     path: 'forms',
-              //     model: 'Form'
-              //   }
-              // }).exec(function(err, item) {
-              //   if (err) {
-              //     return res.status(404).json({message: '', err: err})
-              //   }
-              //   if (!item) {
-              //     return res.status(404).json({
-              //       title: 'No obj found',
-              //       error: {
-              //         message: 'Obj not found!'
-              //       }
-              //     })
-              //   } else {
-
-                  var html = ''
-                  html += `
-                     <style type="text/css">
-                           .col-1 {
-                             width: 8.33%;
-                           }
-                           .col-2 {
-                             width: 16.66%;
-                           }
-                           .col-3 {
-                             width: 25%;
-                           }
-                           .col-4 {
-                             width: 33.33%;
-                           }
-                           .col-5 {
-                             width: 41.66%;
-                           }
-                           .col-6 {
-                             width: 50%;
-                           }
-                           .col-7 {
-                             width: 58.33%;
-                           }
-                           .col-8 {
-                             width: 66.66%;
-                           }
-                           .col-9 {
-                             width: 75%;
-                           }
-                           .col-10 {
-                             width: 83.33%;
-                           }
-                           .col-11 {
-                             width: 91.66%;
-                           }
-                           .col-12 {
-                             width: 100%;
-                           }
-                           .img {
-                             height: 20px;
-                           }
-                           .imgSignature {
-                             height: 45px;
-                           }
-                           .imglogo {
-                             height: 50px;
-                             text-align: center;
-                            display: block;
-                            margin-left: auto;
-                            margin-right: auto
-                           }
-                           .tabo {
-                             border: 1px solid #ddd;
-                           }
-                           .bgh {
-                             background-color: #595959;
-                             color: white;
-                             border: 1px solid #ddd;
-                           }
-                           .bghFree {
-                             background-color: #595959;
-                             color: #595959;
-                             border: 1px solid #ddd;
-                           }
-                           .desc {
-                             text-align: left;
-                           }
-                           .elem {
-                             text-align: center;
-                             font-size: 9px;
-                           }
-                           .smallSize {
-                             font-size: 9px;
-                           }
-                           .titleGooplus1 {
-                             font-size: 11px;
-                           }
-                           .alright {
-                             text-align: right;
-                           }
-                           .inf {
-                             font-size: 10px;
-                           }
-                           .inf2 {
-                             font-size: 9px;
-                           }
-                           .nobo {
-                             border-top: none!important;
-                             border-bottom: none!important;
-                           }
-                           .cobo {
-                             border: 1px solid #ddd;
-                           }
-                           table {
-                             border-collapse: collapse;
-                             width: 100%;
-                           }
-                           td {
-                             height: 20px;
-                             vertical-align: center;
-                             border-left: 1px solid #ddd;
-                             border-right: 1px solid #ddd;
-                           }
-                           th {
-                             /*font-size: 10px;*/
-                           }
-                            .cgv {
-                             font-size: 6px;
-                            text-align: center!important;
-                           }
-                            p  {
-                             font-size: 9px;
-                              font-weight: 300;
-                           }
-                           .ts {
-                             background-color: #aba4a4;
-                             font-weight: bold;
-                           }
-                           #pageHeader {
-                             width:100%;
-                             height: 50px;
-                          }
-                          .avoid {
-                              page-break-inside: avoid !important;
-                              margin: 4px 0 4px 0;  /* to keep the page break from cutting too close to the text in the div */
-                            }
-                         #pageBody {height: 0px;}
-                         .test2 {margin-bottom: -50px; }
-
-                          .totaux {     border-left: 0px;
-                                        border-top: 0px;
-                                        border-bottom: 0px;
-                                    }
-                           .totauxcell {     border-left: 0px;
-                                        border-top: 0px;
-                                       
-                                    }
-                     </style>
-                     `
-                  html += `
-                  <div id="pageHeader" class="col-12">
-                    <img class="imglogo" src="http://belmard-renovation.fr/wp-content/uploads/2017/10/belmard_logo_100.png">
-                  </div>
-                  <table class="print-friendly">
-                           <thead>
-                             <tr>
-                               <th class="col-4 cobo desc">
-                               <p><b>Belmard Bâtiment</b></p>
-                               <p>ALAN30, rue Belgrand</p>
-                               <p>75020 Paris</p>
-                               <p>Tel : 01.40.33.88.33</p>
-                               <p>Mail : Belmard.batiment@gmail.com</p>
-                               </th>
-                               <th class="col-4 nobo"></th>
-                               <th class="col-4 cobo desc">`
-
-                  // item.clients.forEach(user => {
-                  //
-                  //   html += '<p><b>'
-                  //   html += user.profile.title + ' ' + user.profile.name + ' ' + user.profile.lastName
-                  //   html += '</b></p>'
-                  //   user.profile.address.forEach(singleAddress => {
-                  //     if (singleAddress.nameAddress === 'billing') {
-                  //       html += '<p>'
-                  //       html += singleAddress.address + ' ' + singleAddress.address2
-                  //       html += '</p>'
-                  //       html += '<p>'
-                  //       html += singleAddress.city + ' ' + singleAddress.state
-                  //       html += '</p>'
-                  //       html += '<p>'
-                  //       html += singleAddress.zip + ' ' + singleAddress.country
-                  //       html += '</p>'
-                  //     }
-                  //   })
-                  //
-                  //   html += '<p>'
-                  //   html += 'Tel : ' + user.profile.phoneNumber
-                  //   html += '</p><p>'
-                  //   html += 'Mail : ' + user.email
-                  //   html += '</p>'
-                  // })
-
-                  html += `
-                               </th>
-                             </tr>
-                           </thead>
-                         </table>
-                         <br>
-                         <table>
-                           <thead>
-                             <tr>
-                               <th class="col-12 cobo desc smallSize">Objet :
-                               </th>
-                             </tr>
-                           </thead>
-                         </table>
-                         <br>
-                         <table class="tabo">
-                           <thead>
-                             <tr>
-                               <th class="col-6 bgh titleGooplus1">Description</th>
-                               <th class="col-1 bgh titleGooplus1">Unité</th>
-                               <th class="col-1 bgh titleGooplus1">Quantité</th>
-                               <th class="col-2 bgh titleGooplus1">PU HT</th>
-                               <th class="col-2 bgh titleGooplus1">PT HT</th>
-                             </tr>
-                           </thead>
-                           <tbody>`
-
-
-
-                  html += `
-                           </tbody>
-                         </table>
-                         <br>
-                         <table class="cobo">
-                             <tr class="cobo">
-                               <td class="col-6 alright totaux"></td>`
-
-                  html += `
-                                <td class="col-2 ts elem"><b>TOTAL</b></td>
-                               </tr>
-                               <tr class="cobo">
-                                <td class="col-6 alright ts elem">Sous-Total HT</td>`
-
-
-                  html += `
-                                <td class="col-2 elem"><b>€</b></td>
-                               </tr>`
-
-                  html += `<tr class="cobo">
-                                 <td class="col-6 alright ts elem">Montant de TVA</td>`
-
-                  html += `
-                             <td class="col-2 elem"><b>€</b></td>
-                           </tr>
-                           <tr class="cobo">
-                            <td class="col-6 alright ts elem"><b>TOTAL TTC</b></td>`
-
-                  html += `
-                               <td class="col-2 elem"><b>€</b></td>
-                             </tr>
-                         </table>
-                         <br>`
-
-                  html += `<table class="cobo">
-                               <tr class="cobo">
-                               <td class="col-6 alright ts elem">Acompte à la commande 40% </td>
-                               <td class="col-6 alright elem">=40% du total ttc</td>
-                               </tr>
-                               <tr class="cobo">
-                               <td class="col-6 alright ts elem">Acompte intermédiaire</td>
-                               <td class="col-6 alright elem">sur avancement</td>
-                               </tr>
-                               <tr class="cobo">
-                               <td class="col-6 alright ts elem"><b>Solde</b></td>
-                               <td class="col-6 alright elem"><b>à la livraison</b></td>
-                             </tr>
-                         </table>
-                         <br>`
-
-                  html += `
-                         <table>
-                           <thead>
-                             <tr>
-                               <th class="col-3 desc">
-                               <p>Entreprise</p>
-                               <p class="inf2">Lu et approuvé</p>
-                               <p class="inf2">Le</p>
-                             </th>
-                             <th class="col-6 nobo"></th>
-                             <th class="col-3 desc">
-                               <p>Client : `
-
-                  html += `</p></th>
-                             </tr>
-                           </thead>
-                         </table>
-                      <br>
-                      <a class="cgv">Ce devis est valable 3 mois. Les prix sont établis sur la base des taux en vigeur à la date de remise de l'offre et toute variation ultérieure de ces taux sera répercutée sur ces prix en application du Code Général des Impôts</a>
-                        `
-
-                  pdf.create(html, this.options).toFile('./server/uploads/pdf/' + req.params.quoteId + '.pdf', function(err, resPDF) {
-                    if (err) {
-                      //return res.status(404).json({message: '', err: err})
-
-                      reject(err)
-                    } else {
-                      resolve(req.params.quoteId)
-
-                    }
-                  })
-
-                // }
-              // })
-            // })
-        //
-        //   }
-        // })
-      })
-    })
   }
 
 }
