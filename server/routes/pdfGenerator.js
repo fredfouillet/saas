@@ -10,13 +10,13 @@ var Notification = require('../models/notification.model'),
 
   let styleCSS = `
 
-p {
+p, a {
 	font-family: 'Lato', sans-serif;
   
 	font-style: normal;
 	font-variant: normal;
 	font-weight: 200;
-  line-height: 10px;
+
 font-size: 10px;
 
 }
@@ -87,7 +87,7 @@ font-family: 'Lato', sans-serif;
 	font-style: normal;
 	font-variant: normal;
 	font-weight: 200;
-  line-height: 10px;
+
     text-align: left;
   }
   .elem {
@@ -96,7 +96,7 @@ font-family: 'Lato', sans-serif;
 	font-style: normal;
 	font-variant: normal;
 	font-weight: 200;
-  line-height: 10px;
+
     text-align: center;
     font-size: 9px;
   }
@@ -106,7 +106,7 @@ font-family: 'Lato', sans-serif;
 	font-style: normal;
 	font-variant: normal;
 	font-weight: 200;
-  line-height: 10px;
+
     font-size: 9px;
   }
   .titleGooplus1 {
@@ -115,7 +115,7 @@ font-family: 'Lato', sans-serif;
 	font-style: normal;
 	font-variant: normal;
 	font-weight: 200;
-  line-height: 10px;
+
     font-size: 11px;
   }
   .alright {
@@ -127,7 +127,7 @@ font-family: 'Lato', sans-serif;
 	font-style: normal;
 	font-variant: normal;
 	font-weight: 200;
-  line-height: 10px;
+
     font-size: 10px;
   }
   .inf2 {
@@ -136,7 +136,7 @@ font-family: 'Lato', sans-serif;
 	font-style: normal;
 	font-variant: normal;
 	font-weight: 200;
-  line-height: 10px;
+
     font-size: 9px;
   }
   
@@ -147,7 +147,7 @@ font-family: 'Lato', sans-serif;
 	font-style: normal;
 	font-variant: normal;
 	font-weight: 200;
-  line-height: 10px;
+
     border-collapse: collapse;
     width: 100%;
   }
@@ -170,7 +170,7 @@ font-family: 'Lato', sans-serif;
 	font-style: normal;
 	font-variant: normal;
 	font-weight: 200;
-  line-height: 10px;
+
     background-color: #aba4a4;
     font-weight: bold;
   }
@@ -289,15 +289,15 @@ module.exports = {
                   <table class="print-friendly">
                            <thead>
                              <tr>
-                               <th class="col-4 cobo desc">
+                               <th class="col-4 desc">
                                <p><b>Belmard Bâtiment</b></p>
                                <p>30, rue Belgrand</p>
                                <p>75020 Paris</p>
                                <p>Tel : 01.40.33.88.33</p>
                                <p>Mail : Belmard.batiment@gmail.com</p>
                                </th>
-                               <th class="col-4 nobo"></th>
-                               <th class="col-4 cobo desc">`
+                               <th class="col-4"></th>
+                               <th class="col-4 desc">`
 
                   item.clients.forEach(user => {
 
@@ -334,7 +334,7 @@ module.exports = {
                          <table>
                            <thead>
                              <tr>
-                               <th class="col-12 cobo desc smallSize">Objet : ` + item.name + `
+                               <th class="col-12 desc smallSize">Objet : ` + item.name + `
                                </th>
                              </tr>
                            </thead>
@@ -352,16 +352,9 @@ module.exports = {
                            </thead>
                            <tbody>`
                   item.devisDetails.forEach(devisDetail => {
-                    // html += '<tr class="ts">'
-                    // html += '<td class="desc elem">' + devisDetail.nameBucketProducts + '</td>'
-                    // html += `
-                    //            <td class="desc"></td>
-                    //            <td class="desc"></td>
-                    //            <td class="desc"></td>
-                    //            <td class="desc"></td>
-                    //         </tr>`
+
                     devisDetail.bucketProducts.forEach(bucketProduct => {
-                      html += '<tr class="">' // TO DO GUULLAUME
+                      html += '<tr>'
                       let description = ''
                       let img = ''
                       let unit = ''
@@ -378,14 +371,12 @@ module.exports = {
                         })
                       }
                       html += '<td class="desc"><div class="avoid elem">' + description + '</div></td>'
-                      // html += '<td class="elem">' + img + '</td>'
-                      // html += '<td class="desc">' + bucketProduct.typeRow + '</td>'
-                      // html += '<td class="elem">' + bucketProduct.title + '</td>'
+
                       html += '<td class="elem">' + unit + '</td>'
                       html += '<td class="elem">' + bucketProduct.quantity + '</td>'
                       html += '<td class="elem">' + bucketProduct.priceWithoutTaxes + '</td>'
                       html += '<td class="elem">' + bucketProduct.priceWithQuantity + '</td>'
-                      // html += '<td class="elem">' + bucketProduct.vat + '%</td>'
+
                       html += '</tr>'
 
                     })
@@ -395,76 +386,51 @@ module.exports = {
                            </tbody>
                          </table>
                          <br>
-                         <table class="">
-                             <tr class="">
+                         <table>
+                             <tr>
                                <td class="col-8"></td>
                                <td class="col-2 alright"></td>`
 
                   item.priceQuote.priceQuoteTaxes.forEach(priceQuoteTaxe => {
-                    // html += `<td class="col-2 ts elem">TVA: ` + priceQuoteTaxe.VAT + `%</td>`
-                    // html += `<td class="col-2 ts elem">` + priceQuoteTaxe.TotalVAT + `€</td>`
-                  })
 
-                  //  <td class="col-2 ts elem">TVA 5.5%</td>
-                  //  <td class="col-2 ts elem">TVA 10%</td>
                   html += `
-                                  <td class="cobo col-2 ts elem"><b>TOTAL</b></td>
+                                  <td class="col-2 ts elem"><b>TOTAL</b></td>
                                </tr>
                                <tr class="">
                                  <td class="col-8"></td>
-                                 <td class="cobo col-2 alright ts elem">Sous-Total HT</td>`
+                                 <td class="col-2 alright ts elem">Sous-Total HT</td>`
 
                   item.priceQuote.priceQuoteTaxes.forEach(priceQuoteTaxe => {
-                    //  html += `<td class="col-2 ts elem">TVA: ` + priceQuoteTaxe.VAT + `%</td>`
-                    // html += `<td class="col-2 elem">` + Math.round(priceQuoteTaxe.TotalVAT / (priceQuoteTaxe.VAT / 100)) + `€</td>`
+
                   })
                   html += `
-                                <td class="cobo col-2 elem"><b>` + Math.round(item.priceQuote.priceQuoteWithoutTaxes) + `€</b></td>
+                                <td class="col-2 elem"><b>` + Math.round(item.priceQuote.priceQuoteWithoutTaxes) + `€</b></td>
                                </tr>`
 
                   html += `
                               <tr class="">
                                 <td class="col-8"></td>
-                                <td class="cobo col-2 alright ts elem">Montant de TVA</td>`
+                                <td class="col-2 alright ts elem">Montant de TVA</td>`
                   let vatTotal = 0
                   item.priceQuote.priceQuoteTaxes.forEach(priceQuoteTaxe => {
                     vatTotal += priceQuoteTaxe.TotalVAT * 1
-                    //  html += `<td class="col-2 ts elem">TVA: ` + priceQuoteTaxe.VAT + `%</td>`
-                    // html += `<td class="col-2 elem">` + Math.round(priceQuoteTaxe.TotalVAT) + `€</td>`
-                    //  html += `<td class="col-2 elem">` + priceQuoteTaxe.VAT + priceQuoteTaxe.TotalVAT / (priceQuoteTaxe.VAT /100) + `€</td>`
+  
                   })
                   html += `
                              <td class="cobo col-2 elem"><b>` + Math.round(vatTotal) + `€</b></td>
                            </tr>
-                           <tr class="">
+                           <tr>
                            <td class="col-8"></td>
-                           <td class="cobo col-2 alright ts elem"><b>TOTAL TTC</b></td>`
+                           <td class="col-2 alright ts elem"><b>TOTAL TTC</b></td>`
 
                   item.priceQuote.priceQuoteTaxes.forEach(priceQuoteTaxe => {
-                    //  html += `<td class="col-2 ts elem">TVA: ` + priceQuoteTaxe.VAT + `%</td>`
-                    // html += `<td class="col-2 elem">` + Math.round(priceQuoteTaxe.TotalVAT / (priceQuoteTaxe.VAT / 100) + priceQuoteTaxe.TotalVAT * 1) + `€</td>`
+
                   })
                   html += `
-                               <td class="cobo col-2 elem"><b>` + Math.round(item.priceQuote.priceQuoteWithTaxes) + `€</b></td>
+                               <td class="col-2 elem"><b>` + Math.round(item.priceQuote.priceQuoteWithTaxes) + `€</b></td>
                              </tr>
                          </table>
                          <br>`
-
-                  // html += `<table class="cobo">
-                  //              <tr class="cobo">
-                  //              <td class="col-6 alright ts elem">Acompte à la commande 40% </td>
-                  //              <td class="col-6 alright elem">=40% du total ttc</td>
-                  //              </tr>
-                  //              <tr class="cobo">
-                  //              <td class="col-6 alright ts elem">Acompte intermédiaire</td>
-                  //              <td class="col-6 alright elem">sur avancement</td>
-                  //              </tr>
-                  //              <tr class="cobo">
-                  //              <td class="col-6 alright ts elem"><b>Solde</b></td>
-                  //              <td class="col-6 alright elem"><b>à la livraison</b></td>
-                  //            </tr>
-                  //        </table>
-                  //        <br>`
 
                   html += `
                          <table>
@@ -472,7 +438,7 @@ module.exports = {
                              <tr>
                                <th class="col-1 desc">
                                </th>
-                               <th class="col-8 nobo">
+                               <th class="col-8">
                                  <p class="inf2">Le client rennonce au delai de retractation</p>
                                  <p class="inf2">Le client autorise l'entreprise a collecter les pieces a recup</p>
                                </th>
