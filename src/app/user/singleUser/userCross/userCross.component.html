@@ -11,7 +11,7 @@
         </mat-form-field>
       </div>
       <div *ngIf="fetchedUser.isExternalUser">
-        <mat-form-field *ngIf="fetchedUserCross.profile.typeClient ==='Administration'">
+        <mat-form-field *ngIf="fetchedUserCross.profile.typeClient ==='Company'">
           <input matInput type="text" formControlName="accessType" [(ngModel)]="fetchedUserCross.profile.companyName" placeholder="{{'Company name' | translate}}">
         </mat-form-field>
 
