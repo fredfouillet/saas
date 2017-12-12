@@ -11,7 +11,7 @@ var Notification = require('../models/notification.model'),
   let styleCSS = `
 p, a {
 	font-family: 'Lato', sans-serif;
-  line-height: 10px;
+  height: 10px;
 	font-style: normal;
 	font-variant: normal;
 	font-weight: 200;
