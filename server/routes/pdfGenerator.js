@@ -57,7 +57,7 @@ p, a {
     height: 20px;
   }
   .imgSignature {
-    height: 45px;
+    height: 80px;
   }
   .imglogo {
     height: 50px;
@@ -68,8 +68,9 @@ p, a {
   }
 
   .bgh {
-    background-color: #595959;
-    color: white;
+    background-color: #ff4351;
+    color: #fff;
+    height: 30px;
 
   }
   .bghFree {
@@ -109,6 +110,11 @@ p, a {
   .alright {
     text-align: right;
   }
+
+  .alctr {
+    text-align: center;
+  }
+
   .inf {
     font-family: 'Lato', sans-serif;
     font-style: normal;
@@ -148,9 +154,10 @@ p, a {
     font-family: 'Lato', sans-serif;
     font-style: normal;
     font-variant: normal;
-    font-weight: 200;
-    background-color: #aba4a4;
-    font-weight: bold;
+    font-weight: 300;
+    background-color: #ff4351;
+    color: #fff;
+    
   }
   #pageHeader {
     width:100%;
@@ -386,11 +393,11 @@ module.exports = {
                   //  <td class="col-2 ts elem">TVA 5.5%</td>
                   //  <td class="col-2 ts elem">TVA 10%</td>
                   html += `
-                                  <td class="col-2 ts elem"><b>TOTAL</b></td>
+                                  <td class="col-2 ts elem">TOTAL</td>
                                </tr>
                                <tr>
                                  <td class="col-8"></td>
-                                 <td class="col-2 alright ts elem">Sous-Total HT</td>`
+                                 <td class="col-2 alctr ts elem">Sous-Total HT</td>`
 
                   item.priceQuote.priceQuoteTaxes.forEach(priceQuoteTaxe => {
                     //  html += `<td class="col-2 ts elem">TVA: ` + priceQuoteTaxe.VAT + `%</td>`
@@ -403,7 +410,7 @@ module.exports = {
                   html += `
                               <tr>
                                 <td class="col-8"></td>
-                                <td class="col-2 alright ts elem">Montant de TVA</td>`
+                                <td class="col-2 alctr ts elem">Montant de TVA</td>`
                   let vatTotal = 0
                   item.priceQuote.priceQuoteTaxes.forEach(priceQuoteTaxe => {
                     vatTotal += priceQuoteTaxe.TotalVAT * 1
@@ -416,7 +423,7 @@ module.exports = {
                            </tr>
                            <tr>
                            <td class="col-8"></td>
-                           <td class="col-2 alright ts elem"><b>TOTAL TTC</b></td>`
+                           <td class="col-2 alctr ts elem">TOTAL TTC</td>`
 
                   item.priceQuote.priceQuoteTaxes.forEach(priceQuoteTaxe => {
                     //  html += `<td class="col-2 ts elem">TVA: ` + priceQuoteTaxe.VAT + `%</td>`
@@ -439,7 +446,7 @@ module.exports = {
                                  <p class="inf2">Le client autorise l'entreprise a collecter les pieces a recup</p>
                                </th>
                                <th class="col-3 desc">
-                               <p>Client : `
+                               <p class="alctr">Signature</br> `
                   item.clients.forEach(user => {
                     html += user.profile.title + ' ' + user.profile.name + ' ' + user.profile.lastName
                   })
