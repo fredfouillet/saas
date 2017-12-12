@@ -754,7 +754,7 @@ module.exports = {
                          <br>
                          <table class="cobo">
                              <tr class="cobo">
-                               <td class="col-6 alright"></td>`
+                               <td class="col-6 alright totaux"></td>`
 
                   html += `
                                 <td class="col-2 ts elem"><b>TOTAL</b></td>
