@@ -317,7 +317,7 @@ module.exports = {
                          <table>
                            <thead>
                              <tr>
-                               <th class="col-12 desc smallSize">Objet : ` + item.name + `
+                               <th class="col-12 desc smallSize"><b>Objet :</b> ` + item.name + `
                                </th>
                              </tr>
                            </thead>
