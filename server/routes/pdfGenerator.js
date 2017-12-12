@@ -220,6 +220,16 @@ module.exports = {
                             }
                          #pageBody {height: 0px;}
                          .test2 {margin-bottom: -50px; }
+                          
+                          .totaux {     border-left: 0px;
+                                        border-top: 0px;
+                                        border-bottom: 0px;
+                                    }
+                           .totauxcell {     border-left: 0px;
+                                        border-top: 0px;
+                                       
+                                    }
+
                      </style>
                      `
                   html += `
@@ -337,8 +347,8 @@ module.exports = {
                          <br>
                          <table class="cobo">
                              <tr class="cobo">
-                               <td class="col-8"></td>
-                               <td class="col-2 alright"></td>`
+                               <td class="col-8  totaux"></td>
+                               <td class="col-2 alright  totauxcell"></td>`
 
                   item.priceQuote.priceQuoteTaxes.forEach(priceQuoteTaxe => {
                     // html += `<td class="col-2 ts elem">TVA: ` + priceQuoteTaxe.VAT + `%</td>`
