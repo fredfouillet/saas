@@ -73,8 +73,7 @@ p, a {
 
   }
   .bghFree {
-    background-color: #595959;
-    color: #595959;
+    height: 15px!important;
 
   }
   .desc {
@@ -138,7 +137,7 @@ p, a {
     width: 100%;
   }
   td {
-    height: 10px;
+    height: 20px;
     vertical-align: center;
   }
   .cgv {
@@ -361,7 +360,7 @@ module.exports = {
                           })
                         })
                       }
-                      html += '<td class="desc"><div class="avoid"><p>' + description + '</p></div></td>'
+                      html += '<td class="desc"><div class="avoid bghFree"><p>' + description + '</p></div></td>'
                       // html += '<td class="elem">' + img + '</td>'
                       // html += '<td class="desc">' + bucketProduct.typeRow + '</td>'
                       // html += '<td class="elem">' + bucketProduct.title + '</td>'
