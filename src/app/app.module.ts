@@ -25,6 +25,7 @@ import { ErrorPageComponent } from './errorPage/errorPage.component';
 import { PaiementGuardService } from './companie/single/paiement/paiementGuard.service';
 import { LoadingInAppModule } from './nav/loadingInApp/loadingInApp.module';
 
+
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   return new AuthHttp(new AuthConfig({}), http, options);
 }

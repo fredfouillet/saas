@@ -4,7 +4,7 @@ import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 // import { TranslateService } from '../../translate/translate.service';
 import { UserDialogComponent } from '../../user/singleUser/dialog/userDialog.component';
-import { QuoteDialogComponent } from '../../quote/single/dialog/quoteDialog.component';
+// import { QuoteDialogComponent } from '../../quote/single/dialog/quoteDialog.component';
 import { CompanieDialogComponent } from '../../companie/single/dialog/companieDialog.component';
 // import { ProjectDialogComponent } from '../../project/single/dialog/projectDialog.component';
 import { ProductDialogComponent } from '../../product/single/dialog/productDialog.component';
