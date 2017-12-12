@@ -32,7 +32,7 @@ export class RightService {
     headers.append('Authorization', '' + this.authService.currentUser.token)
     let options = new RequestOptions({ headers: headers, search: search});
     return this.http.get(this.url + 'right/page/' + page , options)
-      .timeout(9000)
+      .timeout(15000)
       .map((response: Response) => {
         const rights = response.json();
         return rights;

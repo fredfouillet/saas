@@ -38,7 +38,7 @@ export class UserService {
     headers.append('Authorization', '' + this.authService.currentUser.token)
     let options = new RequestOptions({ headers: headers, search: search});
     return this.http.get(this.url + 'profile/page/' + page , options)
-      .timeout(9000)
+      .timeout(15000)
       .map((response: Response) => {
         const users = response.json();
         return users;
@@ -54,7 +54,7 @@ export class UserService {
     if(lang === 'fr') lang='FR'
 
     return this.http.get('http://api.zippopotam.us/' + lang + '/' + zip )
-      .timeout(9000)
+      .timeout(15000)
       .map((response: Response) => {
         return response.json();
       })

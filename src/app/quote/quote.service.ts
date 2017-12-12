@@ -29,7 +29,7 @@ export class QuoteService {
     headers.append('Authorization', '' + this.authService.currentUser.token)
     let options = new RequestOptions({ headers: headers, search: search});
     return this.http.get(this.url + 'quote/page/' + page , options)
-      // .timeout(9000)
+      // .timeout(15000)
       .map((response: Response) => {
         const quotes = response.json();
         return quotes;
@@ -46,7 +46,7 @@ export class QuoteService {
       headers.append('Authorization', '' + this.authService.currentUser.token)
       let options = new RequestOptions({ headers: headers, search: search});
       return this.http.get(this.url + 'quote/graph' , options)
-        .timeout(9000)
+        .timeout(15000)
         .map((response: Response) => {
           const paiementQuotes = response.json();
           return paiementQuotes;

@@ -3,7 +3,7 @@ import { User, UserCross } from '../user/user.model';
 import { Product } from '../product/product.model';
 // import { Project } from '../project/project.model';
 import { Companie } from '../companie/companie.model';
-import { Drawing } from './single/drawing/drawing.model';
+// import { Drawing } from './single/drawing/drawing.model';
 import { DrawingSignature } from './single/drawingSignature/drawingSignature.model';
 
 
@@ -30,7 +30,7 @@ export class Quote {
   priceQuote: PriceQuote = new PriceQuote();
   // signature: Signature = new Signature();
   detail: Detail = new Detail();
-  drawing: Drawing = new Drawing();
+  // drawing: Drawing = new Drawing();
   drawingSignature: DrawingSignature = new DrawingSignature();
 
 

@@ -34,7 +34,7 @@ export class FormService {
     let options = new RequestOptions({ headers: headers, search: search });
 
     return this.http.get(this.url + 'forms/page/' + page, options)
-      .timeout(9000)
+      .timeout(15000)
       .map((response: Response) => {
 
         return response.json();
@@ -50,7 +50,7 @@ export class FormService {
   //   let headers = new Headers({'Content-Type': 'application/json'});
   //   headers.append('Authorization', '' + this.token);
   //   return this.http.get(this.url + 'forms/form/' + userId, {headers: headers})
-  //     .timeout(9000)
+  //     .timeout(15000)
   //     .map((response: Response) => {
   //
   //       const forms = response.json().forms;

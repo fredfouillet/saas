@@ -32,7 +32,7 @@ export class ProductService {
     headers.append('Authorization', '' + this.authService.currentUser.token);
     let options = new RequestOptions({ headers: headers, search: search});
     return this.http.get(this.url + 'product/page/' + page , options)
-      .timeout(9000)
+      .timeout(15000)
       .map((response: Response) => {
 
         const products = response.json();
@@ -50,7 +50,7 @@ export class ProductService {
     headers.append('Authorization', '' + this.authService.currentUser.token);
     let options = new RequestOptions({ headers: headers});
     return this.http.get(this.url + 'product/countNewItemForUser/' + this.authService.currentUser.userId, options)
-      .timeout(9000)
+      .timeout(15000)
       .map((response: Response) => {
         const products = response.json();
         return products;

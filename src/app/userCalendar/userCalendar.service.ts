@@ -37,7 +37,7 @@ export class UserCalendarService {
     headers.append('Authorization', '' + this.authService.currentUser.token);
     let options = new RequestOptions({ headers: headers, search: search});
     return this.http.get(this.url + 'userCalendar/page/' + page , options)
-      .timeout(9000)
+      .timeout(15000)
       .map((response: Response) => {
         this.globalEventsManager.isLoadding(false);
         const userCalendars = response.json();
@@ -56,7 +56,7 @@ export class UserCalendarService {
     headers.append('Authorization', '' + this.authService.currentUser.token);
     let options = new RequestOptions({ headers: headers});
     return this.http.get(this.url + 'userCalendar/countNewItemForUser/' + this.authService.currentUser.userId, options)
-      .timeout(9000)
+      .timeout(15000)
       .map((response: Response) => {
         this.globalEventsManager.isLoadding(false);
         const userCalendars = response.json();

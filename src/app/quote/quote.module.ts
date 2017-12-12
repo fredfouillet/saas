@@ -6,7 +6,7 @@ import { RouterModule} from '@angular/router';
 // import { RoundPipe} from './round.pipe';
 // import { ProjectModule} from '../project/project.module';
 
-import { QuoteDialogComponent } from './single/dialog/quoteDialog.component';
+// import { QuoteDialogComponent } from './single/dialog/quoteDialog.component';
 
 
 
@@ -38,7 +38,7 @@ import { SharedModule } from '../shared/shared.module';
 // import { SignaturePadModule } from '../angular2-signaturepad';
 // import { SignaturePad } from '../angular2-signaturepad/signature-pad';
 //
-import { DrawingModule } from './single/drawing/drawing.module';
+// import { DrawingModule } from './single/drawing/drawing.module';
 import { DrawinSignaturegModule } from './single/drawingSignature/drawingSignature.module';
 
 
@@ -87,7 +87,7 @@ import {MatCheckboxModule} from '@angular/material';
     // MatInputModule,
     // CKEditorModule,
     DragulaModule,
-    DrawingModule,
+    // DrawingModule,
     DrawinSignaturegModule,
     MatDatepickerModule,
     MatNativeDateModule,
@@ -113,7 +113,7 @@ import {MatCheckboxModule} from '@angular/material';
     TotalComponent,
     EditQuoteComponent,
     AddTextRowComponent,
-    QuoteDialogComponent,
+    // QuoteDialogComponent,
     QuoteInfoComponent,
     QuoteStatusComponent,
     ActionButtonsComponent,
@@ -132,7 +132,7 @@ import {MatCheckboxModule} from '@angular/material';
     TemplateQuoteService
   ],
   entryComponents: [
-    QuoteDialogComponent,
+    // QuoteDialogComponent,
   ]
 })
 export class QuoteModule { }
