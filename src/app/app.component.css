@@ -31,10 +31,21 @@ app-navbar {
 }
 
 
-.docs-component-sidenav-content {
-    /*min-height: 100vh;*/
+
+/*overflow body
+overflow scroll 100vh que sur desktop
+sur mobile, no scroll*/
+
+@media screen and (min-width: 700px) {
+  .docs-component-sidenav-content {
     height: 100vh;
     overflow: auto;
+  }
+}
+
+.docs-component-sidenav-content {
+    /*min-height: 100vh;*/
+
     padding-bottom: 100px;
     /*display: -webkit-box;*/
     /*display: -ms-flexbox;*/
