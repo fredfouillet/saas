@@ -41,9 +41,9 @@
     <div *ngIf="lineChartDataGraph4[0].ready && lineChartDataGraph4[1].ready" class="col-md-6 col-12 marginTop">
       <canvas baseChart style="height: 100%;" class="h50 bgw" [datasets]="lineChartDataGraph4" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="'bar'"></canvas>
     </div>
-    <div *ngIf="donutChartDataGraph1.data.length" class="col-md-6 col-12 marginTop">
-      <!-- <canvas baseChart style="height: 100%;" class="h50 bgw" [datasets]="this.donutChartDataGraph1.data" [labels]="this.donutChartDataGraph1.labels" [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="'doughnut'"></canvas> -->
-      <!-- {{this.donutChartDataGraph1|json}} -->
+    <div *ngIf="donutChartDataGraph1.ready[0] && donutChartDataGraph1.ready[1]" class="col-md-6 col-12 marginTop">
+      <canvas baseChart style="height: 100%;" class="h50 bgw" [data]="donutChartDataGraph1.data" [labels]="donutChartDataGraph1.labels" [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="'doughnut'"></canvas>
+      {{donutChartDataGraph1|json}}
     </div>
   </div>
 

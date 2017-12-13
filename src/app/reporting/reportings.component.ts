@@ -43,9 +43,20 @@ export class ReportingsComponent implements OnInit {
   lineChartDataGraph3 = [ new EmptyRow(), new EmptyRow() ]
   lineChartDataGraph4 = [ new EmptyRow(), new EmptyRow() ]
   donutChartDataGraph1 = {
+    ready:[],
     labels: [],
     data: []
   }
+
+  // donutChartDataGraph1 = { "labels": ['Download Sales', 'In-Store Sales', 'Mail-Order Sales'], "data": [350, 450, 100] }
+
+
+  nameGraph : string = ''
+  serieNumber: number = 0
+  label: string = ''
+  typeSum: string = ''
+
+
   search: Search = new Search();
   // search = {
   //   orderBy : '',
@@ -94,33 +105,30 @@ export class ReportingsComponent implements OnInit {
 
         newSearch = new Search()
         newSearch.year = this.year
-        newSearch.isSigned = false
+        newSearch.statusQuote = ''
         this.getPaiementQuotesGraph(newSearch).then((res: any) => {
-          let nameGraph : string = ''
-          let serieNumber: number = 0
-          let label: string = ''
-          let typeSum: string = ''
 
-          nameGraph = 'lineChartDataGraph1'
-          serieNumber = 0
-          label = 'Paiement'
-          typeSum = 'amountTotal'
-          this[nameGraph][serieNumber].ready = true
-          this[nameGraph][serieNumber].label = label
+
+          this.nameGraph = 'lineChartDataGraph1'
+          this.serieNumber = 0
+          this.label = 'Paiement'
+          this.typeSum = 'amountTotal'
+          this[this.nameGraph][this.serieNumber].ready = true
+          this[this.nameGraph][this.serieNumber].label = this.label
           res.item.forEach((element, index) => {
-            this[nameGraph][serieNumber].year = element._id.year
-            this[nameGraph][serieNumber].data[element._id.month - 1] = element[typeSum]
+            this[this.nameGraph][this.serieNumber].year = element._id.year
+            this[this.nameGraph][this.serieNumber].data[element._id.month - 1] = element[this.typeSum]
           })
 
-          nameGraph = 'lineChartDataGraph3'
-          serieNumber = 0
-          label = 'Count Paiement'
-          typeSum = 'count'
-          this[nameGraph][serieNumber].ready = true
-          this[nameGraph][serieNumber].label = label
+          this.nameGraph = 'lineChartDataGraph3'
+          this.serieNumber = 0
+          this.label = 'Count Paiement'
+          this.typeSum = 'count'
+          this[this.nameGraph][this.serieNumber].ready = true
+          this[this.nameGraph][this.serieNumber].label = this.label
           res.item.forEach((element, index) => {
-            this[nameGraph][serieNumber].year = element._id.year
-            this[nameGraph][serieNumber].data[element._id.month - 1] = element[typeSum]
+            this[this.nameGraph][this.serieNumber].year = element._id.year
+            this[this.nameGraph][this.serieNumber].data[element._id.month - 1] = element[this.typeSum]
           })
 
         })
@@ -130,88 +138,110 @@ export class ReportingsComponent implements OnInit {
 
         newSearch = new Search()
         newSearch.year = this.year
-        newSearch.isSigned = false
+        newSearch.isSigned = true
+        this.getQuotesGraph(newSearch).then((res: any) => {
+
+
+          let totalData = 0;
+          res.item.forEach((element, index) => {
+            totalData += element.amountTotal
+          })
+          this.donutChartDataGraph1.data[1] = totalData
+          this.donutChartDataGraph1.labels[1] = 'Quote Signed'
+          this.donutChartDataGraph1.ready[1] = true
+
+
+
+
+          this.nameGraph = 'lineChartDataGraph2'
+          this.serieNumber = 0
+          this.label = 'Quotes Signed'
+          this.typeSum = 'amountTotal'
+          this[this.nameGraph][this.serieNumber].ready = true
+          this[this.nameGraph][this.serieNumber].label = this.label
+          res.item.forEach((element, index) => {
+            this[this.nameGraph][this.serieNumber].year = element._id.year
+            this[this.nameGraph][this.serieNumber].data[element._id.month - 1] = element[this.typeSum]
+          })
+        })
+
+
+
+        newSearch = new Search()
+        newSearch.year = this.year
+        newSearch.statusQuote = ''
         this.getQuotesGraph(newSearch).then((res: any) => {
 
           let totalData = 0;
           res.item.forEach((element, index) => {
-            console.log(element)
             totalData += element.amountTotal
           })
           this.donutChartDataGraph1.data[0] = totalData
           this.donutChartDataGraph1.labels[0] = 'Quote'
+          this.donutChartDataGraph1.ready[0] = true
 
 
 
-          let nameGraph : string = ''
-          let serieNumber: number = 0
-          let label: string = ''
-          let typeSum: string = ''
+          // let nameGraph : string = ''
+          // let serieNumber: number = 0
+          // let label: string = ''
+          // let typeSum: string = ''
 
-          nameGraph = 'lineChartDataGraph1'
-          serieNumber = 1
-          label = 'Quote'
-          typeSum = 'amountTotal'
-          this[nameGraph][serieNumber].ready = true
-          this[nameGraph][serieNumber].label = label
+          this.nameGraph = 'lineChartDataGraph1'
+          this.serieNumber = 1
+          this.label = 'Quote'
+          this.typeSum = 'amountTotal'
+          this[this.nameGraph][this.serieNumber].ready = true
+          this[this.nameGraph][this.serieNumber].label = this.label
           res.item.forEach((element, index) => {
-            this[nameGraph][serieNumber].year = element._id.year
-            this[nameGraph][serieNumber].data[element._id.month - 1] = element[typeSum]
+            this[this.nameGraph][this.serieNumber].year = element._id.year
+            this[this.nameGraph][this.serieNumber].data[element._id.month - 1] = element[this.typeSum]
           })
 
-          nameGraph = 'lineChartDataGraph2'
-          serieNumber = 1
-          label = 'Quote'
-          typeSum = 'amountTotal'
-          this[nameGraph][serieNumber].ready = true
-          this[nameGraph][serieNumber].label = label
+          this.nameGraph = 'lineChartDataGraph2'
+          this.serieNumber = 1
+          this.label = 'Quote'
+          this.typeSum = 'amountTotal'
+          this[this.nameGraph][this.serieNumber].ready = true
+          this[this.nameGraph][this.serieNumber].label = this.label
           res.item.forEach((element, index) => {
-            this[nameGraph][serieNumber].year = element._id.year
-            this[nameGraph][serieNumber].data[element._id.month - 1] = element[typeSum]
+            this[this.nameGraph][this.serieNumber].year = element._id.year
+            this[this.nameGraph][this.serieNumber].data[element._id.month - 1] = element[this.typeSum]
           })
 
-          nameGraph = 'lineChartDataGraph2'
-          serieNumber = 0
-          label = 'Quotes Signed'
-          typeSum = 'amountTotal'
-          this[nameGraph][serieNumber].ready = true
-          this[nameGraph][serieNumber].label = label
+
+
+          this.nameGraph = 'lineChartDataGraph3'
+          this.serieNumber = 1
+          this.label = 'Count Quotes'
+          this.typeSum = 'count'
+          this[this.nameGraph][this.serieNumber].ready = true
+          this[this.nameGraph][this.serieNumber].label = this.label
           res.item.forEach((element, index) => {
-            this[nameGraph][serieNumber].year = element._id.year
-            this[nameGraph][serieNumber].data[element._id.month - 1] = element[typeSum]
+            this[this.nameGraph][this.serieNumber].year = element._id.year
+            this[this.nameGraph][this.serieNumber].data[element._id.month - 1] = element[this.typeSum]
           })
 
-          nameGraph = 'lineChartDataGraph3'
-          serieNumber = 1
-          label = 'Count Quotes'
-          typeSum = 'count'
-          this[nameGraph][serieNumber].ready = true
-          this[nameGraph][serieNumber].label = label
+          this.nameGraph = 'lineChartDataGraph4'
+          this.serieNumber = 1
+          this.label = 'count All Quotes'
+          this.typeSum = 'count'
+          this[this.nameGraph][this.serieNumber].ready = true
+          this[this.nameGraph][this.serieNumber].label = this.label
           res.item.forEach((element, index) => {
-            this[nameGraph][serieNumber].year = element._id.year
-            this[nameGraph][serieNumber].data[element._id.month - 1] = element[typeSum]
+            this[this.nameGraph][this.serieNumber].year = element._id.year
+            this[this.nameGraph][this.serieNumber].data[element._id.month - 1] = element[this.typeSum]
           })
 
-          nameGraph = 'lineChartDataGraph4'
-          serieNumber = 1
-          label = 'count All Quotes'
-          typeSum = 'count'
-          this[nameGraph][serieNumber].ready = true
-          this[nameGraph][serieNumber].label = label
+          this.nameGraph = 'lineChartDataGraph4'
+          this.serieNumber = 0
+          this.label = 'Count Quotes Signed'
+          this.typeSum = 'count'
+          this[this.nameGraph][this.serieNumber].ready = true
+          this[this.nameGraph][this.serieNumber].label = this.label
           res.item.forEach((element, index) => {
-            this[nameGraph][serieNumber].year = element._id.year
-            this[nameGraph][serieNumber].data[element._id.month - 1] = element[typeSum]
-          })
-
-          nameGraph = 'lineChartDataGraph4'
-          serieNumber = 0
-          label = 'Count Quotes Signed'
-          typeSum = 'count'
-          this[nameGraph][serieNumber].ready = true
-          this[nameGraph][serieNumber].label = label
-          res.item.forEach((element, index) => {
-            this[nameGraph][serieNumber].year = element._id.year
-            this[nameGraph][serieNumber].data[element._id.month - 1] = element[typeSum]
+            this[this.nameGraph][this.serieNumber].year = element._id.year
+            this[this.nameGraph][this.serieNumber].data[element._id.month - 1] = element[this.typeSum]
           })
         })
   }
@@ -257,11 +287,11 @@ export class ReportingsComponent implements OnInit {
         .subscribe(
           res => {
             resolve(res)
-            // this[nameGraph][serieNumber].ready = true
-            // this[nameGraph][serieNumber].label = label
+            // this[this.nameGraph][this.serieNumber].ready = true
+            // this[this.nameGraph][this.serieNumber].label = this.label
             // res.item.forEach((element, index) => {
-            //   this[nameGraph][serieNumber].year = element._id.year
-            //   this[nameGraph][serieNumber].data[element._id.month - 1] = element[typeSum]
+            //   this[this.nameGraph][this.serieNumber].year = element._id.year
+            //   this[this.nameGraph][this.serieNumber].data[element._id.month - 1] = element[this.typeSum]
             // })
           },
           error => {
@@ -278,11 +308,11 @@ export class ReportingsComponent implements OnInit {
         .subscribe(
           res => {
             resolve(res)
-            // this[nameGraph][serieNumber].ready = true
-            // this[nameGraph][serieNumber].label = label
+            // this[this.nameGraph][this.serieNumber].ready = true
+            // this[this.nameGraph][this.serieNumber].label = this.label
             // res.item.forEach((element, index) => {
-            //   this[nameGraph][serieNumber].year = element._id.year
-            //   this[nameGraph][serieNumber].data[element._id.month - 1] = element[typeSum]
+            //   this[this.nameGraph][this.serieNumber].year = element._id.year
+            //   this[this.nameGraph][this.serieNumber].data[element._id.month - 1] = element[this.typeSum]
             // })
           },
           error => {

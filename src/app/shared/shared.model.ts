@@ -12,7 +12,8 @@ export class Search {
   isExpense: boolean = false;
   typeQuote: string = '';
   year: number = 0;
-  isSigned: boolean = false;
+  // isSigned: boolean = false;
+  statusQuote: string = '';
 };
 
 
