@@ -426,7 +426,7 @@ router.post('/', function(req, res, next) {
         <head>
           <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-          <title>Email depuis Belmard Gestion</title>
+          <title>Email d'invitation à Mirabelle</title>
           <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"></link>
         </head>
         <body style="margin: 0; padding: 0; font-family: 'Montserrat', sans-serif;">
@@ -440,11 +440,11 @@ router.post('/', function(req, res, next) {
                   </tr>
                   <tr>
                     <td style="padding: 15px 0 30px 0;">
-                      Vous êtes invité à rejoindre l'application Belmard Gestion
+                      Vous êtes invité à rejoindre l'application Mirabelle
                     </td>
                   </tr>
                   <tr>
-                    <td align="center" style="background-color: #0a2f87; padding: 10px 15px; cursor: pointer;">
+                    <td align="center" style="background-color: #ff4351; padding: 10px 15px; cursor: pointer;">
                       <a
                         href="http://${req.headers.host}/#/user/reset/${token}"
                         style="color: #ffffff; text-decoration: none;"
@@ -463,7 +463,7 @@ router.post('/', function(req, res, next) {
         var mailOptions = {
           to: user.email,
           from: config.userGmail,
-          subject: 'Gooplus Management | New Invitation',
+          subject: 'Mirabelle | Invitation',
           html: html
         };
         mailer.sendMail(mailOptions, function(err) {
