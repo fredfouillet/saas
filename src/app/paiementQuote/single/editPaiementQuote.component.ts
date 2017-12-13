@@ -41,6 +41,7 @@ export class EditPaiementQuoteComponent implements OnInit {
   @Output() close: EventEmitter<any> = new EventEmitter();
   @Input() fetchedQuotes: Quote[] = []
   @Input() search: Search = new Search()
+  @Input() isDialog: boolean = false
 
   showPaiements: boolean = false
   fetchedPaiementQuote: PaiementQuote = new PaiementQuote()

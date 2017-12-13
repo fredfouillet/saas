@@ -209,9 +209,12 @@ export class QuoteComponent implements OnInit {
     })
 
 
-    if(this.totalPaiementAmount >= this.fetchedQuote.priceQuote.priceQuoteWithoutTaxes) {
-      this.fetchedQuote.statusQuote = 'paid'
-      this.save()
+    if(
+      this.totalPaiementAmount >= this.fetchedQuote.priceQuote.priceQuoteWithoutTaxes &&
+      this.fetchedQuote.priceQuote.priceQuoteWithoutTaxes &&
+      this.fetchedQuote.statusQuote !== 'paid' ) {
+        this.fetchedQuote.statusQuote = 'paid'
+        this.save()
     }
   }
 

@@ -1,6 +1,6 @@
 <div *ngIf="!typeObj" class="row p-2">
   <div class="col-2 p-2">
-    <div *ngIf="showBack" class="goBack">
+    <div *ngIf="showBack && !isDialog" class="goBack">
       <mat-icon (click)="goBack()">arrow_back</mat-icon>
     </div>
   </div>

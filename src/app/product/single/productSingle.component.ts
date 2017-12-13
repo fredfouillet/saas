@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter} from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
 import { ProductService} from '../product.service';
 import { CompanieService} from '../../companie/companie.service';
 
@@ -26,6 +26,7 @@ import { AuthService} from '../../auth/auth.service';
 })
 
 export class ProductSingleComponent implements OnInit {
+  @Input() isDialog: boolean = false;
   @Output() saved: EventEmitter<any> = new EventEmitter();
   selectedIndex0: number = -1
   selectedIndex1: number = -1

@@ -12,6 +12,7 @@ import { Search} from '../../shared/shared.model';
 })
 export class HeaderTitleComponent implements OnInit {
   @Input() title: string = '';
+  @Input() isDialog: boolean = false;
   @Input() icon: string = '';
   @Input() typeObj: string = '';
   @Input() showBack: boolean = true;

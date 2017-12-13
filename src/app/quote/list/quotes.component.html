@@ -10,7 +10,7 @@
     </div>
   </div> -->
   <app-header-title [createNewButton]="createNewButton" [title]="'Interventions'" (saved)="saved($event)" [search]="search" [typeObj]="'quote'"></app-header-title>
-  <div *ngIf="fetchedQuotes.length">
+  <div>
     <div *ngIf="showSearch" class="d-flex flex-row">
       <div class="p-2">
         <mat-form-field>
@@ -19,7 +19,7 @@
       </div>
     </div>
 
-    <div class="row">
+    <div class="row" *ngIf="fetchedQuotes.length">
       <div class="col-md-12">
         <table class="table table-hover">
           <thead>

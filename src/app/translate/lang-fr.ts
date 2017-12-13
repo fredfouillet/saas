@@ -117,7 +117,7 @@ export const LANG_FR_TRANS = {
 
 
     'Quotes': 'Devis',
-    'Paid': 'Payée',
+    'Paid': 'Payé',
     'quote': 'devis',
     'Create a new quote': 'Créer un nouveau Devis',
     'Assigned to me': 'Assigné à Moi',
@@ -170,7 +170,7 @@ export const LANG_FR_TRANS = {
     'Paymentquote': 'Encaissement',
     'Sent': 'Envoyée',
     'Date Invoice Paid': 'Date Encaissement',
-    'Signed': 'Signé avec règlement',
+    'Signed': 'Signé',
     'Rejected': 'Refusé',
     'Signed, pending payment': 'Signé, en attente de règlement',
     'signed': 'Signé',
