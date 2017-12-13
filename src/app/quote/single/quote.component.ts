@@ -59,19 +59,19 @@ export class QuoteComponent implements OnInit {
 
   nextStep() {
     this.step++;
-    // this.save()
+    this.save()
 
   }
   clearDrawing() {
     this.drawingSignatureComponent.clearDrawing();
-    this.saveSignature()
+    // this.saveSignature()
   }
-  clearedDrawing() {
-    this.fetchedQuote.drawingSignature.base64 = ''
-    this.fetchedQuote.drawingSignature.base64Temp = ''
-    this.fetchedQuote.statusQuote = 'pending'
-    this.actionButtonsComponent.saveSignature()
-  }
+  // clearedDrawing() {
+  //   this.fetchedQuote.drawingSignature.base64 = ''
+  //   this.fetchedQuote.drawingSignature.base64Temp = ''
+  //   this.fetchedQuote.statusQuote = 'pending'
+  //   this.actionButtonsComponent.saveSignature()
+  // }
   buttonSaved(quote: Quote) {
     this.getQuote(quote._id)
     this.nextStep()
@@ -184,7 +184,7 @@ export class QuoteComponent implements OnInit {
       this.quoteService.updateSignature(this.fetchedQuote)
         .subscribe(
         res => {
-
+          this.fetchedQuote = res.obj
           this.toastr.success('Great!', res.message)
           // this.nextStep.emit(this.fetchedQuote)
           this.nextStep()
@@ -221,6 +221,7 @@ export class QuoteComponent implements OnInit {
         .subscribe(
         res => {
           this.toastr.success('Great!', res.message)
+          this.fetchedQuote = res.obj
           // this.getQuote(res.obj._id)
           // this.saved.emit(res)
         },
@@ -233,6 +234,7 @@ export class QuoteComponent implements OnInit {
         .subscribe(
         res => {
           this.toastr.success('Great!', res.message)
+          this.fetchedQuote = res.obj
           // this.getQuote(res.obj._id)
           // this.router.navigate(['quote/' + res.obj._id])
           // this.saved.emit(res)

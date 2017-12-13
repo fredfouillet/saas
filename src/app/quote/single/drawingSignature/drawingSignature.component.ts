@@ -18,7 +18,7 @@ export class DrawingSignatureComponent implements OnInit {
 
   // @ViewChild('signaturePadClass') elementView: ElementRef;
   imgSignatureBase64Temp: string[] = []
-  @Input() drawing: DrawingSignature;
+  drawing: DrawingSignature = new DrawingSignature();
   // @Input() base64: string = '';
   // @Output() saved: EventEmitter<any> = new EventEmitter();
   @Output() updated: EventEmitter<any> = new EventEmitter();
@@ -114,19 +114,19 @@ export class DrawingSignatureComponent implements OnInit {
     this.drawing.base64 = ''
     this.cleared.emit()
   }
-  redoVersion() {
-    this.canvasWhiteboard.redo();
-  }
-  undoVersion() {
-    this.canvasWhiteboard.undo();
-    // console.log(this.canvasWhiteboard.generateCanvasDataUrl());
-
-    // this.imgSignatureBase64Temp.pop();
-    // this.signaturePad.clear();
-    // this.signaturePad.fromDataURL(this.imgSignatureBase64Temp[this.imgSignatureBase64Temp.length - 1]);
-    // // this.base64 = this.signaturePad.toDataURL();
-    // this.saved.emit(this.signaturePad.toDataURL('image/png', 1))
-  }
+  // redoVersion() {
+  //   this.canvasWhiteboard.redo();
+  // }
+  // undoVersion() {
+  //   this.canvasWhiteboard.undo();
+  //   // console.log(this.canvasWhiteboard.generateCanvasDataUrl());
+  //
+  //   // this.imgSignatureBase64Temp.pop();
+  //   // this.signaturePad.clear();
+  //   // this.signaturePad.fromDataURL(this.imgSignatureBase64Temp[this.imgSignatureBase64Temp.length - 1]);
+  //   // // this.base64 = this.signaturePad.toDataURL();
+  //   // this.saved.emit(this.signaturePad.toDataURL('image/png', 1))
+  // }
   // drawComplete() {
   //   // will be notified of szimek/signature_pad's onEnd event
   //   // console.log(this.signaturePad.toDataURL());
@@ -143,17 +143,17 @@ export class DrawingSignatureComponent implements OnInit {
   // saveDrawing() {
   //   this.saved.emit(this.canvasWhiteboard.generateCanvasDataUrl())
   // }
-  downloadDrawing() {
-    this.canvasWhiteboard.downloadCanvasImage()
-  }
-  changeSize(event) {
-    // this.signaturePadOptions.minWidth = event.value;
-    // this.signaturePad.set('minWidth', event.value);
-    // this.signaturePad.set('maxWidth', event.value + 2);
-  }
-  drawStart() {
-    // will be notified of szimek/signature_pad's onBegin event
-    // console.log('begin drawing');
-  }
+  // downloadDrawing() {
+  //   this.canvasWhiteboard.downloadCanvasImage()
+  // }
+  // changeSize(event) {
+  //   // this.signaturePadOptions.minWidth = event.value;
+  //   // this.signaturePad.set('minWidth', event.value);
+  //   // this.signaturePad.set('maxWidth', event.value + 2);
+  // }
+  // drawStart() {
+  //   // will be notified of szimek/signature_pad's onBegin event
+  //   // console.log('begin drawing');
+  // }
 
 }
