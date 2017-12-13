@@ -343,13 +343,13 @@ module.exports = {
             html += `         <th class="col-4"></th>
                                <th class="col-4 desc">`
 
-                  item.clients.forEach(user => {
+                  item.historyClientsCross.forEach(user => {
 
                     html += '<p><b>'
                     html += user.profile.title + ' ' + user.profile.name + ' ' + user.profile.lastName
                     html += '</b></p>'
                     user.profile.address.forEach(singleAddress => {
-                      if (singleAddress.nameAddress === 'billing') {
+                      // if (singleAddress.nameAddress === 'billing') {
                         html += '<p>'
                         html += singleAddress.address + ' ' + singleAddress.address2
                         html += '</p>'
@@ -359,16 +359,18 @@ module.exports = {
                         html += '<p>'
                         html += singleAddress.zip + ' ' + singleAddress.country
                         html += '</p>'
-                      }
+                      // }
                     })
 
                     html += '<p>'
                     html += 'Tel : ' + user.profile.phoneNumber
                     html += '</p><p>'
+                  })
+
+                  item.historyClients.forEach(user => {
                     html += 'Mail : ' + user.email
                     html += '</p>'
                   })
-
                   html += `
                                </th>
                              </tr>
@@ -435,54 +437,40 @@ module.exports = {
                          <table>
                              <tr>
                                <td class="col-8"></td>
-                               <td class="col-2 alright"></td>`
-
-                  item.priceQuote.priceQuoteTaxes.forEach(priceQuoteTaxe => {
-                    // html += `<td class="col-2 ts elem">TVA: ` + priceQuoteTaxe.VAT + `%</td>`
-                    // html += `<td class="col-2 ts elem">` + priceQuoteTaxe.TotalVAT + `€</td>`
-                  })
-
-                  //  <td class="col-2 ts elem">TVA 5.5%</td>
-                  //  <td class="col-2 ts elem">TVA 10%</td>
-                  html += `
-                                  <td class="col-2 ts elem">TOTAL</td>
+                               <td class="col-2 alright"></td>
+                               <td class="col-2 ts elem">TOTAL</td>
                                </tr>
                                <tr>
                                  <td class="col-8"></td>
-                                 <td class="col-2 alctr ts elem">Sous-Total HT</td>`
+                                 <td class="col-2 alctr ts elem">Sous-Total HT</td>
+                                 <td class="col-2 elem"><b>` + Math.round(item.priceQuote.priceQuoteWithoutTaxes)
 
-                  item.priceQuote.priceQuoteTaxes.forEach(priceQuoteTaxe => {
-                    //  html += `<td class="col-2 ts elem">TVA: ` + priceQuoteTaxe.VAT + `%</td>`
-                    // html += `<td class="col-2 elem">` + Math.round(priceQuoteTaxe.TotalVAT / (priceQuoteTaxe.VAT / 100)) + `€</td>`
-                  })
-                  html += `
-                                <td class="col-2 elem"><b>` + Math.round(item.priceQuote.priceQuoteWithoutTaxes) + `€</b></td>
-                               </tr>`
 
-                  html += `
-                              <tr>
+                                 item.ownerCompanies.forEach(companie => {
+                                     // html +=  companie.quoteSettings.legalNotice
+                                     if (companie.option.currency)
+                                       html += companie.option.currency
+                                 })
+
+
+                              html += `
+                              </b></td>
+                               </tr>
+                               <tr>
+                                 <td class="col-8"></td>
+                                 <td class="col-2 alctr ts elem">Remise</td>
+                                 <td class="col-2 elem"><b>` + item.priceQuote.discountGlobal + `%</b></td>
+                               </tr>
+                               <tr>
                                 <td class="col-8"></td>
-                                <td class="col-2 alctr ts elem">Montant de TVA</td>`
-                  let vatTotal = 0
-                  item.priceQuote.priceQuoteTaxes.forEach(priceQuoteTaxe => {
-                    vatTotal += priceQuoteTaxe.TotalVAT * 1
-                    //  html += `<td class="col-2 ts elem">TVA: ` + priceQuoteTaxe.VAT + `%</td>`
-                    // html += `<td class="col-2 elem">` + Math.round(priceQuoteTaxe.TotalVAT) + `€</td>`
-                    //  html += `<td class="col-2 elem">` + priceQuoteTaxe.VAT + priceQuoteTaxe.TotalVAT / (priceQuoteTaxe.VAT /100) + `€</td>`
-                  })
-                  html += `
-                             <td class="col-2 elem"><b>` + Math.round(vatTotal) + `€</b></td>
+                                <td class="col-2 alctr ts elem">TVA</td>
+                                <td class="col-2 elem"><b>` + item.priceQuote.vatGlobal + `%</b></td>
                            </tr>
                            <tr>
                            <td class="col-8"></td>
-                           <td class="col-2 alctr ts elem">TOTAL TTC</td>`
-
-                  item.priceQuote.priceQuoteTaxes.forEach(priceQuoteTaxe => {
-                    //  html += `<td class="col-2 ts elem">TVA: ` + priceQuoteTaxe.VAT + `%</td>`
-                    // html += `<td class="col-2 elem">` + Math.round(priceQuoteTaxe.TotalVAT / (priceQuoteTaxe.VAT / 100) + priceQuoteTaxe.TotalVAT * 1) + `€</td>`
-                  })
-                  html += `
-                               <td class="col-2 elem"><b>` + Math.round(item.priceQuote.priceQuoteWithTaxes)
+                           <td class="col-2 alctr ts elem">TOTAL TTC</td>
+                           <td class="col-2 elem">
+                           <b>` + Math.round(item.priceQuote.priceGlobalWithTaxesWithDiscountWithSurfaceWithPainfulness)
 
 
 
@@ -497,9 +485,7 @@ module.exports = {
                   html += `</b></td>
                              </tr>
                          </table>
-                         <br>`
-
-                  html += `
+                         <br>
                          <table>
                            <thead>
                              <tr>

@@ -66,9 +66,9 @@ export class CompanieComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (!this.authService.isCurrentUserIsInSubPeriod()) {
-      this.step = 1;
-    }
+    // if (!this.authService.isCurrentUserIsInSubPeriod()) {
+    //   this.step = 1;
+    // }
     // this.getStripeAccountDetails()
     // this.myForm = this._fb.group({
     //   nameCompanie: ['', [Validators.required, Validators.minLength(2)]],

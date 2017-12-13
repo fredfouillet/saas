@@ -18,7 +18,7 @@ router.post('/register', function(req, res, next) {
 
 
   var companie = new Companie()
-  companie.nameCompanie = 'My Companie'
+  // companie.nameCompanie = 'My Companie'
   companie.save(function(err, result) {
     if (err) {
       return res.status(403).json({title: 'There was an issue', error: err});

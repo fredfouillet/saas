@@ -91,10 +91,10 @@ var quote = new Schema({
       priceGlobalWithDiscountWithSurfaceWithPainfulness: {type: Number, default: [0]},
 
 
-      priceQuoteTaxes: [{
-        VAT: {type: Number, default: [0]},
-        TotalVAT: {type: Number, default: [0]},
-      }]
+      // priceQuoteTaxes: [{
+      //   VAT: {type: Number, default: [0]},
+      //   TotalVAT: {type: Number, default: [0]},
+      // }]
       // paiementQuote: {type: Number, default: [0]},
     },
     // signature:{

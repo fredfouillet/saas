@@ -325,6 +325,12 @@ router.put('/:id', function(req, res, next) {
     }
     // console.log(item)
     // console.log(req.body)
+
+
+    // item.historyClients = req.body.clients
+    // item.historyClientsCross = req.body.clientsCross
+
+
     item.clients = req.body.clients
     item.historyClients = req.body.historyClients
     item.name = req.body.name
@@ -435,11 +441,9 @@ router.post('/', function(req, res, next) {
   searchQuery['ownerCompanies'] = req.user.ownerCompanies
 
   req.body.ownerCompanies = req.user.ownerCompanies
-
-
   req.body.historyClients = req.body.clients
   req.body.historyClientsCross = req.body.historyClientsCross
-  console.log('a')
+
   var quote = new Quote(req.body);
   if(quote.historyClients.length) {
     userCross.getUserCross(req.user, quote.historyClients[0]._id).then(userCrossSingle => {

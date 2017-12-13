@@ -2,7 +2,7 @@
   <app-header-title [title]="'Details'" [icon]="'dashboard'"></app-header-title>
 
   <mat-accordion class="example-headers-align">
-    <mat-expansion-panel *ngIf="authService.isCurrentUserIsInSubPeriod()" [expanded]="step === 0" (opened)="setStep(0)">
+    <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)">
       <mat-expansion-panel-header>
         <mat-panel-title>
           <mat-icon>account_balance</mat-icon>
