@@ -39,3 +39,40 @@
   
 </div>
 </div> 
+
+        <div class="" style="flex-direction: row; box-sizing: border-box; display: flex;">
+          <div class="coloredContainerX box" fxflex="" fxlayout="row" fxlayout.sm="column" fxlayout.xs="column" style="flex-direction: row; box-sizing: border-box; display: flex; flex: 1 1 1e-09px;">
+            <div fxflex="" style="flex: 1 1 1e-09px; box-sizing: border-box;"></div>
+            <div fxflex="" style="flex: 1 1 1e-09px; box-sizing: border-box;"> 
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit()" class="register-form" novalidate>
+    <h3 class="tac">Bienvenue sur Mirabelle!</h3>
+
+    <!-- <div >
+      <input #nameCompanie type="text" formControlName="nameCompanie" placeholder="nameCompanie">
+    </div> -->
+
+    <mat-form-field>
+      <input matInput #userEmail formControlName="email" placeholder="Email">
+    </mat-form-field>
+    <!-- <div [hidden]="email.valid || email.pristine" class="alert alert-danger">Please enter a valid email format</div> -->
+    <!-- <span class="help-block"></span> -->
+    <mat-form-field>
+      <input matInput type="password" formControlName="password" placeholder="Mot de Passe">
+    </mat-form-field>
+    <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
+      Password must contain 6 or more characters</div>
+    <br>
+    <div formGroupName="profile">
+      <mat-form-field>
+      <input matInput #name type="text" formControlName="name" placeholder="Prénom">
+    </mat-form-field>
+      <mat-form-field>
+      <input matInput #lastName type="text" formControlName="lastName" placeholder="Nom">
+    </mat-form-field>
+    </div>
+    <button mat-raised-button type="submit" [disabled]="!myForm.valid">Ok</button>
+    <!-- <button [ngClass]="{'done':myForm.valid,'pas-done':!myForm.valid}" type="submit" [disabled]="!myForm.valid">Register</button> -->
+    <!-- <p class="message"><a [routerLink]="'/user/login'">Back to Login screen</a></p> -->
+  </form></div>
+          </div>
+        </div>
