@@ -363,6 +363,7 @@ router.put('/:id', function(req, res, next) {
 
 //update
 router.put('/:id/signature', function(req, res, next) {
+
   if (!shared.isCurentUserHasAccess(req.user, nameObject, 'write'))
     return res.status(404).json({
       title: 'No rights',
@@ -375,20 +376,32 @@ router.put('/:id/signature', function(req, res, next) {
     if (err) {
       return res.status(404).json({message: '', err: err})
     }
-    item.drawingSignature = req.body.drawingSignature
 
-    if(item.drawingSignature.base64) {
+
+    const drawingSignature = {
+      dateSignature: new Date(),
+      namePicture: '',
+      users:[req.user]
+    }
+    if(req.body.drawingSignature.base64) {
       item.statusQuote = 'signed'
+      var base64Data = req.body.drawingSignature.base64.replace(/^data:image\/png;base64,/, '');
+      const namePicture = item._id + '_' + new Date().getTime() + '.png'
+      require('fs').writeFile('./server/uploads/signature/' + namePicture, base64Data, 'base64', function(err) {
+
+        if(err) {
+          console.log(err);
+        }
+
+        drawingSignature.namePicture = namePicture
+        item.drawingSignature = drawingSignature
+
+        saveQuote(res, item)
+      });
     } else {
       item.statusQuote = 'pending'
+      saveQuote(res, item)
     }
-
-    item.save(function(err, result) {
-      if (err) {
-        return res.status(404).json({message: 'There was an error, please try again', err: err})
-      }
-      res.status(201).json({message: '', obj: result})
-    })
   })
 });
 

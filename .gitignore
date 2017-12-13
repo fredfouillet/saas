@@ -20,6 +20,7 @@ package-lock.json
 /server/uploads/forms/**/*
 !/server/uploads/forms/index.html
 /server/uploads/pdf
+/server/uploads/signature
 
 # IDEs and editors
 /.idea

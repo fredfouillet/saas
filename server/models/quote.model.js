@@ -29,18 +29,18 @@ var quote = new Schema({
         dateInvoicePaid: {type: Date, default: [Date()]},
       }
     },
-    drawing:{
-      base64:{type: String, default: ['']},
-      backgroundForms: [{type: Schema.Types.ObjectId, ref: 'Form'}],
-      dateDrawing:{type: Date},
-      users:[{type: Schema.Types.ObjectId, ref: 'User'}],
-    },
+    // drawing:{
+    //   base64:{type: String, default: ['']},
+    //   backgroundForms: [{type: Schema.Types.ObjectId, ref: 'Form'}],
+    //   dateDrawing:{type: Date},
+    //   users:[{type: Schema.Types.ObjectId, ref: 'User'}],
+    // },
     drawingSignature:{
-      isSigned:{type: Boolean, default: [false]},
+      // isSigned:{type: Boolean, default: [false]},
       dateSignature: {type: Date, default: [Date()]},
-      base64:{type: String, default: ['']},
-      backgroundForms: [{type: Schema.Types.ObjectId, ref: 'Form'}],
-      dateDrawing:{type: Date},
+      namePicture:{type: String, default: ['']},
+      // backgroundForms: [{type: Schema.Types.ObjectId, ref: 'Form'}],
+      // dateDrawing:{type: Date},
       users:[{type: Schema.Types.ObjectId, ref: 'User'}],
     },
 

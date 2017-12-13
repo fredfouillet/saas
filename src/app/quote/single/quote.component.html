@@ -128,14 +128,18 @@
           <mat-icon aria-label="undo">undo</mat-icon>
         </button> -->
 
-        <app-actionButtons
+        <button mat-mini-fab color="accent" (click)="saveSignature()">
+          <mat-icon aria-label="clear">forward</mat-icon>
+        </button>
+
+        <!-- <app-actionButtons
           *ngIf="fetchedQuote.statusQuote === 'pending'"
           [fetchedQuote]="fetchedQuote"
           [showSaveSignatureButton]=true
           [showSaveButton]=false [showDeleteButton]=false
           (saveSignatureEmit)="saveSignature()"
           (nextStep)="buttonSaved($event)">
-        </app-actionButtons>
+        </app-actionButtons> -->
       </mat-action-row>
     </mat-expansion-panel>
 
