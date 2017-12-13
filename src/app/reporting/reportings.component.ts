@@ -108,13 +108,10 @@ export class ReportingsComponent implements OnInit {
 
   getData() {
         let newSearch = new Search()
-
         newSearch = new Search()
         newSearch.year = this.year
         newSearch.statusQuote = ''
         this.getPaiementQuotesGraph(newSearch).then((res: any) => {
-
-
           this.nameGraph = 'lineChartDataGraph1'
           this.serieNumber = 0
           this.label = 'Paiement'
@@ -192,7 +189,6 @@ export class ReportingsComponent implements OnInit {
           this.donutChartDataGraph1.labels[1] = 'Quote Signed'
           this.donutChartDataGraph1.ready[1] = true
 
-
           this.nameGraph = 'lineChartDataGraph2'
           this.serieNumber = 0
           this.label = 'Quotes Signed'
@@ -215,7 +211,6 @@ export class ReportingsComponent implements OnInit {
             this[this.nameGraph][this.serieNumber].year = element._id.year
             this[this.nameGraph][this.serieNumber].data[element._id.month - 1] = element[this.typeSum]
           })
-
         })
 
 
@@ -224,7 +219,6 @@ export class ReportingsComponent implements OnInit {
         newSearch.year = this.year
         newSearch.statusQuote = ''
         this.getQuotesGraph(newSearch).then((res: any) => {
-
           let totalData = 0;
           res.item.forEach((element, index) => {
             totalData += element.amountTotal
@@ -232,13 +226,6 @@ export class ReportingsComponent implements OnInit {
           this.donutChartDataGraph1.data[0] = totalData
           this.donutChartDataGraph1.labels[0] = 'Quote'
           this.donutChartDataGraph1.ready[0] = true
-
-
-
-          // let nameGraph : string = ''
-          // let serieNumber: number = 0
-          // let label: string = ''
-          // let typeSum: string = ''
 
           this.nameGraph = 'lineChartDataGraph1'
           this.serieNumber = 1
@@ -263,7 +250,6 @@ export class ReportingsComponent implements OnInit {
           })
 
 
-
           this.nameGraph = 'lineChartDataGraph3'
           this.serieNumber = 1
           this.label = 'Count Quotes'
@@ -285,8 +271,6 @@ export class ReportingsComponent implements OnInit {
             this[this.nameGraph][this.serieNumber].year = element._id.year
             this[this.nameGraph][this.serieNumber].data[element._id.month - 1] = element[this.typeSum]
           })
-
-
         })
   }
 
