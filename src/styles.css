@@ -2,6 +2,10 @@
 
 /*ALAN: Signature*/
 
+.minw500 {
+  min-width: 500px; 
+}
+
 .tac {
   text-align: center;
 }
