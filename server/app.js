@@ -67,11 +67,10 @@ var chat    = require('./routes/chat')
 
 
 
-
 var app = express()
 
-app.use(cors())
-app.options('*', cors())
+// app.use(cors())
+// app.options('*', cors())
 
 mongoose.Promise = global.Promise  // gets rid of the mongoose promise deprecated warning
 mongoose.connect(config.database)
