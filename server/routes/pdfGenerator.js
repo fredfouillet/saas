@@ -59,7 +59,7 @@ p, a {
     height: 80px;
   }
   .imglogo {
-    height: 150px;
+    height: 100px;
     text-align: center;
    display: block;
    margin-left: auto;
