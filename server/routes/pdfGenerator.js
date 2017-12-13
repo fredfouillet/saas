@@ -155,7 +155,7 @@ p, a {
     font-weight: 300;
     background-color: #ff4351;
     color: #fff;
-    
+
   }
   #pageHeader {
     width:100%;
@@ -189,56 +189,71 @@ module.exports = {
 
   generatePDF (req, res, next) {
     return new Promise(function(resolve, reject) {
-      User.findOne({_id: req.user._id}).exec(function(err, user) {
-        if (err) {
-          return res.status(403).json({title: 'There was a problem', error: err})
-        }
+      // User
+      // .findOne({_id: req.user._id})
+      // .populate({path: 'forms', model: 'Form'})
+      // .populate({path: 'rights', model: 'Right'}).populate({path: 'salesMan', model: 'User'}).populate({path: 'ownerCompanies', model: 'Companie'}).populate({path: 'profile.profilePicture', model: 'Form'})
+      // .exec(function(err, user) {
+      //   if (err) {
+      //     return res.status(403).json({title: 'There was a problem', error: err})
+      //   }
+      //
+      //   if (!user) {
+      //     return res.status(404).json({
+      //       title: 'No form found',
+      //       error: {
+      //         message: 'Item not found!'
+      //       }
+      //     })
+      //   }
 
-        if (!user) {
-          return res.status(404).json({
-            title: 'No form found',
-            error: {
-              message: 'Item not found!'
-            }
-          })
-        }
+        // Companie.findById(user.ownerCompanies[0]).populate({path: 'forms', model: 'Form'}).populate({path: 'rights', model: 'Right'}).exec(function(err, companie) {
+        //   if (err) {
+        //     return res.status(404).json({message: '', err: err})
+        //   }
+        //   if (!companie) {
+        //     return res.status(404).json({
+        //       title: 'No obj found',
+        //       error: {
+        //         message: 'Obj not found!'
+        //       }
+        //     })
+        //   } else {
 
-        Companie.findById(user.ownerCompanies[0]).populate({path: 'forms', model: 'Form'}).populate({path: 'rights', model: 'Right'}).exec(function(err, companie) {
-          if (err) {
-            return res.status(404).json({message: '', err: err})
-          }
-          if (!companie) {
-            return res.status(404).json({
-              title: 'No obj found',
-              error: {
-                message: 'Obj not found!'
-              }
-            })
-          } else {
-
-            Quote.findById((req.params.quoteId), function(err, obj) {
-              if (err) {
-                return res.status(500).json({message: 'An error occured', err: err})
-              }
-              if (!obj) {
-                return res.status(404).json({
-                  title: 'No form found',
-                  error: {
-                    message: 'Form not found!'
-                  }
-                })
-              }
+            // Quote
+            // .findOne({_id: req.params.quoteId})
+            // .populate({path: 'forms', model: 'Form'})
+            // .populate({path: 'rights', model: 'Right'}).populate({path: 'salesMan', model: 'User'}).populate({path: 'ownerCompanies', model: 'Companie'}).populate({path: 'profile.profilePicture', model: 'Form'})
+            // .exec(function(err, obj) {
+            //
+            // // findById((req.params.quoteId), function(err, obj) {
+            //   if (err) {
+            //     return res.status(500).json({message: 'An error occured', err: err})
+            //   }
+            //   if (!obj) {
+            //     return res.status(404).json({
+            //       title: 'No form found',
+            //       error: {
+            //         message: 'Form not found!'
+            //       }
+            //     })
+            //   }
 
               // let findQuery = {}
               // findQuery['_id'] = req.params.id
-              Quote.findById({_id: req.params.quoteId}).populate({
+              Quote.findById({_id: req.params.quoteId})
+              .populate({
                 path: 'projects',
                 model: 'Project',
                 populate: {
                   path: 'assignedTos',
                   model: 'User'
                 }
-              }).populate({path: 'signature.users', model: 'User'}).populate({path: 'clients', model: 'User'}).populate({
+              })
+              .populate({path: 'signature.users', model: 'User'})
+              .populate({path: 'clients', model: 'User'})
+              .populate({path: 'ownerCompanies', model: 'Companie'})
+              .populate({
                 path: 'devisDetails.bucketProducts.productInit',
                 model: 'Product',
                 populate: {
@@ -265,21 +280,51 @@ module.exports = {
                   ` + styleCSS +`
                  </style>
                   </head>
-                  <div id="pageHeader" class="col-12">
+                  <div id="pageHeader" class="col-12">`
 
-                    <img class="imglogo" src="http://belmard-renovation.fr/wp-content/uploads/2017/10/belmard_logo_100.png">
+
+                  item.ownerCompanies.forEach(companie => {
+                    companie.forms.forEach(form => {
+                      html +=  '<img class="imglogo" src="' + 'http://localhost/uploads/forms/' + form.owner + '/' + form.imagePath + '">'
+                    })
+                  })
+
+                  html += `
+
                   </div>
                   <table class="print-friendly">
                            <thead>
-                             <tr>
-                               <th class="col-4 desc">
-                               <p><b>Belmard Bâtiment</b></p>
-                               <p>30, rue Belgrand</p>
-                               <p>75020 Paris</p>
-                               <p>Tel : 01.40.33.88.33</p>
-                               <p>Mail : Belmard.batiment@gmail.com</p>
-                               </th>
-                               <th class="col-4"></th>
+                             <tr>`
+
+                             item.ownerCompanies.forEach(companie => {
+                               html += '<th class="col-4 desc">'
+                               html += '<p><b>'
+                               html += companie.nameCompanie
+                               html += '</b></p>'
+                               companie.address.forEach(singleAddress => {
+                                 html += '<p>'
+                                 html += singleAddress.address
+                                 html += '</p>'
+                                 html += '<p>'
+                                 html += singleAddress.zip
+                                 html += '</p>'
+                                 html += '<p>'
+                                 html += singleAddress.city
+                                 html += '</p>'
+                                 html += '<p>'
+                                 html += singleAddress.country
+                                 html += '</p>'
+
+                               })
+
+                               html += '<p>'
+                               html += 'Mail : ' + companie.email
+                               html += '</p>'
+                               html += '</th>'
+                            })
+
+
+            html += `         <th class="col-4"></th>
                                <th class="col-4 desc">`
 
                   item.clients.forEach(user => {
@@ -335,14 +380,7 @@ module.exports = {
                            </thead>
                            <tbody>`
                   item.devisDetails.forEach(devisDetail => {
-                    // html += '<tr class="ts">'
-                    // html += '<td class="desc elem">' + devisDetail.nameBucketProducts + '</td>'
-                    // html += `
-                    //            <td class="desc"></td>
-                    //            <td class="desc"></td>
-                    //            <td class="desc"></td>
-                    //            <td class="desc"></td>
-                    //         </tr>`
+
                     devisDetail.bucketProducts.forEach(bucketProduct => {
                       html += '<tr class="bghFree">'
                       let description = ''
@@ -476,10 +514,10 @@ module.exports = {
                     }
                   })
                 }
-              })
-            })
-          }
-        })
+            //   })
+            // })
+          // }
+        // })
       })
     })
   },
