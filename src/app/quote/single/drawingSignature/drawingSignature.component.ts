@@ -25,7 +25,7 @@ export class DrawingSignatureComponent implements OnInit {
   @Output() updated: EventEmitter<any> = new EventEmitter();
   @Output() cleared: EventEmitter<any> = new EventEmitter();
   editMode: boolean = false
-  color: string = ''
+  // color: string = ''
   // signaturePadOptions = { // passed through to szimek/signature_pad constructor
   //   minWidth: 1,
   //   maxWidth: 3,
@@ -59,7 +59,7 @@ export class DrawingSignatureComponent implements OnInit {
       this.updated.emit(this.canvasWhiteboard.generateCanvasDataUrl())
   }
   ngOnInit() {
-    this.changeColor('#757575')
+    // this.changeColor('#757575')
   }
 
   // getPicture() {
@@ -79,7 +79,7 @@ export class DrawingSignatureComponent implements OnInit {
 
   ngAfterViewInit() {
     setTimeout(_=> {
-      this.editMode = true
+      // this.editMode = true
       this.changeSlider()
     });
     // this.changeSlider()
@@ -103,12 +103,12 @@ export class DrawingSignatureComponent implements OnInit {
     // }, 5);
 
   }
-  changeColor(color: string) {
-    this.canvasWhiteboard.changeColor(color);
-    this.color = color;
-    // this.signaturePadOptions.penColor = color;
-    // this.signaturePad.set('penColor', color);
-  }
+  // changeColor(color: string) {
+  //   this.canvasWhiteboard.changeColor(color);
+  //   this.color = color;
+  //   // this.signaturePadOptions.penColor = color;
+  //   // this.signaturePad.set('penColor', color);
+  // }
   clearDrawing() {
     // this.signaturePad.clear();
     this.canvasWhiteboard.clearCanvas();

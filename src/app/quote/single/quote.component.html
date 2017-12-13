@@ -114,8 +114,6 @@
       </mat-expansion-panel-header>
       <app-drawing-signature
         *ngIf="fetchedQuote.statusQuote === 'pending'"
-
-
         (updated)="drawingSignatureUpdated($event)">
       </app-drawing-signature>
       <img style="width: 100%;" *ngIf="fetchedQuote.statusQuote !== 'pending'" [src]="'./uploads/signature/' + fetchedQuote.drawingSignature.namePicture">
@@ -124,11 +122,8 @@
         <button mat-mini-fab color="warn" (click)="clearDrawing()">
           <mat-icon aria-label="clear">clear</mat-icon>
         </button>
-        <!-- <button mat-mini-fab color="accent" (click)="DrawingSignature.undoVersion()">
-          <mat-icon aria-label="undo">undo</mat-icon>
-        </button> -->
 
-        <button mat-mini-fab color="accent" (click)="saveSignature()">
+        <button mat-mini-fab color="primary" (click)="saveSignature()">
           <mat-icon aria-label="clear">forward</mat-icon>
         </button>
 
