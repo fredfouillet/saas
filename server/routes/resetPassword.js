@@ -89,15 +89,15 @@ router.post('/:token', function(req, res) {
 
       var mailOptions = {
         to: user.email,
-        from: 'no-reply@yourdomain.com',
-        subject: 'Angular 2 Form | Password Changed!',
-        text: 'Hello,\n\n' +
-        'This email has been sent to you to inform you that the password for the acount ' + user.email + ' has been changed.\n'
+        from: 'contact@mirabelle.io',
+        subject: 'Modification du mot de passe sur Mirabelle',
+        text: 'Bonjour,\n\n' +
+        'Vous recevez cet email pour vous informer que la mot de passe pour du compte ' + user.email + ' a bien été modifié.\n'
       };
       mailer.sendMail(mailOptions, function(err) {
-        console.log('info', 'An e-mail has been sent to ' + user.email + ' with further instructions.');
+        console.log('info', 'Un message a été envoyé à ' + user.email + ' avec de plus amples informations.');
         return res.status(200).json({
-          message: 'Success'
+          message: 'Succès'
         })
       });
     }
