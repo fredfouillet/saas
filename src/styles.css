@@ -2,6 +2,10 @@
 
 /*ALAN: Signature*/
 
+.maxw400 {
+  max-width: 400px; 
+}
+
 .areusure {
   padding-top: 15px; 
 }
