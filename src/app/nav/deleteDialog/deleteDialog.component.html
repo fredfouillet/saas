@@ -1,5 +1,7 @@
-<div class="areusure">
+<div class="areusure container">
   <p style="max-width: 280px;">Cette action est irréversible. Confirmez-vous la suppression ?</p>
   <button type="button" class="justkd" (click)="dialogRefDelete.close('')">Cancel</button>
+  <button mat-raised-button color="primary" (click)="dialogRefDelete.close('')">Primary</button>
   <button type="button" class="dltfrv" (click)="dialogRefDelete.close('delete')">Delete</button>
+  <button mat-raised-button color="warn" (click)="dialogRefDelete.close('delete')">Delete</button>
 </div>
