@@ -510,8 +510,8 @@ module.exports = {
                     </p>
                     `
 
-                  if (item.drawingSignature.base64)
-                    html += `<img class="imgSignature" src="${item.drawingSignature.base64}" />`
+                  if (item.drawingSignature.namePicture)
+                    html += `<img class="imgSignature" src="http://localhost/uploads/signature/${item.drawingSignature.namePicture}" />`
 
                   html += `<p class="inf2">Le `
                   if (item.drawingSignature.dateSignature)
