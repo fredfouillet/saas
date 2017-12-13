@@ -55,9 +55,9 @@
 
 
 
-.mat-expansion-panel-body {
+/*.mat-expansion-panel-body {
   overflow: visible!important;
-}
+}*/
 
 .width100perc {
   width: 100%;
@@ -80,9 +80,6 @@
   margin-top: 30px;
 }
 
-html {
-  background-color: #fafafa;
-}
 
 .bgw {
   background-color: #fff;
@@ -329,9 +326,15 @@ app-root {
   margin: 20px;
   padding: 20px;
 }*/
+
+@media screen and (min-width: 1025px) {
+  html {
+    overflow: hidden;
+  }
+}
 html {
   height: 100%;
-  overflow: hidden;
+  background-color: #fafafa;
 }
 body {
   height: 100%;
