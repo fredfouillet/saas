@@ -75,16 +75,16 @@ router.post('/', function (req, res, next) {
         <head>
           <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-          <title>Email from My Chair App by Phyto Paris</title>
+          <title>Email</title>
           <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"></link>
         </head>
         <body style="margin: 0; padding: 0; font-family: 'Montserrat', sans-serif;">
           <table align="center" border="0" cellpadding="0" cellspacing="0" width="600" style="border: 1px solid #cccccc;">
             <tr>
-              <td align="center" bgcolor="#0a2f87" height="150">
+              <td align="center" bgcolor="#ff4351" height="150">
                 <img
-                  src="http://${req.headers.host}/assets/images/mychair-logo-horizontal-white.png"
-                  alt="Email from My Chair by Phyto Paris" width="305" height="100" style="display: block; color: #ffffff;"
+                  src="http://${req.headers.host}/assets/images/logo-mirabelle-400.png"
+                  alt="Email de la part de Mirabelle" width="305" height="100" style="display: block; color: #ffffff;"
                 />
               </td>
             </tr>
@@ -93,24 +93,23 @@ router.post('/', function (req, res, next) {
                 <table border="0" cellpadding="0" cellspacing="0" width="100%">
                   <tr>
                     <td style="padding: 15px 0 30px 0;">
-                      You are receiving this email because you or someone else asked for a password reset for your account on the My Chair by Phyto Paris App.
-                      Please follow the link or copy paste it in your browser address bar to initiate password change:
+                      Vous recevez cet email car vous avez fait une demande de "mot de passe oublié" pour votre compte sur Mirabelle. Veuillez, s'il vous plait cliquer sur le bouton ci-dessous ou copier/coller le lien directement dans votre navigateur pour réinitialiser votre mot de passe :
                     </td>
                   </tr>
                   <tr>
-                    <td align="center" style="background-color: #0a2f87; padding: 10px 15px;">
+                    <td align="center" style="background-color: #ff4351; padding: 10px 15px;">
                       <a
                         href="http://${req.headers.host}/#/user/reset/${token}"
                         style="background-color: #0a2f87; padding: 10px 15px; border: none; outline: none; color: #ffffff; text-decoration: none;"
                       >
-                        Reset Password
+                        Réinitialiser le mot de passe
                       </a>
                     </td>
                   </tr>
                   <tr>
                     <td style="padding: 15px 0 30px 0;">
-                      Direct Link: http://${req.headers.host}/#/user/reset/${token}<br>
-                      The link will remain active for one hour. If you didnt asked for a password reset, please ignore this email and contact your manager to let them know someone tried to log into your account.
+                      Lien direct : http://${req.headers.host}/#/user/reset/${token}<br>
+                      Le lien sera valide pendant une heure. Si vous n'avez pas demandé de réinitialisation de mot de passe, merci d'ignorer cet email.
                     </td>
                   </tr>
                 </table>
@@ -121,10 +120,10 @@ router.post('/', function (req, res, next) {
                 <table border="0" cellpadding="0" cellspacing="0" width="100%">
                  <tr>
                   <td style="padding: 15px 15px 15px 15px;">
-                    <a href="https://www.phyto.com/" style="text-decoration: none;">Phyto Website</a>
+                    <a href="https://www.mirabelle.io/" style="text-decoration: none;">Site Web Mirabelle</a>
                   </td>
                   <td style="padding: 15px 15px 15px 15px;">
-                    <a href="mailto:mychair@alesgroup.com?Subject=My%20Chair%20App%20Invitation%20Email" style="text-decoration: none;">Contact Us</a>
+                    <a href="mailto:hello@mirabelle.io?Subject=false%reset" style="text-decoration: none;">Nous sontacter</a>
                   </td>
                  </tr>
                 </table>
@@ -137,7 +136,7 @@ router.post('/', function (req, res, next) {
       var mailOptions = {
         to: user.email,
         from: config.userGmail,
-        subject: 'My Chair by Phyto Paris | Password Change Request  ',
+        subject: 'Mirabelle | Demande de changement de mot de passe  ',
         html: html
       };
       mailer.sendMail(mailOptions, function (err) {
