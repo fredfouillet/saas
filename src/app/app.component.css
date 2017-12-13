@@ -16,7 +16,7 @@
 
 mat-sidenav-container {
   width: 100%;
-  min-height: 100vh;
+  min-height: 100%;
 
 }
 mat-sidenav {
@@ -31,7 +31,9 @@ app-navbar {
 }
 
 .docs-component-sidenav-content {
-    min-height: 100vh;
+    /*min-height: 100vh;*/
+    height: 100vh;
+    overflow: auto;
     /*display: -webkit-box;*/
     /*display: -ms-flexbox;*/
     display: flex;
