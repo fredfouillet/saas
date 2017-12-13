@@ -482,7 +482,20 @@ module.exports = {
                     // html += `<td class="col-2 elem">` + Math.round(priceQuoteTaxe.TotalVAT / (priceQuoteTaxe.VAT / 100) + priceQuoteTaxe.TotalVAT * 1) + `€</td>`
                   })
                   html += `
-                               <td class="col-2 elem"><b>` + Math.round(item.priceQuote.priceQuoteWithTaxes) + `€</b></td>
+                               <td class="col-2 elem"><b>` + Math.round(item.priceQuote.priceQuoteWithTaxes)
+
+
+
+
+                    item.ownerCompanies.forEach(companie => {
+                        // html +=  companie.quoteSettings.legalNotice
+                        if (companie.option.currency)
+                          html += companie.option.currency
+
+                    })
+
+
+                  html += `</b></td>
                              </tr>
                          </table>
                          <br>`
