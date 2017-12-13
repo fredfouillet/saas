@@ -11,6 +11,7 @@ import { CanvasWhiteboardComponent} from 'ng2-canvas-whiteboard';
   styleUrls: ['./drawingSignature.component.css']
 })
 
+
 export class DrawingSignatureComponent implements OnInit {
   // @ViewChild(SignaturePad) signaturePad: SignaturePad;
   // @ViewChild('signaturePadClass') elementView: ElementRef;
