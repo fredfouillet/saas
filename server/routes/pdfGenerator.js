@@ -252,7 +252,14 @@ module.exports = {
               })
               .populate({path: 'signature.users', model: 'User'})
               .populate({path: 'clients', model: 'User'})
-              .populate({path: 'ownerCompanies', model: 'Companie'})
+              .populate({
+                path: 'ownerCompanies',
+                model: 'Companie',
+                populate: {
+                  path: 'forms',
+                  model: 'Form'
+                }
+              })
               .populate({
                 path: 'devisDetails.bucketProducts.productInit',
                 model: 'Product',
@@ -279,20 +286,29 @@ module.exports = {
                  <style type="text/css">
                   ` + styleCSS +`
                  </style>
-                  </head>
-                  <div id="pageHeader" class="col-12">`
+                  </head>`
+                  // html += '<div id="pageHeader" class="col-12">'
+
+                  // html +=  '<img class="imglogo" src="http://localhost/uploads/forms/5a15d4b688f48195f24e0345/5de6.alan.jpeg">'
+                  // html +=  '<img class="imglogo" src="http://belmard-renovation.fr/wp-content/uploads/2017/10/belmard_logo_100.png">'
+
+                  // html += '</div>'
+                  // html += `
+
 
 
                   item.ownerCompanies.forEach(companie => {
                     companie.forms.forEach(form => {
+
+                      // html +=  'http://localhost/uploads/forms/' + form.owner + '/' + form.imagePath
+                      // html +=  '<img class="imglogo" src="http://belmard-renovation.fr/wp-content/uploads/2017/10/belmard_logo_100.png">'
                       html +=  '<img class="imglogo" src="' + 'http://localhost/uploads/forms/' + form.owner + '/' + form.imagePath + '">'
+                      // html +=  '<img class="imglogo" src="http://localhost/uploads/forms/5a15d4b688f48195f24e0345/5de6.alan.jpeg">'
                     })
                   })
 
                   html += `
-
-                  </div>
-                  <table class="print-friendly">
+                    <table class="print-friendly">
                            <thead>
                              <tr>`
 
