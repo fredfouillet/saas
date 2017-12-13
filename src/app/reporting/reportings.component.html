@@ -21,12 +21,12 @@
 
   <div class="row">
     <div *ngIf="lineChartDataGraph2[0].ready && lineChartDataGraph2[1].ready" class="col-md-6 col-12 marginTop">
-      <mat-card>
-        <h1><b>{{lineChartDataGraph2[0].data[month]| round | currency}}</b></h1>
+      <mat-card class="ac">
+        <!-- <div class="bigNumber">{{lineChartDataGraph2[0].data[month]| round | currency}}</div>
         {{'Quote this month'}}
-        <br>
-        <b>{{lineChartDataGraph2[1].data[month]| round | currency}}</b>
-           {{'Quote signed this month'}}
+        <br> -->
+        <div class="bigNumber">{{lineChartDataGraph2[1].data[month]| round | currency}}</div>
+        {{'Quote signed this month'}}
       </mat-card>
     </div>
     <div *ngIf="lineChartDataGraph1[0].ready && lineChartDataGraph1[1].ready" class="col-md-6 col-12 marginTop">
@@ -40,6 +40,10 @@
     </div>
     <div *ngIf="lineChartDataGraph4[0].ready && lineChartDataGraph4[1].ready" class="col-md-6 col-12 marginTop">
       <canvas baseChart style="height: 100%;" class="h50 bgw" [datasets]="lineChartDataGraph4" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="'bar'"></canvas>
+    </div>
+    <div *ngIf="donutChartDataGraph1.data.length" class="col-md-6 col-12 marginTop">
+      <!-- <canvas baseChart style="height: 100%;" class="h50 bgw" [datasets]="this.donutChartDataGraph1.data" [labels]="this.donutChartDataGraph1.labels" [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="'doughnut'"></canvas> -->
+      <!-- {{this.donutChartDataGraph1|json}} -->
     </div>
   </div>
 

@@ -42,6 +42,10 @@ export class ReportingsComponent implements OnInit {
   lineChartDataGraph2 = [ new EmptyRow(), new EmptyRow() ]
   lineChartDataGraph3 = [ new EmptyRow(), new EmptyRow() ]
   lineChartDataGraph4 = [ new EmptyRow(), new EmptyRow() ]
+  donutChartDataGraph1 = {
+    labels: [],
+    data: []
+  }
   search: Search = new Search();
   // search = {
   //   orderBy : '',
@@ -87,34 +91,129 @@ export class ReportingsComponent implements OnInit {
   }
   getData() {
         let newSearch = new Search()
-        newSearch.year = this.year
-        newSearch.isSigned = false
-        this.getPaiementQuotesGraph(newSearch, 'lineChartDataGraph1', 0, 'Paiement', 'amountTotal')
-        this.getQuotesGraph(newSearch, 'lineChartDataGraph1', 1, 'Quote', 'amountTotal')
-
-
-        newSearch = new Search()
-        newSearch.year = this.year
-        newSearch.isSigned = true
-        this.getQuotesGraph(newSearch, 'lineChartDataGraph2', 0, 'Quotes Signed', 'amountTotal')
-        newSearch.isSigned = false
-        this.getQuotesGraph(newSearch, 'lineChartDataGraph2', 1, 'All Quotes', 'amountTotal')
 
         newSearch = new Search()
         newSearch.year = this.year
         newSearch.isSigned = false
-        this.getPaiementQuotesGraph(newSearch, 'lineChartDataGraph3', 0, 'Count Paiement', 'count')
-        this.getQuotesGraph(newSearch, 'lineChartDataGraph3', 1, 'Count Quotes', 'count')
+        this.getPaiementQuotesGraph(newSearch).then((res: any) => {
+          let nameGraph : string = ''
+          let serieNumber: number = 0
+          let label: string = ''
+          let typeSum: string = ''
+
+          nameGraph = 'lineChartDataGraph1'
+          serieNumber = 0
+          label = 'Paiement'
+          typeSum = 'amountTotal'
+          this[nameGraph][serieNumber].ready = true
+          this[nameGraph][serieNumber].label = label
+          res.item.forEach((element, index) => {
+            this[nameGraph][serieNumber].year = element._id.year
+            this[nameGraph][serieNumber].data[element._id.month - 1] = element[typeSum]
+          })
+
+          nameGraph = 'lineChartDataGraph3'
+          serieNumber = 0
+          label = 'Count Paiement'
+          typeSum = 'count'
+          this[nameGraph][serieNumber].ready = true
+          this[nameGraph][serieNumber].label = label
+          res.item.forEach((element, index) => {
+            this[nameGraph][serieNumber].year = element._id.year
+            this[nameGraph][serieNumber].data[element._id.month - 1] = element[typeSum]
+          })
+
+        })
+
+
 
 
         newSearch = new Search()
         newSearch.year = this.year
-        newSearch.isSigned = true
-        this.getQuotesGraph(newSearch, 'lineChartDataGraph4', 0, 'Count Quotes Signed', 'count')
         newSearch.isSigned = false
-        this.getQuotesGraph(newSearch, 'lineChartDataGraph4', 1, 'count All Quotes', 'count')
+        this.getQuotesGraph(newSearch).then((res: any) => {
+
+          let totalData = 0;
+          res.item.forEach((element, index) => {
+            console.log(element)
+            totalData += element.amountTotal
+          })
+          this.donutChartDataGraph1.data[0] = totalData
+          this.donutChartDataGraph1.labels[0] = 'Quote'
 
 
+
+          let nameGraph : string = ''
+          let serieNumber: number = 0
+          let label: string = ''
+          let typeSum: string = ''
+
+          nameGraph = 'lineChartDataGraph1'
+          serieNumber = 1
+          label = 'Quote'
+          typeSum = 'amountTotal'
+          this[nameGraph][serieNumber].ready = true
+          this[nameGraph][serieNumber].label = label
+          res.item.forEach((element, index) => {
+            this[nameGraph][serieNumber].year = element._id.year
+            this[nameGraph][serieNumber].data[element._id.month - 1] = element[typeSum]
+          })
+
+          nameGraph = 'lineChartDataGraph2'
+          serieNumber = 1
+          label = 'Quote'
+          typeSum = 'amountTotal'
+          this[nameGraph][serieNumber].ready = true
+          this[nameGraph][serieNumber].label = label
+          res.item.forEach((element, index) => {
+            this[nameGraph][serieNumber].year = element._id.year
+            this[nameGraph][serieNumber].data[element._id.month - 1] = element[typeSum]
+          })
+
+          nameGraph = 'lineChartDataGraph2'
+          serieNumber = 0
+          label = 'Quotes Signed'
+          typeSum = 'amountTotal'
+          this[nameGraph][serieNumber].ready = true
+          this[nameGraph][serieNumber].label = label
+          res.item.forEach((element, index) => {
+            this[nameGraph][serieNumber].year = element._id.year
+            this[nameGraph][serieNumber].data[element._id.month - 1] = element[typeSum]
+          })
+
+          nameGraph = 'lineChartDataGraph3'
+          serieNumber = 1
+          label = 'Count Quotes'
+          typeSum = 'count'
+          this[nameGraph][serieNumber].ready = true
+          this[nameGraph][serieNumber].label = label
+          res.item.forEach((element, index) => {
+            this[nameGraph][serieNumber].year = element._id.year
+            this[nameGraph][serieNumber].data[element._id.month - 1] = element[typeSum]
+          })
+
+          nameGraph = 'lineChartDataGraph4'
+          serieNumber = 1
+          label = 'count All Quotes'
+          typeSum = 'count'
+          this[nameGraph][serieNumber].ready = true
+          this[nameGraph][serieNumber].label = label
+          res.item.forEach((element, index) => {
+            this[nameGraph][serieNumber].year = element._id.year
+            this[nameGraph][serieNumber].data[element._id.month - 1] = element[typeSum]
+          })
+
+          nameGraph = 'lineChartDataGraph4'
+          serieNumber = 0
+          label = 'Count Quotes Signed'
+          typeSum = 'count'
+          this[nameGraph][serieNumber].ready = true
+          this[nameGraph][serieNumber].label = label
+          res.item.forEach((element, index) => {
+            this[nameGraph][serieNumber].year = element._id.year
+            this[nameGraph][serieNumber].data[element._id.month - 1] = element[typeSum]
+          })
+        })
   }
 
 
@@ -151,34 +250,47 @@ export class ReportingsComponent implements OnInit {
   //   this.location.back();
   // }
 
-  getQuotesGraph(search: Search, nameGraph: string, serieNumber: number, label: string, typeSum: string) {
-    this.quoteService.getQuotesGraph(search)
-      .subscribe(
-        res => {
-          this[nameGraph][serieNumber].ready = true
-          this[nameGraph][serieNumber].label = label
-          res.item.forEach((element, index) => {
-            this[nameGraph][serieNumber].year = element._id.year
-            this[nameGraph][serieNumber].data[element._id.month - 1] = element[typeSum]
-          })
-        },
-        error => { console.log(error) }
-      );
+  getQuotesGraph(search: Search) {
+    const this2 = this
+    return new Promise(function(resolve, reject) {
+      this2.quoteService.getQuotesGraph(search)
+        .subscribe(
+          res => {
+            resolve(res)
+            // this[nameGraph][serieNumber].ready = true
+            // this[nameGraph][serieNumber].label = label
+            // res.item.forEach((element, index) => {
+            //   this[nameGraph][serieNumber].year = element._id.year
+            //   this[nameGraph][serieNumber].data[element._id.month - 1] = element[typeSum]
+            // })
+          },
+          error => {
+            reject(error)
+            console.log(error) }
+        );
+    })
   }
 
-  getPaiementQuotesGraph(searchQuote: Search, nameGraph: string, serieNumber: number, label: string, typeSum: string) {
-    this.paiementQuoteService.getPaiementQuotesGraph(searchQuote)
-      .subscribe(
-        res => {
-          this[nameGraph][serieNumber].ready = true
-          this[nameGraph][serieNumber].label = label
-          res.item.forEach((element, index) => {
-            this[nameGraph][serieNumber].year = element._id.year
-            this[nameGraph][serieNumber].data[element._id.month - 1] = element[typeSum]
-          })
-        },
-        error => { console.log(error) }
-      );
+  getPaiementQuotesGraph(searchQuote: Search) {
+    const this2 = this
+    return new Promise(function(resolve, reject) {
+      this2.paiementQuoteService.getPaiementQuotesGraph(searchQuote)
+        .subscribe(
+          res => {
+            resolve(res)
+            // this[nameGraph][serieNumber].ready = true
+            // this[nameGraph][serieNumber].label = label
+            // res.item.forEach((element, index) => {
+            //   this[nameGraph][serieNumber].year = element._id.year
+            //   this[nameGraph][serieNumber].data[element._id.month - 1] = element[typeSum]
+            // })
+          },
+          error => {
+            reject(error)
+            console.log(error)
+          }
+        );
+    })
   }
 
 
