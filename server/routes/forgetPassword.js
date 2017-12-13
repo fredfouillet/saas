@@ -100,7 +100,7 @@ router.post('/', function (req, res, next) {
                     <td align="center" style="background-color: #ff4351; padding: 10px 15px;">
                       <a
                         href="http://${req.headers.host}/#/user/reset/${token}"
-                        style="background-color: #0a2f87; padding: 10px 15px; border: none; outline: none; color: #ffffff; text-decoration: none;"
+                        style="background-color: #ff4351; padding: 10px 15px; border: none; outline: none; color: #ffffff; text-decoration: none;"
                       >
                         Réinitialiser le mot de passe
                       </a>
@@ -116,7 +116,7 @@ router.post('/', function (req, res, next) {
               </td>
             </tr>
             <tr>
-              <td bgcolor="#eeeeee">
+              <td bgcolor="#ff4351">
                 <table border="0" cellpadding="0" cellspacing="0" width="100%">
                  <tr>
                   <td style="padding: 15px 15px 15px 15px;">
