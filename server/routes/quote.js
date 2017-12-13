@@ -144,59 +144,63 @@ router.get('/maxQuoteNumber', function (req, res, next) {
   })
 })
 
-router.get('/:id', function(req, res, next) {
 
-  Quote.findById((req.params.id), function(err, obj) {
-    if (err) {
-      return res.status(500).json({
-        title: 'No form found',
-        error: {
-          message: err
+
+function getQuote (idQuote) {
+  return new Promise(function (resolve, reject) {
+      Quote.findById((idQuote), function(err, obj) {
+        if (err) {
+          reject(err)
         }
-      })
-    }
-    if (!obj) {
-      return res.status(404).json({
-        title: 'No form found',
-        error: {
-          message: 'Form not found!'
+        if (!obj) {
+          reject(new Error({
+            title: 'No form found',
+            error: {
+              message: 'Form not found!'
+            }
+          }))
         }
-      })
-    }
 
-    // let findQuery = {}
-    // findQuery['_id'] = req.params.id
-    Quote.findById({_id: req.params.id})
-      .populate({path: 'companieClients', model: 'Companie'})
-      .populate({path: 'signature.users', model: 'User'})
-      .populate({path: 'clients', model: 'User'})
-      .populate({path: 'parentQuotes', model: 'Quote'})
-      .populate({path: 'drawing.backgroundForms', model: 'Form'})
-      .populate({path: 'forms', model: 'Form'})
-    // .populate({path: 'devisDetails.bucketProducts.productInit', model: 'Product'})
-      .populate({
-      path: 'devisDetails.bucketProducts.productInit',
-      model: 'Product',
-      populate: {
-        path: 'forms',
-        model: 'Form'
-      }
-
-    }).exec(function(err, item) {
-      if (err) {
-        return res.status(404).json({message: '', err: err})
-      }
-      if (!item) {
-        return res.status(404).json({
-          title: 'No obj found',
-          error: {
-            message: 'Obj not found!'
+        Quote.findById({_id: idQuote})
+          .populate({path: 'companieClients', model: 'Companie'})
+          .populate({path: 'signature.users', model: 'User'})
+          .populate({path: 'clients', model: 'User'})
+          .populate({path: 'parentQuotes', model: 'Quote'})
+          .populate({path: 'drawing.backgroundForms', model: 'Form'})
+          .populate({path: 'forms', model: 'Form'})
+        // .populate({path: 'devisDetails.bucketProducts.productInit', model: 'Product'})
+          .populate({
+          path: 'devisDetails.bucketProducts.productInit',
+          model: 'Product',
+          populate: {
+            path: 'forms',
+            model: 'Form'
+          }
+        }).exec(function(err, item) {
+          if (err) {
+            reject(err)
+          }
+          if (!item) {
+            reject(new Error({
+              title: 'No form found',
+              error: {
+                message: 'Form not found!'
+              }
+            }))
+          } else {
+            resolve(item)
           }
         })
-      } else {
-        res.status(200).json({message: 'Success', item: item});
-      }
-    })
+      })
+
+  })
+}
+
+router.get('/:id', function(req, res, next) {
+  getQuote(req.params.id).then(quote => {
+    res.status(200).json({message: 'Success', item: quote})
+  }).catch(err => {
+    return res.status(500).json(err)
   })
 })
 
@@ -351,13 +355,14 @@ router.put('/:id', function(req, res, next) {
     //     item.statusQuote = 'pending'
     //   }
     // }
+     // Gooplus
 
-    item.save(function(err, result) {
-      if (err) {
-        return res.status(404).json({message: 'There was an error, please try again', err: err});
-      }
-      res.status(201).json({message: '', obj: result});
-    });
+     saveQuote(item).then(quote => {
+       res.status(200).json({message: 'Update Successfull', obj: quote})
+     }).catch(err => {
+       return res.status(403).json(err);
+     })
+
   })
 });
 
@@ -396,11 +401,19 @@ router.put('/:id/signature', function(req, res, next) {
         drawingSignature.namePicture = namePicture
         item.drawingSignature = drawingSignature
 
-        saveQuote(res, item)
+        saveQuote(item).then(quote => {
+          res.status(200).json({message: 'Registration Successfull', obj: quote})
+        }).catch(err => {
+          return res.status(403).json(err);
+        })
       });
     } else {
       item.statusQuote = 'pending'
-      saveQuote(res, item)
+      saveQuote(item).then(quote => {
+        res.status(200).json({message: 'Registration Successfull', obj: quote})
+      }).catch(err => {
+        return res.status(403).json(err);
+      })
     }
   })
 });
@@ -420,13 +433,7 @@ router.post('/', function(req, res, next) {
 
   let searchQuery = {}
   searchQuery['ownerCompanies'] = req.user.ownerCompanies
-  // Quote.find(searchQuery).count().exec(function(err, count) {
-  // req.body.quoteNumber = count * 1 + 1
-  // req.body.projects.forEach(project => { req.body.clients = project.clients })
-  // console.log(req.body.clients)
 
-  // console.log('aa')
-  // console.log(quote)
   req.body.ownerCompanies = req.user.ownerCompanies
 
 
@@ -435,30 +442,46 @@ router.post('/', function(req, res, next) {
   console.log('a')
   var quote = new Quote(req.body);
   if(quote.historyClients.length) {
-  console.log('b')
     userCross.getUserCross(req.user, quote.historyClients[0]._id).then(userCrossSingle => {
-  console.log('c')
       quote.historyClientsCross = userCrossSingle
-      saveQuote(res, quote)
+      saveQuote(quote).then(quote => {
+        res.status(200).json({message: 'Registration Successfull', obj: quote})
+      }).catch(err => {
+        return res.status(403).json(err);
+      })
     })
-      console.log('d')
-    saveQuote(res, quote)
+    saveQuote(quote).then(quote => {
+      res.status(200).json({message: 'Registration Successfull', obj: quote})
+    }).catch(err => {
+      return res.status(403).json(err);
+    })
   } else {
-      console.log('e')
-    saveQuote(res, quote)
+    saveQuote(quote).then(quote => {
+      res.status(200).json({message: 'Registration Successfull', obj: quote})
+    }).catch(err => {
+      return res.status(403).json(err);
+    })
   }
 
 })
 
 
-function saveQuote(res, quote) {
-  quote.save(function(err, result) {
-    if (err) {
-      return res.status(403).json(err);
-    }
-    res.status(200).json({message: 'Registration Successfull', obj: result})
+function saveQuote (quote) {
+  return new Promise(function (resolve, reject) {
+    quote.save(function (err, result) {
+      if (err) {
+        reject(err)
+        // return res.status(403).json(err);
+      }
+      getQuote(result._id).then(quote => {
+        resolve(quote)
+        // res.status(200).json({message: 'Registration Successfull', obj: result})
+      }).catch(err => {
+        reject(err)
+        // return res.status(403).json(err)
+      })
+    })
   })
-
 }
 //
 // router.post('/saveAsInvoice/', function(req, res, next) {
