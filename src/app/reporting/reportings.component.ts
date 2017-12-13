@@ -204,6 +204,7 @@ export class ReportingsComponent implements OnInit {
             this[this.nameGraph][this.serieNumber].data[element._id.month - 1] = element[this.typeSum]
           })
 
+
           this.nameGraph = 'lineChartDataGraph4'
           this.serieNumber = 0
           this.label = 'Count Quotes Signed'
@@ -214,7 +215,7 @@ export class ReportingsComponent implements OnInit {
             this[this.nameGraph][this.serieNumber].year = element._id.year
             this[this.nameGraph][this.serieNumber].data[element._id.month - 1] = element[this.typeSum]
           })
-                    
+
         })
 
 
