@@ -491,7 +491,6 @@ module.exports = {
                         // html +=  companie.quoteSettings.legalNotice
                         if (companie.option.currency)
                           html += companie.option.currency
-
                     })
 
 
