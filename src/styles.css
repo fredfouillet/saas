@@ -2,6 +2,10 @@
 
 /*ALAN: Signature*/
 
+.tac {
+  text-align: center;
+}
+
 .maxw400 {
   max-width: 400px; 
 }
