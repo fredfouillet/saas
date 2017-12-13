@@ -103,12 +103,12 @@ router.get('/graph', function(req, res, next) {
   }, {
     $group: {
       _id: {
-        year: {
-          $year: "$detail.dateQuote.issueDate"
-        },
-        month: {
-          $month: "$detail.dateQuote.issueDate"
-        },
+        // year: {
+        //   $year: "$detail.dateQuote.issueDate"
+        // },
+        // month: {
+        //   $month: "$detail.dateQuote.issueDate"
+        // },
         //  day: { $dayOfMonth : "$datePaiement" }
       },
       amountTotal: {
