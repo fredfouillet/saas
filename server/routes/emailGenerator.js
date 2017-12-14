@@ -3,6 +3,7 @@ var express     = require('express'),
     crypto      = require("crypto"),
     nodemailer  = require('nodemailer'),
     async       = require('async'),
+    passwordHash = require('password-hash'),
     sgTransport = require('nodemailer-sendgrid-transport'),
     config      = require('../config/config');
 
@@ -39,9 +40,7 @@ module.exports = {
           user.resetPasswordToken = undefined;
           user.resetPasswordExpires = undefined;
 
-          // user.save(function(err) {
-          //   done(err, user);
-          // });
+
           user.save(function (err, result) {
             if (err) {
               return res.status(403).json({
@@ -231,7 +230,7 @@ module.exports = {
           <head>
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
             <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-            <title>Email depuis Belmard Gestion</title>
+            <title>Email depuis Mirabelle</title>
             <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"></link>
           </head>
           <body style="margin: 0; padding: 0; font-family: 'Montserrat', sans-serif;">
@@ -245,7 +244,7 @@ module.exports = {
                     </tr>
                     <tr>
                       <td style="padding: 15px 0 30px 0;">
-                        Vous êtes invité à rejoindre l'application Belmard Gestion
+                        Vous êtes invité à rejoindre l'application Mirabelle.io
                       </td>
                     </tr>
                     <tr>

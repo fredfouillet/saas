@@ -4,7 +4,7 @@ var express = require('express'),
     nodemailer = require('nodemailer'),
     async = require('async'),
     sgTransport = require('nodemailer-sendgrid-transport'),
-    passwordHash = require('password-hash'),
+    // passwordHash = require('password-hash'),
     emailGenerator      = require('./emailGenerator'),
     config = require('../config/config');
 

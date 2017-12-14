@@ -10,8 +10,9 @@ var express = require('express'),
   mime = require('mime'),
   path = require('path'),
   crypto = require("crypto"),
-  gm = require('gm').subClass({imageMagick: true})
+  gm = require('gm').subClass({imageMagick: true}),
   User = require('../models/user.model'),
+  emailGenerator      = require('./emailGenerator'),
   stripe = require("stripe")("sk_test_cg4vcpE5gV1ApywsErwoWL7u");
 
 
@@ -381,7 +382,7 @@ router.post('/', function(req, res, next) {
             }
             res.status(200).json({message: 'Registration Successfull', obj: user})
             if (!req.body.isExternalUser) {
-              sendEmailToUserToJoinCompanie(req, user)
+              emailGenerator.sendEmailToUserToJoinCompanie(req, user)
             }
 
           })
@@ -393,91 +394,91 @@ router.post('/', function(req, res, next) {
 
 
   });
-
-  function sendEmailToUserToJoinCompanie(req, user) {
-    async.waterfall([
-      function(done) {
-        crypto.randomBytes(20, function(err, buf) {
-          var token = buf.toString('hex');
-          done(err, token);
-        });
-      },
-      function(token, done) {
-        user.resetPasswordToken = token;
-        user.resetPasswordExpires = Date.now() + 3600000; // 1 hour
-        user.save(function(err) {
-          done(err, token, user);
-        });
-
-      },
-      function(token, user, done) {
-        var mailer = nodemailer.createTransport({
-          // service: "Gmail",
-          host: config.hostName,
-          port: config.port,
-          auth: {
-            user: config.userGmail,
-            pass: config.passGmail
-          }
-        })
-        var html = `
-      <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-      <html xmlns="http://www.w3.org/1999/xhtml">
-        <head>
-          <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-          <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-          <title>Email d'invitation à Mirabelle</title>
-          <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"></link>
-        </head>
-        <body style="margin: 0; padding: 0; font-family: 'Montserrat', sans-serif;">
-          <table align="center" border="0" cellpadding="0" cellspacing="0" width="600" style="border: 1px solid #cccccc;">
-
-            <tr>
-              <td bgcolor="#ffffff" style="padding: 15px 15px 15px 15px;">
-                <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                  <tr>
-                    <td>Bonjour ${user.profile.name} ${user.profile.lastName},</td>
-                  </tr>
-                  <tr>
-                    <td style="padding: 15px 0 30px 0;">
-                      Vous êtes invité à rejoindre l'application Mirabelle
-                    </td>
-                  </tr>
-                  <tr>
-                    <td align="center" style="background-color: #ff4351; padding: 10px 15px; cursor: pointer;">
-                      <a
-                        href="http://${req.headers.host}/#/user/reset/${token}"
-                        style="color: #ffffff; text-decoration: none;"
-                      >
-                        Accepter l'invitation
-                      </a>
-                    </td>
-                  </tr>
-                </table>
-              </td>
-            </tr>
-          </table>
-        </body>
-      </html>
-      `;
-        var mailOptions = {
-          to: user.email,
-          from: config.userGmail,
-          subject: 'Mirabelle | Invitation',
-          html: html
-        };
-        mailer.sendMail(mailOptions, function(err) {
-          console.log('info', 'An e-mail has been sent to ' + user.email + ' with further instructions.');
-          return res.status(200).json({message: 'Success', token: 'InMail'})
-        });
-      }
-    ], function(err) {
-      console.log(err)
-      if (err)
-        return next(err);
-      }
-    );
-  }
+  //
+  // function sendEmailToUserToJoinCompanie(req, user) {
+  //   async.waterfall([
+  //     function(done) {
+  //       crypto.randomBytes(20, function(err, buf) {
+  //         var token = buf.toString('hex');
+  //         done(err, token);
+  //       });
+  //     },
+  //     function(token, done) {
+  //       user.resetPasswordToken = token;
+  //       user.resetPasswordExpires = Date.now() + 3600000; // 1 hour
+  //       user.save(function(err) {
+  //         done(err, token, user);
+  //       });
+  //
+  //     },
+  //     function(token, user, done) {
+  //       var mailer = nodemailer.createTransport({
+  //         // service: "Gmail",
+  //         host: config.hostName,
+  //         port: config.port,
+  //         auth: {
+  //           user: config.userGmail,
+  //           pass: config.passGmail
+  //         }
+  //       })
+  //       var html = `
+  //     <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  //     <html xmlns="http://www.w3.org/1999/xhtml">
+  //       <head>
+  //         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  //         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  //         <title>Email d'invitation à Mirabelle</title>
+  //         <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"></link>
+  //       </head>
+  //       <body style="margin: 0; padding: 0; font-family: 'Montserrat', sans-serif;">
+  //         <table align="center" border="0" cellpadding="0" cellspacing="0" width="600" style="border: 1px solid #cccccc;">
+  //
+  //           <tr>
+  //             <td bgcolor="#ffffff" style="padding: 15px 15px 15px 15px;">
+  //               <table border="0" cellpadding="0" cellspacing="0" width="100%">
+  //                 <tr>
+  //                   <td>Bonjour ${user.profile.name} ${user.profile.lastName},</td>
+  //                 </tr>
+  //                 <tr>
+  //                   <td style="padding: 15px 0 30px 0;">
+  //                     Vous êtes invité à rejoindre l'application Mirabelle
+  //                   </td>
+  //                 </tr>
+  //                 <tr>
+  //                   <td align="center" style="background-color: #ff4351; padding: 10px 15px; cursor: pointer;">
+  //                     <a
+  //                       href="http://${req.headers.host}/#/user/reset/${token}"
+  //                       style="color: #ffffff; text-decoration: none;"
+  //                     >
+  //                       Accepter l'invitation
+  //                     </a>
+  //                   </td>
+  //                 </tr>
+  //               </table>
+  //             </td>
+  //           </tr>
+  //         </table>
+  //       </body>
+  //     </html>
+  //     `;
+  //       var mailOptions = {
+  //         to: user.email,
+  //         from: config.userGmail,
+  //         subject: 'Mirabelle | Invitation',
+  //         html: html
+  //       };
+  //       mailer.sendMail(mailOptions, function(err) {
+  //         console.log('info', 'An e-mail has been sent to ' + user.email + ' with further instructions.');
+  //         return res.status(200).json({message: 'Success', token: 'InMail'})
+  //       });
+  //     }
+  //   ], function(err) {
+  //     console.log(err)
+  //     if (err)
+  //       return next(err);
+  //     }
+  //   );
+  // }
 
   //
   // var rmDir = function (dirPath, removeSelf) {
