@@ -17,6 +17,9 @@ import { User, TypeUser, Address, AddressTypes } from '../user.model';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { DeleteDialogComponent } from '../../nav/deleteDialog/deleteDialog.component'
 import { Search, CustomFormControls } from '../../shared/shared.model';
+// const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+
 
 @Component({
   selector: 'app-user',
@@ -30,6 +33,7 @@ export class UserComponent implements OnInit {
   @Input() search: Search = new Search()
   @Input() isDialog: boolean = false
 
+  customFormControls = new CustomFormControls()
   // customFormControls = {
   //   emailFormControl: new FormControl('', [
   //     Validators.required,
@@ -40,7 +44,7 @@ export class UserComponent implements OnInit {
 
 
   myForm: FormGroup = this._fb.group({
-    email: new CustomFormControls().emailFormControl,
+    email: this.customFormControls.emailFormControl,
     // typeUsers: [''],
     language: [''],
     colorCalendar: [''],

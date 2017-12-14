@@ -31,7 +31,9 @@ import { Search, CustomFormControls } from '../../../shared/shared.model';
 export class DetailsUserComponent implements OnInit {
   @Output() save: EventEmitter<any> = new EventEmitter();
   @Input() search: Search = new Search()
-  customFormControls = new CustomFormControls()
+  // customFormControls = new CustomFormControls()
+  @Input() customFormControls: CustomFormControls
+
   @Input() myForm: FormGroup
   // = this._fb.group({
   //   email: this.emailFormControl,

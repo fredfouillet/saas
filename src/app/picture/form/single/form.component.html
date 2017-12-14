@@ -3,12 +3,12 @@
     <fieldset>
       <div class="">
         <div class="">
-          <button *ngIf="!openCameraStraight" type="button">
+          <div *ngIf="!openCameraStraight" >
             <label for="upload-photo">
-              <mat-icon class="buttonImg" color="primary" aria-label="Camera">photo_camera</mat-icon>
+              <mat-icon class="buttonImg" color="primary" aria-label="Camera">file_upload</mat-icon>
             </label>
-            <input #fileInput name="fileUp" id="upload-photo" type="file" (change)="onFileSelect($event)">
-          </button>
+            <input #fileInput name="file" id="upload-photo" type="file" (change)="onFileSelect($event)">
+          </div>
           <div *ngIf="openCameraStraight">
             <label for="file" matTooltip="Photo" class="label-file">
                 <mat-icon class="buttonImg" color="primary" aria-label="Camera">photo_camera</mat-icon>
