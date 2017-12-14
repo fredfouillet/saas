@@ -253,7 +253,7 @@ export class ReportingsComponent implements OnInit {
 
           this.nameGraph = 'lineChartDataGraph3'
           this.serieNumber = 1
-          this.label = this.translateService.instant('Count Quotes')
+          this.label = this.translateService.instant('Count Interventions')
           this.typeSum = 'count'
           this[this.nameGraph][this.serieNumber].ready = true
           this[this.nameGraph][this.serieNumber].label = this.label
@@ -264,7 +264,7 @@ export class ReportingsComponent implements OnInit {
 
           this.nameGraph = 'lineChartDataGraph4'
           this.serieNumber = 1
-          this.label = this.translateService.instant('count All Quotes')
+          this.label = this.translateService.instant('count All Interventions')
           this.typeSum = 'count'
           this[this.nameGraph][this.serieNumber].ready = true
           this[this.nameGraph][this.serieNumber].label = this.label
