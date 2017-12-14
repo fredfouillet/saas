@@ -240,7 +240,7 @@ router.put('/:id', function(req, res, next) {
       }
     })
   }
-  Quote.findById(({_id: req.params.id}), function(err, item) {
+  Quote.findById(({_id: req.params.id}), function(err, quote) {
     if (err) {
       return res.status(404).json({message: '', err: err})
     }
@@ -252,25 +252,25 @@ router.put('/:id', function(req, res, next) {
     // item.historyClientsCross = req.body.clientsCross
 
 
-    item.clients = req.body.clients
-    item.historyClients = req.body.historyClients
-    item.name = req.body.name
-    item.typeQuote = req.body.typeQuote
-    item.statusQuote = req.body.statusQuote
-    item.forms = req.body.forms
-    item.products = req.body.products
-    item.projects = req.body.projects
-    item.devisDetails = req.body.devisDetails
-    item.priceQuote = req.body.priceQuote
-    // item.signature = req.body.signature
-    item.detail = req.body.detail
-    item.companieClients = req.body.companieClients
-    item.quoteNumber = req.body.quoteNumber
-    item.legalApprovals = req.body.legalApprovals
-    // item.drawing = req.body.drawing
+    quote.clients = req.body.clients
+    quote.historyClients = req.body.historyClients
+    quote.name = req.body.name
+    quote.typeQuote = req.body.typeQuote
+    quote.statusQuote = req.body.statusQuote
+    quote.forms = req.body.forms
+    quote.products = req.body.products
+    quote.projects = req.body.projects
+    quote.devisDetails = req.body.devisDetails
+    quote.priceQuote = req.body.priceQuote
+    // quote.signature = req.body.signature
+    quote.detail = req.body.detail
+    quote.companieClients = req.body.companieClients
+    quote.quoteNumber = req.body.quoteNumber
+    quote.legalApprovals = req.body.legalApprovals
+    // quote.drawing = req.body.drawing
 
-    // console.log(item)
-    item.drawingSignature = req.body.drawingSignature
+    // console.log(quote)
+    quote.drawingSignature = req.body.drawingSignature
 
     // if(item.statusQuote === 'signed' && !req.body.drawingSignature.base64) {
     //   item.drawingSignature.base64 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAALCAYAAAB24g05AAAAGklEQVQoU2NkoBAwUqifYdQAhtEwYKBCGAAAE40ADA7nRNsAAAAASUVORK5CYII='
@@ -284,11 +284,41 @@ router.put('/:id', function(req, res, next) {
     // }
      // Gooplus
 
-     saveQuote(item).then(quote => {
-       res.status(200).json({message: 'Update Successfull', obj: quote})
-     }).catch(err => {
-       return res.status(403).json(err);
-     })
+
+
+
+      //  quote.ownerCompanies = req.user.ownerCompanies
+    //  quote.historyClients = req.body.clients
+       // req.body.historyClientsCross = req.body.historyClientsCross
+
+      //  var quote = new Quote(req.body);
+       if(req.body.clients.length) {
+         userCross.getUserCross(req.user, req.body.clients[0]._id).then(userCrossSingle => {
+          //  console.log(userCrossSingle)
+           quote.historyClientsCross = userCrossSingle
+           saveQuote(quote).then(quote => {
+             res.status(200).json({message: 'Registration Successfull', obj: quote})
+           }).catch(err => {
+             return res.status(403).json(err);
+           })
+         })
+         saveQuote(quote).then(quote => {
+           res.status(200).json({message: 'Registration Successfull', obj: quote})
+         }).catch(err => {
+           return res.status(403).json(err);
+         })
+       } else {
+         saveQuote(quote).then(quote => {
+           res.status(200).json({message: 'Registration Successfull', obj: quote})
+         }).catch(err => {
+           return res.status(403).json(err);
+         })
+       }
+    //  saveQuote(item).then(quote => {
+    //    res.status(200).json({message: 'Update Successfull', obj: quote})
+    //  }).catch(err => {
+    //    return res.status(403).json(err);
+    //  })
 
   })
 });
@@ -358,16 +388,16 @@ router.post('/', function(req, res, next) {
     return res.status(404).json({message: 'You must belong to a companie', err: ''})
   }
 
-  let searchQuery = {}
-  searchQuery['ownerCompanies'] = req.user.ownerCompanies
+  // let searchQuery = {}
+  // searchQuery['ownerCompanies'] = req.user.ownerCompanies
 
   req.body.ownerCompanies = req.user.ownerCompanies
-  req.body.historyClients = req.body.clients
-  req.body.historyClientsCross = req.body.historyClientsCross
+  // req.body.historyClients = req.body.clients
+  // req.body.historyClientsCross = req.body.historyClientsCross
 
   var quote = new Quote(req.body);
-  if(quote.historyClients.length) {
-    userCross.getUserCross(req.user, quote.historyClients[0]._id).then(userCrossSingle => {
+  if(req.body.clients.length) {
+    userCross.getUserCross(req.user, req.body.clients[0]._id).then(userCrossSingle => {
       quote.historyClientsCross = userCrossSingle
       saveQuote(quote).then(quote => {
         res.status(200).json({message: 'Registration Successfull', obj: quote})
