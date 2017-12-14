@@ -26,7 +26,7 @@
           </div>
           <div class="col-12 col-md-6">
             <app-autocomplete class="mb8 bn" [canDelete]=false [typeAutocomplete]="'user'" [search]="search" [canDelete]="true" [title]="'Customer'" [singleChoice]="true" [arrayContent]="fetchedPaiementQuote.userDebiteds" (getResultAutocomplete)="selectUserDebited($event[0])"
-            (autocompleteAfterNgChanges)="autocompleteAfterNgChangesUser($event)">
+              (autocompleteAfterNgChanges)="autocompleteAfterNgChangesUser($event)">
             </app-autocomplete>
           </div>
           <div class="col-12 col-md-6">
@@ -43,17 +43,13 @@
           </div>
         </div>
       </form>
-
       <mat-action-row>
-
         <button *ngIf="fetchedPaiementQuote._id" mat-mini-fab color="warn" (click)="openDialogDelete()">
-              <mat-icon aria-label="delete">delete</mat-icon>
-            </button>
-
+          <mat-icon aria-label="delete">delete</mat-icon>
+        </button>
         <button mat-mini-fab color="primary" (click)="nextStep()">
-              <mat-icon aria-label="Next">forward</mat-icon>
-            </button>
-
+          <mat-icon aria-label="Next">forward</mat-icon>
+        </button>
       </mat-action-row>
     </mat-expansion-panel>
 
@@ -99,13 +95,10 @@
 
       <mat-action-row>
 
-          <button
-            mat-mini-fab
-            *ngIf="fetchedPaiementQuote.type==='stripe' && fetchedPaiementQuote.stripe.charge.status !=='succeeded'"
-            (click)="payByCardConnect()">
+        <button mat-mini-fab *ngIf="fetchedPaiementQuote.type==='stripe' && fetchedPaiementQuote.stripe.charge.status !=='succeeded'" (click)="payByCardConnect()">
             <mat-icon>credit_card</mat-icon>
           </button>
-          <button  mat-mini-fab color="primary" (click)="closeDialog()">
+        <button mat-mini-fab color="primary" (click)="closeDialog()">
             <mat-icon aria-label="save">check_circle</mat-icon>
           </button>
 
