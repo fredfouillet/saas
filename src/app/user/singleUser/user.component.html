@@ -3,7 +3,6 @@
     <app-header-title [isDialog]="isDialog" *ngIf="fetchedUser.isExternalUser" [title]="'Customer'" [icon]="'supervisor_account'"></app-header-title>
     <app-header-title [isDialog]="isDialog" *ngIf="!fetchedUser.isExternalUser && isUserIsMyself()" [title]="'My profile'" [icon]="'account_circle'"></app-header-title>
     <app-header-title [isDialog]="isDialog" *ngIf="!fetchedUser.isExternalUser && !isUserIsMyself()" [title]="'Team'" [icon]="'supervisor_account'"></app-header-title>
-
   </div>
   <mat-accordion class="example-headers-align">
     <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)">
@@ -40,7 +39,7 @@
       <app-user-cross *ngIf="step === 1" [fetchedUser]="fetchedUser" (saved)=savedCrossUser($event)></app-user-cross>
     </mat-expansion-panel>
 
-    <mat-expansion-panel *ngIf="fetchedUser._id && fetchedUser.isExternalUser" [expanded]="step === 2" (opened)="setStep(2)">
+    <mat-expansion-panel *ngIf="fetchedUser._id && fetchedUser.isExternalUser && !search.isFromAutocomplete" [expanded]="step === 2" (opened)="setStep(2)">
       <mat-expansion-panel-header>
         <mat-panel-title>
           <mat-icon>build</mat-icon>

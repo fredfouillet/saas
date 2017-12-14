@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import { UserService} from '../user/user.service';
 import { CompanieService} from '../companie/companie.service';
 import { ProductService} from '../product/product.service';
@@ -24,7 +24,7 @@ import {Search} from '../shared/shared.model'
   templateUrl: './autocomplete.component.html',
   styleUrls: ['./autocomplete.component.css'],
 })
-export class AutocompleteComponent {
+export class AutocompleteComponent implements OnChanges{
   @Input() typeAutocomplete: string;
   @Input() arrayContent = [];
   @Input() singleChoice: boolean = true;
@@ -53,9 +53,12 @@ export class AutocompleteComponent {
     private templateQuoteService: TemplateQuoteService,
     // private rightService: RightService,
     private router: Router,
-  ) {}
+  ) {
+
+  }
 
   ngOnChanges() {
+      this.search.isFromAutocomplete = true
     // if(this.typeAutocomplete ==='project' && this.search.projectId)
     //     this.projectService.getProject(this.search.projectId)
     //     .subscribe( res => { if(this.arrayContent.length) this.arrayContent.splice(0, 1);

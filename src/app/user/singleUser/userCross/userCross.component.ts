@@ -16,7 +16,7 @@ import { User, UserCross, TypeUser, Address, AddressTypes } from '../../user.mod
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 // import { DeleteDialog } from '../../../deleteDialog/deleteDialog.component'
-import { Search } from '../../../shared/shared.model';
+// import { Search } from '../../../shared/shared.model';
 
 
 @Component({
@@ -28,7 +28,7 @@ import { Search } from '../../../shared/shared.model';
 
 export class UserCrossComponent implements OnInit {
   @Output() saved: EventEmitter<any> = new EventEmitter();
-  @Input() search: Search = new Search()
+  // @Input() search: Search = new Search()
 
   loading: boolean = false
   fetchedCompanies: Companie[] = []

@@ -298,7 +298,11 @@ export class UserComponent implements OnInit {
 
   savedCrossUser(result) {
     // console.log(result)
-    this.nextStep()
+    if(this.search.isFromAutocomplete) {
+      this.saved.emit(this.fetchedUser)
+    } else {
+      this.nextStep()
+    }
     // this.saved.emit(this.fetchedUser)
   }
   quoteCreation() {

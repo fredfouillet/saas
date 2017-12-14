@@ -1,17 +1,18 @@
 export class Search {
-  isQuoteAssignedToMe: boolean = false;
+  // isQuoteAssignedToMe: boolean = false;
   orderBy: string = '';
   search: string = '';
   quoteType: string = '';
   quoteId: string = '';
   userId: string = '';
-  assignedToId: string = '';
+  // assignedToId: string = '';
   projectId: string = '';
   parentQuoteId: string = '';
   isExternalUser: boolean = true;
   isExpense: boolean = false;
   typeQuote: string = '';
   year: number = 0;
+  isFromAutocomplete: boolean = false;
   // isSigned: boolean = false;
   statusQuote: string = '';
 };
