@@ -1,31 +1,24 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
-import {AuthService} from '../../auth/auth.service';
 import {PaiementQuoteService} from '../paiementQuote.service';
 import {PaiementService} from '../../companie/single/paiement/paiement.service';
-
-
-import {ProductService} from '../../product/product.service';
-// import { ProjectService} from '../../project/project.service';
 import { AccountConnectStripe} from '../../companie/single/connectStripe/connectStripe.model'
-
 import {PaiementQuote, StripeCustomer, DataSource} from '../paiementQuote.model';
-
 import {ToastsManager} from 'ng2-toastr';
-
-import {MatDialog } from '@angular/material';
 import {Router, ActivatedRoute, Params } from '@angular/router';
-import { Location } from '@angular/common';
 import { FormBuilder, FormGroup} from '@angular/forms';
 import { UserService} from '../../user/user.service';
 import { QuoteService } from '../../quote/quote.service';
 import { DeleteDialogComponent } from '../../nav/deleteDialog/deleteDialog.component';
-
 import { User, UserCross, TypeUser, Address, AddressTypes } from '../../user/user.model';
-
 import { Quote } from '../../quote/quote.model';
 import { Product } from '../../product/product.model';
-// import { Project } from '../../project/project.model';
 import { Search} from '../../shared/shared.model'
+import {MatDialog } from '@angular/material';
+// import { Location } from '@angular/common';
+// import {ProductService} from '../../product/product.service';
+// import { ProjectService} from '../../project/project.service';
+// import {AuthService} from '../../auth/auth.service';
+// import { Project } from '../../project/project.model';
 
 
 
@@ -42,52 +35,50 @@ export class EditPaiementQuoteComponent implements OnInit {
   @Input() fetchedQuotes: Quote[] = []
   @Input() search: Search = new Search()
   @Input() isDialog: boolean = false
-
   showPaiements: boolean = false
   fetchedPaiementQuote: PaiementQuote = new PaiementQuote()
+  fetchedProducts: Product[] = []
+  stripeCust: StripeCustomer = new StripeCustomer()
+  accountConnectStripe: AccountConnectStripe = new AccountConnectStripe();
+  newCard: DataSource = new DataSource()
+  fetchedUserCross: UserCross = new UserCross();
+  myForm: FormGroup;
+  autocompleteProduct: String = ''
+  step = 0;
+  paiementsTypes = [
+    { label: 'cheque', value: 'check' },
+    { label: 'Espece', value: 'cash' },
+  ]
+  // arrayContentToSearch = []
+  // fetchedUsers: User[] = [];
   // autocompleteUser: string = '';
   // autocompleteProject: string = '';
-  fetchedProducts: Product[] = []
   // fetchedProjects: Project[] = []
-  stripeCust: StripeCustomer = new StripeCustomer()
   // currentUser: User = new User()
   // imgLogoUrl: string = './assets/images/profile-placeholder.jpg'
   // imgSignatureBase64Temp = ''
-  accountConnectStripe: AccountConnectStripe = new AccountConnectStripe();
   // showReLoginInApp:boolean = false
-  newCard: DataSource = new DataSource()
   // userAdmins : User[] = []
   // userManagers : User[] = []
   // userClients : User[] = []
   // usersSalesRep : User[] = []
   // userStylists : User[] = []
-  fetchedUserCross: UserCross = new UserCross();
 
-  myForm: FormGroup;
-  autocompleteProduct: String = ''
-  // fetchedUsers: User[] = [];
-  arrayContentToSearch =[]
-  step = 0;
-  paiementsTypes = [
-    { label: 'cheque', value: 'check' },
-    { label: 'Espece', value: 'cash' },
-    // { label: 'Stripe', value: 'stripe' },
-]
   constructor(
     private paiementQuoteService: PaiementQuoteService,
     private paiementService: PaiementService,
     private quoteService: QuoteService,
-    // private projectService: ProjectService,
-    private userService: UserService,
-    // private productService: ProductService,
-//    private modalService: NgbModal,
     private toastr: ToastsManager,
     public dialog: MatDialog,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private location: Location,
     private _fb: FormBuilder,
-    private authService: AuthService,
+    private userService: UserService,
+    // private projectService: ProjectService,
+    // private productService: ProductService,
+//    private modalService: NgbModal,
+    // private location: Location,
+    // private authService: AuthService,
   ) {}
 
 

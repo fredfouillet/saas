@@ -22,7 +22,7 @@ import { PaiementService} from './paiement/paiement.service';
 
 
 @Component({
-  selector: 'app-editCompanie',
+  selector: 'app-edit-companie',
   templateUrl: './companie.component.html',
   styleUrls: ['../companie.component.css'],
 })

@@ -1,15 +1,15 @@
 import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
-import { AuthService} from '../../auth/auth.service';
 import { ProductService} from '../product.service';
 import { Product} from '../product.model';
 import { ToastsManager} from 'ng2-toastr';
-// import { MatDialog} from '@angular/material';
 import { Router} from '@angular/router';
-import { DomSanitizer } from '@angular/platform-browser';
 import { ViewEncapsulation} from '@angular/core';
-// import { UserService} from '../../user/user.service';
 import { GlobalEventsManager } from '../../globalEventsManager';
 import { Search, PaginationData } from '../../shared/shared.model';
+// import { AuthService} from '../../auth/auth.service';
+// import { DomSanitizer } from '@angular/platform-browser';
+// import { UserService} from '../../user/user.service';
+// import { MatDialog} from '@angular/material';
 // import { TranslateService } from '../../translate/translate.service';
 
 @Component({
@@ -37,15 +37,15 @@ export class ProductsComponent implements OnInit {
   // }
 
   constructor(
-    private sanitizer: DomSanitizer,
     private productService: ProductService,
     private toastr: ToastsManager,
-    // public dialog: MatDialog,
     private router: Router,
-    // private location: Location,
-    private authService: AuthService,
-    // private userService: UserService,
     private globalEventsManager: GlobalEventsManager,
+    // private sanitizer: DomSanitizer,
+    // public dialog: MatDialog,
+    // private location: Location,
+    // private authService: AuthService,
+    // private userService: UserService,
     // private translateService: TranslateService,
   ) {
   }
@@ -119,7 +119,7 @@ export class ProductsComponent implements OnInit {
     this.getProducts(1, this.search)
   }
 
-  isAdmin() {
-    return this.authService.isAdmin();
-  }
+  // isAdmin() {
+  //   return this.authService.isAdmin();
+  // }
 }

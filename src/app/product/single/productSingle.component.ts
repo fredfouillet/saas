@@ -1,19 +1,19 @@
 import { Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
 import { ProductService} from '../product.service';
-import { CompanieService} from '../../companie/companie.service';
 import { ToastsManager} from 'ng2-toastr';
 import { MatDialog } from '@angular/material';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { Location } from '@angular/common';
 import { Product, ItemSteps } from '../product.model';
 import { Companie } from '../../companie/companie.model';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { DomSanitizer } from '@angular/platform-browser';
 import { DeleteDialogComponent } from '../../nav/deleteDialog/deleteDialog.component';
-import { UserService } from '../../user/user.service';
 import { User } from '../../user/user.model';
 import { ModelVATs } from '../../quote/quote.model';
 import { AuthService} from '../../auth/auth.service';
+// import { CompanieService} from '../../companie/companie.service';
+// import { Location } from '@angular/common';
+// import { DomSanitizer } from '@angular/platform-browser';
+// import { UserService } from '../../user/user.service';
 
 
 @Component({
@@ -39,35 +39,25 @@ export class ProductSingleComponent implements OnInit {
   itemSteps = ItemSteps;
   step = 0;
 
-  VATs = ModelVATs
+  VATs = ModelVATs;
 
-  autocompleteCompanie: string = '';
+  // autocompleteCompanie: string = '';
 
   // fetchedCurrentUser: User = new User()
-
-
-
   fetchedProduct: Product = new Product();
-  // fetchedCompanies: Companie[] = []
-
-  //
-  // inputCategorie = ''
-
-
-
   public myForm: FormGroup;
 
   constructor(
-    private userService: UserService,
-    private sanitizer: DomSanitizer,
+    // private userService: UserService,
+    // private sanitizer: DomSanitizer,
     private productService: ProductService,
     private toastr: ToastsManager,
     public dialog: MatDialog,
     private router: Router,
-    private location: Location,
+    // private location: Location,
     private activatedRoute: ActivatedRoute,
     private _fb: FormBuilder,
-    private companieService: CompanieService,
+    // private companieService: CompanieService,
     private authService: AuthService,
   ) {
   }
@@ -112,24 +102,24 @@ export class ProductSingleComponent implements OnInit {
     this.step++;
   }
 
-  saveAndNextStep(){
-    this.save()
-    this.nextStep()
+  saveAndNextStep() {
+    this.save();
+    this.nextStep();
   }
   saveAndNextStepAndClose() {
     this.nextStep()
     this.save().then(res => {
-      console.log(res)
-      this.saved.emit(res)
+      this.saved.emit(res);
     })
   }
 
   getItemSteps() {
-    let currentUser = this.authService.getCurrentUser()
+    const currentUser = this.authService.getCurrentUser()
 
     for (let i in currentUser.ownerCompanies) {
-      if(currentUser.ownerCompanies[i].categories.categProduct)
+      if(currentUser.ownerCompanies[i].categories.categProduct) {
         this.itemSteps = currentUser.ownerCompanies[i].categories.categProduct
+      }
     }
 
   }
