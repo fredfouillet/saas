@@ -50,7 +50,7 @@ export class EditQuoteComponent implements OnInit {
   // fetchedProducts: Product[] = []
   // fetchedPaiementQuotes: PaiementQuote[] = []
   // statusQuotes = StatusQuotes
-  totalPaiementAmount: number = 0
+  // totalPaiementAmount: number = 0
   myForm: FormGroup;
   // currency: string = ''
 

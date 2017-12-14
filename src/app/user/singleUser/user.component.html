@@ -4,6 +4,7 @@
     <app-header-title [isDialog]="isDialog" *ngIf="!fetchedUser.isExternalUser && isUserIsMyself()" [title]="'My profile'" [icon]="'account_circle'"></app-header-title>
     <app-header-title [isDialog]="isDialog" *ngIf="!fetchedUser.isExternalUser && !isUserIsMyself()" [title]="'Team'" [icon]="'supervisor_account'"></app-header-title>
   </div>
+
   <mat-accordion class="example-headers-align">
     <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)">
       <mat-expansion-panel-header>
@@ -14,14 +15,14 @@
           {{'User' | translate}}
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <app-detailsUser (save)="save()"[fetchedUser]="fetchedUser"></app-detailsUser>
+      <app-details-user [myForm]="myForm" [customFormControls]="customFormControls" (save)="save()"[fetchedUser]="fetchedUser"></app-details-user>
       <mat-action-row>
         <div *ngIf="fetchedUser._id">
           <button *ngIf="!isUserIsMyself()" mat-mini-fab color="warn" (click)="openDialogDelete()">
             <mat-icon aria-label="Clear">clear</mat-icon>
           </button>
         </div>
-        <button mat-mini-fab color="primary" (click)="saveAndNextStep()">
+        <button [disabled]="!myForm.valid" mat-mini-fab color="primary" (click)="saveAndNextStep()">
           <mat-icon aria-label="Next">forward</mat-icon>
         </button>
       </mat-action-row>

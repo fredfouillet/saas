@@ -14,9 +14,10 @@ import { Location } from '@angular/common';
 import { User, TypeUser, Address, AddressTypes } from '../user.model';
 //import { Form } from '../../form/form.model';
 
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { DeleteDialogComponent } from '../../nav/deleteDialog/deleteDialog.component'
 import { Search } from '../../shared/shared.model';
+const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
 
 @Component({
@@ -30,6 +31,46 @@ export class UserComponent implements OnInit {
   @Output() saved: EventEmitter<any> = new EventEmitter();
   @Input() search: Search = new Search()
   @Input() isDialog: boolean = false
+
+  customFormControls = {
+    emailFormControl: new FormControl('', [
+      Validators.required,
+      Validators.minLength(3),
+      Validators.pattern(EMAIL_REGEX)])
+  }
+
+
+
+  myForm: FormGroup = this._fb.group({
+    email: this.customFormControls.emailFormControl,
+    // typeUsers: [''],
+    language: [''],
+    colorCalendar: [''],
+    otherData: [''],
+    name: ['', [Validators.required, Validators.minLength(2)]],
+    lastName: ['', [Validators.required, Validators.minLength(2)]],
+    // phoneNumber: [''],
+    title: ['', [Validators.required, Validators.minLength(1)]],
+    // typeClient: [''],
+    // statusHouse: [''],
+    // sourceContact: [''],
+
+    // typeHouse: [''],
+    // surface: [''],
+    // accesCode: [''],
+    // floor: [''],
+    // accessType: [''],
+    //
+    //
+    // address: [''],
+    // city: [''],
+    // state: [''],
+    // zip: [''],
+
+
+  })
+
+
 
   // fetchedCompanies: Companie[] = []
   // autocompleteCompanie: string = '';
@@ -58,7 +99,7 @@ export class UserComponent implements OnInit {
   step = 0;
 
 
-  public myForm: FormGroup;
+  // public myForm: FormGroup;
 
   constructor(
     private userService: UserService,
@@ -107,35 +148,35 @@ export class UserComponent implements OnInit {
 
 
     this.currentUser = this.authService.getCurrentUser()
-    this.myForm = this._fb.group({
-      email: ['', [Validators.required, Validators.minLength(3)]],
-      typeUsers: [''],
-      language: [''],
-      colorCalendar: [''],
-      otherData: [''],
-      name: [''],
-      lastName: ['', [Validators.required, Validators.minLength(3)]],
-      phoneNumber: [''],
-      // fax: [''],
-      title: ['', [Validators.required, Validators.minLength(1)]],
-      typeClient: [''],
-      // statusHouse: [''],
-      // sourceContact: [''],
-
-      // typeHouse: [''],
-      // surface: [''],
-      // accesCode: [''],
-      // floor: [''],
-      // accessType: [''],
-
-
-      address: [''],
-      city: [''],
-      state: [''],
-      zip: [''],
-
-
-    })
+    // this.myForm = this._fb.group({
+    //   email: ['', [Validators.required, Validators.minLength(3)]],
+    //   typeUsers: [''],
+    //   language: [''],
+    //   colorCalendar: [''],
+    //   otherData: [''],
+    //   name: [''],
+    //   lastName: ['', [Validators.required, Validators.minLength(3)]],
+    //   phoneNumber: [''],
+    //   // fax: [''],
+    //   title: ['', [Validators.required, Validators.minLength(1)]],
+    //   typeClient: [''],
+    //   // statusHouse: [''],
+    //   // sourceContact: [''],
+    //
+    //   // typeHouse: [''],
+    //   // surface: [''],
+    //   // accesCode: [''],
+    //   // floor: [''],
+    //   // accessType: [''],
+    //
+    //
+    //   address: [''],
+    //   city: [''],
+    //   state: [''],
+    //   zip: [''],
+    //
+    //
+    // })
 
     this.fetchedUser.isExternalUser = this.search.isExternalUser
     this.activatedRoute.params.subscribe((params: Params) => {
@@ -298,7 +339,7 @@ export class UserComponent implements OnInit {
 
   savedCrossUser(result) {
     // console.log(result)
-    if(this.search.isFromAutocomplete) {
+    if (this.search.isFromAutocomplete) {
       this.saved.emit(this.fetchedUser)
     } else {
       this.nextStep()
@@ -309,6 +350,10 @@ export class UserComponent implements OnInit {
     this.saved.emit(this.fetchedUser)
   }
   save() {
+    if (this.fetchedUser.profile.name.length < 3) {
+      this.toastr.error('Error')
+      return
+    }
     // this.userService.cleanCurrentUserInSession()
     //console.log(this.typeUserDropDown)
     //this.fetchedUser.type = [this.typeUserDropDown]
@@ -323,7 +368,7 @@ export class UserComponent implements OnInit {
           this.toastr.error('Error!')
           // console.log(error)
         }
-      )
+        )
     } else {
       this.userService.saveUser(this.fetchedUser)
         .subscribe(

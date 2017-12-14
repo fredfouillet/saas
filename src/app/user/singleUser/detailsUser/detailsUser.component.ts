@@ -14,13 +14,15 @@ import { Location } from '@angular/common';
 import { User, TypeUser, Address, AddressTypes } from '../../user.model';
 //import { Form } from '../../../form/form.model';
 
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 // import { DeleteDialog } from '../../../deleteDialog/deleteDialog.component'
 import { Search } from '../../../shared/shared.model';
 
+// const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
 
 @Component({
-  selector: 'app-detailsUser',
+  selector: 'app-details-user',
   templateUrl: './detailsUser.component.html',
   styleUrls: ['./detailsUser.component.css'],
 
@@ -29,6 +31,39 @@ import { Search } from '../../../shared/shared.model';
 export class DetailsUserComponent implements OnInit {
   @Output() save: EventEmitter<any> = new EventEmitter();
   @Input() search: Search = new Search()
+  @Input() customFormControls: any
+  @Input() myForm: FormGroup
+  // = this._fb.group({
+  //   email: this.emailFormControl,
+  //   typeUsers: [''],
+  //   language: [''],
+  //   colorCalendar: [''],
+  //   otherData: [''],
+  //   name: [''],
+  //   lastName: ['', [Validators.required, Validators.minLength(3)]],
+  //   phoneNumber: [''],
+  //   // fax: [''],
+  //   title: ['', [Validators.required, Validators.minLength(1)]],
+  //   typeClient: [''],
+  //   // statusHouse: [''],
+  //   // sourceContact: [''],
+  //
+  //   // typeHouse: [''],
+  //   // surface: [''],
+  //   // accesCode: [''],
+  //   // floor: [''],
+  //   // accessType: [''],
+  //   //
+  //   //
+  //   // address: [''],
+  //   // city: [''],
+  //   // state: [''],
+  //   // zip: [''],
+  //
+  //
+  // })
+
+
 
   // fetchedCompanies: Companie[] = []
   // autocompleteCompanie: string = '';
@@ -56,7 +91,7 @@ export class DetailsUserComponent implements OnInit {
   places = []
 
 
-  public myForm: FormGroup;
+  // public myForm: FormGroup;
 
   constructor(
     private userService: UserService,
@@ -65,7 +100,7 @@ export class DetailsUserComponent implements OnInit {
     private router: Router,
     private location: Location,
     private activatedRoute: ActivatedRoute,
-    private _fb: FormBuilder,
+    // private _fb: FormBuilder,
     public authService: AuthService,
     private companieService: CompanieService,
   ) {
@@ -100,35 +135,7 @@ export class DetailsUserComponent implements OnInit {
 
 
     this.currentUser = this.authService.getCurrentUser()
-    this.myForm = this._fb.group({
-      email: ['', [Validators.required, Validators.minLength(3)]],
-      typeUsers: [''],
-      language: [''],
-      colorCalendar: [''],
-      otherData: [''],
-      name: [''],
-      lastName: ['', [Validators.required, Validators.minLength(3)]],
-      phoneNumber: [''],
-      fax: [''],
-      title: ['', [Validators.required, Validators.minLength(1)]],
-      typeClient: [''],
-      statusHouse: [''],
-      sourceContact: [''],
 
-      typeHouse: [''],
-      surface: [''],
-      accesCode: [''],
-      floor: [''],
-      accessType: [''],
-
-
-      address: [''],
-      city: [''],
-      state: [''],
-      zip: [''],
-
-
-    })
     //
     // this.fetchedUser.isExternalUser = this.search.isExternalUser
     // this.activatedRoute.params.subscribe((params: Params) => {
@@ -179,27 +186,27 @@ export class DetailsUserComponent implements OnInit {
     this.fetchedUser.profile.address.splice(i, 1);
   }
   moveAddress(i: number, incremet: number) {
-      // if(i>=0 && i<=this.fetchedUser.profile.address.length + incremet) {
-      console.log(i, incremet, this.fetchedUser.profile.address.length)
-      if(  !(i===0 && incremet<0) && !(i===this.fetchedUser.profile.address.length-1 && incremet>0)  )    {
-        var tmp = this.fetchedUser.profile.address[i];
-        this.fetchedUser.profile.address[i] = this.fetchedUser.profile.address[i + incremet]
-        this.fetchedUser.profile.address[i + incremet] = tmp
-        // this.save(false)
-        // console.log(this.fetchedUser.profile.address)
-      }
+    // if(i>=0 && i<=this.fetchedUser.profile.address.length + incremet) {
+    console.log(i, incremet, this.fetchedUser.profile.address.length)
+    if (!(i === 0 && incremet < 0) && !(i === this.fetchedUser.profile.address.length - 1 && incremet > 0)) {
+      var tmp = this.fetchedUser.profile.address[i];
+      this.fetchedUser.profile.address[i] = this.fetchedUser.profile.address[i + incremet]
+      this.fetchedUser.profile.address[i + incremet] = tmp
+      // this.save(false)
+      // console.log(this.fetchedUser.profile.address)
     }
+  }
   // selectRight(right: Right) {
   //   this.fetchedUser.rights = [right]
   // }
 
-  selectOwnerCompanies(companie: Companie) {
-    this.fetchedUser.ownerCompanies = [companie]
-  }
+  // selectOwnerCompanies(companie: Companie) {
+  //   this.fetchedUser.ownerCompanies = [companie]
+  // }
 
-  selectSalesMan(users) {
-    this.fetchedUser.salesMan = users
-  }
+  // selectSalesMan(users) {
+  //   this.fetchedUser.salesMan = users
+  // }
   getPicture(result) {
     console.log(result)
   }
@@ -217,37 +224,37 @@ export class DetailsUserComponent implements OnInit {
   // }
 
   // autocolplete typeUser
-  searchTypeUser() {
-    if (!this.autocompleteTypeUser) {
-      this.fetchedTypeUsers = []
-    } else {
-      this.fetchedTypeUsers = this.typeUser.filter((el) =>
-        el.toLowerCase().indexOf(this.autocompleteTypeUser.toLowerCase()) > -1
-      );
-    }
-  }
-  selectTypeUser(typeUser) {
-    this.autocompleteTypeUser = '';
-    this.fetchedTypeUsers = [];
-    this.fetchedUser.typeUsers.push(typeUser);
-  }
-  removeTypeUser(i: number) {
-    this.fetchedUser.typeUsers.splice(i, 1);
-  }
-  // autocolplete typeUser
+  // searchTypeUser() {
+  //   if (!this.autocompleteTypeUser) {
+  //     this.fetchedTypeUsers = []
+  //   } else {
+  //     this.fetchedTypeUsers = this.typeUser.filter((el) =>
+  //       el.toLowerCase().indexOf(this.autocompleteTypeUser.toLowerCase()) > -1
+  //     );
+  //   }
+  // }
+  // selectTypeUser(typeUser) {
+  //   this.autocompleteTypeUser = '';
+  //   this.fetchedTypeUsers = [];
+  //   this.fetchedUser.typeUsers.push(typeUser);
+  // }
+  // removeTypeUser(i: number) {
+  //   this.fetchedUser.typeUsers.splice(i, 1);
+  // }
+  // // autocolplete typeUser
+  //
 
 
 
 
-
-
-  emailValidator(control: any) {
-    let EMAIL_REGEXP = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
-
-    if (!EMAIL_REGEXP.test(control.value)) {
-      return { invalidEmail: true };
-    }
-  }
+  //
+  // emailValidator(control: any) {
+  //   let EMAIL_REGEXP = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
+  //
+  //   if (!EMAIL_REGEXP.test(control.value)) {
+  //     return { invalidEmail: true };
+  //   }
+  // }
 
   // goBack() {
   //   this.location.back();
@@ -315,9 +322,9 @@ export class DetailsUserComponent implements OnInit {
   // }
 
 
-  navigate(id: string) {
-    this.router.navigate(['user/' + id])
-  }
+  // navigate(id: string) {
+  //   this.router.navigate(['user/' + id])
+  // }
 
   isUserIsMyself() {
     if (this.currentUser._id === this.fetchedUser._id)

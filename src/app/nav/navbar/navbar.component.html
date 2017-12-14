@@ -1,12 +1,14 @@
 <div *ngIf="showNavBar">
   <nav class="docs-navbar-header">
-    <div class="hideMobile">
-      <mat-icon *ngIf="showSideNavBar" class="burgerNav" (click)="toggleSideBar()">menu</mat-icon>
-      <mat-icon *ngIf="!showSideNavBar" class="burgerNav" (click)="toggleSideBar()">clear_all</mat-icon>
-    </div>
-    <div class="showMobile">
-      <mat-icon *ngIf="showSideNavBar" class="burgerNav" (click)="toggleSideBar()">clear_all</mat-icon>
-      <mat-icon *ngIf="!showSideNavBar" class="burgerNav" (click)="toggleSideBar()">menu</mat-icon>
+    <div (click)="toggleSideBar()">
+      <div class="hideMobile">
+        <mat-icon *ngIf="showSideNavBar" class="burgerNav">menu</mat-icon>
+        <mat-icon *ngIf="!showSideNavBar" class="burgerNav">clear_all</mat-icon>
+      </div>
+      <div class="showMobile">
+        <mat-icon *ngIf="showSideNavBar" class="burgerNav">clear_all</mat-icon>
+        <mat-icon *ngIf="!showSideNavBar" class="burgerNav">menu</mat-icon>
+      </div>
     </div>
     <!-- <i  class="fa fal fa-bars fa-2x burgerNav" aria-hidden="true"></i> -->
      <!-- <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
