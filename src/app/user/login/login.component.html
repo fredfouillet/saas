@@ -30,7 +30,7 @@
 
     <div class="login ac">
     <div [hidden]="password.valid || password.pristine" class="alert alert-danger">Votre mot de passe doit contenir au moins 6 caractères</div>
-    <button type="submit" class="valid" [disabled]="!myForm.valid" [ngClass]="{'done':myForm.valid,'pas-done':!myForm.valid}">Login</button>
+    <button type="submit" mat-raised-button color="primary">Login</button>
     <p class="messagelogin"><a [routerLink]="'/user/reset'">Mot de passe oublié?</a></p>
     <p class="messagelogin"><a [routerLink]="'/user/register'">Vous n'avez pas de compte? S'enregistrer</a></p>
   </div>
