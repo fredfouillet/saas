@@ -1,11 +1,11 @@
-import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
-import { AuthService} from '../../auth/auth.service';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges} from '@angular/core';
+// import { AuthService} from '../../auth/auth.service';
 import { QuoteService} from '../../quote/quote.service';
 import { Quote, StatusQuotes} from '../../quote/quote.model';
 import { ToastsManager} from 'ng2-toastr';
-import { MatDialog} from '@angular/material';
+// import { MatDialog} from '@angular/material';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { Location} from '@angular/common';
+// import { Location} from '@angular/common';
 import { Search, PaginationData } from '../../shared/shared.model';
 // import { GlobalEventsManager } from '../../globalEventsManager';
 
@@ -16,7 +16,7 @@ import { Search, PaginationData } from '../../shared/shared.model';
   templateUrl: './quotes.component.html',
   styleUrls: ['../quote.component.css'],
 })
-export class QuotesComponent implements OnInit {
+export class QuotesComponent implements OnInit, OnChanges {
   @Input() userId = '';
   @Input() projectId = '';
   @Input() showSearch = true;
@@ -35,19 +35,19 @@ export class QuotesComponent implements OnInit {
 
   constructor(
     private quoteService: QuoteService,
-    private authService: AuthService,
+    // private authService: AuthService,
     // private globalEventsManager: GlobalEventsManager,
   //  private modalService: NgbModal,
     private toastr: ToastsManager,
-    public dialog: MatDialog,
+    // public dialog: MatDialog,
     private router: Router,
-    private location: Location,
+    // private location: Location,
     private activatedRoute: ActivatedRoute,
   ) {}
 
 
   ngOnChanges() {
-    console.log(this.search)
+
     this.getQuotes(this.paginationData.currentPage, this.search);
   }
   ngOnInit() {
@@ -57,10 +57,10 @@ export class QuotesComponent implements OnInit {
       //   this.search.isQuoteAssignedToMe = true
       //   this.getQuotes(this.paginationData.currentPage, this.search);
       // }
-      if(params['searchType'] === 'invoice') {
-        this.search.typeQuote = params['searchType']
-        this.getQuotes(this.paginationData.currentPage, this.search);
-      }
+      // if(params['searchType'] === 'invoice') {
+      //   this.search.typeQuote = params['searchType']
+      //   this.getQuotes(this.paginationData.currentPage, this.search);
+      // }
       if(params['searchType'] === 'quote') {
         this.search.typeQuote = params['searchType']
         this.getQuotes(this.paginationData.currentPage, this.search);
@@ -167,9 +167,9 @@ export class QuotesComponent implements OnInit {
   }
 
 
-  isAdmin() {
-    return this.authService.isAdmin();
-  }
+  // isAdmin() {
+  //   return this.authService.isAdmin();
+  // }
 
 
 }

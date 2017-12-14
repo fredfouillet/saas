@@ -1,11 +1,11 @@
 import { Component, OnInit, ViewChild, Input, Output, EventEmitter } from '@angular/core';
-import { AuthService } from '../../auth/auth.service';
+// import { AuthService } from '../../auth/auth.service';
 import { QuoteService } from '../quote.service';
 import { Quote, PriceQuoteTaxe, ModelVATs } from '../quote.model';
-import { Router, ActivatedRoute, Params } from '@angular/router';
-import { FormBuilder, Validators } from '@angular/forms';
-import { ActionButtonsComponent } from './actionButtons/actionButtons.component';
-import { TranslateService } from '../../translate/translate.service';
+import { ActivatedRoute, Params } from '@angular/router';
+// import { FormBuilder, Validators } from '@angular/forms';
+// import { ActionButtonsComponent } from './actionButtons/actionButtons.component';
+// import { TranslateService } from '../../translate/translate.service';
 import { Search } from '../../shared/shared.model';
 import { PaiementQuote } from '../../paiementQuote/paiementQuote.model';
 import { DrawingSignatureComponent } from './drawingSignature/drawingSignature.component';
@@ -19,7 +19,7 @@ import {ToastsManager} from 'ng2-toastr';
 export class QuoteComponent implements OnInit {
   // @ViewChild(SignaturePad) signaturePad: SignaturePad;
   // @ViewChild(PaiementQuotesComponent) paiementQuotesComponent: PaiementQuotesComponent;
-  @ViewChild(ActionButtonsComponent) actionButtonsComponent: ActionButtonsComponent
+  // @ViewChild(ActionButtonsComponent) actionButtonsComponent: ActionButtonsComponent
   @ViewChild(DrawingSignatureComponent) drawingSignatureComponent: DrawingSignatureComponent
   loading: boolean = false;
   @Output() saved: EventEmitter<any> = new EventEmitter();
@@ -28,7 +28,7 @@ export class QuoteComponent implements OnInit {
   @Input() isDialog: boolean = false
 
   fetchedPaiementQuotes: PaiementQuote[] = []
-  showPaiements: boolean = false
+  // showPaiements: boolean = false
   fetchedQuote: Quote = new Quote()
   totalPaiementAmount: number = 0
   signatureBase64Temp: string = ''
@@ -45,13 +45,13 @@ export class QuoteComponent implements OnInit {
   constructor(
     private quoteService: QuoteService,
     private activatedRoute: ActivatedRoute,
-    private router: Router,
+    // private router: Router,
     private toastr: ToastsManager,
     // private location: Location,
-    private _fb: FormBuilder,
-    public authService: AuthService,
+    // private _fb: FormBuilder,
+    // public authService: AuthService,
     // private dragulaService: DragulaService,
-    private translateService: TranslateService,
+    // private translateService: TranslateService,
   ) {
   }
 
