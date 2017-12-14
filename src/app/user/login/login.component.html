@@ -6,14 +6,28 @@
     <!-- <img class="displayed" src="./assets/images/logo-mirabelle-400.png"> -->
     <h3 class="ac">Bienvenue sur Mirabelle !</h3>
 
-    <div class="input-group login ac">
+    <!-- <div class="input-group login ac">
       <input #userEmail type="text" formControlName="email" placeholder="Email" class="form-control">
-    </div>
+    </div> -->
 
-    <div [hidden]="email.valid || email.pristine" class="alert alert-danger">Merci d'entrer un email valide</div>
-    <div class="input-group login ac">
+
+    <mat-form-field>
+      <input matInput #userEmail formControlName="email" placeholder="Email">
+    </mat-form-field>
+
+
+
+    <!-- <div [hidden]="email.valid || email.pristine" class="alert alert-danger">Merci d'entrer un email valide</div> -->
+    <!-- <div class="input-group login ac">
       <input type="password" formControlName="password" placeholder="Mot de passe" class="form-control">
-    </div>
+    </div> -->
+
+
+    <mat-form-field>
+      <input matInput type="password" formControlName="password" placeholder="Mot de passe">
+    </mat-form-field>
+
+
     <div class="login ac">
     <div [hidden]="password.valid || password.pristine" class="alert alert-danger">Votre mot de passe doit contenir au moins 6 caractères</div>
     <button type="submit" class="valid" [disabled]="!myForm.valid" [ngClass]="{'done':myForm.valid,'pas-done':!myForm.valid}">Login</button>
