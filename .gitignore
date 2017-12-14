@@ -18,8 +18,8 @@ package-lock.json
 
 # media
 /server/uploads/forms/**/*
-/server/uploads/pdf
-/server/uploads/signature
+/server/uploads/pdf/**/*
+/server/uploads/signature/**/*
 !/server/uploads/forms/index.html
 !/server/uploads/pdf/index.html
 !/server/uploads/signature/index.html
