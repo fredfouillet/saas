@@ -16,7 +16,7 @@ import { User, TypeUser, Address, AddressTypes } from '../../user.model';
 
 import { FormGroup, FormControl } from '@angular/forms';
 // import { DeleteDialog } from '../../../deleteDialog/deleteDialog.component'
-import { Search } from '../../../shared/shared.model';
+import { Search, CustomFormControls } from '../../../shared/shared.model';
 
 // const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
@@ -31,7 +31,7 @@ import { Search } from '../../../shared/shared.model';
 export class DetailsUserComponent implements OnInit {
   @Output() save: EventEmitter<any> = new EventEmitter();
   @Input() search: Search = new Search()
-  @Input() customFormControls: any
+  customFormControls = new CustomFormControls()
   @Input() myForm: FormGroup
   // = this._fb.group({
   //   email: this.emailFormControl,

@@ -5,6 +5,7 @@ import {Router} from '@angular/router';
 import {AuthService} from '../../auth/auth.service';
 import {UserAuth} from '../../auth/user.model';
 // import {GlobalEventsManager} from '../../globalEventsManager';
+import { CustomFormControls } from '../../shared/shared.model';
 
 
 @Component({
@@ -27,11 +28,11 @@ export class LoginComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    this.email = new FormControl('', [Validators.required, this.emailValidator]);
+    // this.email = new FormControl('', [Validators.required, this.emailValidator]);
     this.password = new FormControl('', [Validators.required, Validators.minLength(6)]);
 
     this.myForm = this._fb.group({
-      email: this.email,
+      email: new CustomFormControls().emailFormControl,
       password: this.password
     });
 
@@ -78,11 +79,11 @@ export class LoginComponent implements OnInit, AfterViewInit {
 
   }
   // input validator to check if the email entered by the user is actually text in an email form
-  emailValidator(control: any) {
-    let EMAIL_REGEXP = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
-
-    if (!EMAIL_REGEXP.test(control.value)) {
-      return {invalidEmail: true};
-    }
-  }
+  // emailValidator(control: any) {
+  //   let EMAIL_REGEXP = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
+  //
+  //   if (!EMAIL_REGEXP.test(control.value)) {
+  //     return {invalidEmail: true};
+  //   }
+  // }
 }

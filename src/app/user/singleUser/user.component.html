@@ -15,7 +15,7 @@
           {{'User' | translate}}
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <app-details-user [myForm]="myForm" [customFormControls]="customFormControls" (save)="save()"[fetchedUser]="fetchedUser"></app-details-user>
+      <app-details-user [myForm]="myForm" (save)="save()"[fetchedUser]="fetchedUser"></app-details-user>
       <mat-action-row>
         <div *ngIf="fetchedUser._id">
           <button *ngIf="!isUserIsMyself()" mat-mini-fab color="warn" (click)="openDialogDelete()">

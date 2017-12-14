@@ -25,15 +25,21 @@
 
     <mat-form-field>
       <input matInput type="password" formControlName="password" placeholder="Mot de passe">
+      <mat-error *ngIf="!password.valid && !password.pristine">
+        <!-- {{'Min 6 characters for your password' | translate}} -->
+        Votre mot de passe doit contenir au moins 6 caractères
+      </mat-error>
     </mat-form-field>
 
 
+
+
     <div class="login ac">
-    <div [hidden]="password.valid || password.pristine" class="alert alert-danger">Votre mot de passe doit contenir au moins 6 caractères</div>
-    <button type="submit" mat-raised-button color="primary">Login</button>
-    <p class="messagelogin"><a [routerLink]="'/user/reset'">Mot de passe oublié?</a></p>
-    <p class="messagelogin"><a [routerLink]="'/user/register'">Vous n'avez pas de compte? S'enregistrer</a></p>
-  </div>
+
+      <button type="submit" mat-raised-button color="primary">Login</button>
+      <p class="messagelogin"><a [routerLink]="'/user/reset'">Mot de passe oublié?</a></p>
+      <p class="messagelogin"><a [routerLink]="'/user/register'">Vous n'avez pas de compte? S'enregistrer</a></p>
+    </div>
   </form>
 
   </div>

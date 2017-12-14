@@ -24,3 +24,13 @@ export class PaginationData {
   itemsPerPage: number = 0;
   totalItems: number = 0;
 };
+
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+export class CustomFormControls {
+  emailFormControl = new FormControl('', [
+    Validators.required,
+    Validators.minLength(3),
+    Validators.pattern(EMAIL_REGEX)])
+}

@@ -6,10 +6,10 @@
         <input matInput type="text" formControlName="email" [(ngModel)]="fetchedUser.email" placeholder="{{'Email' | translate}}">
 
         <mat-error *ngIf="customFormControls.emailFormControl.hasError('pattern')">
-          Please enter a valid email address
+          {{Please enter a valid email address | translate}}
         </mat-error>
         <mat-error *ngIf="customFormControls.emailFormControl.hasError('required')">
-          Email is <strong>required</strong>
+          {{Email is | translate}} <strong>{{required | translate}}</strong>
         </mat-error>
 
       </mat-form-field>
