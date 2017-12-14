@@ -18,9 +18,11 @@ package-lock.json
 
 # media
 /server/uploads/forms/**/*
-!/server/uploads/forms/index.html
 /server/uploads/pdf
 /server/uploads/signature
+!/server/uploads/forms/index.html
+!/server/uploads/pdf/index.html
+!/server/uploads/signature/index.html
 
 # IDEs and editors
 /.idea
