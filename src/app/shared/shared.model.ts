@@ -1,3 +1,7 @@
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+
 export class Search {
   // isQuoteAssignedToMe: boolean = false;
   orderBy: string = '';
@@ -25,8 +29,10 @@ export class PaginationData {
   totalItems: number = 0;
 };
 
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
-const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+
+
+
 
 export class CustomFormControls {
   emailFormControl = new FormControl('', [
