@@ -1,25 +1,23 @@
 import { Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
 import { ProductService} from '../product.service';
 import { CompanieService} from '../../companie/companie.service';
-
 import { ToastsManager} from 'ng2-toastr';
 import { MatDialog } from '@angular/material';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
 import { Product, ItemSteps } from '../product.model';
 import { Companie } from '../../companie/companie.model';
-// import { EditOptionsComponentDialog } from '../../form/modalLibrary/modalLibrary.component';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
-import { DeleteDialogComponent } from '../../nav/deleteDialog/deleteDialog.component'
-import { UserService } from '../../user/user.service'
-import { User } from '../../user/user.model'
-import { ModelVATs } from '../../quote/quote.model'
+import { DeleteDialogComponent } from '../../nav/deleteDialog/deleteDialog.component';
+import { UserService } from '../../user/user.service';
+import { User } from '../../user/user.model';
+import { ModelVATs } from '../../quote/quote.model';
 import { AuthService} from '../../auth/auth.service';
 
 
 @Component({
-  selector: 'app-productSingle',
+  selector: 'app-product-single',
   templateUrl: './productSingle.component.html',
   styleUrls: ['../product.component.css'],
 
@@ -33,8 +31,8 @@ export class ProductSingleComponent implements OnInit {
   selectedIndex2: number = -1
   // selectedIndex1 = 0
   // selectedIndex2 = 0
-  show1 = false
-  show2 = false
+  // show1 = false
+  // show2 = false
   // categ1: string = '';
   // categ2: string = '';
   // categ3: string = '';
@@ -50,7 +48,7 @@ export class ProductSingleComponent implements OnInit {
 
 
   fetchedProduct: Product = new Product();
-  fetchedCompanies: Companie[] = []
+  // fetchedCompanies: Companie[] = []
 
   //
   // inputCategorie = ''
@@ -149,38 +147,38 @@ export class ProductSingleComponent implements OnInit {
     this.selectedIndex2 = selectedIndex2
   }
 
+  //
+  // searchCompanies() {
+  //   if(!this.autocompleteCompanie) {
+  //     this.fetchedCompanies = []
+  //   } else {
+  //     let search = {
+  //         search: this.autocompleteCompanie,
+  //       };
+  //     this.getCompanies(1, search)
+  //   }
+  // }
 
-  searchCompanies() {
-    if(!this.autocompleteCompanie) {
-      this.fetchedCompanies = []
-    } else {
-      let search = {
-          search: this.autocompleteCompanie,
-        };
-      this.getCompanies(1, search)
-    }
-  }
-
-
-  selectCompanie(companie: Companie) {
-    this.fetchedProduct.vendors = [companie]
-  }
-
-  removeCompanie(i: number) {
-    this.fetchedProduct.vendors.splice(i, 1);
-  }
-
-  getCompanies(page: number, search: any) {
-    this.companieService.getCompanies(page, search)
-      .subscribe(
-        res => {
-          this.fetchedCompanies = res.data
-        },
-        error => {
-          console.log(error);
-        }
-      );
-  }
+  //
+  // selectCompanie(companie: Companie) {
+  //   this.fetchedProduct.vendors = [companie]
+  // }
+  //
+  // removeCompanie(i: number) {
+  //   this.fetchedProduct.vendors.splice(i, 1);
+  // }
+  //
+  // getCompanies(page: number, search: any) {
+  //   this.companieService.getCompanies(page, search)
+  //     .subscribe(
+  //       res => {
+  //         this.fetchedCompanies = res.data
+  //       },
+  //       error => {
+  //         console.log(error);
+  //       }
+  //     );
+  // }
 
 
   openDialogDelete() {
