@@ -19,6 +19,85 @@ var transportOptions = {
 }
 
 module.exports = {
+  sendQuoteByEmailToClient(req, res, next) {
+    Quote.findById(req.params.quoteId).populate({path: 'clients', model: 'User'}).exec(function(err, obj) {
+      if (err) {
+        return res.status(500).json({message: 'An error occured', err: err})
+      }
+      if (!obj) {
+        return res.status(404).json({
+          title: 'No form found',
+          error: {
+            message: 'Form not found!'
+          }
+        })
+      }
+
+      obj.clients.forEach(client => {
+
+        var html = `
+          <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <head>
+              <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+              <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+              <title>Email depuis Belmard Gestion</title>
+              <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"></link>
+            </head>
+            <body style="margin: 0; padding: 0; font-family: 'Montserrat', sans-serif;">
+              <table align="center" border="0" cellpadding="0" cellspacing="0" width="600" style="border: 1px solid #cccccc;">
+
+                <tr>
+                  <td bgcolor="#ffffff" style="padding: 15px 15px 15px 15px;">
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                      <tr>
+                        <td>Bonjour,</td>
+                      </tr>
+                      <tr>
+                        <td style="padding: 15px 0 30px 0;">
+                          Merci de trouver un document
+                        </td>
+                      </tr>
+                      <tr>
+                        <td align="center" style="background-color: #0a2f87; padding: 10px 15px; cursor: pointer;">
+                          <a
+                            href="http://${req.headers.host}/uploads/pdf/${req.params.quoteId}.pdf"
+                            style="color: #ffffff; text-decoration: none;"
+                          >
+                            Voir le Devis
+                          </a>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </body>
+          </html>
+          `;
+
+        var mailer = nodemailer.createTransport({
+          // service: "Gmail",
+          host: config.hostName,
+          port: config.port,
+          auth: {
+            user: config.userGmail,
+            pass: config.passGmail
+          }
+        })
+        var mailOptions = {
+          to: client.email,
+          from: config.userGmail,
+          subject: 'Gooplus Management | Nouveau document',
+          html: html
+        };
+        mailer.sendMail(mailOptions, function(err) {
+          console.log('info', 'An e-mail has been sent.');
+          return res.status(200).json({message: 'Success', token: 'InMail'})
+        });
+      })
+    })
+  },
   sendMailResetPassword(token, req, res) {
     async.waterfall([
       function(done) {
