@@ -1,46 +1,43 @@
 <div class="row justify-content-center">
 
-    <div class="col-md-4 col-xs-12">
+  <div class="col-md-4 col-xs-12">
 
 
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit()" class="login-form" novalidate>
 
-<mat-card class="example-card">
-  <mat-card-header>
-    <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title><h3 class="tac">Bienvenue sur Mirabelle!</h3></mat-card-title>
-    <mat-card-subtitle>Vos devis chez vos clients !</mat-card-subtitle>
-  </mat-card-header>
-  <img mat-card-image src="/assets/images/logo-mirabelle-400.png" alt="Bienvenue sur Mirabelle">
-  <mat-card-content>
-
-  
-  <form [formGroup]="myForm" (ngSubmit)="onSubmit()" class="login-form" novalidate>
-       <mat-form-field>
-      <input matInput #userEmail formControlName="email" placeholder="Email">
-    </mat-form-field>
-
-    <mat-form-field>
-      <input matInput type="password" formControlName="password" placeholder="Mot de passe">
-      <mat-error *ngIf="!password.valid && !password.pristine">
- 
-        Votre mot de passe doit contenir au moins 6 caractères
-      </mat-error>
-    </mat-form-field>
-  </form>
-  
-  </mat-card-content>
-  <mat-card-actions>
-    <div class="login ac">
-      <button type="submit" mat-raised-button color="primary">Login</button>
-      <p class="messagelogin"><a [routerLink]="'/user/reset'">Mot de passe oublié?</a></p>
-      <p class="messagelogin"><a [routerLink]="'/user/register'">Vous n'avez pas de compte? S'enregistrer</a></p>
-    </div>
-  </mat-card-actions>
-</mat-card>
-    
-    </div>
-</div> 
+      <mat-card class="example-card">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>
+            <h3 class="tac">Bienvenue sur Mirabelle!</h3></mat-card-title>
+          <mat-card-subtitle>Vos devis chez vos clients !</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src="/assets/images/logo-mirabelle-400.png" alt="Bienvenue sur Mirabelle">
+        <mat-card-content>
 
 
+          <mat-form-field>
+            <input matInput #userEmail formControlName="email" placeholder="Email">
+          </mat-form-field>
 
+          <mat-form-field>
+            <input matInput type="password" formControlName="password" placeholder="Mot de passe">
+            <mat-error *ngIf="!password.valid && !password.pristine">
 
+              Votre mot de passe doit contenir au moins 6 caractères
+            </mat-error>
+          </mat-form-field>
+
+        </mat-card-content>
+        <mat-card-actions>
+          <div class="login ac">
+            <button type="submit" mat-raised-button color="primary">Login</button>
+            <p class="messagelogin"><a [routerLink]="'/user/reset'">Mot de passe oublié?</a></p>
+            <p class="messagelogin"><a [routerLink]="'/user/register'">Vous n'avez pas de compte? S'enregistrer</a></p>
+          </div>
+        </mat-card-actions>
+      </mat-card>
+    </form>
+
+  </div>
+</div>
