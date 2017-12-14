@@ -2,7 +2,7 @@ import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 // import {AuthService} from '../../auth/auth.service';
 import { Location } from '@angular/common';
 // import { Router} from '@angular/router';
-import { TranslateService } from '../../translate/translate.service';
+// import { TranslateService } from '../../translate/translate.service';
 import { Search} from '../../shared/shared.model';
 
 @Component({
@@ -24,7 +24,7 @@ export class HeaderTitleComponent implements OnInit {
 
 
   constructor(
-    private translateService: TranslateService,
+    // private translateService: TranslateService,
     private location: Location,
   ) {}
 

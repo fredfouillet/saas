@@ -11,7 +11,7 @@ import { ToastsManager} from 'ng2-toastr';
 import { PaiementQuoteGraph, EmptyRow } from './reporting.model'
 import { BaseChartDirective } from 'ng2-charts/ng2-charts';
 import { Search } from '../shared/shared.model'
-
+import { TranslateService } from '../translate/translate.service';
 
 
 @Component({
@@ -66,6 +66,7 @@ export class ReportingsComponent implements OnInit {
 
   constructor(
     private paiementQuoteService: PaiementQuoteService,
+    private translateService: TranslateService,
     // private authService: AuthService,
   //  private modalService: NgbModal,
     private toastr: ToastsManager,
@@ -109,24 +110,24 @@ export class ReportingsComponent implements OnInit {
   getData() {
         let newSearch = new Search()
         newSearch = new Search()
-        newSearch.year = this.year
+        newSearch.year = this.year;
         newSearch.statusQuote = ''
         this.getPaiementQuotesGraph(newSearch).then((res: any) => {
-          this.nameGraph = 'lineChartDataGraph1'
+          this.nameGraph = 'lineChartDataGraph1';
           this.serieNumber = 0
-          this.label = 'Paiement'
-          this.typeSum = 'amountTotal'
-          this[this.nameGraph][this.serieNumber].ready = true
-          this[this.nameGraph][this.serieNumber].label = this.label
+          this.label = this.translateService.instant('Paiement')
+          this.typeSum = 'amountTotal';
+          this[this.nameGraph][this.serieNumber].ready = true;
+          this[this.nameGraph][this.serieNumber].label = this.label;
           res.item.forEach((element, index) => {
             this[this.nameGraph][this.serieNumber].year = element._id.year
             this[this.nameGraph][this.serieNumber].data[element._id.month - 1] = element[this.typeSum]
           })
 
-          this.nameGraph = 'lineChartDataGraph3'
+          this.nameGraph = 'lineChartDataGraph3';
           this.serieNumber = 0
-          this.label = 'Count Paiement'
-          this.typeSum = 'count'
+          this.label = this.translateService.instant('Count Paiement');
+          this.typeSum = 'count';
           this[this.nameGraph][this.serieNumber].ready = true
           this[this.nameGraph][this.serieNumber].label = this.label
           res.item.forEach((element, index) => {
@@ -138,28 +139,28 @@ export class ReportingsComponent implements OnInit {
 
         newSearch = new Search()
         newSearch.year = this.year
-        newSearch.statusQuote = 'paid'
+        newSearch.statusQuote = this.translateService.instant('paid')
         this.getQuotesGraph(newSearch).then((res: any) => {
           let totalData = 0;
           res.item.forEach((element, index) => {
             totalData += element.amountTotal
           })
           this.donutChartDataGraph1.data[2] = totalData
-          this.donutChartDataGraph1.labels[2] = 'Quote Paid'
+          this.donutChartDataGraph1.labels[2] = this.translateService.instant('Intervention Paid')
           this.donutChartDataGraph1.ready[2] = true
         })
 
 
         newSearch = new Search()
         newSearch.year = this.year
-        newSearch.statusQuote = 'pending'
+        newSearch.statusQuote = this.translateService.instant('pending')
         this.getQuotesGraph(newSearch).then((res: any) => {
           let totalData = 0;
           res.item.forEach((element, index) => {
             totalData += element.amountTotal
           })
           this.donutChartDataGraph1.data[3] = totalData
-          this.donutChartDataGraph1.labels[3] = 'Quote Pending'
+          this.donutChartDataGraph1.labels[3] = this.translateService.instant('Pending Intervention')
           this.donutChartDataGraph1.ready[3] = true
         })
 
@@ -172,7 +173,7 @@ export class ReportingsComponent implements OnInit {
             totalData += element.amountTotal
           })
           this.donutChartDataGraph1.data[4] = totalData
-          this.donutChartDataGraph1.labels[4] = 'Quote Rejected'
+          this.donutChartDataGraph1.labels[4] = this.translateService.instant('Rejected intervention')
           this.donutChartDataGraph1.ready[4] = true
         })
 
@@ -186,12 +187,12 @@ export class ReportingsComponent implements OnInit {
             totalData += element.amountTotal
           })
           this.donutChartDataGraph1.data[1] = totalData
-          this.donutChartDataGraph1.labels[1] = 'Quote Signed'
+          this.donutChartDataGraph1.labels[1] = this.translateService.instant('Quote Signed')
           this.donutChartDataGraph1.ready[1] = true
 
           this.nameGraph = 'lineChartDataGraph2'
           this.serieNumber = 0
-          this.label = 'Quotes Signed'
+          this.label = this.translateService.instant('Quotes Signed')
           this.typeSum = 'amountTotal'
           this[this.nameGraph][this.serieNumber].ready = true
           this[this.nameGraph][this.serieNumber].label = this.label
@@ -203,7 +204,7 @@ export class ReportingsComponent implements OnInit {
 
           this.nameGraph = 'lineChartDataGraph4'
           this.serieNumber = 0
-          this.label = 'Count Quotes Signed'
+          this.label = this.translateService.instant('Count Quotes Signed')
           this.typeSum = 'count'
           this[this.nameGraph][this.serieNumber].ready = true
           this[this.nameGraph][this.serieNumber].label = this.label
@@ -229,7 +230,7 @@ export class ReportingsComponent implements OnInit {
 
           this.nameGraph = 'lineChartDataGraph1'
           this.serieNumber = 1
-          this.label = 'Quote'
+          this.label = this.translateService.instant('Intervention')
           this.typeSum = 'amountTotal'
           this[this.nameGraph][this.serieNumber].ready = true
           this[this.nameGraph][this.serieNumber].label = this.label
@@ -240,7 +241,7 @@ export class ReportingsComponent implements OnInit {
 
           this.nameGraph = 'lineChartDataGraph2'
           this.serieNumber = 1
-          this.label = 'Quote'
+          this.label = this.translateService.instant('Intervention')
           this.typeSum = 'amountTotal'
           this[this.nameGraph][this.serieNumber].ready = true
           this[this.nameGraph][this.serieNumber].label = this.label
@@ -252,7 +253,7 @@ export class ReportingsComponent implements OnInit {
 
           this.nameGraph = 'lineChartDataGraph3'
           this.serieNumber = 1
-          this.label = 'Count Quotes'
+          this.label = this.translateService.instant('Count Quotes')
           this.typeSum = 'count'
           this[this.nameGraph][this.serieNumber].ready = true
           this[this.nameGraph][this.serieNumber].label = this.label
@@ -263,7 +264,7 @@ export class ReportingsComponent implements OnInit {
 
           this.nameGraph = 'lineChartDataGraph4'
           this.serieNumber = 1
-          this.label = 'count All Quotes'
+          this.label = this.translateService.instant('count All Quotes')
           this.typeSum = 'count'
           this[this.nameGraph][this.serieNumber].ready = true
           this[this.nameGraph][this.serieNumber].label = this.label
