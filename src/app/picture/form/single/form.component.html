@@ -4,7 +4,8 @@
       <div class="">
         <div class="">
           <button *ngIf="!openCameraStraight" type="button">
-            <input #fileInput name="fileUp" type="file" (change)="onFileSelect($event)">
+            <label for="upload-photo">Browse...</label>
+            <input #fileInput name="fileUp" id="upload-photo" type="file" (change)="onFileSelect($event)">
           </button>
           <div *ngIf="openCameraStraight">
             <label for="file" matTooltip="Photo" class="label-file">

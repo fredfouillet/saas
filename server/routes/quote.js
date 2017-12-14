@@ -288,7 +288,7 @@ router.put('/:id', function(req, res, next) {
 
 
       //  quote.ownerCompanies = req.user.ownerCompanies
-    //  quote.historyClients = req.body.clients
+      quote.historyClients = req.body.clients
        // req.body.historyClientsCross = req.body.historyClientsCross
 
       //  var quote = new Quote(req.body);
@@ -392,7 +392,7 @@ router.post('/', function(req, res, next) {
   // searchQuery['ownerCompanies'] = req.user.ownerCompanies
 
   req.body.ownerCompanies = req.user.ownerCompanies
-  // req.body.historyClients = req.body.clients
+  req.body.historyClients = req.body.clients
   // req.body.historyClientsCross = req.body.historyClientsCross
 
   var quote = new Quote(req.body);
