@@ -84,10 +84,10 @@ export class QuoteInfoComponent implements OnInit {
   quoteStatusChanged(){
     this.quoteStatusChangedEmit.emit()
   }
-  quoteDetailsUpdated(result) {
-    // console.log(result)
-    this.fetchedQuote = result
-  }
+  // quoteDetailsUpdated(result) {
+  //   // console.log(result)
+  //   this.fetchedQuote = result
+  // }
   // togglePaiements() {
   //   this.showPaiements = !this.showPaiements
   // }

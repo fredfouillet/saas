@@ -15,7 +15,7 @@ import { CustomOption } from './toast-options';
 import { NavbarModule } from './nav/navbar/navbar.module';
 import { SidebarModule } from './nav/sidebar/sidebar.module';
 import { UserModule } from './user/user.module';
-import { AutocompleteComponent } from './autocomplete/autocomplete.component'
+// import { AutocompleteComponent } from './autocomplete/autocomplete.component'
 import { AppRoutingModule } from './appRouting.module';
 import { AuthGuardService } from './auth/authguard.service';
 import { AuthService } from './auth/auth.service';
