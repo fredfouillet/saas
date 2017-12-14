@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, Input, Output, EventEmitter } from '@angular/core';
-// import { AuthService } from '../../auth/auth.service';
+import { AuthService } from '../../auth/auth.service';
 import { QuoteService } from '../quote.service';
 import { Quote, PriceQuoteTaxe, ModelVATs } from '../quote.model';
 import { ActivatedRoute, Params } from '@angular/router';
@@ -45,11 +45,11 @@ export class QuoteComponent implements OnInit {
   constructor(
     private quoteService: QuoteService,
     private activatedRoute: ActivatedRoute,
-    // private router: Router,
+    public authService: AuthService,
     private toastr: ToastsManager,
+    // private router: Router,
     // private location: Location,
     // private _fb: FormBuilder,
-    // public authService: AuthService,
     // private dragulaService: DragulaService,
     // private translateService: TranslateService,
   ) {

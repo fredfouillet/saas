@@ -3,8 +3,8 @@ import { NgModule } from '@angular/core';
 import { DrawingSignatureComponent } from './drawingSignature.component'
 import { FormsModule } from '@angular/forms';
 import { SharedSmallModule } from '../../../shared/sharedSmall.module';
-import { MatSliderModule} from '@angular/material';
-import { MatSlideToggleModule} from '@angular/material';
+// import { MatSliderModule} from '@angular/material';
+// import { MatSlideToggleModule} from '@angular/material';
 // import { SignaturePadModule } from '../angular2-signaturepad';
 
 // import { UserModule} from '../user/user.module'
@@ -33,8 +33,8 @@ import {CanvasWhiteboardModule} from 'ng2-canvas-whiteboard';
     // CommonModule,
     FormsModule,
     SharedSmallModule,
-    MatSliderModule,
-    MatSlideToggleModule,
+    // MatSliderModule,
+    // MatSlideToggleModule,
     // SignaturePadModule,
     SharedModule,
     CanvasWhiteboardModule,

@@ -1,8 +1,6 @@
 import {Component, OnInit, ViewChild, Input, Output, EventEmitter} from '@angular/core';
 import { DragulaService } from 'ng2-dragula';
-import {Quote, DevisDetail,
-  StatusQuotes,
-  PriceQuoteTaxe, ModelVATs } from '../../quote.model';
+import {Quote } from '../../quote.model';
 import {ToastsManager} from 'ng2-toastr';
 import { Location } from '@angular/common';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
@@ -44,7 +42,7 @@ export class QuoteInfoComponent implements OnInit {
   @Input() search: Search = new Search()
   @Input() fetchedQuote: Quote = new Quote()
   myForm: FormGroup;
-  statusQuotes = StatusQuotes
+  // statusQuotes = StatusQuotes
   // fetchedProducts: Product[] = []
   // fetchedPaiementQuotes: PaiementQuote[] = []
 
@@ -64,10 +62,10 @@ export class QuoteInfoComponent implements OnInit {
     // private dragulaService: DragulaService,
   ) {
   }
-
-  changeStatutsQuote(statusQuoteSelect){
-    // console.log(statusQuoteSelect)
-  }
+  //
+  // changeStatutsQuote(statusQuoteSelect){
+  //   // console.log(statusQuoteSelect)
+  // }
 
   ngOnInit() {
 

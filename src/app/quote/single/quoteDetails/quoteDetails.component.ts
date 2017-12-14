@@ -1,35 +1,30 @@
 import { Component, OnInit, ViewChild, Input, Output, EventEmitter } from '@angular/core';
 import { AuthService } from '../../../auth/auth.service';
-import { QuoteService } from '../../quote.service';
+import {Quote, DevisDetail, BucketProduct, StatusQuotes} from '../../quote.model';
+import { ToastsManager } from 'ng2-toastr';
+import { Product } from '../../../product/product.model';
+// import { QuoteService } from '../../quote.service';
 // import { TemplateQuoteService } from '../../templateQuote.service';
 // import { TemplateQuote } from '../../templateQuote.model';
-import { DragulaService } from 'ng2-dragula';
+// import { DragulaService } from 'ng2-dragula';
 // import { ProductService } from '../../../product/product.service';
 // import { ProjectService} from '../../../project/project.service';
 
-import {
-  Quote, DevisDetail, BucketProduct, StatusQuotes,
-
-  PriceQuoteTaxe,
-  // ModelVATs
-} from '../../quote.model';
 // import { TemplateQuote } from '../../templateQuote.model';
 
-import { ToastsManager } from 'ng2-toastr';
 // import { MatDialog } from '@angular/material';
-import { Router, ActivatedRoute, Params } from '@angular/router';
-import { Location } from '@angular/common';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+// import { Router, ActivatedRoute, Params } from '@angular/router';
+// import { Location } from '@angular/common';
+// import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 // import { UserService } from '../../../user/user.service';
 // import { DeleteDialog } from '../../../deleteDialog/deleteDialog.component';
 // import { User } from '../../../user/user.model';
-import { Product } from '../../../product/product.model';
 // import { Project } from '../../../project/project.model';
-import { PaiementQuote } from '../../../paiementQuote/paiementQuote.model';
+// import { PaiementQuote } from '../../../paiementQuote/paiementQuote.model';
 // import { PaiementQuoteDialogComponent } from '../paiementQuote/single/dialog/paiementQuoteDialog.component';
 // import { PaiementQuoteDialogComponent } from '../../../paiementQuote/single/dialog/paiementQuoteDialog.component'
 
-import { TranslateService } from '../../../translate/translate.service';
+// import { TranslateService } from '../../../translate/translate.service';
 // declare let jsPDF;
 // import { SignaturePad } from 'angular2-signaturepad/signature-pad';
 // import { SignaturePad } from '../../../angular2-signaturepad/signature-pad';
@@ -58,11 +53,11 @@ export class QuoteDetailsComponent implements OnInit {
   // fetchedQuote: Quote = new Quote()
   // autocompleteUser: string = '';
   // autocompleteProject: string = '';
-  fetchedProducts: Product[] = []
+  // fetchedProducts: Product[] = []
 
   // imgLogoUrl: string = './assets/images/profile-placeholder.jpg'
   // imgSignatureBase64Temp = ''
-  fetchedPaiementQuotes: PaiementQuote[] = []
+  // fetchedPaiementQuotes: PaiementQuote[] = []
   statusQuotes = StatusQuotes
 
   public editorOptions = {
@@ -77,7 +72,7 @@ export class QuoteDetailsComponent implements OnInit {
   // VATs = ModelVATs
 
   constructor(
-    private quoteService: QuoteService,
+    // private quoteService: QuoteService,
     // private templateQuoteService: TemplateQuoteService,
     // private projectService: ProjectService,
     // private userService: UserService,
@@ -85,13 +80,13 @@ export class QuoteDetailsComponent implements OnInit {
     //    private modalService: NgbModal,
     private toastr: ToastsManager,
     // public dialog: MatDialog,
-    private activatedRoute: ActivatedRoute,
-    private router: Router,
-    private location: Location,
-    private _fb: FormBuilder,
+    // private activatedRoute: ActivatedRoute,
+    // private router: Router,
+    // private location: Location,
+    // private _fb: FormBuilder,
     public authService: AuthService,
-    private dragulaService: DragulaService,
-    private translateService: TranslateService,
+    // private dragulaService: DragulaService,
+    // private translateService: TranslateService,
   ) {
 
 
@@ -112,7 +107,7 @@ export class QuoteDetailsComponent implements OnInit {
     this.calculateQuote()
   }
   addBucketProducts() {
-    let newDevisDetail = new DevisDetail()
+    const newDevisDetail = new DevisDetail()
     this.fetchedQuote.devisDetails.push(newDevisDetail)
   }
 
@@ -264,7 +259,7 @@ export class QuoteDetailsComponent implements OnInit {
   //   }, 20)
   //
   // }
-  calculateQuote(){
+  calculateQuote() {
     this.calculateQuoteEmit.emit()
   }
   removeRow(i: number, j: number) {

@@ -1,16 +1,16 @@
-import {Component, OnInit, ViewChild, Input, Output, EventEmitter} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {QuoteService} from '../../quote.service';
 import {Quote} from '../../quote.model';
 
 import {ToastsManager} from 'ng2-toastr';
-import { Location } from '@angular/common';
+// import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-invoice-action',
   templateUrl: './invoiceAction.component.html',
   styleUrls: ['./invoiceAction.component.css'],
 })
-export class InvoiceActionComponent implements OnInit {
+export class InvoiceActionComponent {
 
   @Input() fetchedQuote: Quote = new Quote()
   loading: boolean = false
@@ -57,9 +57,7 @@ export class InvoiceActionComponent implements OnInit {
         )
     }
 
-  ngOnInit() {
 
-  }
 
 
 

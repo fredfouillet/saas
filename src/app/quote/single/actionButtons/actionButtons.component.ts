@@ -1,6 +1,11 @@
 import {Component, OnInit, ViewChild, Input, Output, EventEmitter} from '@angular/core';
-import {AuthService} from '../../../auth/auth.service';
 import {QuoteService} from '../../quote.service';
+import {Quote} from '../../quote.model';
+import {ToastsManager} from 'ng2-toastr';
+import {Router } from '@angular/router';
+import {DeleteDialogComponent } from '../../../nav/deleteDialog/deleteDialog.component';
+import {MatDialog } from '@angular/material';
+// import {AuthService} from '../../../auth/auth.service';
 // import {TemplateQuoteService} from '../templateQuote.service';
 
 // import { DragulaService } from 'ng2-dragula';
@@ -8,17 +13,12 @@ import {QuoteService} from '../../quote.service';
 // import { ProjectService} from '../../project/project.service';
 
 // import {Quote, DevisDetail, BucketProduct, StatusQuotes, StatusQuotesInvoice, Signature, PriceQuoteTaxe, ModelVATs } from '../quote.model';
-import {Quote} from '../../quote.model';
 // import {TemplateQuote } from '../../templateQuote.model';
 
-import {ToastsManager} from 'ng2-toastr';
-import {MatDialog } from '@angular/material';
 // import {Router, ActivatedRoute, Params } from '@angular/router';
-import {Router } from '@angular/router';
-import { Location } from '@angular/common';
+// import { Location } from '@angular/common';
 // import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 // import { UserService} from '../../user/user.service';
-import { DeleteDialogComponent } from '../../../nav/deleteDialog/deleteDialog.component';
 
 @Component({
   selector: 'app-actionButtons',
@@ -50,14 +50,13 @@ export class ActionButtonsComponent implements OnInit {
 
   constructor(
     private quoteService: QuoteService,
-
+    private router: Router,
     private toastr: ToastsManager,
     public dialog: MatDialog,
     // private activatedRoute: ActivatedRoute,
-    private router: Router,
     // private location: Location,
     // private _fb: FormBuilder,
-    public authService: AuthService,
+    // public authService: AuthService,
     // private dragulaService: DragulaService,
     // private translateService: TranslateService,
   ) {
