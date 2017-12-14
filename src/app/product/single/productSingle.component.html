@@ -4,10 +4,10 @@
     <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)">
       <mat-expansion-panel-header>
         <mat-panel-title>
-          {{'Product' | translate}}
+          <mat-icon>list</mat-icon>
         </mat-panel-title>
         <mat-panel-description>
-
+          {{'Product' | translate}}
         </mat-panel-description>
       </mat-expansion-panel-header>
 
@@ -65,9 +65,10 @@
     <mat-expansion-panel *ngIf="fetchedProduct._id" [expanded]="step === 1" (opened)="setStep(1)">
       <mat-expansion-panel-header>
         <mat-panel-title>
-          {{'Pictures' | translate}}
+          <mat-icon>brush</mat-icon>
         </mat-panel-title>
         <mat-panel-description>
+          {{'Pictures' | translate}}
         </mat-panel-description>
       </mat-expansion-panel-header>
       <app-picture [forms]="fetchedProduct.forms" [showPagination]=false>
