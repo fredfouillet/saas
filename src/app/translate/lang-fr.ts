@@ -4,8 +4,13 @@ export const LANG_FR_NAME = 'fr';
 
 export const LANG_FR_TRANS = {
     'Payment method': 'Mode de paiement',
+    'Your password must have at least 6 characters': 'Votre mot de passe doit contenir au moins 6 caractères',
+    'Your quotes at you clients place': 'Vos devis chez vos clients !',
+    'Forgotten password?': 'Mot de passe oublié ?',
     'Back': 'Retour',
+    'Password': 'Mot de passe"',
     'Add': 'Ajouter',
+    'Register': 'S\'enregistrer',
     'Dashboard': 'Tableau de Bord',
     'My Planning': 'Mon Calendrier',
     'Planning': 'Calendrier',

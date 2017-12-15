@@ -9,9 +9,15 @@
         <mat-card-header>
           <div mat-card-avatar class="example-header-image"></div>
           <mat-card-title>
-            <h3 class="tac">Bienvenue sur Mirabelle!</h3></mat-card-title>
-          <mat-card-subtitle>Vos devis chez vos clients !</mat-card-subtitle>
+            <h3 class="tac">Mirabelle.io</h3>
+            <p class="tac">{{'Your quotes at you clients place' | translate}}</p>
+            <div (click)="changeLang('fr')">Fr</div>
+            <div (click)="changeLang('en')">Us</div>
+
+            </mat-card-title>
+          <mat-card-subtitle></mat-card-subtitle>
         </mat-card-header>
+
         <img mat-card-image src="/assets/images/logo-mirabelle-400.png" alt="Bienvenue sur Mirabelle">
         <mat-card-content>
 
@@ -21,10 +27,9 @@
           </mat-form-field>
 
           <mat-form-field>
-            <input matInput type="password" formControlName="password" placeholder="Mot de passe">
+            <input matInput type="password" formControlName="password" placeholder="{{'Password' | translate}}">
             <mat-error *ngIf="!password.valid && !password.pristine">
-
-              Votre mot de passe doit contenir au moins 6 caractères
+              {{'Your password must have at least 6 characters' | translate}}
             </mat-error>
           </mat-form-field>
 
@@ -32,8 +37,10 @@
         <mat-card-actions>
           <div class="login ac">
             <button type="submit" mat-raised-button color="primary">Login</button>
-            <p class="messagelogin"><a [routerLink]="'/user/reset'">Mot de passe oublié?</a></p>
-            <p class="messagelogin"><a [routerLink]="'/user/register'">Vous n'avez pas de compte? S'enregistrer</a></p>
+            <p class="messagelogin"><a [routerLink]="'/user/reset'">{{'Forgotten password?' | translate}}</a></p>
+            <p class="messagelogin"><a [routerLink]="'/user/register'">
+              {{'Register' | translate}}
+            </a></p>
           </div>
         </mat-card-actions>
       </mat-card>

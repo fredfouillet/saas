@@ -12,8 +12,8 @@ export class QuotePipe implements PipeTransform {
   constructor() {}
 
   transform(value: string, args: any[]): any {
-    if (value.length > 20) {
-      return value.substring(0, 20) + '..'
+    if (value.length > 17) {
+      return value.substring(0, 17) + '..'
     }
     return value;
   }

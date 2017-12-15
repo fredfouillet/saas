@@ -1,11 +1,11 @@
 import {Component, OnInit, ViewChild, ElementRef, Renderer, AfterViewInit} from '@angular/core';
 import {FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
 import {ToastsManager} from 'ng2-toastr';
-import {Router} from '@angular/router';
 import {AuthService} from '../../auth/auth.service';
 import {UserAuth} from '../../auth/user.model';
-// import {GlobalEventsManager} from '../../globalEventsManager';
 import { CustomFormControls } from '../../shared/shared.model';
+import { Router, ActivatedRoute, Params } from '@angular/router';
+// import {GlobalEventsManager} from '../../globalEventsManager';
 
 
 @Component({
@@ -21,13 +21,19 @@ export class LoginComponent implements OnInit, AfterViewInit {
   @ViewChild('userEmail') userEmail: ElementRef;
 
   constructor(
+    private activatedRoute: ActivatedRoute,
     private _fb: FormBuilder,
     // private globalEventsManager: GlobalEventsManager,
-    private _authService: AuthService,
-              private _router: Router, private toastr: ToastsManager, private renderer: Renderer) {
+    private authService: AuthService,
+              private router: Router, private toastr: ToastsManager, private renderer: Renderer) {
   }
 
   ngOnInit() {
+    this.activatedRoute.params.subscribe((params: Params) => {
+      if(params.lang) {
+        this.authService.setLangParam(params.lang)
+      }
+    })
     // this.email = new FormControl('', [Validators.required, this.emailValidator]);
     this.password = new FormControl('', [Validators.required, Validators.minLength(6)]);
 
@@ -37,12 +43,14 @@ export class LoginComponent implements OnInit, AfterViewInit {
     });
 
     // check if the user is logged in while trying to access the login page, if the user is logged in, we redirect him to the form page
-    if (this._authService.isLoggedIn()) {
+    if (this.authService.isLoggedIn()) {
       this.toastr.info('You are already logged in');
-      this._router.navigate(['/']);
+      this.router.navigate(['/']);
     }
   }
-
+  changeLang(lang: string) {
+    this.router.navigate(['/user/login', {lang: lang}]);
+  }
   ngAfterViewInit() {
     setTimeout(() => {
       this.renderer.invokeElementMethod(this.userEmail.nativeElement, 'focus', []);
@@ -52,7 +60,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
   // submit the login form with the user credentials and navigate the user to the index page of our app
   onSubmit() {
     const user = new UserAuth(this.myForm.value.email, this.myForm.value.password);
-    this._authService.signin(user)
+    this.authService.signin(user)
       .subscribe(
         data => {
           // this.globalEventsManager.showNavBar(true);
@@ -67,7 +75,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
           // navigate user to index page of our app
           // console.log(data.token)
           //gooplus
-          this._router.navigate(['/home']);
+          this.router.navigate(['/home']);
           // location.reload();
 
 

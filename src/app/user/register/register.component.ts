@@ -1,9 +1,9 @@
 import {Component, OnInit, Renderer, ViewChild, ElementRef, AfterViewInit} from '@angular/core';
 import {FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
 import {ToastsManager} from 'ng2-toastr';
-import {Router} from '@angular/router';
 import {AuthService} from '../../auth/auth.service';
 import {User} from '../user.model';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -16,14 +16,21 @@ export class RegisterComponent implements OnInit, AfterViewInit {
   password: FormControl;
   @ViewChild('userEmail') userEmail: ElementRef;
 
-  constructor(private _fb: FormBuilder, private _authService: AuthService,
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private _fb: FormBuilder, private authService: AuthService,
               private _router: Router, private toastr: ToastsManager, private renderer: Renderer) {
   }
 
   ngOnInit() {
+    this.activatedRoute.params.subscribe((params: Params) => {
+      if(params.lang) {
+        this.authService.setLangParam(params.lang)
+      }
+    })
 
     // if the user tries to hit the register page, first we check if he is logged in or not, if he is then we redirect him to the form page
-    if (this._authService.isLoggedIn()) {
+    if (this.authService.isLoggedIn()) {
       this._router.navigateByUrl('/form');
     }
 
@@ -56,7 +63,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
     user.password = this.myForm.value.password
     user.profile = this.myForm.value.profile
 
-    this._authService.signup(user)
+    this.authService.signup(user)
       .subscribe(
         data => {
           this.loginInApp(user.email, user.password)
@@ -73,7 +80,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
       email: login,
       password: password
     }
-    this._authService.signin(userAuth).subscribe(
+    this.authService.signin(userAuth).subscribe(
       data => {
         this.toastr.success('Great!');
         localStorage.setItem('id_token', data.token);

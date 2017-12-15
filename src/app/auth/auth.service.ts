@@ -25,6 +25,7 @@ import { Config } from '../shared/config.model';
 export class AuthService {
   private url = Config.backendURL;
   public token: string;
+  public langParam: string = 'fr';
   public currentUser={
     userId: '',
     token: '',
@@ -166,9 +167,15 @@ export class AuthService {
     // return false;
   }
 
+  setLangParam(langParam: string) {
+    this.langParam = langParam
+  }
+
+
   getLanguage() {
-    // let userInfo = localStorage.getItem('id_token') ? this.jwtHelper.decodeToken(localStorage.getItem('id_token')) : null;
-    // console.log(userInfo.user.profile)
+    if(!this.user) {
+      return this.langParam
+    }
     return this.user.profile.language
   }
 
