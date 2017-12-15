@@ -179,7 +179,7 @@ export class EditPaiementQuoteComponent implements OnInit {
     autocompleteAfterNgChanges(quote: Quote) {
 
       if(!this.fetchedPaiementQuote._id) {
-        this.fetchedPaiementQuote.amount = quote.priceQuote.priceQuoteWithoutTaxes
+        this.fetchedPaiementQuote.amount = Math.round(quote.priceQuote.priceGlobalWithTaxesWithDiscountWithSurfaceWithPainfulness)
       }
       // console.log(this.fetchedPaiementQuote.quotes)
     }

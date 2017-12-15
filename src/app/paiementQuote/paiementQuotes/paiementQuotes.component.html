@@ -70,7 +70,7 @@
               </section>
             </td> -->
             <td class="centre tdunder hideMobile">{{paiementQuote.datePaiement | date:'yyyy-MM-dd' }}</td>
-            <td class="centre tdunder">{{paiementQuote.amount}}</td>
+            <td class="centre tdunder">{{paiementQuote.amount | round | currency}}</td>
           </tr>
         </tbody>
       </table>

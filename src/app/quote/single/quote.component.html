@@ -154,8 +154,8 @@
       <app-paiementQuotes *ngIf="step === 5" (getPaiementQuotesCross)="getPaiementQuotes($event)" [search]="{userId: search.userId, isExpense:search.isExpense, quoteId:fetchedQuote._id}">
       </app-paiementQuotes>
       <mat-card>
-        {{'Total Paiement' | translate}} = {{totalPaiementAmount}}
-        <br> {{'To be paid' | translate}} = {{fetchedQuote.priceQuote.priceQuoteWithoutTaxes*1 - totalPaiementAmount*1| round}}
+        {{'Paiements' | translate}}: {{totalPaiementAmount | round | currency}}
+        <br> {{'Outstanding balance' | translate}}: {{fetchedQuote.priceQuote.priceGlobalWithTaxesWithDiscountWithSurfaceWithPainfulness * 1 - totalPaiementAmount*1 | round | currency}}
       </mat-card>
       <mat-action-row>
         <app-actionButtons [fetchedQuote]="fetchedQuote" [showDeleteButton]=false (nextStep)="nextStep()">
