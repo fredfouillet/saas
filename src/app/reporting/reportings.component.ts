@@ -43,7 +43,7 @@ export class ReportingsComponent implements OnInit {
   lineChartDataGraph3 = [ new EmptyRow(), new EmptyRow() ]
   lineChartDataGraph4 = [ new EmptyRow(), new EmptyRow() ]
   donutChartDataGraph1 = {
-    ready:[],
+    ready: [],
     labels: [],
     data: []
   }
