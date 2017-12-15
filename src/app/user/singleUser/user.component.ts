@@ -84,7 +84,8 @@ export class UserComponent implements OnInit {
   addressTypes = AddressTypes;
   titleArray = ['Mr.', 'Mrs.']
   languageArray = ['fr', 'en']
-  typeClientArray = ['Company', 'Individual']
+  
+  // typeClientArray = ['Company', 'Individual']
   // statusHouseArray = ['Propriétaire', 'Locataire']
   // typeHouseArray = ['Pavillon', 'Immeuble']
   // accessTypeArray = ['escalier', 'ascenseur']
