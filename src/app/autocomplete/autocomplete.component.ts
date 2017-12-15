@@ -34,13 +34,15 @@ export class AutocompleteComponent implements OnChanges{
   @Input() canCreateNewObj: boolean = true;
   @Input() enableLink: boolean = true;
   @Input() displayIfContentIsNull: boolean = true;
-  // createNewItem: boolean = false;
-  autocompleteSearch = ''
-  fetchedData: User[] = [];
-  loading: boolean = false;
+  @Input() readonly: boolean = false;
+
   @Output() getResultAutocomplete: EventEmitter<any> = new EventEmitter();
   @Output() clearAutocomplete: EventEmitter<any> = new EventEmitter();
   @Output() autocompleteAfterNgChanges: EventEmitter<any> = new EventEmitter();
+  autocompleteSearch = ''
+  fetchedData: User[] = [];
+  loading: boolean = false;
+  // createNewItem: boolean = false;
 
 
   constructor(

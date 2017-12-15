@@ -289,6 +289,7 @@ router.put('/:id', function(req, res, next) {
 
       //  quote.ownerCompanies = req.user.ownerCompanies
       quote.historyClients = req.body.clients
+      quote.historyClientsCross = []
        // req.body.historyClientsCross = req.body.historyClientsCross
 
       //  var quote = new Quote(req.body);
@@ -302,11 +303,11 @@ router.put('/:id', function(req, res, next) {
              return res.status(403).json(err);
            })
          })
-         saveQuote(quote).then(quote => {
-           res.status(200).json({message: 'Registration Successfull', obj: quote})
-         }).catch(err => {
-           return res.status(403).json(err);
-         })
+        //  saveQuote(quote).then(quote => {
+        //    res.status(200).json({message: 'Registration Successfull', obj: quote})
+        //  }).catch(err => {
+        //    return res.status(403).json(err);
+        //  })
        } else {
          saveQuote(quote).then(quote => {
            res.status(200).json({message: 'Registration Successfull', obj: quote})
@@ -343,9 +344,9 @@ router.put('/:id/signature', function(req, res, next) {
     const drawingSignature = {
       dateSignature: new Date(),
       namePicture: '',
-      users:[req.user]
+      users: [req.user]
     }
-    if(req.body.drawingSignature.base64) {
+    if (req.body.drawingSignature.base64) {
       item.statusQuote = 'signed'
       var base64Data = req.body.drawingSignature.base64.replace(/^data:image\/png;base64,/, '');
       const namePicture = item._id + '_' + new Date().getTime() + '.png'
@@ -395,22 +396,20 @@ router.post('/', function(req, res, next) {
   req.body.historyClients = req.body.clients
   // req.body.historyClientsCross = req.body.historyClientsCross
 
-  var quote = new Quote(req.body);
+
   if(req.body.clients.length) {
     userCross.getUserCross(req.user, req.body.clients[0]._id).then(userCrossSingle => {
-      quote.historyClientsCross = userCrossSingle
+      // console.log(userCrossSingle)
+      req.body.historyClientsCross.push(userCrossSingle)
+      var quote = new Quote(req.body);
       saveQuote(quote).then(quote => {
         res.status(200).json({message: 'Registration Successfull', obj: quote})
       }).catch(err => {
         return res.status(403).json(err);
       })
     })
-    saveQuote(quote).then(quote => {
-      res.status(200).json({message: 'Registration Successfull', obj: quote})
-    }).catch(err => {
-      return res.status(403).json(err);
-    })
   } else {
+    var quote = new Quote(req.body);
     saveQuote(quote).then(quote => {
       res.status(200).json({message: 'Registration Successfull', obj: quote})
     }).catch(err => {
@@ -428,6 +427,7 @@ function saveQuote (quote) {
         reject(err)
         // return res.status(403).json(err);
       }
+      // console.log(result)
       getQuote(result._id).then(quote => {
         resolve(quote)
         // res.status(200).json({message: 'Registration Successfull', obj: result})

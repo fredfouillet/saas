@@ -3,9 +3,11 @@
   <div *ngIf="!arrayContent.length || !singleChoice">
     <div class="input-group mb8">
       <mat-form-field>
-        <input matInput type="text" autocomplete="off" name="Search" placeholder="🔎 {{ title | translate}}" [(ngModel)]="autocompleteSearch" (ngModelChange)="searchData()">
+        <input matInput [readonly]="readonly" type="text" autocomplete="off" name="Search" placeholder="🔎 {{ title | translate}}" [(ngModel)]="autocompleteSearch" (ngModelChange)="searchData()">
           <app-newObjDialog
-            (cliked)="newObjDialogClicked()" matSuffix *ngIf="canCreateNewObj && (typeAutocomplete=='user' || typeAutocomplete=='companie' || typeAutocomplete=='project' || typeAutocomplete=='product')"
+            (cliked)="newObjDialogClicked()"
+            matSuffix
+            *ngIf="canCreateNewObj && !readonly && (typeAutocomplete=='user' || typeAutocomplete=='companie' || typeAutocomplete=='project' || typeAutocomplete=='product')"
             (saved)="saved($event)"
             [search]="search" [typeObj]="typeAutocomplete"></app-newObjDialog>
       </mat-form-field>
@@ -48,10 +50,11 @@
             <input *ngIf="typeAutocomplete=='product'" readonly placeholder="{{title}}" matInput type="text" value="{{data.details.referenceName}}">
             <!-- <input *ngIf="typeAutocomplete=='right'" readonly placeholder="{{title}}" matInput type="text" value="{{data.detailRight.nameRight}}"> -->
 
-            <button matSuffix mat-icon-button *ngIf="enableLink" (click)="linkToObject(data)">
+
+            <button matSuffix mat-icon-button *ngIf="enableLink && !readonly" (click)="linkToObject(data)">
               <mat-icon aria-label="Link">link</mat-icon>
             </button>
-            <button matSuffix mat-icon-button *ngIf="canDelete" (click)="removeData(i)">
+            <button matSuffix mat-icon-button *ngIf="canDelete && !readonly" (click)="removeData(i)">
               <mat-icon aria-label="delete">delete</mat-icon>
             </button>
 

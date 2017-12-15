@@ -84,6 +84,9 @@ export class QuoteInfoComponent implements OnInit {
   quoteStatusChanged(){
     this.quoteStatusChangedEmit.emit()
   }
+  clearAutocompleteClient() {
+    this.search.userId = '';
+  }
   // quoteDetailsUpdated(result) {
   //   // console.log(result)
   //   this.fetchedQuote = result

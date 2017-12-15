@@ -11,8 +11,7 @@
           <input [readonly]="fetchedQuote.statusQuote !== 'pending'" class="form-control" name="EstimateCode" type="number" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedQuote.quoteNumber"/>
         </div> -->
         <div class="form-group">
-
-          <app-autocomplete [search]="search" [displayIfContentIsNull]=true [canDelete]=false [enableLink]=true [typeAutocomplete]="'user'" [title]="'Client'" [search]="{isExternalUser:true}" [title]="" [singleChoice]="'true'" [arrayContent]="fetchedQuote.clients">
+          <app-autocomplete [readonly]="fetchedQuote.statusQuote !== 'pending'" (clearAutocomplete)="clearAutocompleteClient()" [displayIfContentIsNull]=true [canDelete]=true [enableLink]=true [typeAutocomplete]="'user'" [title]="'Client'" [search]="{isExternalUser:true, userId: search.userId}" [title]="" [singleChoice]="'true'" [arrayContent]="fetchedQuote.clients">
           </app-autocomplete>
           <!-- <app-autocomplete [search]="search" [displayIfContentIsNull]=true [canDelete]=false [enableLink]=true [typeAutocomplete]="'user'" [title]="'Contact'" [search]="{isExternalUser:true}" [title]="" [singleChoice]="'true'" [arrayContent]="fetchedQuote.clients"
             (getResultAutocomplete)="selectUser($event[0])">
@@ -76,6 +75,7 @@
             <div>{{client.profile.name}} {{client.profile.lastName}}</div>
           </h4>
           <div>{{client.profile.companyName}}</div>
+          <div>{{client.email}}</div>
         </div>
         <div *ngFor="let client of fetchedQuote.historyClientsCross">
           <div *ngFor="let singleAddress of client.profile.address">
