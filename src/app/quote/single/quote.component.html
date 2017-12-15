@@ -15,7 +15,7 @@
 
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <app-quoteInfo [search]="search" [fetchedQuote]="fetchedQuote" (quoteStatusChangedEmit)="save()"></app-quoteInfo>
+      <app-quoteInfo [search]="search" [fetchedQuote]="fetchedQuote" (save)="save()" (quoteStatusChangedEmit)="save()"></app-quoteInfo>
       <mat-action-row *ngIf="fetchedQuote.statusQuote === 'pending'">
         <app-actionButtons *ngIf="fetchedQuote.statusQuote === 'pending'" (nextStep)="nextStep()" [isDialog]="isDialog" [fetchedQuote]="fetchedQuote" (closeDialog)="closeDialog()" (saveEmmit)="save()">
         </app-actionButtons>

@@ -319,7 +319,7 @@ module.exports = {
                                html += '</b></p>'
                                companie.address.forEach(singleAddress => {
                                  html += '<p>'
-                                 html += singleAddress.address
+                                 html += singleAddress.address + ' ' + singleAddress.address2
                                  html += '</p>'
                                  html += '<p>'
                                  html += singleAddress.zip
@@ -354,10 +354,8 @@ module.exports = {
                         html += singleAddress.address + ' ' + singleAddress.address2
                         html += '</p>'
                         html += '<p>'
-                        html += singleAddress.city + ' ' + singleAddress.state
-                        html += '</p>'
-                        html += '<p>'
                         html += singleAddress.zip + ' ' + singleAddress.country
+                        html += singleAddress.city + ' ' + singleAddress.state + ' '
                         html += '</p>'
                       // }
                     })
@@ -434,57 +432,81 @@ module.exports = {
                            </tbody>
                          </table>
                          <br>
-                         <table>
-                             <tr>
-                               <td class="col-8"></td>
-                               <td class="col-2 alright"></td>
-                               <td class="col-2 ts elem">TOTAL</td>
-                               </tr>
-                               <tr>
-                                 <td class="col-8"></td>
-                                 <td class="col-2 alctr ts elem">Sous-Total HT</td>
-                                 <td class="col-2 elem"><b>` + Math.round(item.priceQuote.priceQuoteWithoutTaxes)
-
-
-                                 item.ownerCompanies.forEach(companie => {
-                                     // html +=  companie.quoteSettings.legalNotice
-                                     if (companie.option.currency)
-                                       html += companie.option.currency
-                                 })
-
-
-                              html += `
-                              </b></td>
-                               </tr>
-                               <tr>
-                                 <td class="col-8"></td>
-                                 <td class="col-2 alctr ts elem">Remise</td>
-                                 <td class="col-2 elem"><b>` + item.priceQuote.discountGlobal + `%</b></td>
-                               </tr>
-                               <tr>
-                                <td class="col-8"></td>
-                                <td class="col-2 alctr ts elem">TVA</td>
-                                <td class="col-2 elem"><b>` + item.priceQuote.vatGlobal + `%</b></td>
-                           </tr>
-                           <tr>
-                           <td class="col-8"></td>
-                           <td class="col-2 alctr ts elem">TOTAL TTC</td>
-                           <td class="col-2 elem">
-                           <b>` + Math.round(item.priceQuote.priceGlobalWithTaxesWithDiscountWithSurfaceWithPainfulness)
 
 
 
+<table>
+  <tr>
+    <td class="col-8"></td>
+    <td class="col-2 alright"></td>
+    <td class="col-2 ts elem">TOTAL</td>
+  </tr>`
 
-                    item.ownerCompanies.forEach(companie => {
-                        // html +=  companie.quoteSettings.legalNotice
-                        if (companie.option.currency)
-                          html += companie.option.currency
-                    })
+  if (item.priceQuote.discountGlobal !== 0) {
+    html += `
+    <tr>
+      <td class="col-8"></td>
+      <td class="col-2 alctr ts elem">Sous-Total HT</td>
+      <td class="col-2 elem">
+        <b>`
+        html += Math.round(item.priceQuote.priceQuoteWithoutTaxes)
+
+        item.ownerCompanies.forEach(companie => {
+          if (companie.option.currency) {
+            html += companie.option.currency
+          }
+        })
+        html += `
+        </b>
+      </td>
+    </tr>`
+    html += `
+    <tr>
+      <td class="col-8"></td>
+      <td class="col-2 alctr ts elem">Remise</td>
+      <td class="col-2 elem"><b>` + item.priceQuote.discountGlobal + `%</b></td>
+    </tr>`
+  }
+  html += `
+  <tr>
+    <td class="col-8"></td>
+    <td class="col-2 alctr ts elem">TotaL HT</td>
+    <td class="col-2 elem">
+      <b>`
+        html += Math.round(item.priceQuote.priceGlobalWithDiscountWithSurfaceWithPainfulness)
+
+        item.ownerCompanies.forEach(companie => {
+          if (companie.option.currency) {
+            html += companie.option.currency
+          }
+        })
+        html += `
+      </b>
+    </td>
+  </tr>
+  <tr>
+    <td class="col-8"></td>
+    <td class="col-2 alctr ts elem">TVA</td>
+    <td class="col-2 elem"><b>` + item.priceQuote.vatGlobal + `%</b></td>
+  </tr>
+  <tr>
+    <td class="col-8"></td>
+    <td class="col-2 alctr ts elem">TOTAL TTC</td>
+    <td class="col-2 elem">
+      <b>`
+        html += Math.round(item.priceQuote.priceGlobalWithTaxesWithDiscountWithSurfaceWithPainfulness)
+        item.ownerCompanies.forEach(companie => {
+          if (companie.option.currency) {
+            html += companie.option.currency
+          }
+        })
+        html += `
+      </b>
+    </td>
+  </tr>
+</table>
 
 
-                  html += `</b></td>
-                             </tr>
-                         </table>
                          <br>
                          <table>
                            <thead>

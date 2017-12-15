@@ -39,6 +39,7 @@ import {Search} from '../../../shared/shared.model'
 export class QuoteInfoComponent implements OnInit {
   loading: boolean = false;
   @Output() quoteStatusChangedEmit: EventEmitter<any> = new EventEmitter();
+  @Output() save: EventEmitter<any> = new EventEmitter();
   @Input() search: Search = new Search()
   @Input() fetchedQuote: Quote = new Quote()
   myForm: FormGroup;
@@ -81,11 +82,12 @@ export class QuoteInfoComponent implements OnInit {
 
 
   }
-  quoteStatusChanged(){
+  quoteStatusChanged() {
     this.quoteStatusChangedEmit.emit()
   }
   clearAutocompleteClient() {
     this.search.userId = '';
+    this.save.emit()
   }
   // quoteDetailsUpdated(result) {
   //   // console.log(result)
@@ -94,9 +96,6 @@ export class QuoteInfoComponent implements OnInit {
   // togglePaiements() {
   //   this.showPaiements = !this.showPaiements
   // }
-
-
-  save(){}
 
 
 }
