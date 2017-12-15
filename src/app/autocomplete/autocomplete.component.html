@@ -51,7 +51,7 @@
             <!-- <input *ngIf="typeAutocomplete=='right'" readonly placeholder="{{title}}" matInput type="text" value="{{data.detailRight.nameRight}}"> -->
 
 
-            <button matSuffix mat-icon-button *ngIf="enableLink && !readonly" (click)="linkToObject(data)">
+            <button matSuffix mat-icon-button *ngIf="enableLink" (click)="linkToObject(data)">
               <mat-icon aria-label="Link">link</mat-icon>
             </button>
             <button matSuffix mat-icon-button *ngIf="canDelete && !readonly" (click)="removeData(i)">

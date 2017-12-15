@@ -79,11 +79,11 @@
         </div>
         <div *ngFor="let client of fetchedQuote.historyClientsCross">
           <div *ngFor="let singleAddress of client.profile.address">
-            <div *ngIf="singleAddress.nameAddress ==='billing'">
+    
               <div>{{singleAddress.address}}</div>
               <div>{{singleAddress.zip}} {{singleAddress.city}}</div>
               <div>{{client.profile.phoneNumber}}</div>
-            </div>
+
           </div>
         </div>
       </div>
