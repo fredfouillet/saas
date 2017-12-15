@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
   myForm: FormGroup;
   email: FormControl;
   userId: string;
+  langParam: string;
   password: FormControl;
   @ViewChild('userEmail') userEmail: ElementRef;
 
@@ -31,6 +32,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.activatedRoute.params.subscribe((params: Params) => {
       if(params.lang) {
+        this.langParam = params.lang
         this.authService.setLangParam(params.lang)
       }
     })
