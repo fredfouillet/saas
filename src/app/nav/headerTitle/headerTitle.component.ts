@@ -20,7 +20,7 @@ export class HeaderTitleComponent implements OnInit {
   @Input() search: Search = new Search();
   @Output() saved: EventEmitter<any> = new EventEmitter();
 
-// <app-newObjDialog [search]="search" (saved)="saved($event)" [typeObj]="'paiementQuote'"></app-newObjDialog>
+// <app-new-obj-dialog [search]="search" (saved)="saved($event)" [typeObj]="'paiementQuote'"></app-new-obj-dialog>
 
 
   constructor(

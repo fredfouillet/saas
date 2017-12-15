@@ -10,11 +10,11 @@
     <div class="p-2">
       <h4 *ngIf="search.isExternalUser">
         {{'Customers' | translate}}
-        <app-newObjDialog [search]="search" (saved)="saved($event)" [typeObj]="'user'"></app-newObjDialog>
+        <app-new-obj-dialog [search]="search" (saved)="saved($event)" [typeObj]="'user'"></app-new-obj-dialog>
       </h4>
       <h4 *ngIf="!search.isExternalUser">
           {{'Team' | translate}}
-          <app-newObjDialog [search]="search" (saved)="saved($event)" [typeObj]="'user'"></app-newObjDialog>
+          <app-new-obj-dialog [search]="search" (saved)="saved($event)" [typeObj]="'user'"></app-new-obj-dialog>
         </h4>
     </div>
 

@@ -4,12 +4,12 @@
     <div class="input-group mb8">
       <mat-form-field>
         <input matInput [readonly]="readonly" type="text" autocomplete="off" name="Search" placeholder="🔎 {{ title | translate}}" [(ngModel)]="autocompleteSearch" (ngModelChange)="searchData()">
-          <app-newObjDialog
+          <app-new-obj-dialog
             (cliked)="newObjDialogClicked()"
             matSuffix
             *ngIf="canCreateNewObj && !readonly && (typeAutocomplete=='user' || typeAutocomplete=='companie' || typeAutocomplete=='project' || typeAutocomplete=='product')"
             (saved)="saved($event)"
-            [search]="search" [typeObj]="typeAutocomplete"></app-newObjDialog>
+            [search]="search" [typeObj]="typeAutocomplete"></app-new-obj-dialog>
       </mat-form-field>
     </div>
   </div>
@@ -36,7 +36,7 @@
   </div>
   <div *ngIf="fetchedData.length == 0 && autocompleteSearch !=''">
     {{'No results.' | translate}}
-    <!-- <app-newObjDialog *ngIf="typeAutocomplete=='user' || typeAutocomplete=='companie' || typeAutocomplete=='project'" class="btn btn-success" [search]="search" [icone]="'fa fa-plus'" [title]="'Add new one'" [typeObj]="typeAutocomplete"></app-newObjDialog> -->
+    <!-- <app-new-obj-dialog *ngIf="typeAutocomplete=='user' || typeAutocomplete=='companie' || typeAutocomplete=='project'" class="btn btn-success" [search]="search" [icone]="'fa fa-plus'" [title]="'Add new one'" [typeObj]="typeAutocomplete"></app-new-obj-dialog> -->
   </div>
   <div *ngFor="let data of arrayContent; let i=index">
     <div class="row">

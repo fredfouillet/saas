@@ -18,7 +18,7 @@ import { MatDialog } from '@angular/material';
 
 
 @Component({
-  selector: 'app-newObjDialog',
+  selector: 'app-new-obj-dialog',
   templateUrl: './newObjDialog.component.html',
   styleUrls: ['./newObjDialog.component.css']
 })

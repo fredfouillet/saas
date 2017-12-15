@@ -59,6 +59,12 @@
         </div>
       </div>
     </form>
+
+    <div *ngFor="let client of fetchedUserCalendar.clients">
+      <app-new-obj-dialog [search]="{userId: client._id}" [typeObj]="'quote'"></app-new-obj-dialog>
+    </div>
+
+
     <mat-action-row>
 
 
