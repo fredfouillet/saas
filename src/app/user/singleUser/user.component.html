@@ -22,7 +22,7 @@
             <mat-icon aria-label="Clear">clear</mat-icon>
           </button>
         </div>
-        <button [disabled]="!myForm.valid" mat-mini-fab color="primary" (click)="saveAndNextStep()">
+        <button *ngIf="step === 0" [disabled]="!myForm.valid" mat-mini-fab color="primary" (click)="saveAndNextStep()">
           <mat-icon aria-label="Next">forward</mat-icon>
         </button>
       </mat-action-row>

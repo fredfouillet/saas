@@ -98,7 +98,7 @@ export class UserComponent implements OnInit {
   currentUser: User = new User();
   showProjects: boolean = false;
   places = []
-  step = 0;
+  step = -1;
 
 
   // public myForm: FormGroup;
@@ -143,6 +143,7 @@ export class UserComponent implements OnInit {
   //       )
   // }
   ngOnInit() {
+    setTimeout(() => { this.step = 0});
     // this.authService.getCurrentUser().ownerCompanies.forEach((companie, i) => {
     //   if(companie.typeUsers.length)
     //     this.fetchedUser.typeUsers.push(companie.typeUsers[0].value)
@@ -364,7 +365,7 @@ export class UserComponent implements OnInit {
         .subscribe(
         res => {
           this.toastr.success('Great!', res.message)
-          this.nextStep()
+          // this.nextStep()
         },
         error => {
           this.toastr.error('Error!')

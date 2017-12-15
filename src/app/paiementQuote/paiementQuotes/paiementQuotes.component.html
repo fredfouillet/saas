@@ -64,11 +64,7 @@
                 <!-- </div> -->
               </div>
             </td>
-            <!-- <td class="centre tdunder">
-              <section class="">
-                <mat-checkbox class="" [(ngModel)]="paiementQuote.isPaid"></mat-checkbox>
-              </section>
-            </td> -->
+
             <td class="centre tdunder hideMobile">{{paiementQuote.datePaiement | date:'yyyy-MM-dd' }}</td>
             <td class="centre tdunder">{{paiementQuote.amount | round | currency}}</td>
           </tr>
