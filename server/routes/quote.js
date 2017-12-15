@@ -94,9 +94,9 @@ router.get('/graph', function(req, res, next) {
       }
     }]
   }
-  if (req.query.statusQuote) {
-    aggregate.$and.push({ 'statusQuote': req.query.statusQuote })
-  }
+  // if (req.query.statusQuote) {
+  //   // aggregate.$and.push({ 'statusQuote': req.query.statusQuote })
+  // }
   aggregate.$and.push({ 'ownerCompanies': req.user.ownerCompanies })
 
   Quote.aggregate({
@@ -104,6 +104,8 @@ router.get('/graph', function(req, res, next) {
   }, {
     $group: {
       _id: {
+        statusQuote: "$statusQuote",
+
         year: {
           $year: "$detail.dateQuote.issueDate"
         },

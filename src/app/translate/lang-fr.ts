@@ -208,7 +208,7 @@ export const LANG_FR_TRANS = {
     'task': 'tâche',
     'Tasks': 'Tâches',
     'Add a project': 'Ajouter un projet',
-
+    'Individual' : 'Particulier',
 
     'Pending Approval': 'Attente de signature',
     'right': 'droit',

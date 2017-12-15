@@ -19,6 +19,16 @@
   </div>
 
 
+<!-- {{emptyRowPaid|json}}
+<br>
+{{emptyRowPending|json}}
+<br>
+{{emptyRowRejected|json}}
+<br>
+{{emptyRowsigned|json}} -->
+<!-- {{graphData|json}} -->
+
+
   <div class="row">
     <div *ngIf="lineChartDataGraph2[0].ready && lineChartDataGraph2[1].ready" class="col-md-6 col-12 marginTop">
       <mat-card class="ac h100">
@@ -29,16 +39,19 @@
         {{'Intervention with status Signed this month'}}
       </mat-card>
     </div>
-    <div *ngIf="lineChartDataGraph1[0].ready && lineChartDataGraph1[1].ready" class="col-md-6 col-12 marginTop">
+    <div *ngIf="ready" class="col-md-6 col-12 marginTop">
       <mat-card class="ac">
-        <canvas baseChart style="height: 100%;" class="h50 bgw" [datasets]="lineChartDataGraph1" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="'line'"></canvas>
+        <canvas baseChart style="height: 100%;" class="h50 bgw" [datasets]="graphData" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="'line'"></canvas>
       </mat-card>
     </div>
-    <div *ngIf="lineChartDataGraph2[0].ready && lineChartDataGraph2[1].ready" class="col-md-6 col-12 marginTop">
+    <div *ngIf="ready" class="col-md-6 col-12 marginTop">
       <mat-card class="ac">
-        <canvas baseChart style="height: 100%;" class="h50 bgw" [datasets]="lineChartDataGraph2" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="'bar'"></canvas>
+        <canvas baseChart style="height: 100%;" class="h50 bgw" [datasets]="graphDataCount" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="'bar'"></canvas>
       </mat-card>
     </div>
+
+    <!-- {{donutChartDataGraph1.data|json}} -->
+    <!--
     <div *ngIf="
       donutChartDataGraph1.ready[0] &&
       donutChartDataGraph1.ready[1] &&
@@ -58,7 +71,7 @@
       <mat-card class="ac">
         <canvas baseChart style="height: 100%;" class="h50 bgw" [datasets]="lineChartDataGraph4" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="'bar'"></canvas>
       </mat-card>
-    </div>
+    </div> -->
   </div>
 
   <!-- <div class="col-12">

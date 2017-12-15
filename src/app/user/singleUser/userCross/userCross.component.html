@@ -6,7 +6,7 @@
         <mat-form-field>
           <mat-select placeholder="{{'Type Client' | translate}}" [(ngModel)]="fetchedUserCross.profile.typeClient" formControlName="typeClient">
             <mat-option [value]="" disabled selected>Type</mat-option>
-            <mat-option *ngFor="let n of typeClientArray" [value]="n">{{n}}</mat-option>
+            <mat-option *ngFor="let n of typeClientArray" [value]="n">{{n | translate}}</mat-option>
           </mat-select>
         </mat-form-field>
       </div>

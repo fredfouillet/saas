@@ -22,6 +22,8 @@ import { TranslateService } from '../translate/translate.service';
 export class ReportingsComponent implements OnInit {
     year: number = (new Date()).getFullYear()
     month: number = (new Date()).getMonth()
+
+    ready: boolean = false;
   // @Input() userId = '';
   // @Input() idQuote = '';
   // @Input() showHeader: boolean = true;
@@ -38,12 +40,22 @@ export class ReportingsComponent implements OnInit {
   //   totalItems: 0
   // };
   // emptyRow = {data: [0, 0, 0, 0, 0, 0, 0, 0, 0 , 0, 0, 0], label: '', year: 0, ready: false}
+  emptyRowPaid = new EmptyRow();
+  emptyRowPending = new EmptyRow();
+  emptyRowRejected = new EmptyRow();
+  emptyRowsigned = new EmptyRow();
+  graphData: EmptyRow[] = []
+  emptyRowPaidCount = new EmptyRow();
+  emptyRowPendingCount = new EmptyRow();
+  emptyRowRejectedCount = new EmptyRow();
+  emptyRowsignedCount = new EmptyRow();
+  graphDataCount: EmptyRow[] = []
+
   lineChartDataGraph1 = [ new EmptyRow(), new EmptyRow()]
   lineChartDataGraph2 = [ new EmptyRow(), new EmptyRow() ]
   lineChartDataGraph3 = [ new EmptyRow(), new EmptyRow() ]
   lineChartDataGraph4 = [ new EmptyRow(), new EmptyRow() ]
   donutChartDataGraph1 = {
-    ready: [],
     labels: [],
     data: []
   }
@@ -56,7 +68,7 @@ export class ReportingsComponent implements OnInit {
   label: string = ''
   typeSum: string = ''
 
-
+  statusQuote = ['signed', 'paid', 'pending', 'rejected']
   search: Search = new Search();
   // search = {
   //   orderBy : '',
@@ -101,7 +113,6 @@ export class ReportingsComponent implements OnInit {
     this.lineChartDataGraph3 = [ new EmptyRow(), new EmptyRow() ]
     this.lineChartDataGraph4 = [ new EmptyRow(), new EmptyRow() ]
     this.donutChartDataGraph1 =  {
-      ready:[],
       labels: [],
       data: []
     }
@@ -109,170 +120,240 @@ export class ReportingsComponent implements OnInit {
 
   getData() {
         let newSearch = new Search()
-        newSearch = new Search()
-        newSearch.year = this.year;
-        newSearch.statusQuote = ''
-        this.getPaiementQuotesGraph(newSearch).then((res: any) => {
-          this.nameGraph = 'lineChartDataGraph1';
-          this.serieNumber = 0
-          this.label = this.translateService.instant('Paiement')
-          this.typeSum = 'amountTotal';
-          this[this.nameGraph][this.serieNumber].ready = true;
-          this[this.nameGraph][this.serieNumber].label = this.label;
-          res.item.forEach((element, index) => {
-            this[this.nameGraph][this.serieNumber].year = element._id.year
-            this[this.nameGraph][this.serieNumber].data[element._id.month - 1] = element[this.typeSum]
-          })
-
-          this.nameGraph = 'lineChartDataGraph3';
-          this.serieNumber = 0
-          this.label = this.translateService.instant('Count Paiement');
-          this.typeSum = 'count';
-          this[this.nameGraph][this.serieNumber].ready = true
-          this[this.nameGraph][this.serieNumber].label = this.label
-          res.item.forEach((element, index) => {
-            this[this.nameGraph][this.serieNumber].year = element._id.year
-            this[this.nameGraph][this.serieNumber].data[element._id.month - 1] = element[this.typeSum]
-          })
-        })
-
-
-        newSearch = new Search()
-        newSearch.year = this.year
-        newSearch.statusQuote = this.translateService.instant('paid')
-        this.getQuotesGraph(newSearch).then((res: any) => {
-          let totalData = 0;
-          res.item.forEach((element, index) => {
-            totalData += element.amountTotal
-          })
-          this.donutChartDataGraph1.data[2] = totalData
-          this.donutChartDataGraph1.labels[2] = this.translateService.instant('Intervention Paid')
-          this.donutChartDataGraph1.ready[2] = true
-        })
+        // newSearch = new Search()
+        // newSearch.year = this.year;
+        // newSearch.statusQuote = ''
+        // this.getPaiementQuotesGraph(newSearch).then((res: any) => {
+        //   this.nameGraph = 'lineChartDataGraph1';
+        //   this.serieNumber = 0
+        //   this.label = this.translateService.instant('Paiement')
+        //   this.typeSum = 'amountTotal';
+        //   this[this.nameGraph][this.serieNumber].ready = true;
+        //   this[this.nameGraph][this.serieNumber].label = this.label;
+        //   res.item.forEach((element, index) => {
+        //     this[this.nameGraph][this.serieNumber].year = element._id.year
+        //     this[this.nameGraph][this.serieNumber].data[element._id.month - 1] = element[this.typeSum]
+        //   })
+        //
+        //   this.nameGraph = 'lineChartDataGraph3';
+        //   this.serieNumber = 0
+        //   this.label = this.translateService.instant('Count Paiement');
+        //   this.typeSum = 'count';
+        //   this[this.nameGraph][this.serieNumber].ready = true
+        //   this[this.nameGraph][this.serieNumber].label = this.label
+        //   res.item.forEach((element, index) => {
+        //     this[this.nameGraph][this.serieNumber].year = element._id.year
+        //     this[this.nameGraph][this.serieNumber].data[element._id.month - 1] = element[this.typeSum]
+        //   })
+        // })
 
 
-        newSearch = new Search()
-        newSearch.year = this.year
-        newSearch.statusQuote = this.translateService.instant('pending')
-        this.getQuotesGraph(newSearch).then((res: any) => {
-          let totalData = 0;
-          res.item.forEach((element, index) => {
-            totalData += element.amountTotal
-          })
-          this.donutChartDataGraph1.data[3] = totalData
-          this.donutChartDataGraph1.labels[3] = this.translateService.instant('Pending Intervention')
-          this.donutChartDataGraph1.ready[3] = true
-        })
 
-        newSearch = new Search()
-        newSearch.year = this.year
-        newSearch.statusQuote = 'rejected'
-        this.getQuotesGraph(newSearch).then((res: any) => {
-          let totalData = 0;
-          res.item.forEach((element, index) => {
-            totalData += element.amountTotal
-          })
-          this.donutChartDataGraph1.data[4] = totalData
-          this.donutChartDataGraph1.labels[4] = this.translateService.instant('Rejected intervention')
-          this.donutChartDataGraph1.ready[4] = true
-        })
-
-
-        newSearch = new Search()
-        newSearch.year = this.year
-        newSearch.statusQuote = 'signed'
-        this.getQuotesGraph(newSearch).then((res: any) => {
-          let totalData = 0;
-          res.item.forEach((element, index) => {
-            totalData += element.amountTotal
-          })
-          this.donutChartDataGraph1.data[1] = totalData
-          this.donutChartDataGraph1.labels[1] = this.translateService.instant('Quote Signed')
-          this.donutChartDataGraph1.ready[1] = true
-
-          this.nameGraph = 'lineChartDataGraph2'
-          this.serieNumber = 0
-          this.label = this.translateService.instant('Quotes Signed')
-          this.typeSum = 'amountTotal'
-          this[this.nameGraph][this.serieNumber].ready = true
-          this[this.nameGraph][this.serieNumber].label = this.label
-          res.item.forEach((element, index) => {
-            this[this.nameGraph][this.serieNumber].year = element._id.year
-            this[this.nameGraph][this.serieNumber].data[element._id.month - 1] = element[this.typeSum]
-          })
-
-
-          this.nameGraph = 'lineChartDataGraph4'
-          this.serieNumber = 0
-          this.label = this.translateService.instant('Count Quotes Signed')
-          this.typeSum = 'count'
-          this[this.nameGraph][this.serieNumber].ready = true
-          this[this.nameGraph][this.serieNumber].label = this.label
-          res.item.forEach((element, index) => {
-            this[this.nameGraph][this.serieNumber].year = element._id.year
-            this[this.nameGraph][this.serieNumber].data[element._id.month - 1] = element[this.typeSum]
-          })
-        })
+        // emptyRowPaid = new EmptyRow();
+        // emptyRowPending = new EmptyRow();
 
 
 
         newSearch = new Search()
         newSearch.year = this.year
-        newSearch.statusQuote = ''
         this.getQuotesGraph(newSearch).then((res: any) => {
-          let totalData = 0;
-          res.item.forEach((element, index) => {
-            totalData += element.amountTotal
-          })
-          this.donutChartDataGraph1.data[0] = totalData
-          this.donutChartDataGraph1.labels[0] = 'Quote'
-          this.donutChartDataGraph1.ready[0] = true
+            let totalSigned = 0
+            let totalPending = 0
+            let totalRejected = 0
+            let totalPaid = 0
 
-          this.nameGraph = 'lineChartDataGraph1'
-          this.serieNumber = 1
-          this.label = this.translateService.instant('Intervention')
-          this.typeSum = 'amountTotal'
-          this[this.nameGraph][this.serieNumber].ready = true
-          this[this.nameGraph][this.serieNumber].label = this.label
-          res.item.forEach((element, index) => {
-            this[this.nameGraph][this.serieNumber].year = element._id.year
-            this[this.nameGraph][this.serieNumber].data[element._id.month - 1] = element[this.typeSum]
-          })
+            res.item.forEach((element, index) => {
+              if(element._id.statusQuote === 'signed') {
+                this.emptyRowPaid.data[element._id.month - 1] = element.amountTotal
+                this.emptyRowPaid.label = element._id.statusQuote
+                this.emptyRowPaid.year = element._id.year
 
-          this.nameGraph = 'lineChartDataGraph2'
-          this.serieNumber = 1
-          this.label = this.translateService.instant('Intervention')
-          this.typeSum = 'amountTotal'
-          this[this.nameGraph][this.serieNumber].ready = true
-          this[this.nameGraph][this.serieNumber].label = this.label
-          res.item.forEach((element, index) => {
-            this[this.nameGraph][this.serieNumber].year = element._id.year
-            this[this.nameGraph][this.serieNumber].data[element._id.month - 1] = element[this.typeSum]
-          })
+                this.emptyRowPaidCount.data[element._id.month - 1] = element.count
+                this.emptyRowPaidCount.label = element._id.statusQuote
+                this.emptyRowPaidCount.year = element._id.year
+              }
+              if(element._id.statusQuote === 'pending') {
+                this.emptyRowPending.data[element._id.month - 1] = element.amountTotal
+                this.emptyRowPending.label = element._id.statusQuote
+                this.emptyRowPending.year = element._id.year
 
+                this.emptyRowPendingCount.data[element._id.month - 1] = element.count
+                this.emptyRowPendingCount.label = element._id.statusQuote
+                this.emptyRowPendingCount.year = element._id.year
+              }
+              if(element._id.statusQuote === 'rejected') {
+                this.emptyRowRejected.data[element._id.month - 1] = element.amountTotal
+                this.emptyRowRejected.label = element._id.statusQuote
+                this.emptyRowRejected.year = element._id.year
 
-          this.nameGraph = 'lineChartDataGraph3'
-          this.serieNumber = 1
-          this.label = this.translateService.instant('Count Interventions')
-          this.typeSum = 'count'
-          this[this.nameGraph][this.serieNumber].ready = true
-          this[this.nameGraph][this.serieNumber].label = this.label
-          res.item.forEach((element, index) => {
-            this[this.nameGraph][this.serieNumber].year = element._id.year
-            this[this.nameGraph][this.serieNumber].data[element._id.month - 1] = element[this.typeSum]
-          })
+                this.emptyRowRejectedCount.data[element._id.month - 1] = element.count
+                this.emptyRowRejectedCount.label = element._id.statusQuote
+                this.emptyRowRejectedCount.year = element._id.year
+              }
+              if(element._id.statusQuote === 'paid') {
+                this.emptyRowsigned.data[element._id.month - 1] = element.amountTotal
+                this.emptyRowsigned.label = element._id.statusQuote
+                this.emptyRowsigned.year = element._id.year
 
-          this.nameGraph = 'lineChartDataGraph4'
-          this.serieNumber = 1
-          this.label = this.translateService.instant('count All Interventions')
-          this.typeSum = 'count'
-          this[this.nameGraph][this.serieNumber].ready = true
-          this[this.nameGraph][this.serieNumber].label = this.label
-          res.item.forEach((element, index) => {
-            this[this.nameGraph][this.serieNumber].year = element._id.year
-            this[this.nameGraph][this.serieNumber].data[element._id.month - 1] = element[this.typeSum]
+                this.emptyRowsignedCount.data[element._id.month - 1] = element.count
+                this.emptyRowsignedCount.label = element._id.statusQuote
+                this.emptyRowsignedCount.year = element._id.year
+              }
           })
+          this.graphData.push(this.emptyRowsigned)
+          this.graphData.push(this.emptyRowRejected)
+          this.graphData.push(this.emptyRowPending)
+          this.graphData.push(this.emptyRowPaid)
+
+          this.graphDataCount.push(this.emptyRowsignedCount)
+          this.graphDataCount.push(this.emptyRowRejectedCount)
+          this.graphDataCount.push(this.emptyRowPendingCount)
+          this.graphDataCount.push(this.emptyRowPaidCount)
+
+          this.ready = true
         })
+
+
+
+        //
+        //
+        // newSearch = new Search()
+        // newSearch.year = this.year
+        // newSearch.statusQuote = 'paid'
+        // this.getQuotesGraph(newSearch).then((res: any) => {
+        //
+        //   let totalData = 0;
+        //   res.item.forEach((element, index) => {
+        //     totalData += element.amountTotal
+        //   })
+        //   this.donutChartDataGraph1.data[2] = totalData
+        //   this.donutChartDataGraph1.labels[2] = this.translateService.instant('Intervention Paid')
+        //   this.donutChartDataGraph1.ready[2] = true
+        // })
+        //
+        //
+        // newSearch = new Search()
+        // newSearch.year = this.year
+        // newSearch.statusQuote = 'pending'
+        // this.getQuotesGraph(newSearch).then((res: any) => {
+        //   let totalData = 0;
+        //   res.item.forEach((element, index) => {
+        //     totalData += element.amountTotal
+        //   })
+        //   this.donutChartDataGraph1.data[3] = totalData
+        //   this.donutChartDataGraph1.labels[3] = this.translateService.instant('Pending Intervention')
+        //   this.donutChartDataGraph1.ready[3] = true
+        // })
+        //
+        // newSearch = new Search()
+        // newSearch.year = this.year
+        // newSearch.statusQuote = 'rejected'
+        // this.getQuotesGraph(newSearch).then((res: any) => {
+        //   let totalData = 0;
+        //   res.item.forEach((element, index) => {
+        //     totalData += element.amountTotal
+        //   })
+        //   this.donutChartDataGraph1.data[4] = totalData
+        //   this.donutChartDataGraph1.labels[4] = this.translateService.instant('Rejected intervention')
+        //   this.donutChartDataGraph1.ready[4] = true
+        // })
+        //
+        //
+        // newSearch = new Search()
+        // newSearch.year = this.year
+        // newSearch.statusQuote = 'signed'
+        // this.getQuotesGraph(newSearch).then((res: any) => {
+        //   let totalData = 0;
+        //   res.item.forEach((element, index) => {
+        //     totalData += element.amountTotal
+        //   })
+        //   this.donutChartDataGraph1.data[1] = totalData
+        //   this.donutChartDataGraph1.labels[1] = this.translateService.instant('Quote Signed')
+        //   this.donutChartDataGraph1.ready[1] = true
+        //
+        //   this.nameGraph = 'lineChartDataGraph2'
+        //   this.serieNumber = 0
+        //   this.label = this.translateService.instant('Quotes Signed')
+        //   this.typeSum = 'amountTotal'
+        //   this[this.nameGraph][this.serieNumber].ready = true
+        //   this[this.nameGraph][this.serieNumber].label = this.label
+        //   res.item.forEach((element, index) => {
+        //     this[this.nameGraph][this.serieNumber].year = element._id.year
+        //     this[this.nameGraph][this.serieNumber].data[element._id.month - 1] = element[this.typeSum]
+        //   })
+        //
+        //
+        //   this.nameGraph = 'lineChartDataGraph4'
+        //   this.serieNumber = 0
+        //   this.label = this.translateService.instant('Count Quotes Signed')
+        //   this.typeSum = 'count'
+        //   this[this.nameGraph][this.serieNumber].ready = true
+        //   this[this.nameGraph][this.serieNumber].label = this.label
+        //   res.item.forEach((element, index) => {
+        //     this[this.nameGraph][this.serieNumber].year = element._id.year
+        //     this[this.nameGraph][this.serieNumber].data[element._id.month - 1] = element[this.typeSum]
+        //   })
+        // })
+        //
+        //
+        //
+        // newSearch = new Search()
+        // newSearch.year = this.year
+        // newSearch.statusQuote = ''
+        // this.getQuotesGraph(newSearch).then((res: any) => {
+        //   let totalData = 0;
+        //   res.item.forEach((element, index) => {
+        //     totalData += element.amountTotal
+        //   })
+        //   this.donutChartDataGraph1.data[0] = totalData
+        //   this.donutChartDataGraph1.labels[0] = 'Quote'
+        //   this.donutChartDataGraph1.ready[0] = true
+        //
+        //   this.nameGraph = 'lineChartDataGraph1'
+        //   this.serieNumber = 1
+        //   this.label = this.translateService.instant('Intervention')
+        //   this.typeSum = 'amountTotal'
+        //   this[this.nameGraph][this.serieNumber].ready = true
+        //   this[this.nameGraph][this.serieNumber].label = this.label
+        //   res.item.forEach((element, index) => {
+        //     this[this.nameGraph][this.serieNumber].year = element._id.year
+        //     this[this.nameGraph][this.serieNumber].data[element._id.month - 1] = element[this.typeSum]
+        //   })
+        //
+        //   this.nameGraph = 'lineChartDataGraph2'
+        //   this.serieNumber = 1
+        //   this.label = this.translateService.instant('Intervention')
+        //   this.typeSum = 'amountTotal'
+        //   this[this.nameGraph][this.serieNumber].ready = true
+        //   this[this.nameGraph][this.serieNumber].label = this.label
+        //   res.item.forEach((element, index) => {
+        //     this[this.nameGraph][this.serieNumber].year = element._id.year
+        //     this[this.nameGraph][this.serieNumber].data[element._id.month - 1] = element[this.typeSum]
+        //   })
+        //
+        //
+        //   this.nameGraph = 'lineChartDataGraph3'
+        //   this.serieNumber = 1
+        //   this.label = this.translateService.instant('Count Interventions')
+        //   this.typeSum = 'count'
+        //   this[this.nameGraph][this.serieNumber].ready = true
+        //   this[this.nameGraph][this.serieNumber].label = this.label
+        //   res.item.forEach((element, index) => {
+        //     this[this.nameGraph][this.serieNumber].year = element._id.year
+        //     this[this.nameGraph][this.serieNumber].data[element._id.month - 1] = element[this.typeSum]
+        //   })
+        //
+        //   this.nameGraph = 'lineChartDataGraph4'
+        //   this.serieNumber = 1
+        //   this.label = this.translateService.instant('count All Interventions')
+        //   this.typeSum = 'count'
+        //   this[this.nameGraph][this.serieNumber].ready = true
+        //   this[this.nameGraph][this.serieNumber].label = this.label
+        //   res.item.forEach((element, index) => {
+        //     this[this.nameGraph][this.serieNumber].year = element._id.year
+        //     this[this.nameGraph][this.serieNumber].data[element._id.month - 1] = element[this.typeSum]
+        //   })
+        // })
   }
 
 
