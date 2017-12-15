@@ -8,7 +8,7 @@ import { RouterModule} from '@angular/router';
 
 import { ReportingsComponent} from './reportings.component';
 // import { EditReportingComponent} from './single/editReporting.component';
-
+import {MatTabsModule} from '@angular/material';
 
 // import { ReportingService} from './reporting.service';
 import { ReportingRouting} from './reportingRouting.module';
@@ -40,6 +40,7 @@ import {MatCardModule} from '@angular/material';
     ChartsModule,
     MatButtonToggleModule,
     MatCardModule,
+    MatTabsModule,
     // AutocompleteComponent,
   ],
   declarations: [

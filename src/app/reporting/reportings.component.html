@@ -19,26 +19,34 @@
   </div>
 
 
-<!-- {{emptyRowPaid|json}}
+  <!-- {{emptyRowPaid|json}}
 <br>
 {{emptyRowPending|json}}
 <br>
 {{emptyRowRejected|json}}
 <br>
 {{emptyRowsigned|json}} -->
-<!-- {{graphData|json}} -->
+  <!-- {{graphData|json}} -->
 
 
   <div class="row">
-    <div *ngIf="lineChartDataGraph2[0].ready && lineChartDataGraph2[1].ready" class="col-md-6 col-12 marginTop">
+    <div *ngIf="ready" class="col-md-6 col-12 marginTop">
       <mat-card class="ac h100">
-        <!-- <div class="bigNumber">{{lineChartDataGraph2[0].data[month]| round | currency}}</div>
-        {{'Quote this month'}}
-        <br> -->
-        <div class="bigNumber">{{lineChartDataGraph2[1].data[month]| round | currency}}</div>
-        {{'Intervention with status Signed this month'}}
+        <mat-tab-group>
+          <mat-tab label="{{'Month' | translate}}">
+            <div class="bigNumber">{{emptyRowPaid.data[month] | round | currency}}</div>
+            {{'Intervention paid this month'}}
+          </mat-tab>
+          <mat-tab label="{{'Year' | translate}}">
+            <div class="bigNumber">{{totalPaid | round | currency}}</div>
+            {{'Intervention paid this year'}}
+          </mat-tab>
+        </mat-tab-group>
+
+
       </mat-card>
     </div>
+
     <div *ngIf="ready" class="col-md-6 col-12 marginTop">
       <mat-card class="ac">
         <canvas baseChart style="height: 100%;" class="h50 bgw" [datasets]="graphData" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="'line'"></canvas>
@@ -51,17 +59,13 @@
     </div>
 
     <!-- {{donutChartDataGraph1.data|json}} -->
-    <!--
-    <div *ngIf="
-      donutChartDataGraph1.ready[0] &&
-      donutChartDataGraph1.ready[1] &&
-      donutChartDataGraph1.ready[2] &&
-      donutChartDataGraph1.ready[3]
-      " class="col-md-6 col-12 marginTop">
+
+    <div *ngIf="ready" class="col-md-6 col-12 marginTop">
       <mat-card class="ac">
         <canvas baseChart style="height: 100%;" class="h50 bgw" [data]="donutChartDataGraph1.data" [labels]="donutChartDataGraph1.labels" [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="'doughnut'"></canvas>
       </mat-card>
     </div>
+    <!--
     <div *ngIf="lineChartDataGraph3[0].ready && lineChartDataGraph3[1].ready" class="col-md-6 col-12 marginTop">
       <mat-card class="ac">
         <canvas baseChart style="height: 100%;" class="h50 bgw" [datasets]="lineChartDataGraph3" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="'line'"></canvas>

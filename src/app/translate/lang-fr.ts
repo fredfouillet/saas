@@ -109,7 +109,7 @@ export const LANG_FR_TRANS = {
     'Company': 'Entreprise',
     'Companies': 'Fournisseurs',
     'Billing': 'Facturation',
-    'Shipping': 'Physique',
+    'Shipping': 'Intervention',
     'Contact type': 'Fonction',
     'New Contact person': 'Nouvel Interlocuteur',
     'Phone number': 'Téléphone',
