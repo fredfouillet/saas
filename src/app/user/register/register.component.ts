@@ -8,7 +8,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['../user.component.css']
 })
 export class RegisterComponent implements OnInit, AfterViewInit {
   myForm: FormGroup;

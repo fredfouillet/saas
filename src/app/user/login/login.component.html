@@ -11,12 +11,13 @@
           <mat-card-title>
             <h3 class="tac">Mirabelle.io</h3>
             <p class="tac">{{'Your quotes at you clients place' | translate}}</p>
-            <div (click)="changeLang('fr')">Fr</div>
-            <div (click)="changeLang('en')">Us</div>
-
-            </mat-card-title>
+          </mat-card-title>
           <mat-card-subtitle></mat-card-subtitle>
         </mat-card-header>
+        <div class="row spaceBetween">
+          <img (click)="changeLang('fr')" class="pointer imgTranslate" src="./assets/images/translate/icon_fr.png">
+          <img (click)="changeLang('en')" class="pointer imgTranslate" src="./assets/images/translate/icon_us.png">
+        </div>
 
         <img mat-card-image src="/assets/images/logo-mirabelle-400.png" alt="Bienvenue sur Mirabelle">
         <mat-card-content>

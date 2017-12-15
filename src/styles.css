@@ -21,6 +21,9 @@ width: 500px;
 
 .pointer {cursor: pointer; }
 
+.spaceBetween {
+  justify-content: space-between!important;
+}
 
 
 .categprod { padding-top: 10px; }
