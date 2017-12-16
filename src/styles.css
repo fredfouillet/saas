@@ -61,7 +61,9 @@ width: 500px;
   display: none!important;
 }
 
-
+.noOutline {
+  outline: none;
+}
 
 
 
