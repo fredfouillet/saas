@@ -129,6 +129,9 @@ export class UserCalendarComponent implements OnInit {
       })
   }
 
+linkClicked() {
+  this.save()
+}
 newInterventionCLicked() {
   this.save()
 }

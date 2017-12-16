@@ -37,6 +37,7 @@ export class AutocompleteComponent implements OnChanges{
   @Input() readonly: boolean = false;
 
   @Output() getResultAutocomplete: EventEmitter<any> = new EventEmitter();
+  @Output() linkClicked: EventEmitter<any> = new EventEmitter();
   @Output() clearAutocomplete: EventEmitter<any> = new EventEmitter();
   @Output() autocompleteAfterNgChanges: EventEmitter<any> = new EventEmitter();
   autocompleteSearch = ''
@@ -212,8 +213,10 @@ export class AutocompleteComponent implements OnChanges{
   }
 
   linkToObject(data) {
-    if(this.enableLink)
+    if (this.enableLink) {
+      this.linkClicked.emit()
       this.router.navigate([this.typeAutocomplete + '/' + data._id]);
+    }
   }
 
 
