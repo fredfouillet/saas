@@ -19,7 +19,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private _fb: FormBuilder, private authService: AuthService,
-              private _router: Router, private toastr: ToastsManager, private renderer: Renderer) {
+              private router: Router, private toastr: ToastsManager, private renderer: Renderer) {
   }
 
   ngOnInit() {
@@ -31,7 +31,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
 
     // if the user tries to hit the register page, first we check if he is logged in or not, if he is then we redirect him to the form page
     if (this.authService.isLoggedIn()) {
-      this._router.navigateByUrl('/form');
+      this.router.navigateByUrl('/form');
     }
 
     this.email = new FormControl('', [Validators.required, this.emailValidator]);
@@ -48,6 +48,9 @@ export class RegisterComponent implements OnInit, AfterViewInit {
     });
   }
 
+  changeLang(lang: string) {
+    this.router.navigate(['/user/register', {lang: lang}]);
+  }
 
   ngAfterViewInit() {
     // setTimeout(() => {
@@ -68,7 +71,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
         data => {
           this.loginInApp(user.email, user.password)
           // after successfull registration, the user is redirected to the login page
-          // this._router.navigate(['/user/login']);
+          // this.router.navigate(['/user/login']);
           // toastr message pops up to inform user that the registration was successfull
           // this.toastr.success('Please Login', 'Registration Successfull');
         }
@@ -85,7 +88,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
         this.toastr.success('Great!');
         localStorage.setItem('id_token', data.token);
         localStorage.setItem('token', data.token);
-        this._router.navigate(['/']);
+        this.router.navigate(['/']);
         // this.loginInAppDone.emit(data.token)
         // location.reload();
       },

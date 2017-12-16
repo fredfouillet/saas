@@ -190,11 +190,12 @@ export class ReportingsComponent implements OnInit {
     return new Promise(function(resolve, reject) {
       this2.quoteService.getQuotesGraph(search)
         .subscribe(
-        res => {
-          resolve(res)
-        },
-        error => {
-          reject(error)
+          res => {
+            resolve(res)
+          },
+          error => {
+            reject(error)
+          }
         );
     })
   }

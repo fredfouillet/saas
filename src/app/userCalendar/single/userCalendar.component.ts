@@ -129,12 +129,11 @@ export class UserCalendarComponent implements OnInit {
       })
   }
 
+newInterventionCLicked() {
+  this.save()
+}
 
     save() {
-      // this.fetchedUserCalendar.projects.forEach(project => {
-      //   this.fetchedUserCalendar.clients = project.clients
-      //   this.fetchedUserCalendar.assignedTos = project.assignedTos
-      // })
 
       if(this.fetchedUserCalendar._id) {
         this.userCalendarService.updateUserCalendar(this.fetchedUserCalendar)

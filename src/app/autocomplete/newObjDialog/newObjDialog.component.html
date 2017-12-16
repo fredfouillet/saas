@@ -4,6 +4,8 @@
 </div> -->
 
 
+<div *ngIf="title">{{title | translate}}</div>
 <button mat-icon-button color="primary" (click)="openDialog(typeObj)">
-  <mat-icon>playlist_add</mat-icon>
+  <mat-icon *ngIf="!icon">playlist_add</mat-icon>
+  <mat-icon *ngIf="icon">{{icon}}</mat-icon>
 </button>

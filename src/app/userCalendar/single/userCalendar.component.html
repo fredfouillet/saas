@@ -1,6 +1,4 @@
 <div class="">
-
-
   <mat-expansion-panel [expanded]="true">
     <mat-expansion-panel-header>
       <mat-panel-title>
@@ -10,38 +8,18 @@
         {{'Meeting' | translate}}
       </mat-panel-description>
     </mat-expansion-panel-header>
-
-
-
-    <form [formGroup]="myForm" novalidate (ngSubmit)="save()">
+    <form [formGroup]="myForm">
       <div class="row">
-        <div class="col-md-12">
-          {{'Start:' | translate}} {{fetchedUserCalendar.start | date:'dd/MM/yyyy HH:mm'}}
+        <div class="col-12 col-md-6">
+          <!-- {{'Start:' | translate}} -->
+          <mat-icon>flight_takeoff</mat-icon>
+          {{fetchedUserCalendar.start | date:'dd/MM/yyyy HH:mm'}}
         </div>
-        <div class="col-md-12">
-          {{'End:' | translate}} {{fetchedUserCalendar.end | date:'dd/MM/yyyy HH:mm'}}
+        <div class="col-12 col-md-6">
+          <!-- {{'End:' | translate}}  -->
+          <mat-icon>flight_land</mat-icon>
+          {{fetchedUserCalendar.end | date:'dd/MM/yyyy HH:mm'}}
         </div>
-        <!-- <div class="col-md-12">
-              <button class="btn btn-primary pull-right" (click)="addEvent()">
-              <i class="fa fa-calendar-plus-o" aria-hidden="true"></i>
-            </button>
-            </div> -->
-        <!-- <div *ngFor="let event of events; let index = index" [hidden]="!fetchedUserCalendar.isActiveEvent"> -->
-        <div class="col-md-12">
-          <!-- <div *ngFor="let user of fetchedUserCalendar.users">
-              <div class="round" [style.background-color]="user.profile.colorCalendar">
-              </div>
-            </div> -->
-        </div>
-        <!-- <div class="col-md-12">
-            <input type="text" class="form-control" formControlName="title" [(ngModel)]="fetchedUserCalendar.title" placeholder="Name">
-          </div> -->
-
-        <br>
-        <!-- <div class="col-md-12">
-            <app-autocomplete [typeAutocomplete]="'project'" [canDelete]=false [title]="'Projet'" [search]="search" [singleChoice]="'true'" [arrayContent]="fetchedUserCalendar.projects" (getResultAutocomplete)="selectProject($event[0])">
-            </app-autocomplete>
-          </div> -->
 
         <div class="col-md-12">
           <app-autocomplete [typeAutocomplete]="'user'" [title]="'Client'" [singleChoice]="'true'" [arrayContent]="fetchedUserCalendar.clients">
@@ -60,25 +38,16 @@
       </div>
     </form>
 
-    <div *ngFor="let client of fetchedUserCalendar.clients">
-      <app-new-obj-dialog [search]="{userId: client._id}" [typeObj]="'quote'"></app-new-obj-dialog>
+    <div *ngFor="let client of fetchedUserCalendar.clients" class="ac">
+      <app-new-obj-dialog (cliked)="newInterventionCLicked()" [icon]="'build'" [title]="'Create new Intervention'" [search]="{userId: client._id}" [typeObj]="'quote'"></app-new-obj-dialog>
     </div>
-
-
     <mat-action-row>
-
-
-
       <button *ngIf="fetchedUserCalendar._id" mat-mini-fab color="warn" (click)="openDialogDelete()">
         <mat-icon aria-label="Next">delete</mat-icon>
       </button>
       <button mat-mini-fab color="primary" (click)="save()">
         <mat-icon aria-label="Next">forward</mat-icon>
       </button>
-
-
-
-
     </mat-action-row>
   </mat-expansion-panel>
 </div>

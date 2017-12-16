@@ -27,7 +27,7 @@ export class newObjDialogComponent implements OnInit {
   @Input() search = new Search();
   @Input() typeObj: string = '';
   @Input() title: string = '';
-  @Input() icone: string = 'fa fa-plus';
+  @Input() icon: string = '';
   @Output() saved: EventEmitter<any> = new EventEmitter();
   @Output() cliked: EventEmitter<any> = new EventEmitter();
 
