@@ -5,6 +5,7 @@
     <app-header-title [isDialog]="isDialog" *ngIf="!fetchedUser.isExternalUser && !isUserIsMyself()" [title]="'Team'" [icon]="'supervisor_account'"></app-header-title>
   </div>
 
+
   <mat-accordion class="example-headers-align">
     <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)">
       <mat-expansion-panel-header>

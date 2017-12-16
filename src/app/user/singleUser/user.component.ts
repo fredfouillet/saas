@@ -338,7 +338,7 @@ export class UserComponent implements OnInit {
 
   saveAndNextStep() {
     this.save()
-    // this.nextStep()
+    this.nextStep()
   }
 
   savedCrossUser(result) {
@@ -379,7 +379,7 @@ export class UserComponent implements OnInit {
         res => {
           this.toastr.success('Great!', res.message)
           this.fetchedUser = res.obj
-          this.nextStep()
+          // this.nextStep()
           // this.saved.emit(res.obj)
           // if(redirect == 'profile')
           // this.router.navigate(['user/newuser/' + res.obj._id])
