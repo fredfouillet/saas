@@ -1,21 +1,22 @@
-import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter, OnChanges} from '@angular/core';
 // import {AuthService} from '../../auth/auth.service';
-import { Location } from '@angular/common';
+// import { Location } from '@angular/common';
 // import { Router} from '@angular/router';
 // import { TranslateService } from '../../translate/translate.service';
 import { Search} from '../../shared/shared.model';
+import { GlobalEventsManager } from '../../globalEventsManager';
 
 @Component({
   selector: 'app-header-title',
   templateUrl: './headerTitle.component.html',
   styleUrls: ['./headerTitle.component.css']
 })
-export class HeaderTitleComponent implements OnInit {
+export class HeaderTitleComponent implements OnInit, OnChanges {
   @Input() title: string = '';
   @Input() isDialog: boolean = false;
   @Input() icon: string = '';
   @Input() typeObj: string = '';
-  @Input() showBack: boolean = true;
+  @Input() showBack: number = 0;
   @Input() createNewButton: boolean = true;
   @Input() search: Search = new Search();
   @Output() saved: EventEmitter<any> = new EventEmitter();
@@ -24,17 +25,29 @@ export class HeaderTitleComponent implements OnInit {
 
 
   constructor(
-    // private translateService: TranslateService,
-    private location: Location,
+    private globalEventsManager: GlobalEventsManager,
+    // private location: Location,
   ) {}
 
-
+  ngOnChanges() {
+    // if (this.showBack === 1) {
+    if(!this.isDialog) {
+      this.globalEventsManager.showBackButton(this.showBack);
+    }
+      // this.globalEventsManager.showBackButton(false);
+    // }
+  }
   ngOnInit() {
-
+    // console.log('aa')
+    // if (this.showBack) {
+    //   this.globalEventsManager.showBackButton(true);
+    // } else {
+    //   this.globalEventsManager.showBackButton(false);
+    // }
   }
-  goBack() {
-    this.location.back();
-  }
+  // goBack() {
+  //   this.location.back();
+  // }
   savedEmit(result) {
     this.saved.emit(result)
   }

@@ -71,7 +71,7 @@ export class DetailsUserComponent implements OnInit {
   // autocompleteCompanie: string = '';
 
   fetchedTypeUsers = []
-  autocompleteTypeUser: string = '';
+  // autocompleteTypeUser: string = '';
 
   // fetchedRights: Right[] = []
   addressTypes = AddressTypes;

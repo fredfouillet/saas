@@ -58,14 +58,14 @@ export class Profile {
   otherData: string = '';
   companyName: string = '';
 
-  parentUser: User[] = [];
+  // parentUser: User[] = [];
   profilePicture: Form[] = [];
   colorCalendar: string = '';
-  fax: string = '';
+  // fax: string = '';
   title: string = 'Mr.';
   typeClient: string = 'Individual';
-  statusHouse: string = '';
-  sourceContact: string = '';
+  // statusHouse: string = '';
+  // sourceContact: string = '';
   // detailHouse: DetailHouse = new DetailHouse();
   address: Address[] = [];
   language: string = 'fr';

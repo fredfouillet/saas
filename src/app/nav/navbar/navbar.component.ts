@@ -1,6 +1,7 @@
 import { Component, OnInit,
   // Input
  } from '@angular/core';
+ import { Location } from '@angular/common';
 import { AuthService } from '../../auth/auth.service';
 // import { AdminService } from '../../admin/services/admin.service';
 import { Router } from '@angular/router';
@@ -31,6 +32,7 @@ export class NavbarComponent implements OnInit {
   // @Input() widthContainer: number = 0;
   showNavBar: boolean = false;
   showSideNavBar: boolean = false;
+  showBackButton: boolean = false;
   // private userId: string = localStorage.getItem('userId');
   // private userId: string;
   fetchedUser: User = new User();
@@ -41,6 +43,7 @@ export class NavbarComponent implements OnInit {
   constructor(
     private globalEventsManager: GlobalEventsManager,
     private authService: AuthService,
+    private location: Location,
     // private adminService: AdminService,
     // private notificationService: NotificationService,
     // public mdDialog: MatDialog,
@@ -60,6 +63,20 @@ export class NavbarComponent implements OnInit {
           this.showSideNavBar = mode;
         }
     });
+    this.globalEventsManager.showBackButtonEmitter.subscribe((mode) => {
+        if (mode !== null) {
+          if(mode === 1) {
+            this.showBackButton = true;
+          }
+          if(mode === -1) {
+            this.showBackButton = false;
+          }
+        }
+    });
+  }
+
+  goBack() {
+    this.location.back();
   }
 
   newQuote(){

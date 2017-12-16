@@ -1,6 +1,6 @@
 <div class="container">
   <div *ngIf="showTitle">
-    <app-header-title [title]="'Products'" (saved)="saved($event)" [search]="search" [typeObj]="'product'"></app-header-title>
+    <app-header-title [showBack]=-1 [title]="'Products'" (saved)="saved($event)" [search]="search" [typeObj]="'product'"></app-header-title>
   </div>
   <!-- <div *ngIf="showTitle" class="d-flex flex-row">
     <div class="p-2">

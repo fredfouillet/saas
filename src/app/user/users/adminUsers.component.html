@@ -1,8 +1,8 @@
 <div class="container">
 
 
-  <app-header-title *ngIf="search.isExternalUser" [title]="'Customers'" (saved)="saved($event)" [search]="search" [typeObj]="'user'"></app-header-title>
-  <app-header-title *ngIf="!search.isExternalUser" [title]="'Team'" (saved)="saved($event)" [search]="search" [typeObj]="'user'"></app-header-title>
+  <app-header-title [showBack]=-1 *ngIf="search.isExternalUser" [title]="'Customers'" (saved)="saved($event)" [search]="search" [typeObj]="'user'"></app-header-title>
+  <app-header-title [showBack]=-1 *ngIf="!search.isExternalUser" [title]="'Team'" (saved)="saved($event)" [search]="search" [typeObj]="'user'"></app-header-title>
 
 
 

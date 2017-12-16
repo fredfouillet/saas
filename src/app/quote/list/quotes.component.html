@@ -9,7 +9,7 @@
       </h4>
     </div>
   </div> -->
-  <app-header-title [createNewButton]="createNewButton" [title]="'Interventions'" (saved)="saved($event)" [search]="search" [typeObj]="'quote'"></app-header-title>
+  <app-header-title [showBack]=-1 [createNewButton]="createNewButton" [title]="'Interventions'" (saved)="saved($event)" [search]="search" [typeObj]="'quote'"></app-header-title>
   <div>
     <div *ngIf="showSearch" class="d-flex flex-row">
       <div class="p-2">

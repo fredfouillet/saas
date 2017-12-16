@@ -20,6 +20,10 @@ export class GlobalEventsManager {
     public isLoaddingEmitter: Observable<boolean> = this._isLoadding.asObservable();
 
 
+    private _showBackButton: BehaviorSubject<number> = new BehaviorSubject<number>(null);
+    public showBackButtonEmitter: Observable<number> = this._showBackButton.asObservable();
+
+
 
     constructor() {}
 
@@ -34,6 +38,9 @@ export class GlobalEventsManager {
     }
     isLoadding(ifShow: boolean) {
         this._isLoadding.next(ifShow);
+    }
+    showBackButton(ifShow: number) {
+        this._showBackButton.next(ifShow);
     }
 
 

@@ -1,8 +1,8 @@
 <div class="container">
   <div class="">
-    <app-header-title [isDialog]="isDialog" *ngIf="fetchedUser.isExternalUser" [title]="'Customer'" [icon]="'supervisor_account'"></app-header-title>
-    <app-header-title [isDialog]="isDialog" *ngIf="!fetchedUser.isExternalUser && isUserIsMyself()" [title]="'My profile'" [icon]="'account_circle'"></app-header-title>
-    <app-header-title [isDialog]="isDialog" *ngIf="!fetchedUser.isExternalUser && !isUserIsMyself()" [title]="'Team'" [icon]="'supervisor_account'"></app-header-title>
+    <app-header-title [showBack]=1 [isDialog]="isDialog" *ngIf="fetchedUser.isExternalUser" [title]="'Customer'" [icon]="'supervisor_account'"></app-header-title>
+    <app-header-title [showBack]=1 [isDialog]="isDialog" *ngIf="!fetchedUser.isExternalUser && isUserIsMyself()" [title]="'My profile'" [icon]="'account_circle'"></app-header-title>
+    <app-header-title [showBack]=1 [isDialog]="isDialog" *ngIf="!fetchedUser.isExternalUser && !isUserIsMyself()" [title]="'Team'" [icon]="'supervisor_account'"></app-header-title>
   </div>
 
 

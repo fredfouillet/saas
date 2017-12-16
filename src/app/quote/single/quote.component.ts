@@ -113,7 +113,7 @@ export class QuoteComponent implements OnInit {
 
   ngOnInit() {
 
-
+    
 
     this.activatedRoute.params.subscribe((params: Params) => {
       if (params['idQuote']) {
