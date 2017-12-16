@@ -1,15 +1,15 @@
 <div *ngIf="showNavBar">
   <nav class="docs-navbar-header">
     <div>
-      <mat-icon *ngIf="showBackButton" class="burgerNav" (click)="goBack()">arrow_back</mat-icon>
+      <mat-icon *ngIf="showBackButton" class="burgerNav unselectable" (click)="goBack()">arrow_back</mat-icon>
       <div *ngIf="!showBackButton">
         <div class="hideMobile">
-          <mat-icon *ngIf="showSideNavBar" class="burgerNav" (click)="toggleSideBar()">menu</mat-icon>
-          <mat-icon *ngIf="!showSideNavBar" class="burgerNav" (click)="toggleSideBar()">clear_all</mat-icon>
+          <mat-icon *ngIf="showSideNavBar" class="burgerNav unselectable" (click)="toggleSideBar()">menu</mat-icon>
+          <mat-icon *ngIf="!showSideNavBar" class="burgerNav unselectable" (click)="toggleSideBar()">clear_all</mat-icon>
         </div>
         <div class="showMobile">
-          <mat-icon *ngIf="!showBackButton && showSideNavBar" class="burgerNav" (click)="toggleSideBar()">clear_all</mat-icon>
-          <mat-icon *ngIf="!showBackButton && !showSideNavBar" class="burgerNav" (click)="toggleSideBar()">menu</mat-icon>
+          <mat-icon *ngIf="!showBackButton && showSideNavBar unselectable" class="burgerNav" (click)="toggleSideBar()">clear_all</mat-icon>
+          <mat-icon *ngIf="!showBackButton && !showSideNavBar unselectable" class="burgerNav" (click)="toggleSideBar()">menu</mat-icon>
         </div>
       </div>
     </div>
