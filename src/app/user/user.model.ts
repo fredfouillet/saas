@@ -33,14 +33,14 @@ export class UserCross {
   isExternalUser: Boolean = true;
   email: string = '';
   role: string[] = [];
-  typeUsers: string[] = [];
+  // typeUsers: string[] = [];
   forms: Form[] = [];
   // rights: Right[] = []
   rightsInApp: Right[] = []
   profile: Profile = new Profile();
   password: string = '';
-  salesMan: User[] = [];
-  paiement: Paiement= new Paiement()
+  // salesMan: User[] = [];
+  // paiement: Paiement= new Paiement()
 }
 
 export class Paiement{
@@ -63,7 +63,7 @@ export class Profile {
   colorCalendar: string = '';
   fax: string = '';
   title: string = 'Mr.';
-  typeClient: string = '';
+  typeClient: string = 'Individual';
   statusHouse: string = '';
   sourceContact: string = '';
   // detailHouse: DetailHouse = new DetailHouse();
