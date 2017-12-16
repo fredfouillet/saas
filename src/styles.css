@@ -65,6 +65,12 @@ width: 500px;
   outline: none;
 }
 
+mat-icon {
+  outline: none!important;
+}
+button {
+  outline: none!important;
+}
 
 
 /*Green Notifif at top*/

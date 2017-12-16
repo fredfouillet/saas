@@ -206,9 +206,8 @@ export class QuoteComponent implements OnInit {
       this.totalPaiementAmount += paiement.amount
     })
 
-
     if(
-      this.totalPaiementAmount >= this.fetchedQuote.priceQuote.priceQuoteWithoutTaxes &&
+      this.totalPaiementAmount >= this.fetchedQuote.priceQuote.priceGlobalWithTaxesWithDiscountWithSurfaceWithPainfulness &&
       this.fetchedQuote.priceQuote.priceQuoteWithoutTaxes &&
       this.fetchedQuote.statusQuote !== 'paid' ) {
         this.fetchedQuote.statusQuote = 'paid'

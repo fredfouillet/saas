@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild, Input, Output, EventEmitter } from '@angular/core';
 
-import {
-  Quote, DevisDetail, BucketProduct, StatusQuotes } from '../../../quote.model';
+import { Quote, StatusQuotes } from '../../../quote.model';
 
 import { Search } from '../../../../shared/shared.model'
 import { AuthService} from '../../../../auth/auth.service';
@@ -60,12 +59,18 @@ export class TotalComponent implements OnInit {
     this.calculateQuoteEmit.emit()
   }
 
+
   ngOnInit() {
+
+
     // this.fetchedQuote.legalApprovals.push('')
     // this.fetchedQuote.legalApprovals.push('')
     // this.fetchedQuote.legalApprovals.push('')
     this.authService.getCurrentUser().ownerCompanies.forEach(companie => {
       this.VATs = companie.modelVATs
+      if (this.fetchedQuote.priceQuote.vatGlobal === 0 && this.VATs.length) {
+        this.fetchedQuote.priceQuote.vatGlobal = this.VATs[0]
+      }
       this.legalApprovals = companie.legalApprovals
     })
 
