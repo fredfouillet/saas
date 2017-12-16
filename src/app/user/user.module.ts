@@ -63,7 +63,7 @@ import {MatExpansionModule} from '@angular/material';
 import {MatInputModule} from '@angular/material';
 import {MatSelectModule} from '@angular/material';
 import {MatCardModule} from '@angular/material';
-
+import {MatRadioModule} from '@angular/material';
 
 @NgModule({
   imports:      [
@@ -83,6 +83,7 @@ import {MatCardModule} from '@angular/material';
     // MatIconModule,
     MatInputModule,
     MatSelectModule,
+    MatRadioModule,
     MatCardModule,
   ],
   declarations: [

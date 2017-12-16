@@ -49,7 +49,7 @@ export class UserComponent implements OnInit {
     language: [''],
     colorCalendar: [''],
     otherData: [''],
-    name: ['', [Validators.required, Validators.minLength(2)]],
+    name: [''],
     lastName: ['', [Validators.required, Validators.minLength(2)]],
     // phoneNumber: [''],
     title: ['', [Validators.required, Validators.minLength(1)]],
@@ -84,7 +84,7 @@ export class UserComponent implements OnInit {
   addressTypes = AddressTypes;
   titleArray = ['Mr.', 'Mrs.']
   languageArray = ['fr', 'en']
-  
+
   // typeClientArray = ['Company', 'Individual']
   // statusHouseArray = ['Propriétaire', 'Locataire']
   // typeHouseArray = ['Pavillon', 'Immeuble']
