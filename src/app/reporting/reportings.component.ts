@@ -36,6 +36,8 @@ export class ReportingsComponent implements OnInit {
   totalPending = 0
   totalRejected = 0
   totalPaid = 0
+
+  loading: boolean = false
   // lineChartDataGraph1 = [ new EmptyRow(), new EmptyRow()]
   // lineChartDataGraph2 = [ new EmptyRow(), new EmptyRow() ]
   // lineChartDataGraph3 = [ new EmptyRow(), new EmptyRow() ]
@@ -186,15 +188,18 @@ export class ReportingsComponent implements OnInit {
 
 
   getQuotesGraph(search: Search) {
+    this.loading = true
     const this2 = this
     return new Promise(function(resolve, reject) {
       this2.quoteService.getQuotesGraph(search)
         .subscribe(
           res => {
             resolve(res)
+            this2.loading = false
           },
           error => {
             reject(error)
+            this2.loading = false
           }
         );
     })
