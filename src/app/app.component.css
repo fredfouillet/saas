@@ -14,9 +14,9 @@
 
 /*alan*/
 
-mat-sidenav-container {
+.matSidenavContainer {
   width: 100%;
-  min-height: 100%;
+  min-height: 100vh;
 
 }
 mat-sidenav {

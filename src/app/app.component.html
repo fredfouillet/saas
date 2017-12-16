@@ -1,7 +1,7 @@
 <div #mainScreen>
   <app-navbar class="mat-elevation-z6"></app-navbar>
 
-  <mat-sidenav-container (backdropClick)="backdropClick()" #container>
+  <mat-sidenav-container class="matSidenavContainer" (backdropClick)="backdropClick()" #container>
 
     <mat-sidenav #sidenav mode="{{modeSidenav}}" opened="false">
       <!-- <div *ngIf="sidenav.opened"> -->
