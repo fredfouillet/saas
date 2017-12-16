@@ -25,6 +25,7 @@ export class PaiementQuotesComponent implements OnInit {
   // @Output() newPaiementSaved: EventEmitter<any> = new EventEmitter();
   // @Input() showCreate: boolean = true;
   @Input() search: Search = new Search()
+  @Input() showBack: number = -1
 
 
 

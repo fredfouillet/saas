@@ -50,7 +50,7 @@
           {{'Interventions' | translate}}
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <app-quotes (savedEmit)="quoteCreation()" [search]="{userId: fetchedUser._id, typeQuote: 'quote'}"></app-quotes>
+      <app-quotes [showBack]=0 (savedEmit)="quoteCreation()" [search]="{userId: fetchedUser._id, typeQuote: 'quote'}"></app-quotes>
     </mat-expansion-panel>
   </mat-accordion>
 </div>

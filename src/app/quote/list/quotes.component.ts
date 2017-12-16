@@ -20,6 +20,7 @@ export class QuotesComponent implements OnInit, OnChanges {
   @Input() userId = '';
   @Input() projectId = '';
   @Input() showSearch = true;
+  @Input() showBack: number = -1;
   // @Input() showBackButton = true;
   @Input() idProject: string = '';
   @Input() idClient: string = '';
