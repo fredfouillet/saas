@@ -12,12 +12,12 @@ import { MatDialog } from '@angular/material';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
 import { User, TypeUser, Address, AddressTypes } from '../user.model';
-//import { Form } from '../../form/form.model';
 
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { DeleteDialogComponent } from '../../nav/deleteDialog/deleteDialog.component'
 import { Search, CustomFormControls } from '../../shared/shared.model';
 // const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+//import { Form } from '../../form/form.model';
 
 
 

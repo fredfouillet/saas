@@ -37,7 +37,7 @@ export class ProductSingleComponent implements OnInit {
   // categ2: string = '';
   // categ3: string = '';
   itemSteps = ItemSteps;
-  step = 0;
+  step = -1;
 
   VATs = ModelVATs;
 
@@ -66,9 +66,8 @@ export class ProductSingleComponent implements OnInit {
 
 
   ngOnInit() {
+    setTimeout(() => { this.step = 0});
     this.myForm = this._fb.group({
-
-
         referenceName: ['', [Validators.required, Validators.minLength(2)]],
         reference: [''],
         description: [''],

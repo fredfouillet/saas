@@ -3,13 +3,13 @@ import { AuthService } from '../../auth/auth.service';
 import { QuoteService } from '../quote.service';
 import { Quote, PriceQuoteTaxe, ModelVATs } from '../quote.model';
 import { ActivatedRoute, Params } from '@angular/router';
-// import { FormBuilder, Validators } from '@angular/forms';
-// import { ActionButtonsComponent } from './actionButtons/actionButtons.component';
-// import { TranslateService } from '../../translate/translate.service';
 import { Search } from '../../shared/shared.model';
 import { PaiementQuote } from '../../paiementQuote/paiementQuote.model';
 import { DrawingSignatureComponent } from './drawingSignature/drawingSignature.component';
-import {ToastsManager} from 'ng2-toastr';
+import { ToastsManager} from 'ng2-toastr';
+// import { FormBuilder, Validators } from '@angular/forms';
+// import { ActionButtonsComponent } from './actionButtons/actionButtons.component';
+// import { TranslateService } from '../../translate/translate.service';
 
 @Component({
   selector: 'app-quote',
@@ -17,22 +17,22 @@ import {ToastsManager} from 'ng2-toastr';
   styleUrls: ['../quote.component.css'],
 })
 export class QuoteComponent implements OnInit {
-  // @ViewChild(SignaturePad) signaturePad: SignaturePad;
-  // @ViewChild(PaiementQuotesComponent) paiementQuotesComponent: PaiementQuotesComponent;
-  // @ViewChild(ActionButtonsComponent) actionButtonsComponent: ActionButtonsComponent
   @ViewChild(DrawingSignatureComponent) drawingSignatureComponent: DrawingSignatureComponent
   loading: boolean = false;
   @Output() saved: EventEmitter<any> = new EventEmitter();
   @Output() close: EventEmitter<any> = new EventEmitter();
   @Input() search: Search = new Search()
   @Input() isDialog: boolean = false
+  // @ViewChild(SignaturePad) signaturePad: SignaturePad;
+  // @ViewChild(PaiementQuotesComponent) paiementQuotesComponent: PaiementQuotesComponent;
+  // @ViewChild(ActionButtonsComponent) actionButtonsComponent: ActionButtonsComponent
 
   fetchedPaiementQuotes: PaiementQuote[] = []
   // showPaiements: boolean = false
   fetchedQuote: Quote = new Quote()
   totalPaiementAmount: number = 0
   signatureBase64Temp: string = ''
-  step = 0;
+  step = -1;
 
 
   VATs = ModelVATs
@@ -112,9 +112,7 @@ export class QuoteComponent implements OnInit {
 
 
   ngOnInit() {
-
-    
-
+    setTimeout(() => { this.step = 0});
     this.activatedRoute.params.subscribe((params: Params) => {
       if (params['idQuote']) {
         this.search.quoteId = params['idQuote']

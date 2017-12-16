@@ -44,7 +44,7 @@ export class EditPaiementQuoteComponent implements OnInit {
   fetchedUserCross: UserCross = new UserCross();
   myForm: FormGroup;
   autocompleteProduct: String = ''
-  step = 0;
+  step = -1;
   paiementsTypes = [
     { label: 'cheque', value: 'check' },
     { label: 'Espece', value: 'cash' },
@@ -102,6 +102,7 @@ export class EditPaiementQuoteComponent implements OnInit {
    this.close.emit()
  }
   ngOnInit() {
+    setTimeout(() => { this.step = 0});
     this.myForm = this._fb.group({
       amount: [''],
       title: [''],

@@ -30,7 +30,7 @@ export class CompanieComponent implements OnInit {
   // @Output() saved: EventEmitter<any> = new EventEmitter();
   // @Input() showBackButton: Boolean = true;
   fetchedCompanie: Companie = new Companie()
-  step = 0;
+  step = -1;
   // userAdmins : User[] = []
   // userManagers : User[] = []
   // userClients : User[] = []
@@ -66,6 +66,7 @@ export class CompanieComponent implements OnInit {
   }
 
   ngOnInit() {
+    setTimeout(() => { this.step = 0});
     // if (!this.authService.isCurrentUserIsInSubPeriod()) {
     //   this.step = 1;
     // }
