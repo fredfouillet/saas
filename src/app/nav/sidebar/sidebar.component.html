@@ -18,6 +18,7 @@
       </mat-expansion-panel-header>
     </mat-expansion-panel>
     <mat-expansion-panel
+      class="noOutline"
       *ngIf="authService.showObjHTML('user', 'read')"
       (click)="menuClick()"
       [routerLink]="['/user/list/true']" routerLinkActive="active"
@@ -33,6 +34,7 @@
     </mat-expansion-panel>
     <mat-expansion-panel
       (click)="menuClick()"
+      class="noOutline"
       *ngIf="authService.showObjHTML('userCalendar', 'read')"
       [routerLink]="['/userCalendar']" routerLinkActive="active"
       hideToggle="true">
@@ -47,6 +49,7 @@
     </mat-expansion-panel>
     <mat-expansion-panel
       (click)="menuClick()"
+      class="noOutline"
       *ngIf="authService.showObjHTML('userCalendar', 'read')"
       [routerLink]="['/quote/list/quote']" routerLinkActive="active"
       hideToggle="true">
@@ -61,6 +64,7 @@
     </mat-expansion-panel>
     <mat-expansion-panel
       (click)="menuClick()"
+      class="noOutline"
       *ngIf="authService.showObjHTML('paiementQuote', 'read')"
       [routerLink]="['/paiementQuote/list']" routerLinkActive="active"
       hideToggle="true">
@@ -75,6 +79,7 @@
     </mat-expansion-panel>
     <mat-expansion-panel
       (click)="menuClick()"
+      class="noOutline"
       *ngIf="authService.showObjHTML('paiementQuote', 'read')"
       [routerLink]="['/product']" routerLinkActive="active"
       hideToggle="true">
