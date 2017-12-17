@@ -1,5 +1,10 @@
 <h5>{{'Address' | translate}}</h5>
 
+
+<button mat-raised-button (click)="newAddress()">
+  <mat-icon>add</mat-icon> {{'New Address' | translate}}
+</button>
+
 <div *ngFor="let singleAddresss of addresses; let i = index;" class="form-control boad">
   <div class="alright">
     <button mat-icon-button (click)="moveAddress(i, -1)">

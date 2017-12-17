@@ -12,12 +12,35 @@ export class AddressComponent implements OnInit {
 
   @Input() addresses: Address[] = []
   addressTypes = AddressTypes
+
+
   constructor(
     private addressService: AddressService,
     private authService: AuthService,
   ) { }
 
   ngOnInit() { }
+
+
+  newAddress() {
+    let newAddress = new Address()
+    this.fetchedUser.profile.address.push(newAddress)
+  }
+  removeAddress(i) {
+    this.fetchedUser.profile.address.splice(i, 1);
+  }
+  moveAddress(i: number, incremet: number) {
+    // if(i>=0 && i<=this.fetchedUser.profile.address.length + incremet) {
+    console.log(i, incremet, this.fetchedUser.profile.address.length)
+    if (!(i === 0 && incremet < 0) && !(i === this.fetchedUser.profile.address.length - 1 && incremet > 0)) {
+      var tmp = this.fetchedUser.profile.address[i];
+      this.fetchedUser.profile.address[i] = this.fetchedUser.profile.address[i + incremet]
+      this.fetchedUser.profile.address[i + incremet] = tmp
+      // this.save(false)
+      // console.log(this.fetchedUser.profile.address)
+    }
+  }
+
 
   newAddress() {
     const newAddress = new Address()
