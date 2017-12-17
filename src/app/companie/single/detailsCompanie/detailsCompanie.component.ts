@@ -145,21 +145,21 @@ export class DetailsCompanieComponent implements OnInit {
     //     error => { console.log(error) }
     //   )
   }
-
-  newAddress() {
-    const newAddress = new Address()
-    this.fetchedCompanie.address.push(newAddress)
-  }
-  removeAddress(i) {
-    this.fetchedCompanie.address.splice(i, 1);
-  }
-  newContact() {
-    const newContact = new ContactsPerson()
-    this.fetchedCompanie.contactsPerson.push(newContact)
-  }
-  removeContact(i) {
-    this.fetchedCompanie.contactsPerson.splice(i, 1);
-  }
+  //
+  // newAddress() {
+  //   const newAddress = new Address()
+  //   this.fetchedCompanie.address.push(newAddress)
+  // }
+  // removeAddress(i) {
+  //   this.fetchedCompanie.address.splice(i, 1);
+  // }
+  // newContact() {
+  //   const newContact = new ContactsPerson()
+  //   this.fetchedCompanie.contactsPerson.push(newContact)
+  // }
+  // removeContact(i) {
+  //   this.fetchedCompanie.contactsPerson.splice(i, 1);
+  // }
 
 
 }

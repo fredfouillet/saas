@@ -1,5 +1,5 @@
 import {Component, OnInit, Input, Output, EventEmitter, OnChanges} from '@angular/core';
-import { Address } from './address.model';
+import { Address, AddressTypes } from './address.model';
 
 
 @Component({
@@ -10,7 +10,7 @@ import { Address } from './address.model';
 export class AddressComponent implements OnInit {
 
   @Input() addresses: Address[] = []
-
+  addressTypes = AddressTypes
   constructor(
 
   ) {}

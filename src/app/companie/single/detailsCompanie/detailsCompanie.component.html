@@ -17,31 +17,9 @@
 
     </div>
     <div class="col">
-      <h5>{{'Addresses' | translate}}</h5>
-      <div *ngFor="let singleAddresss of fetchedCompanie.address; let i = index;" class="form-control boad">
-        <div class="alright">
-          <button class="ml btnadr" type="button" (click)="removeAddress(i)">
-            <i class="fa fa-times" aria-hidden="true"></i></button>
-        </div>
-        <mat-form-field>
-          <mat-select [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedCompanie.address[i].nameAddress">
-              <mat-option value="billing">{{'Billing' | translate}}</mat-option>
-              <mat-option value="shipping">{{'Shipping' | translate}}</mat-option>
-            </mat-select>
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedCompanie.address[i].address" placeholder="{{'Address' | translate}}">
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedCompanie.address[i].city" placeholder="{{'City' | translate}}">
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedCompanie.address[i].zip" placeholder="{{'Zip' | translate}}">
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedCompanie.address[i].country" placeholder="{{'Country' | translate}}">
-        </mat-form-field>
-      </div>
+
+      <app-address [addresses]="fetchedCompanie.address"></app-address>
+    
       <button type="button" class="btn btn-primary btn-sm" (click)="newAddress()">{{'New Address' | translate}}</button>
     </div>
     <div class="col">
