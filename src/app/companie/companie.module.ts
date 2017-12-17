@@ -34,6 +34,8 @@ import {MatExpansionModule} from '@angular/material';
 import {MatSelectModule} from '@angular/material';
 import {MatButtonToggleModule} from '@angular/material';
 import {PaiementCardModule} from '../nav/paiementCard/paiementCard.module';
+import {MatCheckboxModule} from '@angular/material';
+
 
 @NgModule({
   imports: [
@@ -50,6 +52,7 @@ import {PaiementCardModule} from '../nav/paiementCard/paiementCard.module';
     MatExpansionModule,
     MatSelectModule,
     MatButtonToggleModule,
+    MatCheckboxModule,
     // MatIconModule,
     // MatInputModule,
     // MatFormFieldModule,

@@ -10,6 +10,7 @@ export const LANG_FR_TRANS = {
     'Back': 'Retour',
     'Month': 'Mois',
     'Year': 'Année',
+    'Company name': 'Nom de l\'entreprise',
     'Create new Intervention': 'Nouvelle intervention',
     'Password': 'Mot de passe',
     'Outstanding balance': 'Reste à payer',

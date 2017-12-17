@@ -1,10 +1,7 @@
 <form [formGroup]="myForm" novalidate>
   <div class="row">
     <div class="col">
-      <h5>{{'Identity' | translate}}</h5>
-
-
-
+      <h5>{{'Details' | translate}}</h5>
       <mat-form-field>
         <input matInput type="text" formControlName="nameCompanie" [(ngModel)]="fetchedCompanie.nameCompanie" required minlength="5" placeholder="{{'Company name' | translate}}">
       </mat-form-field>
@@ -20,10 +17,11 @@
 
     </div>
     <div class="col">
-      <h5>{{'Details' | translate}}</h5>
+      <h5>{{'Addresses' | translate}}</h5>
       <div *ngFor="let singleAddresss of fetchedCompanie.address; let i = index;" class="form-control boad">
         <div class="alright">
-          <button class="ml btnadr" type="button" (click)="removeAddress(i)"><i class="fa fa-times" aria-hidden="true"></i></button>
+          <button class="ml btnadr" type="button" (click)="removeAddress(i)">
+            <i class="fa fa-times" aria-hidden="true"></i></button>
         </div>
         <mat-form-field>
           <mat-select [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedCompanie.address[i].nameAddress">

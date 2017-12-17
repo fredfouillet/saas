@@ -1,5 +1,5 @@
 <div class="container">
-  <app-header-title [title]="'Details'" [icon]="'dashboard'"></app-header-title>
+  <app-header-title [title]="'Settings'" [icon]="'dashboard'"></app-header-title>
 
   <mat-accordion class="example-headers-align">
     <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)">
@@ -8,7 +8,7 @@
           <mat-icon>account_balance</mat-icon>
         </mat-panel-title>
         <mat-panel-description>
-          {{'Details Companie' | translate}}
+          {{'Companie' | translate}}
         </mat-panel-description>
       </mat-expansion-panel-header>
       <app-detailsCompanie [fetchedCompanie]="fetchedCompanie"></app-detailsCompanie>

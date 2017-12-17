@@ -1,11 +1,13 @@
+<div class="ac">
+  <div *ngIf="!accountConnectStripe.id">
+    <img class="pointer" (click)="goToLinkAuthorizeConnect()" src="./assets/images/stripe/light-on-dark.png" />
+  </div>
+  <div *ngIf="accountConnectStripe.id">
+    <br>
+    <mat-icon color="accent" class="bigIcon">cloud_done</mat-icon>
+    <!-- Account linked under ID: {{accountConnectStripe.id}} -->
+    <br>
 
-    <div *ngIf="!accountConnectStripe.id">
-      <img (click)="goToLinkAuthorizeConnect()" src="./assets/images/stripe/light-on-dark.png" />
-    </div>
-    <div *ngIf="accountConnectStripe.id">
-      <br>
-      <i class="fa fa-check"></i>Account linked under ID: {{accountConnectStripe.id}}
-      <br>
-
-      <button type="button" (click)="deauthorizeConnect()">Disconnect</button>
-    </div>
+    <button mat-raised-button color="warn" (click)="deauthorizeConnect()">{{'Disconnect' | translate}}</button>
+  </div>
+</div>

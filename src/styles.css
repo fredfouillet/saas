@@ -65,6 +65,13 @@ width: 500px;
   outline: none;
 }
 
+.bigIcon {
+  font-size: 70px!important;
+  height: 70px!important;
+  width: 70px!important;
+}
+
+
 mat-icon {
   outline: none!important;
 }

@@ -11,7 +11,7 @@
           </div>
           <div *ngIf="openCameraStraight">
             <label for="file" matTooltip="Photo" class="label-file">
-                <mat-icon class="buttonImg" color="primary" aria-label="Camera">photo_camera</mat-icon>
+                <mat-icon class="bigIcon pointer" color="primary" aria-label="Camera">photo_camera</mat-icon>
             </label>
             <input id="file" #fileInput type="file" accept="image/*" capture="camera" (change)="onFileSelect($event)" class="input-file"/>
           </div>

@@ -28,6 +28,7 @@ export class PaiementComponent implements OnInit {
   // isUserBelongToHQ=false
   // maxPictureToShow=3;
   // instapic=1;
+  approveTnC: boolean = false
   plan: string = ''
   loading: boolean = false
   // companies: Companie[] = [];

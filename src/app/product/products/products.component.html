@@ -28,7 +28,7 @@
             <th class="centre tdunder hideMobile">{{'Description' | translate}}
               <app-sort (orderBy)="orderBy($event)" [search]="search" [filedToOrder]="'details.description'"></app-sort>
             </th>
-            <th class="centre tdunder">{{'Price without taxes' | translate}}
+            <th class="centre tdunder">{{'Price' | translate}}
               <app-sort (orderBy)="orderBy($event)" [search]="search" [filedToOrder]="'details.price.sellingPrice'"></app-sort>
             </th>
             <th class="centre tdunder hideMobile">{{'Unit' | translate}}
@@ -47,7 +47,7 @@
             </td>  -->
             <td class="centre tdunder">{{product.details.referenceName}}</td>
             <td class="centre tdunder hideMobile">{{product.details.description}}</td>
-            <td class="centre tdunder">{{product.details.price.sellingPrice}}</td>
+            <td class="centre tdunder">{{product.details.price.sellingPrice | round | currency}}</td>
             <td class="centre tdunder hideMobile">{{product.details.unit}}</td>
             <td *ngIf="customButton" class="centre tdunder">
 

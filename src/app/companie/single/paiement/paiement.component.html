@@ -3,12 +3,16 @@
     <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)">
       <mat-expansion-panel-header>
         <mat-panel-title>
-          {{'Registration' | translate}}
+          {{'Terms' | translate}}
         </mat-panel-title>
       </mat-expansion-panel-header>
+      <div *ngIf="!stripeCust.id">
+        <mat-checkbox [(ngModel)]="approveTnC">{{'I approve the' | translate}} <a target="_blank" href="http://mirabelle.io/conditions-generales-dutilisation">{{'T&C' | translate}}</a></mat-checkbox>
 
-      <button *ngIf="!stripeCust.id" mat-raised-button color="primary" color="primary" (click)="saveCustInStripe()">Welcome!</button>
-      <button *ngIf="stripeCust.id" mat-raised-button color="primary" (click)="deleteCustInStripe()">deleteCustInStripe</button>
+        {{approveTnC.value|json}}
+        <button *ngIf="approveTnC" mat-raised-button color="primary" color="primary" (click)="saveCustInStripe()">Welcome!</button>
+      </div>
+      <button *ngIf="stripeCust.id" mat-raised-button color="primary" (click)="deleteCustInStripe()">{{'I want to unscribe'}}</button>
     </mat-expansion-panel>
     <mat-expansion-panel *ngIf="stripeCust.id" [expanded]="step === 1" (opened)="setStep(1)">
       <mat-expansion-panel-header>
@@ -91,8 +95,8 @@
       </div>
       <mat-action-row>
         <!-- <button mat-button color="warn" (click)="prevStep()">Previous</button> -->
-        <button *ngIf="!stripeCust.sources.data.length" mat-button color="primary" (click)="saveCardInStripe()">saveCardInStripe</button>
-        <button *ngIf="stripeCust.sources.data.length" mat-button color="primary" (click)="nextStep()">Next</button>
+        <button *ngIf="!stripeCust.sources.data.length" mat-raised-button color="primary" (click)="saveCardInStripe()">{{'Save Card' | translate}}</button>
+        <button *ngIf="stripeCust.sources.data.length" mat-button color="primary" (click)="nextStep()">{{'Next' | translate}}</button>
       </mat-action-row>
     </mat-expansion-panel>
 
