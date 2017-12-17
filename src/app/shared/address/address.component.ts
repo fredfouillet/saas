@@ -23,26 +23,6 @@ export class AddressComponent implements OnInit {
 
 
   newAddress() {
-    let newAddress = new Address()
-    this.fetchedUser.profile.address.push(newAddress)
-  }
-  removeAddress(i) {
-    this.fetchedUser.profile.address.splice(i, 1);
-  }
-  moveAddress(i: number, incremet: number) {
-    // if(i>=0 && i<=this.fetchedUser.profile.address.length + incremet) {
-    console.log(i, incremet, this.fetchedUser.profile.address.length)
-    if (!(i === 0 && incremet < 0) && !(i === this.fetchedUser.profile.address.length - 1 && incremet > 0)) {
-      var tmp = this.fetchedUser.profile.address[i];
-      this.fetchedUser.profile.address[i] = this.fetchedUser.profile.address[i + incremet]
-      this.fetchedUser.profile.address[i + incremet] = tmp
-      // this.save(false)
-      // console.log(this.fetchedUser.profile.address)
-    }
-  }
-
-
-  newAddress() {
     const newAddress = new Address()
     this.addresses.push(newAddress)
   }
@@ -57,7 +37,18 @@ export class AddressComponent implements OnInit {
       this.addressService.getCityByZip(zip, this.authService.getCurrentUser().profile.language)
         .subscribe(
         res => {
-          this.addresses[i].cities = res.places
+
+            res.results.forEach((result, i) => {
+              result.address_components.forEach((address_component, j) => {
+                address_component.types.forEach(type => {
+                  if(type === 'locality') {
+                    this.addresses[i].cities = [res.results[i].address_components[j].long_name]
+                  }
+                });
+              })
+            })
+          // this.addresses[i].cities =
+          // this.addresses[i].cities = res.places
           // console.log(this.places)
         },
         error => {

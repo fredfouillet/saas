@@ -40,7 +40,11 @@ export class AddressService {
     if(lang === 'en') lang='US'
     if(lang === 'fr') lang='FR'
 
-    return this.http.get('http://api.zippopotam.us/' + lang + '/' + zip )
+    if(lang === 'en') lang='USA'
+    if(lang === 'fr') lang='FRANCE'
+
+    return this.http.get('https://maps.googleapis.com/maps/api/geocode/json?address=' + zip + '%20' + lang )
+    // return this.http.get('http://api.zippopotam.us/' + lang + '/' + zip )
       .timeout(15000)
       .map((response: Response) => {
         return response.json();

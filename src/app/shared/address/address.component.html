@@ -44,8 +44,8 @@
   </div>
   <div>
     <div *ngFor="let place of addresses[i].cities; let j = index">
-      {{place['place name']}}
-      <button mat-icon-button color="primary" (click)="selectCity(i, place['place name'])">
+      {{place}}
+      <button mat-icon-button color="primary" (click)="selectCity(i, place)">
         <mat-icon>done</mat-icon>
       </button>
     </div>
