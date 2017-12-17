@@ -113,24 +113,24 @@ export class DetailsUserComponent implements OnInit {
     this.save.emit()
     this.showLoginInApp = true
   }
-  selectCity(i, city: string) {
-    this.fetchedUser.profile.address[i].city = city
-    this.fetchedUser.profile.address[i].cities = []
-    // this.places = []
-  }
-  searchCities(zip, i) {
-    if (zip.length > 4)
-      this.userService.getCityByZip(zip, this.authService.getCurrentUser().profile.language)
-        .subscribe(
-        res => {
-          this.fetchedUser.profile.address[i].cities = res.places
-          // console.log(this.places)
-        },
-        error => {
-          console.log(error);
-        }
-        )
-  }
+  // selectCity(i, city: string) {
+  //   this.fetchedUser.profile.address[i].city = city
+  //   this.fetchedUser.profile.address[i].cities = []
+  //   // this.places = []
+  // }
+  // searchCities(zip, i) {
+  //   if (zip.length > 4)
+  //     this.userService.getCityByZip(zip, this.authService.getCurrentUser().profile.language)
+  //       .subscribe(
+  //       res => {
+  //         this.fetchedUser.profile.address[i].cities = res.places
+  //         // console.log(this.places)
+  //       },
+  //       error => {
+  //         console.log(error);
+  //       }
+  //       )
+  // }
   ngOnInit() {
     // this.authService.getCurrentUser().ownerCompanies.forEach((companie, i) => {
     //   if(companie.typeUsers.length)

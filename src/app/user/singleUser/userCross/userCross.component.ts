@@ -93,19 +93,7 @@ export class UserCrossComponent implements OnInit {
     this.fetchedUserCross.profile.address[i].cities = []
     // this.places = []
   }
-  searchCities(zip, i) {
-    if (zip.length > 4)
-      this.userService.getCityByZip(zip, this.authService.getCurrentUser().profile.language)
-        .subscribe(
-        res => {
-          this.fetchedUserCross.profile.address[i].cities = res.places
-          // console.log(this.places)
-        },
-        error => {
-          console.log(error);
-        }
-        )
-  }
+
   ngOnInit() {
     // this.authService.getCurrentUser().ownerCompanies.forEach((companie, i) => {
     //   if(companie.typeUsers.length)

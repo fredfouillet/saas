@@ -19,6 +19,7 @@ import { SortComponent } from './sort/sort.component';
 import { AddressComponent } from './address/address.component';
 // import { newObjDialogComponent } from '../nav/newObjDialog/newObjDialog.component';
 import {DeleteDialogComponent} from '../nav/deleteDialog/deleteDialog.component'
+import {AddressService} from './address/address.service'
 
 // import { LoadingInAppComponent } from '../nav/loadingInApp/loadingInApp.component';
 // import { LoginInAppComponent } from '../nav/loginInApp/loginInApp.component';
@@ -78,6 +79,7 @@ import {MatSelectModule} from '@angular/material';
     // AutocompleteComponent,
   ],
   providers: [
+    AddressService,
     // TRANSLATION_PROVIDERS,
     // TranslateService,
   ],
