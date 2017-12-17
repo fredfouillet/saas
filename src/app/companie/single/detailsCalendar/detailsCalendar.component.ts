@@ -6,7 +6,9 @@ import {CompanieService} from '../../companie.service';
 
 import {Companie, ContactsPerson} from '../../companie.model';
 // import {Companie, Categorie0, ContactsPerson} from '../companie.model';
-import {Address} from '../../../user/user.model';
+
+import {Address} from '../../../shared/address/address.model';
+
 
 import {ToastsManager} from 'ng2-toastr';
 

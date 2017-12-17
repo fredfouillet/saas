@@ -9,7 +9,8 @@ import { FormBuilder, FormGroup} from '@angular/forms';
 import { UserService} from '../../user/user.service';
 import { QuoteService } from '../../quote/quote.service';
 import { DeleteDialogComponent } from '../../nav/deleteDialog/deleteDialog.component';
-import { User, UserCross, TypeUser, Address, AddressTypes } from '../../user/user.model';
+import { User, UserCross, TypeUser} from '../../user/user.model';
+import { Address, AddressTypes } from '../../shared/address/address.model';
 import { Quote } from '../../quote/quote.model';
 import { Product } from '../../product/product.model';
 import { Search} from '../../shared/shared.model'

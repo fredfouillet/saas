@@ -1,6 +1,7 @@
 import { Form } from '../picture/form/form.model';
 import { Companie } from '../companie/companie.model';
 import { Right } from '../right/right.model';
+import { Address } from '../shared/address/address.model';
 
 
 export const TypeUser = ['plombier', 'serrurier']
@@ -83,24 +84,24 @@ export class Profile {
 // }
 
 
-
-export const AddressTypes =
-[
-  {value: 'shipping', label: 'Shipping'},
-  {value: 'billing', label: 'Billing'},
-]
-
-
-export class Address {
-    nameAddress: string = 'shipping';
-    address: string = '';
-    address2: string = '';
-    city: string = '';
-    cities: string[] = [];
-    state : string = '';
-    zip : string = '';
-    country : string = '';
-}
+//
+// export const AddressTypes =
+// [
+//   {value: 'shipping', label: 'Shipping'},
+//   {value: 'billing', label: 'Billing'},
+// ]
+//
+//
+// export class Address {
+//     nameAddress: string = 'shipping';
+//     address: string = '';
+//     address2: string = '';
+//     city: string = '';
+//     cities: string[] = [];
+//     state : string = '';
+//     zip : string = '';
+//     country : string = '';
+// }
 
 
 export class UserProfile {

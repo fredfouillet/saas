@@ -1,7 +1,7 @@
 import { Form } from '../picture/form/form.model';
 import { User } from '../user/user.model';
-import { Address } from '../user/user.model';
-
+// import { Address } from '../user/address/address.model';
+import {Address} from '../shared/address/address.model';
 
 export class Companie {
   _id: string = '';

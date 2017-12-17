@@ -11,7 +11,8 @@ import { ToastsManager } from 'ng2-toastr';
 import { MatDialog } from '@angular/material';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
-import { User, UserCross, TypeUser, Address, AddressTypes } from '../../user.model';
+import { User, UserCross, TypeUser} from '../../user.model';
+import { Address, AddressTypes } from '../../../shared/address/address.model';
 //import { Form } from '../../../form/form.model';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -189,35 +190,11 @@ export class UserCrossComponent implements OnInit {
   // selectCompanie(companie: Companie) {
   //   this.fetchedUser.ownerCompanies = [companie]
   // }
-  newAddress() {
-    const newAddress = new Address()
-    this.fetchedUserCross.profile.address.push(newAddress)
-  }
-  removeAddress(i) {
-    this.fetchedUserCross.profile.address.splice(i, 1);
-  }
-  moveAddress(i: number, incremet: number) {
-      // if(i>=0 && i<=this.fetchedUser.profile.address.length + incremet) {
-      // console.log(i, incremet, this.fetchedUser.profile.address.length)
-      if(  !(i===0 && incremet<0) && !(i===this.fetchedUserCross.profile.address.length-1 && incremet>0)  )    {
-        const tmp = this.fetchedUserCross.profile.address[i];
-        this.fetchedUserCross.profile.address[i] = this.fetchedUserCross.profile.address[i + incremet]
-        this.fetchedUserCross.profile.address[i + incremet] = tmp
-        // this.save(false)
-        // console.log(this.fetchedUser.profile.address)
-      }
-    }
-  // selectRight(right: Right) {
-  //   this.fetchedUser.rights = [right]
+
+
+  // selectSalesMan(users) {
+  //   this.fetchedUser.salesMan = users
   // }
-
-  selectOwnerCompanies(companie: Companie) {
-    this.fetchedUser.ownerCompanies = [companie]
-  }
-
-  selectSalesMan(users) {
-    this.fetchedUser.salesMan = users
-  }
   getPicture(result) {
     console.log(result)
   }

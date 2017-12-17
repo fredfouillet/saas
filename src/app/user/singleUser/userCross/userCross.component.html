@@ -71,67 +71,9 @@
       </div> -->
     </div>
     <div class="col-sm-12 col-md-6 col-lg-4">
-      <h5>{{'Address' | translate}}</h5>
 
-      <div *ngFor="let singleAddresss of fetchedUserCross.profile.address; let i = index;" class="form-control boad">
-        <div class="alright">
-          <button mat-icon-button (click)="moveAddress(i, -1)">
-            <!-- <i class="fa fa-arrow-up" aria-hidden="true"></i> -->
-            <mat-icon>arrow_upward</mat-icon>
-          </button>
-          <button mat-icon-button (click)="moveAddress(i, 1)">
-            <mat-icon>arrow_downward</mat-icon>
-            <!-- <i class="fa fa-arrow-down" aria-hidden="true"></i> -->
-          </button>
-          <button mat-icon-button (click)="removeAddress(i)">
-            <!-- <i class="fa fa-times" aria-hidden="true"></i> -->
-            <mat-icon>clear</mat-icon>
-          </button>
-        </div>
-        <div>
-          <mat-form-field>
-            <mat-select [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedUserCross.profile.address[i].nameAddress">
-              <mat-option *ngFor="let n of addressTypes" [value]="n.value">{{n.label | translate}}</mat-option>
-            </mat-select>
-          </mat-form-field>
-        </div>
-        <div>
-          <mat-form-field>
-            <input matInput type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedUserCross.profile.address[i].address" placeholder="{{'Address' | translate}}">
-          </mat-form-field>
-        </div>
-        <div>
-          <mat-form-field>
-            <input matInput type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedUserCross.profile.address[i].address2" placeholder="{{'Additional address' | translate}}">
-          </mat-form-field>
-        </div>
-        <div>
-          <mat-form-field>
-            <input matInput (ngModelChange)="searchCities($event, i)" type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedUserCross.profile.address[i].zip" placeholder="{{'Zip' | translate}}">
-          </mat-form-field>
-        </div>
-        <div>
-          <div *ngFor="let place of fetchedUserCross.profile.address[i].cities; let j = index">
-            {{place['place name']}}
-            <button mat-icon-button color="primary" (click)="selectCity(i, place['place name'])">
-              <mat-icon>done</mat-icon>
-            </button>
-          </div>
-        </div>
-        <div>
-          <mat-form-field>
-            <input matInput type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedUserCross.profile.address[i].city" placeholder="{{'City' | translate}}">
-          </mat-form-field>
-        </div>
-        <!--   <div>
-            <input type="text" formControlName="state" [(ngModel)]="fetchedUserCross.profile.address.state" placeholder="{{'State' | translate}}">
-          </div> -->
-        <div>
-          <mat-form-field>
-            <input matInput type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="fetchedUserCross.profile.address[i].country" placeholder="{{'Country' | translate}}">
-          </mat-form-field>
-        </div>
-      </div>
+      <app-address [addresses]="fetchedUserCross.profile.address"></app-address>
+    
       <button mat-raised-button (click)="newAddress()">
         <mat-icon>add</mat-icon> {{'New Address' | translate}}
       </button>

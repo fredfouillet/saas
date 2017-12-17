@@ -11,7 +11,9 @@ import { ToastsManager } from 'ng2-toastr';
 import { MatDialog } from '@angular/material';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
-import { User, TypeUser, Address, AddressTypes } from '../../user.model';
+import { User, TypeUser  } from '../../user.model';
+import { Address, AddressTypes } from '../../../shared/address/address.model';
+
 //import { Form } from '../../../form/form.model';
 
 import { FormGroup, FormControl } from '@angular/forms';

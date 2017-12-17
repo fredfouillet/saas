@@ -16,6 +16,7 @@ import { TranslateModule} from '../translate/translate.module';
 // import { CurrencyPipe} from './round.pipe';
 // import { HeaderComponent } from '../nav/header/header.component';
 import { SortComponent } from './sort/sort.component';
+import { AddressComponent } from './address/address.component';
 // import { newObjDialogComponent } from '../nav/newObjDialog/newObjDialog.component';
 import {DeleteDialogComponent} from '../nav/deleteDialog/deleteDialog.component'
 
@@ -24,6 +25,9 @@ import {DeleteDialogComponent} from '../nav/deleteDialog/deleteDialog.component'
 
 // import {CommentModule} from '../comment/comment.module';
 import {SharedSmallModule} from './sharedSmall.module'
+import {MatRadioModule} from '@angular/material';
+import {MatSelectModule} from '@angular/material';
+
 @NgModule({
   imports:      [
 
@@ -34,11 +38,14 @@ import {SharedSmallModule} from './sharedSmall.module'
     PictureModule,
     // CommentModule,
     TranslateModule,
+    MatRadioModule,
+    MatSelectModule,
 
 
   ],
   declarations: [
     SortComponent,
+    AddressComponent,
     // RoundPipe,
     // AutocompleteComponent,
     // TranslatePipe,
@@ -59,6 +66,7 @@ import {SharedSmallModule} from './sharedSmall.module'
     // RoundPipe,
     // HeaderComponent,
     SortComponent,
+    AddressComponent,
     // newObjDialogComponent,
     // LoadingComponent,
     // LoadingInAppComponent,
