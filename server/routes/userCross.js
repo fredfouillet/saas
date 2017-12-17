@@ -128,12 +128,13 @@ function getUserCross (user, userId) {
         reject(err)
       }
       if (!user) {
-        reject(new Error({
-          title: 'No form found',
-          error: {
-            message: 'Item not found!'
-          }
-        }))
+        resolve()
+        // reject(new Error({
+        //   title: 'No form found',
+        //   error: {
+        //     message: 'Item not found!'
+        //   }
+        // }))
       }
       resolve(user)
     })

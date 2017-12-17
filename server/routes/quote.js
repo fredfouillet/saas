@@ -402,13 +402,20 @@ router.post('/', function(req, res, next) {
   if(req.body.clients.length) {
     userCross.getUserCross(req.user, req.body.clients[0]._id).then(userCrossSingle => {
       // console.log(userCrossSingle)
-      req.body.historyClientsCross.push(userCrossSingle)
+      // if(!userCrossSingle) {
+      //   console.log('aa')
+      // }
+      if(userCrossSingle) {
+        req.body.historyClientsCross.push(userCrossSingle)
+      }
       var quote = new Quote(req.body);
       saveQuote(quote).then(quote => {
         res.status(200).json({message: 'Registration Successfull', obj: quote})
       }).catch(err => {
         return res.status(403).json(err);
       })
+    }).catch(err => {
+      return res.status(403).json(err);
     })
   } else {
     var quote = new Quote(req.body);

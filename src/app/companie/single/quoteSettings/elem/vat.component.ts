@@ -20,7 +20,7 @@ export class VATComponent {
     this.showLoginInApp = false
   }
   addVAT() {
-    if (this.VATvalueToAdd) {
+    if (this.VATvalueToAdd !== undefined) {
       this.fetchedCompanie.modelVATs.push(this.VATvalueToAdd * 1)
       this.fetchedCompanie.modelVATs.sort()
 
