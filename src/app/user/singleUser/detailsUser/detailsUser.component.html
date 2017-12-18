@@ -27,7 +27,7 @@
           <mat-option *ngFor="let n of titleArray" [value]="n">{{ n | translate}}</mat-option>
         </mat-select>
       </mat-form-field> -->
-      {{fetchedUser.profile.title|json}}
+
       <mat-radio-group [(ngModel)]="fetchedUser.profile.title" formControlName="title">
         <mat-radio-button *ngFor="let n of titleArray" [value]="n">{{ n | translate}}</mat-radio-button>
       </mat-radio-group>

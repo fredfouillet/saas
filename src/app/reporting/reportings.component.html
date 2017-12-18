@@ -35,11 +35,11 @@
         <mat-tab-group>
           <mat-tab label="{{'Month' | translate}}">
             <div class="bigNumber">{{emptyRowPaid.data[month] | round | currency}}</div>
-            {{'Intervention paid this month'}}
+            {{'Interventions paid this month' | translate}}
           </mat-tab>
           <mat-tab label="{{'Year' | translate}}">
             <div class="bigNumber">{{totalPaid | round | currency}}</div>
-            {{'Intervention paid this year'}}
+            {{'Interventions paid this year' | translate}}
           </mat-tab>
         </mat-tab-group>
       </mat-card>

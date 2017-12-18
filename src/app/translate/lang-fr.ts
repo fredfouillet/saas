@@ -10,6 +10,8 @@ export const LANG_FR_TRANS = {
     'Back': 'Retour',
     'Month': 'Mois',
     'Year': 'Année',
+    'Interventions paid this year': 'Interventions payée cette année',
+    'Interventions paid this month': 'Interventions payée ce mois',
     'Company name': 'Nom de l\'entreprise',
     'Create new Intervention': 'Nouvelle intervention',
     'Password': 'Mot de passe',
@@ -128,7 +130,7 @@ export const LANG_FR_TRANS = {
 
 
     'Quotes': 'Devis',
-    'Paid': 'Payé',
+
     'quote': 'devis',
     'Create a new quote': 'Créer un nouveau Devis',
     'Assigned to me': 'Assigné à Moi',
@@ -181,10 +183,32 @@ export const LANG_FR_TRANS = {
     'Paymentquote': 'Encaissement',
     'Sent': 'Envoyée',
     'Date Invoice Paid': 'Date Encaissement',
+
     'Signed': 'Signé',
+    'signed': 'signé',
     'Rejected': 'Refusé',
-    'Signed, pending payment': 'Signé, en attente de règlement',
-    'signed': 'Signé',
+    'rejected': 'refusé',
+    'Pending Approval': 'Attente de signature',
+    'Pending': 'En attente',
+    'pending': 'en attente',
+    'Paid': 'Payé',
+    'paid': 'payé',
+
+    'Feb': 'Fev',
+    'Apr': 'Avr',
+    'May': 'Mai',
+    'June': 'Juin',
+    'July': 'Juillet',
+    'Aug': 'Aout',
+
+
+
+    'I want to unscribe': 'Désinscription',
+
+
+
+
+    // 'Signed, pending payment': 'Signé, en attente de règlement',
     'Drawing': 'Dessin',
     'Get invoice': 'Créer Facture',
     'Is Paid': 'Payé',
@@ -215,7 +239,7 @@ export const LANG_FR_TRANS = {
     'Add a project': 'Ajouter un projet',
     'Individual' : 'Particulier',
 
-    'Pending Approval': 'Attente de signature',
+
     'right': 'droit',
     'Rights': 'Droits',
 

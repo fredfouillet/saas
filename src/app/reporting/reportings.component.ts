@@ -42,8 +42,14 @@ export class ReportingsComponent implements OnInit {
   // lineChartDataGraph2 = [ new EmptyRow(), new EmptyRow() ]
   // lineChartDataGraph3 = [ new EmptyRow(), new EmptyRow() ]
   // lineChartDataGraph4 = [ new EmptyRow(), new EmptyRow() ]
+  statusQuoteTranslate = [
+    this.translateService.instant(this.statusQuote[0]),
+    this.translateService.instant(this.statusQuote[1]),
+    this.translateService.instant(this.statusQuote[2]),
+    this.translateService.instant(this.statusQuote[3]),
+  ]
   donutChartDataGraph1 = {
-    labels: this.statusQuote,
+    labels: this.statusQuoteTranslate,
     data: []
   }
 
@@ -55,7 +61,20 @@ export class ReportingsComponent implements OnInit {
   label: string = ''
   typeSum: string = ''
 
-  public lineChartLabels: Array<any> = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'oct', 'nov', 'dec'];
+  public lineChartLabels: Array<any> = [
+    this.translateService.instant('Jan'),
+    this.translateService.instant('Feb'),
+    this.translateService.instant('Mar'),
+    this.translateService.instant('Apr'),
+    this.translateService.instant('May'),
+    this.translateService.instant('June'),
+    this.translateService.instant('July'),
+    this.translateService.instant('Aug'),
+    this.translateService.instant('Sept'),
+    this.translateService.instant('Oct'),
+    this.translateService.instant('Nov'),
+    this.translateService.instant('Dec')
+  ];
   public lineChartColors: Array<any> = [
     { // grey
       backgroundColor: 'rgba(255, 99, 132, 0.2)',
@@ -157,41 +176,41 @@ export class ReportingsComponent implements OnInit {
         if (element._id.statusQuote === 'signed') {
           this.totalSigned += element.amountTotal
           this.emptyRowPaid.data[element._id.month - 1] = element.amountTotal
-          this.emptyRowPaid.label = element._id.statusQuote
+          this.emptyRowPaid.label = this.translateService.instant(element._id.statusQuote)
           this.emptyRowPaid.year = element._id.year
 
           this.emptyRowPaidCount.data[element._id.month - 1] = element.count
-          this.emptyRowPaidCount.label = element._id.statusQuote
+          this.emptyRowPaidCount.label = this.translateService.instant(element._id.statusQuote)
           this.emptyRowPaidCount.year = element._id.year
         }
         if (element._id.statusQuote === 'pending') {
           this.totalPending += element.amountTotal
           this.emptyRowPending.data[element._id.month - 1] = element.amountTotal
-          this.emptyRowPending.label = element._id.statusQuote
+          this.emptyRowPending.label = this.translateService.instant(element._id.statusQuote)
           this.emptyRowPending.year = element._id.year
 
           this.emptyRowPendingCount.data[element._id.month - 1] = element.count
-          this.emptyRowPendingCount.label = element._id.statusQuote
+          this.emptyRowPendingCount.label = this.translateService.instant(element._id.statusQuote)
           this.emptyRowPendingCount.year = element._id.year
         }
         if (element._id.statusQuote === 'rejected') {
           this.totalRejected += element.amountTotal
           this.emptyRowRejected.data[element._id.month - 1] = element.amountTotal
-          this.emptyRowRejected.label = element._id.statusQuote
+          this.emptyRowRejected.label = this.translateService.instant(element._id.statusQuote)
           this.emptyRowRejected.year = element._id.year
 
           this.emptyRowRejectedCount.data[element._id.month - 1] = element.count
-          this.emptyRowRejectedCount.label = element._id.statusQuote
+          this.emptyRowRejectedCount.label = this.translateService.instant(element._id.statusQuote)
           this.emptyRowRejectedCount.year = element._id.year
         }
         if (element._id.statusQuote === 'paid') {
           this.totalPaid += element.amountTotal
           this.emptyRowsigned.data[element._id.month - 1] = element.amountTotal
-          this.emptyRowsigned.label = element._id.statusQuote
+          this.emptyRowsigned.label = this.translateService.instant(element._id.statusQuote)
           this.emptyRowsigned.year = element._id.year
 
           this.emptyRowsignedCount.data[element._id.month - 1] = element.count
-          this.emptyRowsignedCount.label = element._id.statusQuote
+          this.emptyRowsignedCount.label = this.translateService.instant(element._id.statusQuote)
           this.emptyRowsignedCount.year = element._id.year
         }
       })

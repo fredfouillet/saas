@@ -10,9 +10,9 @@
         <mat-checkbox [(ngModel)]="approveTnC">{{'I approve the' | translate}} <a target="_blank" href="http://mirabelle.io/conditions-generales-dutilisation">{{'T&C' | translate}}</a></mat-checkbox>
 
         {{approveTnC.value|json}}
-        <button *ngIf="approveTnC" mat-raised-button color="primary" color="primary" (click)="saveCustInStripe()">Welcome!</button>
+        <button *ngIf="approveTnC" mat-raised-button color="primary" color="primary" (click)="saveCustInStripe()">{{'Welcome!' | translate}}</button>
       </div>
-      <button *ngIf="stripeCust.id" mat-raised-button color="primary" (click)="deleteCustInStripe()">{{'I want to unscribe'}}</button>
+      <button *ngIf="stripeCust.id" mat-raised-button color="warn" (click)="deleteCustInStripe()">{{'I want to unscribe' | translate}}</button>
     </mat-expansion-panel>
     <mat-expansion-panel *ngIf="stripeCust.id" [expanded]="step === 1" (opened)="setStep(1)">
       <mat-expansion-panel-header>
