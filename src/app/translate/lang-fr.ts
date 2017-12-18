@@ -15,7 +15,7 @@ export const LANG_FR_TRANS = {
     'Password': 'Mot de passe',
     'Outstanding balance': 'Reste à payer',
     'Add': 'Ajouter',
-    'Meeting': 'Rendez-voous',
+    'Meeting': 'Rendez-vous',
     'Register': 'S\'enregistrer',
     'Dashboard': 'Tableau de Bord',
     'My Planning': 'Mon Calendrier',
