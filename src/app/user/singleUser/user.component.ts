@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
 import { AuthService } from '../../auth/auth.service';
 import { UserService } from '../user.service';
 // import { Right } from '../../right/right.model';
@@ -35,48 +35,18 @@ export class UserComponent implements OnInit {
   @Input() isDialog: boolean = false
 
   customFormControls = new CustomFormControls()
-  // customFormControls = {
-  //   emailFormControl: new FormControl('', [
-  //     Validators.required,
-  //     Validators.minLength(3),
-  //     Validators.pattern(EMAIL_REGEX)])
-  // }
 
 
-
-  myForm: FormGroup = this._fb.group({
-    email: this.customFormControls.emailFormControl,
-    // typeUsers: [''],
-    language: [''],
-    colorCalendar: [''],
-    otherData: [''],
-    name: [''],
-    lastName: ['', [Validators.required, Validators.minLength(2)]],
-    // phoneNumber: [''],
-    title: ['', [Validators.required, Validators.minLength(1)]],
-    // typeClient: [''],
-    // statusHouse: [''],
-    // sourceContact: [''],
-
-    // typeHouse: [''],
-    // surface: [''],
-    // accesCode: [''],
-    // floor: [''],
-    // accessType: [''],
-    //
-    //
-    // address: [''],
-    // city: [''],
-    // state: [''],
-    // zip: [''],
-
-
-  })
-
-
-
-  // fetchedCompanies: Companie[] = []
-  // autocompleteCompanie: string = '';
+  myForm: FormGroup
+  // myForm: FormGroup = this._fb.group({
+  //   email: this.customFormControls.emailFormControl,
+  //   language: [''],
+  //   colorCalendar: [''],
+  //   otherData: [''],
+  //   name: [''],
+  //   lastName: ['', [Validators.required, Validators.minLength(2)]],
+  //   title: ['', [Validators.required, Validators.minLength(1)]],
+  // })
 
   fetchedTypeUsers = []
   autocompleteTypeUser: string = '';
@@ -106,6 +76,7 @@ export class UserComponent implements OnInit {
   // public myForm: FormGroup;
 
   constructor(
+    private changeDetectionRef: ChangeDetectorRef,
     private userService: UserService,
     private toastr: ToastsManager,
     public dialog: MatDialog,
@@ -126,6 +97,7 @@ export class UserComponent implements OnInit {
   previousStep() {
     this.step--;
   }
+
   // selectCity(i, city: string) {
   //   this.fetchedUser.profile.address[i].city = city
   //   this.fetchedUser.profile.address[i].cities = []
@@ -153,6 +125,8 @@ export class UserComponent implements OnInit {
 
 
     this.currentUser = this.authService.getCurrentUser()
+    this.initForm()
+
     // this.myForm = this._fb.group({
     //   email: ['', [Validators.required, Validators.minLength(3)]],
     //   typeUsers: [''],
@@ -185,6 +159,7 @@ export class UserComponent implements OnInit {
 
     this.fetchedUser.isExternalUser = this.search.isExternalUser
     this.activatedRoute.params.subscribe((params: Params) => {
+      this.initForm()
       if (params['id']) {
         this.getUser(params['id'])
 
@@ -198,6 +173,20 @@ export class UserComponent implements OnInit {
 
     })
   }
+
+    initForm() {
+      console.log('a')
+      this.myForm = this._fb.group({
+        email: this.customFormControls.emailFormControl,
+        language: [''],
+        colorCalendar: [''],
+        otherData: [''],
+        name: [''],
+        lastName: ['', [Validators.required, Validators.minLength(2)]],
+        title: ['', [Validators.required, Validators.minLength(1)]],
+      })
+
+    }
   //
   // searchCompanies() {
   //   if(!this.autocompleteCompanie) {
@@ -416,9 +405,10 @@ export class UserComponent implements OnInit {
       .subscribe(
       res => {
         this.fetchedUser = res
-        this.fetchedUser.typeUsers.forEach(type => {
-          this.typeUserDropDown = type
-        });
+        this.changeDetectionRef.detectChanges();
+        // this.fetchedUser.typeUsers.forEach(type => {
+        //   this.typeUserDropDown = type
+        // });
       },
       error => {
         console.log(error);
