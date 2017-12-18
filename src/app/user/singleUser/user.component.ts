@@ -175,7 +175,6 @@ export class UserComponent implements OnInit {
   }
 
     initForm() {
-      console.log('a')
       this.myForm = this._fb.group({
         email: this.customFormControls.emailFormControl,
         language: [''],
@@ -185,7 +184,6 @@ export class UserComponent implements OnInit {
         lastName: ['', [Validators.required, Validators.minLength(2)]],
         title: ['', [Validators.required, Validators.minLength(1)]],
       })
-
     }
   //
   // searchCompanies() {

@@ -56,10 +56,44 @@ export class ReportingsComponent implements OnInit {
   typeSum: string = ''
 
   public lineChartLabels: Array<any> = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'oct', 'nov', 'dec'];
+  public lineChartColors: Array<any> = [
+    { // grey
+      backgroundColor: 'rgba(255, 99, 132, 0.2)',
+      borderColor: 'rgba(255,99,132,1)',
+      // pointBackgroundColor: 'rgba(148,159,177,1)',
+      // pointBorderColor: '#fff',
+      // pointHoverBackgroundColor: '#fff',
+      // pointHoverBorderColor: 'rgba(148,159,177,0.8)'
+    },
+    { // dark grey
+      backgroundColor: 'rgba(54, 162, 235, 0.2)',
+      borderColor: 'rgba(54, 162, 235, 1)',
+      // pointBackgroundColor: 'rgba(77,83,96,1)',
+      // pointBorderColor: '#fff',
+      // pointHoverBackgroundColor: '#fff',
+      // pointHoverBorderColor: 'rgba(77,83,96,1)'
+    },
+    { // grey
+      backgroundColor: 'rgba(58,159,142,0.2)',
+      borderColor: 'rgba(148,159,177,1)',
+      // pointBackgroundColor: 'rgba(148,159,177,1)',
+      // pointBorderColor: '#fff',
+      // pointHoverBackgroundColor: '#fff',
+      // pointHoverBorderColor: 'rgba(148,159,177,0.8)'
+    },
+    { // grey
+      backgroundColor: 'rgba(87,45,235,0.2)',
+      borderColor: 'rgba(148,159,177,1)',
+      // pointBackgroundColor: 'rgba(148,159,177,1)',
+      // pointBorderColor: '#fff',
+      // pointHoverBackgroundColor: '#fff',
+      // pointHoverBorderColor: 'rgba(148,159,177,0.8)'
+    }
+  ];
   public lineChartOptions: any = {
     responsive: true
   };
-  public lineChartColors: Array<any> = [];
+
   public lineChartLegend: boolean = true;
   search: Search = new Search();
 
@@ -171,10 +205,10 @@ export class ReportingsComponent implements OnInit {
       this.graphDataCount.push(this.emptyRowPendingCount)
       this.graphDataCount.push(this.emptyRowPaidCount)
 
-      this.donutChartDataGraph1.data.push(this.totalSigned)
-      this.donutChartDataGraph1.data.push(this.totalPaid)
-      this.donutChartDataGraph1.data.push(this.totalPending)
-      this.donutChartDataGraph1.data.push(this.totalRejected)
+      this.donutChartDataGraph1.data.push(Math.round(this.totalSigned))
+      this.donutChartDataGraph1.data.push(Math.round(this.totalPaid))
+      this.donutChartDataGraph1.data.push(Math.round(this.totalPending))
+      this.donutChartDataGraph1.data.push(Math.round(this.totalRejected))
       // statusQuote = ['signed', 'paid', 'pending', 'rejected']
 
 
