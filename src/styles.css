@@ -335,6 +335,14 @@ app-root {
   background: linear-gradient(to right, #ff4351, #ffcb3d);
   /* Standard syntax */
 }
+
+/*CALENDAR HEADER*/
+.fc-day-header, .fc-widget-header, .fc-mon, .fc-past {
+  font-size: 12px;
+}
+/*CALENDAR HEADER*/
+
+
 /*
 .icomarg {
   margin-right: 20px;
