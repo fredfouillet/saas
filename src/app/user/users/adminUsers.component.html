@@ -49,12 +49,11 @@
               Société
             </th> -->
             <th class="centre tdunder hideMobile">
-              {{'City' | translate}}
-
+              {{'Title' | translate}}
             </th>
             <th class="centre tdunder hideMobile">
-              {{'Phone' | translate}}
-              <app-sort (orderBy)="orderBy($event)" [search]="search" [filedToOrder]="'profile.phoneNumber'"></app-sort>
+              {{'Email' | translate}}
+              <app-sort (orderBy)="orderBy($event)" [search]="search" [filedToOrder]="'email'"></app-sort>
             </th>
             <!-- <th class="centre tdunder">Date
               <app-sort (orderBy)="orderBy($event)" [search]="search" [filedToOrder]="'createdAt'"></app-sort>
@@ -80,14 +79,18 @@
               </div>
             </td> -->
             <td class="centre tdunder hideMobile">
-              <div *ngFor="let singleAddress of user.profile.address; let i=index;">
+              {{user.profile.title}}
+              <!-- <div *ngFor="let singleAddress of user.profile.address; let i=index;">
                 <div *ngIf="i<1">
                   {{singleAddress.city}}
                 </div>
-              </div>
+              </div> -->
 
             </td>
-            <td class="centre tdunder hideMobile">{{user.profile.phoneNumber}}</td>
+            <td class="centre tdunder hideMobile">
+              {{user.email}}
+              <!-- {{user.profile.phoneNumber}} -->
+            </td>
             <!-- <td class="centre tdunder">{{user.createdAt | date:'dd-MM-yyyy' }}</td> -->
           </tr>
         </tbody>
