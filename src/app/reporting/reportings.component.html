@@ -52,7 +52,7 @@
     </div>
     <div *ngIf="ready" class="col-md-6 col-12 marginTop">
       <mat-card class="ac">
-        <canvas baseChart style="height: 100%;" class="h50 bgw" [datasets]="graphDataCount" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="'bar'"></canvas>
+        <canvas baseChart style="height: 100%;" class="h50 bgw" [datasets]="graphDataCount" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColorsBar" [legend]="lineChartLegend" [chartType]="'bar'"></canvas>
       </mat-card>
     </div>
 
@@ -60,7 +60,7 @@
 
     <div *ngIf="ready" class="col-md-6 col-12 marginTop">
       <mat-card class="ac">
-        <canvas baseChart style="height: 100%;" class="h50 bgw" [data]="donutChartDataGraph1.data" [labels]="donutChartDataGraph1.labels" [options]="lineChartOptions" [legend]="lineChartLegend" [chartType]="'doughnut'"></canvas>
+        <canvas baseChart style="height: 100%;" class="h50 bgw" [data]="donutChartDataGraph1.data" [colors]="doughnutChartColors" [labels]="donutChartDataGraph1.labels" [options]="lineChartOptions" [legend]="lineChartLegend" [chartType]="'doughnut'"></canvas>
       </mat-card>
     </div>
     <!--

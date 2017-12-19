@@ -109,6 +109,35 @@ export class ReportingsComponent implements OnInit {
       // pointHoverBorderColor: 'rgba(148,159,177,0.8)'
     }
   ];
+  public lineChartColorsBar: Array<any> = [
+    { // Vert
+      backgroundColor: 'rgba(33, 210, 121,0.7)',
+      borderColor: 'rgba(33, 210, 121,1)',
+    },
+    { // rouge rose
+      backgroundColor: 'rgba(255, 67, 81, 0.7)',
+      borderColor: 'rgba(255,67,81,1)',
+    },
+    { // gris
+      backgroundColor: 'rgba(57,58,65,0.7)',
+      borderColor: 'rgba(57,58,65,1)',
+    },
+    { // jaune
+      backgroundColor: 'rgba(251,224,45,0.7)',
+      borderColor: 'rgba(251,224,45,1)',
+    }
+  ];
+
+  public doughnutChartColors: any[] = [
+    {
+      backgroundColor: ['rgba(33, 210, 121,0.2)', 'rgba(255, 67, 81, 0.2)', 'rgba(57,58,65,0.2)', 'rgba(251,224,45,0.2)'],
+      borderColor: ['rgba(33, 210, 121,1)', 'rgba(255, 67, 81, 1)', 'rgba(57,58,65,1)', 'rgba(251,224,45,1)'],
+      hoverBackgroundColor: ['rgba(33, 210, 121,0.5)', 'rgba(255, 67, 81, 0.5)', 'rgba(57,58,65,0.5)', 'rgba(251,224,45,0.5)']
+    },
+  ];
+
+
+
   public lineChartOptions: any = {
     responsive: true
   };
@@ -170,8 +199,6 @@ export class ReportingsComponent implements OnInit {
     const newSearch = new Search()
     newSearch.year = this.year
     this.getQuotesGraph(newSearch).then((res: any) => {
-
-
       res.item.forEach((element, index) => {
         if (element._id.statusQuote === 'signed') {
           this.totalSigned += element.amountTotal
