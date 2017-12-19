@@ -337,9 +337,13 @@ app-root {
 }
 
 /*CALENDAR HEADER*/
-.fc-day-header, .fc-widget-header, .fc-mon, .fc-past {
-  font-size: 12px;
+@media screen and (max-width: 768px) {
+  
+  .fc-day-header, .fc-widget-header, .fc-mon, .fc-past, .fc {
+  font-size: 10px;
 }
+}
+  
 /*CALENDAR HEADER*/
 
 
