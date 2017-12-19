@@ -339,7 +339,7 @@ app-root {
 /*CALENDAR HEADER*/
 @media screen and (max-width: 768px) {
   
-  .fc-day-header, .fc-widget-header, .fc-mon, .fc-past, .fc {
+  .fc-day-header, .fc-widget-header, .fc-mon, .fc-past, .fc-body {
   font-size: 10px;
 }
 }
