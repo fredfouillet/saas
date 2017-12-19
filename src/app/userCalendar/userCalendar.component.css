@@ -23,7 +23,7 @@
   padding-left: 15px ;
 }
 @media only screen and (max-width: 768px) {
-    table {
+    .table {
         font-size: 10px;
     }
 }
