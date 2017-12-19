@@ -76,33 +76,33 @@ export class ReportingsComponent implements OnInit {
     this.translateService.instant('Dec')
   ];
   public lineChartColors: Array<any> = [
-    { // grey
-      backgroundColor: 'rgba(255, 99, 132, 0.2)',
-      borderColor: 'rgba(255,99,132,1)',
+    { // rouge rose
+      backgroundColor: 'rgba(255, 67, 81, 0.2)',
+      borderColor: 'rgba(255,67,81,1)',
       // pointBackgroundColor: 'rgba(148,159,177,1)',
       // pointBorderColor: '#fff',
       // pointHoverBackgroundColor: '#fff',
       // pointHoverBorderColor: 'rgba(148,159,177,0.8)'
     },
-    { // dark grey
-      backgroundColor: 'rgba(54, 162, 235, 0.2)',
-      borderColor: 'rgba(54, 162, 235, 1)',
+    { // vert
+      backgroundColor: 'rgba(33, 210, 121, 0.2)',
+      borderColor: 'rgba(33, 210, 121, 1)',
       // pointBackgroundColor: 'rgba(77,83,96,1)',
       // pointBorderColor: '#fff',
       // pointHoverBackgroundColor: '#fff',
       // pointHoverBorderColor: 'rgba(77,83,96,1)'
     },
-    { // grey
-      backgroundColor: 'rgba(58,159,142,0.2)',
-      borderColor: 'rgba(148,159,177,1)',
+    { // vert
+      backgroundColor: 'rgba(33, 210, 121,0.2)',
+      borderColor: 'rgba(33, 210, 121,1)',
       // pointBackgroundColor: 'rgba(148,159,177,1)',
       // pointBorderColor: '#fff',
       // pointHoverBackgroundColor: '#fff',
       // pointHoverBorderColor: 'rgba(148,159,177,0.8)'
     },
-    { // grey
-      backgroundColor: 'rgba(87,45,235,0.2)',
-      borderColor: 'rgba(148,159,177,1)',
+    { // gris
+      backgroundColor: 'rgba(57,58,65,0.2)',
+      borderColor: 'rgba(57,58,65,1)',
       // pointBackgroundColor: 'rgba(148,159,177,1)',
       // pointBorderColor: '#fff',
       // pointHoverBackgroundColor: '#fff',
