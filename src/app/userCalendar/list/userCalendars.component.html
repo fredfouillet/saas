@@ -13,10 +13,7 @@
     <div class="col-12">
       <app-userCalendarSearch (getUserCalendarBySearch)="getUserCalendarBySearch($event)"></app-userCalendarSearch>
     </div>
-
-
-      <angular2-fullcalendar #myCal [options]="calendarOptions" (initialized)="onCalendarInit($event)">
-      </angular2-fullcalendar>
-
+    <angular2-fullcalendar #myCal [options]="calendarOptions" (initialized)="onCalendarInit($event)">
+    </angular2-fullcalendar>
   </div>
 </div>

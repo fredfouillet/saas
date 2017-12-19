@@ -116,6 +116,7 @@ export class UserCalendarsComponent implements OnInit {
       height: 'auto',
       selectable: true,
       firstDay: 1,
+      // hiddenDays: [ 2, 4 ],
       minTime: timeBegin,
       maxTime: timeEnd,
       slotDuration: slotDuration,
