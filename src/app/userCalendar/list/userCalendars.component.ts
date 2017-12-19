@@ -94,10 +94,12 @@ export class UserCalendarsComponent implements OnInit {
     let timeEnd = ''
     let timeBeginbusinessHours= ''
     let timeEndbusinessHours = ''
+    let hiddenDays = []
 
 
     this.currentUser = this.authService.getCurrentUser()
     this.currentUser.ownerCompanies.forEach(companie => {
+      hiddenDays = companie.option.calendar.daysToHide
       timeBegin = companie.option.calendar.timeBegin
       timeEnd = companie.option.calendar.timeEnd
       timeBeginbusinessHours = companie.option.calendar.timeBeginbusinessHours
@@ -116,7 +118,7 @@ export class UserCalendarsComponent implements OnInit {
       height: 'auto',
       selectable: true,
       firstDay: 1,
-      // hiddenDays: [ 2, 4 ],
+      hiddenDays: hiddenDays,
       minTime: timeBegin,
       maxTime: timeEnd,
       slotDuration: slotDuration,

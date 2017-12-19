@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit, OnChanges, Input, Output, EventEmitter} from '@angular/core';
 import {AuthService} from '../../../auth/auth.service';
 import {CompanieService} from '../../companie.service';
 // import {UserService} from '../../user/user.service';
@@ -16,10 +16,12 @@ import { FormBuilder, FormGroup, Validators} from '@angular/forms';
   templateUrl: './detailsCalendar.component.html',
   styleUrls: ['../../companie.component.css'],
 })
-export class DetailsCalendarComponent implements OnInit {
+export class DetailsCalendarComponent implements OnInit, OnChanges {
   @Output() saved: EventEmitter<any> = new EventEmitter();
   // @Input() showBackButton: Boolean = true;
   @Input() fetchedCompanie: Companie = new Companie()
+
+  daysToHideTemp: any = [false, false, false, false, false, false, false]
 
 
   // userAdmins : User[] = []
@@ -52,7 +54,25 @@ export class DetailsCalendarComponent implements OnInit {
     // private paiementService: PaiementService,
   ) {}
 
+  ngOnChanges() {
+    // console.log(this.fetchedCompanie.option.calendar.daysToHide)
+    this.fetchedCompanie.option.calendar.daysToHide.forEach(day => {
+      this.daysToHideTemp[day] = true
+    })
+  }
+
   ngOnInit() {
+
+
+    // this.fetchedCompanie.option.calendar.daysToHide = []
+    // for (let i = 0; i < 6 ; i++) {
+    //   if (this.daysToHideTemp[i]) { this.fetchedCompanie.option.calendar.daysToHide.push(i) }
+    // }
+
+    // console.log(this.fetchedCompanie.option.calendar.daysToHide)
+      // this.fetchedCompanie.option.calendar.daysToHide.forEach((day, i) => {
+      //   this.daysToHideTemp[day] = true
+      // })
     // this.getStripeAccountDetails()
     this.myForm = this._fb.group({
       nameCompanie: ['', [Validators.required, Validators.minLength(2)]],
@@ -75,7 +95,6 @@ export class DetailsCalendarComponent implements OnInit {
       secretKey:[''],
       serviceSelected:[''],
     })
-
 
 
     // this.paiementService.oauthIsConnectedConnect()
@@ -109,6 +128,21 @@ export class DetailsCalendarComponent implements OnInit {
     //   }
     // })
   }
+
+  changeDay () {
+    this.fetchedCompanie.option.calendar.daysToHide = []
+    for (let i = 0; i < 7 ; i++) {
+      if (this.daysToHideTemp[i]) { this.fetchedCompanie.option.calendar.daysToHide.push(i) }
+    }
+    // if (this.daysToHideTemp[0]) { this.fetchedCompanie.option.calendar.daysToHide.push(0) }
+    // if (this.daysToHideTemp[1]) { this.fetchedCompanie.option.calendar.daysToHide.push(1)  }
+    // if (this.daysToHideTemp[2]) { this.fetchedCompanie.option.calendar.daysToHide.push(2)  }
+    // if (this.daysToHideTemp[3]) { this.fetchedCompanie.option.calendar.daysToHide.push(3)  }
+    // if (this.daysToHideTemp[4]) { this.fetchedCompanie.option.calendar.daysToHide.push(4)  }
+    // if (this.daysToHideTemp[5]) { this.fetchedCompanie.option.calendar.daysToHide.push(5)  }
+    // if (this.daysToHideTemp[6]) { this.fetchedCompanie.option.calendar.daysToHide.push(6)  }
+  }
+
 
   //
   // deauthorizeConnect() {

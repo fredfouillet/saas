@@ -112,6 +112,7 @@ export class Calendar {
 
   timeBeginbusinessHours: string = '10:00:00';
   timeEndbusinessHours: string = '17:00:00';
+  daysToHide: number[] = [];
 }
 //
 // export class Address {

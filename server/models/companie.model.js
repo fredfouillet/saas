@@ -53,6 +53,7 @@ var companie = new Schema({
         slotDuration: {type: String, default: ['00:30:00']},
         timeBeginbusinessHours: {type: String, default: ['10:30:00']},
         timeEndbusinessHours: {type: String, default: ['17:00:00']},
+        daysToHide: []
       },
       currency: {type: String, default: ['€']},
     },
