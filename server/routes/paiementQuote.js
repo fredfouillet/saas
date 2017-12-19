@@ -176,10 +176,10 @@ router.get('/page/:page', function (req, res, next) {
   .populate({
     path: 'quotes',
     model: 'Quote',
-    populate: {
-      path: 'clients',
-      model: 'User'
-    }
+    // populate: {
+    //   path: 'clients',
+    //   model: 'User'
+    // }
   })
 
 
