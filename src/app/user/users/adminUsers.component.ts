@@ -19,7 +19,7 @@ import { GlobalEventsManager } from '../../globalEventsManager';
 })
 export class AdminUsersComponent implements OnInit {
   fetchedUsers: User[] = [];
-
+  loading: boolean = false;
   search: Search = new Search()
   // {
   //   orderBy : '',
@@ -102,16 +102,17 @@ export class AdminUsersComponent implements OnInit {
   }
 
   getUsers(page: number, search: any) {
-    this.globalEventsManager.isLoadding(true);
+    this.loading = true
     this.userService.getUsers(page, search)
       .subscribe(
         res => {
           this.paginationData = res.paginationData;
           this.fetchedUsers =  res.data;
-          this.globalEventsManager.isLoadding(false);
+          this.loading = false
         },
         error => {
           console.log(error);
+          this.loading = false
         }
       );
   }

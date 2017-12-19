@@ -35,7 +35,7 @@ export class UserComponent implements OnInit {
   @Input() isDialog: boolean = false
 
   customFormControls = new CustomFormControls()
-
+  loading: boolean = false;
 
   myForm: FormGroup
   // myForm: FormGroup = this._fb.group({
@@ -185,138 +185,27 @@ export class UserComponent implements OnInit {
         title: ['', [Validators.required, Validators.minLength(1)]],
       })
     }
+
+  // emailValidator(control: any) {
+  //   let EMAIL_REGEXP = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
   //
-  // searchCompanies() {
-  //   if(!this.autocompleteCompanie) {
-  //     this.fetchedCompanies = []
-  //   } else {
-  //     let search = {
-  //         search: this.autocompleteCompanie,
-  //       };
-  //     this.getCompanies(1, search)
+  //   if (!EMAIL_REGEXP.test(control.value)) {
+  //     return { invalidEmail: true };
   //   }
   // }
 
-  // getCompanies(page: number, search: any) {
-  //   this.companieService.getCompanies(page, search)
-  //     .subscribe(
-  //       res => {
-  //         this.fetchedCompanies = res.data
-  //       },
-  //       error => {
-  //         console.log(error);
-  //       }
-  //     );
-  // }
-  // selectCompanie(companie: Companie) {
-  //   this.fetchedUser.ownerCompanies = [companie]
-  // }
-  // newAddress() {
-  //   let newAddress = new Address()
-  //   this.fetchedUser.profile.address.push(newAddress)
-  // }
-  // removeAddress(i) {
-  //   this.fetchedUser.profile.address.splice(i, 1);
-  // }
-  // moveAddress(i: number, incremet: number) {
-  //     // if(i>=0 && i<=this.fetchedUser.profile.address.length + incremet) {
-  //     console.log(i, incremet, this.fetchedUser.profile.address.length)
-  //     if(  !(i===0 && incremet<0) && !(i===this.fetchedUser.profile.address.length-1 && incremet>0)  )    {
-  //       var tmp = this.fetchedUser.profile.address[i];
-  //       this.fetchedUser.profile.address[i] = this.fetchedUser.profile.address[i + incremet]
-  //       this.fetchedUser.profile.address[i + incremet] = tmp
-  //       // this.save(false)
-  //       // console.log(this.fetchedUser.profile.address)
-  //     }
-  //   }
-  // selectRight(right: Right) {
-  //   this.fetchedUser.rights = [right]
-  // }
-
-  // selectOwnerCompanies(companie: Companie) {
-  //   this.fetchedUser.ownerCompanies = [companie]
-  // }
-
-  // selectSalesMan(users) {
-  //   this.fetchedUser.salesMan = users
-  // }
-  // getPicture(result) {
-  //   // console.log(result)
-  // }
-
-  // openDialog(positionImage: string) {
-  //   // let dialogRef = this.dialog.open(EditOptionsComponentDialog);
-  //   // dialogRef.afterClosed().subscribe(result => {
-  //   //   if(result) {
-  //   //     this.fetchedUser.profile.profilePicture.push(result)
-  //   //   }
-  //   // })
-  // }
-  // removePic(i) {
-  //   this.fetchedUser.profile.profilePicture.splice(i, 1);
-  // }
-
-  // autocolplete typeUser
-  // searchTypeUser() {
-  //   if (!this.autocompleteTypeUser) {
-  //     this.fetchedTypeUsers = []
-  //   } else {
-  //     this.fetchedTypeUsers = this.typeUser.filter((el) =>
-  //       el.toLowerCase().indexOf(this.autocompleteTypeUser.toLowerCase()) > -1
-  //     );
-  //   }
-  // }
-  // selectTypeUser(typeUser) {
-  //   this.autocompleteTypeUser = '';
-  //   this.fetchedTypeUsers = [];
-  //   this.fetchedUser.typeUsers.push(typeUser);
-  // }
-  // removeTypeUser(i: number) {
-  //   this.fetchedUser.typeUsers.splice(i, 1);
-  // }
-  // autocolplete typeUser
-
-
-
-
-
-
-  emailValidator(control: any) {
-    let EMAIL_REGEXP = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
-
-    if (!EMAIL_REGEXP.test(control.value)) {
-      return { invalidEmail: true };
-    }
-  }
-
-  // goBack() {
-  //   this.location.back();
-  // }
 
   // openDialogDelete() {
-  //   let this2 = this
-  //   let dialogRefDelete = this.dialog.open(DeleteDialog)
+  //   const this2 = this
+  //   const dialogRefDelete = this.dialog.open(DeleteDialogComponent)
   //   dialogRefDelete.afterClosed().subscribe(result => {
   //     if (result) {
   //       this.onDelete(this.fetchedUser._id).then(function() {
-  //         this2.router.navigate(['user']);
+  //         this2.router.navigate(['user/list/' + this2.fetchedUser.isExternalUser]);
   //       })
-  //
   //     }
   //   })
   // }
-
-  openDialogDelete() {
-    const this2 = this
-    const dialogRefDelete = this.dialog.open(DeleteDialogComponent)
-    dialogRefDelete.afterClosed().subscribe(result => {
-      if (result) {
-        this.onDelete(this.fetchedUser._id).then(function() {
-          this2.router.navigate(['user/list/' + this2.fetchedUser.isExternalUser]);
-        })
-      }
-    })
-  }
 
   // saveAndCreateProject() {
   //   this.save()
@@ -346,18 +235,19 @@ export class UserComponent implements OnInit {
       this.toastr.error('Error')
       return
     }
-    // this.userService.cleanCurrentUserInSession()
-    //console.log(this.typeUserDropDown)
-    //this.fetchedUser.type = [this.typeUserDropDown]
+    this.loading = true
+
     if (this.fetchedUser._id) {
       this.userService.updateUser(this.fetchedUser)
         .subscribe(
         res => {
           this.toastr.success('Great!', res.message)
+          this.loading = false
           // this.nextStep()
         },
         error => {
           this.toastr.error('Error!')
+          this.loading = false
           // console.log(error)
         }
         )
@@ -399,17 +289,20 @@ export class UserComponent implements OnInit {
 
 
   getUser(id: string) {
+    this.loading = true
     this.userService.getUser(id)
       .subscribe(
       res => {
         this.fetchedUser = res
         this.changeDetectionRef.detectChanges();
+        this.loading = false
         // this.fetchedUser.typeUsers.forEach(type => {
         //   this.typeUserDropDown = type
         // });
       },
       error => {
         console.log(error);
+        this.loading = false
       }
       )
   }
