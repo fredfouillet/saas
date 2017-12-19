@@ -16,6 +16,8 @@ import 'rxjs/add/observable/throw';
 
 import { RoundPipe} from './round.pipe';
 import { CurrencyPipe} from './round.pipe';
+import { SmallTextPipe} from './round.pipe';
+import { MediumTextPipe} from './round.pipe';
 // import { HeaderComponent } from '../nav/header/header.component';
 // import { newObjDialogComponent } from '../nav/newObjDialog/newObjDialog.component';
 
@@ -64,6 +66,8 @@ import {MatButtonModule} from '@angular/material';
   declarations: [
     RoundPipe,
     CurrencyPipe,
+    SmallTextPipe,
+    MediumTextPipe,
     // AutocompleteComponent,
     // TranslatePipe,
     // HeaderComponent,
@@ -81,6 +85,10 @@ import {MatButtonModule} from '@angular/material';
     FormsModule,
     RoundPipe,
     CurrencyPipe,
+    SmallTextPipe,
+    MediumTextPipe,
+
+
     MatDialogModule,
     // MatInputModule,
     // HeaderComponent,

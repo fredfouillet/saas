@@ -34,3 +34,26 @@ export class CurrencyPipe implements PipeTransform {
     return returnValue
   }
 }
+
+
+@Pipe({name: 'smallText'})
+export class SmallTextPipe implements PipeTransform {
+  constructor() {}
+  transform(value: string, args: any[]): any {
+    if (value.length > 17) {
+      return value.substring(0, 17) + '..'
+    }
+    return value;
+  }
+}
+
+@Pipe({name: 'mediumText'})
+export class MediumTextPipe implements PipeTransform {
+  constructor() {}
+  transform(value: string, args: any[]): any {
+    if (value.length > 40) {
+      return value.substring(0, 40) + '..'
+    }
+    return value;
+  }
+}

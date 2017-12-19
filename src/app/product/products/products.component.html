@@ -2,14 +2,6 @@
   <div *ngIf="showTitle">
     <app-header-title [showBack]=-1 [title]="'Products'" (saved)="saved($event)" [search]="search" [typeObj]="'product'"></app-header-title>
   </div>
-  <!-- <div *ngIf="showTitle" class="d-flex flex-row">
-    <div class="p-2">
-      <h4>
-        {{'Products' | translate}}
-        <app-new-obj-dialog *ngIf="showNewItem" [search]="search" (saved)="saved($event)" [typeObj]="'product'"></app-new-obj-dialog>
-      </h4>
-    </div>
-  </div> -->
   <div class="d-flex flex-row">
     <div class="p-2">
       <mat-form-field>
@@ -46,7 +38,11 @@
               </div>
             </td>  -->
             <td class="centre tdunder">{{product.details.referenceName}}</td>
-            <td class="centre tdunder hideMobile">{{product.details.description}}</td>
+
+            <td class="centre tdunder showMobile">{{product.details.description | smallText}}</td>
+            <td class="centre tdunder hideMobile">{{product.details.description | mediumText}}</td>
+
+
             <td class="centre tdunder">{{product.details.price.sellingPrice | round | currency}}</td>
             <td class="centre tdunder hideMobile">{{product.details.unit}}</td>
             <td *ngIf="customButton" class="centre tdunder">

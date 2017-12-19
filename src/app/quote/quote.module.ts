@@ -44,7 +44,7 @@ import { DrawinSignaturegModule } from './single/drawingSignature/drawingSignatu
 
 
 import { PaiementQuoteModule} from '../paiementQuote/paiementQuote.module';
-import {QuotePipe} from './quote.pipe';
+// import {QuotePipe} from './quote.pipe';
 // import { CKEditorModule } from 'ng2-ckeditor';
 
 import { DragulaModule } from 'ng2-dragula';
@@ -114,7 +114,7 @@ import {MatCheckboxModule} from '@angular/material';
     QuoteStatusComponent,
     ActionButtonsComponent,
     InvoiceActionComponent,
-    QuotePipe,
+    // QuotePipe,
     // QuoteDetailComponent,
     // RoundPipe,
     // AutocompleteComponent

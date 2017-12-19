@@ -50,13 +50,7 @@
         <tbody class="clienttbl">
           <tr *ngFor="let paiementQuote of fetchedPaiementQuotes" [routerLink]="['/paiementQuote/edit/' + paiementQuote._id]" routerLinkActive="active">
             <td class="centre tdunder hideMobile">{{paiementQuote.type}}</td>
-            <td class="centre tdunder">
-              <div *ngFor="let client of paiementQuote.userDebiteds">
-                <!-- <div *ngFor="let client of quote.clients"> -->
-                  {{client.profile.name}} {{client.profile.lastName}}
-                <!-- </div> -->
-              </div>
-            </td>
+
             <td class="centre tdunder hideMobile">
               <div *ngFor="let quote of paiementQuote.quotes">
                 <!-- <div *ngFor="let client of quote.clients"> -->
@@ -64,6 +58,13 @@
                 <!-- </div> -->
               </div>
             </td>
+            <td class="centre tdunder">
+              <div *ngFor="let client of paiementQuote.userDebiteds">
+                <!-- <div *ngFor="let client of quote.clients"> -->
+                  {{client.profile.name}} {{client.profile.lastName}}
+                <!-- </div> -->
+              </div>
+            </td>            
 
             <td class="centre tdunder hideMobile">{{paiementQuote.datePaiement | date:'yyyy-MM-dd' }}</td>
             <td class="centre tdunder">{{paiementQuote.amount | round | currency}}</td>
