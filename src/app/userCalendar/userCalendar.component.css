@@ -22,3 +22,7 @@
 .pad15 { padding-right: 15px;
   padding-left: 15px ;
 }
+
+body {
+        font-size: 10px!important;
+    }
