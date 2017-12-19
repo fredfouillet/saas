@@ -1,10 +1,15 @@
-<h4>Options Calendar</h4>{{'First hour of your day' | translate}} 
-<input type="text" class="form-control" [(ngModel)]="fetchedCompanie.option.calendar.timeBegin" required minlength="1" placeholder="{{'First hour of your day' | translate}}">{{'Last hour of your day' | translate}}
-
-<input type="text" class="form-control" [(ngModel)]="fetchedCompanie.option.calendar.timeEnd" required minlength="1" placeholder="{{'Last hour of your day' | translate}}">{{'Hour detail' | translate}} 
-
-<input type="text" class="form-control" [(ngModel)]="fetchedCompanie.option.calendar.slotDuration" placeholder="{{'Hour detail' | translate}}">{{'First hour of your daywork' | translate}}
-
-<input type="text" class="form-control" [(ngModel)]="fetchedCompanie.option.calendar.timeBeginbusinessHours" placeholder="{{'First hour of your daywork' | translate}}">{{'Last hour of your daywork' | translate}}
-
-<input type="text" class="form-control" [(ngModel)]="fetchedCompanie.option.calendar.timeEndbusinessHours" placeholder="{{'Last hour of your daywork' | translate}}">
+<mat-form-field>
+  <input matInput type="text" class="form-control" [(ngModel)]="fetchedCompanie.option.calendar.timeBegin" required minlength="1" placeholder="{{'First hour of your day. (06:00:00)' | translate}}">
+</mat-form-field>
+<mat-form-field>
+  <input matInput type="text" class="form-control" [(ngModel)]="fetchedCompanie.option.calendar.timeEnd" required minlength="1" placeholder="{{'Last hour of your day (19:00:00)' | translate}}">
+</mat-form-field>
+<mat-form-field>
+  <input matInput type="text" class="form-control" [(ngModel)]="fetchedCompanie.option.calendar.slotDuration" placeholder="{{'Slot Duraation. (01:00:00)' | translate}}">
+</mat-form-field>
+<mat-form-field>
+  <input matInput type="text" class="form-control" [(ngModel)]="fetchedCompanie.option.calendar.timeBeginbusinessHours" placeholder="{{'First hour of your daywork. (10:30:00)' | translate}}">
+</mat-form-field>
+<mat-form-field>
+  <input matInput type="text" class="form-control" [(ngModel)]="fetchedCompanie.option.calendar.timeEndbusinessHours" placeholder="{{'Last hour of your daywork. (17:00:00)' | translate}}">
+</mat-form-field>
