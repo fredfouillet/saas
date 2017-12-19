@@ -137,7 +137,6 @@ export class ReportingsComponent implements OnInit {
   ];
 
 
-
   public lineChartOptions: any = {
     responsive: true
   };
