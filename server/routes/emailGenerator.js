@@ -20,7 +20,7 @@ var transportOptions = {
 }
 
 module.exports = {
-  sendQuoteByEmailToClient(req, res, next) {
+  sendQuoteByEmailToClient(req, res, next, type) {
 
     return new Promise(function(resolve, reject) {
       Quote.findById(req.params.quoteId).populate({path: 'clients', model: 'User'}).exec(function(err, obj) {
@@ -65,8 +65,15 @@ module.exports = {
                             <a
                               href="http://${req.headers.host}/uploads/pdf/${req.params.quoteId}.pdf"
                               style="color: #ffffff; text-decoration: none;"
-                            >
-                              Voir le Devis
+                            >`
+                              if(type ==='quote') {
+                                html += ' Voir le Devis'
+                              }
+                              if(type ==='invoice') {
+                                html += ' Voir la facture'
+                              }
+
+html += `
                             </a>
                           </td>
                         </tr>

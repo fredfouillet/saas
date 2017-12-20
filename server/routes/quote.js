@@ -4,7 +4,7 @@ var express = require('express'),
   User = require('../models/user.model'),
   Quote = require('../models/quote.model'),
   Companie = require('../models/companie.model'),
-  nodemailer = require('nodemailer'),
+  // nodemailer = require('nodemailer'),
   // fs = require('fs'),
   jwt = require('jsonwebtoken'),
   emailGenerator = require('./emailGenerator'),
@@ -221,7 +221,7 @@ router.get('/sendQuoteByEmailToClient/:quoteId', function(req, res, next) {
 router.get('/sendInvoiceByEmailToClient/:quoteId', function(req, res, next) {
   pdfGenerator.generatePDF(req, res, next, 'invoice')
   .then(quoteId => {
-    emailGenerator.sendQuoteByEmailToClient(req, res, next, 'quote')
+    emailGenerator.sendQuoteByEmailToClient(req, res, next, 'invoice')
     .then(() => {
       res.status(200).json({message: 'Success', quoteId: quoteId})
     })
