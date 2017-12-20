@@ -263,19 +263,19 @@ export class DetailsUserComponent implements OnInit {
   // goBack() {
   //   this.location.back();
   // }
-
-  openDialogDelete() {
-    // let this2 = this
-    // let dialogRefDelete = this.dialog.open(DeleteDialog)
-    // dialogRefDelete.afterClosed().subscribe(result => {
-    //   if (result) {
-    //     this.onDelete(this.fetchedUser._id).then(function() {
-    //       this2.router.navigate(['user']);
-    //     })
-    //
-    //   }
-    // })
-  }
+  // 
+  // openDialogDelete() {
+  //   // let this2 = this
+  //   // let dialogRefDelete = this.dialog.open(DeleteDialog)
+  //   // dialogRefDelete.afterClosed().subscribe(result => {
+  //   //   if (result) {
+  //   //     this.onDelete(this.fetchedUser._id).then(function() {
+  //   //       this2.router.navigate(['user']);
+  //   //     })
+  //   //
+  //   //   }
+  //   // })
+  // }
 
   // saveAndCreateProject() {
   //   this.save()

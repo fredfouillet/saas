@@ -195,17 +195,17 @@ export class UserComponent implements OnInit {
   // }
 
 
-  // openDialogDelete() {
-  //   const this2 = this
-  //   const dialogRefDelete = this.dialog.open(DeleteDialogComponent)
-  //   dialogRefDelete.afterClosed().subscribe(result => {
-  //     if (result) {
-  //       this.onDelete(this.fetchedUser._id).then(function() {
-  //         this2.router.navigate(['user/list/' + this2.fetchedUser.isExternalUser]);
-  //       })
-  //     }
-  //   })
-  // }
+  openDialogDelete() {
+    const this2 = this
+    const dialogRefDelete = this.dialog.open(DeleteDialogComponent)
+    dialogRefDelete.afterClosed().subscribe(result => {
+      if (result) {
+        this.onDelete(this.fetchedUser._id).then(function() {
+          this2.router.navigate(['user/list/' + this2.fetchedUser.isExternalUser]);
+        })
+      }
+    })
+  }
 
   // saveAndCreateProject() {
   //   this.save()
