@@ -6,6 +6,7 @@ import { QuoteService } from '../../../quote.service';
 // import { ProductService } from '../../../product/product.service';
 // import { ProjectService} from '../../../project/project.service';
 import { ProductsDialogComponent } from '../../../../product/products/dialog/productsDialog.component';
+// import { AddTextRowDialogComponent } from './addTextRow/dialog/addTextRowDialog.component';
 import { MatDialog } from '@angular/material';
 import {
   Quote, DevisDetail, BucketProduct, StatusQuotes,
@@ -122,18 +123,27 @@ export class AddElemComponent implements OnInit {
       this.calculateQuoteEmit.emit()
     }
 
-    addRowMobile () {
+    addRowMobileProduct () {
         const this2 = this
         const dialogRefProducts = this.dialog.open(ProductsDialogComponent)
         const sub = dialogRefProducts.componentInstance.onAdd.subscribe((product) => {
           this.addProductToQuote(product)
-          // do something
         });
         dialogRefProducts.afterClosed().subscribe(result => {
           if (result) {
-            // this.onDelete(this.fetchedProduct._id).then(function() {
-            //   this2.router.navigate(['product']);
-            // })
+            //
+          }
+        })
+      }
+      addRowMobileText() {
+        const this2 = this
+        const dialogRefText = this.dialog.open(AddTextRowDialogComponent)
+        // const sub = dialogRefText.componentInstance.onAdd.subscribe((product) => {
+        //   this.addProductToQuote(product)
+        // });
+        dialogRefText.afterClosed().subscribe(result => {
+          if (result) {
+            //
           }
         })
       }

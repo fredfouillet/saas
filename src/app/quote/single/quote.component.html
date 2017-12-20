@@ -76,7 +76,7 @@
           {{'Edit Quote' | translate}}
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <app-edit-quote [fetchedQuote]="fetchedQuote" (calculateQuote)="calculateQuote()"></app-edit-quote>
+      <!-- <app-edit-quote [fetchedQuote]="fetchedQuote" (calculateQuote)="calculateQuote()"></app-edit-quote> -->
       <mat-action-row>
         <app-actionButtons *ngIf="fetchedQuote.statusQuote === 'pending'" (nextStep)="nextStep()" [isDialog]="isDialog" [fetchedQuote]="fetchedQuote" [showDeleteButton]=false (closeDialog)="closeDialog()" (saved)="savedQuote($event)">
         </app-actionButtons>

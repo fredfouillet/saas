@@ -1,9 +1,11 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
-import { TextToQuote } from '../../quote.model'
+import { TextToQuote } from '../../../../quote.model'
+
+
 @Component({
   selector: 'app-add-text-row',
   templateUrl: './addTextRow.component.html',
-  styleUrls: ['../../quote.component.css'],
+  styleUrls: ['../../quoteDetails.component.css'],
 })
 export class AddTextRowComponent implements OnInit {
   textToQuote: TextToQuote = new TextToQuote();

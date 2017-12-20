@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { RouterModule} from '@angular/router';
-
+import {MatDialogModule} from '@angular/material';
 // import { RoundPipe} from './round.pipe';
 // import { ProjectModule} from '../project/project.module';
 
@@ -22,8 +22,10 @@ import { AddElemComponent} from './single/quoteDetails/quoteDetailsElem/addElem.
 import { DesktopDetailsComponent} from './single/quoteDetails/quoteDetailsElem/desktopDetails.component';
 import { TemplateQuoteComponent} from './single/quoteDetails/quoteDetailsElem/templateQuote.component';
 import { TotalComponent} from './single/quoteDetails/quoteDetailsElem/total.component';
-import { EditQuoteComponent} from './single/editQuote/editQuote.component';
-import { AddTextRowComponent} from './single/editQuote/addTextRow.component';
+// import { EditQuoteComponent} from './single/editQuote/editQuote.component';
+import { AddTextRowComponent} from './single/quoteDetails/quoteDetailsElem/addtextRow/addTextRow.component';
+// import { AddTextRowDialogComponent} from './single/quoteDetails/quoteDetailsElem/addtextRow/dialog/addTextRowDialog.component';
+
 import { InvoiceActionComponent} from './single/invoiceAction/invoiceAction.component';
 // import { QuoteDetailComponent} from './single/quoteDetail.component';
 import { QuoteService} from './quote.service';
@@ -78,6 +80,7 @@ import {MatCheckboxModule} from '@angular/material';
     SharedModule,
     // SignaturePadModule,
     PaiementQuoteModule,
+    MatDialogModule,
 
 
     // MatFormFieldModule,
@@ -109,8 +112,9 @@ import {MatCheckboxModule} from '@angular/material';
     DesktopDetailsComponent,
     TemplateQuoteComponent,
     TotalComponent,
-    EditQuoteComponent,
+    // EditQuoteComponent,
     AddTextRowComponent,
+    // AddTextRowDialogComponent,
     // QuoteDialogComponent,
     QuoteInfoComponent,
     QuoteStatusComponent,
@@ -121,7 +125,7 @@ import {MatCheckboxModule} from '@angular/material';
     // RoundPipe,
     // AutocompleteComponent
   ],
-  exports:      [
+  exports: [
     QuotesComponent,
     // AutocompleteComponent,
   ],
@@ -130,6 +134,7 @@ import {MatCheckboxModule} from '@angular/material';
     TemplateQuoteService
   ],
   entryComponents: [
+    // AddTextRowDialogComponent,
     // QuoteDialogComponent,
   ]
 })
