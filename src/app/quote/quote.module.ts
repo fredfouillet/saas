@@ -23,7 +23,7 @@ import { DesktopDetailsComponent} from './single/quoteDetails/quoteDetailsElem/d
 import { TemplateQuoteComponent} from './single/quoteDetails/quoteDetailsElem/templateQuote.component';
 import { TotalComponent} from './single/quoteDetails/quoteDetailsElem/total.component';
 // import { EditQuoteComponent} from './single/editQuote/editQuote.component';
-import { AddTextRowComponent} from './single/quoteDetails/quoteDetailsElem/addtextRow/addTextRow.component';
+import { AddTextRowComponent} from './single/quoteDetails/quoteDetailsElem/addTextRow/addTextRow.component';
 import { AddTextRowDialogComponent} from './single/quoteDetails/quoteDetailsElem/addTextRow/dialog/addTextRowDialog.component';
 
 import { InvoiceActionComponent} from './single/invoiceAction/invoiceAction.component';
