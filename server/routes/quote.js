@@ -309,7 +309,6 @@ router.put('/:id', function(req, res, next) {
     //     item.statusQuote = 'pending'
     //   }
     // }
-     // Gooplus
 
 
 

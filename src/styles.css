@@ -18,7 +18,9 @@ width: 500px;
   min-width: 30px!important;
 }
 
-
+.mat-checkbox-layout {
+  white-space: inherit!important;
+}
 .areusure {
   padding-top: 15px;
 }
