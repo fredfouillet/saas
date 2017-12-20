@@ -1,0 +1,7 @@
+<mat-card>
+  current_period_end: {{fetchedCompanie.planDetail.current_period_end | date: 'dd/MM/yyyy HH:mm'}}
+<mat-form-field>
+  <input matInput placeholder="password" #password>
+  <mat-icon color="accent" class="pointer" matSuffix (click)="sendPassword(password.value)">queue</mat-icon>
+</mat-form-field>
+</mat-card>

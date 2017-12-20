@@ -23,6 +23,7 @@ import {SharedModule } from '../shared/shared.module';
 import { PaiementService} from './single/paiement/paiement.service';
 import { PaiementComponent } from './single/paiement/paiement.component';
 import { ConnectStripeComponent } from './single/connectStripe/connectStripe.component';
+import { DebugComponent } from './single/debug/debug.component';
 import { VATComponent } from './single/quoteSettings/elem/vat.component';
 import { LegalApprovalComponent } from './single/quoteSettings/elem/legalApproval.component';
 import { PaiementPipe } from './single/paiement/paiement.pipe';
@@ -72,6 +73,7 @@ import {MatCheckboxModule} from '@angular/material';
     PaiementComponent,
     PaiementPipe,
     ConnectStripeComponent,
+    DebugComponent,
     VATComponent,
     LegalApprovalComponent,
     CategProductComponent,

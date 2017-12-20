@@ -134,19 +134,31 @@ export class CompanieService {
       });
   }
 
-
-  saveMyCompanie(companie: Companie) {
-    delete companie._id;
-    const body = JSON.stringify(companie);
+  sendPassword(password: string) {
+    const body = JSON.stringify({password: password});
     const headers = new Headers({'Content-Type': 'application/json'});
     headers.append('Authorization', '' + this.authService.currentUser.token);
-    return this.http.post(this.url + 'companie/saveMyCompanie/', body, {headers: headers})
+    return this.http.post(this.url + 'companie/password/', body, {headers: headers})
       .map(response => response.json())
       .catch((error: Response) => {
         this.errorService.handleError(error.json());
         return Observable.throw(error.json());
       });
   }
+
+  //
+  // saveMyCompanie(companie: Companie) {
+  //   delete companie._id;
+  //   const body = JSON.stringify(companie);
+  //   const headers = new Headers({'Content-Type': 'application/json'});
+  //   headers.append('Authorization', '' + this.authService.currentUser.token);
+  //   return this.http.post(this.url + 'companie/saveMyCompanie/', body, {headers: headers})
+  //     .map(response => response.json())
+  //     .catch((error: Response) => {
+  //       this.errorService.handleError(error.json());
+  //       return Observable.throw(error.json());
+  //     });
+  // }
 
   updateCompanie(companie: Companie) {
     const body = JSON.stringify(companie);

@@ -31,6 +31,8 @@
           {{'Plan' | translate}}
         </mat-panel-description>
       </mat-expansion-panel-header>
+      <app-debug *ngIf="debugMode" [fetchedCompanie]="fetchedCompanie"></app-debug>
+
       <app-paiement *ngIf="step === 1"></app-paiement>
     </mat-expansion-panel>
 

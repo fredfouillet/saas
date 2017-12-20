@@ -47,8 +47,7 @@ export class AuthService {
   ) {
 
       this.user = localStorage.getItem('id_token') ? this.jwtHelper.decodeToken(localStorage.getItem('id_token')).user : null;
-      // set token if saved in local storage
-      //console.log('AuthService called')
+  
       var currentUser = JSON.parse(localStorage.getItem('currentUser'));
       this.token = currentUser && currentUser.token;
       this.currentUser = currentUser;

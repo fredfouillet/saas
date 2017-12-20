@@ -31,6 +31,7 @@ export class CompanieComponent implements OnInit {
   // @Input() showBackButton: Boolean = true;
   fetchedCompanie: Companie = new Companie()
   step = -1;
+  debugMode: boolean = false
   // userAdmins : User[] = []
   // userManagers : User[] = []
   // userClients : User[] = []
@@ -101,7 +102,10 @@ export class CompanieComponent implements OnInit {
 
 
     this.activatedRoute.queryParamMap.subscribe((params: Params)  => {
-        // console.log(params.params)
+        console.log(params.params.debug)
+        if (params.params.debug === 'true') {
+          this.debugMode = true
+        }
         if(params.params.scope === 'read_write' && params.params.code) {
           this.paiementService.oauthConnect(params.params)
           .subscribe( res => {

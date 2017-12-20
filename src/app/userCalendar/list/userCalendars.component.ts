@@ -137,7 +137,7 @@ export class UserCalendarsComponent implements OnInit {
       },
 
       buttonText: {
-        today:    this.translateService.instant('today'),
+        today:    this.translateService.instant('⇔'),
         month:    this.translateService.instant('month'),
         week:     this.translateService.instant('week'),
         day:      this.translateService.instant('day'),
