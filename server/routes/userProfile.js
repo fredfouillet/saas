@@ -87,6 +87,9 @@ router.get('/page/:page', function(req, res, next) {
     arrObj.push({
       'profile.lastName': new RegExp(req.query.search, 'i')
     })
+    arrObj.push({
+      'email': new RegExp(req.query.search, 'i')
+    })
     searchQuery['$or'] = arrObj
   }
 

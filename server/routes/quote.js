@@ -209,8 +209,8 @@ router.get('/:id', function(req, res, next) {
 
 router.get('/sendQuoteByEmailToClient/:quoteId', function(req, res, next) {
   pdfGenerator.generatePDF(req, res, next, 'quote').then(quoteId => {
-    emailGenerator.sendQuoteByEmailToClient(req, res, next, 'quote').then(() => {
-      res.status(200).json({message: 'Success', quoteId: quoteId})
+    emailGenerator.sendQuoteByEmailToClient(req, res, next, 'quote').then((message) => {
+      res.status(200).json({message: message, quoteId: quoteId})
     }).catch(error => {
       return res.status(404).json({title: 'Error_mail', error: error})
     })
@@ -567,7 +567,7 @@ router.get('/page/:page', function(req, res, next) {
       'name': new RegExp(req.query.search, 'i')
     })
     // arrObj.push({
-    //   'quoteNumber': new RegExp(req.query.search, 'i')
+    //   'email': new RegExp(req.query.search, 'i')
     // })
     // arrObj.push({
     //   'address.address': new RegExp(req.query.search, 'i')

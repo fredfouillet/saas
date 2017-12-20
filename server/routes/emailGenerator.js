@@ -99,7 +99,7 @@ module.exports = {
               reject(new Error({message: 'An error occured', err: err}))
             }
             // console.log('info', 'An e-mail has been sent.');
-            resolve({message: 'Success', token: 'InMail'})
+            resolve({message: 'Success', obj: 'Mail sent to ' + client.email})
           });
         })
       })
