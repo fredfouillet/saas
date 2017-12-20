@@ -72,7 +72,7 @@
           {{'Calendar Options' | translate}}
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <app-details-calendar [fetchedCompanie]="fetchedCompanie"></app-details-calendar>
+      <app-details-calendar (saveEmit)="save()" [fetchedCompanie]="fetchedCompanie"></app-details-calendar>
       <mat-action-row>
         <button mat-mini-fab color="primary" (click)="saveAndNextStep()">
           <mat-icon aria-label="Next">forward</mat-icon>

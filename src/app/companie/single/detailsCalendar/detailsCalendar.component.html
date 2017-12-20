@@ -1,7 +1,6 @@
 
 
-{{daysToHideTemp|json}}
-{{this.fetchedCompanie.option.calendar.daysToHide|json}}
+
 <mat-checkbox [(ngModel)]="daysToHideTemp[1]" (change)="changeDay()">{{'Monday' | translate}}</mat-checkbox>
 <mat-checkbox [(ngModel)]="daysToHideTemp[2]" (change)="changeDay()">{{'Tuesday' | translate}}</mat-checkbox>
 <mat-checkbox [(ngModel)]="daysToHideTemp[3]" (change)="changeDay()">{{'Wednesday' | translate}}</mat-checkbox>
@@ -11,17 +10,19 @@
 <mat-checkbox [(ngModel)]="daysToHideTemp[0]" (change)="changeDay()">{{'Sunday' | translate}}</mat-checkbox>
 
 <mat-form-field>
-  <input matInput type="text" class="form-control" [(ngModel)]="fetchedCompanie.option.calendar.timeBegin" required minlength="1" placeholder="{{'First hour of your day. (06:00:00)' | translate}}">
+  <input matInput (change)="dataChanged()" [(ngModel)]="fetchedCompanie.option.calendar.timeBegin" required minlength="1" placeholder="{{'First hour of your day. (06:00:00)' | translate}}">
 </mat-form-field>
 <mat-form-field>
-  <input matInput type="text" class="form-control" [(ngModel)]="fetchedCompanie.option.calendar.timeEnd" required minlength="1" placeholder="{{'Last hour of your day. (19:00:00)' | translate}}">
+  <input matInput (change)="dataChanged()" [(ngModel)]="fetchedCompanie.option.calendar.timeEnd" required minlength="1" placeholder="{{'Last hour of your day. (19:00:00)' | translate}}">
 </mat-form-field>
 <mat-form-field>
-  <input matInput type="text" class="form-control" [(ngModel)]="fetchedCompanie.option.calendar.slotDuration" placeholder="{{'Slot Duraation. (01:00:00)' | translate}}">
+  <input matInput (change)="dataChanged()" [(ngModel)]="fetchedCompanie.option.calendar.slotDuration" placeholder="{{'Slot Duraation. (01:00:00)' | translate}}">
 </mat-form-field>
 <mat-form-field>
-  <input matInput type="text" class="form-control" [(ngModel)]="fetchedCompanie.option.calendar.timeBeginbusinessHours" placeholder="{{'First hour of your daywork. (10:30:00)' | translate}}">
+  <input matInput (change)="dataChanged()" [(ngModel)]="fetchedCompanie.option.calendar.timeBeginbusinessHours" placeholder="{{'First hour of your daywork. (10:30:00)' | translate}}">
 </mat-form-field>
 <mat-form-field>
-  <input matInput type="text" class="form-control" [(ngModel)]="fetchedCompanie.option.calendar.timeEndbusinessHours" placeholder="{{'Last hour of your daywork. (17:00:00)' | translate}}">
+  <input matInput (change)="dataChanged()" [(ngModel)]="fetchedCompanie.option.calendar.timeEndbusinessHours" placeholder="{{'Last hour of your daywork. (17:00:00)' | translate}}">
 </mat-form-field>
+
+<app-loginInApp *ngIf="showLoginInApp" (loginInAppDone)="showLoginInApp = false"></app-loginInApp>

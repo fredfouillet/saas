@@ -1,6 +1,6 @@
 <mat-form-field>
   <input matInput type="password" placeholder="Password" #password>
-  <button matSuffix mat-icon-button (click)="loginInApp(password.value)">
+  <button matSuffix mat-icon-button color="warn" class="mediumIcon" (click)="loginInApp(password.value)">
     <mat-icon *ngIf="password.value">forward</mat-icon>
   </button>
   <mat-hint align="start"><strong>{{'Enter your password to approve changes' | translate}}</strong> </mat-hint>
