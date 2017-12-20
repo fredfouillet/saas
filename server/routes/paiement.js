@@ -299,22 +299,22 @@ function getStripeCust (companieId) {
       }
       if (!companie.banck.stripe.stripe_user_id_gooplus) {
         reject(new Error({title: 'No data', error: 'noData'}))
-        detetePlanDetailsInDB(companie._id)
+        // detetePlanDetailsInDB(companie._id)
         // return res.status(404).json({title: 'No data', error: 'noData'});
       }
       stripe.customers.retrieve(companie.banck.stripe.stripe_user_id_gooplus, function (err, customer) {
         if (err) {
           reject(err)
-          detetePlanDetailsInDB(companie._id)
+          // detetePlanDetailsInDB(companie._id)
           // return res.status(404).json({title: 'No data in stripe', error: 'noData'});
         } else {
           if (customer.deleted) {
-            detetePlanDetailsInDB(companie._id)
+            // detetePlanDetailsInDB(companie._id)
             reject(new Error({title: 'Deleted', error: customer}))
             // return res.status(404).json({title: 'Deleted', error: customer});
           }
           if(!customer.subscriptions.data.length) {
-            detetePlanDetailsInDB(companie._id)
+            // detetePlanDetailsInDB(companie._id)
           }
           customer.subscriptions.data.forEach(subscription => {
             savePlanDetailsInDB(companieId, subscription)

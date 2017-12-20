@@ -132,7 +132,8 @@ router.put('/:id', function (req, res, next) {
 
 
 router.post('/password', function (req, res, next) {
-  console.log(req.body.password)
+  // console.log(req.body.password)
+
   if(req.body.password !== 'Gooplus30Days') {
     return res.status(404).json({
       message: 'WRONG PASSWORD',

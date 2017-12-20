@@ -140,7 +140,6 @@ export class CompanieComponent implements OnInit {
   }
 
     save() {
-      console.log('aa')
       //this.fetchedCompanie.categJson.categProduct = JSON.stringify(JSON.parse(this.fetchedCompanie.categJson.categProduct))
       if(this.fetchedCompanie._id) {
         this.companieService.updateCompanie(this.fetchedCompanie)
