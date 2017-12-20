@@ -241,6 +241,7 @@ module.exports = {
 
               // let findQuery = {}
               // findQuery['_id'] = req.params.id
+
               Quote.findById({_id: req.params.quoteId})
               .populate({
                 path: 'projects',
@@ -316,6 +317,10 @@ module.exports = {
                              }
                              if(type === 'invoice') {
                                html += 'Facture : fac-' + item.quoteNumber
+                               if(item.statusQuote === 'paid') {
+                                 html += '<br>'
+                                 html += 'Payé'
+                              }
                              }
                              item.ownerCompanies.forEach(companie => {
                                html += '<th class="col-4 desc">'
@@ -335,7 +340,6 @@ module.exports = {
                                    html += '<p>'
                                    html += singleAddress.country
                                    html += '</p>'
-
                                  })
 
                                  html += '<p>'
@@ -525,24 +529,31 @@ module.exports = {
                                 //  <p>Le client rennonce au delai de retractation</p>
                                 //  <p>Le client autorise l'entreprise a collecter les pieces a recup</p>
                   html += `
-                               </th>
+                               </th>`
+                   if(type === 'quote') {
+                      html += `
+
                                <th class="col-3 desc">
                                <p class="alctr">Signature</br> `
-                  item.clients.forEach(user => {
-                    html += user.profile.title + ' ' + user.profile.name + ' ' + user.profile.lastName
-                  })
-                  html += `
-                    </p>
-                    `
+                                  item.clients.forEach(user => {
+                                    html += user.profile.title + ' ' + user.profile.name + ' ' + user.profile.lastName
+                                  })
+                                  html += `
+                                </p>
+                                  `
 
-                  if (item.drawingSignature.namePicture)
-                    html += `<img class="imgSignature" src="http://localhost/uploads/signature/${item.drawingSignature.namePicture}" />`
+                                if (item.drawingSignature.namePicture)
+                                  html += `<img class="imgSignature" src="http://localhost/uploads/signature/${item.drawingSignature.namePicture}" />`
 
-                  html += `<p class="inf2">Le `
-                  if (item.drawingSignature.dateSignature)
-                    html += item.drawingSignature.dateSignature.toLocaleDateString("fr-FR")
+                                html += `<p class="inf2">Le `
+                                if (item.drawingSignature.dateSignature)
+                                  html += item.drawingSignature.dateSignature.toLocaleDateString("fr-FR")
 
-                  html += `</p></th>
+            html += `
+                              </p>
+                              </th>`
+                            }
+            html += `
                              </tr>
                            </thead>
                          </table>

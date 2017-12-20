@@ -209,13 +209,28 @@ router.get('/:id', function(req, res, next) {
 
 router.get('/sendQuoteByEmailToClient/:quoteId', function(req, res, next) {
   pdfGenerator.generatePDF(req, res, next, 'quote').then(quoteId => {
-    emailGenerator.sendQuoteByEmailToClient(req, res, next)
-    // res.status(200).json({
-    //   message: 'Success',
-    //   item: quoteId + '.pdf'
-    // })
+    emailGenerator.sendQuoteByEmailToClient(req, res, next, 'quote').then(() => {
+      res.status(200).json({message: 'Success', quoteId: quoteId})
+    }).catch(error => {
+      return res.status(404).json({title: 'Error_mail', error: error})
+    })
   }).catch((error) => {
-    return res.status(404).json({title: 'Error_mail', error: error})
+    return res.status(404).json({title: 'Error_PDF', error: error})
+  })
+})
+router.get('/sendInvoiceByEmailToClient/:quoteId', function(req, res, next) {
+  pdfGenerator.generatePDF(req, res, next, 'invoice')
+  .then(quoteId => {
+    emailGenerator.sendQuoteByEmailToClient(req, res, next, 'quote')
+    .then(() => {
+      res.status(200).json({message: 'Success', quoteId: quoteId})
+    })
+    .catch(error => {
+      return res.status(404).json({title: 'Error_mail', error: error})
+    })
+  })
+  .catch((error) => {
+    return res.status(404).json({title: 'Error_PDF', error: error})
   })
 })
 
