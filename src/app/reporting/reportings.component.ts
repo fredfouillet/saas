@@ -128,11 +128,12 @@ export class ReportingsComponent implements OnInit {
     }
   ];
 
+  ['signed', 'paid', 'pending', 'rejected']
   public doughnutChartColors: any[] = [
     {
-      backgroundColor: ['rgba(33, 210, 121,0.6)', 'rgba(255, 67, 81, 0.6)', 'rgba(57,58,65,0.6)', 'rgba(251,224,45,0.6)'],
-      borderColor: ['rgba(33, 210, 121,1)', 'rgba(255, 67, 81, 1)', 'rgba(57,58,65,1)', 'rgba(251,224,45,1)'],
-      hoverBackgroundColor: ['rgba(33, 210, 121,0.2)', 'rgba(255, 67, 81, 0.2)', 'rgba(57,58,65,0.2)', 'rgba(251,224,45,0.2)']
+      backgroundColor: ['rgba(33, 210, 121,0.6)', 'rgba(251,224,45,0.6)', 'rgba(57,58,65,0.7)', 'rgba(255, 67, 81, 0.7)' ],
+      borderColor: ['rgba(33, 210, 121,1)', 'rgba(251,224,45,1)', 'rgba(57,58,65,0.7)', 'rgba(255, 67, 81, 1)' ],
+      hoverBackgroundColor: ['rgba(33, 210, 121,0.2)', 'rgba(251,224,45,0.2)', 'rgba(57,58,65,0.2)', 'rgba(255, 67, 81, 0.2)', ],
     },
   ];
 
