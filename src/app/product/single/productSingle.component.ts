@@ -72,11 +72,9 @@ export class ProductSingleComponent implements OnInit {
         reference: [''],
         description: [''],
         unit: [''],
-
         costPrice: [''],
         sellingPrice: [''],
         vat: [],
-
         height: [''],
         width: [''],
         depth: [''],
