@@ -187,7 +187,7 @@ module.exports = {
   },
 
 
-  generatePDF (req, res, next) {
+  generatePDF (req, res, next, type) {
     return new Promise(function(resolve, reject) {
       // User
       // .findOne({_id: req.user._id})
@@ -311,31 +311,36 @@ module.exports = {
                     <table class="print-friendly">
                            <thead>
                              <tr>`
-
+                             if(type === 'quote') {
+                               html += 'Devis : dev-' + item.quoteNumber
+                             }
+                             if(type === 'invoice') {
+                               html += 'Facture : fac-' + item.quoteNumber
+                             }
                              item.ownerCompanies.forEach(companie => {
                                html += '<th class="col-4 desc">'
-                               html += '<p><b>'
-                               html += companie.nameCompanie
-                               html += '</b></p>'
-                               companie.address.forEach(singleAddress => {
-                                 html += '<p>'
-                                 html += singleAddress.address + ' ' + singleAddress.address2
-                                 html += '</p>'
-                                 html += '<p>'
-                                 html += singleAddress.zip
-                                 html += '</p>'
-                                 html += '<p>'
-                                 html += singleAddress.city
-                                 html += '</p>'
-                                 html += '<p>'
-                                 html += singleAddress.country
-                                 html += '</p>'
+                                 html += '<p><b>'
+                                 html += companie.nameCompanie
+                                 html += '</b></p>'
+                                 companie.address.forEach(singleAddress => {
+                                   html += '<p>'
+                                   html += singleAddress.address + ' ' + singleAddress.address2
+                                   html += '</p>'
+                                   html += '<p>'
+                                   html += singleAddress.zip
+                                   html += '</p>'
+                                   html += '<p>'
+                                   html += singleAddress.city
+                                   html += '</p>'
+                                   html += '<p>'
+                                   html += singleAddress.country
+                                   html += '</p>'
 
-                               })
+                                 })
 
-                               html += '<p>'
-                               html += 'Mail : ' + companie.email
-                               html += '</p>'
+                                 html += '<p>'
+                                 html += 'Mail : ' + companie.email
+                                 html += '</p>'
                                html += '</th>'
                             })
 

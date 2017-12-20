@@ -40,6 +40,21 @@ export class InvoiceActionComponent {
         )
     }
 
+    downloadInvoicePDF() {
+      this.loading = true
+      this.quoteService.downloadInvoicePDF(this.fetchedQuote._id)
+        .subscribe(
+          res => {
+             window.open( '/uploads/pdf/' + res );
+             this.loading = false
+          },
+          error => {
+            this.loading = false
+            console.log(error)
+          }
+        )
+    }
+
     sendQuoteByEmailToClient() {
       this.loading = true
       this.quoteService.sendQuoteByEmailToClient(this.fetchedQuote._id)
@@ -48,6 +63,21 @@ export class InvoiceActionComponent {
             // console.log(res)
             this.toastr.success('Great!', 'Mail envoyeé!')
             //  window.open( '/uploads/pdf/' + res );
+             this.loading = false
+          },
+          error => {
+            this.loading = false
+            console.log(error)
+          }
+        )
+    }
+
+    sendInvoiceByEmailToClient() {
+      this.loading = true
+      this.quoteService.sendInvoiceByEmailToClient(this.fetchedQuote._id)
+        .subscribe(
+          res => {
+            this.toastr.success('Great!', 'Mail envoyeé!')
              this.loading = false
           },
           error => {

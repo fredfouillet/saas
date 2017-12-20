@@ -1,29 +1,26 @@
 <mat-tab-group>
   <mat-tab label="{{'Invoice' | translate}}">
-    {{'Download PDF' | translate}}
-
-  <button mat-raised-button color="primary" (click)="downloadPDF()">
-    <mat-icon aria-label="PDF">picture_as_pdf</mat-icon>
-  </button>
-  <div *ngFor="let client of fetchedQuote.clients">
-    {{'Send document to client:' | translate}} {{client.email}}
-    <button mat-raised-button color="primary" (click)="sendQuoteByEmailToClient()">
-      <mat-icon aria-label="Email">email</mat-icon>
+    <button mat-raised-button color="primary" (click)="downloadInvoicePDF()">
+      <mat-icon aria-label="PDF">picture_as_pdf</mat-icon>
     </button>
-  </div>
+    {{'Download PDF' | translate}}
+    <div *ngFor="let client of fetchedQuote.clients">
+      <button mat-raised-button color="primary" (click)="sendInvoiceByEmailToClient()">
+      <mat-icon aria-label="Email">email</mat-icon>
+    </button> {{'Send document to client:' | translate}} {{client.email}}
+    </div>
   </mat-tab>
   <mat-tab label="{{'Quote' | translate}}">
-    {{'Download PDF' | translate}}
-
-  <button mat-raised-button color="primary" (click)="downloadPDF()">
-    <mat-icon aria-label="PDF">picture_as_pdf</mat-icon>
-  </button>
-  <div *ngFor="let client of fetchedQuote.clients">
-    {{'Send document to client:' | translate}} {{client.email}}
-    <button mat-raised-button color="primary" (click)="sendQuoteByEmailToClient()">
-      <mat-icon aria-label="Email">email</mat-icon>
+    <button mat-raised-button color="primary" (click)="downloadPDF()">
+      <mat-icon aria-label="PDF">picture_as_pdf</mat-icon>
     </button>
-  </div>
+    {{'Download PDF' | translate}}
+    <div *ngFor="let client of fetchedQuote.clients">
+      <button mat-raised-button color="primary" (click)="sendQuoteByEmailToClient()">
+        <mat-icon aria-label="Email">email</mat-icon>
+      </button>
+      {{'Send document to client:' | translate}} {{client.email}}
+    </div>
   </mat-tab>
 </mat-tab-group>
 

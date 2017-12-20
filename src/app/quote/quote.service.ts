@@ -137,10 +137,19 @@ export class QuoteService {
       headers.append('Authorization', '' + this.authService.currentUser.token);
       return this.http.get(this.url + 'quote/pdf/' + id, {headers: headers})
         .map((response: Response) => {
-          //console.log(response.json().item)
           return response.json().item;
-        //  this.singleForm = response.json();
-          //return this.singleForm;
+        })
+        .catch((error: Response) => {
+          this.errorService.handleError(error.json());
+          return Observable.throw(error.json());
+        });
+    }
+    downloadInvoicePDF(id: string) {
+      let headers = new Headers({'Content-Type': 'application/json'});
+      headers.append('Authorization', '' + this.authService.currentUser.token);
+      return this.http.get(this.url + 'quote/pdfInvoice/' + id, {headers: headers})
+        .map((response: Response) => {
+          return response.json().item;
         })
         .catch((error: Response) => {
           this.errorService.handleError(error.json());
@@ -151,6 +160,21 @@ export class QuoteService {
       let headers = new Headers({'Content-Type': 'application/json'});
       headers.append('Authorization', '' + this.authService.currentUser.token);
       return this.http.get(this.url + 'quote/sendQuoteByEmailToClient/' + id, {headers: headers})
+        .map((response: Response) => {
+          //console.log(response.json().item)
+          return response.json().item;
+        //  this.singleForm = response.json();
+          //return this.singleForm;
+        })
+        .catch((error: Response) => {
+          this.errorService.handleError(error.json());
+          return Observable.throw(error.json());
+        });
+    }
+    sendInvoiceByEmailToClient(id: string) {
+      let headers = new Headers({'Content-Type': 'application/json'});
+      headers.append('Authorization', '' + this.authService.currentUser.token);
+      return this.http.get(this.url + 'quote/sendInvoiceByEmailToClient/' + id, {headers: headers})
         .map((response: Response) => {
           //console.log(response.json().item)
           return response.json().item;
