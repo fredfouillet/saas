@@ -111,10 +111,10 @@ export class DesktopDetailsComponent implements OnInit {
     this.fetchedQuote.devisDetails.splice(i, 1);
     this.calculateQuote()
   }
-  addBucketProducts() {
-    const newDevisDetail = new DevisDetail()
-    this.fetchedQuote.devisDetails.push(newDevisDetail)
-  }
+  // addBucketProducts() {
+  //   const newDevisDetail = new DevisDetail()
+  //   this.fetchedQuote.devisDetails.push(newDevisDetail)
+  // }
 
   //
   // selectTemplateQuote(templateQuote: TemplateQuote) {
@@ -264,7 +264,7 @@ export class DesktopDetailsComponent implements OnInit {
   //   }, 20)
   //
   // }
-  calculateQuote(){
+  calculateQuote() {
     this.calculateQuoteEmit.emit()
   }
   removeRow(i: number, j: number) {
@@ -272,24 +272,24 @@ export class DesktopDetailsComponent implements OnInit {
     this.calculateQuote()
   }
 
-
-  addRow(typeRow) {
-    if (typeRow) {
-      if (typeRow === 'category')
-        this.addBucketProducts()
-
-      if (!this.fetchedQuote.devisDetails.length)
-        this.addBucketProducts()
-
-      if (typeRow === 'product' || typeRow === 'text') {
-        let bucketProduct: BucketProduct = new BucketProduct()
-        bucketProduct.isEditMode = true
-        bucketProduct.typeRow = typeRow
-        this.fetchedQuote.devisDetails[this.fetchedQuote.devisDetails.length - 1].bucketProducts.push(bucketProduct)
-        this.calculateQuote()
-      }
-    }
-  }
+  //
+  // addRow(typeRow) {
+  //   if (typeRow) {
+  //     if (typeRow === 'category')
+  //       this.addBucketProducts()
+  //
+  //     if (!this.fetchedQuote.devisDetails.length)
+  //       this.addBucketProducts()
+  //
+  //     if (typeRow === 'product' || typeRow === 'text') {
+  //       let bucketProduct: BucketProduct = new BucketProduct()
+  //       bucketProduct.isEditMode = true
+  //       bucketProduct.typeRow = typeRow
+  //       this.fetchedQuote.devisDetails[this.fetchedQuote.devisDetails.length - 1].bucketProducts.push(bucketProduct)
+  //       this.calculateQuote()
+  //     }
+  //   }
+  // }
 
   // saveTemplateQuote(nameTemplate: string) {
   //   const newTemplateQuote = new TemplateQuote()

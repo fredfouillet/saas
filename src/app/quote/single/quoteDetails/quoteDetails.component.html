@@ -13,5 +13,6 @@
 <div class="hideMobile">
   <app-desktop-details [fetchedQuote]="fetchedQuote" (calculateQuoteEmit)="calculateQuote()"></app-desktop-details>
 </div>
+<app-add-elem [fetchedQuote]="fetchedQuote" (calculateQuoteEmit)="calculateQuote()"></app-add-elem>
 
 <app-total [fetchedQuote]="fetchedQuote" (calculateQuoteEmit)="calculateQuote()"></app-total>

@@ -69,10 +69,3 @@
     </div>
   </div>
 </div>
-
-
-<div *ngIf="fetchedQuote.statusQuote === 'pending'" class="col-3">
-  <button *ngIf="false" type="button" class="btn btn-primary btn-sm" (click)="addRow('category')">+ {{'Category' | translate}}</button>
-  <button type="button" class="btn btn-primary btn-sm" (click)="addRow('text')">+ {{'Text' | translate}}</button>
-  <button type="button" class="btn btn-primary btn-sm" (click)="addRow('product')">+ {{'Product' | translate}}</button>
-</div>

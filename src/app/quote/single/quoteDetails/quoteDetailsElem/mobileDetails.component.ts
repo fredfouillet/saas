@@ -6,7 +6,7 @@ import { Component, OnInit, ViewChild, Input, Output, EventEmitter } from '@angu
 // import { DragulaService } from 'ng2-dragula';
 // import { ProductService } from '../../../product/product.service';
 // import { ProjectService} from '../../../project/project.service';
-import { ProductsDialogComponent } from '../../../../product/products/dialog/productsDialog.component';
+// import { ProductsDialogComponent } from '../../../../product/products/dialog/productsDialog.component';
 
 import {
   Quote, DevisDetail, BucketProduct, StatusQuotes,
@@ -17,7 +17,7 @@ import {
 // import { TemplateQuote } from '../../templateQuote.model';
 
 // import { ToastsManager } from 'ng2-toastr';
-import { MatDialog } from '@angular/material';
+// import { MatDialog } from '@angular/material';
 // import { Params } from '@angular/router';
 // import { Location } from '@angular/common';
 // import { FormGroup, Validators } from '@angular/forms';
@@ -67,7 +67,7 @@ export class MobileDetailsComponent implements OnInit {
   statusQuotes = StatusQuotes
 
   constructor(
-    public dialog: MatDialog,
+    // public dialog: MatDialog,
   ) {
 
   }
@@ -93,40 +93,40 @@ export class MobileDetailsComponent implements OnInit {
   //   this.calculateQuote()
   // }
 
+  //
+  // addProductToQuote(product: Product) {
+  //     const bucketProduct: BucketProduct = new BucketProduct()
+  //     bucketProduct.typeRow = 'product'
+  //     bucketProduct.productInit = [product]
+  //     bucketProduct.vat = product.details.price.vat
+  //     bucketProduct.priceWithoutTaxes = product.details.price.sellingPrice
+  //     bucketProduct.priceWithTaxes = 0
+  //     bucketProduct.priceWithTaxesWithQuantity = 0
+  //     bucketProduct.priceWithQuantity = 0
+  //     bucketProduct.quantity = 1
+  //     bucketProduct.discount = 0
+  //
+  //     const newDevisDetail: DevisDetail = new DevisDetail();
+  //     newDevisDetail.bucketProducts.push(bucketProduct)
+  //     this.fetchedQuote.devisDetails.push(newDevisDetail)
+  //     this.calculateQuote();
+  // }
 
-  addProductToQuote(product: Product) {
-      const bucketProduct: BucketProduct = new BucketProduct()
-      bucketProduct.typeRow = 'product'
-      bucketProduct.productInit = [product]
-      bucketProduct.vat = product.details.price.vat
-      bucketProduct.priceWithoutTaxes = product.details.price.sellingPrice
-      bucketProduct.priceWithTaxes = 0
-      bucketProduct.priceWithTaxesWithQuantity = 0
-      bucketProduct.priceWithQuantity = 0
-      bucketProduct.quantity = 1
-      bucketProduct.discount = 0
-
-      const newDevisDetail: DevisDetail = new DevisDetail();
-      newDevisDetail.bucketProducts.push(bucketProduct)
-      this.fetchedQuote.devisDetails.push(newDevisDetail)
-      this.calculateQuote();
-  }
-
-  openProducts() {
-    const this2 = this
-    const dialogRefProducts = this.dialog.open(ProductsDialogComponent)
-    const sub = dialogRefProducts.componentInstance.onAdd.subscribe((product) => {
-      this.addProductToQuote(product)
-      // do something
-    });
-    dialogRefProducts.afterClosed().subscribe(result => {
-      if (result) {
-        // this.onDelete(this.fetchedProduct._id).then(function() {
-        //   this2.router.navigate(['product']);
-        // })
-      }
-    })
-  }
+  // openProducts() {
+  //   const this2 = this
+  //   const dialogRefProducts = this.dialog.open(ProductsDialogComponent)
+  //   const sub = dialogRefProducts.componentInstance.onAdd.subscribe((product) => {
+  //     this.addProductToQuote(product)
+  //     // do something
+  //   });
+  //   dialogRefProducts.afterClosed().subscribe(result => {
+  //     if (result) {
+  //       // this.onDelete(this.fetchedProduct._id).then(function() {
+  //       //   this2.router.navigate(['product']);
+  //       // })
+  //     }
+  //   })
+  // }
   // selectProduct(product: Product, i, j) {
   //
   //   // let bucketProduct: BucketProduct = new BucketProduct()

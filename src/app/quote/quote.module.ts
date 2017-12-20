@@ -18,6 +18,7 @@ import { QuoteStatusComponent} from './single/quoteStatus/quoteStatus.component'
 // import { SignatureComponent} from './single/signature/signature.component';
 import { QuoteDetailsComponent} from './single/quoteDetails/quoteDetails.component';
 import { MobileDetailsComponent} from './single/quoteDetails/quoteDetailsElem/mobileDetails.component';
+import { AddElemComponent} from './single/quoteDetails/quoteDetailsElem/addElem.component';
 import { DesktopDetailsComponent} from './single/quoteDetails/quoteDetailsElem/desktopDetails.component';
 import { TemplateQuoteComponent} from './single/quoteDetails/quoteDetailsElem/templateQuote.component';
 import { TotalComponent} from './single/quoteDetails/quoteDetailsElem/total.component';
@@ -104,6 +105,7 @@ import {MatCheckboxModule} from '@angular/material';
     // SignatureComponent,
     QuoteDetailsComponent,
     MobileDetailsComponent,
+    AddElemComponent,
     DesktopDetailsComponent,
     TemplateQuoteComponent,
     TotalComponent,

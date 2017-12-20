@@ -1,0 +1,24 @@
+
+
+<div *ngIf="fetchedQuote.statusQuote === 'pending'" class="row">
+  <div class="showMobile">
+    <button mat-raised-button (click)="addRow('text')">
+      <mat-icon>add</mat-icon>
+       {{'Text' | translate}}
+     </button>
+    <button mat-raised-button (click)="addRowMobile('product')">
+      <mat-icon>add</mat-icon>
+      {{'Product' | translate}}
+    </button>
+  </div>
+  <div class="hideMobile">
+    <button mat-raised-button (click)="addRow('text')">
+      <mat-icon>add</mat-icon>
+       {{'Text' | translate}}
+     </button>
+    <button mat-raised-button (click)="addRow('product')">
+      <mat-icon>add</mat-icon>
+      {{'Product' | translate}}
+    </button>
+  </div>
+</div>
