@@ -59,6 +59,7 @@ export const LANG_FR_TRANS = {
     'Price without taxes': 'Prix HT',
     'Product Name': 'Nom du Produit',
     'companie': 'Entreprise',
+    'Companie': 'Entreprise',
     'Height': 'Hauteur',
     'Width': 'Largeur',
     'Depth': 'Profondeur',
@@ -251,8 +252,45 @@ export const LANG_FR_TRANS = {
     'week': 'semaine',
     'day': 'jour',
     'list': 'liste',
-
-
+  
+    'Terms': 'Souscription',
+    'Plan': 'Abonnement',
+    'Card': 'Carte Bancaire',
+    'cardId': 'Identifiant',
+    'address_city': 'Ville',
+    'address_country': 'Pays',
+    'address_line1': 'Adresse',
+    'address_line2': 'Complément addresse',
+    'address_state': 'État',
+    'address_zip': 'Code Postal',
+    'brand': 'Type de carte',
+    'country': 'Pays de la carte',
+    'exp_month': 'Mois expiration',
+    'exp_year': 'Année expiration',
+    'delete Card': 'Effacer la carte',
+    'Subscription': 'Souscription',
+    'Amount': 'Montant',
+    'current_period_start': 'Date du dernier renouvellement',
+    'current_period_end': 'Fin de l`abonnement', 
+    'deleteSubInStripe': 'Désabonnement',
+    'Connect with Stripe': 'Connexion avec Stripe',
+  
+    'Product Categories': 'Catégories Produits',
+    'Add Categ Products': 'Ajouter Catégorie',
+    'Category': 'Catégorie',
+    'SubCategorie': 'Sous-catégorie',
+    'Product Type': 'Type de Produit',
+  
+    'First hour of your day. (06:00:00)': 'Heure de début du calendrier (06:00:00)',
+    'Last hour of your day. (19:00:00)': 'Heure de fin du calendrier (19:00:00)',
+    'Slot Duraation. (01:00:00)': 'Intervalle (01:00:00)',
+    'First hour of your daywork. (10:30:00)': 'Heure de debut d`activité (08:30:00)',
+    'Last hour of your daywork. (17:00:00)': 'Heure de fin d`activité (17:00:00)',
+  
+    'Notes legales': 'Notes de devis',
+  
+    'legal Approval': 'Acceptations légales',
+    
 
     'Search': 'Recherche',
     'This action is not reversible. Are you sure you want to delete?': 'Cette action est irréversible. Confirmez-vous la suppression ?',
