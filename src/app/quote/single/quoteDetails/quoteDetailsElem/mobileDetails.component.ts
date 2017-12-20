@@ -6,6 +6,7 @@ import { Component, OnInit, ViewChild, Input, Output, EventEmitter } from '@angu
 // import { DragulaService } from 'ng2-dragula';
 // import { ProductService } from '../../../product/product.service';
 // import { ProjectService} from '../../../project/project.service';
+import { ProductsDialogComponent } from '../../../../product/products/dialog/productsDialog.component';
 
 import {
   Quote, DevisDetail, BucketProduct, StatusQuotes,
@@ -16,7 +17,7 @@ import {
 // import { TemplateQuote } from '../../templateQuote.model';
 
 // import { ToastsManager } from 'ng2-toastr';
-// import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material';
 // import { Params } from '@angular/router';
 // import { Location } from '@angular/common';
 // import { FormGroup, Validators } from '@angular/forms';
@@ -64,47 +65,12 @@ export class MobileDetailsComponent implements OnInit {
   // imgSignatureBase64Temp = ''
   // fetchedPaiementQuotes: PaiementQuote[] = []
   statusQuotes = StatusQuotes
-  // statusQuotesInvoice = StatusQuotesInvoice
-
-  // public editorOptions = {
-  //   placeholder: "insert content...",
-  //   modules: {
-  //     // toolbar: [['bold', 'italic'], ['link', 'image']] // see https://quilljs.com/docs/formats/
-  //   }
-  // };
-
-  // arrayContentToSearch = []
-
-  // VATs = ModelVATs
 
   constructor(
-    // private quoteService: QuoteService,
-    // private templateQuoteService: TemplateQuoteService,
-    // private projectService: ProjectService,
-    // private userService: UserService,
-    // private productService: ProductService,
-    //    private modalService: NgbModal,
-    // private toastr: ToastsManager,
-    // public dialog: MatDialog,
-    // private activatedRoute: ActivatedRoute,
-    // private router: Router,
-    // private location: Location,
-    // private _fb: FormBuilder,
-    // public authService: AuthService,
-    // private dragulaService: DragulaService,
-    // private translateService: TranslateService,
+    public dialog: MatDialog,
   ) {
 
-
-    // dragulaService.setOptions('third-bag', {
-    //   moves: function(el, container, handle) {
-    //     return (handle.className === 'fa fa-arrows handle' || handle.className === 'btn btn-sm handle');
-    //   }
-    // });
   }
-  // ngOnDestroy() {
-  //   this.dragulaService.destroy('third-bag');
-  // }
 
 
 
@@ -126,26 +92,61 @@ export class MobileDetailsComponent implements OnInit {
   //
   //   this.calculateQuote()
   // }
-  selectProduct(product: Product, i, j) {
 
-    // let bucketProduct: BucketProduct = new BucketProduct()
 
-      this.fetchedQuote.devisDetails[i].bucketProducts[j].productInit = [product],
-      this.fetchedQuote.devisDetails[i].bucketProducts[j].vat = product.details.price.vat,
-      this.fetchedQuote.devisDetails[i].bucketProducts[j].priceWithoutTaxes = product.details.price.sellingPrice,
-      this.fetchedQuote.devisDetails[i].bucketProducts[j].priceWithTaxes = 0,
-      this.fetchedQuote.devisDetails[i].bucketProducts[j].priceWithTaxesWithQuantity = 0,
-      this.fetchedQuote.devisDetails[i].bucketProducts[j].priceWithQuantity = 0,
-      this.fetchedQuote.devisDetails[i].bucketProducts[j].quantity = 1,
-      this.fetchedQuote.devisDetails[i].bucketProducts[j].discount = 0,
+  addProductToQuote(product: Product) {
+      const bucketProduct: BucketProduct = new BucketProduct()
+      bucketProduct.typeRow = 'product'
+      bucketProduct.productInit = [product]
+      bucketProduct.vat = product.details.price.vat
+      bucketProduct.priceWithoutTaxes = product.details.price.sellingPrice
+      bucketProduct.priceWithTaxes = 0
+      bucketProduct.priceWithTaxesWithQuantity = 0
+      bucketProduct.priceWithQuantity = 0
+      bucketProduct.quantity = 1
+      bucketProduct.discount = 0
 
-      // this.autocompleteProduct = ''
-
-      // this.fetchedQuote.devisDetails[i].bucketProducts.push(bucketProduct)
-      this.calculateQuote()
+      const newDevisDetail: DevisDetail = new DevisDetail();
+      newDevisDetail.bucketProducts.push(bucketProduct)
+      this.fetchedQuote.devisDetails.push(newDevisDetail)
+      this.calculateQuote();
   }
-  onEditorCreated(quill) {
+
+  openProducts() {
+    const this2 = this
+    const dialogRefProducts = this.dialog.open(ProductsDialogComponent)
+    const sub = dialogRefProducts.componentInstance.onAdd.subscribe((product) => {
+      this.addProductToQuote(product)
+      // do something
+    });
+    dialogRefProducts.afterClosed().subscribe(result => {
+      if (result) {
+        // this.onDelete(this.fetchedProduct._id).then(function() {
+        //   this2.router.navigate(['product']);
+        // })
+      }
+    })
   }
+  // selectProduct(product: Product, i, j) {
+  //
+  //   // let bucketProduct: BucketProduct = new BucketProduct()
+  //
+  //     this.fetchedQuote.devisDetails[i].bucketProducts[j].productInit = [product],
+  //     this.fetchedQuote.devisDetails[i].bucketProducts[j].vat = product.details.price.vat,
+  //     this.fetchedQuote.devisDetails[i].bucketProducts[j].priceWithoutTaxes = product.details.price.sellingPrice,
+  //     this.fetchedQuote.devisDetails[i].bucketProducts[j].priceWithTaxes = 0,
+  //     this.fetchedQuote.devisDetails[i].bucketProducts[j].priceWithTaxesWithQuantity = 0,
+  //     this.fetchedQuote.devisDetails[i].bucketProducts[j].priceWithQuantity = 0,
+  //     this.fetchedQuote.devisDetails[i].bucketProducts[j].quantity = 1,
+  //     this.fetchedQuote.devisDetails[i].bucketProducts[j].discount = 0,
+  //
+  //     // this.autocompleteProduct = ''
+  //
+  //     // this.fetchedQuote.devisDetails[i].bucketProducts.push(bucketProduct)
+  //     this.calculateQuote()
+  // }
+  // onEditorCreated(quill) {
+  // }
 
 
   // onEditorBlured(quill, i, j) {
@@ -265,7 +266,7 @@ export class MobileDetailsComponent implements OnInit {
   //   }, 20)
   //
   // }
-  calculateQuote(){
+  calculateQuote() {
     this.calculateQuoteEmit.emit()
   }
   removeRow(i: number, j: number) {

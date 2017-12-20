@@ -85,24 +85,24 @@ export class EditQuoteComponent implements OnInit {
 
     })
   }
-
-  addProductToQuote(product: Product) {
-      const bucketProduct: BucketProduct = new BucketProduct()
-      bucketProduct.typeRow = 'product'
-      bucketProduct.productInit = [product]
-      bucketProduct.vat = product.details.price.vat
-      bucketProduct.priceWithoutTaxes = product.details.price.sellingPrice
-      bucketProduct.priceWithTaxes = 0
-      bucketProduct.priceWithTaxesWithQuantity = 0
-      bucketProduct.priceWithQuantity = 0
-      bucketProduct.quantity = 1
-      bucketProduct.discount = 0
-
-      const newDevisDetail: DevisDetail = new DevisDetail();
-      newDevisDetail.bucketProducts.push(bucketProduct)
-      this.fetchedQuote.devisDetails.push(newDevisDetail)
-      this.calculateQuote.emit()
-  }
+  //
+  // addProductToQuote(product: Product) {
+  //     const bucketProduct: BucketProduct = new BucketProduct()
+  //     bucketProduct.typeRow = 'product'
+  //     bucketProduct.productInit = [product]
+  //     bucketProduct.vat = product.details.price.vat
+  //     bucketProduct.priceWithoutTaxes = product.details.price.sellingPrice
+  //     bucketProduct.priceWithTaxes = 0
+  //     bucketProduct.priceWithTaxesWithQuantity = 0
+  //     bucketProduct.priceWithQuantity = 0
+  //     bucketProduct.quantity = 1
+  //     bucketProduct.discount = 0
+  //
+  //     const newDevisDetail: DevisDetail = new DevisDetail();
+  //     newDevisDetail.bucketProducts.push(bucketProduct)
+  //     this.fetchedQuote.devisDetails.push(newDevisDetail)
+  //     this.calculateQuote.emit()
+  // }
   addTextToQuote(textToQuote) {
     const bucketProduct: BucketProduct = new BucketProduct()
     bucketProduct.typeRow = 'text'

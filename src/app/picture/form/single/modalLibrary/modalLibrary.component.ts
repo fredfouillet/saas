@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { MatDialogRef} from '@angular/material';
-import { UserFormsComponent }  from '../../list/userForms.component';
+import { UserFormsComponent } from '../../list/userForms.component';
 
 
 

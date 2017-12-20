@@ -1,41 +1,42 @@
 <div clas="container">
-<div *ngFor="let devisDetail of fetchedQuote.devisDetails; let i=index">
-  <div *ngFor="let bucketProduct of devisDetail.bucketProducts; let j=index">
-    <div class="row">
-      <div class="col-2">
-        <button (click)="removeRow(i, j)" *ngIf="fetchedQuote.statusQuote === 'pending'" mat-icon-button color="warn">
+  <div *ngFor="let devisDetail of fetchedQuote.devisDetails; let i=index">
+    <div *ngFor="let bucketProduct of devisDetail.bucketProducts; let j=index">
+      <div class="row">
+        <div class="col-2">
+          <button (click)="removeRow(i, j)" *ngIf="fetchedQuote.statusQuote === 'pending'" mat-icon-button color="warn">
           <mat-icon>clear</mat-icon>
         </button>
 
 
-        <!-- <button *ngIf="fetchedQuote.statusQuote === 'pending'" (click)="removeRow(i, j)" mat-icon-button>
+          <!-- <button *ngIf="fetchedQuote.statusQuote === 'pending'" (click)="removeRow(i, j)" mat-icon-button>
           <mat-icon>clear</mat-icon>
         </button> -->
 
 
-        <!-- <button *ngIf="fetchedQuote.statusQuote === 'pending'" type="button" class="btn btn-danger btn-sm" (click)="removeRow(i, j)"><i class="fa fa-times"></i></button> -->
-      </div>
-      <div class="col-6">
-        <div *ngIf="bucketProduct.typeRow=='text'">
-          <mat-form-field>
-            <textarea matInput placeholder="{{'Title' | translate}}" [(ngModel)]="fetchedQuote.devisDetails[i].bucketProducts[j].title" matTextareaAutosize matAutosizeMinRows="1" matAutosizeMaxRows="5">
-              </textarea>
-          </mat-form-field>
+          <!-- <button *ngIf="fetchedQuote.statusQuote === 'pending'" type="button" class="btn btn-danger btn-sm" (click)="removeRow(i, j)"><i class="fa fa-times"></i></button> -->
         </div>
-        <div *ngIf="bucketProduct.typeRow=='product'">
-          <div *ngFor="let product of fetchedQuote.devisDetails[i].bucketProducts[j].productInit; let k=index;">
+        <div class="col-6">
+          <div *ngIf="bucketProduct.typeRow=='text'">
             <mat-form-field>
-              <input readonly matInput placeholder="{{'referenceName' | translate}}" [(ngModel)]="fetchedQuote.devisDetails[i].bucketProducts[j].productInit[k].details.referenceName">
+              <textarea matInput placeholder="{{'Title' | translate}}" [(ngModel)]="fetchedQuote.devisDetails[i].bucketProducts[j].title" matTextareaAutosize matAutosizeMinRows="1" matAutosizeMaxRows="5">
+              </textarea>
             </mat-form-field>
           </div>
+          <div *ngIf="bucketProduct.typeRow=='product'">
+            <div *ngFor="let product of fetchedQuote.devisDetails[i].bucketProducts[j].productInit; let k=index;">
+              <mat-form-field>
+                <input readonly matInput placeholder="{{'referenceName' | translate}}" [(ngModel)]="fetchedQuote.devisDetails[i].bucketProducts[j].productInit[k].details.referenceName">
+              </mat-form-field>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="col-3">
-        <mat-form-field>
-          <input matInput disabled value="{{fetchedQuote.devisDetails[i].bucketProducts[j].priceWithQuantityWithDiscountWithSurface | round}}" placeholder="{{'Total' | translate}}">
-        </mat-form-field>
+        <div class="col-3">
+          <mat-form-field>
+            <input matInput disabled value="{{fetchedQuote.devisDetails[i].bucketProducts[j].priceWithQuantityWithDiscountWithSurface | round}}" placeholder="{{'Total' | translate}}">
+          </mat-form-field>
+        </div>
       </div>
     </div>
   </div>
-</div>
+  <button (click)="openProducts()">OPEN</button>
 </div>

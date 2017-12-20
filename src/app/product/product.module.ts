@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
 import { ProductDialogComponent } from './single/dialog/productDialog.component';
+import { ProductsDialogComponent } from './products/dialog/productsDialog.component';
 
 import { ProductsComponent} from './products/products.component';
 import { ProductSingleComponent} from './single/productSingle.component';
@@ -31,6 +32,7 @@ import {SharedModule } from '../shared/shared.module';
     ProductsComponent,
     ProductSingleComponent,
     ProductDialogComponent,
+    ProductsDialogComponent,
 
   ],
   exports:      [ ProductsComponent ],
@@ -39,6 +41,7 @@ import {SharedModule } from '../shared/shared.module';
   ],
   entryComponents: [
     ProductDialogComponent,
+    ProductsDialogComponent,
   ]
 })
 export class ProductModule { }

@@ -1,7 +1,12 @@
 <div class="container">
   <div *ngIf="showTitle">
-    <app-header-title [showBack]=-1 [title]="'Products'" (saved)="saved($event)" [search]="search" [typeObj]="'product'"></app-header-title>
+    <app-header-title [isDialog]="isDialog" [showBack]=-1 [title]="'Products'" (saved)="saved($event)" [search]="search" [typeObj]="'product'"></app-header-title>
   </div>
+
+  <button *ngIf="isDialog" (click)="closeDialog()" mat-mini-fab>
+    <mat-icon>close</mat-icon>
+  </button>
+
   <div class="d-flex flex-row">
     <div class="p-2">
       <mat-form-field>
@@ -63,3 +68,4 @@
     </div>
   </div>
 </div>
+<app-loadingInApp *ngIf="loading"></app-loadingInApp>

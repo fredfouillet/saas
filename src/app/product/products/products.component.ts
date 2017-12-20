@@ -23,11 +23,13 @@ export class ProductsComponent implements OnInit {
   @Input() customButton: boolean = false;
   @Input() showNewItem: boolean = true;
   @Input() showTitle: boolean = true;
+  @Input() isDialog: boolean = false;
   @Output() customButtonActionEmit: EventEmitter<any> = new EventEmitter();
+  @Output() closeDialogEmit: EventEmitter<any> = new EventEmitter();
   // token: string = localStorage.getItem('id_token');
   fetchedProducts: Product[] = [];
   search: Search = new Search()
-  // loading: boolean= false;
+  loading: boolean= false;
 
   paginationData: PaginationData = new PaginationData()
 
@@ -62,6 +64,9 @@ export class ProductsComponent implements OnInit {
   }
   searchProducts() {
     this.getProducts(1, this.search)
+  }
+  closeDialog() {
+    this.closeDialogEmit.emit()
   }
 
 
@@ -98,13 +103,13 @@ export class ProductsComponent implements OnInit {
   // }
 
   getProducts(page: number, search: any) {
-    this.globalEventsManager.isLoadding(true);
+    // this.globalEventsManager.isLoadding(true);
     this.productService.getProducts(page, search)
       .subscribe(
         res => {
           this.paginationData = res.paginationData;
           this.fetchedProducts = res.data
-          this.globalEventsManager.isLoadding(false);
+          // this.globalEventsManager.isLoadding(false);
         },
         error => {
           console.log(error);
