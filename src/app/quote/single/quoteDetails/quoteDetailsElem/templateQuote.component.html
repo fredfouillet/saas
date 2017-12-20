@@ -1,18 +1,20 @@
 <ul *ngIf="fetchedQuote.statusQuote === 'pending'" class="nav nav-tabs justify-content-end">
   <li class="nav-item dropdown">
-    <a class="nav-link active dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">{{'Template' | translate}}</a>
-    <div class="dropdown-menu">
-    <div class="templateQuoteContent">
+    <a class="nav-link active dropdown-toggle" (click)="showtemplate=!showtemplate">
+      {{'Template' | translate}}
+    </a>
 
-      <app-autocomplete [typeAutocomplete]="'templateQuote'" [title]="'Load Template'" [singleChoice]=true [arrayContent]="arrayContentToSearch" (getResultAutocomplete)="selectTemplateQuote($event[0])">
-      </app-autocomplete>
-      <mat-form-field>
-        <input matInput [readonly]="fetchedQuote.statusQuote !== 'pending'" placeholder="{{'Save Template' | translate}}" #nameTemplate>
-        <button matSuffix mat-icon-button color="primary" (click)="saveTemplateQuote(nameTemplate.value);nameTemplate.value=''">
-            <mat-icon aria-label="Save">save</mat-icon>
-          </button>
-      </mat-form-field>
-    </div>
+    <div *ngIf="showtemplate">
+      <div class="templateQuoteContent">
+        <app-autocomplete [typeAutocomplete]="'templateQuote'" [title]="'Load Template'" [singleChoice]=true [arrayContent]="arrayContentToSearch" (getResultAutocomplete)="selectTemplateQuote($event[0])">
+        </app-autocomplete>
+        <mat-form-field>
+          <input matInput [readonly]="fetchedQuote.statusQuote !== 'pending'" placeholder="{{'Save Template' | translate}}" #nameTemplate>
+          <button matSuffix mat-icon-button color="primary" (click)="saveTemplateQuote(nameTemplate.value);nameTemplate.value=''">
+              <mat-icon aria-label="Save">save</mat-icon>
+            </button>
+        </mat-form-field>
+      </div>
     </div>
   </li>
 </ul>
