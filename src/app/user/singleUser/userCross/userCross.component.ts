@@ -244,7 +244,7 @@ export class UserCrossComponent implements OnInit {
 
 
   save() {
-
+    this.loading = true
     // this.userService.cleanCurrentUserInSession()
     //console.log(this.typeUserDropDown)
     //this.fetchedUser.type = [this.typeUserDropDown]
@@ -257,6 +257,7 @@ export class UserCrossComponent implements OnInit {
           // this.getUserCross(res.obj._id)
           // console.log(this.fetchedUser._id)
           this.saved.emit(res.obj)
+          this.loading = false
           // this.getUserCross(this.fetchedUser._id)
           // location.reload();
           // if(redirect == 'profile')
@@ -266,6 +267,7 @@ export class UserCrossComponent implements OnInit {
         },
         error => {
           this.toastr.error('Error!')
+          this.loading = false
           console.log(error)
         }
       )
@@ -274,6 +276,7 @@ export class UserCrossComponent implements OnInit {
       this.userService.saveCrossUser(this.fetchedUserCross)
         .subscribe(
         res => {
+          this.loading = false
           this.toastr.success('Great!', res.message)
           // this.fetchedUserCross = res.obj
           // console.log(res.obj._id)
@@ -290,6 +293,7 @@ export class UserCrossComponent implements OnInit {
         },
         error => {
           console.log(error)
+          this.loading = false
           this.toastr.error('Error!')
         }
         );

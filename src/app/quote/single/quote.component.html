@@ -38,14 +38,14 @@
       <div class="row">
         <div class="col-5">
           <app-picture
-            [addPicture]="fetchedQuote.statusQuote === 'pending'"
+
             [showPagination]=false [showPictures]=false
             [openLibrairy]=true [labelButtonAddPicture]="'Add'"
             [forms]="fetchedQuote.forms"></app-picture>
         </div>
         <div class="col-5">
           <app-picture
-            [addPicture]="fetchedQuote.statusQuote === 'pending'"
+
             [showPagination]=false [showPictures]=false
             [openLibrairy]=false [openCameraStraight]=true
             [labelButtonAddPicture]="'Add'"
@@ -56,7 +56,6 @@
         [showPagination]=false
         [showPictures]=true
         [addPicture]=false
-        [deletePicture]="fetchedQuote.statusQuote === 'pending'"
         [labelButtonAddPicture]="'Add'"
         [forms]="fetchedQuote.forms"></app-picture>
       <mat-action-row>
@@ -174,7 +173,7 @@
           <mat-icon>assignment_turned_in</mat-icon>
         </mat-panel-title>
         <mat-panel-description>
-          {{'Invoices' | translate}}
+          {{'PDF' | translate}}
         </mat-panel-description>
       </mat-expansion-panel-header>
       <app-invoice-action [fetchedQuote]="fetchedQuote"></app-invoice-action>

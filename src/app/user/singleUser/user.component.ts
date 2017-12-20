@@ -257,6 +257,7 @@ export class UserComponent implements OnInit {
         res => {
           this.toastr.success('Great!', res.message)
           this.fetchedUser = res.obj
+          this.loading = false
           // this.nextStep()
           // this.saved.emit(res.obj)
           // if(redirect == 'profile')
@@ -269,6 +270,7 @@ export class UserComponent implements OnInit {
         },
         error => {
           // console.log(error)
+          this.loading = false
           this.toastr.error(error.error.message)
 
         }
