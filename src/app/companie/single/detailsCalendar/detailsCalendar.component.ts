@@ -21,7 +21,7 @@ export class DetailsCalendarComponent implements OnInit, OnChanges {
   // @Input() showBackButton: Boolean = true;
   @Input() fetchedCompanie: Companie = new Companie()
 
-  daysToHideTemp: any = [false, false, false, false, false, false, false]
+  daysToHideTemp: any = [true, true, true, true, true, true, true]
 
 
   // userAdmins : User[] = []
@@ -57,7 +57,7 @@ export class DetailsCalendarComponent implements OnInit, OnChanges {
   ngOnChanges() {
     // console.log(this.fetchedCompanie.option.calendar.daysToHide)
     this.fetchedCompanie.option.calendar.daysToHide.forEach(day => {
-      this.daysToHideTemp[day] = true
+      this.daysToHideTemp[day] = false
     })
   }
 
@@ -132,7 +132,7 @@ export class DetailsCalendarComponent implements OnInit, OnChanges {
   changeDay () {
     this.fetchedCompanie.option.calendar.daysToHide = []
     for (let i = 0; i < 7 ; i++) {
-      if (this.daysToHideTemp[i]) { this.fetchedCompanie.option.calendar.daysToHide.push(i) }
+      if (!this.daysToHideTemp[i]) { this.fetchedCompanie.option.calendar.daysToHide.push(i) }
     }
     // if (this.daysToHideTemp[0]) { this.fetchedCompanie.option.calendar.daysToHide.push(0) }
     // if (this.daysToHideTemp[1]) { this.fetchedCompanie.option.calendar.daysToHide.push(1)  }

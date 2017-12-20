@@ -1,13 +1,14 @@
 
 
-
-<mat-checkbox [(ngModel)]="daysToHideTemp[0]" (change)="changeDay()">{{'Monday' | translate}}</mat-checkbox>
-<mat-checkbox [(ngModel)]="daysToHideTemp[1]" (change)="changeDay()">{{'Tuesday' | translate}}</mat-checkbox>
-<mat-checkbox [(ngModel)]="daysToHideTemp[2]" (change)="changeDay()">{{'Wednesday' | translate}}</mat-checkbox>
-<mat-checkbox [(ngModel)]="daysToHideTemp[3]" (change)="changeDay()">{{'Thursday' | translate}}</mat-checkbox>
-<mat-checkbox [(ngModel)]="daysToHideTemp[4]" (change)="changeDay()">{{'Friday' | translate}}</mat-checkbox>
-<mat-checkbox [(ngModel)]="daysToHideTemp[5]" (change)="changeDay()">{{'Saturday' | translate}}</mat-checkbox>
-<mat-checkbox [(ngModel)]="daysToHideTemp[6]" (change)="changeDay()">{{'Sunday' | translate}}</mat-checkbox>
+{{daysToHideTemp|json}}
+{{this.fetchedCompanie.option.calendar.daysToHide|json}}
+<mat-checkbox [(ngModel)]="daysToHideTemp[1]" (change)="changeDay()">{{'Monday' | translate}}</mat-checkbox>
+<mat-checkbox [(ngModel)]="daysToHideTemp[2]" (change)="changeDay()">{{'Tuesday' | translate}}</mat-checkbox>
+<mat-checkbox [(ngModel)]="daysToHideTemp[3]" (change)="changeDay()">{{'Wednesday' | translate}}</mat-checkbox>
+<mat-checkbox [(ngModel)]="daysToHideTemp[4]" (change)="changeDay()">{{'Thursday' | translate}}</mat-checkbox>
+<mat-checkbox [(ngModel)]="daysToHideTemp[5]" (change)="changeDay()">{{'Friday' | translate}}</mat-checkbox>
+<mat-checkbox [(ngModel)]="daysToHideTemp[6]" (change)="changeDay()">{{'Saturday' | translate}}</mat-checkbox>
+<mat-checkbox [(ngModel)]="daysToHideTemp[0]" (change)="changeDay()">{{'Sunday' | translate}}</mat-checkbox>
 
 <mat-form-field>
   <input matInput type="text" class="form-control" [(ngModel)]="fetchedCompanie.option.calendar.timeBegin" required minlength="1" placeholder="{{'First hour of your day. (06:00:00)' | translate}}">

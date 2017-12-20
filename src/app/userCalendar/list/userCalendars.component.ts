@@ -110,7 +110,7 @@ export class UserCalendarsComponent implements OnInit {
     if(!slotDuration) slotDuration = '00:30:00'
     if(!timeBegin) timeBegin = '06:00:00'
     if(!timeEnd) timeEnd = '19:00:00'
-
+    // console.log(hiddenDays)
 
     this.calendarOptions = {
       timezone: 'local',
