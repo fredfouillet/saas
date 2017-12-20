@@ -228,12 +228,8 @@ export class UserCalendarsComponent implements OnInit {
             this.events[i].color = assignedTo.profile.colorCalendar
             this.events[i].title += ' Réparateur: ' + assignedTo.profile.lastName + ' '+ assignedTo.profile.name + '  '
           });
-
-
-
         })
         this.updateCalendar()
-
       },
       error => {
         // this.globalEventsManager.isLoadding(false);

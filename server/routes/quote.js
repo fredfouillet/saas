@@ -425,9 +425,11 @@ router.post('/', function(req, res, next) {
         return res.status(403).json(err);
       })
     }).catch(err => {
+      var quote = new Quote(req.body);
       saveQuote(quote).then(quote => {
         res.status(200).json({message: 'Registration Successfull', obj: quote})
       }).catch(err => {
+        console.log('aa')
         return res.status(403).json(err);
       })
     })
