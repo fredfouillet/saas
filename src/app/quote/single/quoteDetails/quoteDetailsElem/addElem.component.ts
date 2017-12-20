@@ -6,7 +6,7 @@ import { QuoteService } from '../../../quote.service';
 // import { ProductService } from '../../../product/product.service';
 // import { ProjectService} from '../../../project/project.service';
 import { ProductsDialogComponent } from '../../../../product/products/dialog/productsDialog.component';
-// import { AddTextRowDialogComponent } from './addTextRow/dialog/addTextRowDialog.component';
+import { AddTextRowDialogComponent } from './addTextRow/dialog/addTextRowDialog.component';
 import { MatDialog } from '@angular/material';
 import {
   Quote, DevisDetail, BucketProduct, StatusQuotes,
@@ -138,15 +138,35 @@ export class AddElemComponent implements OnInit {
       addRowMobileText() {
         const this2 = this
         const dialogRefText = this.dialog.open(AddTextRowDialogComponent)
-        // const sub = dialogRefText.componentInstance.onAdd.subscribe((product) => {
-        //   this.addProductToQuote(product)
-        // });
+        const sub = dialogRefText.componentInstance.addTextToQuoteEmit.subscribe((product) => {
+          // this.addProductToQuote(product)
+          this.addTextToQuote(product)
+        });
         dialogRefText.afterClosed().subscribe(result => {
           if (result) {
             //
           }
         })
       }
+
+      addTextToQuote(textToQuote) {
+    const bucketProduct: BucketProduct = new BucketProduct()
+    bucketProduct.typeRow = 'text'
+    bucketProduct.title = textToQuote.title
+    bucketProduct.priceWithoutTaxes = textToQuote.priceWithoutTaxes
+    // textToQuote
+    // bucketProduct.priceWithTaxes = 0
+    // bucketProduct.priceWithTaxesWithQuantity = 0
+    // bucketProduct.priceWithQuantity = 0
+    // bucketProduct.quantity = 1
+    // bucketProduct.discount = 0
+    const newDevisDetail: DevisDetail = new DevisDetail();
+    newDevisDetail.bucketProducts.push(bucketProduct)
+    this.fetchedQuote.devisDetails.push(newDevisDetail)
+    this.calculateQuote()
+
+  }
+
 
         addProductToQuote(product: Product) {
             const bucketProduct: BucketProduct = new BucketProduct()

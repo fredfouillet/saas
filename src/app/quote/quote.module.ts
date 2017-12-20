@@ -24,7 +24,7 @@ import { TemplateQuoteComponent} from './single/quoteDetails/quoteDetailsElem/te
 import { TotalComponent} from './single/quoteDetails/quoteDetailsElem/total.component';
 // import { EditQuoteComponent} from './single/editQuote/editQuote.component';
 import { AddTextRowComponent} from './single/quoteDetails/quoteDetailsElem/addtextRow/addTextRow.component';
-// import { AddTextRowDialogComponent} from './single/quoteDetails/quoteDetailsElem/addtextRow/dialog/addTextRowDialog.component';
+import { AddTextRowDialogComponent} from './single/quoteDetails/quoteDetailsElem/addTextRow/dialog/addTextRowDialog.component';
 
 import { InvoiceActionComponent} from './single/invoiceAction/invoiceAction.component';
 // import { QuoteDetailComponent} from './single/quoteDetail.component';
@@ -114,7 +114,7 @@ import {MatCheckboxModule} from '@angular/material';
     TotalComponent,
     // EditQuoteComponent,
     AddTextRowComponent,
-    // AddTextRowDialogComponent,
+    AddTextRowDialogComponent,
     // QuoteDialogComponent,
     QuoteInfoComponent,
     QuoteStatusComponent,
@@ -134,7 +134,7 @@ import {MatCheckboxModule} from '@angular/material';
     TemplateQuoteService
   ],
   entryComponents: [
-    // AddTextRowDialogComponent,
+    AddTextRowDialogComponent,
     // QuoteDialogComponent,
   ]
 })
