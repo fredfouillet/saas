@@ -241,7 +241,7 @@ export class ProductSingleComponent implements OnInit {
               resolve(res)
               this2.toastr.success('Great!', res.message)
               // this2.router.navigate(['product']);
-              this2.getProduct(res.obj._id)
+              // this2.getProduct(res.obj._id)
               // this2.saved.emit(res.obj)
             },
             error => {
@@ -254,7 +254,8 @@ export class ProductSingleComponent implements OnInit {
             res => {
               resolve(res)
               this2.toastr.success('Great!', res.message)
-              this2.getProduct(res.obj._id)
+              this2.fetchedProduct = res.obj
+              // this2.getProduct(res.obj._id)
               // this2.router.navigate(['product']);
 
             },
