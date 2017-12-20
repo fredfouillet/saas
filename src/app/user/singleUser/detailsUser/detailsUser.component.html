@@ -84,11 +84,9 @@
 
     <div *ngIf="authService.showObjHTML('userCalendar', 'read')">
       <div *ngIf="!fetchedUser.isExternalUser">
-        <div>
-          <label>{{'Calendar Color' | translate}}</label>
-          <div class="round" [style.background-color]="fetchedUser.profile.colorCalendar"></div>
-          <input type="color" formControlName="colorCalendar" [(ngModel)]="fetchedUser.profile.colorCalendar">
-        </div>
+        <label>{{'Calendar Color' | translate}}</label>
+        <div class="round" [style.background-color]="fetchedUser.profile.colorCalendar"></div>
+        <input type="color" formControlName="colorCalendar" [(ngModel)]="fetchedUser.profile.colorCalendar">
       </div>
     </div>
 
