@@ -199,8 +199,8 @@ export class ReportingsComponent implements OnInit {
     newSearch.year = this.year
     this.getQuotesGraph(newSearch).then((res: any) => {
       res.item.forEach((element, index) => {
-        if (element._id.statusQuote === 'signed') {
-          this.totalSigned += element.amountTotal
+        if (element._id.statusQuote === 'paid') {
+          this.totalPaid += element.amountTotal
           this.emptyRowPaid.data[element._id.month - 1] = element.amountTotal
           this.emptyRowPaid.label = this.translateService.instant(element._id.statusQuote)
           this.emptyRowPaid.year = element._id.year
@@ -229,8 +229,8 @@ export class ReportingsComponent implements OnInit {
           this.emptyRowRejectedCount.label = this.translateService.instant(element._id.statusQuote)
           this.emptyRowRejectedCount.year = element._id.year
         }
-        if (element._id.statusQuote === 'paid') {
-          this.totalPaid += element.amountTotal
+        if (element._id.statusQuote === 'signed') {
+          this.totalSigned += element.amountTotal
           this.emptyRowsigned.data[element._id.month - 1] = element.amountTotal
           this.emptyRowsigned.label = this.translateService.instant(element._id.statusQuote)
           this.emptyRowsigned.year = element._id.year
