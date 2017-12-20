@@ -24,7 +24,9 @@
   text-align: center;
   max-width: 100% !important;
 }
-
+.img-responsive {
+  width: 200px
+}
 
 .cho-fil {
   padding: 15px;
