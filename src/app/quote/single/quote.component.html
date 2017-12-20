@@ -64,36 +64,16 @@
     </mat-expansion-panel>
 
 
-    <mat-expansion-panel *ngIf="
-        fetchedQuote.statusQuote === 'pending' &&
-        fetchedQuote._id"
-      [expanded]="step === 2" (opened)="setStep(2)">
+    <mat-expansion-panel *ngIf="fetchedQuote._id" [expanded]="step === 2" (opened)="setStep(2)">
       <mat-expansion-panel-header>
         <mat-panel-title>
           <mat-icon>touch_app</mat-icon>
         </mat-panel-title>
         <mat-panel-description>
-          {{'Edit Quote' | translate}}
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <!-- <app-edit-quote [fetchedQuote]="fetchedQuote" (calculateQuote)="calculateQuote()"></app-edit-quote> -->
-      <mat-action-row>
-        <app-actionButtons *ngIf="fetchedQuote.statusQuote === 'pending'" (nextStep)="nextStep()" [isDialog]="isDialog" [fetchedQuote]="fetchedQuote" [showDeleteButton]=false (closeDialog)="closeDialog()" (saved)="savedQuote($event)">
-        </app-actionButtons>
-      </mat-action-row>
-    </mat-expansion-panel>
-
-
-    <mat-expansion-panel *ngIf="fetchedQuote._id" [expanded]="step === 3" (opened)="setStep(3)">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          <mat-icon>map</mat-icon>
-        </mat-panel-title>
-        <mat-panel-description>
           {{'Quote' | translate}}
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <app-quoteDetails *ngIf="step === 3" [(fetchedQuote)]="fetchedQuote" (calculateQuoteEmit)="calculateQuote()" (quoteDetailsUpdated)="quoteDetailsUpdated($event)"></app-quoteDetails>
+      <app-quoteDetails *ngIf="step === 2" [(fetchedQuote)]="fetchedQuote" (calculateQuoteEmit)="calculateQuote()" (quoteDetailsUpdated)="quoteDetailsUpdated($event)"></app-quoteDetails>
       <mat-action-row>
         <app-actionButtons *ngIf="fetchedQuote.statusQuote === 'pending'" (nextStep)="nextStep()" [isDialog]="isDialog" [fetchedQuote]="fetchedQuote" [showDeleteButton]=false [showDLQuoteButton]=true (closeDialog)="closeDialog()" (saved)="savedQuote($event)">
         </app-actionButtons>
@@ -102,7 +82,7 @@
 
     <mat-expansion-panel
       *ngIf="authService.showObjHTML('quote', 'signature') &&
-      fetchedQuote._id" [expanded]="step === 4" (opened)="setStep(4)">
+      fetchedQuote._id" [expanded]="step === 3" (opened)="setStep(3)">
       <mat-expansion-panel-header>
         <mat-panel-title>
           <mat-icon>border_color</mat-icon>
@@ -141,7 +121,7 @@
           authService.showObjHTML('paiementQuote', 'read') &&
           fetchedQuote.statusQuote !=='pending' &&
           fetchedQuote.statusQuote !=='rejected' &&
-          fetchedQuote._id" [expanded]="step === 5" (opened)="setStep(5)">
+          fetchedQuote._id" [expanded]="step === 4" (opened)="setStep(4)">
       <mat-expansion-panel-header>
         <mat-panel-title>
           <mat-icon>attach_money</mat-icon>
@@ -150,7 +130,7 @@
           {{'Paiements' | translate}}
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <app-paiementQuotes [showBack]=0 *ngIf="step === 5" (getPaiementQuotesCross)="getPaiementQuotes($event)" [search]="{userId: search.userId, isExpense:search.isExpense, quoteId:fetchedQuote._id}">
+      <app-paiementQuotes [showBack]=0 *ngIf="step === 4" (getPaiementQuotesCross)="getPaiementQuotes($event)" [search]="{userId: search.userId, isExpense:search.isExpense, quoteId:fetchedQuote._id}">
       </app-paiementQuotes>
       <mat-card>
         {{'Paiements' | translate}}: {{totalPaiementAmount | round | currency}}
@@ -167,7 +147,8 @@
       fetchedQuote._id &&
       fetchedQuote.statusQuote !=='pending' &&
       fetchedQuote.statusQuote !=='rejected'"
-    [expanded]="step === 6" (opened)="setStep(6)">
+      [expanded]="step === 5"
+      (opened)="setStep(5)">
       <mat-expansion-panel-header>
         <mat-panel-title>
           <mat-icon>assignment_turned_in</mat-icon>
@@ -181,7 +162,7 @@
 
 
 
-    <mat-expansion-panel *ngIf="authService.showObjHTML('quote', 'comment') && fetchedQuote._id" [expanded]="step === 7" (opened)="setStep(7)">
+    <!-- <mat-expansion-panel *ngIf="authService.showObjHTML('quote', 'comment') && fetchedQuote._id" [expanded]="step === 7" (opened)="setStep(7)">
       <mat-expansion-panel-header>
         <mat-panel-title>
           <mat-icon>date_range</mat-icon>
@@ -190,7 +171,10 @@
           {{'Comments' | translate}}
         </mat-panel-description>
       </mat-expansion-panel-header>
-    </mat-expansion-panel>
+    </mat-expansion-panel> -->
+
+
+
   </mat-accordion>
 
 
