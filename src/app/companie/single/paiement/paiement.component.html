@@ -110,7 +110,7 @@
           <app-paiement-card [newCard]="newCard"></app-paiement-card>
         </div>
 
-
+      <div class="col-sm-12 col-md-6 col-lg-6">
         <div *ngFor="let card of stripeCust.sources.data; let i=index;">
           <mat-form-field>
             <input matInput readonly value="{{card.id}}" placeholder="cardId">
@@ -139,6 +139,9 @@
           <mat-form-field>
             <input matInput readonly value="{{card.country}}" placeholder="country">
           </mat-form-field>
+          
+        </div>  
+        <div class="col-sm-12 col-md-6 col-lg-6">  
           <mat-form-field>
             <input matInput readonly value="{{card.exp_month}}" placeholder="exp_month">
           </mat-form-field>
@@ -151,6 +154,7 @@
           <mat-form-field>
             <input matInput readonly value="{{card.last4}}" placeholder="last4">
           </mat-form-field>
+         </div>   
 
           <button mat-button color="warn" (click)="deleteCardInStripe(card.id)">delete Card</button>
         </div>
