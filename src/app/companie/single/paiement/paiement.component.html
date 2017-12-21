@@ -20,6 +20,63 @@
           {{'Plan' | translate}}
         </mat-panel-title>
       </mat-expansion-panel-header>
+      
+      <mat-card class="plancss">
+  <mat-card-header>
+    <div mat-card-avatar class=""></div>
+    <mat-card-title><h2>Offre Artisan</h2></mat-card-title>
+    <mat-card-subtitle>Utilisateur unique</mat-card-subtitle>
+  </mat-card-header>
+  
+  <mat-card-content>
+    <h1>9 €</h1><h5> par mois</h5>
+    </br>
+    <p>
+      Gestion des contacts
+      Devis
+      Catalogue produit
+      Signature électronique
+      Prise de photos
+      Factures
+      Paiement en ligne
+      Planning
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button>Souscrire</button>
+    
+  </mat-card-actions>
+</mat-card>
+      
+            <mat-card class="plancss">
+  <mat-card-header>
+    <div mat-card-avatar class=""></div>
+    <mat-card-title><h2>Offre Équipe</h2></mat-card-title>
+    <mat-card-subtitle>Jusqu'à 5 Utilisateurs</mat-card-subtitle>
+  </mat-card-header>
+  
+  <mat-card-content>
+    <h1>15 €</h1><h5> par mois</h5>
+    </br>
+    <p>
+      Gestion des contacts
+      Devis
+      Catalogue produit
+      Signature électronique
+      Prise de photos
+      Factures
+      Paiement en ligne
+      Planning
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button>Souscrire</button>
+    
+  </mat-card-actions>
+</mat-card>
+
+
+      
       <mat-button-toggle-group disabled="{{stripeCust.subscriptions.data.length !== 0}}" [(ngModel)]="plan" (change)="changePlan()">
         <mat-button-toggle value="silver">
           Silver
