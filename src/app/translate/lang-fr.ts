@@ -251,6 +251,8 @@ export const LANG_FR_TRANS = {
     'week': 'semaine',
     'day': 'jour',
     'list': 'liste',
+  
+    'Companie': 'Entreprise',
 
 
 
