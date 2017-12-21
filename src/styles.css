@@ -1,6 +1,16 @@
 /*ALAN: DO NOT DELETE*/
 
 /*ALAN: Signature*/
+
+.green {
+  color: #00c853;
+}
+
+.red {
+  color: #ff4351;
+}
+
+
 .plancss {
   width: 50%;
 }
