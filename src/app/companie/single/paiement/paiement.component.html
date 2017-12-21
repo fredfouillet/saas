@@ -21,7 +21,8 @@
         </mat-panel-title>
       </mat-expansion-panel-header>
       
-      <mat-card class="plancss">
+      <div class="row ac">
+        <mat-card class="plancss">
   <mat-card-header>
     <div mat-card-avatar class=""></div>
     <mat-card-title><h2>Offre Artisan</h2></mat-card-title>
@@ -75,7 +76,7 @@
   </mat-card-actions>
 </mat-card>
 
-
+      </div>
       
       <mat-button-toggle-group disabled="{{stripeCust.subscriptions.data.length !== 0}}" [(ngModel)]="plan" (change)="changePlan()">
         <mat-button-toggle value="silver">
